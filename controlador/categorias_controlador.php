@@ -1,41 +1,43 @@
 <?php
 
-class profesiones_controlador {
+class categorias_controlador {
     
     public function grilla() {
-        $objProfesiones = new profesiones();
-        $objProfesiones->idprofesion = 0;
-        $stmt = $objProfesiones->selecciona();
+        $objCategorias = new categorias();
+        $objCategorias->idcategoria = 0;
+        $stmt = $objCategorias->selecciona();
         return $stmt;
     }
 
     public function selecciona($id) {
-        $objProfesiones = new profesiones();
-        $objProfesiones->idprofesion = $id;
-        $stmt = $objProfesiones->selecciona();
+        $objCategorias = new categorias();
+        $objCategorias->idcategoria = $id;
+        $stmt = $objCategorias->selecciona();
         return $stmt;
     }
 
     public function elimina($id) {
-        $objProfesiones = new profesiones();
-        $objProfesiones->idprofesion = $id;
-        $error = $objProfesiones->elimina();
+        $objCategorias = new categorias();
+        $objCategorias->idcategoria = $id;
+        $error = $objCategorias->elimina();
         return $error;
     }
 
     public function inserta($datos) {
-        $objProfesiones = new profesiones();
-        $objProfesiones->idprofesion = $datos[0];
-        $objProfesiones->descripcion = $datos[1];
-        $error = $objProfesiones->inserta();
+        $objCategorias = new categorias();
+        $objCategorias->idcategoria = $datos[0];
+        $objCategorias->descripcion = $datos[1];
+        $objCategorias->nroelemento = $datos[2];
+        $error = $objCategorias->inserta();
         return $error;
     }
 
     public function actualiza($datos) {
-        $objProfesiones = new profesiones();
-        $objProfesiones->idprofesion = $datos[0];
-        $objProfesiones->descripcion = $datos[1];
-        $error = $objProfesiones->actualiza();
+        $objCategorias = new categorias();
+        $objCategorias->idcategoria = $datos[0];
+        $objCategorias->descripcion = $datos[1];
+        $objCategorias->nroelemento = $datos[2];
+        $error = $objCategorias->actualiza();
         return $error;
     }
 }

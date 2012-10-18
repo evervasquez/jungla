@@ -8,7 +8,7 @@ class unidad_medida {
 
     public function selecciona() {
         $datos = array($this->idunidad_medida);
-        $r = consulta::procedimientoAlmacenado("pa_seleccionaUnidad_medida", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_unidad_medida", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -21,7 +21,7 @@ class unidad_medida {
 
     public function elimina() {
         $datos = array($this->idunidad_medida);
-        $r = consulta::procedimientoAlmacenado("pa_eliminaUnidad_medida", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_elimina_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -29,7 +29,7 @@ class unidad_medida {
 
     public function inserta() {
         $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_insertaUnidad_medida", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -37,7 +37,7 @@ class unidad_medida {
 
     public function actualiza() {
         $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_actualizaUnidad_medida", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_actualiza_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;

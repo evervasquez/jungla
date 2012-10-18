@@ -7,7 +7,7 @@ class tipo_transaccion {
 
     public function selecciona() {
         $datos = array($this->idtipo_transaccion);
-        $r = consulta::procedimientoAlmacenado("pa_seleccionaTipo_transaccion", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_transaccion", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -20,7 +20,7 @@ class tipo_transaccion {
 
     public function elimina() {
         $datos = array($this->idtipo_transaccion);
-        $r = consulta::procedimientoAlmacenado("pa_eliminaTipo_transaccion", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_elimina_tipo_transaccion", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -28,7 +28,7 @@ class tipo_transaccion {
 
     public function inserta() {
         $datos = array($this->idtipo_transaccion, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_insertaTipo_transaccion", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_tipo_transaccion", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -36,7 +36,7 @@ class tipo_transaccion {
 
     public function actualiza() {
         $datos = array($this->idtipo_transaccion, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_actualizaTipo_transaccion", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_actualiza_tipo_transaccion", $datos);
         $error = $r[1];
         $r = null;
         return $error;
