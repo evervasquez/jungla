@@ -18,5 +18,5 @@ class empleados {
 public function selecciona(){
 
 }
-
+}
 ?>

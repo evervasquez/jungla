@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:14px;
+}
+
+#principal{
+	padding:20px;
+	margin:0 auto;
+	width:80%;
+}

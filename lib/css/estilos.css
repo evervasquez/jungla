@@ -1,0 +1,386 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Fuente personalizada*/
+@font-face{
+	font-family: animales;
+	src: url(fuentes/jungla.ttf) format('truetype');
+}
+
+/*Maquetacion principal*/
+body{ 
+	text-align:justify;
+	font-family: Verdana, Geneva, sans-serif, Arial, Helvetica, sans-serif;
+	background-image:url(../img/bg.png);
+	background-attachment:fixed;
+}
+h1,h2{	
+	text-shadow:1px 1px 5px black;
+}
+h3,h4,h5{	
+	text-shadow:1px 1px 5px white;
+}
+h6{
+	text-shadow:0px 0px 5px white;
+}
+.titJungla{
+	transform:translate:(150px 0px);
+	-moz-transform:translate:(150px 0px);
+	-webkit-transform:translate:(150px 0px);
+	-o-transform:translate:(150px 0px);
+	position:absolute;
+	color:#0F9;
+	font-size:36px;
+	margin-top:20px;
+	margin-left:20px;
+	letter-spacing:0px;
+	display:inline
+}
+.subtitJungla{
+	transform:translate:(150px 0px);
+	-moz-transform:translate:(150px 0px);
+	-webkit-transform:translate:(150px 0px);
+	-o-transform:translate:(150px 0px);
+	position:absolute;
+	color:#FFF;
+	font-size:18px;
+	margin-top:70px;
+	margin-left:20px;
+	letter-spacing:0px;
+	display:inline
+}
+#iniJungla{
+	margin:auto;
+	width:80%;
+	height:100%;
+	position:relative;
+	background:rgba(255,255,255,0.4);
+	border-radius:5px 35px 5px 35px;
+	-moz-border-radius:5px 35px 5px 35px;
+	-webkit-border-radius:5px 35px 5px 35px;
+	-o-border-radius:5px 35px 5px 35px;
+}
+#logoJungla{
+	width:120px;
+	height:120px;
+	display:inline;
+	position:relative;
+}
+header{
+	display:table;
+	margin:auto;
+	width:100%;
+	height:100px;
+	border:2px solid white;
+	background:rgba(0,99,0,0.45);
+	border-radius:5px 35px 0px 0px;
+	-moz-border-radius:5px 35px 0px 0px;
+	-webkit-border-radius:5px 35px 0px 0px;
+	-o-border-radius:5px 35px 0px 0px;
+	box-shadow:0px 0px 10px white;
+	-moz-box-shadow:0px 0px 10px white;
+	-webkit-box-shadow:0px 0px 10px white;
+	-o-box-shadow:0px 0px 10px white;
+}
+footer{
+	display:table;
+	text-align:center;
+	margin:auto;
+	width:100%;
+	background:rgba(0,99,0,0.75);
+	border:2px solid white;
+	border-radius:0px 0px 5px 35px;
+	-moz-border-radius:0px 0px 5px 35px;
+	-webkit-border-radius:0px 0px 5px 35px;
+	-o-border-radius:0px 0px 5px 35px;
+	box-shadow:0px 0px 10px white;
+	-moz-box-shadow:0px 0px 10px white;
+	-webkit-box-shadow:0px 0px 10px white;
+	-o-box-shadow:0px 0px 10px white;
+}
+
+/*Menu de navegacion*/
+#menuNav{
+	display:inline;
+	float:right;
+	margin:20px;
+}
+#menuNav ul{
+	font-size:12px;
+	padding-left:0px;
+	margin-left:0px;
+	background:#FFF;
+	color:#060;
+	width:50%;
+	position:relative;
+	display:inline;
+}
+#menuNav ul li{
+	display:inline;
+	text-align:center;
+}
+#menuNav ul li a{
+	width:110px;
+	background:#063;
+	color:#FF9;
+	text-decoration:none;
+	float:right;
+	border:1px solid white;
+	border-radius:0px 10px 0px 10px;
+	-moz-border-radius:0px 10px 0px 10px;
+	-o-border-radius:0px 10px 0px 10px;
+	-webkit-border-radius:0px 10px 0px 10px;
+	box-shadow:0px 0px 10px;
+}
+#menuNav ul li a:hover{
+	background:#0F9;
+	color:#333;
+	box-shadow:0px 0px 25px white;
+	-moz-box-shadow:0px 0px 25px white;
+	-webkit-box-shadow:0px 0px 25px white;
+	-o-box-shadow:0px 0px 25px #9F6;
+}
+/*maquetacion index*/
+#contenido{
+	width:100%;
+	border:2px solid white;
+	box-shadow:0px 0px 10px white;
+	-moz-box-shadow:0px 0px 10px white;
+	-webkit-box-shadow:0px 0px 10px white;
+	-o-box-shadow:0px 0px 10px white;
+}
+#position{
+	float:right;
+	width:40%;
+	padding:20px;
+}
+article{
+	width:50%;
+	background:rgba(0,255,66,0.7);
+	display:table;
+	margin:10px;
+	padding:10px;
+	height:100%;
+	border:1px solid white;
+	border-radius:0px 25px 0px 25px;
+	-moz-border-radius:0px 25px 0px 25px;
+	-webkit-border-radius:0px 25px 0px 25px;
+	-o-border-radius:0px 25px 0px 25px;
+	box-shadow:3px 3px 10px black;
+	-moz-box-shadow:3px 3px 10px black;
+	-webkit-box-shadow:3px 3px 10px black;
+	-o-box-shadow:3px 3px 10px black;
+	opacity:0.6;
+	transition:opacity 1s, box-shadow 1s, transform 1s, background 1s;
+	-webkit-transition:opacity 1s, -webkit-box-shadow 1s, -webkit-transform 1s, background 1s;
+	-moz-transition:opacity 1s, -moz-box-shadow 1s, -moz-transform 1s, background 1s;
+	-o-transition:opacity 1s, -o-box-shadow 1s, -o-transform 1s, background 1s;
+	transform:scale(1,1);
+	-moz-transform:scale(1,1));
+	-webkit-transform:scale(1,1);
+	-o-transform:scale(1,1);
+}
+article:hover{
+	opacity:1;
+	transform:scale(1.1,1.1);
+	-moz-transform:scale(1.1,1.1);
+	-webkit-transform:scale(1.1,1.1);
+	-o-transform:scale(1.1,1.1);
+	background:rgba(0,255,66,1);
+	box-shadow:0px 0px 25px white;
+	-moz-box-shadow:0px 0px 25px white;
+	-webkit-box-shadow:0px 0px 25px white;
+	-o-box-shadow:0px 0px 25px white;
+}
+.fotoArt{
+	width:180px;
+	float:left;
+	margin-top:20px;
+	display:inline;
+}
+.contArt{
+	margin-left:200px;
+	display:block;
+}
+.icnAcceso{
+	width:50px;
+	height:50px;
+	border:0px solid white;
+}
+/* Para la compatibilidad entre diversos navegadores que no soporten completamente HTML5 y CSS3 utilizaremos lo prefijos -webkit-, -moz-, -o- para dichos navegadores */
+#login{ 
+	text-align:center;
+	background-color:#6F9;
+	width:350px;
+	border:solid 3px #666;
+	padding:10px;
+	position:relative;
+	margin:20px;
+	margin-top:60px;
+	float:right;
+	display:table;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	-moz-border-radius:25px;
+	-o-border-radius:25px;
+	box-shadow:0px 0px 15px #063;
+	-moz-box-shadow:0px 0px 15px #063;
+	-webkit-box-shadow:0px 0px 25px #063;
+	-o-box-shadow:0px 0px 25px #063;
+	animation: miAnimacion 2s;
+	-webkit-animation: miAnimacion 2s;
+	-moz-animation: miAnimacion 2s;
+	-o-animation: miAnimacion 2s;
+}
+@keyframes miAnimacion{
+	0%{left:0px;top:0px;}
+	20%{left:100px;top:0px;}
+	40%{left:100px;top:100px;}
+	60%{left:-100px;top:100px;}
+	80%{left:-100px;top:0px;}
+	100%{left:0px;top:0px;}
+}
+@-moz-keyframes miAnimacion{
+	0%{left:0px;top:0px;}
+	20%{left:100px;top:0px;}
+	40%{left:100px;top:100px;-moz-box-shadow:-15px -15px 25px #063;}
+	60%{left:-100px;top:100px;}
+	80%{left:-100px;top:0px;-moz-box-shadow:15px 15px 25px #063;}
+	100%{left:0px;top:0px;}
+}
+@-o-keyframes miAnimacion{
+	0%{left:0px;top:0px;}
+	20%{left:100px;top:0px;}
+	40%{left:100px;top:100px;}
+	60%{left:-100px;top:100px;}
+	80%{left:-100px;top:0px;}
+	100%{left:0px;top:0px;}
+}
+@-webkit-keyframes miAnimacion{
+	0%{left:0px;top:0px;}
+	20%{left:100px;top:0px;}
+	40%{left:100px;top:100px;-webkit-box-shadow:-15px -15px 25px #063;}
+	60%{left:-100px;top:100px;}
+	80%{left:-100px;top:0px;-webkit-box-shadow:15px 15px 25px #063;}
+	100%{left:0px;top:0px;}
+}
+#login h1#titleLogin{ 
+	font-family:animales;
+	background-color:#060;
+	padding:10px;
+	color:#0F0;
+	font-size:50px;
+	font-weight:bold;
+	margin-bottom:5px;
+	margin-top:5px;
+	border:solid 5px #0C0;
+	border-radius:20px;
+	box-shadow:0px 0px 35px #063;
+	-webkit-box-shadow:0px 0px 35px #063;
+	-moz-box-shadow:0px 0px 35px #063;
+	text-shadow:5px 5px 5px black;
+}
+#login h1#titleLogin:hover{
+	cursor:pointer;
+}
+#login #cuerpoLogin{
+	margin-top:15px;
+}
+#login label.labelLogin{ 
+	font-weight:bold;
+	width:160px;
+	display:block;
+	text-align:right;
+	float:left;
+	text-shadow:2px 2px 10px black;
+} 
+#login .detalle{ 
+	color:#666666;
+	display:block;
+	font-size:11px;
+	font-weight:normal;
+	text-align:right;
+	width:160px;
+	text-shadow:0px 0px;
+}
+#login input.inputLogin{ 
+	width:130px;
+	float:left;
+	font-size:12px;
+	padding:4px 2px;
+	border:solid 1px #999;
+	margin: 2px 0 20px 10px;
+	font-weight:inherit;
+}
+button#enterLogin{ 
+	width:100px;
+	height:31px;
+	background:#093;
+	text-align:center;
+	color:#FFFFFF;
+	font-size:11px;
+	font-weight:bold;
+}
+button#enterLogin:hover{ 
+	background-color:#030;
+	cursor:pointer;
+}
+#login #errorLogin{ 
+	display:block;
+	text-align:center; 
+	color:#666; 
+	font-size:12px; 
+	margin-top:10px;
+}
+#cr{
+	text-decoration:none;
+	color:#333;
+}
+
+/*estilos para contacto.php */
+#contacto{
+	background:rgba(255,255,255,0.3);
+	border-radius:0px 25px 0px 25px;
+	width:50%;
+	margin:20px auto;
+	padding:20px;
+	box-shadow:1px 1px 10px black;
+}
+#titleContacto{
+	font-size:36px;
+	color:#CF0;
+	text-shadow:1px 1px 5px black;
+}
+textarea{
+	border:1px solid green;
+}
+.inpCont{
+	border-style:inset;
+	width:300px;
+	background:rgba(255,255,255,0.7);
+}
+.inpCont:hover{
+	background:rgba(255,255,255,1);
+}
+.txtCont{
+	font-weight:bold;
+	width:100px;
+	display:block;
+	text-align:left;
+}
+
+/*required e invalid */
+[required]{
+	border-color:green;
+	box-shadow: 0px 0px 20px green;
+	-moz-box-shadow: 0px 0px 20px green;
+	-o-box-shadow: 0px 0px 20px green;
+	-webkit-box-shadow: 0px 0px 20px green;
+}
+:invalid{
+	border-color:red;
+	box-shadow: 0px 0px 20px red;
+	-moz-box-shadow: 0px 0px 20px red;
+	-o-box-shadow: 0px 0px 20px red;
+	-webkit-box-shadow: 0px 0px 20px red;
+}
