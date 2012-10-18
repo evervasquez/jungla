@@ -7,6 +7,19 @@
 //    echo '<script>
 //            window.location="vista/configurarbd/index.php";
 //        </script>';
+<<<<<<< HEAD
+}else{
+    echo '<script>
+            window.location="vista/configurarbd/index.php";
+        </script>';
+    
+    
+    
+    
+}
+?>|
+=======
 //}
 ?>
+>>>>>>> e795299497bbb2bca80e55647a109ba64bd08c82
 
