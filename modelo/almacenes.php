@@ -4,7 +4,6 @@ class almacenes {
 
     public $idalmacen;
     public $descripcion;
-
     public function selecciona() {
         $datos = array($this->idalmacen);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_almacenes", $datos);
