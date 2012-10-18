@@ -13,6 +13,10 @@
 class modulos {
     //put your code here
     public $perfiles;
+    public $id;
+    public function seleccionar() {
+        
+    }
 }
 
 ?>
