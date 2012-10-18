@@ -6,6 +6,7 @@
         <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="/sisjungla/lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/sisjungla/lib/css/styles/kendo.default.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/sisjungla/lib/css/styles/kendo.silver.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="/sisjungla/lib/css/le-frog/jquery-ui-1.9.0.custom.css" />
         <link rel="shortcut icon" href="/sisjungla/img/favicon.ico" type="image/x-icon" />
         <script type="text/javascript" src="/sisjungla/lib/js/jquery.js"></script>

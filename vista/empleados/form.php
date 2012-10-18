@@ -44,11 +44,11 @@
             </tr>
             <tr>
             	<td>Fecha de Nacimiento</td>
-                <td><input type="text" id="calendario" /><span id="background"><div id="calendar"></div></span></td>
+                <td><input class="datepicker" value=""/></td>
             </tr>
             <tr>
             	<td>Fecha de Contratacion</td>
-                <td><input id="datepicker" value=""/></td>
+                <td><input class="datepicker" value=""/></td>
             </tr>
             <tr>
             	<td>Perfil</td>
