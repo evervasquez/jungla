@@ -12,6 +12,7 @@
  */
 class modulos {
     //put your code here
+    public $perfiles;
 }
 
 ?>
