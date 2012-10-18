@@ -8,7 +8,7 @@ class categorias {
 
     public function selecciona() {
         $datos = array($this->idcategoria);
-        $r = consulta::procedimientoAlmacenado("pa_seleccionaProfesiones", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_categorias", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -21,23 +21,23 @@ class categorias {
 
     public function elimina() {
         $datos = array($this->idcategoria);
-        $r = consulta::procedimientoAlmacenado("pa_eliminaProfesiones", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_elimina_categorias", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
     public function inserta() {
-        $datos = array($this->idcategoria, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_insertaProfesiones", $datos);
+        $datos = array($this->idcategoria, $this->descripcion, $this->nroelemento);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_categorias", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
     public function actualiza() {
-        $datos = array($this->idcategoria, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_actualizaProfesiones", $datos);
+        $datos = array($this->idcategoria, $this->descripcion, $this->nroelemento);
+        $r = consulta::procedimientoAlmacenado("pa_actualiza_categorias", $datos);
         $error = $r[1];
         $r = null;
         return $error;
