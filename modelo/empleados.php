@@ -14,6 +14,9 @@ class empleados {
     //put your code here
     public $empleado;
     public $idempleado;
+
+public function selecciona(){
+
 }
 
 ?>
