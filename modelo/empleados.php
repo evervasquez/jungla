@@ -12,6 +12,7 @@
  */
 class empleados {
     //put your code here
+    public $empleado;
 }
 
 ?>
