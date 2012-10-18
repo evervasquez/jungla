@@ -14,7 +14,7 @@
                     	<option>Seleccione...</option>
                     </select>
             </div>
-            <div>Fecha de Compra<input type="date" /></div>
+            <div>Fecha de Compra<input class="datepicker" value="" /></div>
             <button type="button" class="k-button">Agregar Productos</button>
             <table border="1">
                 <tr>

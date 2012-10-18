@@ -52,7 +52,7 @@
             </tr>
             <tr>
             	<td>Fecha de Nacimiento</td>
-                <td><input type="date"/></td>
+                <td><input class="datepicker" value="" /></td>
             </tr>
             <tr>
             	<td>Sexo</td>
