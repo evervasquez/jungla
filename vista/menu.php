@@ -1,7 +1,7 @@
 		<ul id="menu">
         	<li>Administracion
             	<ul>
-                	<li><a href="/sisjungla/vista/empleados/">Empleados</a></li>
+                    <li><a href="/sisjungla/vista/empleados/">Empleados</a></li>
                     <li><a href="/sisjungla/vista/servicios/">Servicios</a></li>
                     <li><a href="/sisjungla/vista/caja/">Caja</a></li>
                     <li><a href="/sisjungla/vista/membresia/">Membresia</a></li>
