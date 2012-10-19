@@ -27,6 +27,16 @@ class productos_controlador {
         $objproductos = new productos();
         $objproductos->idproducto = $datos[0];
         $objproductos->descripcion = $datos[1];
+        $objproductos->precio_unitario = $datos[2];
+        $objproductos->observaciones = $datos[3];
+        $objproductos->idservicio = $datos[4];
+        $objproductos->idtipo_producto = $datos[5];
+        $objproductos->idunidad_medida = $datos[6];
+        $objproductos->idubicacion = $datos[7];
+        $objproductos->idpromocion = $datos[8];
+        $objproductos->stock = $datos[9];
+        $objproductos->estado = $datos[10];
+        $objproductos->precio_compra = $datos[11];
         $error = $objproductos->inserta();
         return $error;
     }
@@ -35,6 +45,16 @@ class productos_controlador {
         $objproductos = new productos();
         $objproductos->idproducto = $datos[0];
         $objproductos->descripcion = $datos[1];
+        $objproductos->precio_unitario = $datos[2];
+        $objproductos->observaciones = $datos[3];
+        $objproductos->idservicio = $datos[4];
+        $objproductos->idtipo_producto = $datos[5];
+        $objproductos->idunidad_medida = $datos[6];
+        $objproductos->idubicacion = $datos[7];
+        $objproductos->idpromocion = $datos[8];
+        $objproductos->stock = $datos[9];
+        $objproductos->estado = $datos[10];
+        $objproductos->precio_compra = $datos[11];
         $error = $objproductos->actualiza();
         return $error;
     }
