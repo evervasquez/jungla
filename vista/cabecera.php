@@ -11,9 +11,6 @@
         <link rel="shortcut icon" href="/sisjungla/img/favicon.ico" type="image/x-icon" />
         <script type="text/javascript" src="/sisjungla/lib/js/jquery.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/jqueryui.js"></script>
-        <!-- -------------------------------------------------------------------------------- -->
-        <script type="text/javascript" src="/sisjungla/lib/js/pruebas.js"></script>
-        <!-- -------------------------------------------------------------------------------- -->
         <script type="text/javascript" src="/sisjungla/lib/js/funciones.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/script.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/kendo.all.min.js"></script>
