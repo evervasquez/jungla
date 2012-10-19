@@ -28,11 +28,11 @@
             </tr>
             <tr>
             	<td>Fecha de Cobro</td>
-                <td><input type="date" /></td>
+                <td><input class="datepicker" value="" /></td>
             </tr>
             <tr>
             	<td>Fecha de Vencimiento</td>
-                <td><input type="date" /></td>
+                <td><input class="datepicker" value="" /></td>
             </tr>
             <tr>
             	<td>Interes</td>

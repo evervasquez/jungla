@@ -12,14 +12,8 @@ body{
 	width:80%;
 }
 
-#background{
+#Sesion{
 	position:absolute;
-	width: 254px;
-	height: 250px;
-	margin: 30px auto;
-	padding: 69px 0 0 11px;
-	background:url(../img/calendar.png) transparent no-repeat 0 0;
-}
-#calendar {
-	width: 241px;
+	top:10px;
+	right:10%;
 }
