@@ -16,11 +16,11 @@
             </tr>
             <tr>
             	<td>Fecha de Inicio</td>
-                <td><input type="date" /></td>
+                <td><input class="datepicker" value="" /></td>
             </tr>
             <tr>
             	<td>Fecha de Finalizacion</td>
-                <td><input type="date" /></td>
+                <td><input class="datepicker" value="" /></td>
             </tr>
             <tr>
             	<td colspan="2" align="center"><button type="button" class="k-button">Guardar</button></td>
