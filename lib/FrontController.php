@@ -1,31 +1,27 @@
 <?php
-
-class FrontControllerException extends Exception {
-    
-}
-
+class FrontControllerException extends Exception {  }
 class FrontController {
 
     public static function Main() {
-        $controllerDir = "../controller/";
+        $controladorDir = "/sisjungla/controlador/";
         // Obtenemos el controlador y la accion
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET':
-                $controller = $_GET['controller'];
-                $action = $_GET['action'];
+                $controlador = $_GET['controlador'];
+                $accion = $_GET['accion'];
                 break;
             case 'POST':
-                $controller = $_POST['controller'];
-                $action = $_POST['action'];
+                $controlador = $_POST['controlador'];
+                $accion = $_POST['accion'];
                 break;
             default:
                 break;
         }
-        if (empty($controller)) { // Comprobamos si esta vacia, si asi es definimos que por defecto cargue Index
-            $controller = "principal";
+        if (empty($controlador)) { // Comprobamos si esta vacia, si asi es definimos que por defecto cargue Index
+            $controlador = "principal";
         }
-        if (empty($action)) { // Comprobamos tambien..
-            $action = "princial";
+        if (empty($accion)) { // Comprobamos tambien..
+            $accion = "princial";
         }
         if (!isset($_SESSION['user']) && empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
             header('Location: ../index.php');
@@ -40,27 +36,27 @@ class FrontController {
             header('NOT_AUTHORIZED: 499');
             die();
         }
-        $controllerFile = $controllerDir . $controller . "Controller.php";
-        if (!file_exists($controllerFile)) { // Si no existe el archivo lanzamos una excepcion
+        $controladorFile = $controladorDir . $controlador . "_controller.php";
+        if (!file_exists($controladorFile)) { // Si no existe el archivo lanzamos una excepcion
             $msg = self::msgerror(" No se encontro el archivo especificado ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='index.php'>Regresar</a>");
             die($msg);
         } else {
-            require_once $controllerFile;
+            require_once $controladorFile;
         }
 
-        $controllerClass = $controller . "Controller";
+        $controladorClass = $controlador . "_controlador";
 
-        if (!class_exists($controllerClass, false)) { // Si existe el archivo pero no esta la clase lanzamos otra excepcion        
+        if (!class_exists($controladorClass, false)) { // Si existe el archivo pero no esta la clase lanzamos otra excepcion        
             $msg = self::msgerror(" El controlador fue cargado pero no se encontro la clase ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ( ");
             die($msg);
         }
 
-        $controllerInst = new $controllerClass();
-        if (!is_callable(array($controllerInst, $action))) { // Comprobamos si la accion es posible llamarla
-            $msg = self::msgerror(" El controlador no tiene definida la accion " . $action . " ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ( ");
+        $controladorInst = new $controladorClass();
+        if (!is_callable(array($controladorInst, $accion))) { // Comprobamos si la accion es posible llamarla
+            $msg = self::msgerror(" El controlador no tiene definida la accion " . $accion . " ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ( ");
             die($msg);
         } else {
-            $controllerInst->$action(); // Llamamos a la accion y dejamos el proceso al controlador
+            $controladorInst->$accion(); // Llamamos a la accion y dejamos el proceso al controlador
         }
     }
 
