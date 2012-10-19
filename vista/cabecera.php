@@ -18,9 +18,9 @@
     <body>
         <div id="principal">
         	<div id="siscom"><h1 class="k-label">La Jungla</h1></div>
-            	<div id="Sesion">
-                	<label><h4>Jair Vasquez</h4></label>
-            		<a href="#">Config</a> | <a href="#">Cerrar Sesion</a>
+            	<div id="sesion">
+                	<div id="userSesion"><label>Jair Vasquez</label></div>
+            		<div id="linkSesion"><a href="#">Perfil</a> | <a href="/sisjungla/">Cerrar Sesion</a></div>
                 </div>
                 <ul id="menu">
                     <li>Administracion

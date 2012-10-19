@@ -21,6 +21,7 @@ if(isset($_POST['usuario'])){
 }
 ?>	
 <!DOCTYPE HTML>
+<html lang="en">
 <html>
     <meta charset="utf-8">
     <head>
@@ -32,8 +33,6 @@ if(isset($_POST['usuario'])){
         <script type="text/javascript" src="lib/js/script.js"></script>
         <link rel="stylesheet" href="lib/css/estilos.css" media="all" />
         <link rel="shortcut icon" href="lib/img/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="lib/css/ui-lightness/jquery-ui-1.8.16.custom.css" media="all" />
-        <link rel="stylesheet" href="lib/css/trontastic/jquery-ui-1.8.16.custom.css" media="all" />
         <link rel="stylesheet" href="lib/css/le-frog/jquery-ui-1.9.0.custom.css" media="all" />
     </head>
     <body id="page1">

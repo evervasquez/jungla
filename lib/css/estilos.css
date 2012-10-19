@@ -16,12 +16,15 @@ body{
 }
 h1,h2{	
 	text-shadow:1px 1px 5px black;
+	behavior: url(ie-css3.htc);
 }
 h3,h4,h5{	
 	text-shadow:1px 1px 5px white;
+	behavior: url(ie-css3.htc);
 }
 h6{
 	text-shadow:0px 0px 5px white;
+	behavior: url(ie-css3.htc);
 }
 .titJungla{
 	transform:translate:(150px 0px);
@@ -34,7 +37,8 @@ h6{
 	margin-top:20px;
 	margin-left:20px;
 	letter-spacing:0px;
-	display:inline
+	display:inline;
+	behavior: url(ie-css3.htc);
 }
 .subtitJungla{
 	transform:translate:(150px 0px);
@@ -47,7 +51,8 @@ h6{
 	margin-top:70px;
 	margin-left:20px;
 	letter-spacing:0px;
-	display:inline
+	display:inline;
+	behavior: url(ie-css3.htc);
 }
 #iniJungla{
 	margin:auto;
@@ -59,6 +64,7 @@ h6{
 	-moz-border-radius:5px 35px 5px 35px;
 	-webkit-border-radius:5px 35px 5px 35px;
 	-o-border-radius:5px 35px 5px 35px;
+	behavior: url(ie-css3.htc);
 }
 #logoJungla{
 	width:120px;
@@ -81,6 +87,7 @@ header{
 	-moz-box-shadow:0px 0px 10px white;
 	-webkit-box-shadow:0px 0px 10px white;
 	-o-box-shadow:0px 0px 10px white;
+	behavior: url(ie-css3.htc);
 }
 footer{
 	display:table;
@@ -367,6 +374,88 @@ textarea{
 	width:100px;
 	display:block;
 	text-align:left;
+}
+
+/*Estilos para la pagina de Servicios*/
+#servicios{
+	text-align:left;
+	width:100%;
+	height:200px;
+	background: url(../img/blanco.png), url(../img/bgservices.jpg) center center;
+	background-size:1200px 500px;
+	animation: esconde 5s;
+	-webkit-animation: esconde 5s;
+	-o-animation: esconde 5s;
+	-moz-animation: esconde 5s;
+	behavior: url(ie-css3.htc);
+}
+@keyframes esconde{
+	0%{height:200px;background-size:1200px 500px;}
+	50%{height:0px;background-size:2400px 1000px;}
+	100%{height:200px;background-size:1200px 500px;}
+}
+@-webkit-keyframes esconde{
+	0%{height:200px;background-size:1200px 500px;}
+	50%{height:0px;background-size:2400px 1000px;}
+	100%{height:200px;background-size:1200px 500px;}
+}
+@-moz-keyframes esconde{
+	0%{height:200px;background-size:1200px 500px;}
+	50%{height:0px;background-size:2400px 1000px;}
+	100%{height:200px;background-size:1200px 500px;}
+}
+@-o-keyframes esconde{
+	0%{height:200px;background-size:1200px 500px;}
+	50%{height:0px;background-size:2400px 1000px;}
+	100%{height:200px;background-size:1200px 500px;}
+}
+#titServicios{
+	color:rgba(255,255,255,1);
+	text-shadow:0px 0px 15px rgba(0,0,0,1);
+	font-size:32px;
+	padding:10px;
+	transform:translate(200px, 0px);
+	animation: muevetitulo 5s;
+	-o-transform:translate(200px, 0px);
+	-o-animation: muevetitulo 5s;
+	-webkit-transform:translate(200px, 0px);
+	-webkit-animation: muevetitulo 5s;
+	-moz-transform:translate(200px, 0px);
+	-moz-animation: muevetitulo 5s;
+	behavior: url(ie-css3.htc);
+}
+@keyframes muevetitulo{
+	0%{color:rgba(255,255,255,1);transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+	20%{color:rgba(255,255,255,0);transform:translate(100px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	40%{color:rgba(255,255,255,0);transform:translate(0px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	60%{color:rgba(255,255,255,0);transform:translate(400px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	80%{color:rgba(255,255,255,0);transform:translate(300px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	100%{color:rgba(255,255,255,1);transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+	behavior: url(ie-css3.htc);
+}
+@-o-keyframes muevetitulo{
+	0%{color:rgba(255,255,255,1);-o-transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+	20%{color:rgba(255,255,255,0);-o-transform:translate(100px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	40%{color:rgba(255,255,255,0);-o-transform:translate(0px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	60%{color:rgba(255,255,255,0);-o-transform:translate(400px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	80%{color:rgba(255,255,255,0);-o-transform:translate(300px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	100%{color:rgba(255,255,255,1);-o-transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+}
+@-webkit-keyframes muevetitulo{
+	0%{color:rgba(255,255,255,1);-webkit-transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+	20%{color:rgba(255,255,255,0);-webkit-transform:translate(100px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	40%{color:rgba(255,255,255,0);-webkit-transform:translate(0px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	60%{color:rgba(255,255,255,0);-webkit-transform:translate(400px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	80%{color:rgba(255,255,255,0);-webkit-transform:translate(300px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	100%{color:rgba(255,255,255,1);-webkit-transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+}
+@-moz-keyframes muevetitulo{
+	0%{color:rgba(255,255,255,1);-moz-transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
+	20%{color:rgba(255,255,255,0);-moz-transform:translate(100px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	40%{color:rgba(255,255,255,0);-moz-transform:translate(0px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	60%{color:rgba(255,255,255,0);-moz-transform:translate(400px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0);}
+	80%{color:rgba(255,255,255,0);-moz-transform:translate(300px,0px);text-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+	100%{color:rgba(255,255,255,1);-moz-transform:translate(200px,0px);text-shadow:0px 0px 15px rgba(0,0,0,1);}
 }
 
 /*required e invalid */

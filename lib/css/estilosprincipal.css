@@ -12,8 +12,23 @@ body{
 	width:80%;
 }
 
-#Sesion{
+#sesion{
+	text-align:right;
 	position:absolute;
 	top:10px;
 	right:10%;
+	margin:5px;
+}
+#userSesion{
+	font-size:19px;
+	margin-bottom:5px;
+}
+#sesion a{
+	text-decoration:none;
+	color:#333;
+	padding:0px;
+}
+#sesion a:hover{
+	text-decoration:underline;
+	color:#666;
 }
