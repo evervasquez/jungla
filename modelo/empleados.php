@@ -57,6 +57,18 @@ class empleados {
         $r = null;
         return $error;
     }
+    
+    public function selecciona($usuario,$clave) {
+        $datos = array($usuario,$clave);
+        $r = consulta::procedimientoAlmacenado("pa_valida_login", $datos);
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
+        $r = null;
+        return $stmt;
+    }
 
 }
 
