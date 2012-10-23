@@ -14,7 +14,7 @@ class tipo_ruta {
             die($r[1]);
         }
         $r = null;
-        return $stmt;
+        return $stmt->fetch();
     }
 
 }
