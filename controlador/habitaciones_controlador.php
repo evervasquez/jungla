@@ -1,6 +1,10 @@
 <?php
 
-class habitaciones_controlador {
+class habitaciones_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objhabitaciones = new habitaciones();
@@ -40,7 +44,14 @@ class habitaciones_controlador {
         $error = $objhabitaciones->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>

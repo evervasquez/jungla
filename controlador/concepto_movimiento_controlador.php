@@ -1,6 +1,10 @@
 <?php
 
-class concepto_movimiento_controlador {
+class concepto_movimiento_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objconcepto_movimiento = new concepto_movimiento();
@@ -38,7 +42,14 @@ class concepto_movimiento_controlador {
         $error = $objconcepto_movimiento->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>

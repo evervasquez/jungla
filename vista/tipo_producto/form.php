@@ -1,5 +1,4 @@
-<?php require("../cabecera.php");?>
-	<form method="post" action="#">
+    <form method="post" action="#">
     	<table width="50%" align="center">
         	<caption><h3>Registrar Tipo de Producto</h3></caption>
             <tr>
@@ -15,4 +14,3 @@
             </tr>
         </table>
     </form>
-<?php require("../pie.php"); ?>

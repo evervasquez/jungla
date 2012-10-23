@@ -26,7 +26,7 @@
                 </td>
             </tr>
             <tr>
-            	<td><label>Plan Contable Padre</label></td>
+            	<td><label>Nro.Cuenta Padre</label></td>
                 <td>
                 	<select class="combo" placeholder="Seleccione...">
                     	<option></option>

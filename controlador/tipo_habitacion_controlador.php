@@ -1,6 +1,10 @@
 <?php
 
-class tipo_habitacion_controlador {
+class tipo_habitacion_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objtipohabitacion = new tipo_habitacion();
@@ -38,7 +42,14 @@ class tipo_habitacion_controlador {
         $error = $objtipohabitacion->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>

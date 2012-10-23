@@ -1,4 +1,3 @@
-<?php require("../cabecera.php");?>
 	<h3>Lista de Ubicaciones</h3>
     <table border="1">
         <tr>
@@ -7,5 +6,4 @@
             <th>Almacen</th>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nuevo</a>
-<?php require("../pie.php"); ?>
+    <a href="nuevo" class="k-button">Nuevo</a>

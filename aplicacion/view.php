@@ -24,7 +24,11 @@ class view {
     public function renderizar($vista, $item = false) {
         //aqui podemos poner el menu
         //creamos la ruta de la vista
+<<<<<<< HEAD
         $ruta_vista = ROOT . 'vista' . DS . $this->_controlador . DS . $vista.'.php';
+=======
+        $ruta_vista = ROOT . 'vista' . DS . $this->_controlador . DS . $vista. '.php';
+>>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
         //die($ruta_vista);
         //comprobamos si el archivo existe y es legible
         //die($ruta_vista);

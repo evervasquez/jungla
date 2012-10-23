@@ -47,7 +47,7 @@ class empleados {
             die($r[1]);
         }
         $r = null;
-        return $stmt;
+        return $stmt->fetch();
     }
 
     public function elimina() {
@@ -67,7 +67,7 @@ class empleados {
             die($r[1]);
         }
         $r = null;
-        return $stmt;
+        return $stmt->fetch();
     }
 
 }

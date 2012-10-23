@@ -1,6 +1,10 @@
 <?php
 
-class categorias_controlador {
+class categorias_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
     
     public function grilla() {
         $objCategorias = new categorias();
@@ -39,6 +43,14 @@ class categorias_controlador {
         $objCategorias->nroelemento = $datos[2];
         $error = $objCategorias->actualiza();
         return $error;
+    }
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
     }
 }
 

@@ -1,6 +1,10 @@
 <?php
 
-class clientes_controlador {
+class clientes_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objclientes = new clientes();
@@ -51,7 +55,14 @@ class clientes_controlador {
         $error = $objclientes->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>

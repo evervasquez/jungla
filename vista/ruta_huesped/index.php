@@ -1,5 +1,4 @@
-<?php require("../cabecera.php");?>
-	<h3>Rutas de los Huespedes</h3>
+    <h3>Rutas de los Huespedes</h3>
     <table border="1">
         <tr>
             <td>Pasajero</td>
@@ -9,5 +8,4 @@
             <th>Observaciones</th>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nuevo</a>
-<?php require("../pie.php"); ?>
+    <a href="nuevo" class="k-button">Nuevo</a>

@@ -1,10 +1,15 @@
 <?php
 
+<<<<<<< HEAD
 class productos_controlador extends controller{
+=======
+class productos_controlador extends controller {
+>>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
     
     public function __construct() {
         parent::__construct();
     }
+<<<<<<< HEAD
     
     public function index(){
         $this->_vista->renderizar('index');
@@ -13,6 +18,9 @@ class productos_controlador extends controller{
     public function nuevo(){
         $this->_vista->renderizar('form');
     }
+=======
+
+>>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
     public function grilla() {
         $objproductos = new productos();
         $objproductos->idproducto = 0;
@@ -69,7 +77,14 @@ class productos_controlador extends controller{
         $error = $objproductos->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>
