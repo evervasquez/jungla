@@ -18,7 +18,7 @@ class promociones {
         }
         $r = null;
 //        $stmt = $r[0];
-        return $stmt;
+        return $stmt->fetch();
     }
 
     public function elimina() {

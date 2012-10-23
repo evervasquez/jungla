@@ -15,7 +15,7 @@ class profesiones {
         }
         $r = null;
 //        $stmt = $r[0];
-        return $stmt;
+        return $stmt->fetch();
     }
 
 }
