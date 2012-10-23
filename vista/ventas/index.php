@@ -10,7 +10,6 @@
             <td>Empleado</td>
             <td>Observaciones</td>
             <td>Estado</td>
-            <td>Accion</td>
         </tr>
     </table>
     <a href="form.php" class="k-button">Nueva</a>

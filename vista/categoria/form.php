@@ -3,19 +3,19 @@
     	<table width="50%">
         	<caption><h3>Registrar Categoria</h3></caption>
             <tr>
-            	<td>Codigo</td>
-                <td><input type="text" disabled="disabled" /></td>
+            	<td><label>Codigo</label></td>
+                <td><input type="text" class="k-textbox" readonly="readonly" /></td>
             </tr>
             <tr>
-            	<td>Descripcion</td>
-                <td><input type="text" /></td>
+            	<td><label>Descripcion</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese descripcion" required/></td>
             </tr>
             <tr>
-            	<td>Nro.Elemento</td>
-                <td><input type="text" /></td>
+            	<td><label>Nro.Elemento</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nro.de elemento" required/></td>
             </tr>
             <tr>
-            	<td colspan="2" align="center"><button type="button" class="k-button">Guardar</button></td>
+            	<td colspan="2" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
     </form>

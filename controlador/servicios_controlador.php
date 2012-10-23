@@ -1,7 +1,11 @@
 <?php
 
-class servicios_controlador {
-
+class servicios_controlador extends controller{
+    
+    
+    public function index() {
+        $this->_vista->renderizar('servicios');   
+    }
     public function grilla() {
         $objservicios = new servicios();
         $objservicios->idservicio= 0;

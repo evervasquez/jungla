@@ -1,55 +1,96 @@
-<?php 
-session_start();
-require("basedatos/conexion.php");
-$error="";
-if(isset($_POST['usuario'])){
-	$u=$_POST['usuario'];
-	$c=$_POST['clave'];
-	$sql="SELECT usuario,clave FROM empleados "."WHERE usuario='$u' and clave='$c'"; 
-	$r=mssql_query($sql);
-	if($f=mssql_fetch_array($r)){
-		
-		die("<script>
-				alert('Ingresaste');
-				window.location='vista/principal.php';
-			</script>");
-	}
-	else{
-		$error="Usuario o clave no valida";
-	}
-	mssql_close();
-}
-?>	
-<!DOCTYPE HTML>
-<html lang="en">
-<html>
-    <meta charset="utf-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>..::La Jungla::..</title>
-        <meta name="description" content="Albergue Turistico La Jungla Tarapoto" />
-        <meta name="keywords" content="jungla, tarapoto, turismo, hospedaje, selva" />
-		<script type="text/javascript" src="lib/js/jquery.js"></script>
-        <script type="text/javascript" src="lib/js/jqueryui.js"></script>
-        <script type="text/javascript" src="lib/js/script.js"></script>
-        <link rel="stylesheet" href="lib/css/estilos.css" media="all" />
-        <link rel="shortcut icon" href="lib/img/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="lib/css/le-frog/jquery-ui-1.9.0.custom.css" media="all" />
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>..:La Jungla:..</title>
+        <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
+        <link href="/sisjungla/lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/sisjungla/lib/css/styles/kendo.default.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/sisjungla/lib/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/sisjungla/lib/css/le-frog/jquery-ui-1.9.0.custom.css" />
+        <link rel="shortcut icon" href="/sisjungla/img/favicon.ico" type="image/x-icon" />
+        <script type="text/javascript" src="/sisjungla/lib/js/jquery.js"></script>
+        <script type="text/javascript" src="/sisjungla/lib/js/jqueryui.js"></script>
+        <script type="text/javascript" src="/sisjungla/lib/js/funciones.js"></script>
+        <script type="text/javascript" src="/sisjungla/lib/js/script.js"></script>
+        <script type="text/javascript" src="/sisjungla/lib/js/kendo.all.min.js"></script>
     </head>
-    <body id="page1">
-        <div id="iniJungla">
-            <header>
-                <span id="logo"><img src="lib/img/logo.png" id="logoJungla"></span>
-                <span id="titleJungla">
-                    <h1 class="titJungla">La Jungla</h1>
-                    <h2 class="subtitJungla">El &uacute;nico rinc&oacute;n de la selva en la ciudad</h2>
-                </span>
-                <nav id="menuNav">
-                    <ul>
-                        <li><a href="index.php"><img src="lib/img/inicio.png" class="icnAcceso" /><br>INICIO<br>Home</a></li>
-                        <li><a href="servicios.php"><img src="lib/img/servicios.png" class="icnAcceso" /><br>SERVICIOS<br>Services</a></li>
-                        <li><a href="fotos.php"><img src="lib/img/fotos.png" class="icnAcceso" /><br>FOTOS<br>Photos</a></li>
-                        <li><a href="contacto.php"><img src="lib/img/contactenos.png" class="icnAcceso" /><br>CONTACTENOS<br>Contac Us</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <div id="contenido">
+    <body>
+        <div id="principal">
+        	<div id="siscom"><h1 class="k-label">La Jungla</h1></div>
+            	<div id="sesion">
+                	<div id="userSesion"><label>Jair Vasquez</label></div>
+            		<div id="linkSesion"><a href="#">Perfil</a> | <a href="/sisjungla/">Cerrar Sesion</a></div>
+                </div>
+                <ul id="menu">
+                    <li>Administracion
+                        <ul>
+                            <li><a href="/sisjungla/empleados/">Empleados</a></li>
+                            <li><a href="/sisjungla/servicios/">Servicios</a></li>
+                            <li><a href="/sisjungla/caja/">Caja</a></li>
+                            <li><a href="/sisjungla/membresia/">Membresia</a></li>
+                            <li><a href="/sisjungla/promociones/">Promociones</a></li>
+                        </ul>
+                    </li>
+                    <li>Almacen
+                        <ul>
+                            <li><a href="/sisjungla/productos/">Productos</a></li>
+                            <li><a href="/sisjungla/tipo_producto/">Tipo de Producto</a></li>
+                            <li><a href="/sisjungla/ubicacion/">Ubicacion</a></li>
+                            <li><a href="/sisjungla/almacen/">Almacen</a></li>
+                            <li><a href="/sisjungla/movimientoproducto/">Movimiento de Producto</a></li>
+                            <li><a href="/sisjungla/tipo_movimiento/">Tipo Movimiento</a></li>
+                        </ul>
+                    </li>
+                    <li>Compras
+                        <ul>
+                            <li><a href="/sisjungla/compras/">Compras</a></li>
+                            <li><a href="/sisjungla/proveedores/">Proveedores</a></li>
+                            <li><a href="/sisjungla/cuotaspago/">Cuotas de Pago</a></li>
+                            <li><a href="/sisjungla/productos/">Productos</a></li>
+                        </ul>
+                    </li>
+                    <li>Ventas
+                        <ul>
+                            <li><a href="/sisjungla/clientes/">Clientes</a></li>
+                            <li><a href="/sisjungla/ventas/">Ventas</a></li>
+                            <li><a href="/sisjungla/paquetes/">Paquetes</a></li>
+                            <li><a href="/sisjungla/cuotascobro/">Cuotas de cobros</a></li>
+                        </ul>
+                    </li>
+                    <li>Estadia
+                        <ul>
+                            <li><a href="/sisjungla/vista/clientes/">Clientes</a></li>
+                            <li><a href="/sisjungla/vista/habitaciones/">Habitaciones</a></li>
+                            <li><a href="/sisjungla/vista/tipohabitacion/">Tipo de Habitacion</a></li>
+                            <li><a href="/sisjungla/vista/rutahuesped/">Ruta del Huesped</a></li>
+                            <li><a href="/sisjungla/vista/detalleestadia/">Huespedes de Estadia</a></li>
+                            <li><a href="/sisjungla/vista/ventas/">Ventas</a></li>
+                            <li>Comanda</li>
+                        </ul>
+                    </li>
+                    <li>Contabilidad
+                        <ul>
+                            <li>Plantilla Movimiento</li>
+                            <li>Concepto Movimiento</li>
+                            <li>Operaciones</li>
+                            <li><a href="/sisjungla/vista/plancontable/">Plan Contable</a></li>
+                            <li><a href="/sisjungla/vista/categoria/">Categoria</a></li>
+                        </ul>
+                    </li>
+                    <li>Informativo
+                        <ul>
+                            <li>Articulos</li>
+                            <li>Imagenes</li>
+                        </ul>
+                    </li>
+                    <li>Seguridad
+                        <ul>
+                            <li><a href="/sisjungla/vista/perfiles/">Perfiles</a></li>
+                            <li><a href="/sisjungla/vista/modulos/">Modulos</a></li>
+                            <li><a href="/sisjungla/vista/permisos/">Permisos</a></li>
+                        </ul>
+                    </li>
+                    <li>Reportes</li>
+                </ul>
+			<div id="principal">

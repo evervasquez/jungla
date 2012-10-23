@@ -4,6 +4,7 @@
         <tr>
             <td>Codigo</td>
             <td>Descripcion</td>
+            <td>Descuento</td>
             <td>Fecha de Inicio</td>
             <td>Fecha de Finalizacion</td>
         </tr>

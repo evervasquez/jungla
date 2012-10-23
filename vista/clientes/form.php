@@ -3,74 +3,74 @@
     	<table width="50%">
         	<caption><h3>Registrar Cliente</h3></caption>
             <tr>
-            	<td>Codigo</td>
-                <td><input type="text" disabled="disabled" /></td>
+            	<td><label>Codigo</label></td>
+                <td><input type="text" readonly="readonly" class="k-textbox"/></td>
             </tr>
             <tr>
-            	<td>Nombre</td>
-                <td><input type="text" /></td>
+            	<td><label>Nombre</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nombre" required/></td>
             </tr>
             <tr>
-            	<td>Apellidos</td>
-                <td><input type="text" /></td>
+            	<td><label>Apellidos</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese apellidos" required /></td>
             </tr>
             <tr>
-            	<td>Nro.Documento</td>
-                <td><input type="text" /></td>
+            	<td><label>Nro.Documento</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required /></td>
             </tr>
             <tr>
-            	<td>Telefono</td>
-                <td><input type="text" /></td>
+            	<td><label>Telefono</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" required /></td>
             </tr>
             <tr>
-            	<td>Email</td>
-                <td><input type="email" /></td>
+            	<td><label>Email</label></td>
+                <td><input type="email" class="k-textbox" placeholder="Ingrese email" required /></td>
             </tr>
             <tr>
-            	<td>Ubigeo</td>
+            	<td><label>Ubigeo</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo" placeholder="Seleccione...">
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Membresia</td>
+            	<td><label>Membresia</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo" placeholder="Seleccione...">
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Profesion</td>
+            	<td><label>Profesion</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo" placeholder="Seleccione...">
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Fecha de Nacimiento</td>
-                <td><input class="datepicker" value="" /></td>
+            	<td><label>Fecha de Nacimiento</label></td>
+                <td><input class="datepicker" value=""  placeholder="Seleccione fecha"/></td>
             </tr>
             <tr>
-            	<td>Sexo</td>
+            	<td><label>Sexo</label></td>
                 <td>
                 	<input type="radio" name="sexo" />M
                     <input type="radio" name="sexo" />F
                 <td>
             </tr>
             <tr>
-            	<td>Estado Civil</td>
+            	<td><label>Estado Civil</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo" placeholder="Seleccione...">
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td colspan="2" align="center"><button type="button" class="k-button">Guardar</button></td>
+            	<td colspan="2" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
     </form>

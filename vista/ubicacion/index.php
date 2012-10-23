@@ -2,9 +2,9 @@
 	<h3>Lista de Ubicaciones</h3>
     <table border="1">
         <tr>
-            <td>Codigo</td>
-            <td>Descripcion</td>
-            <td>Almacen</td>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Almacen</th>
         </tr>
     </table>
     <a href="form.php" class="k-button">Nuevo</a>

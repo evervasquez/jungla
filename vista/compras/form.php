@@ -2,29 +2,54 @@
 	<form method="post" action="#">
     	<div align="center">
             <h3>Registrar Compra</h3>
-            <div>Codigo<input type="text" disabled="disabled" /></div>
-            <div>Nro.Documento<input type="text" /></div>
-            <div>Proveedor
-                	<select>
-                    	<option>Seleccione...</option>
-                    </select>
+            <div>
+            	<label>Codigo</label>
+                <input type="text" readonly="readonly" class="k-textbox" />
             </div>
-            <div>Tipo de Transaccion
-                	<select>
-                    	<option>Seleccione...</option>
-                    </select>
+            <div>
+            	<label>Nro.Documento</label>
+                <input type="text" class="k-textbox" placeholder="Ingrese Nro.de Documento" required/>
             </div>
-            <div>Fecha de Compra<input class="datepicker" value="" /></div>
+            <div>
+            	<label>Proveedor</label>
+                <select class="combo" placeholder="Seleccione...">
+                    <option></option>
+                </select>
+            </div>
+            <div>
+            	<label>Tipo de Transaccion</label>
+                <select class="combo" placeholder="Seleccione...">
+                    <option></option>
+                </select>
+            </div>
+            <div>
+            	<label>Fecha de Compra</label>
+                <input class="datepicker" value=""  placeholder="Seleccione fecha"/>
+            </div>
             <button type="button" class="k-button">Agregar Productos</button>
-            <table border="1">
+            <table border="1" align="center">
                 <tr>
                     <td>Item</td><td>Descripcion</td><td>Precio</td><td>Cantidad</td><td>Unidad de Medida</td><td>Subtotal</td>
                 </tr>
             </table>
-            <div>Importe<input type="text" /></div>
-            <div>IGV<input type="text" /></div>
-            <div>Observaciones<input type="text" /></div>
-            <button type="button" class="k-button">Guardar</button>
+            <div>
+            	<label>Importe</label>
+                <input type="text" readonly="readonly" class="k-textbox" />
+            </div>
+            <div>
+            	<label>IGV</label>
+                <input type="text" readonly="readonly" class="k-textbox" />
+           	</div>
+            <div>
+            	<label>Total</label>
+                <input type="text" readonly="readonly" class="k-textbox"/>
+            </div>
+            <div>
+            	<label>Observaciones</label>
+                <textarea type="text" class="k-textbox" placeholder="Ingrese observaciones" style="height:50px;">
+                </textarea>
+            </div>
+            <button type="submit" class="k-button">Guardar</button>
     	</div>
     </form>
 <?php require("../pie.php"); ?>

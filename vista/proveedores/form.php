@@ -1,41 +1,45 @@
 <?php require("../cabecera.php");?>
 	<form method="post" action="#">
-    	<table width="50%">
+    	<table width="50%" align="center">
         	<caption><h3>Registrar Proveedor</h3></caption>
             <tr>
-            	<td>Codigo</td>
-                <td><input type="text" disabled="disabled" /></td>
+            	<td><label>Codigo</label></td>
+                <td><input type="text" readonly="readonly" class="k-textbox" /></td>
             </tr>
             <tr>
-            	<td>Razon Social</td>
-                <td><input type="text" /></td>
+            	<td><label>Razon Social</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required /></td>
             </tr>
             <tr>
-            	<td>Ubigeo</td>
+            	<td><label>RUC</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required /></td>
+            </tr>
+            <tr>
+            	<td><label>Ubigeo</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo"  placeholder="Seleccione..." required>
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Direccion</td>
-                <td><input type="text" /></td>
+            	<td><label>Direccion</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese direccion" required /></td>
             </tr>
             <tr>
-            	<td>Representante</td>
-                <td><input type="text" /></td>
+            	<td><label>Representante</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nombre representante" required /></td>
             </tr>
             <tr>
-            	<td>Telefono</td>
-                <td><input type="text" /></td>
+            	<td><label>Telefono</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" required /></td>
             </tr>
             <tr>
-            	<td>Email</td>
-                <td><input type="text" /></td>
+            	<td><label>Email</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese email" required /></td>
             </tr>
             <tr>
-            	<td colspan="2" align="center"><button type="button" class="k-button">Guardar</button></td>
+            	<td colspan="2" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
     </form>

@@ -1,6 +1,10 @@
 <?php
 
-class empleados_controlador {
+class empleados_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objempleados = new empleados();
@@ -75,6 +79,12 @@ class empleados_controlador {
                 $existe = false;
             }
         }
+    }
+
+    public function index() {
+        $plantilla=$this->_vista->renderizar('empleados');
+        $data = array(lib_ajax => $this->lib_xajax,main => true); 
+        $this->Vistas->show($plantilla,$data);
     }
 
 }

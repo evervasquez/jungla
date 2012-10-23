@@ -1,15 +1,15 @@
 <?php require("../cabecera.php");?>
-	<h3>Cuotas de Pago</h3>
+	<h3>Cuotas de Pagos</h3>
     <table border="1">
         <tr>
-            <td>Codigo</td>
-            <td>Cod.Compra</td>
-            <td>Monto de la Cuota</td>
-            <td>Monto Pagado</td>
-            <td>Nro. de Cuotas</td>
-            <td>Fecha de Pago</td>
-            <td>Fecha de Vencimiento</td>
-            <td>Mora</td>
+            <th><label>Codigo</label></th>
+            <th><label>Cod.Compra</label></th>
+            <th><label>Monto de la Cuota</label></th>
+            <th><label>Monto Pagado</label></th>
+            <th><label>Nro. de Cuotas</label></th>
+            <th><label>Fecha de Pago</label></th>
+            <th><label>Fecha de Vencimiento</label></th>
+            <th><label>Interes</label></th>
         </tr>
     </table>
     <a href="form.php" class="k-button">Nuevo</a>

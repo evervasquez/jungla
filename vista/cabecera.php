@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>..:La Jungla:..</title>
-        <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
+        <title>La Jungla</title>
         <link href="/sisjungla/lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/sisjungla/lib/css/styles/kendo.default.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/sisjungla/lib/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -12,8 +11,8 @@
         <script type="text/javascript" src="/sisjungla/lib/js/jquery.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/jqueryui.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/funciones.js"></script>
-        <script type="text/javascript" src="/sisjungla/lib/js/script.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/kendo.all.min.js"></script>
+        <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
     </head>
     <body>
         <div id="principal">
@@ -23,6 +22,7 @@
             		<div id="linkSesion"><a href="#">Perfil</a> | <a href="/sisjungla/">Cerrar Sesion</a></div>
                 </div>
                 <ul id="menu">
+                	<li><a href="/sisjungla/vista/principal.php">Inicio</a></li>
                     <li>Administracion
                         <ul>
                             <li><a href="/sisjungla/vista/empleados/">Empleados</a></li>
@@ -64,23 +64,23 @@
                             <li><a href="/sisjungla/vista/habitaciones/">Habitaciones</a></li>
                             <li><a href="/sisjungla/vista/tipohabitacion/">Tipo de Habitacion</a></li>
                             <li><a href="/sisjungla/vista/rutahuesped/">Ruta del Huesped</a></li>
-                            <li><a href="/sisjungla/vista/detalleestadia/">Huespedes de Estadia</a></li>
+                            <li><a href="/sisjungla/vista/detalleestadia/">Estadias</a></li>
                             <li><a href="/sisjungla/vista/ventas/">Ventas</a></li>
-                            <li>Comanda</li>
+                            <li><a href="/sisjungla/vista/detalleventa/">Comanda</a></li>
                         </ul>
                     </li>
                     <li>Contabilidad
                         <ul>
-                            <li>Plantilla Movimiento</li>
-                            <li>Concepto Movimiento</li>
-                            <li>Operaciones</li>
+                            <li><a href="/sisjungla/vista/plantillamovimiento/">Plantilla Movimiento</a></li>
+                            <li><a href="/sisjungla/vista/conceptomovimiento/">Concepto Movimiento</a></li>
+                            <li><a href="/sisjungla/vista/asientos/">Asientos</a></li>
                             <li><a href="/sisjungla/vista/plancontable/">Plan Contable</a></li>
                             <li><a href="/sisjungla/vista/categoria/">Categoria</a></li>
                         </ul>
                     </li>
                     <li>Informativo
                         <ul>
-                            <li>Articulos</li>
+                            <li><a href="/sisjungla/vista/articulo/">Articulos</a></li>
                             <li>Imagenes</li>
                         </ul>
                     </li>
@@ -93,4 +93,4 @@
                     </li>
                     <li>Reportes</li>
                 </ul>
-			<div id="principal">
+			<div id="cuerpo">

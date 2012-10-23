@@ -4,6 +4,7 @@
         <tr>
             <td>Codigo</td>
             <td>Razon Social</td>
+            <td>Representante</td>
             <td>RUC</td>
             <td>Ubigeo</td>
             <td>Direccion</td>

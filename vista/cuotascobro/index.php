@@ -2,14 +2,14 @@
 	<h3>Cuotas de Cobro</h3>
     <table border="1">
         <tr>
-            <td>Codigo</td>
-            <td>Cod.Venta</td>
-            <td>Monto de la Cuota</td>
-            <td>Monto Cobrado</td>
-            <td>Nro. de Cuotas</td>
-            <td>Fecha de Cobro</td>
-            <td>Fecha de Vencimiento</td>
-            <td>Interes</td>
+            <th><label>Codigo</label></th>
+            <th><label>Cod.Venta</label></th>
+            <th><label>Monto de la Cuota</label></th>
+            <th><label>Monto Cobrado</label></th>
+            <th><label>Nro. de Cobros</label></th>
+            <th><label>Fecha de Cobro</label></th>
+            <th><label>Fecha de Vencimiento</label></th>
+            <th><label>Interes</label></th>
         </tr>
     </table>
     <a href="form.php" class="k-button">Nuevo</a>

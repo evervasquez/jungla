@@ -1,36 +1,44 @@
 <?php require("../cabecera.php");?>
 	<form method="post" action="#">
-    	<table width="50%">
+    	<table width="50%" align="center">
         	<caption><h3>Registrar Plan Contable</h3></caption>
             <tr>
-            	<td>Codigo</td>
-                <td><input type="text" disabled="disabled" /></td>
+            	<td><label>Codigo</label></td>
+                <td><input type="text" readonly="readonly" class="k-textbox" /></td>
             </tr>
             <tr>
-            	<td>Nro.de Asiento</td>
-                <td><input type="text" /></td>
+            	<td><label>Descripcion</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese decripcion" required /></td>
             </tr>
             <tr>
-            	<td>Descripcion</td>
-                <td><input type="text" /></td>
+            	<td><label>Nro.de Cuenta</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de Cuenta" required /></td>
             </tr>
             <tr>
-            	<td>Nivel</td>
-                <td><input type="text" /></td>
+            	<td><label>Nivel</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nivel" required /></td>
             </tr>
             <tr>
-            	<td>Nro.de Asiento Padre</td>
+            	<td><label>Movimiento</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<input type="radio" name="DH" />Debe
+                    <input type="radio" name="DH" />Haber
+                </td>
+            </tr>
+            <tr>
+            	<td><label>Plan Contable Padre</label></td>
+                <td>
+                	<select class="combo" placeholder="Seleccione...">
+                    	<option></option>
                     </select>
                 </td>
             </tr>
             <tr>
-            	<td>Debe</td>
+            	<td><label>Categoria</label></td>
                 <td>
-                	<input type="radio" name="DH" />Debe
-                    <input type="radio" name="DH" />Haber
+                	<select class="combo" placeholder="Seleccione...">
+                    	<option></option>
+                    </select>
                 </td>
             </tr>
             <tr>

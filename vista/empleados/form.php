@@ -1,80 +1,85 @@
 <?php require("../cabecera.php");?>
 	<form method="post" action="#">
-    	<table width="50%">
+    	<table width="50%" align="center">
         	<caption><h3>Registrar Empleado</h3></caption>
             <tr>
-            	<td>Codigo</td>
-                <td><input type="text" disabled="disabled" /></td>
+            	<td><label>Codigo</label></td>
+                <td><input type="text" class="k-textbox" disabled="disabled" /></td>
             </tr>
             <tr>
-            	<td>Nombre</td>
-                <td><input type="text" /></td>
+            	<td><label>Nombre</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese nombre" required/></td>
             </tr>
             <tr>
-            	<td>Apellidos</td>
-                <td><input type="text" /></td>
+            	<td><label>Apellidos</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese apellidos" required/></td>
             </tr>
             <tr>
-            	<td>DNI</td>
-                <td><input type="text" /></td>
+            	<td><label>DNI</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required/></td>
             </tr>
             <tr>
-            	<td>Telefono</td>
-                <td><input type="text" /></td>
+            	<td><label>Telefono</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.Telefonico" required/></td>
             </tr>
             <tr>
-            	<td>Direccion</td>
-                <td><input type="text" /></td>
+            	<td><label>Direccion</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese direccion" required/></td>
             </tr>
             <tr>
-            	<td>Ubigeo</td>
+            	<td><label>Ubigeo</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo" placeholder="Seleccione..." required>
+                    	<option></option>
+                        <option>Tarapoto</option>
+                        <option>Lima</option>
+                        <option>Tacna</option>
+                        <option>Loreto</option>
+                        <option>Trujillo</option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Profesion</td>
+            	<td><label>Profesion</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo" placeholder="Seleccione..." required>
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Fecha de Nacimiento</td>
-                <td><input class="datepicker" value=""/></td>
+            	<td><label>Fecha de Nacimiento</label></td>
+                <td><input class="datepicker" value="" placeholder="Seleccione fecha" required/></td>
             </tr>
             <tr>
-            	<td>Fecha de Contratacion</td>
-                <td><input class="datepicker" value=""/></td>
+            	<td><label>Fecha de Contratacion</label></td>
+                <td><input class="datepicker" value="" placeholder="Seleccione fecha" required/></td>
             </tr>
             <tr>
-            	<td>Perfil</td>
+            	<td><label>Perfil</label></td>
                 <td>
-                	<select>
-                    	<option>Seleccione...</option>
+                	<select class="combo"  placeholder="Seleccione..." required>
+                    	<option></option>
                     </select>
             	</td>
             </tr>
             <tr>
-            	<td>Usuario</td>
-                <td><input type="text" /></td>
+            	<td><label>Usuario</label></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese usuario" required/></td>
             </tr>
             <tr>
-            	<td>Clave</td>
-                <td><input type="password" /></td>
+            	<td><label>Clave</label></td>
+                <td><input type="password" class="k-textbox" placeholder="Ingrese clave" required/></td>
             </tr>
             <tr>
-            	<td>Estado</td>
+            	<td><label>Estado</label></td>
                 <td>
-                	<input type="radio" name="estado" />Activo
-                    <input type="radio" name="estado" />Inactivo
+                	<input type="radio" name="estado"/>Activo
+                    <input type="radio" name="estado"/>Inactivo
                 </td>
             </tr>
             <tr>
-            	<td colspan="2" align="center"><button type="button" class="k-button">Guardar</button></td>
+            	<td colspan="2" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
     </form>

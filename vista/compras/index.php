@@ -2,15 +2,16 @@
 	<h3>Lista de Compras</h3>
     <table border="1">
         <tr>
-            <td>Codigo</td>
-            <td>Nro.Comprobante</td>
-            <td>Proveedor</td>
-            <td>Fecha de Compra</td>
-            <td>Importe</td>
-            <td>IGV</td>
-            <td>Observaciones</td>
-            <td>Estado</td>
-            <td>Accion</td>
+            <th><label>Codigo</label></th>
+            <th><label>Nro.Comprobante</label></th>
+            <th><label>Proveedor</label></th>
+            <th><label>Fecha de Compra</label></th>
+            <th><label>Importe</label></th>
+            <th><label>IGV</label></th>
+            <th><label>Total</label></th>
+            <th><label>Observaciones</label></th>
+            <th><label>Estado</label></th>
+            <th><label>Tipo de Transaccion</label></th>
         </tr>
     </table>
     <a href="form.php" class="k-button">Nueva</a>
