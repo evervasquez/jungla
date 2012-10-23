@@ -69,15 +69,12 @@ class empleados_controlador extends controller {
 
     public function valida_login($usuario, $clave) {
         $objempleados = new empleados();
-        $objempleados->idempleado = 0;
-        $stmt = $objempleados->selecciona();
-        $existe = false;
-        while ($f = $stmt->fetch()) {
-            if ($f['usuario'] == $usuario && $f['clave'] == $clave) {
-                $existe = true;
-            } else {
-                $existe = false;
-            }
+        $stmt = $objempleados->selecciona($usuario, $clave);
+        $nrofila=$stmt->rowCount();
+        if($nrofila>0) {
+            return 0;
+        }else{
+            return 1;
         }
     }
 
