@@ -79,9 +79,13 @@ class empleados_controlador extends controller {
     }
 
     public function index() {
-        $plantilla=$this->_vista->renderizar('empleados');
-        $data = array(lib_ajax => $this->lib_xajax,main => true); 
-        $this->Vistas->show($plantilla,$data);
+        $this->_vista->renderizar('index');
+        //$data = array(lib_ajax => $this->lib_xajax,main => true); 
+        //$this->Vistas->show($plantilla,$data);
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
     }
 
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>..:La Jungla:..</title>
+        <title>La Jungla</title>
         <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="/sisjungla/lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/sisjungla/lib/css/styles/kendo.default.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -36,8 +36,8 @@
                         <ul>
                             <li><a href="/sisjungla/productos/">Productos</a></li>
                             <li><a href="/sisjungla/tipo_producto/">Tipo de Producto</a></li>
-                            <li><a href="/sisjungla/ubicacion/">Ubicacion</a></li>
-                            <li><a href="/sisjungla/almacen/">Almacen</a></li>
+                            <li><a href="/sisjungla/ubicaciones/">Ubicaciones</a></li>
+                            <li><a href="/sisjungla/almacenes/">Almacenes</a></li>
                             <li><a href="/sisjungla/movimientoproducto/">Movimiento de Producto</a></li>
                             <li><a href="/sisjungla/tipo_movimiento/">Tipo Movimiento</a></li>
                         </ul>
@@ -60,22 +60,22 @@
                     </li>
                     <li>Estadia
                         <ul>
-                            <li><a href="/sisjungla/vista/clientes/">Clientes</a></li>
-                            <li><a href="/sisjungla/vista/habitaciones/">Habitaciones</a></li>
-                            <li><a href="/sisjungla/vista/tipohabitacion/">Tipo de Habitacion</a></li>
-                            <li><a href="/sisjungla/vista/rutahuesped/">Ruta del Huesped</a></li>
-                            <li><a href="/sisjungla/vista/detalleestadia/">Huespedes de Estadia</a></li>
-                            <li><a href="/sisjungla/vista/ventas/">Ventas</a></li>
+                            <li><a href="/sisjungla/clientes/">Pasajeros</a></li>
+                            <li><a href="/sisjungla/habitaciones/">Habitaciones</a></li>
+                            <li><a href="/sisjungla/tipo_habitacion/">Tipo de Habitacion</a></li>
+                            <li><a href="/sisjungla/ruta_huesped/">Ruta del Huesped</a></li>
+                            <li><a href="/sisjungla/detalleestadia/">Huespedes de Estadia</a></li>
+                            <li><a href="/sisjungla/ventas/">Ventas</a></li>
                             <li>Comanda</li>
                         </ul>
                     </li>
                     <li>Contabilidad
                         <ul>
-                            <li>Plantilla Movimiento</li>
-                            <li>Concepto Movimiento</li>
-                            <li>Operaciones</li>
-                            <li><a href="/sisjungla/vista/plancontable/">Plan Contable</a></li>
-                            <li><a href="/sisjungla/vista/categoria/">Categoria</a></li>
+                            <li><a href="/sisjungla/plantilla_movimiento/">Plantilla Movimiento</a></li>
+                            <li><a href="/sisjungla/concepto_movimiento/">Concepto Movimiento</a></li>
+                            <li><a href="/sisjungla/operaciones/">Operaciones</a></li>
+                            <li><a href="/sisjungla/plancontable/">Plan Contable</a></li>
+                            <li><a href="/sisjungla/categorias/">Categorias</a></li>
                         </ul>
                     </li>
                     <li>Informativo

@@ -1,5 +1,4 @@
-<?php require("../cabecera.php");?>
-	<form method="post" action="#">
+    <form method="post" action="#">
     	<div align="center">
             <h3>Registrar Habitacion</h3>
             <div>
@@ -23,4 +22,3 @@
             <button type="submit" class="k-button">Guardar</button>
     	</div>
     </form>
-<?php require("../pie.php"); ?>

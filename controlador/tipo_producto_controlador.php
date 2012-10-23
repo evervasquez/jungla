@@ -1,6 +1,10 @@
 <?php
 
-class tipo_producto_controlador {
+class tipo_producto_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objtipoproducto = new tipo_producto();
@@ -38,7 +42,14 @@ class tipo_producto_controlador {
         $error = $objtipoproducto->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>

@@ -1,6 +1,10 @@
 <?php
 
-class ubicaciones_controlador {
+class ubicaciones_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objubicaciones = new ubicaciones();
@@ -39,6 +43,14 @@ class ubicaciones_controlador {
         $objubicaciones->descripcion = $datos[2];
         $error = $objubicaciones->actualiza();
         return $error;
+    }
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
     }
 
 }

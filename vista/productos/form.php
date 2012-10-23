@@ -1,5 +1,4 @@
-<?php require("../cabecera.php");?>
-	<form method="post" action="#">
+    <form method="post" action="#">
     	<table width="50%" align="center">
         	<caption><h3>Registrar Producto</h3></caption>
             <tr>
@@ -44,7 +43,7 @@
                 	<select class="combo"  placeholder="Seleccione..." required>
                     	<option></option>
                     </select>
-                    <a href="../unidadmedida/" class="k-button">Nuevo</a>
+                    <a href="../unidad_medida" class="k-button">Nuevo</a>
             	</td>
             </tr>
             <tr>
@@ -80,4 +79,3 @@
             </tr>
         </table>
     </form>
-<?php require("../pie.php"); ?>

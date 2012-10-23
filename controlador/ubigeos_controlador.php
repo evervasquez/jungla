@@ -1,7 +1,7 @@
 <?php
 
 class ubigeos_controlador {
-
+    
     public function grilla() {
         $objubigeos = new ubigeos();
         $objubigeos->idubigeo= 0;
@@ -15,7 +15,6 @@ class ubigeos_controlador {
         $stmt = $objubigeos->selecciona();
         return $stmt;
     }
-
 }
 
 ?>

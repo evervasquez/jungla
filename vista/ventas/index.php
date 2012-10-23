@@ -1,4 +1,3 @@
-<?php require("../cabecera.php");?>
 	<h3>Lista de Ventas</h3>
     <table border="1">
         <tr>
@@ -12,5 +11,4 @@
             <td>Estado</td>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nueva</a>
-<?php require("../pie.php"); ?>
+    <a href="nuevo" class="k-button">Nueva</a>

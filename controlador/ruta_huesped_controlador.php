@@ -1,6 +1,10 @@
 <?php
 
-class ruta_huesped_controlador {
+class ruta_huesped_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objrutahuesped = new ruta_huesped();
@@ -44,7 +48,14 @@ class ruta_huesped_controlador {
         $error = $objrutahuesped->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>

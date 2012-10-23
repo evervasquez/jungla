@@ -1,6 +1,10 @@
 <?php
 
-class almacenes_controlador {
+class almacenes_controlador extends controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function grilla() {
         $objalmacenes = new almacenes();
@@ -38,7 +42,14 @@ class almacenes_controlador {
         $error = $objalmacenes->actualiza();
         return $error;
     }
-
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 }
 
 ?>
