@@ -10,7 +10,7 @@
  *
  * @author pedro
  */
-abstract class controller {
+abstract class controller{
 
     protected $_vista;
 

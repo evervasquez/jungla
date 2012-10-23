@@ -1,7 +1,15 @@
 <?php
 
-class caja_controlador {
+class caja_controlador extends controller{
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
+    public function index(){
+        $this->_vista->renderizar('index');
+    }
+  
     public function grilla() {
         $objcaja = new caja();
         $objcaja->idcaja= 0;

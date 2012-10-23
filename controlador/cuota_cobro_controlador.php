@@ -1,7 +1,18 @@
 <?php
 
-class cuota_cobro_controlador {
+class cuota_cobro_controlador extends controller{
+    public function __construct() {
+        parent::__construct();
+    }
     
+    public function index(){
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
+
     public function grilla() {
         $objCuota_cobro = new cuota_cobro();
         $objCuota_cobro->idcuota_cobro = 0;

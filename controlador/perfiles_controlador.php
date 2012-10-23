@@ -1,6 +1,18 @@
 <?php
 
-class perfiles_controlador {
+class perfiles_controlador extends controller {
+
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 
     public function grilla() {
         $objperfiles = new perfiles();
@@ -33,7 +45,7 @@ class perfiles_controlador {
 
     public function actualiza($datos) {
         $objperfiles = new perfiles();
-        $objperfiles->idperfil= $datos[0];
+        $objperfiles->idperfil = $datos[0];
         $objperfiles->descripcion = $datos[1];
         $error = $objperfiles->actualiza();
         return $error;

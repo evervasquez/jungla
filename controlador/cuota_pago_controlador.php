@@ -1,7 +1,18 @@
 <?php
 
-class cuota_pago_controlador {
+class cuota_pago_controlador extends controller{
+    public function __construct() {
+        parent::__construct();
+    }
     
+    public function index(){
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
+
     public function grilla() {
         $objCuota_pago = new cuota_pago();
         $objCuota_pago->idcuota_pago = 0;

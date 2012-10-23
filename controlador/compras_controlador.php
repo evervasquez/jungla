@@ -1,6 +1,18 @@
 <?php
 
-class compras_controlador {
+class compras_controlador extends controller{
+    
+    public function __construct() {
+        parent::__construct();
+    }
+    
+    public function index(){
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
 
     public function grilla() {
         $objcompras = new compras();

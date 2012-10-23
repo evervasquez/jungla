@@ -1,7 +1,17 @@
 <?php
 
-class modulos_controlador {
-
+class modulos_controlador extends controller{
+    public function __construct() {
+        parent::__construct();
+    }
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo() {
+        $this->_vista->renderizar('form');
+    }
     public function grilla() {
         $objmodulos = new modulos();
         $objmodulos->idmodulo= 0;

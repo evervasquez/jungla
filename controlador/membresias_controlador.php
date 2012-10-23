@@ -1,8 +1,19 @@
 <?php
 
-class membresias_controlador {
+class membresias_controlador extends controller{
+    public function __construct() {
+        parent::__construct();
+    }
 
-    public function grilla() {
+        public function index(){
+        $this->_vista->renderizar('index');
+    }
+    
+        public function nuevo(){
+        $this->_vista->renderizar('form');   
+        }
+
+        public function grilla() {
         $objmembresias = new membresias();
         $objmembresias->idmembresia = 0;
         $stmt = $objmembresias->selecciona();

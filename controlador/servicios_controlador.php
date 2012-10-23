@@ -4,7 +4,11 @@ class servicios_controlador extends controller{
     
     
     public function index() {
-        $this->_vista->renderizar('servicios');   
+        $this->_vista->renderizar('index');   
+    }
+    
+    public function nuevo() {
+        $this->_vista->renderizar('form');
     }
     public function grilla() {
         $objservicios = new servicios();

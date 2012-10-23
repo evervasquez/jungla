@@ -5,6 +5,17 @@ class empleados_controlador extends controller {
     public function __construct() {
         parent::__construct();
     }
+    
+    public function index() {
+        $this->_vista->renderizar('index');
+        //$data = array(lib_ajax => $this->lib_xajax,main => true); 
+        //$this->Vistas->show($plantilla,$data);
+    }
+
+    public function nuevo() {
+        $this->_vista->renderizar('form');
+    }
+
 
     public function grilla() {
         $objempleados = new empleados();
@@ -70,18 +81,12 @@ class empleados_controlador extends controller {
     public function valida_login($usuario, $clave) {
         $objempleados = new empleados();
         $stmt = $objempleados->selecciona($usuario, $clave);
-        $nrofila=$stmt->rowCount();
-        if($nrofila>0) {
+        $nrofila = $stmt->rowCount();
+        if ($nrofila > 0) {
             return 0;
-        }else{
+        } else {
             return 1;
         }
-    }
-
-    public function index() {
-        $plantilla=$this->_vista->renderizar('empleados');
-        $data = array(lib_ajax => $this->lib_xajax,main => true); 
-        $this->Vistas->show($plantilla,$data);
     }
 
 }

@@ -1,4 +1,4 @@
-<?php require("../cabecera.php");?>
+
 	<h3>Lista de Perfiles</h3>
     <table border="1">
         <tr>
@@ -6,5 +6,4 @@
             <th>Descripcion</th>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nuevo</a>
-<?php require("../pie.php"); ?>
+    <a href="nuevo" class="k-button">Nuevo</a>

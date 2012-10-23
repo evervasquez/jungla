@@ -1,4 +1,4 @@
-<?php require("../cabecera.php");?>
+
 	<h3>Lista de Compras</h3>
     <table border="1">
         <tr>
@@ -14,5 +14,4 @@
             <th><label>Tipo de Transaccion</label></th>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nueva</a>
-<?php require("../pie.php"); ?>
+    <a href="nuevo" class="k-button">Nueva</a>

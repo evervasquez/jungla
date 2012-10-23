@@ -1,4 +1,3 @@
-<?php require("../cabecera.php");?>
 	<form method="post" action="#">
     	<table width="50%" align="center">
         	<caption><h3>Registrar Servicio</h3></caption>
@@ -15,4 +14,3 @@
             </tr>
         </table>
     </form>
-<?php require("../pie.php"); ?>

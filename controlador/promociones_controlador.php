@@ -1,7 +1,17 @@
 <?php
 
-class promociones_controlador {
+class promociones_controlador extends controller{
+    public function __construct() {
+        parent::__construct();
+    }
     
+    public function index() {
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
     public function grilla() {
         $objPromociones = new promociones();
         $objPromociones->idpromociones = 0;

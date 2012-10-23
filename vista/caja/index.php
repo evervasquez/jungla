@@ -1,4 +1,3 @@
-<?php require("../cabecera.php");?>
 	<h3>Caja</h3>
     <table border="1">
         <tr>
@@ -10,4 +9,3 @@
         </tr>
     </table>
     <a href="#" class="k-button">Apertura</a>
-<?php require("../pie.php"); ?>
