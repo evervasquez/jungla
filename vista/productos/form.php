@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
 	<form method="post" action="#">
-=======
-    <form method="post" action="#">
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
     	<table width="50%" align="center">
         	<caption><h3>Registrar Producto</h3></caption>
             <tr>
@@ -83,8 +78,4 @@
             	<td colspan="2" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
-<<<<<<< HEAD
     </form>
-=======
-    </form>
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675

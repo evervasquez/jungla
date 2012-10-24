@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
-	<h3>Lista de Productos</h3>
-=======
-    <h3>Lista de Productos</h3>
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
+<h3>Lista de Productos</h3>
     <table border="1">
         <tr>
             <td>Codigo</td>
@@ -15,8 +10,4 @@
             <td>Ubicacion</td>
         </tr>
     </table>
-<<<<<<< HEAD
     <a href="nuevo" class="k-button">Nuevo</a>
-=======
-    <a href="nuevo" class="k-button">Nuevo</a>
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675

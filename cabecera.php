@@ -60,17 +60,10 @@
                     </li>
                     <li>Estadia
                         <ul>
-<<<<<<< HEAD
-                            <li><a href="/sisjungla/clientes/">Clientes</a></li>
-                            <li><a href="/sisjungla/habitaciones/">Habitaciones</a></li>
-                            <li><a href="/sisjungla/tipo_habitacion/">Tipo de Habitacion</a></li>
-                            <li><a href="/sisjungla/rutahuesped/">Ruta del Huesped</a></li>
-=======
                             <li><a href="/sisjungla/clientes/">Pasajeros</a></li>
                             <li><a href="/sisjungla/habitaciones/">Habitaciones</a></li>
                             <li><a href="/sisjungla/tipo_habitacion/">Tipo de Habitacion</a></li>
                             <li><a href="/sisjungla/ruta_huesped/">Ruta del Huesped</a></li>
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
                             <li><a href="/sisjungla/detalleestadia/">Huespedes de Estadia</a></li>
                             <li><a href="/sisjungla/ventas/">Ventas</a></li>
                             <li>Comanda</li>
