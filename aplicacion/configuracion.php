@@ -5,4 +5,5 @@
  * and open the template in the editor.
  */
 define('DEFAULT_CONTROLLER', 'index');
+define('BASE_URL', 'http://localhost/sisjungla/');
 ?>

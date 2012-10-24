@@ -43,7 +43,7 @@
                 	<select class="combo"  placeholder="Seleccione..." required>
                     	<option></option>
                     </select>
-                    <a href="../unidad_medida" class="k-button">Nuevo</a>
+                    <a id="um" class="k-button">Nuevo</a>
             	</td>
             </tr>
             <tr>
@@ -79,3 +79,25 @@
             </tr>
         </table>
     </form>
+    <div id="ventana" align="center">
+    <span class="close"><img src="/sisjungla/lib/img/close.gif" /></span>
+        <form method="post" action="#">
+            <table align="center">
+                    <caption><h3>Registrar Unidad de Medida</h3></caption>
+                <tr>
+                    <td><label>Codigo</label></td>
+                    <td><input type="text" readonly="readonly" class="k-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label>Descripcion</label></td>
+                    <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required /></td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <button type="submit" class="k-button">Guardar y  Seleccionar</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="fondooscuro"></div>
