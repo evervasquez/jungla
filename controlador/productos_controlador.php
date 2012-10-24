@@ -1,14 +1,6 @@
 <?php
 
 class productos_controlador extends controller {
-<<<<<<< HEAD
-   
-    public function __construct() {
-        parent::__construct();
-    }
-=======
-
-    
     public function __construct() {
         parent::__construct();
     }
@@ -20,7 +12,7 @@ class productos_controlador extends controller {
     public function nuevo(){
         $this->_vista->renderizar('form');
     }
->>>>>>> be527ada5f408713e5f1fc2ec43188a2758599bd
+
 
     public function grilla() {
         $objproductos = new productos();
