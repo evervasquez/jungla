@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="<?php echo BASE_URL . 'lib/img/favicon.ico'?>" type="image/x-icon" />
         <title>La Jungla</title>
         <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="/sisjungla/lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
-        <link href="/sisjungla/lib/css/styles/kendo.default.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/sisjungla/lib/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="/sisjungla/lib/css/le-frog/jquery-ui-1.9.0.custom.css" />
-        <link rel="shortcut icon" href="/sisjungla/img/favicon.ico" type="image/x-icon" />
         <script type="text/javascript" src="/sisjungla/lib/js/jquery.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/jqueryui.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/funciones.js"></script>
@@ -60,17 +59,10 @@
                     </li>
                     <li>Estadia
                         <ul>
-<<<<<<< HEAD
-                            <li><a href="/sisjungla/clientes/">Clientes</a></li>
-                            <li><a href="/sisjungla/habitaciones/">Habitaciones</a></li>
-                            <li><a href="/sisjungla/tipo_habitacion/">Tipo de Habitacion</a></li>
-                            <li><a href="/sisjungla/rutahuesped/">Ruta del Huesped</a></li>
-=======
                             <li><a href="/sisjungla/clientes/">Pasajeros</a></li>
                             <li><a href="/sisjungla/habitaciones/">Habitaciones</a></li>
                             <li><a href="/sisjungla/tipo_habitacion/">Tipo de Habitacion</a></li>
                             <li><a href="/sisjungla/ruta_huesped/">Ruta del Huesped</a></li>
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
                             <li><a href="/sisjungla/detalleestadia/">Huespedes de Estadia</a></li>
                             <li><a href="/sisjungla/ventas/">Ventas</a></li>
                             <li>Comanda</li>

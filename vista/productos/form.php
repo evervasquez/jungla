@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 
-	<form method="post" action="#">
-=======
     <form method="post" action="#">
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
     	<table width="50%" align="center">
         	<caption><h3>Registrar Producto</h3></caption>
             <tr>
@@ -48,7 +44,7 @@
                 	<select class="combo"  placeholder="Seleccione..." required>
                     	<option></option>
                     </select>
-                    <a href="../unidad_medida" class="k-button">Nuevo</a>
+                    <a id="um" class="k-button">Nuevo</a>
             	</td>
             </tr>
             <tr>
@@ -83,8 +79,26 @@
             	<td colspan="2" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
-<<<<<<< HEAD
     </form>
-=======
-    </form>
->>>>>>> fe9e342fdd94667ad8dbf4bf5666d50d03d24675
+    <div id="ventana" align="center">
+    <span class="close"><img src="/sisjungla/lib/img/close.gif" /></span>
+        <form method="post" action="#">
+            <table align="center">
+                    <caption><h3>Registrar Unidad de Medida</h3></caption>
+                <tr>
+                    <td><label>Codigo</label></td>
+                    <td><input type="text" readonly="readonly" class="k-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label>Descripcion</label></td>
+                    <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required /></td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <button type="submit" class="k-button">Guardar y  Seleccionar</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="fondooscuro"></div>
