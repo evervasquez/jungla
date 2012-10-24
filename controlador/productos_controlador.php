@@ -1,10 +1,26 @@
 <?php
 
 class productos_controlador extends controller {
+<<<<<<< HEAD
    
     public function __construct() {
         parent::__construct();
     }
+=======
+
+    
+    public function __construct() {
+        parent::__construct();
+    }
+    
+    public function index(){
+        $this->_vista->renderizar('index');
+    }
+    
+    public function nuevo(){
+        $this->_vista->renderizar('form');
+    }
+>>>>>>> be527ada5f408713e5f1fc2ec43188a2758599bd
 
     public function grilla() {
         $objproductos = new productos();
@@ -61,14 +77,6 @@ class productos_controlador extends controller {
         $objproductos->precio_compra = $datos[11];
         $error = $objproductos->actualiza();
         return $error;
-    }
-    
-    public function index() {
-        $this->_vista->renderizar('index');
-    }
-    
-    public function nuevo(){
-        $this->_vista->renderizar('form');
     }
 }
 

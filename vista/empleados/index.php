@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> be527ada5f408713e5f1fc2ec43188a2758599bd
 <h3>Lista de Empleados</h3>
 
     <table border="1">
