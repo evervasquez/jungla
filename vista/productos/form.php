@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
-    <form method="post" action="#">
-=======
 	<form method="post" action="#">
->>>>>>> be527ada5f408713e5f1fc2ec43188a2758599bd
     	<table width="50%" align="center">
         	<caption><h3>Registrar Producto</h3></caption>
             <tr>
@@ -84,7 +79,6 @@
             </tr>
         </table>
     </form>
-<<<<<<< HEAD
     <div id="ventana" align="center">
     <span class="close"><img src="/sisjungla/lib/img/close.gif" /></span>
         <form method="post" action="#">
@@ -107,5 +101,3 @@
         </form>
     </div>
     <div id="fondooscuro"></div>
-=======
->>>>>>> be527ada5f408713e5f1fc2ec43188a2758599bd
