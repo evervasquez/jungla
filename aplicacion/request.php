@@ -26,8 +26,6 @@ class request {
             $controlador = filter_input(INPUT_GET, 'controller', FILTER_SANITIZE_URL);
             //cada ves que encuentra '/' en $url, lo divide en un array
             //$url = explode('/', $url);
-            
-            
             $accion= filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_URL);
             //die($accion);
             //todos los elemtos que no sean validos en el arreglo los elimina
@@ -37,7 +35,7 @@ class request {
             $this->_controlador = @strtolower($controlador);
             $this->_metodo = @strtolower($accion);
             //die($this->_metodo);
-            //$this->_argumentos = $url;
+            $this->_argumentos = $url;
             
         }
         
