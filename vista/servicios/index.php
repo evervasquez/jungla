@@ -1,4 +1,3 @@
-
 <h3>Lista de Servicios</h3>
 <?php if (isset($this->datos) && count($this->datos)) { ?>
     <table border="1">
@@ -7,7 +6,6 @@
             <th>Descripcion</th>
             <th>Acciones</th>
         </tr>
-<<<<<<< HEAD
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
@@ -24,8 +22,4 @@
         </tr>
     <?php } ?>
 </table>
-<p><a href="/sisjungla/servicios/nuevo" class="k-button">Nuevo</a></p>
-=======
-    </table>
-    <a href="index.php?controller=servicios&accion=nuevo" class="k-button">Nuevo</a>
->>>>>>> e1a4c02b120237b6528e59af93906cc57f498c04
+<p><a href="index.php?controller=servicios&accion=nuevo" class="k-button">Nuevo</a></p>
