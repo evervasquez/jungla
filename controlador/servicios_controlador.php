@@ -23,7 +23,7 @@ class servicios_controlador extends controller {
             $this->redireccionar('servicios');
         }
         $this->_vista->titulo = 'Registrar Servicio';
-        $this->_vista->action = BASE_URL.'/servicios/nuevo';
+        $this->_vista->action = BASE_URL.'servicios/nuevo';
         $this->_vista->renderizar('form');
     }
 

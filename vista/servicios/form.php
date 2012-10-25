@@ -10,12 +10,12 @@
         <tr>
             <td><label>Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese servicio" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['idservicio']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
                 <button type="submit" class="k-button">Guardar</button>
-                <a href="/sisjungla/servicios" class="k-button">Cancelar</a>
+                <a href="<?php BASE_URL ?>servicios" class="k-button">Cancelar</a>
             </td>
         </tr>
     </table>
