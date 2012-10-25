@@ -11,4 +11,4 @@
             <td>Estado</td>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nueva</a>
+    <a href="index.php?controller=ventas&accion=nuevo" class="k-button">Nueva</a>

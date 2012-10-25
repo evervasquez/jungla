@@ -17,4 +17,4 @@
             <th><label>Estado</label></th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=empleados&accion=nuevo" class="k-button">Nuevo</a>

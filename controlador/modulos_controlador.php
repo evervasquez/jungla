@@ -5,12 +5,13 @@ class modulos_controlador extends controller{
 
     public function __construct() {
         parent::__construct();
-        $this->_modulos = $this->carga_modelo('modulos');
+        //instanciamos un objeto del modulo
+        $this->_modulos=$this->_modelo;
     }
     
     public function index() {
-        $this->_modulos->idmodulo = 0;
-        $menu=$this->_modulos->selecciona();
+        //$this->_modulos->idmodulo = 0;
+        //$menu=$this->_modulos->selecciona();
         $this->_vista->renderizar('index');
     }
     

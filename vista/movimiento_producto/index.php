@@ -1,4 +1,4 @@
-<?php require("../cabecera.php");?>
+
 	<h3>Movimiento de Productos</h3>
     <table border="1">
         <tr>
@@ -12,4 +12,3 @@
             <td>Accion</td>
         </tr>
     </table>
-<?php require("../pie.php"); ?>

@@ -12,4 +12,4 @@
             <td>Email</td>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=proveedores&accion=nuevo" class="k-button">Nuevo</a>

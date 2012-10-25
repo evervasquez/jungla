@@ -15,4 +15,4 @@
             <th><label>Membresia</label></th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=clientes&accion=nuevo" class="k-button">Nuevo</a>

@@ -1,4 +1,4 @@
-<?php require("../cabecera.php");?>
+
 	<h3>Lista de Planes Contables</h3>
     <table border="1">
         <tr>
@@ -11,5 +11,4 @@
             <th>Categoria</th>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nuevo</a>
-<?php require("../pie.php"); ?>
+    <a href="index.php?controller=plan_contable&accion=nuevo" class="k-button">Nuevo</a>

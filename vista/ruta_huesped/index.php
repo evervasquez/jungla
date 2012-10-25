@@ -8,4 +8,4 @@
             <th>Observaciones</th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=ruta_huesped&accion=nuevo" class="k-button">Nuevo</a>

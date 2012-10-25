@@ -12,4 +12,4 @@
             <th><label>Interes</label></th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=cuota_pago&accion=nuevo" class="k-button">Nuevo</a>
