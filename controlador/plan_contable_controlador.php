@@ -10,11 +10,11 @@ class plan_contable_controlador extends controller{
 //        $this->_plan_contable->idplan_contable = 0;
 //        $datos =$this->_plan_contable->selecciona();
 //        $this->_vista->datos = $datos;
-        $this->_vista->renderiza('index','plan_contable');
+        $this->_vista->renderizar('index');
     }
     
     public function nuevo(){
-        $this->_vista->renderiza('form','plan_contable');
+        $this->_vista->renderizar('form');
     }
 }
 

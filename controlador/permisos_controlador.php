@@ -10,11 +10,11 @@ class permisos_controlador extends controller{
 //        $this->_permisos->idpermisos = 0;
 //        $datos =$this->_permisos->selecciona();
 //        $this->_vista->datos = $datos;
-        $this->_vista->renderiza('index','permisos');
+        $this->_vista->renderizar('index','permisos');
     }
     
     public function nuevo(){
-        $this->_vista->renderiza('form','permisos');
+        $this->_vista->renderizar('form','permisos');
     }
 }
 

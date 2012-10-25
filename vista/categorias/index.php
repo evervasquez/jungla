@@ -6,4 +6,4 @@
             <th><label>Nro.de Elemento</label></th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=categorias&accion=nuevo" class="k-button">Nuevo</a>

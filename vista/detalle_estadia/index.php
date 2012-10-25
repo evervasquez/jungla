@@ -1,4 +1,4 @@
-<?php require("../cabecera.php");?>
+
 	<h3>Lista de Estadia</h3>
     <table border="1">
         <tr>
@@ -12,5 +12,4 @@
             <th><label>Fecha de Salida</label></th>
         </tr>
     </table>
-    <a href="form.php" class="k-button">Nuevo</a>
-<?php require("../pie.php"); ?>
+    <a href="index.php?controller=detalle_estadia&accion=nuevo" class="k-button">Nuevo</a>

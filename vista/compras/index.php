@@ -14,4 +14,4 @@
             <th><label>Tipo de Transaccion</label></th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nueva</a>
+    <a href="index.php?controller=compras&accion=nuevo" class="k-button">Nueva</a>

@@ -10,11 +10,11 @@ class paquetes_controlador extends controller{
 //        $this->_paquetes->idpaquetes = 0;
 //        $datos =$this->_paquetes->selecciona();
 //        $this->_vista->datos = $datos;
-        $this->_vista->renderiza('index','paquetes');
+        $this->_vista->renderizar('index','paquetes');
     }
     
     public function nuevo(){
-        $this->_vista->renderiza('form','paquetes');
+        $this->_vista->renderizar('form','paquetes');
     }
 }
 

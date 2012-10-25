@@ -1,6 +1,6 @@
 <?php
 
-class movimiento_producto_controlador extends controller{
+Class movimiento_producto_controlador extends controller{
 //    private $_movimiento_producto;
     public function __construct() {
         parent::__construct();
@@ -10,11 +10,11 @@ class movimiento_producto_controlador extends controller{
 //        $this->_movimiento_producto->idmovimiento_producto = 0;
 //        $datos =$this->_movimiento_producto->selecciona();
 //        $this->_vista->datos = $datos;
-        $this->_vista->renderiza('index','movimiento_producto');
+        $this->_vista->renderizar('index');
     }
     
     public function nuevo(){
-        $this->_vista->renderiza('form','movimiento_producto');
+        $this->_vista->renderiza('form');
     }
 }
 

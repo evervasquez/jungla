@@ -8,6 +8,7 @@
             <td>Fecha de Inicio</td>
             <td>Fecha de Finalizacion</td>
         </tr>
+<<<<<<< HEAD
     </table>-->
     <a href="nuevo" class="k-button">Nuevo</a>
 <div id="grid"></div>
@@ -65,3 +66,7 @@
                     });
                 });
             </script>
+=======
+    </table>
+    <a href="index.php?controller=promociones&accion=nuevo" class="k-button">Nuevo</a>
+>>>>>>> 61c847b4b166369e9e470e246d5123732e471027

@@ -6,4 +6,4 @@
             <th>Descripcion</th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=servicios&accion=nuevo" class="k-button">Nuevo</a>

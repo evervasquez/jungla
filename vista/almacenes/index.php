@@ -5,4 +5,4 @@
             <th><label>Descripcion</label></th>
         </tr>
     </table>
-    <a href="almacenes/nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=almacenes&accion=nuevo" class="k-button">Nuevo</a>

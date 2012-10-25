@@ -6,4 +6,4 @@
             <th>Almacen</th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=ubicaciones&accion=nuevo" class="k-button">Nuevo</a>

@@ -9,4 +9,4 @@
             <th>Estado</th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=modulos&accion=nuevo" class="k-button">Nuevo</a>
