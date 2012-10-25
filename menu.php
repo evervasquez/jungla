@@ -27,11 +27,11 @@ Class menu {
             $descripcion = $this->_datos[$i]['descripcion'];//MAN
             $idmodulo = $this->_datos[$i]['idmodulo'];//1
             //*echo $idmodulo;
-            if ($this->_datos[$i]['idmodulo_padre'] == 0) {
+            if ($this->_datos[$i]['idmodulo_padre'] == 0 && $idmodulo !=0) {
                 echo "<li>$descripcion <ul>";//MAN
                 //cargarmenu($idmodulo);
                 for($j=0;$j<count($this->_datos); $j++){
-                    if($idmodulo === $this->_datos[$j]['idmodulo_padre']){
+                    if($idmodulo === $this->_datos[$j]['idmodulo_padre'] && $this->_datos[$j]['idmodulo'] !=0 ){
                       $url = $this->_datos[$j]['url'];
                 echo "<li><a href='$url'>" . $this->_datos[$j]['descripcion'] . "</a></li>";
                     }
