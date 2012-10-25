@@ -2,10 +2,14 @@
 
 class modulos_controlador extends controller{
     private $_modulos;
-    
+
     public function __construct() {
         parent::__construct();
+<<<<<<< HEAD
         //$this->_modulos->carga_modelo('modulos');
+=======
+        $this->_modulos = $this->carga_modelo('modulos');
+>>>>>>> origin/master
     }
     
     public function index() {
