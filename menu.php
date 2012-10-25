@@ -46,4 +46,5 @@ Class menu {
 }
 ?>
 
+                <div align="center">
 <!--FIn menu-->

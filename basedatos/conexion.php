@@ -3,6 +3,7 @@
 class conexion {
 
     private static $instancia = null;
+    public static $_servidor = null;
 
     public static function conexionSingleton() {
         if (self::$instancia != null) {
@@ -11,6 +12,7 @@ class conexion {
         $file = 'config.ini';
         $settings = parse_ini_file($file, TRUE);
         $dsn = $settings['database']['driver'] . ':dbname=' . $settings['database']['basedatos'] . '; host=' . $settings['database']['host'] . '; port=' . $settings['database']['puerto'];
+        self::$_servidor=$settings['database']['driver'];
         $user = $settings['database']['usuario'];
         $password = trim($settings['database']['password']);
 //        die($dsn . " - " . $user . " - " . $password);
@@ -32,6 +34,25 @@ class conexion {
     public static function __callStatic($name, $args) {
         $callback = array(self :: conexionSingleton(), $name);
         return call_user_func_array($callback, $args);
+    }
+
+    public static function get_servidor() {
+        switch (self::$_servidor) {
+            case 'mssql': $_servidor = "SQL Server ";
+                break;
+            case 'mysql': $_servidor = "MySql ";
+                break;
+            case 'pgsql': $_servidor = "PostgreSQL";
+                break;
+            case 'oci': $_servidor = "Oracle";
+                break;
+            default :
+                echo "<script>alert('No existe este servidor');
+                            window.location='/localhost/';
+                        </script>";
+                break;
+        }
+        return $_servidor;
     }
 
 }

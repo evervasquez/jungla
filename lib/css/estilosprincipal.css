@@ -32,6 +32,9 @@ body{
 	text-decoration:underline;
 	color:#666;
 }
+#servidorSesion{
+        margin-top: 5px;
+}
 #fondooscuro{
 	display: none;
 	position: fixed;
