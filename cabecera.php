@@ -21,4 +21,6 @@
                 	<div id="userSesion"><label>Jair Vasquez</label></div>
             		<div id="linkSesion"><a href="#">Perfil</a> | <a href="/sisjungla/">Cerrar Sesion</a></div>
                 </div>
+                
+                <div align="center">
               
