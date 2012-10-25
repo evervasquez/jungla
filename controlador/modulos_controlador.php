@@ -1,11 +1,16 @@
 <?php
 
 class modulos_controlador extends controller{
+    private $_modulos;
     public function __construct() {
         parent::__construct();
+        $this->_modulos = $this->carga_modelo('modulos');
     }
     
     public function index() {
+        $this->_modulos->idmodulo = 0;
+        $datos =$this->_modulos->selecciona();
+        $this->_vista->datos = $datos;
         $this->_vista->renderizar('index');
     }
     
