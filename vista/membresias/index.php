@@ -6,4 +6,4 @@
         <th><label>Descripcion</label></th>
     </tr>
 </table>
-<a href="index.php?controller=membresias&accion=nuevo" class="k-button">Nuevo</a>
+<a href="<?php BASE_URL?>membresias/nuevo" class="k-button">Nuevo</a>

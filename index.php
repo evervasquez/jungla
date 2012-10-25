@@ -14,6 +14,7 @@ require_once APP_PATH . 'view.php';
 //require_once APP_PATH . 'registro.php';
 require_once BASE_DATOS.'conexion.php';
 require_once BASE_DATOS.'consulta.php';
+
 try {
     FrontController::main(new request);
 } catch (Exception $e) {
