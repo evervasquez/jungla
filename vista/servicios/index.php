@@ -11,8 +11,9 @@
             <tr>
                 <td><?php echo $this->datos[$i]['idservicio'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><a href="/sisjungla/servicios/editar/<?php echo $this->datos[$i]['idservicio'] ?>">[Editar]</a>
-                <a href="/sisjungla/servicios/eliminar/<?php echo $this->datos[$i]['idservicio'] ?>">[Eliminar]</a></td>
+                <td><a href="<?php echo BASE_URL?>servicios/editar/<?php echo $this->datos[$i]['idservicio'] ?>">[Editar]</a>
+                <a href="<?php echo BASE_URL?>servicios/eliminar/<?php echo $this->datos[$i]['idservicio'] ?>">[Eliminar]</a></td>
+                
             </tr>
         <?php } ?>
 
@@ -22,4 +23,4 @@
         </tr>
     <?php } ?>
 </table>
-<p><a href="index.php?controller=servicios&accion=nuevo" class="k-button">Nuevo</a></p>
+<p><a href="<?php echo BASE_URL?>servicios/nuevo" class="k-button">Nuevo</a></p>

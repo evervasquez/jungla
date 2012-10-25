@@ -19,23 +19,20 @@ class request {
 
     public function __construct() {
         //preguntamos si hay parametros en la url
-        if (isset($_GET['controller'])) {
+        if (isset($_GET['url'])) {
             
             //die($_GET['controller']);
             //toma el parametro url por get lo pasa por el filtro y devuelve filtrado.
-            $controlador = filter_input(INPUT_GET, 'controller', FILTER_SANITIZE_URL);
+            $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
             //cada ves que encuentra '/' en $url, lo divide en un array
-            //$url = explode('/', $url);
-            $accion= filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_URL);
+            $url = explode('/', $url);
+            //$accion= filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_URL);
+            //$argumentos= filter_input(INPUT_GET, 'param', FILTER_SANITIZE_URL);
             //die($accion);
-            //todos los elemtos que no sean validos en el arreglo los elimina
-            //$url = @array_filter($url);
-            
-            //array_shift($url) = extrae el primer elemento del array y lo devuelve
-            $this->_controlador = @strtolower($controlador);
-            $this->_metodo = @strtolower($accion);
-            //die($this->_metodo);
-            $this->_argumentos = $url;
+            $url = array_filter($url);
+            $this->_controlador= strtolower(array_shift($url));
+            $this->_metodo = strtolower(array_shift($url));
+            $this->_argumentos = $url;           
             
         }
         

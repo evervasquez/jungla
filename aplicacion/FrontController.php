@@ -14,12 +14,11 @@ class FrontController {
     //put your code here
      public static function main(request $peticion) {
         $controlador_ = $peticion->get_controlador() . '_controlador';//recuperamos el nombre del controlador enviado por get
-        $ruta_controlador = ROOT . 'controlador' . DS . $controlador_ . '.php';//aqui concatenamos la ruta del controlador
         $metodo = $peticion->get_metodo();//recuperamos el metodo(accion)
         $argumentos= $peticion->get_argumentos();//recuperamos los argumentos en un array
-        
         //revisamos si el archivo(controlador) existe y es legible DEL CONTROLADOR
         //die($ruta_controlador);
+        $ruta_controlador = ROOT . 'controlador' . DS . $controlador_ . '.php';//aqui concatenamos la ruta del controlador
         if (is_readable($ruta_controlador)) {
             
             //requerimos al archivo

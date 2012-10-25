@@ -3,12 +3,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
-#se envia una variable via ur
+
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
-# Reescribir la URL solicitada por el usuario
-#   Entrada:  clientes/NOMBRE/
-#   Salida: clientes.php?id=NOMBRE
-
-#RewriteEngine on 
-
-#Rewriterule ^sisjungla/(.+)/(.+) articulo.php?controller =$1&accion=$2 
