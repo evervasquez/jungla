@@ -43,7 +43,7 @@ class consulta extends conexion {
 //            if($driver=='mysql'){
 //                $stmt = self::prepare($sql,array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
 //            }else{
-                $stmt = self::prepare($sql);
+            $stmt = self::prepare($sql);
 //            }
             $j = 0;
             if ($datos != null) {
@@ -58,13 +58,22 @@ class consulta extends conexion {
                 }
             }
             $stmt->execute();
-            $error=$stmt->errorInfo(); 
+            $error = $stmt->errorInfo();
 //            if($error[2]==''){
 //                die('no hay error');
 //            }else{
 //                die($error[2]);
 //            }
-            return array($stmt,$error[2]);
+            if ($driver == 'mssql') {
+                if ($error[2] == '(null) [0] (severity 0) [(null)]') {
+                    return array($stmt, '');
+                } else {
+                    die($error[2]);
+                }
+            } else {
+                return array($stmt, $error[2]);
+            }
+//            return array($stmt,$error[2]);
 //            return $stmt;
         } catch (PDOException $e) {
             return false;

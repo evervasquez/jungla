@@ -14,12 +14,13 @@ abstract class controller {
 
     protected $_vista;
     protected $_modelo;
+
     //aqui ya tenemos el objeto vista disponible en el controlador
     public function __construct() {
         
-        $this->_modelo= $this->cargar_modelo('modulos');
+        $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 0;
-        $menu=$this->_modelo->selecciona();
+        $menu = $this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
         
     }
@@ -50,6 +51,26 @@ abstract class controller {
             return $modelo;
         } else {
             throw new Exception('Error de modelo');
+        }
+    }
+
+    protected function redireccionar($ruta = false) {
+        if ($ruta) {
+            header('location:' . BASE_URL . $ruta);
+            exit;
+        } else {
+            header('location:' . BASE_URL);
+            exit;
+        }
+    }
+
+    protected function filtrarInt($int) {
+        $int = (int) $int;
+
+        if (is_int($int)) {
+            return $int;
+        } else {
+            return 0;
         }
     }
 
