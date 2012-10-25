@@ -19,6 +19,7 @@ class FrontController {
         $argumentos= $peticion->get_argumentos();//recuperamos los argumentos en un array
         
         //revisamos si el archivo(controlador) existe y es legible DEL CONTROLADOR
+        //die($ruta_controlador);
         if (is_readable($ruta_controlador)) {
             
             //requerimos al archivo

@@ -5,7 +5,7 @@ class modulos_controlador extends controller{
     
     public function __construct() {
         parent::__construct();
-        $this->_modulos->carga_modelo('modulos');
+        //$this->_modulos->carga_modelo('modulos');
     }
     
     public function index() {

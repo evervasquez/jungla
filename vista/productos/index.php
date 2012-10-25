@@ -10,4 +10,4 @@
             <td>Ubicacion</td>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=productos&accion=nuevo" class="k-button">Nuevo</a>

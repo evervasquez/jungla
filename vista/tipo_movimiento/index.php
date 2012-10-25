@@ -5,4 +5,4 @@
             <th>Descripcion</th>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=tipo_movimiento&accion=nuevo" class="k-button">Nuevo</a>

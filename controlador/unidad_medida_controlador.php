@@ -1,7 +1,11 @@
 <?php
 
-class unidad_medida_controlador {
+class unidad_medida_controlador extends controller{
     
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function grilla() {
         $objUnidad_medida = new unidad_medida();
         $objUnidad_medida->idunidad_medida = 0;
@@ -39,6 +43,10 @@ class unidad_medida_controlador {
         $objUnidad_medida->abreviatura = $datos[2];
         $error = $objUnidad_medida->actualiza();
         return $error;
+    }
+
+    public function index() {
+      $this->_vista->renderizar('index');
     }
 }
 ?>

@@ -32,7 +32,7 @@ Class menu {
                 //cargarmenu($idmodulo);
                 for($j=0;$j<count($this->_datos); $j++){
                     if($idmodulo === $this->_datos[$j]['idmodulo_padre']){
-                      $url = $this->_datos[$j]['url'];
+                      $url = 'index.php?controller='.$this->_datos[$j]['url'];
                 echo "<li><a href='$url'>" . $this->_datos[$j]['descripcion'] . "</a></li>";
                     }
                 }

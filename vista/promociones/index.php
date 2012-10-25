@@ -9,4 +9,4 @@
             <td>Fecha de Finalizacion</td>
         </tr>
     </table>
-    <a href="nuevo" class="k-button">Nuevo</a>
+    <a href="index.php?controller=promociones&accion=nuevo" class="k-button">Nuevo</a>
