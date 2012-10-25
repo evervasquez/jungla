@@ -17,7 +17,7 @@ abstract class controller {
     //aqui ya tenemos el objeto vista disponible en el controlador
     public function __construct() {
         
-        $this->_modelo= $this->cargar_modelo('modulos');
+        $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 0;
         $menu=$this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
