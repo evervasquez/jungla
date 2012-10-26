@@ -5,17 +5,17 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idtipo_movimiento']))echo $this->datos[0]['idtipo_movimiento']?>"/></td>
+                       value="<?php if(isset ($this->datos[0]['idtipo_transaccion']))echo $this->datos[0]['idtipo_transaccion']?>"/></td>
         </tr>
         <tr>
             <td><label>Descripcion:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese tipo de movimiento" required name="descripcion"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese tipo de transaccion" required name="descripcion"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
                 <button type="submit" class="k-button">Guardar</button>
-                <a href="<?php BASE_URL ?>tipo_movimiento" class="k-button">Cancelar</a>
+                <a href="<?php BASE_URL ?>tipo_transaccion" class="k-button">Cancelar</a>
             </td>
         </tr>
     </table>

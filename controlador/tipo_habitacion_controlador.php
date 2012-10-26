@@ -2,53 +2,56 @@
 
 class tipo_habitacion_controlador extends controller {
     
+    private $_tipo_habitacion;
+
     public function __construct() {
         parent::__construct();
+        $this->_tipo_habitacion = $this->cargar_modelo('tipo_habitacion');
     }
 
-    public function grilla() {
-        $objtipohabitacion = new tipo_habitacion();
-        $objtipohabitacion->idtipo_habitacion = 0;
-        $stmt = $objtipohabitacion->selecciona();
-        return $stmt;
-    }
-
-    public function selecciona($id) {
-        $objtipohabitacion = new tipo_habitacion();
-        $objtipohabitacion->idtipo_habitacion = $id;
-        $stmt = $objtipohabitacion->selecciona();
-        return $stmt;
-    }
-
-    public function elimina($id) {
-        $objtipohabitacion = new tipo_habitacion();
-        $objtipohabitacion->idtipo_habitacion = $id;
-        $error = $objtipohabitacion->elimina();
-        return $error;
-    }
-
-    public function inserta($datos) {
-        $objtipohabitacion = new tipo_habitacion();
-        $objtipohabitacion->idtipo_habitacion = $datos[0];
-        $objtipohabitacion->descripcion = $datos[1];
-        $error = $objtipohabitacion->inserta();
-        return $error;
-    }
-
-    public function actualiza($datos) {
-        $objtipohabitacion = new tipo_habitacion();
-        $objtipohabitacion->idtipo_habitacion = $datos[0];
-        $objtipohabitacion->descripcion = $datos[1];
-        $error = $objtipohabitacion->actualiza();
-        return $error;
-    }
-    
     public function index() {
+        $this->_tipo_habitacion->idtipo_habitacion = 0;
+        $this->_vista->datos = $this->_tipo_habitacion->selecciona();
         $this->_vista->renderizar('index');
     }
-    
-    public function nuevo(){
+
+    public function nuevo() {
+        if ($_POST['guardar'] == 1) {
+            $this->_tipo_habitacion->idtipo_habitacion = 0;
+            $this->_tipo_habitacion->descripcion = $_POST['descripcion'];
+            $this->_tipo_habitacion->inserta();
+            $this->redireccionar('tipo_habitacion');
+        }
+        $this->_vista->titulo = 'Registrar Tipo de Habitacion';
+        $this->_vista->action = BASE_URL . 'tipo_habitacion/nuevo';
         $this->_vista->renderizar('form');
+    }
+
+    public function editar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('tipo_habitacion');
+        }
+
+        $this->_tipo_habitacion->idtipo_habitacion = $this->filtrarInt($id);
+        $this->_vista->datos = $this->_tipo_habitacion->selecciona();
+
+        if ($_POST['guardar'] == 1) {
+            $this->_tipo_habitacion->idtipo_habitacion = $_POST['codigo'];
+            $this->_tipo_habitacion->descripcion = $_POST['descripcion'];
+            $this->_tipo_habitacion->actualiza();
+            $this->redireccionar('tipo_habitacion');
+        }
+        $this->_vista->titulo = 'Actualizar Tipo de Habitacion';
+        $this->_vista->renderizar('form');
+    }
+
+    public function eliminar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('tipo_habitacion');
+        }
+        $this->_tipo_habitacion->idtipo_habitacion = $this->filtrarInt($id);
+        $this->_tipo_habitacion->elimina();
+        $this->redireccionar('tipo_habitacion');
     }
 }
 

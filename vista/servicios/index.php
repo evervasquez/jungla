@@ -1,4 +1,4 @@
-<h3>Lista de Servicios</h3>
+<p><h3>Lista de Servicios</h3></p>
 <?php if (isset($this->datos) && count($this->datos)) { ?>
     <table border="1">
         <tr>
