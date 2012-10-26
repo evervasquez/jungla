@@ -15,7 +15,7 @@
         <tr>
             <td colspan="2" align="center">
                 <p><button type="submit" class="k-button">Guardar</button>
-                <a href="/sisjungla/membresia" class="k-button">Cancelar</a></p>
+                <a href="<?php echo BASE_URL ?>membresia" class="k-button">Cancelar</a></p>
             </td>
         </tr>
     </table>
