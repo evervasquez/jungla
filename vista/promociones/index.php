@@ -13,7 +13,7 @@
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos[$i]['idpromocion'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td><?php echo utf8_encode($this->datos[$i]['descripcion']) ?></td>
                 <td><?php echo $this->datos[$i]['descuento'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha_inicio'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha_final'] ?></td>

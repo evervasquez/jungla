@@ -28,7 +28,7 @@
             <tr>
             	<td><label>Ubigeo</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." required name="Ubigeo" onChange="validar(combo)" >
+                    <select class="combo" placeholder="Seleccione..." required>
                     	<option value="0"></option>
                         <option>Tarapoto</option>
                         <option>Lima</option>
