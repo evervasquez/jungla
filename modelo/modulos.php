@@ -38,6 +38,18 @@ class modulos {
         $r = null;
         return $stmt->fetchall();
     }
+    
+    public function seleccionar($idmodulo_padre){
+        $datos = array($idmodulo_padre);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos_padre", $datos);
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
+        $r = null;
+        return $stmt->fetchall();
+    }
 
     public function elimina() {
         $datos = array($this->idmodulo);
