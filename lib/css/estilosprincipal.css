@@ -7,7 +7,6 @@ body{
         background-image: url("/sisjungla/lib/img/linea.jpg");
         background-attachment:fixed;
 }
-
 #principal{
 	padding-top:20px;
 	margin:0 auto;
@@ -38,7 +37,7 @@ body{
 	-o-border-radius:0px 0px 35px 35px;
 }
 #txtFooter{
-        padding: 20px;
+        padding: 15px;
 }
 #sesion{
 	text-align:right;
@@ -48,8 +47,11 @@ body{
 	margin:5px;
 }
 #userSesion{
-	font-size:19px;
+	font-size:22px;
 	margin-bottom:5px;
+}
+#linkSesion{
+        font-size:11px;
 }
 #sesion a{
 	text-decoration:none;
@@ -62,6 +64,7 @@ body{
 }
 #servidorSesion{
         margin-top: 5px;
+        font-size: 9px;
 }
 #logo{
     background-image: url("/sisjungla/lib/img/logo.png");

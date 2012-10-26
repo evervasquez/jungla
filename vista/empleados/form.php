@@ -11,11 +11,11 @@
             </tr>
             <tr>
             	<td><label>Apellidos</label></td>
-                <td><input type="text" class="k-textbox" placeholder="Ingrese apellidos" required/></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese apellidos" required onkeypress="return soloLetras(event)"/></td>
             </tr>
             <tr>
             	<td><label>DNI</label></td>
-                <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required/></td>
+                <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required onKeyPress="return soloNumeros(event);" maxlength="8"/></td>
             </tr>
             <tr>
             	<td><label>Telefono</label></td>
@@ -28,8 +28,8 @@
             <tr>
             	<td><label>Ubigeo</label></td>
                 <td>
-                	<select class="combo" placeholder="Seleccione..." required>
-                    	<option></option>
+                    <select class="combo" placeholder="Seleccione..." required name="Ubigeo" onChange="validar(combo)" >
+                    	<option value="0"></option>
                         <option>Tarapoto</option>
                         <option>Lima</option>
                         <option>Tacna</option>
@@ -48,11 +48,11 @@
             </tr>
             <tr>
             	<td><label>Fecha de Nacimiento</label></td>
-                <td><input class="datepicker" value="" placeholder="Seleccione fecha" required/></td>
+                <td><input class="datepicker" readonly="readonly" value="" placeholder="Seleccione fecha" required/></td>
             </tr>
             <tr>
             	<td><label>Fecha de Contratacion</label></td>
-                <td><input class="datepicker" value="" placeholder="Seleccione fecha" required/></td>
+                <td><input class="datepicker" readonly="readonly" value="" placeholder="Seleccione fecha" required/></td>
             </tr>
             <tr>
             	<td><label>Perfil</label></td>
