@@ -32,7 +32,7 @@ class habitaciones {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetch();
+        return $stmt->fetchall();
     }
 
     public function elimina() {

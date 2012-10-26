@@ -73,6 +73,16 @@ abstract class controller {
             return 0;
         }
     }
+    
+    protected function get_matriz($datos,$cabeceras){
+        $nuevo;
+        for($i=0;$i<count($datos);$i++){
+            for($j=0;$j<count($cabeceras);$j++){
+                $nuevo[$i][$cabeceras[$j]]=$datos[$i][$cabeceras[$j]];
+            }
+        }
+        return $nuevo;
+    }
 
 }
 

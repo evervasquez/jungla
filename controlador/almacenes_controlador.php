@@ -1,55 +1,59 @@
 <?php
 
 class almacenes_controlador extends controller {
-    
+
+    private $_almacenes;
+
     public function __construct() {
         parent::__construct();
+        $this->_almacenes = $this->cargar_modelo('almacenes');
     }
 
-    public function grilla() {
-        $objalmacenes = new almacenes();
-        $objalmacenes->idalmacen= 0;
-        $stmt = $objalmacenes->selecciona();
-        return $stmt;
-    }
-
-    public function selecciona($id) {
-        $objalmacenes = new almacenes();
-        $objalmacenes->idalmacen = $id;
-        $stmt = $objalmacenes->selecciona();
-        return $stmt;
-    }
-
-    public function elimina($id) {
-        $objalmacenes = new almacenes();
-        $objalmacenes->idalmacen = $id;
-        $error = $objalmacenes->elimina();
-        return $error;
-    }
-
-    public function inserta($datos) {
-        $objalmacenes = new almacenes();
-        $objalmacenes->idalmacen = $datos[0];
-        $objalmacenes->descripcion = $datos[1];
-        $error = $objalmacenes->inserta();
-        return $error;
-    }
-
-    public function actualiza($datos) {
-        $objalmacenes = new almacenes();
-        $objalmacenes->idalmacen = $datos[0];
-        $objalmacenes->descripcion = $datos[1];
-        $error = $objalmacenes->actualiza();
-        return $error;
-    }
-    
     public function index() {
+        $this->_almacenes->idalmacen = 0;
+        $this->_vista->datos = $this->_almacenes->selecciona();
         $this->_vista->renderizar('index');
     }
-    
-    public function nuevo(){
+
+    public function nuevo() {
+        if ($_POST['guardar'] == 1) {
+            $this->_almacenes->idalmacen = 0;
+            $this->_almacenes->descripcion = $_POST['descripcion'];
+            $this->_almacenes->inserta();
+            $this->redireccionar('almacenes');
+        }
+        $this->_vista->titulo = 'Registrar Almacen';
+        $this->_vista->action = BASE_URL . 'almacenes/nuevo';
         $this->_vista->renderizar('form');
     }
+
+    public function editar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('almacenes');
+        }
+
+        $this->_almacenes->idalmacen = $this->filtrarInt($id);
+        $this->_vista->datos = $this->_almacenes->selecciona();
+
+        if ($_POST['guardar'] == 1) {
+            $this->_almacenes->idalmacen = $_POST['codigo'];
+            $this->_almacenes->descripcion = $_POST['descripcion'];
+            $this->_almacenes->actualiza();
+            $this->redireccionar('almacenes');
+        }
+        $this->_vista->titulo = 'Actualizar Almacen';
+        $this->_vista->renderizar('form');
+    }
+
+    public function eliminar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('almacenes');
+        }
+        $this->_almacenes->idalmacen = $this->filtrarInt($id);
+        $this->_almacenes->elimina();
+        $this->redireccionar('almacenes');
+    }
+
 }
 
 ?>
