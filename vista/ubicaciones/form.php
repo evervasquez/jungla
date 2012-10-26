@@ -20,8 +20,9 @@
                     <?php for($i=0;$i<count($this->datosAlmacen);$i++){ ?>
                         <?php if( $this->datos[0]['idalmacen'] == $this->datosAlmacen[$i]['idalmacen'] ){ ?>
                     <option value="<?php echo $this->datosAlmacen[$i]['idalmacen'] ?>" selected="selected"><?php echo $this->datosAlmacen[$i]['descripcion'] ?></option>
-                        <?php } ?>
+                        <?php } else { ?>
                     <option value="<?php echo $this->datosAlmacen[$i]['idalmacen'] ?>"><?php echo $this->datosAlmacen[$i]['descripcion'] ?></option>
+                        <?php } ?>
                     <?php } ?>
                 </select>
             </td>

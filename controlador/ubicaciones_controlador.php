@@ -25,8 +25,6 @@ class ubicaciones_controlador extends controller {
             $this->_ubicaciones->inserta();
             $this->redireccionar('ubicaciones');
         }
-        $this->_almacenes->idalmacen = 0;
-        $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
         $this->_vista->titulo = 'Registrar Ubicacion';
         $this->_vista->action = BASE_URL . 'ubicaciones/nuevo';
         $this->_vista->renderizar('form');
@@ -43,9 +41,12 @@ class ubicaciones_controlador extends controller {
         if ($_POST['guardar'] == 1) {
             $this->_ubicaciones->idubicacion = $_POST['codigo'];
             $this->_ubicaciones->descripcion = $_POST['descripcion'];
+            $this->_ubicaciones->idalmacen = $this->filtrarInt($_POST['almacen']);
             $this->_ubicaciones->actualiza();
             $this->redireccionar('ubicaciones');
         }
+        $this->_almacenes->idalmacen = 0;
+        $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
         $this->_vista->titulo = 'Actualizar Ubicaion';
         $this->_vista->renderizar('form');
     }

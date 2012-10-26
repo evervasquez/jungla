@@ -5,11 +5,11 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idalmacen']))echo $this->datos[0]['idalmacen']?>"/></td>
+                       value="<?php if(isset ($this->datos[0]['idmodulo']))echo $this->datos[0]['idmodulo']?>"/></td>
         </tr>
         <tr>
             <td><label>Descripcion:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese almacen" required name="descripcion"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese modulo" required name="descripcion"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         
@@ -24,10 +24,11 @@
                 <select class="combo" placeholder="Seleccione..." required name="modulo_padre">
                     <option></option>
                     <?php for($i=0;$i<count($this->modulos_padre);$i++){ ?>
-                        <?php// if( $this->datos[0]['idmodulos_padre'] == $this->modulos_padre[$i]['idmodulos_padre'] ){ ?>
+                        <?php if( $this->datos[0]['idmodulo_padre'] == $this->modulos_padre[$i]['idmodulo'] ){ ?>
                     <option value="<?php echo $this->modulos_padre[$i]['idmodulo'] ?>" selected="selected"><?php echo $this->modulos_padre[$i]['descripcion'] ?></option>
-                        <?php// } ?>
+                        <?php } else { ?>
                     <option value="<?php echo $this->modulos_padre[$i]['idmodulo'] ?>"><?php echo $this->modulos_padre[$i]['descripcion'] ?></option>
+                        <?php } ?>
                     <?php } ?>
                 </select>
             </td>

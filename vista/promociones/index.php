@@ -4,9 +4,9 @@
         <tr>
             <th>Codigo</th>
             <th>Descripcion</th>
-            <td>Descuento</td>
-            <td>Fecha de Inicio</td>
-            <td>Fecha de Finalizacion</td>
+            <th>Descuento</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Finalizacion</th>
             <th>Acciones</th>
         </tr>
 
