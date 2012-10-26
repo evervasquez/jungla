@@ -3,6 +3,7 @@
     <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />
         <title>La Jungla</title>
         <link type="text/css" href="<?php echo BASE_URL?>lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="<?php echo BASE_URL?>lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -12,6 +13,7 @@
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jqueryui.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/funciones.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/script.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/validaciones.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/kendo.all.min.js"></script>
     </head>
     <body>
