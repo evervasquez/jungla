@@ -2,3 +2,4 @@
 
 
 ?>
+<div id="logo"></div>

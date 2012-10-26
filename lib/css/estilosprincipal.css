@@ -4,19 +4,47 @@
 body{
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:14px;
+        background-image: url("/sisjungla/lib/img/linea.jpg");
+        background-attachment:fixed;
 }
 
 #principal{
-	padding:20px;
+	padding-top:20px;
 	margin:0 auto;
 	width:80%;
+        background:rgba(256,256,256,0.2);
+	border-radius:0px 0px 35px 35px;
+	-moz-border-radius:0px 0px 35px 35px;
+	-webkit-border-radius:0px 0px 35px 35px;
+	-o-border-radius:0px 0px 35px 35px;
 }
-
+#cabecera{
+        background-image: url("/sisjungla/lib/img/banner.jpg");
+        background-repeat: no-repeat;
+        top:0px;
+        width: 79%;
+        height:100px;
+        position:absolute;
+        margin: 0 auto;
+        left: 10.5%;
+}
+#footer{
+        background:rgba(256,256,256,1);
+        width: 100%;
+        margin: auto;
+	border-radius:0px 0px 35px 35px;
+	-moz-border-radius:0px 0px 35px 35px;
+	-webkit-border-radius:0px 0px 35px 35px;
+	-o-border-radius:0px 0px 35px 35px;
+}
+#txtFooter{
+        padding: 20px;
+}
 #sesion{
 	text-align:right;
 	position:absolute;
 	top:10px;
-	right:10%;
+	right:11%;
 	margin:5px;
 }
 #userSesion{
@@ -34,6 +62,15 @@ body{
 }
 #servidorSesion{
         margin-top: 5px;
+}
+#logo{
+    background-image: url("/sisjungla/lib/img/logo.png");
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    width:768px;
+    height: 191px;
+    margin-top: 60px;
+    padding-bottom: 60px;
 }
 #fondooscuro{
 	display: none;
