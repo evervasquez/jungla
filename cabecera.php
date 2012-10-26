@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
     <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="shortcut icon" href="<?php echo BASE_URL?>'lib/img/favicon.ico'" type="image/x-icon" />
+        <link rel="shortcut icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />
         <title>La Jungla</title>
         <link type="text/css" href="<?php echo BASE_URL?>lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="<?php echo BASE_URL?>lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -20,8 +20,8 @@
         	<div id="siscom"><h1 class="k-label">La Jungla</h1></div>
             	<div id="sesion">
                 	<div id="userSesion"><label>Jair Vasquez</label></div>
-            		<div id="linkSesion"><a href="#">Perfil</a> | <a href="/sisjungla/">Cerrar Sesion</a></div>
-                        <div id="servidorSesion"><label>Servidor= <?php echo conexion::get_servidor() ?></label></div>
+            		<div id="linkSesion"><a href="#">perfil</a> | <a href="/sisjungla/">cerrar sesion</a></div>
+                        <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label></div>
                 </div>
             
                 
