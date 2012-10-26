@@ -6,7 +6,7 @@
         <title>La Jungla</title>
         <link type="text/css" href="/sisjungla/lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="/sisjungla/lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
-        <link href="/sisjungla/lib/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/sisjungla/lib/css/styles/kendo.metro.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="/sisjungla/lib/css/le-frog/jquery-ui-1.9.0.custom.css" />
         <script type="text/javascript" src="/sisjungla/lib/js/jquery.js"></script>
         <script type="text/javascript" src="/sisjungla/lib/js/jqueryui.js"></script>

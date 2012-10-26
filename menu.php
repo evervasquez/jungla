@@ -15,6 +15,7 @@ Class menu {
         echo "<ul id='menu'>";
         $this->cargarmenu(0);
         echo '</ul>';
+        echo "<div align='center'>";
     }
 
     function cargarmenu($id) {
@@ -42,10 +43,8 @@ Class menu {
                 
             }
         }
+        
     }
-
 }
 ?>
-
-                <div align="center">
 <!--FIn menu-->
