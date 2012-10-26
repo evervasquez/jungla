@@ -10,7 +10,7 @@
         <tr>
             <td><label>Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese promocion" required name="descripcion" onkeypress="return soloLetras(event)"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>" /></td>
         </tr>
         <tr>
             <td><label>Descuento:</label></td>
