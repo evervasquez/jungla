@@ -3,7 +3,7 @@
 class concepto_movimiento {
 
     public $idconcepto_movimiento;
-    public $concepto;
+    public $descripcion;
 
     public function selecciona() {
         $datos = array($this->idconcepto_movimiento);
@@ -26,7 +26,7 @@ class concepto_movimiento {
     }
 
     public function inserta() {
-        $datos = array($this->idconcepto_movimiento, $this->concepto);
+        $datos = array($this->idconcepto_movimiento, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_concepto_movimiento", $datos);
         $error = $r[1];
         $r = null;
@@ -34,7 +34,7 @@ class concepto_movimiento {
     }
 
     public function actualiza() {
-        $datos = array($this->idconcepto_movimiento, $this->concepto);
+        $datos = array($this->idconcepto_movimiento, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_concepto_movimiento", $datos);
         $error = $r[1];
         $r = null;

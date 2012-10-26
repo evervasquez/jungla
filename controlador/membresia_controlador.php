@@ -1,12 +1,12 @@
 <?php
 
-class membresias_controlador extends controller{
+class membresia_controlador extends controller{
     
     private $_membresias;
 
     public function __construct() {
         parent::__construct();
-        $this->_membresias = $this->cargar_modelo('membresias');
+        $this->_membresias = $this->cargar_modelo('membresia');
     }
 
     public function index() {
@@ -20,10 +20,10 @@ class membresias_controlador extends controller{
             $this->_membresias->idmembresia = 0;
             $this->_membresias->descripcion = $_POST['descripcion'];
             $this->_membresias->inserta();
-            $this->redireccionar('membresias');
+            $this->redireccionar('membresia');
         }
         $this->_vista->titulo = 'Registrar Membresia';
-        $this->_vista->action = BASE_URL.'membresias/nuevo';
+        $this->_vista->action = BASE_URL.'membresia/nuevo';
         $this->_vista->renderizar('form');
     }
 
@@ -39,7 +39,7 @@ class membresias_controlador extends controller{
             $this->_membresias->idmembresia = $_POST['codigo'];
             $this->_membresias->descripcion = $_POST['descripcion'];
             $this->_membresias->actualiza();
-            $this->redireccionar('membresias');
+            $this->redireccionar('membresia');
         }
         $this->_vista->titulo = 'Actualizar Membresia';
         $this->_vista->renderizar('form');
@@ -47,11 +47,11 @@ class membresias_controlador extends controller{
 
     public function eliminar($id) {
         if (!$this->filtrarInt($id)) {
-            $this->redireccionar('membresias');
+            $this->redireccionar('membresia');
         }
         $this->_membresias->idmembresia = $this->filtrarInt($id);
         $this->_membresias->elimina();
-        $this->redireccionar('membresias');
+        $this->redireccionar('membresia');
     }
 
 }

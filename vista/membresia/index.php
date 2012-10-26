@@ -1,5 +1,5 @@
-<p><h3>Lista de Membresias</h3></p>
 <?php if (isset($this->datos) && count($this->datos)) { ?>
+<p><h3>Lista de Membresias</h3></p>
     <table border="1">
         <tr>
             <th>Codigo</th>
@@ -11,16 +11,16 @@
             <tr>
                 <td><?php echo $this->datos[$i]['idmembresia'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><a href="<?php echo BASE_URL?>membresias/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">[Editar]</a>
-                <a href="<?php echo BASE_URL?>membresias/eliminar/<?php echo $this->datos[$i]['idservicio'] ?>">[Eliminar]</a></td>
+                <td><a href="<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">[Editar]</a>
+                <a href="<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>">[Eliminar]</a></td>
                 
             </tr>
         <?php } ?>
 
     <?php } else { ?>
         <tr>
-            <td>No hay Membresias</td>
+            <td><p>No hay Membresias</p></td>
         </tr>
     <?php } ?>
 </table>
-<p><a href="<?php echo BASE_URL?>membresias/nuevo" class="k-button">Nuevo</a></p>
+<p><a href="<?php echo BASE_URL?>membresia/nuevo" class="k-button">Nuevo</a></p>

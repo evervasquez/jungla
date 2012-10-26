@@ -22,7 +22,7 @@ class tipo_producto_controlador extends controller {
             $this->_tipo_producto->inserta();
             $this->redireccionar('tipo_producto');
         }
-        $this->_vista->titulo = 'Registrar Tipos de Producto';
+        $this->_vista->titulo = 'Registrar Tipo de Producto';
         $this->_vista->action = BASE_URL . 'tipo_producto/nuevo';
         $this->_vista->renderizar('form');
     }

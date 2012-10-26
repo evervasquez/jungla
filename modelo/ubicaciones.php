@@ -27,7 +27,7 @@ class ubicaciones {
     }
 
     public function inserta() {
-        $datos = array($this->idubicacion, $this->idalmacen, $this->descripcion);
+        $datos = array($this->idubicacion, $this->descripcion, $this->idalmacen);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
@@ -35,7 +35,7 @@ class ubicaciones {
     }
 
     public function actualiza() {
-        $datos = array($this->idubicacion, $this->idalmacen, $this->descripcion);
+        $datos = array($this->idubicacion, $this->descripcion, $this->idalmacen);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ubicaciones", $datos);
         $error = $r[1];
         $r = null;

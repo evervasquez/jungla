@@ -29,7 +29,7 @@ class unidad_medida {
 
     public function inserta() {
         $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_unidad_medida", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -37,7 +37,7 @@ class unidad_medida {
 
     public function actualiza() {
         $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_unidad_medida", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;

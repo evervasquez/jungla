@@ -14,8 +14,8 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <button type="submit" class="k-button">Guardar</button>
-                <a href="<?php BASE_URL ?>tipo_transaccion" class="k-button">Cancelar</a>
+                <p><button type="submit" class="k-button">Guardar</button>
+                <a href="<?php BASE_URL ?>tipo_transaccion" class="k-button">Cancelar</a></p>
             </td>
         </tr>
     </table>

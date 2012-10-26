@@ -66,7 +66,6 @@ abstract class controller {
 
     protected function filtrarInt($int) {
         $int = (int) $int;
-
         if (is_int($int)) {
             return $int;
         } else {
@@ -82,6 +81,13 @@ abstract class controller {
             }
         }
         return $nuevo;
+    }
+    
+    protected function fecha_en($fecha) {
+	$a=substr($fecha,6,4);
+	$m=substr($fecha,0,2);
+	$d=substr($fecha,3,2);
+	return "$a-$m-$d";
     }
 
 }

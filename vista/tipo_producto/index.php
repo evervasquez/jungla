@@ -1,5 +1,5 @@
-<p><h3>Lista de Tipos de Producto</h3></p>
 <?php if (isset($this->datos) && count($this->datos)) { ?>
+<p><h3>Lista de Tipos de Producto</h3></p>
     <table border="1">
         <tr>
             <th>Codigo</th>
@@ -19,7 +19,7 @@
 
     <?php } else { ?>
         <tr>
-            <td>No hay tipos de servicio</td>
+            <td><p>No hay tipos de producto</p></td>
         </tr>
     <?php } ?>
 </table>
