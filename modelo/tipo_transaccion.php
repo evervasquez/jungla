@@ -28,7 +28,7 @@ class tipo_transaccion {
 
     public function inserta() {
         $datos = array($this->idtipo_transaccion, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_tipo_transaccion", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_tipo_transaccion", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -36,7 +36,7 @@ class tipo_transaccion {
 
     public function actualiza() {
         $datos = array($this->idtipo_transaccion, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_tipo_transaccion", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_tipo_transaccion", $datos);
         $error = $r[1];
         $r = null;
         return $error;

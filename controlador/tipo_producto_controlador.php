@@ -2,54 +2,58 @@
 
 class tipo_producto_controlador extends controller {
     
+ private $_tipo_producto;
+
     public function __construct() {
         parent::__construct();
+        $this->_tipo_producto = $this->cargar_modelo('tipo_producto');
     }
 
-    public function grilla() {
-        $objtipoproducto = new tipo_producto();
-        $objtipoproducto->idtipo_producto= 0;
-        $stmt = $objtipoproducto->selecciona();
-        return $stmt;
-    }
-
-    public function selecciona($id) {
-        $objtipoproducto = new tipo_producto();
-        $objtipoproducto->idtipo_producto = $id;
-        $stmt = $objtipoproducto->selecciona();
-        return $stmt;
-    }
-
-    public function elimina($id) {
-        $objtipoproducto = new tipo_producto();
-        $objtipoproducto->idtipo_producto = $id;
-        $error = $objtipoproducto->elimina();
-        return $error;
-    }
-
-    public function inserta($datos) {
-        $objtipoproducto = new tipo_producto();
-        $objtipoproducto->idtipo_producto = $datos[0];
-        $objtipoproducto->descripcion = $datos[1];
-        $error = $objtipoproducto->inserta();
-        return $error;
-    }
-
-    public function actualiza($datos) {
-        $objtipoproducto = new tipo_producto();
-        $objtipoproducto->idtipo_producto = $datos[0];
-        $objtipoproducto->descripcion = $datos[1];
-        $error = $objtipoproducto->actualiza();
-        return $error;
-    }
-    
     public function index() {
+        $this->_tipo_producto->idtipo_producto = 0;
+        $this->_vista->datos = $this->_tipo_producto->selecciona();
         $this->_vista->renderizar('index');
     }
-    
-    public function nuevo(){
+
+    public function nuevo() {
+        if ($_POST['guardar'] == 1) {
+            $this->_tipo_producto->idtipo_producto = 0;
+            $this->_tipo_producto->descripcion = $_POST['descripcion'];
+            $this->_tipo_producto->inserta();
+            $this->redireccionar('tipo_producto');
+        }
+        $this->_vista->titulo = 'Registrar Tipos de Producto';
+        $this->_vista->action = BASE_URL . 'tipo_producto/nuevo';
         $this->_vista->renderizar('form');
     }
+
+    public function editar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('tipo_producto');
+        }
+
+        $this->_tipo_producto->idtipo_producto = $this->filtrarInt($id);
+        $this->_vista->datos = $this->_tipo_producto->selecciona();
+
+        if ($_POST['guardar'] == 1) {
+            $this->_tipo_producto->idtipo_producto = $_POST['codigo'];
+            $this->_tipo_producto->descripcion = $_POST['descripcion'];
+            $this->_tipo_producto->actualiza();
+            $this->redireccionar('tipo_producto');
+        }
+        $this->_vista->titulo = 'Actualizar Tipos de Producto';
+        $this->_vista->renderizar('form');
+    }
+
+    public function eliminar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('tipo_producto');
+        }
+        $this->_tipo_producto->idtipo_producto = $this->filtrarInt($id);
+        $this->_tipo_producto->elimina();
+        $this->redireccionar('tipo_producto');
+    }
+
 }
 
 ?>
