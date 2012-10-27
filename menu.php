@@ -19,7 +19,7 @@ Class menu {
         echo "<div align='center' id='cuerpo'>";
     }
 
-    function cargarmenu($id) {
+    function cargarmenu() {
         
         for($i=0; $i< count($this->_datos); $i++){
             if($this->_c==0){
