@@ -1,5 +1,5 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
-<p><h3>Lista de Tipos de Transaccion</h3></p>
+<h3>Lista de Tipos de Transaccion</h3>
     <table border="1">
         <tr>
             <th>Codigo</th>

@@ -89,6 +89,7 @@ abstract class controller {
 	$d=substr($fecha,0,2);
 	$m=substr($fecha,3,2);
 	$a=substr($fecha,6,4);
+//        die($a-$m-$d);
 	return "$a-$m-$d";
     }
 

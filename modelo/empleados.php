@@ -58,7 +58,7 @@ class empleados {
         return $error;
     }
     
-    public function selecciona($usuario,$clave) {
+    public function seleccionar($usuario,$clave) {
         $datos = array($usuario,$clave);
         $r = consulta::procedimientoAlmacenado("pa_valida_login", $datos);
         if ($r[1] == '') {

@@ -3,8 +3,11 @@
 class ubigeos {
 
     public $idubigeo;
-    public $idregion;
+    public $codigo_region;
+    public $codigo_provincia;
+    public $codigo_distrito;
     public $descripcion;
+    public $idpais;
 
     public function selecciona() {
         $datos = array($this->idubigeo);
