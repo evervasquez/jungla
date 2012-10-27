@@ -1,6 +1,6 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
-    <table width="50%" align="center">
+    <table width="50%" align="center" class="tabForm">
         <caption><h3><?php echo $this->titulo ?></h3></caption>
         <tr>
             <td><label>Codigo:</label></td>
@@ -13,7 +13,7 @@
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         <tr>
-            <td><label>Descripcion:</label></td>
+            <td><label>Abreviatura:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese abreviatura" required name="abreviatura"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['abreviatura']))echo $this->datos[0]['abreviatura']?>"/></td>
         </tr>
