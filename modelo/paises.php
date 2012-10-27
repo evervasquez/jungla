@@ -3,7 +3,6 @@
 class paises {
 
     public $idpais;
-    public $descripcion;
 
     public function selecciona() {
         $datos = array($this->idpais);
