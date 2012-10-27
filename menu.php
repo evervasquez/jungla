@@ -37,7 +37,6 @@ Class menu {
             }
         }
         echo "</ul></li>";
-        echo "</ul";
     }
 }
 ?>
