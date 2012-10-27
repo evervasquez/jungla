@@ -70,5 +70,5 @@
             	<td colspan="4" align="center"><button type="submit" class="k-button">Guardar</button></td>
             </tr>
         </table>
-        </fieñdset>
+        </fieldset>
     </form>
