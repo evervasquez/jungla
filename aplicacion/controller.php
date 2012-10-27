@@ -19,8 +19,10 @@ abstract class controller {
     public function __construct() {
         
         $this->_modelo = $this->cargar_modelo('modulos');
-        $this->_modelo->idmodulo = 0;
+        $this->_modelo->idmodulo = 9999;
         $menu = $this->_modelo->selecciona();
+        $cabeceras= array('modulos','modulos_hijos','url');
+        $menu=$this->get_matriz($menu, $cabeceras);
         $this->_vista = new view(new request, $menu);
         
     }

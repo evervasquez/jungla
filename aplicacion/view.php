@@ -45,7 +45,7 @@ class view {
             //incluimos los layout
             include_once ROOT . DS . 'cabecera.php';
             include_once ROOT. DS . 'menu.php';
-            $_men=new menu($this->_menu);
+            new menu($this->_menu);
             include_once $ruta_vista;
             include_once ROOT . DS . 'pie.php';
             //incluimos la vista

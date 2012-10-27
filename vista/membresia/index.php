@@ -12,7 +12,7 @@
                 <td><?php echo $this->datos[$i]['idmembresia'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <td><a href="<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">[Editar]</a>
-                <a href="<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>">[Eliminar]</a></td>
+                <a href="javascript:eliminar('<?php echo BASE_URL?>membresia','<?php echo $this->datos[$i]['idmembresia'] ?>')">[Eliminar]</a></td>
                 
             </tr>
         <?php } ?>
