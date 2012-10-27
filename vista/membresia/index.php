@@ -1,6 +1,6 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <p><h3>Lista de Membresias</h3></p>
-    <table border="1">
+    <table border="1" class="tabgrilla">
         <tr>
             <th>Codigo</th>
             <th>Descripcion</th>
@@ -9,9 +9,9 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idmembresia'] ?></td>
+                <td class="tabtr"><?php echo $this->datos[$i]['idmembresia'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td align="center"><a href="<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">
+                <td align="center" class="tabtr"><a href="<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
                 <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>

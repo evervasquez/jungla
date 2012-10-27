@@ -15,19 +15,19 @@
         <tr>
             <td><label>Descuento:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese descuento" required name="descuento" onkeypress="return dosDecimales(event, this)"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>" /></td>
+                       id="descuento" value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>" /></td>
         </tr>
         <tr>
             <td><label>Fecha de Inicio:</label></td>
             <td><input class="datepicker" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_inicio"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['fecha_inicio'])){
+                       id="fechaini" value="<?php if(isset ($this->datos[0]['fecha_inicio'])){
                                $fecha=$this->datos[0]['fecha_inicio'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
         </tr>
         <tr>
             <td><label>Fecha de Finalizacion:</label></td>
             <td><input class="datepicker" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_final"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['fecha_final'])){
+                       id="fechafin" value="<?php if(isset ($this->datos[0]['fecha_final'])){
                                $fecha=$this->datos[0]['fecha_final'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
         </tr>

@@ -20,6 +20,12 @@ body{
 .imgfrm{
         width: 25px;
 }
+.tabgrilla{
+        width:100%;
+}
+.tabtr{
+        width: 10%;
+}
 #cabecera{
         background-image: url("/sisjungla/lib/img/banner.jpg");
         background-repeat: no-repeat;
