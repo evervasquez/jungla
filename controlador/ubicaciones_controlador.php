@@ -1,7 +1,7 @@
 <?php
 
 class ubicaciones_controlador extends controller {
-    
+
     private $_ubicaciones;
     private $_almacenes;
 
@@ -25,6 +25,8 @@ class ubicaciones_controlador extends controller {
             $this->_ubicaciones->inserta();
             $this->redireccionar('ubicaciones');
         }
+        $this->_almacenes->idalmacen = 0;
+        $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
         $this->_vista->titulo = 'Registrar Ubicacion';
         $this->_vista->action = BASE_URL . 'ubicaciones/nuevo';
         $this->_vista->renderizar('form');

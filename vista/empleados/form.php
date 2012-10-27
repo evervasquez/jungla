@@ -78,15 +78,19 @@
         <tr>
             <td><label>Fecha de Nacimiento:</label></td>
             <td>
-                <input class="datepicker" readonly="readonly" value="" placeholder="Seleccione fecha" required name="fecha_nacimiento"
-                   id="" value="<?php if(isset ($this->datos[0]['fecha_nacimiento']))echo $this->datos[0]['fecha_nacimiento']?>"/>
+                <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_nacimiento"
+                   id="" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
+                           $fecha=$this->datos[0]['fecha_nacimiento'];
+                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
             </td>
         </tr>
         <tr>
             <td><label>Fecha de Contratacion:</label></td>
             <td>
-                <input class="datepicker" readonly="readonly" value="" placeholder="Seleccione fecha" required name="fecha_contratacion"
-                   id="" value="<?php if(isset ($this->datos[0]['fecha_contratacion']))echo $this->datos[0]['fecha_contratacion']?>"/>
+                <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_contratacion"
+                   id="" value="<?php if(isset ($this->datos[0]['fecha_contratacion'])){
+                           $fecha=$this->datos[0]['fecha_contratacion'];
+                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
             </td>
         </tr>
         <tr>

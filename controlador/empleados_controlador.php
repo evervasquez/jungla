@@ -23,17 +23,21 @@ class empleados_controlador extends controller {
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
+//            echo '<pre>';
+//            print_r($_POST);
+//            echo '</pre>';
+//            exit;
             $this->_empleados->idempleado = 0;
             $this->_empleados->nombres = $_POST['nombres'];
             $this->_empleados->apellidos = $_POST['apellidos'];
             $this->_empleados->dni = $_POST['dni'];
             $this->_empleados->telefono = $_POST['telefono'];
             $this->_empleados->direccion = $_POST['direccion'];
-            $this->_empleados->idubigeo = $_POST['ubigeo'];
-            $this->_empleados->idprofesion = $_POST['profesion'];
             $this->_empleados->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
             $this->_empleados->fecha_contratacion = $this->fecha_en($_POST['fecha_contratacion']);
+            $this->_empleados->idubigeo = $_POST['ubigeo'];
             $this->_empleados->idperfil = $_POST['perfil'];
+            $this->_empleados->idprofesion = $_POST['profesion'];
             $this->_empleados->usuario = $_POST['usuario'];
             $this->_empleados->clave = $_POST['clave'];
             $this->_empleados->estado = $_POST['estado'];
@@ -67,16 +71,16 @@ class empleados_controlador extends controller {
 
         if ($_POST['guardar'] == 1) {
             $this->_empleados->idempleado = $_POST['codigo'];
-            $this->_empleados->nombres = $_POST['nombre'];
+            $this->_empleados->nombres = $_POST['nombres'];
             $this->_empleados->apellidos = $_POST['apellidos'];
             $this->_empleados->dni = $_POST['dni'];
             $this->_empleados->telefono = $_POST['telefono'];
             $this->_empleados->direccion = $_POST['direccion'];
-            $this->_empleados->idubigeo = $_POST['ubigeo'];
-            $this->_empleados->idprofesion = $_POST['profesion'];
             $this->_empleados->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
             $this->_empleados->fecha_contratacion = $this->fecha_en($_POST['fecha_contratacion']);
+            $this->_empleados->idubigeo = $_POST['ubigeo'];
             $this->_empleados->idperfil = $_POST['perfil'];
+            $this->_empleados->idprofesion = $_POST['profesion'];
             $this->_empleados->usuario = $_POST['usuario'];
             $this->_empleados->clave = $_POST['clave'];
             $this->_empleados->estado = $_POST['estado'];
