@@ -17,9 +17,10 @@
                 <td><?php echo $this->datos[$i]['descuento'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha_inicio'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha_final'] ?></td>
-                <td><a href="<?php echo BASE_URL?>promociones/editar/<?php echo $this->datos[$i]['idpromocion'] ?>">[Editar]</a>
-                <a href="<?php echo BASE_URL?>promociones/eliminar/<?php echo $this->datos[$i]['idpromocion'] ?>">[Eliminar]</a></td>
-                
+                <td align="center"><a href="<?php echo BASE_URL?>promociones/editar/<?php echo $this->datos[$i]['idpromocion'] ?>">
+                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>promociones/eliminar/<?php echo $this->datos[$i]['idpromocion'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>
 

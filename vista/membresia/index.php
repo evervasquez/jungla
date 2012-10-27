@@ -11,9 +11,10 @@
             <tr>
                 <td><?php echo $this->datos[$i]['idmembresia'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><a href="<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">[Editar]</a>
-                <a href="javascript:eliminar('<?php echo BASE_URL?>membresia','<?php echo $this->datos[$i]['idmembresia'] ?>')">[Eliminar]</a></td>
-                
+                <td align="center"><a href="<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>">
+                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>
 

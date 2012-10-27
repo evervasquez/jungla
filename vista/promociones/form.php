@@ -19,17 +19,17 @@
         </tr>
         <tr>
             <td><label>Fecha de Inicio:</label></td>
-            <td><input class="datepicker" value="" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_inicio"
+            <td><input class="datepicker" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_inicio"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['fecha_inicio'])){
                                $fecha=$this->datos[0]['fecha_inicio'];
-                               echo substr($fecha,5,2).'/'.substr($fecha,8,2).'/'.substr($fecha,0,4);}?>"/></td>
+                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
         </tr>
         <tr>
             <td><label>Fecha de Finalizacion:</label></td>
-            <td><input class="datepicker" value="" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_final"
+            <td><input class="datepicker" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_final"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['fecha_final'])){
                                $fecha=$this->datos[0]['fecha_final'];
-                               echo substr($fecha,5,2).'/'.substr($fecha,8,2).'/'.substr($fecha,0,4);}?>"/></td>
+                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
