@@ -19,7 +19,7 @@ class servicios_controlador extends controller {
         $this->_vista->renderizar('index');
     }
 
-    public function nuevo() {
+    public function nuevo() {        
         if ($_POST['guardar'] == 1) {
             $this->_servicios->idservicio = 0;
             $this->_servicios->descripcion = $_POST['descripcion'];

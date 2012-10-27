@@ -28,7 +28,7 @@ class paquetes {
 
     public function inserta() {
         $datos = array($this->idpaquete, $this->descuento, $this->costo);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_paquetes", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_paquetes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -36,7 +36,7 @@ class paquetes {
 
     public function actualiza() {
         $datos = array($this->idpaquete, $this->descuento, $this->costo);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_paquetes", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_paquetes", $datos);
         $error = $r[1];
         $r = null;
         return $error;

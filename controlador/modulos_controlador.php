@@ -21,6 +21,7 @@ class modulos_controlador extends controller{
             $this->_modulos->descripcion = $_POST['descripcion'];
             $this->_modulos->url = $_POST['url'];
             $this->_modulos->idmodulo_padre = $_POST['modulo_padre'];
+            $this->_modulos->estado = $_POST['estado'];
             $this->_modulos->inserta();
             $this->redireccionar('modulos');
         }
@@ -41,6 +42,9 @@ class modulos_controlador extends controller{
         if ($_POST['guardar'] == 1) {
             $this->_modulos->idmodulo = $_POST['codigo'];
             $this->_modulos->descripcion = $_POST['descripcion'];
+            $this->_modulos->url = $_POST['url'];
+            $this->_modulos->idmodulo_padre = $_POST['modulo_padre'];
+            $this->_modulos->estado = $_POST['estado'];
             $this->_modulos->actualiza();
             $this->redireccionar('modulos');
         }

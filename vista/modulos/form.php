@@ -36,8 +36,13 @@
         <tr>
             <td><label>Estado:</label></td>
             <td>
-                <input type="radio" name="estado" checked="checked"/>Activo
-                <input type="radio" name="estado" />Inactivo
+                <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
+                    <input type="radio" name="estado" value ="1" />Activo
+                    <input type="radio" name="estado" value="0" checked="checked"/>Inactivo
+                <?php } else { ?>
+                <input type="radio" name="estado" value ="1" checked="checked"/>Activo
+                <input type="radio" name="estado" value="0" />Inactivo
+                <?php } ?>
             </td>
         </tr>
         <tr>
