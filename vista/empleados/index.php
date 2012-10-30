@@ -6,12 +6,10 @@
             <th><label>Codigo</label></th>
             <th><label>Nombre</label></th>
             <th><label>Apellidos</label></th>
-            <th><label>DNI</label></th>
             <th><label>Telefono</label></th>
             <th><label>Direccion</label></th>
             <th><label>Perfil</label></th>
             <th><label>Ubigeo</label></th>
-            <th><label>Profesion</label></th>
             <th><label>Accion</label></th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -19,12 +17,10 @@
                 <td><?php echo $this->datos[$i]['idempleado'] ?></td>
                 <td><?php echo $this->datos[$i]['nombres'] ?></td>
                 <td><?php echo $this->datos[$i]['apellidos'] ?></td>
-                <td><?php echo $this->datos[$i]['dni'] ?></td>
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['direccion'] ?></td>
                 <td><?php echo $this->datos[$i]['perfil'] ?></td>
                 <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
-                <td><?php echo $this->datos[$i]['profesion'] ?></td>
                 <td class="tabtr" align="center">
                 <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
