@@ -13,7 +13,8 @@
                 <td class="tabtr"><?php echo $this->datos[$i]['idubicacion'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <td><?php echo $this->datos[$i]['almacen'] ?></td>
-                <td class="tabtr" align="center"><a href="<?php echo BASE_URL?>ubicaciones/editar/<?php echo $this->datos[$i]['idubicacion'] ?>">
+                <td class="tabtr" align="center">
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>ubicaciones/editar/<?php echo $this->datos[$i]['idubicacion'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
                 <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>ubicaciones/eliminar/<?php echo $this->datos[$i]['idubicacion'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
