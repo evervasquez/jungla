@@ -19,6 +19,7 @@ body{
 }
 .imgfrm{
         width: 25px;
+        border: none;
 }
 .tabgrilla{
         width:100%;

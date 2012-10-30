@@ -1,4 +1,20 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<script type="text/javascript">
+    $(function() {    
+    $( "#descripcion" ).focus(); 
+    $( "#saveform" ).click(function(){
+        bval = true;        
+        bval = bval && $( "#descripcion" ).required();
+        bval = bval && $( "#descuento" ).required(); 
+        bval = bval && $( "#fechaini" ).required();
+        bval = bval && $( "#fechafin" ).required();     
+        if ( bval ) {
+            $("#frm").submit();
+        }
+        return false;
+    });   
+});
+</script>
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm" >
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <table width="50%" align="center">
         <caption><h3><?php echo $this->titulo ?></h3></caption>
@@ -19,21 +35,21 @@
         </tr>
         <tr>
             <td><label>Fecha de Inicio:</label></td>
-            <td><input class="datepicker" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_inicio"
+            <td><input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_inicio"
                        id="fechaini" value="<?php if(isset ($this->datos[0]['fecha_inicio'])){
                                $fecha=$this->datos[0]['fecha_inicio'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
         </tr>
         <tr>
             <td><label>Fecha de Finalizacion:</label></td>
-            <td><input class="datepicker" readonly="readonly" placeholder="Ingrese fecha" required name="fecha_final"
+            <td><input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_final"
                        id="fechafin" value="<?php if(isset ($this->datos[0]['fecha_final'])){
                                $fecha=$this->datos[0]['fecha_final'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <p><button type="submit" class="k-button">Guardar</button>
+                <p><button type="submit" class="k-button" id="saveform">Guardar</button>
                 <a href="<?php echo BASE_URL ?>promociones" class="k-button">Cancelar</a></p>
             </td>
         </tr>

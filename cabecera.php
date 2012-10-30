@@ -14,6 +14,7 @@
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/script.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/validaciones.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/kendo.all.min.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/html5.js"></script>
     </head>
     <body>
         <a href="<?php echo BASE_URL ?>" id="cabecera"></a>

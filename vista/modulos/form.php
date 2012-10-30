@@ -9,7 +9,7 @@
         </tr>
         <tr>
             <td><label>Descripcion:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese modulo" required name="descripcion"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese modulo" required name="descripcion" onkeypress="return soloLetras(event)"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         

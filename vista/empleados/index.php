@@ -1,7 +1,7 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <p><h3>Lista de Empleados</h3></p>
 
-    <table border="1">
+    <table border="1" class="tabgrilla">
         <tr>
             <th><label>Codigo</label></th>
             <th><label>Nombre</label></th>
