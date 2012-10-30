@@ -9,7 +9,7 @@ class empleados_controlador extends controller {
     private $_ubigeos;
     private $_perfiles;
     private $_profesiones;
-
+    
     public function __construct() {
         if (!$this->acceso(session::get('perfil'), 'Empleados')) {
             $this->redireccionar('error/access/5050');

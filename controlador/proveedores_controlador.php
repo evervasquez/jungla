@@ -88,6 +88,10 @@ class proveedores_controlador extends controller {
         }
         $this->_proveedores->idproveedor = $this->filtrarInt($id);
         $datos = $this->_proveedores->selecciona();
+//            echo '<pre>';
+//            print_r($_POST);
+//            echo '</pre>';
+//            exit;
         //obtenemos todos los paises
         $this->_paises->idpais = 0;
         $this->_vista->datos_paises = $this->_paises->selecciona();

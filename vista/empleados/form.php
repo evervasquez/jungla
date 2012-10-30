@@ -13,9 +13,9 @@ $(document).ready(function(){
                 for(var i=0;i<datos.length;i++){
                     $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
-                $("#regiones").kendoComboBox();
-                $("#provincias").kendoComboBox();
-                $("#ciudades").kendoComboBox();
+//                $("#regiones").kendoComboBox();
+//                $("#provincias").kendoComboBox();
+//                $("#ciudades").kendoComboBox();
             },'json');
         }
     });

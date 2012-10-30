@@ -5,10 +5,10 @@ class habitaciones {
     public $idhabitacion;
     public $descripcion;
     public $nro_habitacion;
+    public $ventilacion;
     
-
     public function inserta() {
-        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion);
+        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
         $error = $r[1];
         $r = null;
@@ -16,7 +16,7 @@ class habitaciones {
     }
 
     public function actualiza() {
-        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion);
+        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
         $error = $r[1];
         $r = null;

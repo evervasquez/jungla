@@ -2,56 +2,21 @@
 
 class habitaciones_controlador extends controller {
     
+    private $_habitaciones;
+    private $_detalle_habitacion;
+
     public function __construct() {
         parent::__construct();
+        $this->_habitaciones = $this->cargar_modelo('habitaciones');
+        $this->_detalle_habitacion= $this->cargar_modelo('detalle_habitacion');
     }
 
-    public function grilla() {
-        $objhabitaciones = new habitaciones();
-        $objhabitaciones->idhabitacion= 0;
-        $stmt = $objhabitaciones->selecciona();
-        return $stmt;
-    }
-
-    public function selecciona($id) {
-        $objhabitaciones = new habitaciones();
-        $objhabitaciones->idhabitacion = $id;
-        $stmt = $objhabitaciones->selecciona();
-        return $stmt;
-    }
-
-    public function elimina($id) {
-        $objhabitaciones = new habitaciones();
-        $objhabitaciones->idhabitacion = $id;
-        $error = $objhabitaciones->elimina();
-        return $error;
-    }
-
-    public function inserta($datos) {
-        $objhabitaciones = new habitaciones();
-        $objhabitaciones->idhabitacion = $datos[0];
-        $objhabitaciones->descripcion = $datos[1];
-        $objhabitaciones->nro_habitacion = $datos[2];
-        $error = $objhabitaciones->inserta();
-        return $error;
-    }
-
-    public function actualiza($datos) {
-        $objhabitaciones = new habitaciones();
-        $objhabitaciones->idhabitacion = $datos[0];
-        $objhabitaciones->descripcion = $datos[1];
-        $objhabitaciones->nro_habitacion = $datos[2];
-        $error = $objhabitaciones->actualiza();
-        return $error;
-    }
-    
     public function index() {
+        $this->_habitaciones->idhabitacion = 0;
+        $this->_vista->datos = $this->_habitaciones->selecciona();
         $this->_vista->renderizar('index');
     }
     
-    public function nuevo(){
-        $this->_vista->renderizar('form');
-    }
 }
 
 ?>
