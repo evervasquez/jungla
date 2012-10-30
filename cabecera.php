@@ -21,10 +21,13 @@
         <div id="principal">
         	<div id="siscom"><h1 class="k-label">La Jungla</h1></div>
             	<div id="sesion">
-                	<div id="userSesion"><label>Jair Vasquez</label></div>
-            		<div id="linkSesion"><a href="#">perfil</a> | <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
+<!--                	<div id="userSesion"><label>Jair Vasquez</label></div>-->
+                        <?php if(session::get('autenticado')){ ?>
+                            <div id="userSesion"><label><?php echo session::get('empleado') ?></label></div>
+                            <div id="linkSesion"><a href="#" onclick="alert('<?php echo session::get('perfil')?>')">perfil</a> | 
+                                <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
+                        <?php }else{ ?>
+                            <div id="linkSesion"><a href="<?php echo BASE_URL?>login/index">iniciar sesion</a></div>
+                        <?php } ?>
                         <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label></div>
                 </div>
-            
-                
-              

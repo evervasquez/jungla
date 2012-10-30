@@ -10,12 +10,8 @@ class servicios_controlador extends controller {
     }
 
     public function index() {
-//        $this->_vista->datos = $this->_servicios->selecciona();
-        
         $this->_servicios->idservicio = 0;
-        $datos = $this->_servicios->selecciona();
-        $cabeceras = array ('idservicio','descripcion');
-        $this->_vista->datos = $this->get_matriz($datos, $cabeceras);
+        $this->_vista->datos = $this->_servicios->selecciona();
         $this->_vista->renderizar('index');
     }
 
