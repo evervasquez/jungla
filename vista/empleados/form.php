@@ -9,13 +9,13 @@ $(document).ready(function(){
             $.post('/sisjungla/empleados/get_regiones','idpais='+$("#paises").val(),function(datos){
                 $("#regiones").html('<option></option>');
                 $("#provincias").html('<option></option>');
-                $("#ciudades").html('<option></option>');
+                $("#ubigeo").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
                     $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
                 $("#regiones").kendoComboBox();
                 $("#provincias").kendoComboBox();
-                $("#ciudades").kendoComboBox();
+                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -26,12 +26,12 @@ $(document).ready(function(){
         }else{
             $.post('/sisjungla/empleados/get_provincias','idregion='+$("#regiones").val(),function(datos){
                 $("#provincias").html('<option></option>');
-                $("#ciudades").html('<option></option>')
+                $("#ubigeo").html('<option></option>')
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
                 $("#provincias").kendoComboBox();
-                $("#ciudades").kendoComboBox();
+                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -41,11 +41,11 @@ $(document).ready(function(){
             $("#ciudades").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
-                $("#ciudades").html('<option></option>');
+                $("#ubigeo").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
-                    $("#ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                    $("#ubigeo").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
-                $("#ciudades").kendoComboBox();
+                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -170,7 +170,7 @@ $(document).ready(function(){
         <tr>
             <td><label>Ciudad:</label></td>
             <td>
-                <select placeholder="Seleccione..." required name="ubigeo" id="ciudades">
+                <select placeholder="Seleccione..." required name="ubigeo" id="ubigeo">
                     <option></option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
