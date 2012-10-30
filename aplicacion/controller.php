@@ -1,15 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of controlador
- *
- * @author pedro
- */
 abstract class controller {
 
     protected $_vista;
@@ -20,10 +10,9 @@ abstract class controller {
         
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
-        $menu = $this->_modelo->selecciona();
-        $cabeceras= array('modulos','modulos_hijos','url');
-        $menu=$this->get_matriz($menu, $cabeceras);
+        $menu=$this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
+        
         
     }
 
@@ -75,22 +64,25 @@ abstract class controller {
         }
     }
     
-    protected function get_matriz($datos,$cabeceras){
-        $nuevo;
-        for($i=0;$i<count($datos);$i++){
-            for($j=0;$j<count($cabeceras);$j++){
-                $nuevo[$i][$cabeceras[$j]]=$datos[$i][$cabeceras[$j]];
-            }
-        }
-        return $nuevo;
-    }
-    
     protected function fecha_en($fecha) {
 	$d=substr($fecha,0,2);
 	$m=substr($fecha,3,2);
 	$a=substr($fecha,6,4);
-//        die($a-$m-$d);
 	return "$a-$m-$d";
+    }
+    
+    public function acceso($perfil,$modulo){
+        if (!session::get('autenticado')) {
+            header('location:' . BASE_URL . 'error/access/5050');
+            exit;
+        }
+        $permisos = $this->cargar_modelo('permisos');
+        $permiso=$permisos->seleccionar($perfil,$modulo);
+        if($permiso[0]['perfil']==''){
+            return false;
+        }else{
+            return true;
+        }
     }
 
 }

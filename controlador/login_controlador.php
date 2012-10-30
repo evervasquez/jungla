@@ -8,22 +8,23 @@ class login_controlador extends controller {
 
     public function index() {
         session::set('autenticado', true);
-        session::set('level', 'especial');
-        session::set('var1', 'var1');
-        session::set('var2', 'var2');
-
-        $this->redireccionar('login/mostrar');
+        session::set('empleado', 'Mauro Flores');
+        session::set('perfil', 'administrador');
+//        session::set('perfil', 'vendedor');
+        
+        $this->redireccionar();
+//        $this->redireccionar('login/mostrar');
     }
 
     public function mostrar() {
-        echo 'Level: ' . session::get('level') . '<br>';
-        echo 'Var1: ' . session::get('var1') . '<br>';
-        echo 'Var2: ' . session::get('var2') . '<br>';
+        echo 'Empleado: ' . session::get('empleado') . '<br>';
+        echo 'Perfil: ' . session::get('perfil') . '<br>';
     }
 
     public function cerrar() {
         session::destroy();
-        $this->redireccionar('login/mostrar');
+        $this->redireccionar();
+//        $this->redireccionar('login/mostrar');
     }
 
 }
