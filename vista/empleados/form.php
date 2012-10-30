@@ -2,16 +2,18 @@
 $(document).ready(function(){
     
     $("#paises").change(function(){
+        $("#regiones").removeClass("combo");
         if(!$("#paises").val()){
-            $("#regiones").html('<option>Seleccione...</option>');
+            $("#regiones").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_regiones','idpais='+$("#paises").val(),function(datos){
-                $("#regiones").html('<option>Seleccione...</option>');
-                $("#provincias").html('<option>Seleccione...</option>');
-                $("#ciudades").html('<option>Seleccione...</option>');
+                $("#regiones").html('<option></option>');
+                $("#provincias").html('<option></option>');
+                $("#ciudades").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
                     $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
+                $("#regiones").kendoComboBox();
             },'json');
         }
     });
@@ -38,7 +40,7 @@ $(document).ready(function(){
                 $("#ciudades").html('<option>Seleccione...</option>');
                 for(var i=0;i<datos.length;i++){
                     $("#ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
+                }                
             },'json');
         }
     });
@@ -129,8 +131,8 @@ $(document).ready(function(){
          <tr>
             <td><label>Region:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="regiones">
-                    <option>Seleccione...</option>
+                <select class="combo" placeholder="Seleccione..." required id="regiones">
+                    <option></option>
                     <?php if(count($this->datos_regiones)){ ?>
                         <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
                             <?php if( $this->datos[0]['idregion'] == $this->datos_regiones[$i]['idubigeo'] ){ ?>
