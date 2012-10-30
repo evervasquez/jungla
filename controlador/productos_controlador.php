@@ -61,6 +61,68 @@ class productos_controlador extends controller {
         $this->_vista->renderizar('form');
     }
     
+    public function inserta_um(){        
+        $this->_unidad_medida->idunidad_medida=0;
+        $this->_unidad_medida->descripcion=$_POST['descripcion'];
+        $this->_unidad_medida->abreviatura=$_POST['abreviatura'];
+        $this->_unidad_medida->inserta();
+    }
+    
+    public function get_um(){
+        $this->_unidad_medida->idunidad_medida=$_POST['id'];
+        echo json_encode($this->_unidad_medida->selecciona());
+    }
+    
+    public function editar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('productos');
+        }        
+//            echo '<pre>';
+//            print_r($_POST);
+//            echo '</pre>';
+//            exit;
+        if ($_POST['guardar'] == 1) {
+            $this->_productos->idempleado = $_POST['codigo'];
+            $this->_productos->descripcion = $_POST['descripcion'];
+            $this->_productos->precio_unitario= $_POST['precio_unitario'];
+            $this->_productos->observaciones = $_POST['observaciones'];
+            $this->_productos->idservicio = $_POST['servicio'];
+            $this->_productos->idtipo_producto = $_POST['tipo_producto'];
+            $this->_productos->idunidad_medida = $_POST['unidad_medida'];
+            $this->_productos->idubicacion = $_POST['ubicacion'];
+            $this->_productos->idpromocion= $_POST['promocion'];
+            $this->_productos->stock = $_POST['stock'];
+            $this->_productos->estado = $_POST['estado'];
+            $this->_productos->precio_compra = $_POST['precio_compra'];
+            $this->_productos->actualiza();
+            $this->redireccionar('productos');
+        }
+        
+        $this->_productos->idproducto = $this->filtrarInt($id);
+        $this->_vista->datos= $this->_productos->selecciona();
+        $this->_servicios->idservicio=0;
+        $this->_vista->datos_servicios= $this->_servicios->selecciona();
+        $this->_tipo_producto->idtipo_producto=0;
+        $this->_vista->datos_tipo= $this->_tipo_producto->selecciona();
+        $this->_unidad_medida->idunidad_medida=0;
+        $this->_vista->datos_um= $this->_unidad_medida->selecciona();
+        $this->_ubicaciones->idubicacion=0;
+        $this->_vista->datos_ubicaciones= $this->_ubicaciones->selecciona();
+        $this->_promociones->idpromocion=0;
+        $this->_vista->datos_promociones= $this->_promociones->selecciona();
+        $this->_vista->titulo = 'Actualizar Producto';
+        $this->_vista->renderizar('form');
+    }
+    
+    public function eliminar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('productos');
+        }
+        $this->_productos->idproducto = $this->filtrarInt($id);
+        $this->_productos->elimina();
+        $this->redireccionar('productos');
+    }
+    
 }
 
 ?>

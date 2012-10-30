@@ -1,8 +1,8 @@
 <script>
 $(document).ready(function(){
+    $('select').kendoComboBox();
     
     $("#paises").change(function(){
-        $("#regiones").removeClass("combo");
         if(!$("#paises").val()){
             $("#regiones").html('<option></option>');
         }else{
@@ -14,33 +14,38 @@ $(document).ready(function(){
                     $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
                 $("#regiones").kendoComboBox();
+                $("#provincias").kendoComboBox();
+                $("#ciudades").kendoComboBox();
             },'json');
         }
     });
     
     $("#regiones").change(function(){
         if(!$("#regiones").val()){
-            $("#provincias").html('<option>Seleccione...</option>');
+            $("#provincias").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_provincias','idregion='+$("#regiones").val(),function(datos){
-                $("#provincias").html('<option>Seleccione...</option>');
-                $("#ciudades").html('<option>Seleccione...</option>')
+                $("#provincias").html('<option></option>');
+                $("#ciudades").html('<option></option>')
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
+                $("#provincias").kendoComboBox();
+                $("#ciudades").kendoComboBox();
             },'json');
         }
     });
     
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
-            $("#ciudades").html('<option>Seleccione...</option>');
+            $("#ciudades").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
-                $("#ciudades").html('<option>Seleccione...</option>');
+                $("#ciudades").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
                     $("#ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }                
+                }       
+                $("#ciudades").kendoComboBox();
             },'json');
         }
     });
@@ -116,7 +121,7 @@ $(document).ready(function(){
         <tr>
             <td><label>Pais:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." required id="paises">
+                <select placeholder="Seleccione..." required id="paises">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
                         <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] ){ ?>
@@ -131,7 +136,7 @@ $(document).ready(function(){
          <tr>
             <td><label>Region:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." required id="regiones">
+                <select placeholder="Seleccione..." required id="regiones">
                     <option></option>
                     <?php if(count($this->datos_regiones)){ ?>
                         <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
@@ -149,7 +154,7 @@ $(document).ready(function(){
             <td><label>Provincia:</label></td>
             <td>
                 <select placeholder="Seleccione..." required id="provincias">
-                    <option>Seleccione...</option>
+                    <option></option>
                     <?php if(count($this->datos_provincias)){ ?>
                         <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
                             <?php if( $this->datos[0]['idprovincia'] == $this->datos_provincias[$i]['idubigeo'] ){ ?>
@@ -166,7 +171,7 @@ $(document).ready(function(){
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." required name="ubigeo" id="ciudades">
-                    <option>Seleccione...</option>
+                    <option></option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>

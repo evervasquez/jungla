@@ -15,7 +15,7 @@ class unidad_medida {
             die($r[1]);
         }
         $r = null;
-//        $stmt = $r[0];
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

@@ -27,7 +27,7 @@
                             <div id="linkSesion"><a href="#" onclick="alert('<?php echo session::get('perfil')?>')">perfil</a> | 
                                 <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
                         <?php }else{ ?>
-                            <div id="linkSesion"><a href="<?php echo BASE_URL?>login/index">iniciar sesion</a></div>
+                            <div id="linkSesion"><a href="<?php echo BASE_URL?>login">iniciar sesion</a></div>
                         <?php } ?>
                         <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label></div>
                 </div>
