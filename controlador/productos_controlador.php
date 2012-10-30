@@ -77,12 +77,12 @@ class productos_controlador extends controller {
         if (!$this->filtrarInt($id)) {
             $this->redireccionar('productos');
         }        
+        if ($_POST['guardar'] == 1) {
 //            echo '<pre>';
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-        if ($_POST['guardar'] == 1) {
-            $this->_productos->idempleado = $_POST['codigo'];
+            $this->_productos->idproducto = $_POST['codigo'];
             $this->_productos->descripcion = $_POST['descripcion'];
             $this->_productos->precio_unitario= $_POST['precio_unitario'];
             $this->_productos->observaciones = $_POST['observaciones'];

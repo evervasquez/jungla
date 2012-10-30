@@ -16,13 +16,15 @@ $(document).ready(function(){
     }
     
     $("#btn_um").click(function(){
-        $.post('/sisjungla/productos/inserta_um',
-        'descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
-        $("#ventana").fadeOut(300);
-        $("#fondooscuro").fadeOut(300); 
-        get_um($("#des_um").val());
-        $("#des_um").val('');
-        $("#abreviatura_um").val('');
+        if(!$("#des_um").val()==''&&!$("#abreviatura_um").val()==''){
+            $.post('/sisjungla/productos/inserta_um',
+            'descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
+            $("#ventana").fadeOut(300);
+            $("#fondooscuro").fadeOut(300); 
+            get_um($("#des_um").val());
+            $("#des_um").val('');
+            $("#abreviatura_um").val('');
+        }
     });
     
 }); 
@@ -42,7 +44,7 @@ $(document).ready(function(){
             	<td><label>Descripcion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
-                           value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                           value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                 </td>
             </tr>
             <tr>
@@ -55,21 +57,21 @@ $(document).ready(function(){
             	<td><label>Stock</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese stock" required name="stock" 
-                           value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                           value="<?php if(isset ($this->datos[0]['stock']))echo $this->datos[0]['stock']?>"/>
                 </td>
             </tr>
             <tr>
             	<td><label>Precio Unitario</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese precio" required name="precio_unitario" 
-                           value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                           value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
                 </td>
             </tr>
             <tr>
             	<td><label>Precio de Compra</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese precio" required name="precio_compra" 
-                           value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                           value="<?php if(isset ($this->datos[0]['precio_compra']))echo $this->datos[0]['precio_compra']?>"/>
                 </td>
             </tr>
             <tr>
@@ -189,7 +191,7 @@ $(document).ready(function(){
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
-                        <button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
+                        <p><button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button></p>
                     </td>
                 </tr>
             </table>
