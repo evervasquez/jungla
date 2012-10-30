@@ -6,6 +6,7 @@ body{
 	font-size:14px;
         background-image: url("/sisjungla/lib/img/linea.jpg");
         background-attachment:fixed;
+        text-align: left;
 }
 #principal{
 	padding-top:20px;

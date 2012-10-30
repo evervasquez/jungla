@@ -1,4 +1,18 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<script type="text/javascript">
+    $(function() {    
+    $( "#descripcion" ).focus(); 
+    $( "#saveform" ).click(function(){
+        bval = true;        
+        bval = bval && $( "#descripcion" ).required(); 
+        bval = bval && $( "#abreviatura" ).required();      
+        if ( bval ) {
+            $("#frm").submit();
+        }
+        return false;
+    });   
+});
+</script>
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <table width="50%" align="center" class="tabForm">
         <caption><h3><?php echo $this->titulo ?></h3></caption>
@@ -15,11 +29,11 @@
         <tr>
             <td><label>Abreviatura:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese abreviatura" required name="abreviatura"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['abreviatura']))echo $this->datos[0]['abreviatura']?>"/></td>
+                       id="abreviatura" value="<?php if(isset ($this->datos[0]['abreviatura']))echo $this->datos[0]['abreviatura']?>"/></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <p><button type="submit" class="k-button">Guardar</button>
+                <p><button type="submit" class="k-button" id="saveform">Guardar</button>
                 <a href="<?php BASE_URL ?>unidad_medida" class="k-button">Cancelar</a></p>
             </td>
         </tr>

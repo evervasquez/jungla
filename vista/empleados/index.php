@@ -25,9 +25,11 @@
                 <td><?php echo $this->datos[$i]['perfil'] ?></td>
                 <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
                 <td><?php echo $this->datos[$i]['profesion'] ?></td>
-                <td><a href="<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>">[Editar]</a>
-                <a href="<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>">[Eliminar]</a></td>
-                
+                <td class="tabtr" align="center">
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>
 
