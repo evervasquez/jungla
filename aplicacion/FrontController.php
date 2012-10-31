@@ -17,7 +17,6 @@ class FrontController {
         $metodo = $peticion->get_metodo();//recuperamos el metodo(accion)
         $argumentos= $peticion->get_argumentos();//recuperamos los argumentos en un array
         //revisamos si el archivo(controlador) existe y es legible DEL CONTROLADOR
-        //die($ruta_controlador);
         $ruta_controlador = ROOT . 'controlador' . DS . $controlador_ . '.php';//aqui concatenamos la ruta del controlador
         if (is_readable($ruta_controlador)) {
             
