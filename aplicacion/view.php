@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -48,6 +47,33 @@ class view {
             new menu($this->_menu);
             include_once $ruta_vista;
             include_once ROOT . DS . 'pie.php';
+            //incluimos la vista
+        } else {
+            throw new Exception('Error de vista');
+        }
+    }
+    
+        public function renderizar_webservice($vista, $item = false) {
+        //aqui podemos poner el menu
+        //creamos la ruta de la vista
+        
+        $ruta_vista = ROOT . 'servicio' . DS . $vista.'.php';
+        //comprobamos si el archivo existe y es legible
+        if (is_readable($ruta_vista)) {
+            //incluimos los layout
+            include_once $ruta_vista;
+            //incluimos la vista
+        } else {
+            throw new Exception('Error de vista');
+        }
+    }
+    
+    public function renderiza_web($vista, $item = false) {
+        $ruta_vista = ROOT . 'web' . DS . $vista . '.php';
+        if (is_readable($ruta_vista)) {
+            include_once ROOT . DS . $this->_controlador . DS . 'cabecera.php';
+            include_once $ruta_vista;
+            include_once ROOT . DS . $this->_controlador . DS . 'pie.php';
             //incluimos la vista
         } else {
             throw new Exception('Error de vista');

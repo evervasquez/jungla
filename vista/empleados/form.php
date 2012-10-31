@@ -9,13 +9,13 @@ $(document).ready(function(){
             $.post('/sisjungla/empleados/get_regiones','idpais='+$("#paises").val(),function(datos){
                 $("#regiones").html('<option></option>');
                 $("#provincias").html('<option></option>');
-                $("#ciudades").html('<option></option>');
+                $("#ubigeo").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
                     $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
-//                $("#regiones").kendoComboBox();
-//                $("#provincias").kendoComboBox();
-//                $("#ciudades").kendoComboBox();
+                $("#regiones").kendoComboBox();
+                $("#provincias").kendoComboBox();
+                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -26,12 +26,12 @@ $(document).ready(function(){
         }else{
             $.post('/sisjungla/empleados/get_provincias','idregion='+$("#regiones").val(),function(datos){
                 $("#provincias").html('<option></option>');
-                $("#ciudades").html('<option></option>')
+                $("#ubigeo").html('<option></option>')
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
                 $("#provincias").kendoComboBox();
-                $("#ciudades").kendoComboBox();
+                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -41,11 +41,11 @@ $(document).ready(function(){
             $("#ciudades").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
-                $("#ciudades").html('<option></option>');
+                $("#ubigeo").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
-                    $("#ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                    $("#ubigeo").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
-                $("#ciudades").kendoComboBox();
+                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -72,10 +72,11 @@ $(document).ready(function(){
 }); 
         
 </script>
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm">
+    <fieldset>
+        <legend><h3><?php echo $this->titulo ?></h3></legend>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <table width="50%" align="center">
-        <caption><h3><?php echo $this->titulo ?></h3></caption>
         <tr>
             <td><label>Codigo:</label></td>
             <td>
@@ -89,8 +90,6 @@ $(document).ready(function(){
                 <input type="text" class="k-textbox" placeholder="Ingrese nombres" required name="nombres"
                    id="" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
             </td>
-        </tr>
-        <tr>
             <td><label>Apellidos:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required onkeypress="return soloLetras(event)" name="apellidos"
@@ -103,8 +102,6 @@ $(document).ready(function(){
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required onKeyPress="return soloNumeros(event);" maxlength="8"
                        name="dni" id="" value="<?php if(isset ($this->datos[0]['dni']))echo $this->datos[0]['dni']?>"/>
             </td>
-        </tr>
-        <tr>
             <td><label>Telefono:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.Telefonico" required name="telefono"
@@ -117,8 +114,6 @@ $(document).ready(function(){
                 <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
                    id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
             </td>
-        </tr>
-        <tr>
             <td><label>Pais:</label></td>
             <td>
                 <select placeholder="Seleccione..." required id="paises">
@@ -149,8 +144,6 @@ $(document).ready(function(){
                     <?php } ?>
                 </select>
            </td>
-        </tr>
-        <tr>
             <td><label>Provincia:</label></td>
             <td>
                 <select placeholder="Seleccione..." required id="provincias">
@@ -170,7 +163,7 @@ $(document).ready(function(){
         <tr>
             <td><label>Ciudad:</label></td>
             <td>
-                <select placeholder="Seleccione..." required name="ubigeo" id="ciudades">
+                <select placeholder="Seleccione..." required name="ubigeo" id="ubigeo">
                     <option></option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
@@ -183,8 +176,6 @@ $(document).ready(function(){
                     <?php } ?>
                 </select>
             </td>
-        </tr>       
-        <tr>
             <td><label>Profesion:</label></td>
             <td>
                 <select class="combo" placeholder="Seleccione..." required name="profesion">
@@ -207,8 +198,6 @@ $(document).ready(function(){
                            $fecha=$this->datos[0]['fecha_nacimiento'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
             </td>
-        </tr>
-        <tr>
             <td><label>Fecha de Contratacion:</label></td>
             <td>
                 <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_contratacion"
@@ -239,8 +228,6 @@ $(document).ready(function(){
                    id="usuario" value="<?php if(isset ($this->datos[0]['usuario']))echo $this->datos[0]['usuario']?>"/>
                 <span id="valida_usuario"></span>
             </td>
-        </tr>
-        <tr>
             <td><label>Contraseña:</label></td>
             <td>
                 <input type="password" class="k-textbox" placeholder="Ingrese clave" required name="clave"
@@ -260,7 +247,7 @@ $(document).ready(function(){
             </td>
         </tr>
         <tr>
-            <td colspan="2" align="center">
+            <td colspan="4" align="center">
                 <p>
                     <button type="submit" class="k-button">Guardar</button>
                     <a href="<?php echo BASE_URL ?>empleados" class="k-button">Cancelar</a>
@@ -268,4 +255,5 @@ $(document).ready(function(){
             </td>
         </tr>
     </table>
+    </fieldset>
 </form>

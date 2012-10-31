@@ -1,7 +1,6 @@
 <?php
 
 class login_controlador extends controller {
-
     public function __construct() {
         parent::__construct();
     }
@@ -15,7 +14,7 @@ class login_controlador extends controller {
         $this->redireccionar();
 //        $this->redireccionar('login/mostrar');
     }
-
+    
     public function mostrar() {
         echo 'Empleado: ' . session::get('empleado') . '<br>';
         echo 'Perfil: ' . session::get('perfil') . '<br>';
