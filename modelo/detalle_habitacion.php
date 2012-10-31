@@ -2,13 +2,13 @@
 
 class detalle_habitacion {
 
-    public $iddetalle_habitacion;
+    public $idhabitacion;
     public $idtipo_habitacion;
     public $costo;
     public $observaciones;
 
     public function selecciona() {
-        $datos = array($this->iddetalle_habitacion, $this->idtipo_habitacion);
+        $datos = array($this->idhabitacion, $this->idtipo_habitacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_detalle_habitacion", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -20,7 +20,7 @@ class detalle_habitacion {
     }
 
     public function elimina() {
-        $datos = array($this->iddetalle_habitacion, $this->idtipo_habitacion);
+        $datos = array($this->idhabitacion, $this->idtipo_habitacion);
         $r = consulta::procedimientoAlmacenado("pa_elimina_detalle_habitacion", $datos);
         $error = $r[1];
         $r = null;
@@ -28,7 +28,7 @@ class detalle_habitacion {
     }
 
     public function inserta() {
-        $datos = array($this->iddetalle_habitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones);
+        $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_habitacion", $datos);
         $error = $r[1];
         $r = null;
@@ -36,7 +36,7 @@ class detalle_habitacion {
     }
 
     public function actualiza() {
-        $datos = array($this->iddetalle_habitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones);
+        $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_habitacion", $datos);
         $error = $r[1];
         $r = null;

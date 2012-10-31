@@ -2,55 +2,58 @@
 
 class categorias_controlador extends controller {
     
+    private $_categorias;
+
     public function __construct() {
         parent::__construct();
-    }
-    
-    public function grilla() {
-        $objCategorias = new categorias();
-        $objCategorias->idcategoria = 0;
-        $stmt = $objCategorias->selecciona();
-        return $stmt;
+        $this->_categorias = $this->cargar_modelo('categorias');
     }
 
-    public function selecciona($id) {
-        $objCategorias = new categorias();
-        $objCategorias->idcategoria = $id;
-        $stmt = $objCategorias->selecciona();
-        return $stmt;
-    }
-
-    public function elimina($id) {
-        $objCategorias = new categorias();
-        $objCategorias->idcategoria = $id;
-        $error = $objCategorias->elimina();
-        return $error;
-    }
-
-    public function inserta($datos) {
-        $objCategorias = new categorias();
-        $objCategorias->idcategoria = $datos[0];
-        $objCategorias->descripcion = $datos[1];
-        $objCategorias->nroelemento = $datos[2];
-        $error = $objCategorias->inserta();
-        return $error;
-    }
-
-    public function actualiza($datos) {
-        $objCategorias = new categorias();
-        $objCategorias->idcategoria = $datos[0];
-        $objCategorias->descripcion = $datos[1];
-        $objCategorias->nroelemento = $datos[2];
-        $error = $objCategorias->actualiza();
-        return $error;
-    }
-    
     public function index() {
+        $this->_categorias->idcategoria = 0;
+        $this->_vista->datos = $this->_categorias->selecciona();
         $this->_vista->renderizar('index');
     }
-    
-    public function nuevo(){
+
+    public function nuevo() {
+        if ($_POST['guardar'] == 1) {
+            $this->_categorias->idcategoria = 0;
+            $this->_categorias->descripcion = $_POST['descripcion'];
+            $this->_categorias->nro_elemento = $_POST['nro_elemento'];
+            $this->_categorias->inserta();
+            $this->redireccionar('categorias');
+        }
+        $this->_vista->titulo = 'Registrar Categoria';
+        $this->_vista->action = BASE_URL . 'categorias/nuevo';
         $this->_vista->renderizar('form');
+    }
+
+    public function editar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('categorias');
+        }
+
+        $this->_categorias->idcategoria = $this->filtrarInt($id);
+        $this->_vista->datos = $this->_categorias->selecciona();
+
+        if ($_POST['guardar'] == 1) {
+            $this->_categorias->idcategoria = $_POST['codigo'];
+            $this->_categorias->descripcion = $_POST['descripcion'];
+            $this->_categorias->nro_elemento = $_POST['nro_elemento'];
+            $this->_categorias->actualiza();
+            $this->redireccionar('categorias');
+        }
+        $this->_vista->titulo = 'Actualizar Categoria';
+        $this->_vista->renderizar('form');
+    }
+
+    public function eliminar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('categorias');
+        }
+        $this->_categorias->idcategoria = $this->filtrarInt($id);
+        $this->_categorias->elimina();
+        $this->redireccionar('categorias');
     }
 }
 

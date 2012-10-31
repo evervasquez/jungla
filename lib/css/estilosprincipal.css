@@ -115,7 +115,31 @@ body{
 	z-index: 999;
 	background-image: url('/sisjungla/lib/img/negro.png');
 }
+#fondoclaro{
+	display: none;
+	position: fixed;
+	left: 0%;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-image: url('/sisjungla/lib/img/blanco.png');
+}
 #ventana{
+	padding:20px;
+	display:none;
+	color: black;
+	position: fixed;
+	left: 37.5%;
+	top: 30%;
+	width: 25%;
+	height:35%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+	border: 1px solid black;
+}
+#ventana_tipo_habitacion{
 	padding:20px;
 	display:none;
 	color: black;

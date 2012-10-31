@@ -4,7 +4,7 @@ class categorias {
 
     public $idcategoria;
     public $descripcion;
-    public $nroelemento;
+    public $nro_elemento;
 
     public function selecciona() {
         $datos = array($this->idcategoria);
@@ -28,16 +28,16 @@ class categorias {
     }
 
     public function inserta() {
-        $datos = array($this->idcategoria, $this->descripcion, $this->nroelemento);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_categorias", $datos);
+        $datos = array($this->idcategoria, $this->descripcion, $this->nro_elemento);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_categorias", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
     public function actualiza() {
-        $datos = array($this->idcategoria, $this->descripcion, $this->nroelemento);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_categorias", $datos);
+        $datos = array($this->idcategoria, $this->descripcion, $this->nro_elemento);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_categorias", $datos);
         $error = $r[1];
         $r = null;
         return $error;
