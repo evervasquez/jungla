@@ -10,24 +10,14 @@ $server->wsdl->schemaTargetNamespace=$ns;
 
 //declaran lo tipo de variables
 $server->wsdl->addComplexType(
-'ResultObject',
+'login',
 'complexType',
 'struct',
 'all',
 '',
 array(
-'codigo_p'=>array('name' => 'codigo_p', 'type' => 'xsd:string'),
-'apellido_p'=>array('name' => 'apellido_p', 'type' => 'xsd:string'),
-'apellido_m'=>array('name' => 'apellido_m', 'type' => 'xsd:string'),
 'nombres'=>array('name' => 'nombres', 'type' => 'xsd:string'),
-'telefono'=>array('name' => 'telefono', 'type' => 'xsd:string'),
-'fecha_nac'=>array('name' => 'fecha_nac', 'type' => 'xsd:string'),
-'provincia'=>array('name' => 'provincia', 'type' => 'xsd:string'),
-'dni'=>array('name' => 'dni', 'type' => 'xsd:string'),
-'direccion'=>array('name' => 'direccion', 'type' => 'xsd:string'),
-'religion'=>array('name' => 'religion', 'type' => 'xsd:string'),
-'estado_civil'=>array('name' => 'estado_civil', 'type' => 'xsd:string'),
-'email'=>array('name' => 'email', 'type' => 'xsd:string')
+'apellidos'=>array('name' => 'apellidos', 'type' => 'xsd:string')
 )
 );
 
@@ -86,7 +76,7 @@ array (
 
 $server->register('login_user',                    // method name
     array('user' => 'xsd:string', 'clave' => 'xsd:string'),          // input parameters
-    array('ResultObject' => 'tns:ResultObject'),    // output parameters
+    array('ResultObject' => 'tns:login'),    // output parameters
     'urn:servidor',                         // namespace
     'urn:servidor#login_user',                   // soapaction
     'rpc',                                    // style
@@ -114,14 +104,14 @@ $server->register('get_horario',                    // method name
     'devuelve el horario de un alumno'        // documentation
 );
 
-//***********funcion para validar usuario****************
+////***********funcion para validar usuario****************
 
 function login_user($user,$clave){
     $obj=new servicio_controlador();
-    $res=$obj->login_webservice($user,$clave);
-    return new soapval('ResultObject','tns:ResultObject',$res);
-	
+    $res=$obj->login_usuario($user,$clave);
+    return new soapval('login','tns:login',$res);
 }
+
 
 function get_curso($codigo){
 	$obj=new control_cursos();

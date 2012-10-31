@@ -53,7 +53,7 @@ class view {
         }
     }
     
-        public function renderiza_webservice($vista, $item = false) {
+        public function renderizar_webservice($vista, $item = false) {
         //aqui podemos poner el menu
         //creamos la ruta de la vista
         
@@ -61,7 +61,6 @@ class view {
         //comprobamos si el archivo existe y es legible
         if (is_readable($ruta_vista)) {
             //incluimos los layout
-            require_once BASE_URL. 'controlador'.$this->_controlador.'_controlador.php';
             include_once $ruta_vista;
             //incluimos la vista
         } else {
