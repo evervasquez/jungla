@@ -68,6 +68,18 @@ class view {
             throw new Exception('Error de vista');
         }
     }
+    
+    public function renderiza_web($vista, $item = false) {
+        $ruta_vista = ROOT . 'web' . DS . $vista . '.php';
+        if (is_readable($ruta_vista)) {
+            include_once ROOT . DS . $this->_controlador . DS . 'cabecera.php';
+            include_once $ruta_vista;
+            include_once ROOT . DS . $this->_controlador . DS . 'pie.php';
+            //incluimos la vista
+        } else {
+            throw new Exception('Error de vista');
+        }
+    }
 
 }
 
