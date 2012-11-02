@@ -42,6 +42,18 @@ class proveedores_controlador extends controller {
         }
         $this->_paises->idpais = 0;
         $this->_vista->datos_paises = $this->_paises->selecciona();
+        
+        $this->_regiones->codigo_region = 0;
+        $this->_regiones->idpais = 193;
+        $this->_vista->datos_regiones = $this->_regiones->selecciona();
+        
+        $this->_provincias->codigo_provincia = 0;
+        $this->_provincias->codigo_region = 1901;
+        $this->_vista->datos_provincias = $this->_provincias->selecciona();
+        
+        $this->_ubigeos->idubigeo = 0;
+        $this->_ubigeos->codigo_provincia = 1968;
+        $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
         $this->_vista->titulo = 'Registrar Proveedor';
         $this->_vista->action = BASE_URL . 'proveedores/nuevo';
         $this->_vista->renderizar('form');

@@ -19,6 +19,10 @@ class clientes {
         $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, 
             $this->fecha_nacimiento, $this->sexo, $this->telefono, $this->email,  
             $this->estado_civil, $this->idprofesion, $this->idubigeo, $this->idmembresia);
+//            echo '<pre>';
+//            print_r($datos);
+//            echo '</pre>';
+//            exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_clientes", $datos);
         $error = $r[1];
         $r = null;
