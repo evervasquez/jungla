@@ -14,7 +14,12 @@ class servicios_controlador extends controller {
         $this->_vista->datos = $this->_servicios->selecciona();
         $this->_vista->renderizar('index');
     }
-
+    
+    public function buscador(){
+        $this->_servicios->descripcion=$_POST['descripcion'];
+        echo json_encode($this->_servicios->filtrar());
+    }
+    
     public function nuevo() {        
         if ($_POST['guardar'] == 1) {
             $this->_servicios->idservicio = 0;

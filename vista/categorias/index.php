@@ -1,6 +1,6 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Categorias</h3>
-<table border="1">
+<table border="1" class="tabgrilla">
     <tr>
         <th><label>Codigo</label></th>
         <th><label>Descripcion</label></th>
