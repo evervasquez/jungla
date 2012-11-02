@@ -4,48 +4,66 @@ $(document).ready(function(){
     
     $("#paises").change(function(){
         if(!$("#paises").val()){
-            $("#regiones").html('<option></option>');
+//            $("#regiones").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_regiones','idpais='+$("#paises").val(),function(datos){
-                $("#regiones").html('<option></option>');
-                $("#provincias").html('<option></option>');
-                $("#ciudades").html('<option></option>');
-                for(var i=0;i<datos.length;i++){
-                    $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-                $("#regiones").kendoComboBox();
-                $("#provincias").kendoComboBox();
-                $("#ciudades").kendoComboBox();
+                $("#regiones").kendoComboBox({
+                    placeholder: "Seleccione...",
+                    dataTextField: "descripcion",
+                    dataValueField: "idubigeo",
+                    dataSource: datos
+                });
+//                $("#regiones").html('<option></option>');
+//                $("#provincias").html('<option></option>');
+//                $("#ciudades_proveedores").html('<option></option>');
+//                for(var i=0;i<datos.length;i++){
+//                    $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+//                }
+//                $("#regiones").kendoComboBox();
+//                $("#provincias").kendoComboBox();
+//                $("#ciudades_proveedores").kendoComboBox();
             },'json');
         }
     });
     
     $("#regiones").change(function(){
         if(!$("#regiones").val()){
-            $("#provincias").html('<option></option>');
+//            $("#provincias").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_provincias','idregion='+$("#regiones").val(),function(datos){
-                $("#provincias").html('<option></option>');
-                $("#ciudades").html('<option></option>')
-                for(var i=0;i<datos.length;i++){
-                    $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-                $("#provincias").kendoComboBox();
-                $("#ciudades").kendoComboBox();
+                $("#provincias").kendoComboBox({
+                    placeholder: "Seleccione...",
+                    dataTextField: "descripcion",
+                    dataValueField: "idubigeo",
+                    dataSource: datos
+                });
+//                $("#provincias").html('<option></option>');
+//                $("#ciudades_proveedores").html('<option></option>')
+//                for(var i=0;i<datos.length;i++){
+//                    $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+//                }
+//                $("#provincias").kendoComboBox();
+//                $("#ciudades_proveedores").kendoComboBox();
             },'json');
         }
     });
     
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
-            $("#ciudades").html('<option></option>');
+//            $("#ciudades_proveedores").html('<option></option>');
         }else{
             $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
-                $("#ciudades").html('<option></option>');
-                for(var i=0;i<datos.length;i++){
-                    $("#ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }       
-                $("#ciudades").kendoComboBox();
+                $("#ciudades_proveedores").kendoComboBox({
+                    placeholder: "Seleccione...",
+                    dataTextField: "descripcion",
+                    dataValueField: "idubigeo",
+                    dataSource: datos
+                });
+//                $("#ciudades_proveedores").html('<option></option>');
+//                for(var i=0;i<datos.length;i++){
+//                    $("#ciudades_proveedores").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+//                }       
+//                $("#ciudades_proveedores").kendoComboBox();
             },'json');
         }
     });
@@ -81,11 +99,21 @@ $(document).ready(function(){
             <td>
                 <select placeholder="Seleccione..." required id="paises">
                     <option></option>
-                    <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                        <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] ){ ?>
-                    <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                        <?php } else { ?>
-                    <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
+                    <?php if(isset ($this->datos)){ ?>
+                        <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
+                            <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0){ ?>
+                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
+                            <?php } else { ?>
+                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php }else{ ?>
+                        <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
+                            <?php if( 193 == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0){ ?>
+                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
+                            <?php } else { ?>
+                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
+                            <?php } ?>
                         <?php } ?>
                     <?php } ?>
                 </select>
@@ -96,9 +124,17 @@ $(document).ready(function(){
             <td>
                 <select placeholder="Seleccione..." required id="regiones">
                     <option></option>
-                    <?php if(count($this->datos_regiones)){ ?>
+                    <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
                             <?php if( $this->datos[0]['idregion'] == $this->datos_regiones[$i]['idubigeo'] ){ ?>
+                        <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
+                            <?php } else { ?>
+                        <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php }else{ ?>
+                        <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
+                            <?php if( 1901 == $this->datos_regiones[$i]['idubigeo'] ){ ?>
                         <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
                             <?php } else { ?>
                         <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
@@ -113,9 +149,17 @@ $(document).ready(function(){
             <td>
                 <select placeholder="Seleccione..." required id="provincias">
                     <option></option>
-                    <?php if(count($this->datos_provincias)){ ?>
+                    <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
                             <?php if( $this->datos[0]['idprovincia'] == $this->datos_provincias[$i]['idubigeo'] ){ ?>
+                        <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
+                            <?php } else { ?>
+                        <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php }else{ ?>
+                        <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
+                            <?php if( 1968 == $this->datos_provincias[$i]['idubigeo'] ){ ?>
                         <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
                             <?php } else { ?>
                         <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
@@ -128,7 +172,7 @@ $(document).ready(function(){
         <tr>
             <td><label>Ciudad:</label></td>
             <td>
-                <select placeholder="Seleccione..." required name="ubigeo" id="ciudades">
+                <select placeholder="Seleccione..." required name="ubigeo" id="ciudades_proveedores">
                     <option></option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>

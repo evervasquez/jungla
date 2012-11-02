@@ -37,8 +37,7 @@
                 <td class="tabtr" align="center">
                 <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>clientes/editar/<?php echo $this->datos[$i]['idcliente'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>clientes/eliminar/<?php echo $this->datos[$i]['idcliente'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
+                </td>
             </tr>
         <?php } ?>
 

@@ -16,13 +16,28 @@ class permisos_controlador extends controller {
     public function index() {
         $this->_perfiles->idperfil=0;
         $this->_vista->datos_perfiles=$this->_perfiles->selecciona();
-        $this->_modulos->idmodulo=9999;
+        $this->_modulos->idmodulo=0;
         $this->_vista->datos_modulos=$this->_modulos->selecciona();
         $this->_vista->renderizar('index');
     }
 
-    public function nuevo() {
-        $this->_vista->renderizar('form');
+    public function get_permisos() {
+        $this->_permisos->idperfil=$_POST['idperfil'];
+        $this->_permisos->idmodulo=0;
+        echo json_encode($this->_permisos->selecciona());
+    }
+    
+    public function inserta_permiso() {
+        $this->_permisos->idperfil=$_POST['idperfil'];
+        $this->_permisos->idmodulo=$_POST['idmodulo'];
+        $this->_permisos->estado=1;
+        $this->_permisos->inserta();
+    }
+    
+    public function elimina_permiso(){
+        $this->_permisos->idperfil=$_POST['idperfil'];
+        $this->_permisos->idmodulo=$_POST['idmodulo'];
+        $this->_permisos->elimina();
     }
 
 }

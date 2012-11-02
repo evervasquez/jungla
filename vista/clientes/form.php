@@ -84,6 +84,7 @@ $(document).ready(function(){
         
 </script>
 <h3><?php echo $this->titulo ?></h3>
+<?php if(isset($this->action)){?>
 <table>
     <tr>
         <td><label>Tipo de Cliente:</label></td>
@@ -95,6 +96,7 @@ $(document).ready(function(){
         </td>
     </tr>
 </table>
+<?php } ?>
 <div id="frm_cliente_natural">
     <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
@@ -165,8 +167,8 @@ $(document).ready(function(){
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
                        id="" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
-                               $fecha=$this->datos[0]['fecha_nacimiento'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                           $fecha=$this->datos[0]['fecha_nacimiento'];
+                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
                 </td>
             </tr>
             <tr>
@@ -202,7 +204,7 @@ $(document).ready(function(){
                     <select class="combo" placeholder="Seleccione..." id="paises">
                         <option></option>
                         <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                            <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] ){ ?>
+                            <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0 ){ ?>
                         <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
                             <?php } else { ?>
                         <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
@@ -325,21 +327,21 @@ $(document).ready(function(){
             <tr>
                 <td><label>Telefono:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" required name="telefono"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Email:</label></td>
                 <td>
-                    <input type="email" class="k-textbox" placeholder="Ingrese email" required name="email"
+                    <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Pais:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." required id="pais">
+                    <select class="combo" placeholder="Seleccione..." id="pais">
                         <option></option>
                         <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
                             <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] ){ ?>
@@ -354,7 +356,7 @@ $(document).ready(function(){
              <tr>
                 <td><label>Region:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." required class="regiones">
+                    <select placeholder="Seleccione..." class="regiones">
                         <option></option>
                         <?php if(count($this->datos_regiones)){ ?>
                             <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
@@ -371,7 +373,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Provincia:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." required class="provincias">
+                    <select placeholder="Seleccione..." class="provincias">
                         <option></option>
                         <?php if(count($this->datos_provincias)){ ?>
                             <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
@@ -388,7 +390,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Ciudad:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." required name="ubigeo" class="ciudades">
+                    <select placeholder="Seleccione..." name="ubigeo" class="ciudades">
                         <option></option>
                         <?php if(count($this->datos_ubigeos)){ ?>
                             <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>

@@ -16,12 +16,19 @@ class empleados {
     public $usuario;
     public $clave;
     public $estado;
+    public $idactividad;
+    public $idtipo_empleado;
     
 
     public function inserta() {
         $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->dni, 
             $this->telefono, $this->direccion, $this->fecha_nacimiento, $this->fecha_contratacion,  
-            $this->idubigeo, $this->idperfil, $this->idprofesion, $this->usuario, $this->clave, $this->estado);
+            $this->idubigeo, $this->idperfil, $this->idprofesion, $this->usuario, $this->clave, $this->estado,
+            $this->idactividad, $this->idtipo_empleado);
+//            echo '<pre>';
+//            print_r($datos);
+//            echo '</pre>';
+//            exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_empleados", $datos);
         $error = $r[1];
         $r = null;
@@ -31,7 +38,8 @@ class empleados {
     public function actualiza() {
         $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->dni, 
             $this->telefono, $this->direccion, $this->fecha_nacimiento, $this->fecha_contratacion,  
-            $this->idubigeo, $this->idperfil, $this->idprofesion, $this->usuario, $this->clave, $this->estado);
+            $this->idubigeo, $this->idperfil, $this->idprofesion, $this->usuario, $this->clave, $this->estado,
+            $this->idactividad, $this->idtipo_empleado);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_empleados", $datos);
         $error = $r[1];
         $r = null;
