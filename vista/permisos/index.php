@@ -24,6 +24,17 @@ $(document).ready(function(){
     });
 });
 </script>
+<style type="text/css">
+    #div_modulos{
+        margin-left: 35%;
+    }
+    #div_modulos ul li{
+        list-style: none;
+    }
+    #div_modulos ul li ul li{
+        list-style: none;
+    }
+</style>
 <h3>Permisos</h3>
 <label>Perfil:</label>
 <select class="combo" placeholder="Seleccione..." required name="perfil" id="perfil">
