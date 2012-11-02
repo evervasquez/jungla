@@ -1,6 +1,6 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Productos</h3>
-    <table border="1">
+    <table border="1" class="tabgrilla">
         <tr>
             <th>Codigo</th>
             <th>Descripcion</th>
@@ -22,9 +22,10 @@
                 <td><?php echo $this->datos[$i]['precio_compra'] ?></td>
                 <td><?php echo $this->datos[$i]['um'] ?></td>
                 <td><?php echo $this->datos[$i]['ubicacion'] ?></td>
-                <td><a href="<?php echo BASE_URL?>productos/editar/<?php echo $this->datos[$i]['idproducto'] ?>">[Editar]</a>
-                <a href="<?php echo BASE_URL?>productos/eliminar/<?php echo $this->datos[$i]['idproducto'] ?>">[Eliminar]</a></td>
-                
+                <td><a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>productos/editar/<?php echo $this->datos[$i]['idproducto'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>productos/eliminar/<?php echo $this->datos[$i]['idproducto'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>
 

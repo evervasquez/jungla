@@ -1,5 +1,28 @@
 <script>
 $(document).ready(function(){
+    $( "#nombre" ).focus(); 
+    $( "#saveform" ).click(function(){
+        bval = true;        
+        bval = bval && $( "#nombre" ).required();   
+        bval = bval && $( "#apellidos" ).required();
+        bval = bval && $( "#dni" ).required(); 
+        bval = bval && $( "#telefono" ).required(); 
+        bval = bval && $( "#direccion" ).required(); 
+        bval = bval && $( "#paises" ).required(); 
+        bval = bval && $( "#regiones" ).required(); 
+        bval = bval && $( "#provincias" ).required(); 
+        bval = bval && $( "#ubigeo" ).required();   
+        bval = bval && $( "#profesion" ).required(); 
+        bval = bval && $( "#fechanac" ).required(); 
+        bval = bval && $( "#fechacon" ).required();   
+        bval = bval && $( "#perfil" ).required(); 
+        bval = bval && $( "#usuario" ).required(); 
+        bval = bval && $( "#clave" ).required(); 
+        if ( bval ) {
+            $("#frm").submit();
+        }
+        return false;
+    }); 
     $('select').kendoComboBox();
     
     $("#paises").change(function(){
@@ -72,7 +95,7 @@ $(document).ready(function(){
 }); 
         
 </script>
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm">
     <fieldset>
         <legend><h3><?php echo $this->titulo ?></h3></legend>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
@@ -87,32 +110,32 @@ $(document).ready(function(){
         <tr>
             <td><label>Nombre:</label></td>
             <td>
-                <input type="text" class="k-textbox" placeholder="Ingrese nombres" required name="nombres"
-                   id="" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
+                <input type="text" class="k-textbox" placeholder="Ingrese nombres" required name="nombres" onkeypress="return soloLetras(event)"
+                   id="nombre" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
             </td>
             <td><label>Apellidos:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required onkeypress="return soloLetras(event)" name="apellidos"
-                   id="" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
+                   id="apellidos" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>DNI:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required onKeyPress="return soloNumeros(event);" maxlength="8"
-                       name="dni" id="" value="<?php if(isset ($this->datos[0]['dni']))echo $this->datos[0]['dni']?>"/>
+                       name="dni" id="dni" value="<?php if(isset ($this->datos[0]['dni']))echo $this->datos[0]['dni']?>"/>
             </td>
             <td><label>Telefono:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.Telefonico" required name="telefono"
-                   id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+                   id="telefono" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>Direccion:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
-                   id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
+                   id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
             </td>
             <td><label>Pais:</label></td>
             <td>
@@ -178,8 +201,8 @@ $(document).ready(function(){
             </td>
             <td><label>Profesion:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." required name="profesion">
-                    <option value="0"></option>
+                <select class="combo" placeholder="Seleccione..." name="profesion" id="profesion">
+                    <option></option>
                     <?php for($i=0;$i<count($this->datos_profesiones);$i++){ ?>
                         <?php if( $this->datos[0]['idprofesion'] == $this->datos_profesiones[$i]['idprofesion'] ){ ?>
                     <option value="<?php echo $this->datos_profesiones[$i]['idprofesion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_profesiones[$i]['descripcion']) ?></option>
@@ -194,14 +217,14 @@ $(document).ready(function(){
             <td><label>Fecha de Nacimiento:</label></td>
             <td>
                 <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_nacimiento"
-                   id="" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
+                   id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
                            $fecha=$this->datos[0]['fecha_nacimiento'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
             </td>
             <td><label>Fecha de Contratacion:</label></td>
             <td>
                 <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_contratacion"
-                   id="" value="<?php if(isset ($this->datos[0]['fecha_contratacion'])){
+                   id="fechacon" value="<?php if(isset ($this->datos[0]['fecha_contratacion'])){
                            $fecha=$this->datos[0]['fecha_contratacion'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
             </td>
@@ -209,8 +232,8 @@ $(document).ready(function(){
         <tr>
             <td><label>Perfil:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." required name="perfil">
-                    <option value="0"></option>
+                <select class="combo" placeholder="Seleccione..." name="perfil" id="perfil">
+                    <option></option>
                     <?php for($i=0;$i<count($this->datos_perfiles);$i++){ ?>
                         <?php if( $this->datos[0]['idperfil'] == $this->datos_perfiles[$i]['idperfil'] ){ ?>
                     <option value="<?php echo $this->datos_perfiles[$i]['idperfil'] ?>" selected="selected"><?php echo $this->datos_perfiles[$i]['descripcion'] ?></option>
@@ -230,7 +253,7 @@ $(document).ready(function(){
             </td>
             <td><label>Contraseña:</label></td>
             <td>
-                <input type="password" class="k-textbox" placeholder="Ingrese clave" required name="clave"
+                <input type="password" class="k-textbox" placeholder="Ingrese clave" required name="clave" id="clave"
                    value="<?php if(isset ($this->datos[0]['clave']))echo $this->datos[0]['clave']?>"/>                
             </td>
         </tr>
@@ -249,7 +272,7 @@ $(document).ready(function(){
         <tr>
             <td colspan="4" align="center">
                 <p>
-                    <button type="submit" class="k-button">Guardar</button>
+                    <button type="submit" class="k-button" id="saveform">Guardar</button>
                     <a href="<?php echo BASE_URL ?>empleados" class="k-button">Cancelar</a>
                 </p>
             </td>

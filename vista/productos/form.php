@@ -62,7 +62,7 @@ $(document).ready(function(){
             <tr>
             	<td><label>Descripcion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion"
+                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" name="descripcion" id="descripcion" onkeypress="return soloLetras(event)"
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                 </td>
                 <td><label>Stock</label></td>
@@ -126,8 +126,6 @@ $(document).ready(function(){
                     </select>
                     <a id="um" class="k-button">Nuevo</a>
             	</td>
-            </tr>
-            <tr>
             	<td><label>Servicio</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." required name="servicio">
@@ -141,6 +139,8 @@ $(document).ready(function(){
                     <?php } ?>
                     </select>
             	</td>
+            </tr>
+            <tr>
                 <td><label>Promocion</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." required name="promocion">
@@ -154,9 +154,7 @@ $(document).ready(function(){
                     <?php } ?>
                     </select>
             	</td>
-            </tr>
-            <tr>
-            	<td><label>Estado</label></td>
+                <td><label>Estado</label></td>
                 <td>
                     <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
                     <input type="radio" name="estado" value ="1" />Activo
@@ -169,8 +167,8 @@ $(document).ready(function(){
             </tr>
             <tr>
                 <td><label>Observaciones:</label></td>
-                <td>
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 100px"><?php if(isset ($this->datos[0]['observaciones']))echo $this->datos[0]['observaciones']?></textarea>
+                <td colspan="3">
+                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo $this->datos[0]['observaciones']?></textarea>
                 </td>
             </tr>
             <tr>
@@ -195,7 +193,7 @@ $(document).ready(function(){
                 </tr>
                 <tr>
                     <td><label>Descripcion:</label></td>
-                    <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required id="des_um"/></td>
+                    <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required id="des_um" onkeypress="return soloLetras(event)"/></td>
                 </tr>
                 <tr>
                     <td><label>Abreviatura:</label></td>

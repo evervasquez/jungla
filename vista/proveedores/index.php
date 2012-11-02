@@ -1,16 +1,16 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Proveedores</h3>
-    <table border="1">
+    <table border="1" class="tabgrilla">
         <tr>
-            <td>Codigo</td>
-            <td>Razon Social</td>
-            <td>Representante</td>
-            <td>RUC</td>
-            <td>Ubigeo</td>
-            <td>Direccion</td>
-            <td>Telefono</td>
-            <td>Email</td>
-            <td>Acciones</td>
+            <th>Codigo</th>
+            <th>Razon Social</th>
+            <th>Representante</th>
+            <th>RUC</th>
+            <th>Ubigeo</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Acciones</th>
         </tr>
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
@@ -22,9 +22,10 @@
                 <td><?php echo $this->datos[$i]['direccion'] ?></td>
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['email'] ?></td>
-                <td><a href="<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>">[Editar]</a>
-                <a href="<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>">[Eliminar]</a></td>
-                
+                <td><a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>')">
+                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>
 

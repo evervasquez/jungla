@@ -13,7 +13,7 @@
 </script>
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
-    <table width="50%" align="center" class="tabForm"s>
+    <table width="50%" align="center" class="tabForm">
         <caption><h3><?php echo $this->titulo ?></h3></caption>
         <tr>
             <td><label>Codigo:</label></td>

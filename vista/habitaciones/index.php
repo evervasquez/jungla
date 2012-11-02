@@ -1,6 +1,6 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Habitaciones</h3>
-    <table border="1">
+    <table border="1" class="tabgrilla">
         <tr>
             <th><label>Codigo</label></th>
             <th><label>Nro.de Habitacion</label></th>

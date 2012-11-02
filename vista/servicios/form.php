@@ -33,18 +33,3 @@
         </tr>
     </table>
 </form>
-<style type="text/css">
-  .tildado{
-    width:300px;
-  }
-</style>
-<script type="text/javascript">
-  $(function(){
-      $('input[type="radio"]').on('click',function(){
-       $('input[type="radio"].tildado').removeClass('tildado');
-        $(this).addClass('tildado');
-    });
-  });
-  </script>
-        <p><label for="radio1">Opcion 1</label><input type="radio" id="radio1" name="radiogrupo" /></p>
-        <p><label for="radio2">Opcion 2</label><input type="radio" id="radio2" name="radiogrupo" /></p>
