@@ -61,7 +61,7 @@ class clientes_controlador extends controller {
             if(isset ($_POST['profesion'])){
                 $this->_clientes->idprofesion = $_POST['profesion'];
             }else{
-                $this->_clientes->idprofesion = 0;
+                $this->_clientes->idprofesion = 67;
             }
             if(isset ($_POST['ubigeo']) && $_POST['ubigeo']!=""){
                 $this->_clientes->idubigeo = $_POST['ubigeo'];
