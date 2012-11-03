@@ -3,7 +3,7 @@
         $( "#buscar" ).focus();
         
         $("#btn_buscar").click(function(){
-            $.post('/sisjungla/modulos/buscador','descripcion='+$("#buscar").val(),function(datos){
+            $.post('/sisjungla/modulos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -42,7 +42,7 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <p><h3>Lista de Modulos</h3></p>
     <p>
-        <select class="combo">
+        <select class="combo" id="filtro">
             <option value="0">Descripcion</option>
             <option value="1">Modulo Padre</option>
         </select>

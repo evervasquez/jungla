@@ -7,8 +7,21 @@ class modulos {
     public $url;
     public $estado;
     public $idmodulo_padre;
+    public $modulo_padre;
     
-
+    public function selecciona() {
+        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos", $datos);
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
+        $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
+    }
+    
     public function inserta() {
         $datos = array($this->idmodulo, $this->descripcion, $this->url, $this->estado, 
             $this->idmodulo_padre);
@@ -27,19 +40,6 @@ class modulos {
         return $error;
     }
 
-    public function selecciona() {
-        $datos = array($this->idmodulo);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos", $datos);
-        if ($r[1] == '') {
-            $stmt = $r[0];
-        } else {
-            die($r[1]);
-        }
-        $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
-    }
-    
     public function seleccionar($idmodulo_padre){
         $datos = array($idmodulo_padre);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos_padre", $datos);

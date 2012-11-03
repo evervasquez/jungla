@@ -10,6 +10,8 @@ abstract class controller {
         
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
+        $this->_modelo->descripcion = '';
+        $this->_modelo->modulo_padre = '';
         $menu=$this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
         

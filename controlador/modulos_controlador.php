@@ -11,8 +11,24 @@ class modulos_controlador extends controller{
 
     public function index() {
         $this->_modulos->idmodulo = 0;
+        $this->_modulos->descripcion = '';
+        $this->_modulos->modulo_padre = '';
         $this->_vista->datos = $this->_modulos->selecciona();
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        $this->_modulos->idmodulo=0;
+        
+        if($_POST['filtro']==0){
+            $this->_modulos->descripcion=$_POST['cadena'];
+            $this->_modulos->modulo_padre='';
+        }else{
+            $this->_modulos->descripcion='';
+            $this->_modulos->modulo_padre=$_POST['cadena'];
+        }
+        
+        echo json_encode($this->_modulos->selecciona());
     }
 
     public function nuevo() {
