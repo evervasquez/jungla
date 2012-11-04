@@ -6,14 +6,12 @@ class plan_contable {
     public $descripcion;
     public $nro_cuenta;
     public $nivel;
-    public $movimientos;
     public $idcuenta_padre;
     public $idcategoria;
-    
 
     public function inserta() {
-        $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta, $this->nivel, 
-            $this->movimientos, $this->idcuenta_padre, $this->idcategoria);
+        $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta, $this->nivel,
+            $this->idcuenta_padre, $this->idcategoria);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plan_contable", $datos);
         $error = $r[1];
         $r = null;
@@ -21,8 +19,8 @@ class plan_contable {
     }
 
     public function actualiza() {
-        $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta, $this->nivel, 
-            $this->movimientos, $this->idcuenta_padre, $this->idcategoria);
+        $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta, $this->nivel,
+            $this->idcuenta_padre, $this->idcategoria);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plan_contable", $datos);
         $error = $r[1];
         $r = null;

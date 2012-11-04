@@ -37,7 +37,7 @@
                 <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
                 <td><?php echo $this->datos[$i]['membresia'] ?></td>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>clientes/editar/<?php echo $this->datos[$i]['idcliente'] ?>')">
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>pasajeros/editar/<?php echo $this->datos[$i]['idcliente'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
                 </td>
             </tr>
@@ -45,8 +45,8 @@
 
     <?php } else { ?>
         <tr>
-            <td><p>No hay clientes</p></td>
+            <td><p>No hay pasajero</p></td>
         </tr>
     <?php } ?>
 </table>
-<p><a href="<?php echo BASE_URL?>clientes/nuevo" class="k-button">Nuevo</a></p>
+<p><a href="<?php echo BASE_URL?>pasajeros/nuevo" class="k-button">Nuevo</a></p>

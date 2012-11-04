@@ -33,10 +33,18 @@ class modulos_controlador extends controller{
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
+//            echo '<pre>';
+//            print_r($_POST);
+//            echo '</pre>';
+//            exit;
             $this->_modulos->idmodulo = 0;
             $this->_modulos->descripcion = $_POST['descripcion'];
             $this->_modulos->url = $_POST['url'];
-            $this->_modulos->idmodulo_padre = $_POST['modulo_padre'];
+            if(isset ($_POST['modulo_padre'])){
+                $this->_modulos->idmodulo_padre = $_POST['modulo_padre'];
+            }else{
+                $this->_modulos->idmodulo_padre = 0;
+            }
             $this->_modulos->estado = $_POST['estado'];
             $this->_modulos->inserta();
             $this->redireccionar('modulos');

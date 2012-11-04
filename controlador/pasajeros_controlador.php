@@ -1,6 +1,6 @@
 <?php
 
-class clientes_controlador extends controller {
+class pasajeros_controlador extends controller {
     
     private $_clientes;
     private $_paises;
@@ -73,7 +73,7 @@ class clientes_controlador extends controller {
             }else{
                 $this->_clientes->idmembresia = 0;
             }
-            $this->_clientes->direccion = $_POST['direccion'];
+            $this->_clientes->direccion = '';
             $this->_clientes->tipo = $_POST['tipo_cliente'];
             $this->_clientes->inserta();
             $this->redireccionar('clientes');
@@ -84,8 +84,8 @@ class clientes_controlador extends controller {
         $this->_vista->datos_membresias= $this->_membresias->selecciona();
         $this->_profesiones->idprofesion = 0;
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
-        $this->_vista->titulo = 'Registrar Cliente';
-        $this->_vista->action = BASE_URL . 'clientes/nuevo';
+        $this->_vista->titulo = 'Registrar Pasajero';
+        $this->_vista->action = BASE_URL . 'pasajeros/nuevo';
         $this->_vista->renderizar('form');
     }
     
@@ -107,6 +107,11 @@ class clientes_controlador extends controller {
         echo json_encode($this->_ubigeos->selecciona());
     }
     
+    public function get_ubigeosxpais(){
+        echo json_encode('[{"idubigeo":"1","descripcion":"nuevo"}]');
+    }
+
+
     public function editar($id) {
         if (!$this->filtrarInt($id)) {
             $this->redireccionar('empleados');
@@ -156,7 +161,7 @@ class clientes_controlador extends controller {
             }else{
                 $this->_clientes->idmembresia = 0;
             }
-            $this->_clientes->direccion = $_POST['direccion'];
+            $this->_clientes->direccion = '';
             $this->_clientes->tipo = $_POST['tipo_cliente'];
             $this->_clientes->actualiza();
             $this->redireccionar('clientes');
@@ -185,7 +190,7 @@ class clientes_controlador extends controller {
         $this->_vista->datos_membresias= $this->_membresias->selecciona();
         $this->_profesiones->idprofesion = 0;
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
-        $this->_vista->titulo = 'Actualizar Cliente';
+        $this->_vista->titulo = 'Actualizar Pasajero';
         $this->_vista->renderizar('form');
     }
         

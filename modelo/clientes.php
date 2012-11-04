@@ -14,11 +14,13 @@ class clientes {
     public $idprofesion;
     public $idubigeo;
     public $idmembresia;        
+    public $direccion;        
+    public $tipo;        
 
     public function inserta() {
-        $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, 
-            $this->fecha_nacimiento, $this->sexo, $this->telefono, $this->email,  
-            $this->estado_civil, $this->idprofesion, $this->idubigeo, $this->idmembresia);
+        $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
+            $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo, 
+            $this->idmembresia, $this->direccion, $this->tipo);
 //            echo '<pre>';
 //            print_r($datos);
 //            echo '</pre>';
@@ -30,9 +32,9 @@ class clientes {
     }
 
     public function actualiza() {
-        $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, 
-            $this->fecha_nacimiento, $this->sexo, $this->telefono, $this->email,  
-            $this->estado_civil, $this->idprofesion, $this->idubigeo, $this->idmembresia);
+        $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
+            $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo, 
+            $this->idmembresia, $this->direccion, $this->tipo);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_clientes", $datos);
         $error = $r[1];
         $r = null;
