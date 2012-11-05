@@ -23,7 +23,7 @@ $(document).ready(function(){
         }
         return false;
     }); 
-    $('select').kendoComboBox();
+//    $('select').kendoComboBox();
     
     $("#paises").change(function(){
         if(!$("#paises").val()){
@@ -308,9 +308,9 @@ $(document).ready(function(){
                     <option value="0"></option>
                     <?php for($i=0;$i<count($this->datos_actividades);$i++){ ?>
                         <?php if( $this->datos[0]['idactividad'] == $this->datos_actividades[$i]['idactividad'] ){ ?>
-                    <option value="<?php echo $this->datos_actividades[$i]['idactividad'] ?>" selected="selected"><?php echo $this->datos_actividades[$i]['descripcion'] ?></option>
+                    <option value="<?php echo $this->datos_actividades[$i]['idactividad'] ?>" selected="selected"><?php echo utf8_encode($this->datos_actividades[$i]['descripcion']) ?></option>
                         <?php } else { ?>
-                    <option value="<?php echo $this->datos_pedatos_actividadesrfiles[$i]['idactividad'] ?>"><?php echo $this->datos_actividades[$i]['descripcion'] ?></option>
+                    <option value="<?php echo $this->datos_actividades[$i]['idactividad'] ?>"><?php echo utf8_encode($this->datos_actividades[$i]['descripcion']) ?></option>
                         <?php } ?>
                     <?php } ?>
                 </select>
@@ -325,7 +325,7 @@ $(document).ready(function(){
                         <?php if( $this->datos[0]['idtipo_empleado'] == $this->datos_tipo_empleado[$i]['idtipo_empleado'] ){ ?>
                     <option value="<?php echo $this->datos_tipo_empleado[$i]['idtipo_empleado'] ?>" selected="selected"><?php echo $this->datos_tipo_empleado[$i]['descripcion'] ?></option>
                         <?php } else { ?>
-                    <option value="<?php echo $this->datos_tipo_empleado[$i]['idactiidtipo_empleadovidad'] ?>"><?php echo $this->datos_tipo_empleado[$i]['descripcion'] ?></option>
+                    <option value="<?php echo $this->datos_tipo_empleado[$i]['idtipo_empleado'] ?>"><?php echo $this->datos_tipo_empleado[$i]['descripcion'] ?></option>
                         <?php } ?>
                     <?php } ?>
                 </select>

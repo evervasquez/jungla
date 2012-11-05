@@ -87,7 +87,7 @@ class empleados_controlador extends controller {
             $this->_empleados->usuario = $_POST['usuario'];
             $this->_empleados->clave = $_POST['clave'];
             $this->_empleados->estado = $_POST['estado'];
-            $this->empleados->idactiv_idad = $_POST['actividad'];
+            $this->_empleados->idactividad = $_POST['actividad'];
             $this->_empleados->idtipo_empleado = $_POST['tipo_empleado'];
             $this->_empleados->inserta();
             $this->redireccionar('empleados');

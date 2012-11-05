@@ -17,6 +17,8 @@ class permisos_controlador extends controller {
         $this->_perfiles->idperfil=0;
         $this->_vista->datos_perfiles=$this->_perfiles->selecciona();
         $this->_modulos->idmodulo=0;
+        $this->_modulos->descripcion='';
+        $this->_modulos->modulo_padre='';
         $this->_vista->datos_modulos=$this->_modulos->selecciona();
         $this->_vista->renderizar('index');
     }
