@@ -1,46 +1,70 @@
 <script>
 $(document).ready(function(){
-   $("#ventana_tipo_habitacion").hide();
-   $("#btn_asignar_tipo_habitacion").click(function(){
-       $("#ventana_tipo_habitacion").show();
-   });
-   
-   $("#inserta_tmphabitacion").click(function(){
-       if($("#tmp_habitacion").val()==''){
-           
+
+    $("#asignar_costo").click(function(){
+       idth=$("#tipo_habitacion").val();
+       th=$("#tipo_habitacion option:selected").html(); 
+       c=$("#costo").val();
+       o=$("#observacion").val();
+       error= false;
+       msg='';
+       
+       $("#tbl_habitacion_especifica tr").each(function(){
+           id_th = $("#tbl_habitacion_especifica tr td:eq(0) :input").val();
+           if(idth==id_th){
+               error= true;
+               msg = "Este tipo de habitacion ya fue asignado";
+           }
+       });
+       
+       if(error){
+           alert(msg);
+       }else{
+           html="<tr>";
+           html=html+"<td><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
+           html=html+"<td><input type='hidden' name='costo[]' value='"+c+"'/>"+c+"</td>";
+           html=html+"<td><input type='hidden' name='observacion[]' value='"+o+"'/>"+o+"</td>";
+           html=html+'<td><a class="delete" title="Eliminar item" href="javascript:">[Eliminar]</a></td>';
+           html=html+"</tr>";
+
+           $("#tbl_habitacion_especifica").append(html);
+           $("#tipo_habitacion option:eq(0)").attr('selected',true);
+           $("#tipo_habitacion").kendoComboBox();
+           $("#costo").val('');
+           $("#observacion").val('');
        }
    });
    
-   $("#cancela_tmphabitacion").click(function(){
-       $("#ventana_tipo_habitacion").hide();
+   $(".delete").live('click', function() {
+       i = $(this).parent().parent().index();
+       $("#tbl_habitacion_especifica tr:eq("+i+")").remove();
    });
 });
 </script>
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
-        <input type="hidden" name="tmp_habitacion" id="tmp_habitacion" value=""/>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <table width="50%" align="center">
             <tr>
                 <td><label>Codigo:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                           value="<?php if(isset ($this->datos[0]['idempleado']))echo $this->datos[0]['idempleado']?>"/>
+                           value="<?php if(isset ($this->datos[0]['idhabitacion']))echo $this->datos[0]['idhabitacion']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Nro.de Habitacion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese Nro.de habitacion" required name="codigo" 
-                           value="<?php if(isset ($this->datos[0]['idempleado']))echo $this->datos[0]['idempleado']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Ingrese Nro.de habitacion" required name="nro_habitacion" 
+                           value="<?php if(isset ($this->datos[0]['nro_habitacion']))echo $this->datos[0]['nro_habitacion']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Descripcion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="codigo" 
-                           value="<?php if(isset ($this->datos[0]['idempleado']))echo $this->datos[0]['idempleado']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
+                           value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                 </td>
             </tr>
             <tr>
@@ -75,40 +99,38 @@ $(document).ready(function(){
             <tr>
             <td><label>Tipo Habitacion:</label></td>
             <td>
-                <select placeholder="Seleccione..." class="combo" required id="idtipo_habitacion">
+                <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
-                    <option value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
+                    <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
                     <?php }?>
                 </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Costo:</label></td>
-            <td>
-                <input type="text" class="k-textbox" placeholder="Ingrese costo" required id="costo" />
-            </td>
-        </tr>
-        <tr>
-            <td><label>Observaciones:</label></td>
-            <td>
-                <textarea class="k-editable-area" placeholder="Ingrese observacion" required id="observacion"></textarea>
-            </td>
-        </tr>
+                </td>
+                <td><label>Costo:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese costo" id="costo" />
+                </td>
+                <td><label>Observaciones:</label></td>
+                <td>
+                    <textarea class="k-editable-area" placeholder="Ingrese observacion" id="observacion"></textarea>
+                </td>
+                <td>
+                    <div id="asignar_costo" class="ui-state-default ui-corner-all" title="Asginar costo">
+                        <span class="ui-icon ui-icon-plusthick"></span>
+                    </div>
+                </td>
+            </tr>
             <tr>
-                <td colspan="2" align="center">
-                    <table border="1">
-                    <caption><p><button type="button" class="k-button" id="btn_asignar_tipo_habitacion">Asignar Tipo de Habitacion</button></p></caption>
-                    <?php if(isset($this->datos_detalle_habitacion)){?>
+                <td colspan="7" align="center">
+                    <table border="1" id="tbl_habitacion_especifica" class="tabgrilla">
                         <tr>
-                            <td>Tipo de Habitacion</td><td>Costo</td><td>Observacion</td><td>Acciones</td>
+                            <th>Tipo de Habitacion</th><th>Costo</th><th>Observacion</th><th>Acciones</th>
                         </tr>
-                    <?php } ?>
                     </table>
                 </td>        
             </tr>
             <tr>
-               <td colspan="2" align="center">
+               <td colspan="7" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
                         <a href="<?php echo BASE_URL ?>habitaciones" class="k-button">Cancelar</a>
@@ -118,41 +140,3 @@ $(document).ready(function(){
         </table>
     </fieldset>
 </form>
-
-<div id="ventana_tipo_habitacion">
-    <table>
-        <caption><p>Asignar Tipo de Habitacion</p></caption>
-        <tr>
-            <td><label>Tipo Habitacion:</label></td>
-            <td>
-                <select placeholder="Seleccione..." class="combo" required id="idtipo_habitacion">
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
-                    <option value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
-                    <?php }?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Costo:</label></td>
-            <td>
-                <input type="text" class="k-textbox" placeholder="Ingrese costo" required id="costo" />
-            </td>
-        </tr>
-        <tr>
-            <td><label>Observaciones:</label></td>
-            <td>
-                <textarea class="k-editable-area" placeholder="Ingrese observacion" required id="observacion"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <p>
-                    <button class="k-button" id="inserta_tmphabitacion">Insertar</button>
-                    <button class="k-button" id="cancela_tmphabitacion">Cancelar</button>
-                </p>
-            </td>
-        </tr>
-    </table>
-</div>
-<div id="fondoclaro"></div>

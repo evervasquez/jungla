@@ -1,8 +1,7 @@
 <script type="text/javascript">
     $(function(){
-        $( "#buscar" ).focus();
-        
-        $("#btn_buscar").click(function(){
+        $("#buscar").focus();
+        function buscar(){
             $.post('/sisjungla/modulos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
@@ -39,7 +38,18 @@
                     pageable: true
                 });
             },'json');
+        }
+        $("#buscar").keypress(function(event){
+           if(event.which == 13){
+               buscar();
+           } 
         });
+        
+        $("#btn_buscar").click(function(){
+            buscar();
+            $("#buscar").focus();
+        });
+        
         
     });
 </script>
