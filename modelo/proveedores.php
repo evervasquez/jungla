@@ -10,6 +10,7 @@ class proveedores {
     public $direccion;
     public $email;
     public $idubigeo;
+    public $ubigeo;
 
     public function inserta() {
         $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, 
@@ -30,7 +31,7 @@ class proveedores {
     }
 
     public function selecciona() {
-        $datos = array($this->idproveedor);
+        $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, $this->ubigeo);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_proveedores", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -38,6 +39,7 @@ class proveedores {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
     

@@ -11,8 +11,17 @@ class promociones_controlador extends controller{
 
     public function index() {
         $this->_promociones->idpromocion= 0;
+        $this->_promociones->descripcion = '';
         $this->_vista->datos = $this->_promociones->selecciona();
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        $this->_promociones->idpromocion = 0;
+        if($_POST['filtro']==0){
+            $this->_promociones->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_promociones->selecciona());
     }
 
     public function nuevo() {

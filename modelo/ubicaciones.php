@@ -5,9 +5,10 @@ class ubicaciones {
     public $idubicacion;
     public $idalmacen;
     public $descripcion;
+    public $almacenes;
 
     public function selecciona() {
-        $datos = array($this->idubicacion);
+        $datos = array($this->idubicacion, $this->descripcion, $this->almacenes);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_ubicaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -15,6 +16,7 @@ class ubicaciones {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

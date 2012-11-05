@@ -11,8 +11,17 @@ class categorias_controlador extends controller {
 
     public function index() {
         $this->_categorias->idcategoria = 0;
+        $this->_categorias->descripcion = '';
         $this->_vista->datos = $this->_categorias->selecciona();
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        $this->_categorias->idcategoria = 0;
+        if($_POST['filtro']==0){
+            $this->_categorias->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_categorias->selecciona());
     }
 
     public function nuevo() {

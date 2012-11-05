@@ -6,7 +6,7 @@ class almacenes {
     public $descripcion;
 
     public function selecciona() {
-        $datos = array($this->idalmacen);
+        $datos = array($this->idalmacen, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_almacenes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -14,6 +14,7 @@ class almacenes {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

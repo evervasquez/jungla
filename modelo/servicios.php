@@ -5,21 +5,8 @@ class servicios {
     public $idservicio;
     public $descripcion;
     
-    public function filtrar(){
-        $datos = array($this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_filtra_servicios", $datos);
-        if ($r[1] == '') {
-            $stmt = $r[0];
-        } else {
-            die($r[1]);
-        }
-        $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
-    }
-
     public function selecciona() {
-        $datos = array($this->idservicio);
+        $datos = array($this->idservicio, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_servicios", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -27,6 +14,7 @@ class servicios {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

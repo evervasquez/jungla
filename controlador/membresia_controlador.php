@@ -11,8 +11,17 @@ class membresia_controlador extends controller{
 
     public function index() {
         $this->_membresias->idmembresia = 0;
+        $this->_membresias->descripcion = '';
         $this->_vista->datos = $this->_membresias->selecciona();
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        $this->_membresias->idmembresia = 0;
+        if($_POST['filtro']==0){
+            $this->_membresias->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_membresias->selecciona());
     }
 
     public function nuevo() {

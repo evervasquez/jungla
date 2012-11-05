@@ -14,6 +14,9 @@ class productos {
     public $stock;
     public $estado;
     public $precio_compra;
+    public $tipo_producto;
+    public $unidad_medida;
+    public $ubicacion;
     
 
     public function inserta() {
@@ -37,7 +40,7 @@ class productos {
     }
 
     public function selecciona() {
-        $datos = array($this->idproducto);
+        $datos = array($this->idproducto, $this->descripcion, $this->tipo_producto, $this->unidad_medida, $this->ubicacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_productos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -45,6 +48,7 @@ class productos {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

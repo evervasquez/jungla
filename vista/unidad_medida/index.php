@@ -1,5 +1,54 @@
+<script type="text/javascript">
+    $(function(){
+        $( "#buscar" ).focus();
+        
+        $( "#btn_buscar" ).click(function(){
+            $.post('/sisjungla/unidad_medida/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+                HTML = '<table border="1" class="tabgrilla">'+
+                        '<tr>'+
+                            '<th>Codigo</th>'+
+                            '<th>Descripcion</th>'+
+                            '<th>Abreviatura</th>'+
+                            '<th>Acciones</th>'+
+                        '</tr>';
+
+                for(var i=0;i<datos.length;i++){
+                    HTML = HTML + '<tr>';
+                    HTML = HTML + '<td>'+datos[i].idunidad_medida+'</td>';
+                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                    HTML = HTML + '<td>'+datos[i].abreviatura+'</td>';
+                    var editar='/sisjungla/unidad_medida/editar/'+datos[i].idunidad_medida; 
+                    var eliminar='/sisjungla/unidad_medida/eliminar/'+datos[i].idunidad_medida;   
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    HTML = HTML + '</td>';
+                    HTML = HTML + '</tr>';
+                }
+                HTML = HTML + '</table>'
+                $("#grilla").html(HTML);
+                $(".tabgrilla").kendoGrid({
+                    dataSource: {
+                        pageSize: 5
+                    },
+                    pageable: true
+                });
+            },'json');
+        });
+        
+    });
+</script>
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <p><h3>Lista de Unidades de Medida</h3></p>
+    <p>
+        <select class="combo" id="filtro">
+            <option value="0">Descripcion</option>
+            <option value="1">Abreviatura</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="buscar">
+        <button type="button" class="k-button" id="btn_buscar">Buscar</button>
+        <a href="<?php echo BASE_URL?>unidad_medida/nuevo" class="k-button">Nuevo</a>
+    </p>
+    <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
             <th>Codigo</th>
@@ -23,8 +72,9 @@
 
     <?php } else { ?>
         <tr>
-            <td><p>No hay unidad de medida</p></td>
+            <td><p>No hay unidad de medida</p>
+            <a href="<?php echo BASE_URL?>unidad_medida/nuevo" class="k-button">Nuevo</a></td>
         </tr>
     <?php } ?>
 </table>
-<p><a href="<?php echo BASE_URL?>unidad_medida/nuevo" class="k-button">Nuevo</a></p>
+</div>
