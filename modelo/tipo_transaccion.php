@@ -6,15 +6,15 @@ class tipo_transaccion {
     public $descripcion;
 
     public function selecciona() {
-        $datos = array($this->idtipo_transaccion);
+        $datos = array($this->idtipo_transaccion, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_transaccion", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
-        $r = null;
-//        $stmt = $r[0];
+        $r = null; 
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

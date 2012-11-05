@@ -11,13 +11,17 @@ class servicios_controlador extends controller {
 
     public function index() {
         $this->_servicios->idservicio = 0;
+        $this->_servicios->descripcion = '';
         $this->_vista->datos = $this->_servicios->selecciona();
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_servicios->descripcion=$_POST['descripcion'];
-        echo json_encode($this->_servicios->filtrar());
+        $this->_servicios->idservicio = 0;
+        if($_POST['filtro']==0){
+            $this->_servicios->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_servicios->selecciona());
     }
     
     public function nuevo() {        

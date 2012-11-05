@@ -11,10 +11,19 @@ class perfiles_controlador extends controller {
 
     public function index() {
         $this->_perfiles->idperfil = 0;
+        $this->_perfiles->descripcion = '';
         $this->_vista->datos = $this->_perfiles->selecciona();
         $this->_vista->renderizar('index');
     }
-
+    
+    public function buscador(){
+        $this->_perfiles->idperfil = 0;
+        if($_POST['filtro']==0){
+            $this->_perfiles->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_perfiles->selecciona());
+    }
+    
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
             $this->_perfiles->idperfil = 0;

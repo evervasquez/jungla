@@ -174,7 +174,7 @@ $(document).ready(function(){
             <tr>
             	<td colspan="4" align="center">
                     <p>
-                        <button type="submit" class="k-button" id="saveform">Guardar</button>
+                        <button type="submit" class="k-button save" id="saveform">Guardar</button>
                         <a href="<?php echo BASE_URL ?>productos" class="k-button">Cancelar</a>
                     </p>
                 </td>

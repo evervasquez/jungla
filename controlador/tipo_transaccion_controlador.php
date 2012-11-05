@@ -11,8 +11,17 @@ class tipo_transaccion_controlador extends controller{
 
     public function index() {
         $this->_tipo_transaccion->idtipo_transaccion = 0;
+        $this->_tipo_transaccion->descripcion = '';
         $this->_vista->datos = $this->_tipo_transaccion->selecciona();
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        $this->_tipo_transaccion->idtipo_transaccion = 0;
+        if($_POST['filtro']==0){
+            $this->_tipo_transaccion->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_tipo_transaccion->selecciona());
     }
 
     public function nuevo() {

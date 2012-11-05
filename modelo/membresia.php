@@ -6,7 +6,7 @@ class membresia {
     public $descripcion;
 
     public function selecciona() {
-        $datos = array($this->idmembresia);
+        $datos = array($this->idmembresia, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_membresia", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -14,6 +14,7 @@ class membresia {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

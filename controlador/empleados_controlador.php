@@ -30,10 +30,43 @@ class empleados_controlador extends controller {
 
     public function index() {
         $this->_empleados->idempleado = 0;
+        $this->_empleados->nombres = '';
+        $this->_empleados->apellidos = '';
+        $this->_empleados->perfil = '';
+        $this->_empleados->ubigeo = '';
         $this->_vista->datos = $this->_empleados->selecciona();
         $this->_vista->renderizar('index');
     }
-
+    
+    public function buscador(){
+        $this->_empleados->idempleado = 0;
+        if($_POST['filtro']==0){
+            $this->_empleados->nombres=$_POST['cadena'];
+            $this->_empleados->apellidos = '';
+            $this->_empleados->perfil = '';
+            $this->_empleados->ubigeo = '';
+        }
+        if($_POST['filtro']==1){
+            $this->_empleados->nombres = '';
+            $this->_empleados->apellidos = $_POST['cadena'];
+            $this->_empleados->perfil = '';
+            $this->_empleados->ubigeo = '';
+        }
+        if($_POST['filtro']==2){
+            $this->_empleados->nombres = '';
+            $this->_empleados->apellidos = '';
+            $this->_empleados->perfil = $_POST['cadena'];
+            $this->_empleados->ubigeo = '';
+        }
+        if($_POST['filtro']==3){
+            $this->_empleados->nombres = '';
+            $this->_empleados->apellidos = '';
+            $this->_empleados->perfil = '';
+            $this->_empleados->ubigeo = $_POST['cadena'];
+        }
+        echo json_encode($this->_ubicaciones->selecciona());
+    }
+    
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';

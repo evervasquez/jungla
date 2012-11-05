@@ -2,8 +2,8 @@
     $(function(){
         $( "#buscar" ).focus();
         
-        $("#btn_buscar").click(function(){
-            $.post('/sisjungla/servicios/buscador','descripcion='+$("#buscar").val(),function(datos){
+        $( "#btn_buscar" ).click(function(){
+            $.post('/sisjungla/servicios/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -15,10 +15,10 @@
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].idservicio+'</td>';
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    editar='/sisjungla/servicios/editar/'+datos[i].idservicio; 
-                    eliminar='/sisjungla/servicios/eliminar/'+datos[i].idservicio;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar('+editar+')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar('+eliminar+')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    var editar='/sisjungla/servicios/editar/'+datos[i].idservicio; 
+                    var eliminar='/sisjungla/servicios/eliminar/'+datos[i].idservicio;   
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -35,11 +35,10 @@
         
     });
 </script>
-<form method="post" action="<?php echo BASE_URL ?>servicios/">
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <p><h3>Lista de Servicios</h3></p>
     <p>
-        <select class="combo">
+        <select class="combo" id="filtro">
             <option value="0">Descripcion</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
@@ -75,4 +74,3 @@
     <?php } ?>
 </table>
     </div>
-</form>

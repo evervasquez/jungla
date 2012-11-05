@@ -7,7 +7,7 @@ class unidad_medida {
     public $abreviatura;
 
     public function selecciona() {
-        $datos = array($this->idunidad_medida);
+        $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_unidad_medida", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

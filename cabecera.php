@@ -4,9 +4,8 @@
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />
         <title>La Jungla</title>
-        <link type="text/css" href="<?php echo BASE_URL?>lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
         <link href="<?php echo BASE_URL?>lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
-        <link href="<?php echo BASE_URL?>lib/css/styles/kendo.metro.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BASE_URL?>lib/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo BASE_URL?>lib/css/le-frog/jquery-ui-1.9.0.custom.css" />
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jqueryui.js"></script>
@@ -15,6 +14,7 @@
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/validaciones.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/kendo.all.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/html5.js"></script>
+        <link type="text/css" href="<?php echo BASE_URL?>lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
     </head>
     <body>
         <a href="<?php echo BASE_URL ?>" id="cabecera"></a>

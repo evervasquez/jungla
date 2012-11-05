@@ -6,7 +6,7 @@ class concepto_movimiento {
     public $descripcion;
 
     public function selecciona() {
-        $datos = array($this->idconcepto_movimiento);
+        $datos = array($this->idconcepto_movimiento, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_concepto_movimiento", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -14,6 +14,7 @@ class concepto_movimiento {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

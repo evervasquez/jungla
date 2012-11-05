@@ -6,7 +6,7 @@ class perfiles {
     public $descripcion;
 
     public function selecciona() {
-        $datos = array($this->idperfil);
+        $datos = array($this->idperfil, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_perfiles", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -14,6 +14,7 @@ class perfiles {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

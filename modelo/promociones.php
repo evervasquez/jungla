@@ -9,7 +9,7 @@ class promociones {
     public $fecha_final;
 
     public function selecciona() {
-        $datos = array($this->idpromocion);
+        $datos = array($this->idpromocion, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_promociones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -17,7 +17,7 @@ class promociones {
             die($r[1]);
         }
         $r = null;
-//        $stmt = $r[0];
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

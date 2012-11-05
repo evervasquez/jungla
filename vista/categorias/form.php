@@ -23,7 +23,7 @@
         <tr>
             <td colspan="2" align="center">
                 <p>
-                    <button type="submit" class="k-button">Guardar</button>
+                    <button type="submit" class="k-button save">Guardar</button>
                     <a href="<?php echo BASE_URL ?>categorias" class="k-button">Cancelar</a>
                 </p>
             </td>

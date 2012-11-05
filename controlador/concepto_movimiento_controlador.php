@@ -11,10 +11,19 @@ class concepto_movimiento_controlador extends controller {
 
     public function index() {
         $this->_concepto_movimiento->idconcepto_movimiento = 0;
+        $this->_concepto_movimiento->descripcion = '';
         $this->_vista->datos = $this->_concepto_movimiento->selecciona();
         $this->_vista->renderizar('index');
     }
-
+    
+    public function buscador(){
+        $this->_concepto_movimiento->idconcepto_movimiento = 0;
+        if($_POST['filtro']==0){
+            $this->_concepto_movimiento->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_concepto_movimiento->selecciona());
+    }
+    
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
             $this->_concepto_movimiento->idconcepto_movimiento = 0;

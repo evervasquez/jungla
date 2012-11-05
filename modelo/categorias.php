@@ -7,7 +7,7 @@ class categorias {
     public $nro_elemento;
 
     public function selecciona() {
-        $datos = array($this->idcategoria);
+        $datos = array($this->idcategoria, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_categorias", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -15,7 +15,7 @@ class categorias {
             die($r[1]);
         }
         $r = null;
-//        $stmt = $r[0];
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 

@@ -18,6 +18,8 @@ class empleados {
     public $estado;
     public $idactividad;
     public $idtipo_empleado;
+    public $perfil;
+    public $ubigeo;
     
 
     public function inserta() {
@@ -47,7 +49,7 @@ class empleados {
     }
 
     public function selecciona() {
-        $datos = array($this->idempleado);
+        $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->perfil, $this->ubigeo);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_empleados", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -55,6 +57,7 @@ class empleados {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 
