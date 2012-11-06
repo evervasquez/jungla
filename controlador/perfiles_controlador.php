@@ -11,7 +11,6 @@ class perfiles_controlador extends controller {
 
     public function index() {
         $this->_perfiles->idperfil = 0;
-        $this->_perfiles->descripcion = '';
         $this->_vista->datos = $this->_perfiles->selecciona();
         $this->_vista->renderizar('index');
     }

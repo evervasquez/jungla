@@ -168,7 +168,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo $this->datos[0]['observaciones']?></textarea>
+                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                 </td>
             </tr>
             <tr>

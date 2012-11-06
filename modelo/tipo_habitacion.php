@@ -6,6 +6,9 @@ class tipo_habitacion {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idtipo_habitacion, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_habitacion", $datos);
         if ($r[1] == '') {

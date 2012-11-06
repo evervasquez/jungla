@@ -6,6 +6,9 @@ class tipo_transaccion {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idtipo_transaccion, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_transaccion", $datos);
         if ($r[1] == '') {

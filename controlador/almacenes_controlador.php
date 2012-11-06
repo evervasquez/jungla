@@ -11,7 +11,6 @@ class almacenes_controlador extends controller {
 
     public function index() {
         $this->_almacenes->idalmacen = 0;
-        $this->_almacenes->descripcion = '';
         $this->_vista->datos = $this->_almacenes->selecciona();
         $this->_vista->renderizar('index');
     }

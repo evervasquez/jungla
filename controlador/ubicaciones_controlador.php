@@ -13,8 +13,6 @@ class ubicaciones_controlador extends controller {
 
     public function index() {
         $this->_ubicaciones->idubicacion = 0;
-        $this->_ubicaciones->descripcion = '';
-        $this->_ubicaciones->almacenes = '';
         $this->_vista->datos = $this->_ubicaciones->selecciona();
         $this->_vista->renderizar('index');
     }
@@ -23,9 +21,7 @@ class ubicaciones_controlador extends controller {
         $this->_ubicaciones->idubicacion = 0;
         if($_POST['filtro']==0){
             $this->_ubicaciones->descripcion=$_POST['cadena'];
-            $this->_ubicaciones->almacenes = '';
         }else{
-            $this->_ubicaciones->descripcion='';
             $this->_ubicaciones->almacenes=$_POST['cadena'];
         }
         echo json_encode($this->_ubicaciones->selecciona());

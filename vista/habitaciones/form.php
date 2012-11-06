@@ -97,14 +97,14 @@ $(document).ready(function(){
         <legend>Costos de habitacion</legend>
         <table>
             <tr>
-            <td><label>Tipo Habitacion:</label></td>
-            <td>
-                <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
-                    <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
-                    <?php }?>
-                </select>
+                <td><label>Tipo Habitacion:</label></td>
+                <td>
+                    <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
+                        <option></option>
+                        <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
+                        <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
+                        <?php }?>
+                    </select>
                 </td>
                 <td><label>Costo:</label></td>
                 <td>
