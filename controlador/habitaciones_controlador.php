@@ -3,13 +3,13 @@
 class habitaciones_controlador extends controller {
     
     private $_habitaciones;
-    private $_detalle_habitacion;
+    private $_habitacion_especifica;
     private $_tipo_habitacion;
 
     public function __construct() {
         parent::__construct();
         $this->_habitaciones = $this->cargar_modelo('habitaciones');
-        $this->_detalle_habitacion= $this->cargar_modelo('detalle_habitacion');
+        $this->_habitacion_especifica= $this->cargar_modelo('habitacion_especifica');
         $this->_tipo_habitacion= $this->cargar_modelo('tipo_habitacion');
     }
 
@@ -20,6 +20,17 @@ class habitaciones_controlador extends controller {
     }
     
     public function nuevo() {
+        if ($_POST['guardar'] == 1) {
+//            echo '<pre>';
+//            print_r($_POST);
+//            echo '</pre>';
+//            exit;
+            $this->_habitaciones->idhabitacion=0;
+            $this->_habitaciones->descripcion=$_POST['descripcion'];
+            $this->_habitaciones->nro_habitacion=$_POST['nro_habitacion'];
+            $this->_habitaciones->ventilacion=$_POST['ventilacion'];
+            $this->_habitaciones->estado=$_POST['estado'];
+        }
         $this->_tipo_habitacion->idtipo_habitacion=0;
         $this->_vista->datos_tipo_habitacion=$this->_tipo_habitacion->selecciona();
         $this->_vista->titulo = 'Registrar Habitacion';
