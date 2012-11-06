@@ -20,7 +20,7 @@
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                    HTML = HTML + '<td>'+(datos[i].descripcion)+'</td>';
                     HTML = HTML + '<td>'+datos[i].tipo+'</td>';
                     HTML = HTML + '<td>'+datos[i].stock+'</td>';
                     HTML = HTML + '<td>'+datos[i].precio_unitario+'</td>';
