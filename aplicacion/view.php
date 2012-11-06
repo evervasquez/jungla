@@ -59,8 +59,10 @@ class view {
         
         $ruta_vista = $ruta_vista = ROOT . 'vista' . DS . $this->_controlador . DS . $vista.'.php';
         //comprobamos si el archivo existe y es legible
+        //die($ruta_vista);
         if (is_readable($ruta_vista)) {
             //incluimos los layout
+            require_once ROOT.'lib\nusoap\nusoap.php';
             include_once $ruta_vista;
             //incluimos la vista
         } else {
