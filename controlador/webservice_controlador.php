@@ -1,6 +1,7 @@
 <?php
 
-class servicio_controlador extends controller {
+//require_once '../modelo/empleados.php';
+class webservice_controlador extends controller {
 
     private $_empleados;
 
@@ -14,11 +15,9 @@ class servicio_controlador extends controller {
         $this->_vista->renderizar_webservice('index');
     }
 
-    public function login_usuario($usuario, $clave) {
-        $_datos = $this->_empleados->selecciona($usuario, $clave);
-        $_ndatos[0] = $_datos[0]['nombres'];
-        $_ndatos[1] = $_datos[0]['apellidos'];
-        $this->_vista->_datos=$_ndatos;
+    public function login_usuario($usuario, $pass) {
+        $r = $this->_empleados->seleccionar($usuario, $pass);
+        return $r;
     }
 
 }

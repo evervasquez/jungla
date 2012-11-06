@@ -6,6 +6,9 @@ class almacenes {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idalmacen, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_almacenes", $datos);
         if ($r[1] == '') {

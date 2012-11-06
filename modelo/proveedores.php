@@ -31,6 +31,18 @@ class proveedores {
     }
 
     public function selecciona() {
+        if(is_null($this->razon_social)){
+            $this->razon_social='';
+        }
+        if(is_null($this->representante)){
+            $this->representante='';
+        }
+        if(is_null($this->ruc)){
+            $this->ruc='';
+        }
+        if(is_null($this->ubigeo)){
+            $this->ubigeo='';
+        }
         $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, $this->ubigeo);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_proveedores", $datos);
         if ($r[1] == '') {

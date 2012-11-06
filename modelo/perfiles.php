@@ -6,6 +6,9 @@ class perfiles {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idperfil, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_perfiles", $datos);
         if ($r[1] == '') {

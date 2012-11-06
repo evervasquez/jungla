@@ -101,7 +101,7 @@ $(document).ready(function(){
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                            <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0){ ?>
+                            <?php if( $this->datos[0]['pais'] == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0){ ?>
                         <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
                             <?php } else { ?>
                         <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>

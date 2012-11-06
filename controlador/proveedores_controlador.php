@@ -134,7 +134,7 @@ class proveedores_controlador extends controller {
         $this->_proveedores->idproveedor = $this->filtrarInt($id);
         $datos = $this->_proveedores->selecciona();
 //            echo '<pre>';
-//            print_r($_POST);
+//            print_r($datos);
 //            echo '</pre>';
 //            exit;
         //obtenemos todos los paises
@@ -142,7 +142,7 @@ class proveedores_controlador extends controller {
         $this->_vista->datos_paises = $this->_paises->selecciona();
         //obtenemos todas las regiones que pertenecen al pais del proveedor
         $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = $datos[0]['idpais'];
+        $this->_regiones->idpais = $datos[0]['pais'];
         $this->_vista->datos_regiones = $this->_regiones->selecciona();
         //obtenemos todas las provincias que pertenecen a la región del proveedor
         $this->_provincias->codigo_provincia = 0;
