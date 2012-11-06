@@ -57,7 +57,7 @@
             <option value="3">Ubigeo</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
-        <button type="button" class="k-button" id="btn_buscar">Buscar</button>
+        <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
         <a href="<?php echo BASE_URL?>proveedores/nuevo" class="k-button">Nuevo</a>
     </p>
     <div id="grilla">
