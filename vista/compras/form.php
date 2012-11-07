@@ -92,29 +92,24 @@
                         <?php } ?>
                     <?php } ?>
                     </select>
-                    <a id="um" class="k-button">Nuevo</a>
             	</td>
             </tr>
             <tr>
-                <td><label>Precio de Compra:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese precio" id="precio" />
-                </td>
                 <td><label>Cantidad:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
+                <td><label>Precio de Compra:</label></td>
                 <td>
-                    <div id="asignar_costo" class="ui-state-default ui-corner-all" title="Asginar producto">
-                        <span class="ui-icon ui-icon-plusthick"></span>
-                    </div>
+                    <input type="text" class="k-textbox" placeholder="Ingrese precio" id="precio" />
+                    <input type="button" class="k-button" value="Asignar" id="asignar_producto"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="4">
-                    <table border="1" id="" class="tabgrilla">
+                    <table border="1" class="tabgrilla" id="tbl_detalle_compra">
                         <tr>
-                            <th>Item</th><th>Descripcion</th><th>Precio</th><th>Cantidad</th><th>Unidad de Medida</th><th>Subtotal</th>
+                            <th>Item</th><th>Producto</th><th>Unidad de Medida</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th>
                         </tr>
                     </table>
                 </td>
@@ -123,23 +118,23 @@
                 <td colspan="2">&nbsp;</td>
                 <td><label>Importe:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" required name="importe" readonly="readonly"
-                       id="nombre" value="<?php if(isset ($this->datos[0]['importe']))echo $this->datos[0]['importe']?>"/>
+                    <input type="text" class="k-textbox" required name="importe" id="importe" readonly="readonly"
+                       value="<?php if(isset ($this->datos[0]['importe']))echo $this->datos[0]['importe']?>"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">&nbsp;</td>
                 <td><label>IGV:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese igv" required name="igv"
-                       id="nombre" value="<?php if(isset ($this->datos[0]['igv']))echo $this->datos[0]['igv']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Ingrese igv" name="igv" value="0"
+                       id="igv" value="<?php if(isset ($this->datos[0]['igv']))echo $this->datos[0]['igv']?>"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">&nbsp;</td>
                 <td><label>Total:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" readonly="readonly" id="precio" />
+                    <input type="text" class="k-textbox" readonly="readonly" id="total" />
                 </td>
             </tr>
             <tr>
@@ -191,7 +186,7 @@
         <select class="combo" id="filtro_productos">
             <option value="0">Descripcion</option>
         </select>
-        <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_producto">
+        <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_productos">
         <button type="button" class="k-button" id="btn_buscar_producto">Buscar</button>
     </p>
     <div id="grilla_productos">
