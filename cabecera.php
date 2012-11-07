@@ -13,8 +13,14 @@
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/script.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/validaciones.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/kendo.all.min.js"></script>
-        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/html5.js"></script>
         <link type="text/css" href="<?php echo BASE_URL?>lib/css/estilosprincipal.css" rel="stylesheet" media="screen" />
+        <?php if(isset($_params['js']) && count($_params['js'])): ?>
+        <?php for($i=0; $i < count($_params['js']); $i++): ?>
+        
+        <script src="<?php echo $_params['js'][$i] ?>" type="text/javascript"></script>
+        
+        <?php endfor; ?>
+        <?php endif; ?>
     </head>
     <body>
         <a href="<?php echo BASE_URL ?>" id="cabecera"></a>

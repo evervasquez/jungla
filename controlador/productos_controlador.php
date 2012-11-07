@@ -26,6 +26,7 @@ class productos_controlador extends controller {
         $this->_productos->unidad_medida = '';
         $this->_productos->ubicacion = '';
         $this->_vista->datos = $this->_productos->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,26 +34,14 @@ class productos_controlador extends controller {
         $this->_productos->idproducto = 0;
         if($_POST['filtro']==0){
             $this->_productos->descripcion=$_POST['cadena'];
-            $this->_productos->tipo_producto = '';
-            $this->_productos->unidad_medida = '';
-            $this->_productos->ubicacion = '';
         }
         if($_POST['filtro']==1){
-            $this->_productos->descripcion= '';
             $this->_productos->tipo_producto = $_POST['cadena'];
-            $this->_productos->unidad_medida = '';
-            $this->_productos->ubicacion = '';
         }
         if($_POST['filtro']==2){
-            $this->_productos->descripcion= '';
-            $this->_productos->tipo_producto = '';
             $this->_productos->unidad_medida = $_POST['cadena'];
-            $this->_productos->ubicacion = '';
         }
         if($_POST['filtro']==3){
-            $this->_productos->descripcion= '';
-            $this->_productos->tipo_producto = '';
-            $this->_productos->unidad_medida = '';
             $this->_productos->ubicacion = $_POST['cadena'];
         }
         echo json_encode($this->_productos->selecciona());

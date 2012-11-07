@@ -14,6 +14,7 @@ class ubicaciones_controlador extends controller {
     public function index() {
         $this->_ubicaciones->idubicacion = 0;
         $this->_vista->datos = $this->_ubicaciones->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

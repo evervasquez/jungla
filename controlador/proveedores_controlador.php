@@ -24,6 +24,7 @@ class proveedores_controlador extends controller {
         $this->_proveedores->ruc = '';
         $this->_proveedores->ubigeo = '';
         $this->_vista->datos = $this->_proveedores->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -31,26 +32,14 @@ class proveedores_controlador extends controller {
         $this->_proveedores->idproveedor = 0;
         if($_POST['filtro']==0){
             $this->_proveedores->razon_social=$_POST['cadena'];
-            $this->_proveedores->representante = '';
-            $this->_proveedores->ruc = '';
-            $this->_proveedores->ubigeo = '';
         }
         if($_POST['filtro']==1){
-            $this->_proveedores->razon_social= '';
             $this->_proveedores->representante = $_POST['cadena'];
-            $this->_proveedores->ruc = '';
-            $this->_proveedores->ubigeo = '';
         }
         if($_POST['filtro']==2){
-            $this->_proveedores->razon_social= '';
-            $this->_proveedores->representante = '';
             $this->_proveedores->ruc = $_POST['cadena'];
-            $this->_proveedores->ubigeo = '';
         }
         if($_POST['filtro']==3){
-            $this->_proveedores->razon_social = '';
-            $this->_proveedores->representante = '';
-            $this->_proveedores->ruc = '';
             $this->_proveedores->ubigeo = $_POST['cadena'];
         }
         echo json_encode($this->_proveedores->selecciona());

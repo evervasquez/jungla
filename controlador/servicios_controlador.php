@@ -11,8 +11,8 @@ class servicios_controlador extends controller {
 
     public function index() {
         $this->_servicios->idservicio = 0;
-        $this->_servicios->descripcion = '';
         $this->_vista->datos = $this->_servicios->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

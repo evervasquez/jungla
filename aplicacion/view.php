@@ -14,11 +14,13 @@ class view {
     //put your code here
     private $_controlador;
     private $_menu;
+    private $_js;
     //parametro request = es el parametro del ccontrolador
     public function __construct(request $peticion, $menu) {
         //guardamos el nombre del controlador
         $this->_controlador = $peticion->get_controlador();
         $this->_menu=$menu;
+        $this->_js = array();
     }
 
     public function renderizar($vista, $item = false) {
@@ -27,6 +29,15 @@ class view {
         
         $ruta_vista = ROOT . 'vista' . DS . $this->_controlador . DS . $vista.'.php';
         
+        $js = array();
+        
+        if(count($this->_js)){
+            $js = $this->_js;
+        }
+        
+        $_params = array(
+            'js' => $js
+        );
         
         //die($ruta_vista);
         //comprobamos si el archivo existe y es legible
@@ -79,6 +90,17 @@ class view {
             //incluimos la vista
         } else {
             throw new Exception('Error de vista');
+        }
+    }
+    
+    public function setJs(array $js)
+    {
+        if(is_array($js) && count($js)){
+            for($i=0; $i < count($js); $i++){
+                $this->_js[] = BASE_URL . 'vista' . DS . $this->_controlador . DS . "js" . DS . $js[$i] . '.js';
+            }
+        } else {
+            throw new Exception('Error de js');
         }
     }
 

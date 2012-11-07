@@ -14,6 +14,7 @@ class unidad_medida_controlador extends controller{
         $this->_unidad_medida->descripcion = '';
         $this->_unidad_medida->abreviatura = '';
         $this->_vista->datos = $this->_unidad_medida->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -21,9 +22,7 @@ class unidad_medida_controlador extends controller{
         $this->_unidad_medida->idunidad_medida = 0;
         if($_POST['filtro']==0){
             $this->_unidad_medida->descripcion=$_POST['cadena'];
-            $this->_unidad_medida->abreviatura = '';
         }else{
-            $this->_unidad_medida->descripcion='';
             $this->_unidad_medida->abreviatura=$_POST['cadena'];
         }
         echo json_encode($this->_unidad_medida->selecciona());

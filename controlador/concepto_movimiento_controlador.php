@@ -11,8 +11,8 @@ class concepto_movimiento_controlador extends controller {
 
     public function index() {
         $this->_concepto_movimiento->idconcepto_movimiento = 0;
-        $this->_concepto_movimiento->descripcion = '';
         $this->_vista->datos = $this->_concepto_movimiento->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
