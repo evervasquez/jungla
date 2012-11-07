@@ -11,8 +11,8 @@ class tipo_producto_controlador extends controller {
 
     public function index() {
         $this->_tipo_producto->idtipo_producto = 0;
-        $this->_tipo_producto->descripcion = '';
         $this->_vista->datos = $this->_tipo_producto->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

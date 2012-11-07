@@ -49,14 +49,12 @@ body{
         margin: 10px 10px 10px 30px;
         text-align: right;
 }
-/*.save{
-        background-color: #0C6;
-        color: black;
+#btn_buscar{
+        height: 29px;
 }
-.save:hover{
-        background-color: green;
-        color: white;
-}*/
+#buscar{
+        width: 50%;
+}
 #footer{
         background:#096;
         width: 100%;

@@ -14,6 +14,7 @@ class modulos_controlador extends controller{
         $this->_modulos->descripcion = '';
         $this->_modulos->modulo_padre = '';
         $this->_vista->datos = $this->_modulos->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

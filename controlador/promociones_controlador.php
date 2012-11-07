@@ -11,8 +11,8 @@ class promociones_controlador extends controller{
 
     public function index() {
         $this->_promociones->idpromocion= 0;
-        $this->_promociones->descripcion = '';
         $this->_vista->datos = $this->_promociones->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

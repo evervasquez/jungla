@@ -35,6 +35,7 @@ class empleados_controlador extends controller {
         $this->_empleados->perfil = '';
         $this->_empleados->ubigeo = '';
         $this->_vista->datos = $this->_empleados->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

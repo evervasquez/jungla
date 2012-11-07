@@ -11,8 +11,8 @@ class tipo_habitacion_controlador extends controller {
 
     public function index() {
         $this->_tipo_habitacion->idtipo_habitacion = 0;
-        $this->_tipo_habitacion->descripcion = '';
         $this->_vista->datos = $this->_tipo_habitacion->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

@@ -6,6 +6,9 @@ class concepto_movimiento {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idconcepto_movimiento, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_concepto_movimiento", $datos);
         if ($r[1] == '') {

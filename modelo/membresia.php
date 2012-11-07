@@ -6,6 +6,9 @@ class membresia {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idmembresia, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_membresia", $datos);
         if ($r[1] == '') {

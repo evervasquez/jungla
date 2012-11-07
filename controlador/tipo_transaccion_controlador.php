@@ -11,8 +11,8 @@ class tipo_transaccion_controlador extends controller{
 
     public function index() {
         $this->_tipo_transaccion->idtipo_transaccion = 0;
-        $this->_tipo_transaccion->descripcion = '';
         $this->_vista->datos = $this->_tipo_transaccion->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
