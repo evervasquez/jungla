@@ -55,9 +55,9 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idservicio'] ?></td>
+                <td><?php echo $this->datos[$i]['idservicio'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td align="center" class="tabtr"><a href="javascript:void(0)" 
+                <td><a href="javascript:void(0)" 
                    onclick="editar('<?php echo BASE_URL?>servicios/editar/<?php echo $this->datos[$i]['idservicio'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
                 <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>servicios/eliminar/<?php echo $this->datos[$i]['idservicio'] ?>')">

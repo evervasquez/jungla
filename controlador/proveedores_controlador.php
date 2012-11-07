@@ -19,10 +19,6 @@ class proveedores_controlador extends controller {
 
     public function index() {
         $this->_proveedores->idproveedor = 0;
-        $this->_proveedores->razon_social = '';
-        $this->_proveedores->representante = '';
-        $this->_proveedores->ruc = '';
-        $this->_proveedores->ubigeo = '';
         $this->_vista->datos = $this->_proveedores->selecciona();
         $this->_vista->renderizar('index');
     }
