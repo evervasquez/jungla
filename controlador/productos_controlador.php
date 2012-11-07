@@ -21,10 +21,6 @@ class productos_controlador extends controller {
 
     public function index() {
         $this->_productos->idproducto = 0;
-        $this->_productos->descripcion = '';
-        $this->_productos->tipo_producto = '';
-        $this->_productos->unidad_medida = '';
-        $this->_productos->ubicacion = '';
         $this->_vista->datos = $this->_productos->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');

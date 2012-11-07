@@ -1,3 +1,73 @@
+<script>
+$(document).ready(function(){
+    $("#vtna_busca_proveedor").hide();
+    $("#vtna_busca_productos").hide();
+    $("#btn_vtna_proveedores").click(function(){
+        $("#vtna_busca_proveedor").show();
+        $("#txt_buscar_proveedor").focus();
+    });
+    
+    $("#txt_buscar_proveedor").keypress(function(event){
+       if(event.which == 13){
+           buscar_proveedor();
+       } 
+    });
+    
+    $("#btn_buscar_proveedor").click(function(){
+        buscar_proveedor();
+        $("#txt_buscar_proveedor").focus();
+    });
+    
+    function buscar_proveedor(){
+        $.post('/sisjungla/proveedores/buscador','cadena='+$("#txt_buscar_proveedor").val()+'&filtro='+$("#filtro_proveedor").val(),function(datos){
+            HTML = '<table border="1" class="tabgrilla" id="tbl_busca_proveedor">'+
+                        '<tr>'+
+                            '<th>Codigo</th>'+
+                            '<th>Razon Social</th>'+
+                            '<th>Representante</th>'+
+                            '<th>Seleccionar</th>'+
+                        '</tr>';
+            for(var i=0;i<datos.length;i++){
+                
+                HTML = HTML + '<tr>';
+                HTML = HTML + '<td>'+datos[i].idproveedor+'</td>';
+                HTML = HTML + '<td>'+datos[i].razon_social+'</td>';
+                HTML = HTML + '<td>'+datos[i].representante+'</td>';
+                id=datos[i].idproveedor;
+                proveedor=datos[i].razon_social;
+                HTML = HTML + '<td><a href="#" onclick="seleccionar(\''+id+'\',\''+proveedor+'\')">[Seleccionar]</a></td>';
+                HTML = HTML + '</tr>';
+            }
+            HTML += '</table>';
+            $("#grilla_proveedores").html(HTML);
+            $("#tbl_busca_proveedor").kendoGrid({
+                    dataSource: {
+                        pageSize: 5
+                    },
+                    pageable: true
+                });
+            
+        },'json');        
+    }
+    
+    $("#btn_vtna_productos").click(function(){
+        $("#vtna_busca_productos").show();
+        $("#txt_buscar_productos").focus();
+    });
+    
+});
+function seleccionar(id,proveedor){
+    $("#idproveedor").val(id);
+    $("#proveedor").val(proveedor);
+    $("#vtna_busca_proveedor").hide();
+}
+
+function seleccionar_productos(id,producto){
+    $("#idproducto").val(id);
+    $("#producto").val(producto);
+    $("#vtna_busca_productos").hide();
+}
+</script>
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
@@ -19,10 +89,10 @@
             <tr>
                 <td><label>Proveedor:</label></td>
                 <td>
-                    <input type="hidden" name="idproveedor" value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
-                    <input type="text" class="k-textbox" placeholder="Busque proveedor" required  readonly="readonly"  name="proveedor" onkeypress="return soloLetras(event)"
-                       id="nombre" value="<?php if(isset ($this->datos[0]['proveedor']))echo $this->datos[0]['proveedor']?>"/>
-                    <input type="button" class="k-button" value="..."/>
+                    <input type="hidden" name="idproveedor" id="idproveedor" value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Busque proveedor" required  readonly="readonly"  name="proveedor" 
+                       id="proveedor" value="<?php if(isset ($this->datos[0]['proveedor']))echo $this->datos[0]['proveedor']?>"/>
+                    <input type="button" class="k-button" id="btn_vtna_proveedores" value="..."/>
                 </td>
             </tr>
             <tr>
@@ -75,22 +145,12 @@
             <tr>
                 <td><label>Producto:</label></td>
                 <td>
-                    <input type="hidden" name="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                    <input type="hidden" name="idproducto" id="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
                     <input type="text" class="k-textbox" placeholder="Busque producto" required  readonly="readonly"  name="producto"
                        id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
-                    <input type="button" class="k-button" value="..."/>
+                    <input type="button" class="k-button" id="btn_vtna_productos" value="..."/>
                 </td>
-                <td><label>Precio de Compra:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese precio" id="precio" />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Cantidad:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" />
-                </td>
-                <td><label>Unidad de Medida</label></td>
+                <td><label>Unidad de Medida:</label></td>
                 <td>
                     <select placeholder="Seleccione..." class="combo" name="unidad_medida" id="unidad_medida">
                     <option></option>
@@ -104,6 +164,21 @@
                     </select>
                     <a id="um" class="k-button">Nuevo</a>
             	</td>
+            </tr>
+            <tr>
+                <td><label>Precio de Compra:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese precio" id="precio" />
+                </td>
+                <td><label>Cantidad:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" />
+                </td>
+                <td>
+                    <div id="asignar_costo" class="ui-state-default ui-corner-all" title="Asginar producto">
+                        <span class="ui-icon ui-icon-plusthick"></span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td colspan="4">
@@ -148,3 +223,61 @@
         </table>
     </fieldset>
 </form>
+
+
+<div id="vtna_busca_proveedor">
+    <h3>Lista de Proveedores</h3>
+    <p>
+        <select class="combo" id="filtro_proveedor">
+            <option value="0">Razon Social</option>
+            <option value="1">Representante</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_proveedor">
+        <button type="button" class="k-button" id="btn_buscar_proveedor">Buscar</button>
+    </p>
+    <div id="grilla_proveedores">
+    <table border="1" class="tabgrilla" id="tbl_busca_proveedor">
+        <tr>
+            <th>Codigo</th>
+            <th>Razon Social</th>
+            <th>Representante</th>
+            <th>Selecciona</th>
+        </tr>
+        <?php for ($i = 0; $i < count($this->datos_proveedores); $i++) { ?>
+            <tr>
+                <td><?php echo $this->datos_proveedores[$i]['idproveedor'] ?></td>
+                <td><?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?></td>
+                <td><?php echo $this->datos_proveedores[$i]['representante'] ?></td>
+                <td><a href="#" onclick="seleccionar('<?php echo $this->datos_proveedores[$i]['idproveedor'] ?>','<?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?>')">[Seleccionar]</a></td>
+            </tr>
+        <?php } ?>
+    </table>
+    </div>
+</div>
+
+<div id="vtna_busca_productos">
+    <h3>Lista de Productos</h3>
+    <p>
+        <select class="combo" id="filtro_productos">
+            <option value="0">Descripcion</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_producto">
+        <button type="button" class="k-button" id="btn_buscar_producto">Buscar</button>
+    </p>
+    <div id="grilla_productos">
+    <table border="1" class="tabgrilla" id="tbl_busca_productos">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Selecciona</th>
+        </tr>
+        <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
+            <tr>
+                <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
+                <td><?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?></td>
+                <td><a href="#" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>')">[Seleccionar]</a></td>
+            </tr>
+        <?php } ?>
+    </table>
+    </div>
+</div>

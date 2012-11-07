@@ -21,7 +21,7 @@ $(document).ready(function(){
            alert(msg);
        }else{
            html="<tr>";
-           html=html+"<td><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
+           html=html+"<td width='60px'><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
            html=html+"<td><input type='hidden' name='costo[]' value='"+c+"'/>"+c+"</td>";
            html=html+"<td><input type='hidden' name='observacion[]' value='"+o+"'/>"+o+"</td>";
            html=html+'<td><a class="delete" title="Eliminar item" href="javascript:">[Eliminar]</a></td>';
@@ -124,7 +124,7 @@ $(document).ready(function(){
                 <td colspan="7" align="center">
                     <table border="1" id="tbl_habitacion_especifica" class="tabgrilla">
                         <tr>
-                            <th>Tipo de Habitacion</th><th>Costo</th><th>Observacion</th><th>Acciones</th>
+                            <th width='60px'>Tipo de Habitacion</th><th>Costo</th><th>Observacion</th><th>Acciones</th>
                         </tr>
                     </table>
                 </td>        

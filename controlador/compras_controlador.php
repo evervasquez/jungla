@@ -3,11 +3,14 @@
 class compras_controlador extends controller{
     
     private $_compras;
+    private $_proveedores;
 
     public function __construct() {
         parent::__construct();
         $this->_compras = $this->cargar_modelo('compras');
+        $this->_proveedores = $this->cargar_modelo('proveedores');
         $this->_tipo_transaccion= $this->cargar_modelo('tipo_transaccion');
+        $this->_productos= $this->cargar_modelo('productos');
         $this->_unidad_medida= $this->cargar_modelo('unidad_medida');
     }
 
@@ -24,8 +27,12 @@ class compras_controlador extends controller{
             $this->_compras->inserta();
             $this->redireccionar('compras');
         }
+        $this->_proveedores->idproveedor = 0;
+        $this->_vista->datos_proveedores = $this->_proveedores->selecciona();
         $this->_tipo_transaccion->idtipo_transaccion=0;
         $this->_vista->datos_tipo_transaccion=$this->_tipo_transaccion->selecciona();
+        $this->_productos->idproducto = 0;
+        $this->_vista->datos_productos = $this->_productos->selecciona();
         $this->_unidad_medida->idunidad_medida=0;
         $this->_vista->datos_um= $this->_unidad_medida->selecciona();   
         $this->_vista->titulo = 'Registrar Compra:';
