@@ -150,6 +150,9 @@ body{
         background: #FFF;
         color: #066;
 }
+.cancel:hover{
+        color: #FFF;
+}
 #ventana_tipo_habitacion{
 	padding:20px;
 	display:none;
