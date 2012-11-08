@@ -1,3 +1,76 @@
+<<<<<<< HEAD
+<script>
+$(document).ready(function(){
+//    $('select').kendoComboBox();
+    
+    $("#paises").change(function(){
+        $("#regiones").html('<option></option>');
+        $("#provincias").html('<option></option>');
+        $("#ciudades_proveedores").html('<option></option>');
+        if(!$("#paises").val()){
+            
+        }else{
+            $.post('/sisjungla/empleados/get_regiones','idpais='+$("#paises").val(),function(datos){
+//                $("#regiones").kendoComboBox({
+//                    placeholder: "Seleccione...",
+//                    dataTextField: "descripcion",
+//                    dataValueField: "idubigeo",
+//                    dataSource: datos
+//                });
+                for(var i=0;i<datos.length;i++){
+                    $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }
+//                $("#regiones").kendoComboBox();
+//                $("#provincias").kendoComboBox();
+//                $("#ciudades_proveedores").kendoComboBox();
+            },'json');
+        }
+    });
+    
+    $("#regiones").change(function(){
+        $("#provincias").html('<option></option>');
+        $("#ciudades_proveedores").html('<option></option>');
+        if(!$("#regiones").val()){
+        }else{
+            $.post('/sisjungla/empleados/get_provincias','idregion='+$("#regiones").val(),function(datos){
+//                $("#provincias").kendoComboBox({
+//                    placeholder: "Seleccione...",
+//                    dataTextField: "descripcion",
+//                    dataValueField: "idubigeo",
+//                    dataSource: datos
+//                });
+                for(var i=0;i<datos.length;i++){
+                    $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }
+//                $("#provincias").kendoComboBox();
+//                $("#ciudades_proveedores").kendoComboBox();
+            },'json');
+        }
+    });
+    
+    $("#provincias").change(function(){
+            $("#ciudades_proveedores").html('<option></option>');
+        if(!$("#provincias").val()){
+        }else{
+            $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
+//                $("#ciudades_proveedores").kendoComboBox({
+//                    placeholder: "Seleccione...",
+//                    dataTextField: "descripcion",
+//                    dataValueField: "idubigeo",
+//                    dataSource: datos
+//                });
+                for(var i=0;i<datos.length;i++){
+                    $("#ciudades_proveedores").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }       
+//                $("#ciudades_proveedores").kendoComboBox();
+            },'json');
+        }
+    });
+    
+}); 
+</script>
+=======
+>>>>>>> 2529f51b7b3e71e239a5da7e1f7a1810fe2423c1
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <table width="50%" align="center">
@@ -25,7 +98,7 @@
         <tr>
             <td><label>Pais:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="paises">
+                <select placeholder="Seleccione..." required id="paises" class="combo">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>

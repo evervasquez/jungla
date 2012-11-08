@@ -113,11 +113,7 @@ $(document).ready(function(){
                 <td><label>Observaciones:</label></td>
                 <td>
                     <textarea class="k-editable-area" placeholder="Ingrese observacion" id="observacion"></textarea>
-                </td>
-                <td>
-                    <div id="asignar_costo" class="ui-state-default ui-corner-all" title="Asginar costo">
-                        <span class="ui-icon ui-icon-plusthick"></span>
-                    </div>
+                    <input type="button" class="k-button" value="Asignar" id="asignar_costo"/>
                 </td>
             </tr>
             <tr>
