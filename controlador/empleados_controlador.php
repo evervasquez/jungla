@@ -44,9 +44,6 @@ class empleados_controlador extends controller {
         if($_POST['filtro']==2){
             $this->_empleados->perfil = $_POST['cadena'];
         }
-        if($_POST['filtro']==3){
-            $this->_empleados->ubigeo = $_POST['cadena'];
-        }
         echo json_encode($this->_empleados->selecciona());
     }
     

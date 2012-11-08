@@ -39,11 +39,12 @@ body{
 		display:inline-block;
         border: none;
 }
-.tabgrilla{
-        width:100%;
-}
-.tabtr{
-        width: 10%;
+.imgview{
+		background-image:url(../img/view.png);
+        width: 25px;
+		height: 25px;
+		display:inline-block;
+        border: none;
 }
 #cabecera{
         background-image: url(../img/banner.jpg);
@@ -57,7 +58,7 @@ body{
 }
 #cuerpo{
         padding: 20px;
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
 }
 .tabForm label{
