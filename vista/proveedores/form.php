@@ -45,7 +45,7 @@
         <tr>
             <td><label>Provincia:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="provincias">
+                <select placeholder="Seleccione..." required id="provincias" class="combo">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
@@ -71,7 +71,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." required name="ubigeo" id="ciudades_proveedores">
-                    <option></option>
+                    <option>Seleccione...</option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>

@@ -1,42 +1,29 @@
 <script>
 $(document).ready(function(){
-    $("#pais").change(function(){
-        if(!$(this).val()){
-            $(".regiones").html('<option></option>');
-        }else{
-            $.post('/sisjungla/clientes/get_regiones','idpais='+$("#pais").val(),function(datos){
-                $(".regiones").html('<option></option>');
-                $(".provincias").html('<option></option>');
-                $(".ciudades").html('<option></option>');
-                for(var i=0;i<datos.length;i++){
-                    $(".regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-            },'json');
-        }
-    });
     
-    $("#paises").change(function(){
+    $("#region").change(function(){
         if(!$(this).val()){
-            $(".regiones").html('<option></option>');
+            $(".provincias").html('<option value="0">Seleccione...</option>');
+            $(".ciudades").html('<option value="0">Seleccione...</option>')
         }else{
-            $.post('/sisjungla/clientes/get_regiones','idpais='+$("#paises").val(),function(datos){
-                $(".regiones").html('<option></option>');
-                $(".provincias").html('<option></option>');
-                $(".ciudades").html('<option></option>');
-                for(var i=0;i<datos.length;i++){
-                    $(".regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-            },'json');
-        }
-    });
-    
-    $(".regiones").change(function(){
-        if(!$(this).val()){
-            $(".provincias").html('<option></option>');
-        }else{
+            $(".provincias").html('<option value="0">Seleccione...</option>');
+            $(".ciudades").html('<option value="0">Seleccione...</option>')
             $.post('/sisjungla/clientes/get_provincias','idregion='+$(this).val(),function(datos){
-                $(".provincias").html('<option></option>');
-                $(".ciudades").html('<option></option>')
+                for(var i=0;i<datos.length;i++){
+                    $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }
+            },'json');
+        }
+    });
+    
+    $("#regiones").change(function(){
+        if(!$(this).val()){
+            $(".provincias").html('<option value="0">Seleccione...</option>');
+            $(".ciudades").html('<option value="0">Seleccione...</option>')
+        }else{
+            $(".provincias").html('<option value="0">Seleccione...</option>');
+            $(".ciudades").html('<option value="0">Seleccione...</option>')
+            $.post('/sisjungla/clientes/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
@@ -46,10 +33,10 @@ $(document).ready(function(){
     
     $(".provincias").change(function(){
         if(!$(this).val()){
-            $(".ciudades").html('<option></option>');
+            $(".ciudades").html('<option value="0">Seleccione...</option>');
         }else{
+            $(".ciudades").html('<option value="0">Seleccione...</option>');
             $.post('/sisjungla/clientes/get_ciudades','idprovincia='+$(this).val(),function(datos){
-                $(".ciudades").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
                     $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
@@ -58,9 +45,6 @@ $(document).ready(function(){
     });
     $("#frm_cliente_juridico").hide();
     $("#tipo_cliente").change(function(){
-        $(".regiones").html('<option></option>');
-        $(".provincias").html('<option></option>');
-        $(".ciudades").html('<option></option>');
         if($(this).val()=='natural'){
             $("#frm_cliente_natural").show();
             $("#frm_cliente_juridico").hide();
@@ -86,7 +70,8 @@ $(document).ready(function(){
         </td>
     </tr>
 </table>
-<?php }else{ ?>
+<?php }e ?>
+<?php if($this->datos[0]['tipo']=='juridico'){ ?>
 <script>
 $(document).ready(function(){
     $("#frm_cliente_natural").hide();
@@ -98,13 +83,9 @@ $(document).ready(function(){
     <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="natural"/>
+        <input type="hidden" name="codigo" id="codigo"
+               value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
         <table width="50%" align="center">
-            <tr>
-                <td><label>Codigo:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                           value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
-                </td>
             </tr>
             <tr>
                 <td><label>Nombre:</label></td>
@@ -173,7 +154,7 @@ $(document).ready(function(){
                 <td><label>Profesion:</label></td>
                 <td>
                    <select class="combo" placeholder="Seleccione..." name="profesion">
-                        <option value="0"></option>
+                        <option value="67"></option>
                         <?php for($i=0;$i<count($this->datos_profesiones);$i++){ ?>
                             <?php if( $this->datos[0]['idprofesion'] == $this->datos_profesiones[$i]['idprofesion'] ){ ?>
                         <option value="<?php echo $this->datos_profesiones[$i]['idprofesion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_profesiones[$i]['descripcion']) ?></option>
@@ -212,29 +193,22 @@ $(document).ready(function(){
                     </select>
                 </td>
             </tr>
-            <tr>
-                <td><label>Pais:</label></td>
-                <td>
-                    <select class="combo" placeholder="Seleccione..." id="paises">
-                        <option></option>
-                        <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                            <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0 ){ ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } else { ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                </td>
-            </tr>
              <tr>
                 <td><label>Region:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="regiones">
+                    <select placeholder="Seleccione..." class="combo" id="region">
                         <option></option>
-                        <?php if(count($this->datos_regiones)){ ?>
+                        <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
                                 <?php if( $this->datos[0]['idregion'] == $this->datos_regiones[$i]['idubigeo'] ){ ?>
+                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
+                                <?php } else { ?>
+                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
+                                <?php if( 1901 == $this->datos_regiones[$i]['idubigeo'] ){ ?>
                             <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
                                 <?php } else { ?>
                             <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
@@ -248,10 +222,18 @@ $(document).ready(function(){
                 <td><label>Provincia:</label></td>
                 <td>
                     <select placeholder="Seleccione..." class="provincias">
-                        <option></option>
-                        <?php if(count($this->datos_provincias)){ ?>
+                        <option>Seleccione...</option>
+                        <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
                                 <?php if( $this->datos[0]['idprovincia'] == $this->datos_provincias[$i]['idubigeo'] ){ ?>
+                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
+                                <?php } else { ?>
+                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
+                                <?php if( 1968 == $this->datos_provincias[$i]['idubigeo'] ){ ?>
                             <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
                                 <?php } else { ?>
                             <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
@@ -265,7 +247,7 @@ $(document).ready(function(){
                 <td><label>Ciudad:</label></td>
                 <td>
                     <select placeholder="Seleccione..." name="ubigeo" class="ciudades">
-                        <option></option>
+                        <option value="0">Seleccione...</option>
                         <?php if(count($this->datos_ubigeos)){ ?>
                             <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                                 <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
@@ -310,13 +292,9 @@ $(document).ready(function(){
     <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="juridico"/>
+        <input type="hidden" name="codigo" id="codigo"
+               value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
         <table width="50%" align="center">
-            <tr>
-                <td><label>Codigo:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                           value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
-                </td>
             </tr>
             <tr>
                 <td><label>Razon Social:</label></td>
@@ -353,29 +331,22 @@ $(document).ready(function(){
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
                 </td>
             </tr>
-            <tr>
-                <td><label>Pais:</label></td>
-                <td>
-                    <select class="combo" placeholder="Seleccione..." id="pais">
-                        <option></option>
-                        <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                            <?php if( $this->datos[0]['idpais'] == $this->datos_paises[$i]['idpais'] ){ ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } else { ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                </td>
-            </tr>
              <tr>
                 <td><label>Region:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="regiones">
+                    <select placeholder="Seleccione..." id="regiones" class="combo">
                         <option></option>
-                        <?php if(count($this->datos_regiones)){ ?>
+                        <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
                                 <?php if( $this->datos[0]['idregion'] == $this->datos_regiones[$i]['idubigeo'] ){ ?>
+                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
+                                <?php } else { ?>
+                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
+                                <?php if( 1901 == $this->datos_regiones[$i]['idubigeo'] ){ ?>
                             <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
                                 <?php } else { ?>
                             <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
@@ -389,10 +360,18 @@ $(document).ready(function(){
                 <td><label>Provincia:</label></td>
                 <td>
                     <select placeholder="Seleccione..." class="provincias">
-                        <option></option>
-                        <?php if(count($this->datos_provincias)){ ?>
+                        <option>Seleccione...</option>
+                        <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
                                 <?php if( $this->datos[0]['idprovincia'] == $this->datos_provincias[$i]['idubigeo'] ){ ?>
+                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
+                                <?php } else { ?>
+                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
+                                <?php if( 1968 == $this->datos_provincias[$i]['idubigeo'] ){ ?>
                             <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
                                 <?php } else { ?>
                             <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
@@ -406,7 +385,7 @@ $(document).ready(function(){
                 <td><label>Ciudad:</label></td>
                 <td>
                     <select placeholder="Seleccione..." name="ubigeo" class="ciudades">
-                        <option></option>
+                        <option value="0">Seleccione...</option>
                         <?php if(count($this->datos_ubigeos)){ ?>
                             <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                                 <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
