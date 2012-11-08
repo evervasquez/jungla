@@ -1,6 +1,5 @@
 <script>
 $(document).ready(function(){
-//    $('select').kendoComboBox();
     $("#pais").change(function(){
         if(!$(this).val()){
             $(".regiones").html('<option></option>');
@@ -12,9 +11,6 @@ $(document).ready(function(){
                 for(var i=0;i<datos.length;i++){
                     $(".regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
-//                $("#regiones").kendoComboBox();
-//                $("#provincias").kendoComboBox();
-//                $("#ciudades").kendoComboBox();
             },'json');
         }
     });
@@ -30,9 +26,6 @@ $(document).ready(function(){
                 for(var i=0;i<datos.length;i++){
                     $(".regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
-//                $("#regiones").kendoComboBox();
-//                $("#provincias").kendoComboBox();
-//                $("#ciudades").kendoComboBox();
             },'json');
         }
     });
@@ -47,8 +40,6 @@ $(document).ready(function(){
                 for(var i=0;i<datos.length;i++){
                     $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
-//                $("#provincias").kendoComboBox();
-//                $("#ciudades").kendoComboBox();
             },'json');
         }
     });
@@ -62,7 +53,6 @@ $(document).ready(function(){
                 for(var i=0;i<datos.length;i++){
                     $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
-//                $("#ciudades").kendoComboBox();
             },'json');
         }
     });

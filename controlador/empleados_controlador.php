@@ -29,18 +29,12 @@ class empleados_controlador extends controller {
     }
 
     public function index() {
-        $this->_empleados->idempleado = 0;
-        $this->_empleados->nombres = '';
-        $this->_empleados->apellidos = '';
-        $this->_empleados->perfil = '';
-        $this->_empleados->ubigeo = '';
         $this->_vista->datos = $this->_empleados->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_empleados->idempleado = 0;
         if($_POST['filtro']==0){
             $this->_empleados->nombres=$_POST['cadena'];
         }
@@ -58,11 +52,6 @@ class empleados_controlador extends controller {
     
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-//            echo '<pre>';
-//            print_r($_POST);
-//            echo '</pre>';
-//            exit;
-            $this->_empleados->idempleado = 0;
             $this->_empleados->nombres = $_POST['nombres'];
             $this->_empleados->apellidos = $_POST['apellidos'];
             $this->_empleados->dni = $_POST['dni'];
@@ -80,44 +69,25 @@ class empleados_controlador extends controller {
             $this->_empleados->idtipo_empleado = $_POST['tipo_empleado'];
             $this->_empleados->inserta();
             $this->redireccionar('empleados');
-        }
-        $this->_paises->idpais = 0;
-        $this->_vista->datos_paises = $this->_paises->selecciona();        
-        
-        $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = 193;
-        $this->_vista->datos_regiones =$this->_regiones->selecciona();
-        
-        $this->_provincias->codigo_provincia = 0;
+        }        
         $this->_provincias->codigo_region = 1901;
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         
-        $this->_ubigeos->idubigeo = 0;
         $this->_ubigeos->codigo_provincia = 1968;
          $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
         
-        $this->_perfiles->idperfil = 0;
         $this->_vista->datos_perfiles = $this->_perfiles->selecciona();
         
-        $this->_profesiones->idprofesion = 0;
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         
-        $this->_actividades->idactividad = 0;
         $this->_vista->datos_actividades = $this->_actividades->selecciona();
         
-        $this->_tipo_empleado->idtipo_empleado = 0;
         $this->_vista->datos_tipo_empleado = $this->_tipo_empleado->selecciona();
         
         $this->_vista->titulo = 'Registrar Empleado';
         $this->_vista->action = BASE_URL . 'empleados/nuevo';
         $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
-    }
-
-    public function get_regiones() {
-        $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = $_POST['idpais'];
-        echo json_encode($this->_regiones->selecciona());
     }
 
     public function get_provincias() {
@@ -146,10 +116,6 @@ class empleados_controlador extends controller {
             $this->redireccionar('empleados');
         }
         if ($_POST['guardar'] == 1) {
-//            echo '<pre>';
-//            print_r($_POST);
-//            echo '</pre>';
-//            exit;
             $this->_empleados->idempleado = $_POST['codigo'];
             $this->_empleados->nombres = $_POST['nombres'];
             $this->_empleados->apellidos = $_POST['apellidos'];
@@ -172,45 +138,20 @@ class empleados_controlador extends controller {
 
         $this->_empleados->idempleado = $this->filtrarInt($id);
         $datos = $this->_empleados->selecciona();
-//        echo '<pre>';
-//        print_r($datos);
-//        echo '</pre>';
-//        exit;
-        //obtenemos todos los paises
-        $this->_paises->idpais = 0;
-        $this->_vista->datos_paises = $this->_paises->selecciona();
-        //obtenemos todas las regiones que pertenecen al pais del empleado
-        $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = $datos[0]['idpais'];
-        $this->_vista->datos_regiones = $this->_regiones->selecciona();
-//        echo '<pre>';
-//        print_r($this->_vista->datos_regiones);
-//        echo '</pre>';
-//        exit;
         //obtenemos todas las provincias que pertenecen a la región del empleado
-        $this->_provincias->codigo_provincia = 0;
         $this->_provincias->codigo_region = $datos[0]['idregion'];
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
-//        echo '<pre>';
-//        print_r($this->_vista->datos_provincias);
-//        echo '</pre>';
-//        exit;
         //obtenemos todas las ciudades que pertenecen a la provincia del empleado
-        $this->_ubigeos->idubigeo = 0;
         $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
         $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
 
         $this->_vista->datos = $datos;
-        $this->_perfiles->idperfil = 0;
         $this->_vista->datos_perfiles = $this->_perfiles->selecciona();
         
-        $this->_profesiones->idprofesion = 0;
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         
-        $this->_actividades->idactividad = 0;
         $this->_vista->datos_actividades = $this->_actividades->selecciona();
         
-        $this->_tipo_empleado->idtipo_empleado = 0;
         $this->_vista->datos_tipo_empleado = $this->_tipo_empleado->selecciona();
         
         $this->_vista->titulo = 'Actualizar Empleado';

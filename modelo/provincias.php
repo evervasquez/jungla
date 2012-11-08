@@ -9,6 +9,9 @@ class provincias {
     public $idpais;
     
     public function selecciona() {
+        if(is_null($this->codigo_provincia)){
+            $this->codigo_provincia=0;
+        }
         $datos = array($this->codigo_provincia,  $this->codigo_region);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_provincias", $datos);
         if ($r[1] == '') {

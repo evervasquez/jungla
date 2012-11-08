@@ -18,14 +18,12 @@ class proveedores_controlador extends controller {
     }
 
     public function index() {
-        $this->_proveedores->idproveedor = 0;
         $this->_vista->datos = $this->_proveedores->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_proveedores->idproveedor = 0;
         if($_POST['filtro']==0){
             $this->_proveedores->razon_social=$_POST['cadena'];
         }
@@ -43,11 +41,6 @@ class proveedores_controlador extends controller {
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-//            echo '<pre>';
-//            print_r($_POST);
-//            echo '</pre>';
-//            exit;
-            $this->_proveedores->idproveedor = 0;
             $this->_proveedores->razon_social = $_POST['razon_social'];
             $this->_proveedores->representante = $_POST['representante'];
             $this->_proveedores->ruc = $_POST['ruc'];
@@ -58,18 +51,13 @@ class proveedores_controlador extends controller {
             $this->_proveedores->inserta();
             $this->redireccionar('proveedores');
         }
-        $this->_paises->idpais = 0;
-        $this->_vista->datos_paises = $this->_paises->selecciona();
-        
-        $this->_regiones->codigo_region = 0;
+      
         $this->_regiones->idpais = 193;
         $this->_vista->datos_regiones = $this->_regiones->selecciona();
         
-        $this->_provincias->codigo_provincia = 0;
         $this->_provincias->codigo_region = 1901;
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         
-        $this->_ubigeos->idubigeo = 0;
         $this->_ubigeos->codigo_provincia = 1968;
         $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
         $this->_vista->titulo = 'Registrar Proveedor';
@@ -78,11 +66,11 @@ class proveedores_controlador extends controller {
         $this->_vista->renderizar('form');
     }
 
-    public function get_regiones() {
-        $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = $_POST['idpais'];
-        echo json_encode($this->_regiones->selecciona());
-    }
+//    public function get_regiones() {
+//        $this->_regiones->codigo_region = 0;
+//        $this->_regiones->idpais = $_POST['idpais'];
+//        echo json_encode($this->_regiones->selecciona());
+//    }
 
     public function get_provincias() {
         $this->_provincias->codigo_provincia = 0;
@@ -119,23 +107,13 @@ class proveedores_controlador extends controller {
         }
         $this->_proveedores->idproveedor = $this->filtrarInt($id);
         $datos = $this->_proveedores->selecciona();
-//            echo '<pre>';
-//            print_r($datos);
-//            echo '</pre>';
-//            exit;
-        //obtenemos todos los paises
-        $this->_paises->idpais = 0;
-        $this->_vista->datos_paises = $this->_paises->selecciona();
         //obtenemos todas las regiones que pertenecen al pais del proveedor
-        $this->_regiones->codigo_region = 0;
         $this->_regiones->idpais = $datos[0]['pais'];
         $this->_vista->datos_regiones = $this->_regiones->selecciona();
         //obtenemos todas las provincias que pertenecen a la región del proveedor
-        $this->_provincias->codigo_provincia = 0;
         $this->_provincias->codigo_region = $datos[0]['idregion'];
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         //obtenemos todas las ciudades que pertenecen a la provincia del proveedor
-        $this->_ubigeos->idubigeo = 0;
         $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
         $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
 

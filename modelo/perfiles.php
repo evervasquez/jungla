@@ -6,6 +6,9 @@ class perfiles {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idperfil)){
+            $this->idperfil=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }

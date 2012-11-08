@@ -6,6 +6,9 @@ class tipo_producto {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idtipo_producto)){
+            $this->idtipo_producto=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -30,7 +33,7 @@ class tipo_producto {
     }
 
     public function inserta() {
-        $datos = array($this->idtipo_producto, $this->descripcion);
+        $datos = array(0, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_tipo_producto", $datos);
         $error = $r[1];
         $r = null;

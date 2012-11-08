@@ -22,70 +22,16 @@ $(document).ready(function(){
         }
         return false;
     }); 
-//    $('select').kendoComboBox();
-    
-    $("#paises").change(function(){
-        if(!$("#paises").val()){
-            $("#regiones").html('<option></option>');
-        }else{
-            $.post('/sisjungla/empleados/get_regiones','idpais='+$("#paises").val(),function(datos){
-//                $("#regiones").kendoComboBox({
-//                    placeholder: "Seleccione...",
-//                    dataTextField: "descripcion",
-//                    dataValueField: "idubigeo",
-//                    dataSource: datos
-//                });
-                $("#regiones").html('<option></option>');
-                $("#provincias").html('<option></option>');
-                $("#ubigeo").html('<option></option>');
-                for(var i=0;i<datos.length;i++){
-                    $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-//                $("#regiones").kendoComboBox();
-//                $("#provincias").kendoComboBox();
-//                $("#ubigeo").kendoComboBox();
-            },'json');
-        }
-    });
-    
-    $("#regiones").change(function(){
-        if(!$("#regiones").val()){
-            $("#provincias").html('<option></option>');
-        }else{
-            $.post('/sisjungla/empleados/get_provincias','idregion='+$("#regiones").val(),function(datos){
-//                $("#provincias").kendoComboBox({
-//                    placeholder: "Seleccione...",
-//                    dataTextField: "descripcion",
-//                    dataValueField: "idubigeo",
-//                    dataSource: datos
-//                });
-                $("#provincias").html('<option></option>');
-                $("#ubigeo").html('<option></option>')
-                for(var i=0;i<datos.length;i++){
-                    $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-//                $("#provincias").kendoComboBox();
-//                $("#ubigeo").kendoComboBox();
-            },'json');
-        }
-    });
     
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
-            $("#ciudades").html('<option></option>');
+            $("#ubigeo").html('<option>Seleccione...</option>');
         }else{
+            $("#ubigeo").html('<option>Seleccione...</option>');
             $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
-//                $("#ubigeo").kendoComboBox({
-//                    placeholder: "Seleccione...",
-//                    dataTextField: "descripcion",
-//                    dataValueField: "idubigeo",
-//                    dataSource: datos
-//                });
-                $("#ubigeo").html('<option></option>');
                 for(var i=0;i<datos.length;i++){
                     $("#ubigeo").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
-//                $("#ubigeo").kendoComboBox();
             },'json');
         }
     });
@@ -106,8 +52,6 @@ $(document).ready(function(){
                 }
             });
         }
-        
     });
-    
 }); 
         

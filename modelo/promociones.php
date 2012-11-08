@@ -1,3 +1,4 @@
+
 <?php
 
 class promociones {
@@ -9,6 +10,9 @@ class promociones {
     public $fecha_final;
 
     public function selecciona() {
+        if(is_null($this->idpromocion)){
+            $this->idpromocion=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -33,7 +37,7 @@ class promociones {
     }
 
     public function inserta() {
-        $datos = array($this->idpromocion, $this->descripcion, $this->descuento, $this->fecha_inicio, $this->fecha_final);
+        $datos = array(0, $this->descripcion, $this->descuento, $this->fecha_inicio, $this->fecha_final);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_promociones", $datos);
         $error = $r[1];
         $r = null;

@@ -6,6 +6,9 @@ class membresia {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idmembresia)){
+            $this->idmembresia=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -30,7 +33,7 @@ class membresia {
     }
 
     public function inserta() {
-        $datos = array($this->idmembresia, $this->descripcion);
+        $datos = array(0, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_membresia", $datos);
         $error = $r[1];
         $r = null;

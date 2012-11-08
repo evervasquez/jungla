@@ -15,7 +15,6 @@ class compras_controlador extends controller{
     }
 
     public function index() {
-        $this->_compras->idcompra = 0;
         $this->_vista->datos = $this->_compras->selecciona();
         $this->_vista->renderizar('index');
     }

@@ -10,14 +10,12 @@ class membresia_controlador extends controller{
     }
 
     public function index() {
-        $this->_membresias->idmembresia = 0;
         $this->_vista->datos = $this->_membresias->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_membresias->idmembresia = 0;
         if($_POST['filtro']==0){
             $this->_membresias->descripcion=$_POST['descripcion'];
         }
@@ -26,7 +24,6 @@ class membresia_controlador extends controller{
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-            $this->_membresias->idmembresia = 0;
             $this->_membresias->descripcion = $_POST['descripcion'];
             $this->_membresias->inserta();
             $this->redireccionar('membresia');

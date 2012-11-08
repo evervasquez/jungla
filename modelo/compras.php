@@ -11,12 +11,13 @@ class compras {
     public $igv;
     public $idproveedor;
     public $idtipo_transaccion;
+    public $confirmacion;
     
 
     public function inserta() {
-        $datos = array($this->idcompra, $this->fecha_compra, $this->estado, $this->observaciones, 
+        $datos = array(0, $this->fecha_compra, $this->estado, $this->observaciones, 
             $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
-            $this->idtipo_transaccion);
+            $this->idtipo_transaccion, $this->confirmacion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_compras", $datos);
         $error = $r[1];
         $r = null;
@@ -26,7 +27,7 @@ class compras {
     public function actualiza() {
         $datos = array($this->idcompra, $this->fecha_compra, $this->estado, $this->observaciones, 
             $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
-            $this->idtipo_transaccion);
+            $this->idtipo_transaccion, $this->confirmacion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_compras", $datos);
         $error = $r[1];
         $r = null;
@@ -34,6 +35,9 @@ class compras {
     }
 
     public function selecciona() {
+        if(is_null($this->idcompra)){
+            $this->idcompra=0;
+        }
         $datos = array($this->idcompra);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_compras", $datos);
         if ($r[1] == '') {
@@ -42,7 +46,7 @@ class compras {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function elimina() {

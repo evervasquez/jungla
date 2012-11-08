@@ -6,6 +6,9 @@ class actividades {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idactividad)){
+            $this->idactividad=0;
+        }
         $datos = array($this->idactividad);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_actividades", $datos);
         if ($r[1] == '') {

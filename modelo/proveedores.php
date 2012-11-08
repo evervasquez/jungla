@@ -13,7 +13,7 @@ class proveedores {
     public $ubigeo;
 
     public function inserta() {
-        $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, 
+        $datos = array(0, $this->razon_social, $this->representante, $this->ruc, 
             $this->telefono, $this->direccion, $this->email, $this->idubigeo);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_proveedores", $datos);
         $error = $r[1];
@@ -31,6 +31,9 @@ class proveedores {
     }
 
     public function selecciona() {
+        if(is_null($this->idproveedor)){
+            $this->idproveedor=0;
+        }
         if(is_null($this->razon_social)){
             $this->razon_social='';
         }
@@ -57,7 +60,7 @@ class proveedores {
     
     public function elimina() {
         $datos = array($this->idproveedor);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_promociones", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_elimina_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
