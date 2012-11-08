@@ -146,6 +146,10 @@ body{
 	z-index: 999;
 	background-image: url('/sisjungla/lib/img/blanco.png');
 }
+.cancel{
+        background: #FFF;
+        color: #066;
+}
 #ventana_tipo_habitacion{
 	padding:20px;
 	display:none;
@@ -160,9 +164,9 @@ body{
 	background-color: white;
 	border: 1px solid black;
 }
-input::-webkit-input-placeholder, textarea::-webkit-textarea-placeholder{
-    color:    #999;
-}
 input:-moz-placeholder, textarea:-moz-placeholder {
-    color : #999;
+    color: #999;
+}
+input:hover:-moz-placeholder, textarea:hover:-moz-placeholder {
+    color: #999;
 }
