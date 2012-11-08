@@ -74,6 +74,7 @@ class proveedores_controlador extends controller {
         $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
         $this->_vista->titulo = 'Registrar Proveedor';
         $this->_vista->action = BASE_URL . 'proveedores/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
