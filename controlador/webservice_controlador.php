@@ -12,11 +12,11 @@ class webservice_controlador extends controller {
 
     //put your code here 
     public function index() {
-        $this->_vista->renderizar_webservice('index');
+        $this->_vista->renderizar_webservice('servidor');
     }
 
     public function login_usuario($usuario, $pass) {
-        $r = $this->_empleados->seleccionar($usuario, $pass);
+        $r = $this->_empleados->seleccion($usuario, $pass);
         return $r;
     }
 
