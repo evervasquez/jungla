@@ -97,7 +97,6 @@ $(document).ready(function(){
     }
     
     //asignacion de productos al detalle
-    
     item = 0;
     importe = 0;
     $("#asignar_producto").click(function(){
@@ -108,16 +107,17 @@ $(document).ready(function(){
         c=$("#cantidad").val();
         pre=$("#precio").val();
         igv = $("#igv").val();
-        t=0;
         error=false;
         msg='';
+        x=0;
         
         $("#tbl_detalle_compra tr").each(function(){
-            id_p=$("#tbl_detalle_compra tr td:eq(1) :hidden").val();
+            id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
             if(id_p==idp){
                 error=true;
                 msg='este producto ya fue seleccionado';
             }
+            x++;
         });
         
         if(error){
@@ -125,13 +125,14 @@ $(document).ready(function(){
         }else{
             item++;
             html = '<tr>';
-            html +='<td>'+item+'</td>';
+            html +='<td width="40px">'+item+'</td>';
             html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
             html +='<td><input type="hidden" value="'+idum+'" name="idums[]"/>'+um+'</td>';
             html +='<td>'+c+'</td>';
             html +='<td>'+pre+'</td>';
             st=pre*c;
             html +='<td>'+st+'</td>';
+            html +='<td><a href="#" class="eliminar">[Eliminar]</a></td>';
             html +='</tr>';
             
             importe += st;
@@ -150,12 +151,35 @@ $(document).ready(function(){
 
     $("#igv").blur(function(){
         if($(this).val()==''){
-            $("#igv").val('0');
+            igv=0;
+        }else{
+            igv=$("#igv").val();
         }
-        igv=$("#igv").val();
         t = importe + igv * (importe);
         $("#total").val(t);
     });
+    
+    $("#igv").keypress(function(event){
+        if(event.which == 13){
+            $("#igv").blur();
+            event.preventDefault();
+        }
+    });
+    
+    $(".eliminar").live('click', function() {
+       i = $(this).parent().parent().index();
+       importe=importe-$("#tbl_detalle_compra tr:eq("+i+") td:eq(5)").html();
+       $("#tbl_detalle_compra tr:eq("+i+")").remove();
+       item=0;       
+       x=0;
+       $("#tbl_detalle_compra tr").each(function(){
+           item++;
+           $("#tbl_detalle_compra tr:eq("+x+") td:eq(0)").html(item);
+           x++;
+       });
+       $("#importe").val(importe);
+       $("#igv").blur();
+   });
 });
 function seleccionar(id,proveedor){
     $("#idproveedor").val(id);

@@ -107,11 +107,19 @@
             </tr>
             <tr>
                 <td colspan="4">
+                    <div id="detalle_compra">
                     <table border="1" class="tabgrilla" id="tbl_detalle_compra">
                         <tr>
-                            <th>Item</th><th>Producto</th><th>Unidad de Medida</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th>
+                            <th width="40px">Item</th>
+                            <th>Producto</th>
+                            <th>Unidad de Medida</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                            <th>Accion</th>
                         </tr>
                     </table>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -119,14 +127,14 @@
                 <td><label>Importe:</label></td>
                 <td>
                     <input type="text" class="k-textbox" required name="importe" id="importe" readonly="readonly"
-                       value="<?php if(isset ($this->datos[0]['importe']))echo $this->datos[0]['importe']?>"/>
+                       value="0.00"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">&nbsp;</td>
                 <td><label>IGV:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese igv" name="igv" value="0"
+                    <input type="text" class="k-textbox" placeholder="0" name="igv"
                        id="igv" value="<?php if(isset ($this->datos[0]['igv']))echo $this->datos[0]['igv']?>"/>
                 </td>
             </tr>
@@ -134,7 +142,7 @@
                 <td colspan="2">&nbsp;</td>
                 <td><label>Total:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" readonly="readonly" id="total" />
+                    <input type="text" class="k-textbox" readonly="readonly" id="total" value='0'/>
                 </td>
             </tr>
             <tr>
