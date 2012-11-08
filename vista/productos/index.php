@@ -18,8 +18,6 @@
             <th>Descripcion</th>
             <th>Tipo de Producto</th>
             <th>Stock</th>
-            <th>Precio Unitario</th>
-            <th>Precio de Compra</th>
             <th>Unidad de medida</th>
             <th>Ubicacion</th>
             <th>Acciones</th>
@@ -30,13 +28,12 @@
                 <td><?php echo utf8_encode($this->datos[$i]['descripcion']) ?></td>
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td><?php echo $this->datos[$i]['stock'] ?></td>
-                <td><?php echo $this->datos[$i]['precio_unitario'] ?></td>
-                <td><?php echo $this->datos[$i]['precio_compra'] ?></td>
                 <td><?php echo $this->datos[$i]['um'] ?></td>
                 <td><?php echo $this->datos[$i]['ubicacion'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>productos/editar/<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>productos/eliminar/<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" class="imgview"></a>
                 </td>
             </tr>
         <?php } ?>

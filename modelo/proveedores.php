@@ -43,10 +43,7 @@ class proveedores {
         if(is_null($this->ruc)){
             $this->ruc='';
         }
-        if(is_null($this->ubigeo)){
-            $this->ubigeo='';
-        }
-        $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, $this->ubigeo);
+        $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_proveedores", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

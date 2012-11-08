@@ -1,4 +1,13 @@
     $(function(){
+        $(".tabgrilla").kendoGrid({
+                    dataSource: {
+                        pageSize: 5
+                    },
+                    pageable: true,
+                    columns: [{field:"Codigo", width:8},
+                        {field:"Descripcion", width:80},
+                        {field:"Acciones", width:10}]
+                });
         $( "#buscar" ).focus();
         
         function buscar(){
@@ -27,7 +36,10 @@
                     dataSource: {
                         pageSize: 5
                     },
-                    pageable: true
+                    pageable: true,
+                    columns: [{field:"Codigo", width:8},
+                        {field:"Descripcion", width:80},
+                        {field:"Acciones", width:10}]
                 });
             },'json');
         }

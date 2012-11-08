@@ -5,7 +5,6 @@
             <option value="0">Nombre</option>
             <option value="1">Apellidos</option>
             <option value="2">Perfil</option>
-            <option value="3">Ubigeo</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
@@ -20,7 +19,6 @@
             <th>Telefono</th>
             <th>Direccion</th>
             <th>Perfil</th>
-            <th>Ubigeo</th>
             <th>Accion</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -31,10 +29,10 @@
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['direccion'] ?></td>
                 <td><?php echo $this->datos[$i]['perfil'] ?></td>
-                <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
                 <td class="tabtr" align="center">
                 <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgdelete"></a></td>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgdelete"></a>
+                <a href="javascript:void(0)" class="imgview"></a></td>
             </tr>
         <?php } ?>
 </table>

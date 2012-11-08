@@ -61,10 +61,7 @@ class empleados {
         if(is_null($this->perfil)){
             $this->perfil='';
         }
-        if(is_null($this->ubigeo)){
-            $this->ubigeo='';
-        }
-        $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->perfil, $this->ubigeo);
+        $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->perfil);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_empleados", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
