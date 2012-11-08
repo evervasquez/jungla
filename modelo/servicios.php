@@ -6,6 +6,9 @@ class servicios {
     public $descripcion;
     
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idservicio, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_servicios", $datos);
         if ($r[1] == '') {

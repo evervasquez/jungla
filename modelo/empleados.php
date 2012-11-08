@@ -49,6 +49,18 @@ class empleados {
     }
 
     public function selecciona() {
+        if(is_null($this->nombres)){
+            $this->nombres='';
+        }
+        if(is_null($this->apellidos)){
+            $this->apellidos='';
+        }
+        if(is_null($this->perfil)){
+            $this->perfil='';
+        }
+        if(is_null($this->ubigeo)){
+            $this->ubigeo='';
+        }
         $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->perfil, $this->ubigeo);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_empleados", $datos);
         if ($r[1] == '') {

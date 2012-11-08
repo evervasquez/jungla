@@ -11,8 +11,8 @@ class tipo_habitacion_controlador extends controller {
 
     public function index() {
         $this->_tipo_habitacion->idtipo_habitacion = 0;
-        $this->_tipo_habitacion->descripcion = '';
         $this->_vista->datos = $this->_tipo_habitacion->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,6 +33,7 @@ class tipo_habitacion_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Tipo de Habitacion';
         $this->_vista->action = BASE_URL . 'tipo_habitacion/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class tipo_habitacion_controlador extends controller {
             $this->redireccionar('tipo_habitacion');
         }
         $this->_vista->titulo = 'Actualizar Tipo de Habitacion';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

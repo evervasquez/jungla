@@ -1,0 +1,20 @@
+/* 
+    Document   : estilo_form
+    Created on : 07/11/2012, 05:01:32 PM
+    Author     : Ja1R
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#ventana_unidad_medida{
+	padding:20px;
+	display:none;
+	color: black;
+	position: fixed;
+	left: 37.5%;
+	top: 30%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+	border: 1px solid black;
+}

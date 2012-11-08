@@ -21,11 +21,8 @@ class productos_controlador extends controller {
 
     public function index() {
         $this->_productos->idproducto = 0;
-        $this->_productos->descripcion = '';
-        $this->_productos->tipo_producto = '';
-        $this->_productos->unidad_medida = '';
-        $this->_productos->ubicacion = '';
         $this->_vista->datos = $this->_productos->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,26 +30,14 @@ class productos_controlador extends controller {
         $this->_productos->idproducto = 0;
         if($_POST['filtro']==0){
             $this->_productos->descripcion=$_POST['cadena'];
-            $this->_productos->tipo_producto = '';
-            $this->_productos->unidad_medida = '';
-            $this->_productos->ubicacion = '';
         }
         if($_POST['filtro']==1){
-            $this->_productos->descripcion= '';
             $this->_productos->tipo_producto = $_POST['cadena'];
-            $this->_productos->unidad_medida = '';
-            $this->_productos->ubicacion = '';
         }
         if($_POST['filtro']==2){
-            $this->_productos->descripcion= '';
-            $this->_productos->tipo_producto = '';
             $this->_productos->unidad_medida = $_POST['cadena'];
-            $this->_productos->ubicacion = '';
         }
         if($_POST['filtro']==3){
-            $this->_productos->descripcion= '';
-            $this->_productos->tipo_producto = '';
-            $this->_productos->unidad_medida = '';
             $this->_productos->ubicacion = $_POST['cadena'];
         }
         echo json_encode($this->_productos->selecciona());
@@ -65,7 +50,7 @@ class productos_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             $this->_productos->idproducto= 0;
-            $this->_productos->descripcion = $_POST['descripcion'];
+            $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
             $this->_productos->precio_unitario= $_POST['precio_unitario'];
             $this->_productos->observaciones = $_POST['observaciones'];
             $this->_productos->idservicio = $_POST['servicio'];
@@ -91,6 +76,8 @@ class productos_controlador extends controller {
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Registrar Producto';
         $this->_vista->action = BASE_URL . 'productos/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
+        $this->_vista->setCss(array('estilos_form'));
         $this->_vista->renderizar('form');
     }
     
@@ -116,7 +103,7 @@ class productos_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             $this->_productos->idproducto = $_POST['codigo'];
-            $this->_productos->descripcion = $_POST['descripcion'];
+            $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
             $this->_productos->precio_unitario= $_POST['precio_unitario'];
             $this->_productos->observaciones = $_POST['observaciones'];
             $this->_productos->idservicio = $_POST['servicio'];
@@ -144,6 +131,8 @@ class productos_controlador extends controller {
         $this->_promociones->idpromocion=0;
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Actualizar Producto';
+        $this->_vista->setJs(array('funciones_form'));
+        $this->_vista->setCss(array('estilos_form'));
         $this->_vista->renderizar('form');
     }
     

@@ -6,6 +6,9 @@ class tipo_producto {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idtipo_producto, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_producto", $datos);
         if ($r[1] == '') {

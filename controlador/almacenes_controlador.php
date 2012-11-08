@@ -11,8 +11,8 @@ class almacenes_controlador extends controller {
 
     public function index() {
         $this->_almacenes->idalmacen = 0;
-        $this->_almacenes->descripcion = '';
         $this->_vista->datos = $this->_almacenes->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,6 +33,7 @@ class almacenes_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Almacen';
         $this->_vista->action = BASE_URL . 'almacenes/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class almacenes_controlador extends controller {
             $this->redireccionar('almacenes');
         }
         $this->_vista->titulo = 'Actualizar Almacen';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

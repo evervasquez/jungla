@@ -11,8 +11,8 @@ class servicios_controlador extends controller {
 
     public function index() {
         $this->_servicios->idservicio = 0;
-        $this->_servicios->descripcion = '';
         $this->_vista->datos = $this->_servicios->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,6 +33,7 @@ class servicios_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Servicio';
         $this->_vista->action = BASE_URL.'servicios/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class servicios_controlador extends controller {
             $this->redireccionar('servicios');
         }
         $this->_vista->titulo = 'Actualizar Servicio';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

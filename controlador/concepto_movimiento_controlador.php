@@ -11,8 +11,8 @@ class concepto_movimiento_controlador extends controller {
 
     public function index() {
         $this->_concepto_movimiento->idconcepto_movimiento = 0;
-        $this->_concepto_movimiento->descripcion = '';
         $this->_vista->datos = $this->_concepto_movimiento->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,6 +33,7 @@ class concepto_movimiento_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Concepto Movimiento';
         $this->_vista->action = BASE_URL . 'concepto_movimiento/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class concepto_movimiento_controlador extends controller {
             $this->redireccionar('concepto_movimiento');
         }
         $this->_vista->titulo = 'Actualizar Concepto Movimiento';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

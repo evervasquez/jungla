@@ -7,6 +7,9 @@ class categorias {
     public $nro_elemento;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idcategoria, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_categorias", $datos);
         if ($r[1] == '') {

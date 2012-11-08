@@ -8,6 +8,12 @@ class ubicaciones {
     public $almacenes;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
+        if(is_null($this->almacenes)){
+            $this->almacenes='';
+        }
         $datos = array($this->idubicacion, $this->descripcion, $this->almacenes);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_ubicaciones", $datos);
         if ($r[1] == '') {

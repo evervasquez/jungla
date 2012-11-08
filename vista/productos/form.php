@@ -1,52 +1,3 @@
-<script>
-$(document).ready(function(){
-    $("#descripcion").focus(); 
-    $("#saveform").click(function(){
-        bval = true;        
-        bval = bval && $( "#descripcion" ).required();  
-        bval = bval && $( "#stock" ).required();
-        bval = bval && $( "#precio_unitario" ).required();
-        bval = bval && $( "#precio_compra" ).required();  
-        bval = bval && $( "#tipo_producto" ).required(); 
-        bval = bval && $( "#unidad_medida" ).required();  
-        if ( bval ) {
-            $("#frm").submit();
-        }
-        return false;
-    }); 
-    $("#unidad_medida").kendoComboBox();
-    function get_um(unidad){
-        $.post('/sisjungla/productos/get_um','id=0',function(datos){
-            $("#unidad_medida").html('<option></option>');
-            for(var i=0;i<datos.length;i++){
-                if(datos[i].descripcion==unidad){
-                    $("#unidad_medida").append('<option selected="selected" value="'+ datos[i].idunidad_medida + '">' + datos[i].descripcion+ '</option>');
-                }else{
-                    $("#unidad_medida").append('<option value="'+ datos[i].idunidad_medida + '">' + datos[i].descripcion+ '</option>');
-                }
-            }
-            $("#unidad_medida").kendoComboBox();
-        },'json');
-    }
-    $( "#des_um" ).focus(); 
-    $("#btn_um").click(function(){
-            bval = true;        
-            bval = bval && $( "#des_um" ).required();    
-            bval = bval && $( "#abreviatura_um" ).required();
-            if ( bval ) {
-                $.post('/sisjungla/productos/inserta_um',
-            'descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
-            $("#ventana").fadeOut(300);
-            $("#fondooscuro").fadeOut(300); 
-            get_um($("#des_um").val());
-            $("#des_um").val(''); 
-            $("#abreviatura_um").val(''); 
-            }
-            return false;
-    });
-    
-}); 
-</script>
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <fieldset>
         <legend><h3><?php echo $this->titulo ?></h3></legend>
@@ -97,21 +48,6 @@ $(document).ready(function(){
                     <?php } ?>
                     </select>
             	</td>
-                <td><label>Ubicacion</label></td>
-                <td>
-                    <select class="combo"  placeholder="Seleccione..." required name="ubicacion" id="ubicacion">
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_ubicaciones);$i++){ ?>
-                        <?php if( $this->datos[0]['idubicacion'] == $this->datos_ubicaciones[$i]['idubicacion'] ){ ?>
-                    <option value="<?php echo $this->datos_ubicaciones[$i]['idubicacion'] ?>" selected="selected"><?php echo $this->datos_ubicaciones[$i]['descripcion'] ?></option>
-                        <?php } else { ?>
-                    <option value="<?php echo $this->datos_ubicaciones[$i]['idubicacion'] ?>"><?php echo $this->datos_ubicaciones[$i]['descripcion'] ?></option>
-                        <?php } ?>
-                    <?php } ?>
-                    </select>
-            	</td>
-            </tr>
-            <tr>
             	<td><label>Unidad de Medida</label></td>
                 <td>
                     <select placeholder="Seleccione..." required name="unidad_medida" id="unidad_medida">
@@ -124,7 +60,24 @@ $(document).ready(function(){
                         <?php } ?>
                     <?php } ?>
                     </select>
-                    <a id="um" class="k-button">Nuevo</a>
+            	</td>
+                   <td>
+                    <a id="um" class="k-button btn_icn"><span class="k-icon k-i-plus"></span></a>
+                   </td>
+            </tr>
+            <tr>
+                <td><label>Ubicacion</label></td>
+                <td>
+                    <select class="combo"  placeholder="Seleccione..." required name="ubicacion" id="ubicacion">
+                    <option></option>
+                    <?php for($i=0;$i<count($this->datos_ubicaciones);$i++){ ?>
+                        <?php if( $this->datos[0]['idubicacion'] == $this->datos_ubicaciones[$i]['idubicacion'] ){ ?>
+                    <option value="<?php echo $this->datos_ubicaciones[$i]['idubicacion'] ?>" selected="selected"><?php echo $this->datos_ubicaciones[$i]['descripcion'] ?></option>
+                        <?php } else { ?>
+                    <option value="<?php echo $this->datos_ubicaciones[$i]['idubicacion'] ?>"><?php echo $this->datos_ubicaciones[$i]['descripcion'] ?></option>
+                        <?php } ?>
+                    <?php } ?>
+                    </select>
             	</td>
             	<td><label>Servicio</label></td>
                 <td>
@@ -168,22 +121,21 @@ $(document).ready(function(){
             <tr>
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo $this->datos[0]['observaciones']?></textarea>
+                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                 </td>
             </tr>
             <tr>
             	<td colspan="4" align="center">
                     <p>
-                        <button type="submit" class="k-button save" id="saveform">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>productos" class="k-button">Cancelar</a>
+                        <button type="submit" class="k-button" id="saveform">Guardar</button>
+                        <a href="<?php echo BASE_URL ?>productos" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
         </table>
     </fieldset>
     </form>
-    <div id="ventana" align="center">
-    <span class="close"><img src="<?php echo BASE_URL ?>lib/img/close.gif" /></span>
+    <div id="ventana_unidad_medida" align="center">
         <form method="post" action="#">
             <table align="center">
                     <caption><h3>Registrar Unidad de Medida</h3></caption>
@@ -201,7 +153,8 @@ $(document).ready(function(){
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
-                        <p><button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button></p>
+                        <p><button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
+                        <button type="button" class="k-button close cancel">Cancelar</button></p>
                     </td>
                 </tr>
             </table>

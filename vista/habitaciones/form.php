@@ -21,7 +21,7 @@ $(document).ready(function(){
            alert(msg);
        }else{
            html="<tr>";
-           html=html+"<td><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
+           html=html+"<td width='60px'><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
            html=html+"<td><input type='hidden' name='costo[]' value='"+c+"'/>"+c+"</td>";
            html=html+"<td><input type='hidden' name='observacion[]' value='"+o+"'/>"+o+"</td>";
            html=html+'<td><a class="delete" title="Eliminar item" href="javascript:">[Eliminar]</a></td>';
@@ -97,14 +97,14 @@ $(document).ready(function(){
         <legend>Costos de habitacion</legend>
         <table>
             <tr>
-            <td><label>Tipo Habitacion:</label></td>
-            <td>
-                <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
-                    <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
-                    <?php }?>
-                </select>
+                <td><label>Tipo Habitacion:</label></td>
+                <td>
+                    <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
+                        <option></option>
+                        <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
+                        <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
+                        <?php }?>
+                    </select>
                 </td>
                 <td><label>Costo:</label></td>
                 <td>
@@ -113,18 +113,14 @@ $(document).ready(function(){
                 <td><label>Observaciones:</label></td>
                 <td>
                     <textarea class="k-editable-area" placeholder="Ingrese observacion" id="observacion"></textarea>
-                </td>
-                <td>
-                    <div id="asignar_costo" class="ui-state-default ui-corner-all" title="Asginar costo">
-                        <span class="ui-icon ui-icon-plusthick"></span>
-                    </div>
+                    <input type="button" class="k-button" value="Asignar" id="asignar_costo"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="7" align="center">
                     <table border="1" id="tbl_habitacion_especifica" class="tabgrilla">
                         <tr>
-                            <th>Tipo de Habitacion</th><th>Costo</th><th>Observacion</th><th>Acciones</th>
+                            <th width='60px'>Tipo de Habitacion</th><th>Costo</th><th>Observacion</th><th>Acciones</th>
                         </tr>
                     </table>
                 </td>        

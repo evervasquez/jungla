@@ -35,6 +35,7 @@ class empleados_controlador extends controller {
         $this->_empleados->perfil = '';
         $this->_empleados->ubigeo = '';
         $this->_vista->datos = $this->_empleados->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -42,29 +43,17 @@ class empleados_controlador extends controller {
         $this->_empleados->idempleado = 0;
         if($_POST['filtro']==0){
             $this->_empleados->nombres=$_POST['cadena'];
-            $this->_empleados->apellidos = '';
-            $this->_empleados->perfil = '';
-            $this->_empleados->ubigeo = '';
         }
         if($_POST['filtro']==1){
-            $this->_empleados->nombres = '';
             $this->_empleados->apellidos = $_POST['cadena'];
-            $this->_empleados->perfil = '';
-            $this->_empleados->ubigeo = '';
         }
         if($_POST['filtro']==2){
-            $this->_empleados->nombres = '';
-            $this->_empleados->apellidos = '';
             $this->_empleados->perfil = $_POST['cadena'];
-            $this->_empleados->ubigeo = '';
         }
         if($_POST['filtro']==3){
-            $this->_empleados->nombres = '';
-            $this->_empleados->apellidos = '';
-            $this->_empleados->perfil = '';
             $this->_empleados->ubigeo = $_POST['cadena'];
         }
-        echo json_encode($this->_ubicaciones->selecciona());
+        echo json_encode($this->_empleados->selecciona());
     }
     
     public function nuevo() {
@@ -121,6 +110,7 @@ class empleados_controlador extends controller {
         
         $this->_vista->titulo = 'Registrar Empleado';
         $this->_vista->action = BASE_URL . 'empleados/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -224,6 +214,7 @@ class empleados_controlador extends controller {
         $this->_vista->datos_tipo_empleado = $this->_tipo_empleado->selecciona();
         
         $this->_vista->titulo = 'Actualizar Empleado';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

@@ -9,6 +9,9 @@ class promociones {
     public $fecha_final;
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idpromocion, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_promociones", $datos);
         if ($r[1] == '') {

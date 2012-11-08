@@ -40,6 +40,18 @@ class productos {
     }
 
     public function selecciona() {
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
+        if(is_null($this->tipo_producto)){
+            $this->tipo_producto='';
+        }
+        if(is_null($this->unidad_medida)){
+            $this->unidad_medida='';
+        }
+        if(is_null($this->ubicacion)){
+            $this->ubicacion='';
+        }
         $datos = array($this->idproducto, $this->descripcion, $this->tipo_producto, $this->unidad_medida, $this->ubicacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_productos", $datos);
         if ($r[1] == '') {

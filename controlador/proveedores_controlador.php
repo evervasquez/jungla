@@ -19,11 +19,8 @@ class proveedores_controlador extends controller {
 
     public function index() {
         $this->_proveedores->idproveedor = 0;
-        $this->_proveedores->razon_social = '';
-        $this->_proveedores->representante = '';
-        $this->_proveedores->ruc = '';
-        $this->_proveedores->ubigeo = '';
         $this->_vista->datos = $this->_proveedores->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -31,26 +28,14 @@ class proveedores_controlador extends controller {
         $this->_proveedores->idproveedor = 0;
         if($_POST['filtro']==0){
             $this->_proveedores->razon_social=$_POST['cadena'];
-            $this->_proveedores->representante = '';
-            $this->_proveedores->ruc = '';
-            $this->_proveedores->ubigeo = '';
         }
         if($_POST['filtro']==1){
-            $this->_proveedores->razon_social= '';
             $this->_proveedores->representante = $_POST['cadena'];
-            $this->_proveedores->ruc = '';
-            $this->_proveedores->ubigeo = '';
         }
         if($_POST['filtro']==2){
-            $this->_proveedores->razon_social= '';
-            $this->_proveedores->representante = '';
             $this->_proveedores->ruc = $_POST['cadena'];
-            $this->_proveedores->ubigeo = '';
         }
         if($_POST['filtro']==3){
-            $this->_proveedores->razon_social = '';
-            $this->_proveedores->representante = '';
-            $this->_proveedores->ruc = '';
             $this->_proveedores->ubigeo = $_POST['cadena'];
         }
         echo json_encode($this->_proveedores->selecciona());
@@ -134,7 +119,7 @@ class proveedores_controlador extends controller {
         $this->_proveedores->idproveedor = $this->filtrarInt($id);
         $datos = $this->_proveedores->selecciona();
 //            echo '<pre>';
-//            print_r($_POST);
+//            print_r($datos);
 //            echo '</pre>';
 //            exit;
         //obtenemos todos los paises
@@ -142,7 +127,7 @@ class proveedores_controlador extends controller {
         $this->_vista->datos_paises = $this->_paises->selecciona();
         //obtenemos todas las regiones que pertenecen al pais del proveedor
         $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = $datos[0]['idpais'];
+        $this->_regiones->idpais = $datos[0]['pais'];
         $this->_vista->datos_regiones = $this->_regiones->selecciona();
         //obtenemos todas las provincias que pertenecen a la región del proveedor
         $this->_provincias->codigo_provincia = 0;
@@ -155,6 +140,7 @@ class proveedores_controlador extends controller {
 
         $this->_vista->datos = $datos;
         $this->_vista->titulo = 'Actualizar Proveedor';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

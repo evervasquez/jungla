@@ -11,8 +11,8 @@ class membresia_controlador extends controller{
 
     public function index() {
         $this->_membresias->idmembresia = 0;
-        $this->_membresias->descripcion = '';
         $this->_vista->datos = $this->_membresias->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -33,6 +33,7 @@ class membresia_controlador extends controller{
         }
         $this->_vista->titulo = 'Registrar Membresia';
         $this->_vista->action = BASE_URL.'membresia/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class membresia_controlador extends controller{
             $this->redireccionar('membresia');
         }
         $this->_vista->titulo = 'Actualizar Membresia';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
