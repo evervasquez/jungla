@@ -22,7 +22,6 @@ class clientes_controlador extends controller {
     }
     
     public function index() {
-        $this->_clientes->idcliente=0;
         $this->_vista->datos=$this->_clientes->selecciona();
         $this->_vista->renderizar('index');
     }

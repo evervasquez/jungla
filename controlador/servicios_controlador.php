@@ -10,14 +10,12 @@ class servicios_controlador extends controller {
     }
 
     public function index() {
-        $this->_servicios->idservicio = 0;
         $this->_vista->datos = $this->_servicios->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_servicios->idservicio = 0;
         if($_POST['filtro']==0){
             $this->_servicios->descripcion=$_POST['descripcion'];
         }
@@ -26,7 +24,6 @@ class servicios_controlador extends controller {
     
     public function nuevo() {        
         if ($_POST['guardar'] == 1) {
-            $this->_servicios->idservicio = 0;
             $this->_servicios->descripcion = $_POST['descripcion'];
             $this->_servicios->inserta();
             $this->redireccionar('servicios');
@@ -64,7 +61,6 @@ class servicios_controlador extends controller {
         $this->_servicios->elimina();
         $this->redireccionar('servicios');
     }
-
 }
 
 ?>

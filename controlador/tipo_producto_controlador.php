@@ -10,14 +10,12 @@ class tipo_producto_controlador extends controller {
     }
 
     public function index() {
-        $this->_tipo_producto->idtipo_producto = 0;
         $this->_vista->datos = $this->_tipo_producto->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_tipo_producto->idtipo_producto = 0;
         if($_POST['filtro']==0){
             $this->_tipo_producto->descripcion=$_POST['descripcion'];
         }
@@ -26,7 +24,6 @@ class tipo_producto_controlador extends controller {
     
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-            $this->_tipo_producto->idtipo_producto = 0;
             $this->_tipo_producto->descripcion = $_POST['descripcion'];
             $this->_tipo_producto->inserta();
             $this->redireccionar('tipo_producto');

@@ -23,7 +23,7 @@ class empleados {
     
 
     public function inserta() {
-        $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->dni, 
+        $datos = array(0, $this->nombres, $this->apellidos, $this->dni, 
             $this->telefono, $this->direccion, $this->fecha_nacimiento, $this->fecha_contratacion,  
             $this->idubigeo, $this->idperfil, $this->idprofesion, $this->usuario, $this->clave, $this->estado,
             $this->idactividad, $this->idtipo_empleado);
@@ -49,6 +49,9 @@ class empleados {
     }
 
     public function selecciona() {
+        if(is_null($this->idempleado)){
+            $this->idempleado=0;
+        }
         if(is_null($this->nombres)){
             $this->nombres='';
         }

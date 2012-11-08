@@ -1,14 +1,9 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
+    <input type="hidden" name="codigo" id="codigo"
+           value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
     <table width="50%" align="center">
         <caption><h3><?php echo $this->titulo ?></h3></caption>
-        <tr>
-            <td><label>Codigo:</label></td>
-            <td>
-                <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
-            </td>
-        </tr>
         <tr>
             <td><label>Razon Social:</label></td>
             <td>
@@ -22,35 +17,10 @@
                    id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
             </td>
         </tr>
-        <tr>
-            <td><label>Pais:</label></td>
-            <td>
-                <select placeholder="Seleccione..." required id="paises" class="combo">
-                    <option></option>
-                    <?php if(isset ($this->datos)){ ?>
-                        <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                            <?php if( $this->datos[0]['pais'] == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0){ ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } else { ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    <?php }else{ ?>
-                        <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                            <?php if( 193 == $this->datos_paises[$i]['idpais'] && $this->datos_paises[$i]['idpais']!=0){ ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>" selected="selected"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } else { ?>
-                        <option value="<?php echo $this->datos_paises[$i]['idpais'] ?>"><?php echo $this->datos_paises[$i]['descripcion'] ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    <?php } ?>
-                </select>
-            </td>
-        </tr>
          <tr>
             <td><label>Region:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="regiones">
+                <select placeholder="Seleccione..." required id="regiones" class="combo">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>

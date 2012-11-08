@@ -9,7 +9,13 @@ class ubigeos {
     public $idpais;
         
     public function selecciona() {
-        $datos = array($this->idubigeo,  $this->codigo_provincia);
+        if(is_null($this->idubigeo)){
+            $this->idubigeo=0;
+        }
+        if(is_null($this->idpais)){
+            $this->idpais=0;
+        }
+        $datos = array($this->idubigeo,  $this->codigo_provincia, $this->idpais);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_ubigeos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

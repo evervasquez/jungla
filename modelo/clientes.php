@@ -18,7 +18,7 @@ class clientes {
     public $tipo;        
 
     public function inserta() {
-        $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
+        $datos = array(0, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
             $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo, 
             $this->idmembresia, $this->direccion, $this->tipo);
 //            echo '<pre>';
@@ -42,6 +42,9 @@ class clientes {
     }
 
     public function selecciona() {
+        if(is_null($this->idcliente)){
+            $this->idcliente=0;
+        }
         $datos = array($this->idcliente);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_clientes", $datos);
         if ($r[1] == '') {
