@@ -22,10 +22,9 @@
             <td><?php echo $this->datos[$i]['descripcion'] ?></td>
             <td><?php echo $this->datos[$i]['nro_elemento'] ?></td>
             <td class="tabtr" align="center">
-            <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>categorias/editar/<?php echo $this->datos[$i]['idcategoria'] ?>')">
-            <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-            <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>categorias/eliminar/<?php echo $this->datos[$i]['idcategoria'] ?>')">
-            <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>categorias/editar/<?php echo $this->datos[$i]['idcategoria'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>categorias/eliminar/<?php echo $this->datos[$i]['idcategoria'] ?>')" class="imgdelete"></a>
+            </td>
         </tr>
     <?php } ?>
     </table>

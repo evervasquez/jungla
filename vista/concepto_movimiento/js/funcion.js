@@ -16,8 +16,8 @@
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
                     var editar='/sisjungla/concepto_movimiento/editar/'+datos[i].idconcepto_movimiento; 
                     var eliminar='/sisjungla/concepto_movimiento/eliminar/'+datos[i].idconcepto_movimiento;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }

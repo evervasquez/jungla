@@ -110,6 +110,7 @@ class empleados_controlador extends controller {
         
         $this->_vista->titulo = 'Registrar Empleado';
         $this->_vista->action = BASE_URL . 'empleados/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -213,6 +214,7 @@ class empleados_controlador extends controller {
         $this->_vista->datos_tipo_empleado = $this->_tipo_empleado->selecciona();
         
         $this->_vista->titulo = 'Actualizar Empleado';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

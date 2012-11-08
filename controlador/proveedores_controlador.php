@@ -140,6 +140,7 @@ class proveedores_controlador extends controller {
 
         $this->_vista->datos = $datos;
         $this->_vista->titulo = 'Actualizar Proveedor';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

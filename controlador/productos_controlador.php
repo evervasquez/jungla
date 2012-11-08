@@ -76,6 +76,8 @@ class productos_controlador extends controller {
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Registrar Producto';
         $this->_vista->action = BASE_URL . 'productos/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
+        $this->_vista->setCss(array('estilos_form'));
         $this->_vista->renderizar('form');
     }
     
@@ -129,6 +131,8 @@ class productos_controlador extends controller {
         $this->_promociones->idpromocion=0;
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Actualizar Producto';
+        $this->_vista->setJs(array('funciones_form'));
+        $this->_vista->setCss(array('estilos_form'));
         $this->_vista->renderizar('form');
     }
     

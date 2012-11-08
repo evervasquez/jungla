@@ -36,6 +36,7 @@ class promociones_controlador extends controller{
         }
         $this->_vista->titulo = 'Registrar Promocion';
         $this->_vista->action = BASE_URL . 'promociones/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -57,6 +58,7 @@ class promociones_controlador extends controller{
             $this->redireccionar('promociones');
         }
         $this->_vista->titulo = 'Actualizar Promocion';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
