@@ -1,5 +1,14 @@
     $(function(){
         $( "#buscar" ).focus();
+        $(".tabgrilla").kendoGrid({
+            dataSource: {
+                pageSize: 5
+            },
+            pageable: true,
+            columns: [{field:"Codigo", width:8},
+                        {field:"Descripcion", width:80},
+                        {field:"Acciones", width:10}]
+        });
         
         function buscar(){
             $.post('/sisjungla/servicios/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
@@ -27,7 +36,10 @@
                     dataSource: {
                         pageSize: 5
                     },
-                    pageable: true
+                    pageable: true,
+                    columns: [{field:"Codigo", width:10},
+                                {field:"Descripcion", width:80},
+                                {field:"Acciones", width:10}]
                 });
             },'json');
         }

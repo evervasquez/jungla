@@ -23,9 +23,9 @@
                 <td><?php ?></td>
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td>
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>almacenes/editar/<?php echo $this->datos[$i]['idalmacen'] ?>')">
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idalmacen'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>almacenes/eliminar/<?php echo $this->datos[$i]['idalmacen'] ?>')">
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idalmacen'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>

@@ -57,7 +57,7 @@ class proveedores {
     
     public function elimina() {
         $datos = array($this->idproveedor);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_promociones", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_elimina_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
