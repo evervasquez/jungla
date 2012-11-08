@@ -33,6 +33,7 @@ class tipo_habitacion_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Tipo de Habitacion';
         $this->_vista->action = BASE_URL . 'tipo_habitacion/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class tipo_habitacion_controlador extends controller {
             $this->redireccionar('tipo_habitacion');
         }
         $this->_vista->titulo = 'Actualizar Tipo de Habitacion';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

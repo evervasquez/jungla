@@ -16,8 +16,8 @@ $(function(){
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
                     var editar='/sisjungla/membresia/editar/'+datos[i].idmembresia; 
                     var eliminar='/sisjungla/membresia/eliminar/'+datos[i].idmembresia;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }

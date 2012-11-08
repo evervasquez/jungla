@@ -34,6 +34,7 @@ class categorias_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Categoria';
         $this->_vista->action = BASE_URL . 'categorias/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -53,6 +54,7 @@ class categorias_controlador extends controller {
             $this->redireccionar('categorias');
         }
         $this->_vista->titulo = 'Actualizar Categoria';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

@@ -33,6 +33,7 @@ class tipo_producto_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Tipo de Producto';
         $this->_vista->action = BASE_URL . 'tipo_producto/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class tipo_producto_controlador extends controller {
             $this->redireccionar('tipo_producto');
         }
         $this->_vista->titulo = 'Actualizar Tipos de Producto';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

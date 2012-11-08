@@ -24,10 +24,9 @@
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <td><?php echo $this->datos[$i]['almacen'] ?></td>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>ubicaciones/editar/<?php echo $this->datos[$i]['idubicacion'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>ubicaciones/eliminar/<?php echo $this->datos[$i]['idubicacion'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>ubicaciones/editar/<?php echo $this->datos[$i]['idubicacion'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>ubicaciones/eliminar/<?php echo $this->datos[$i]['idubicacion'] ?>')" class="imgdelete"></a>
+                </td>
             </tr>
         <?php } ?>
 </table>

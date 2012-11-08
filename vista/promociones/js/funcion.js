@@ -22,8 +22,8 @@
                     HTML = HTML + '<td>'+datos[i].fecha_final+'</td>';
                     var editar='/sisjungla/promociones/editar/'+datos[i].idpromocion; 
                     var eliminar='/sisjungla/promociones/eliminar/'+datos[i].idpromocion;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }

@@ -26,10 +26,9 @@
                 <td><?php echo $this->datos[$i]['url'] ?></td>
                 <td><?php echo $this->datos[$i]['modulo_padre'] ?></td>
                 <td align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>modulos/editar/<?php echo $this->datos[$i]['idmodulo'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>modulos/eliminar/<?php echo $this->datos[$i]['idmodulo'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>modulos/editar/<?php echo $this->datos[$i]['idmodulo'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>modulos/eliminar/<?php echo $this->datos[$i]['idmodulo'] ?>')" class="imgdelete"></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

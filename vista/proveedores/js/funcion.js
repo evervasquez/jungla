@@ -28,8 +28,8 @@
                     HTML = HTML + '<td>'+datos[i].email+'</td>';
                     var editar='/sisjungla/proveedores/editar/'+datos[i].idproveedor; 
                     var eliminar='/sisjungla/proveedores/eliminar/'+datos[i].idproveedor;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }

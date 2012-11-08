@@ -40,6 +40,7 @@ class ubicaciones_controlador extends controller {
         $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
         $this->_vista->titulo = 'Registrar Ubicacion';
         $this->_vista->action = BASE_URL . 'ubicaciones/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -60,7 +61,8 @@ class ubicaciones_controlador extends controller {
         }
         $this->_almacenes->idalmacen = 0;
         $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
-        $this->_vista->titulo = 'Actualizar Ubicaion';
+        $this->_vista->titulo = 'Actualizar Ubicacion';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

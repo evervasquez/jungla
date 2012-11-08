@@ -23,8 +23,8 @@
                     }
                     var editar='/sisjungla/modulos/editar/'+datos[i].idmodulo; 
                     var eliminar='/sisjungla/modulos/eliminar/'+datos[i].idmodulo;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')"><img src="/sisjungla/lib/img/edit.png" class="imgfrm" /></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')"><img src="/sisjungla/lib/img/delete.png" class="imgfrm" /></a>';
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }

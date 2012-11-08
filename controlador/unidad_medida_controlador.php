@@ -38,6 +38,7 @@ class unidad_medida_controlador extends controller{
         }
         $this->_vista->titulo = 'Registrar Unidad de Medida';
         $this->_vista->action = BASE_URL . 'unidad_medida/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -57,6 +58,7 @@ class unidad_medida_controlador extends controller{
             $this->redireccionar('unidad_medida');
         }
         $this->_vista->titulo = 'Actualizar Unidad de Medida';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

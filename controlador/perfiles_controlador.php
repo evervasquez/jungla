@@ -33,6 +33,7 @@ class perfiles_controlador extends controller {
         }
         $this->_vista->titulo = 'Registrar Perfil';
         $this->_vista->action = BASE_URL . 'perfiles/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -51,6 +52,7 @@ class perfiles_controlador extends controller {
             $this->redireccionar('perfiles');
         }
         $this->_vista->titulo = 'Actualizar Perfil';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

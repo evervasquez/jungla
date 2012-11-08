@@ -27,10 +27,9 @@
                 <td><?php echo $this->datos[$i]['fecha_inicio'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha_final'] ?></td>
                 <td align="center" class="tabtr">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>promociones/editar/<?php echo $this->datos[$i]['idpromocion'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>promociones/eliminar/<?php echo $this->datos[$i]['idpromocion'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>promociones/editar/<?php echo $this->datos[$i]['idpromocion'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>promociones/eliminar/<?php echo $this->datos[$i]['idpromocion'] ?>')" class="imgdelete"></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

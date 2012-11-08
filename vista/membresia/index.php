@@ -21,10 +21,9 @@
                 <td class="tabtr"><?php echo $this->datos[$i]['idmembresia'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <td align="center" class="tabtr">
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>')" class="imgdelete"></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

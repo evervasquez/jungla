@@ -23,7 +23,7 @@
         <?php if(isset($_params['css']) && count($_params['css'])): ?>
         <?php for($i=0; $i < count($_params['css']); $i++): ?>
         
-        <link src="<?php echo $_params['css'][$i] ?>" type="text/css" />
+        <link href="<?php echo $_params['css'][$i] ?>" type="text/css" rel="stylesheet" media="screen" />
         
         <?php endfor; ?>
         <?php endif; ?>

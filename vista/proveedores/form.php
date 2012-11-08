@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 $(document).ready(function(){
 //    $('select').kendoComboBox();
@@ -68,6 +69,8 @@ $(document).ready(function(){
     
 }); 
 </script>
+=======
+>>>>>>> 2529f51b7b3e71e239a5da7e1f7a1810fe2423c1
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <table width="50%" align="center">

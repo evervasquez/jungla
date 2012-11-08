@@ -53,6 +53,7 @@ class modulos_controlador extends controller{
         $this->_vista->modulos_padre = $this->_modulos->seleccionar(0);
         $this->_vista->titulo = 'Registrar Modulo';
         $this->_vista->action = BASE_URL . 'modulos/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
@@ -75,6 +76,7 @@ class modulos_controlador extends controller{
         }
         $this->_vista->modulos_padre = $this->_modulos->seleccionar(0);
         $this->_vista->titulo = 'Actualizar Modulo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 
