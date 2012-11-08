@@ -37,6 +37,7 @@ class compras_controlador extends controller{
         $this->_vista->datos_um= $this->_unidad_medida->selecciona();   
         $this->_vista->titulo = 'Registrar Compra:';
         $this->_vista->action = BASE_URL . 'compras/nuevo';
+        $this->_vista->setJs(array('funciones_form.js'));
         $this->_vista->renderizar('form');
     }
 
