@@ -8,7 +8,6 @@
         <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.js"></script>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>funciones.js"></script>
-        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>script.js"></script>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>validaciones.js"></script>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.all.min.js"></script>
         <link type="text/css" href="<?php echo $_params['ruta_css']; ?>estilosprincipal.css" rel="stylesheet" media="screen" />

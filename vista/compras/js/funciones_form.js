@@ -1,12 +1,16 @@
 $(document).ready(function(){
-    $("#vtna_busca_proveedor").hide();
-    $("#vtna_busca_productos").hide();
-    
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
-        $("#vtna_busca_proveedor").show();
-        $("#txt_buscar_proveedor").focus();
-    });
+            var pwd = $(this).next().html();
+            $("#vtna_busca_proveedor").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
+            $("#txt_buscar_proveedor").focus();
+    }); 
+     $(".cancela_prov").click(function(){
+            $("#vtna_busca_proveedor").fadeOut(300);
+            $("#fondooscuro").fadeOut(300);
+        });
+    
     
     $("#txt_buscar_proveedor").keypress(function(event){
        if(event.which == 13){
@@ -21,7 +25,7 @@ $(document).ready(function(){
     
     function buscar_proveedor(){
         $.post('/sisjungla/proveedores/buscador','cadena='+$("#txt_buscar_proveedor").val()+'&filtro='+$("#filtro_proveedor").val(),function(datos){
-            HTML = '<table border="1" class="tabgrilla" id="tbl_busca_proveedor">'+
+            HTML = '<table border="1" class="tabgrilla" id="tbl_busca_proveedor" width="500px">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Razon Social</th>'+
@@ -36,7 +40,7 @@ $(document).ready(function(){
                 HTML = HTML + '<td>'+datos[i].representante+'</td>';
                 id=datos[i].idproveedor;
                 proveedor=datos[i].razon_social;
-                HTML = HTML + '<td><a href="#" onclick="seleccionar(\''+id+'\',\''+proveedor+'\')">[Seleccionar]</a></td>';
+                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar(\''+id+'\',\''+proveedor+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }
             HTML += '</table>';
@@ -52,9 +56,16 @@ $(document).ready(function(){
     }
     //ventana de busqueda de productos
     $("#btn_vtna_productos").click(function(){
-        $("#vtna_busca_productos").show();
-        $("#txt_buscar_productos").focus();
+            var pwd = $(this).next().html();
+            $("#vtna_busca_productos").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
+            $("#txt_buscar_productos").focus();
     });
+    
+     $(".cancela_prod").click(function(){
+            $("#vtna_busca_productos").fadeOut(300);
+            $("#fondooscuro").fadeOut(300);
+        });
     
     $("#txt_buscar_productos").keypress(function(event){
        if(event.which == 13){
@@ -82,7 +93,7 @@ $(document).ready(function(){
                 HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
                 id=datos[i].idproducto;
                 proveedor=datos[i].descripcion;
-                HTML = HTML + '<td><a href="#" onclick="seleccionar_productos(\''+id+'\',\''+proveedor+'\')">[Seleccionar]</a></td>';
+                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos(\''+id+'\',\''+proveedor+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            
             HTML = HTML + '</table>'
@@ -132,7 +143,7 @@ $(document).ready(function(){
             html +='<td>'+pre+'</td>';
             st=pre*c;
             html +='<td>'+st+'</td>';
-            html +='<td><a href="#" class="eliminar">[Eliminar]</a></td>';
+            html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
             html +='</tr>';
             
             importe += st;
@@ -184,11 +195,13 @@ $(document).ready(function(){
 function seleccionar(id,proveedor){
     $("#idproveedor").val(id);
     $("#proveedor").val(proveedor);
-    $("#vtna_busca_proveedor").hide();
+    $("#vtna_busca_proveedor").fadeOut(300);
+    $("#fondooscuro").fadeOut(300);
 }
 
 function seleccionar_productos(id,producto){
     $("#idproducto").val(id);
     $("#producto").val(producto);
-    $("#vtna_busca_productos").hide();
+    $("#vtna_busca_productos").fadeOut(300);
+    $("#fondooscuro").fadeOut(300);
 }

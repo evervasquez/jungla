@@ -2,14 +2,12 @@
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
-        <table width="50%" align="center" class="tabForm">
+        <table width="50%" align="center" class="tabCompra">
             <tr>
                 <td><label>Codigo:</label></td>
-                <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
+                <td colspan="2"><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
                            value="<?php if(isset ($this->datos[0]['idalmacen']))echo $this->datos[0]['idalmacen']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Nro. Documento:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese Nro.de Comprobante" required name="nro_comprobante" onkeypress="return soloLetras(event)"
@@ -22,10 +20,9 @@
                     <input type="hidden" name="idproveedor" id="idproveedor" value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
                     <input type="text" class="k-textbox" placeholder="Busque proveedor" required  readonly="readonly"  name="proveedor" 
                        id="proveedor" value="<?php if(isset ($this->datos[0]['proveedor']))echo $this->datos[0]['proveedor']?>"/>
-                    <input type="button" class="k-button" id="btn_vtna_proveedores" value="..."/>
                 </td>
-            </tr>
-            <tr>
+                <td><button type="button" class="k-button" id="btn_vtna_proveedores"><span class="k-icon k-i-search"></span></button>
+                </td>
                 <td><label>Tipo de Transaccion:</label></td>
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="profesion" id="profesion">
@@ -52,7 +49,7 @@
             <tr>
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-editable-area"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                 </td>
             </tr>
             <tr>
@@ -70,15 +67,17 @@
         </table>
     </fieldset>
     <fieldset>
-        <legend>Detalle Comppra:</legend>
-        <table>
+        <legend>Detalle Compra:</legend>
+        <table class="tabCompra" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>
                     <input type="hidden" name="idproducto" id="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
                     <input type="text" class="k-textbox" placeholder="Busque producto" required  readonly="readonly"  name="producto"
                        id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
-                    <input type="button" class="k-button" id="btn_vtna_productos" value="..."/>
+                </td>
+                <td>
+                    <button type="button" class="k-button" id="btn_vtna_productos"><span class="k-icon k-i-search"></span></button>
                 </td>
                 <td><label>Unidad de Medida:</label></td>
                 <td>
@@ -96,17 +95,19 @@
             </tr>
             <tr>
                 <td><label>Cantidad:</label></td>
-                <td>
+                <td colspan="2">
                     <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
                 <td><label>Precio de Compra:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese precio" id="precio" />
-                    <input type="button" class="k-button" value="Asignar" id="asignar_producto"/>
                 </td>
             </tr>
+            <tr align="center">
+                <td colspan="5"><input type="button" class="k-button" value="Agregar" id="asignar_producto"/></td>
+            </tr>
             <tr>
-                <td colspan="4">
+                <td colspan="5">
                     <div id="detalle_compra">
                     <table border="1" class="tabgrilla" id="tbl_detalle_compra">
                         <tr>
@@ -123,7 +124,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
                 <td><label>Importe:</label></td>
                 <td>
                     <input type="text" class="k-textbox" required name="importe" id="importe" readonly="readonly"
@@ -131,7 +132,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
                 <td><label>IGV:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="0" name="igv"
@@ -139,14 +140,14 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
                 <td><label>Total:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" id="total" value='0'/>
                 </td>
             </tr>
             <tr>
-               <td colspan="4" align="center">
+               <td colspan="5" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
                         <a href="<?php echo BASE_URL ?>compras" class="k-button">Cancelar</a>
@@ -166,7 +167,8 @@
             <option value="1">Representante</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_proveedor">
-        <button type="button" class="k-button" id="btn_buscar_proveedor">Buscar</button>
+        <button type="button" class="k-button" id="btn_buscar_proveedor"><span class="k-icon k-i-search"></span></button>
+        <a class="k-button cancela_prov">Cancelar</a>
     </p>
     <div id="grilla_proveedores">
     <table border="1" class="tabgrilla" id="tbl_busca_proveedor">
@@ -174,14 +176,14 @@
             <th>Codigo</th>
             <th>Razon Social</th>
             <th>Representante</th>
-            <th>Selecciona</th>
+            <th>Seleccionar</th>
         </tr>
         <?php for ($i = 0; $i < count($this->datos_proveedores); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos_proveedores[$i]['idproveedor'] ?></td>
                 <td><?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?></td>
                 <td><?php echo $this->datos_proveedores[$i]['representante'] ?></td>
-                <td><a href="#" onclick="seleccionar('<?php echo $this->datos_proveedores[$i]['idproveedor'] ?>','<?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?>')">[Seleccionar]</a></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar('<?php echo $this->datos_proveedores[$i]['idproveedor'] ?>','<?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?>')"class="imgselect" ></a></td>
             </tr>
         <?php } ?>
     </table>
@@ -195,7 +197,8 @@
             <option value="0">Descripcion</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_productos">
-        <button type="button" class="k-button" id="btn_buscar_producto">Buscar</button>
+        <button type="button" class="k-button" id="btn_buscar_producto"><span class="k-icon k-i-search"></span></button>
+        <a class="k-button cancela_prod">Cancelar</a>
     </p>
     <div id="grilla_productos">
     <table border="1" class="tabgrilla" id="tbl_busca_productos">
@@ -208,9 +211,10 @@
             <tr>
                 <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
                 <td><?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?></td>
-                <td><a href="#" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>')">[Seleccionar]</a></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>')" class="imgselect"></a></td>
             </tr>
         <?php } ?>
     </table>
     </div>
 </div>
+<div id="fondooscuro"></div>

@@ -62,7 +62,7 @@
                     </select>
             	</td>
                    <td>
-                    <a id="um" class="k-button btn_icn"><span class="k-icon k-i-plus"></span></a>
+                    <a id="um" class="k-button btn_icn plus"><span class="k-icon k-i-plus"></span></a>
                    </td>
             </tr>
             <tr>
