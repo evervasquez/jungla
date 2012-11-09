@@ -1,4 +1,17 @@
     $(function(){
+        $(".tabgrilla").kendoGrid({
+            dataSource: {
+                pageSize: 5
+            },
+            pageable: true,
+            columns: [{field:"Codigo", width:6},
+                {field:"Nombre", width:10},
+                {field:"Apellidos", width:10},
+                {field:"Telefono", width:10},
+                {field:"Direccion", width:10},
+                {field:"Perfil", width:10},
+                {field:"Acciones", width:8}]
+        });
         $( "#buscar" ).focus();
         
         function buscar(){
@@ -11,7 +24,6 @@
                             '<th>Telefono</th>'+
                             '<th>Direccion</th>'+
                             '<th>Perfil</th>'+
-                            '<th>Ubigeo</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
@@ -23,11 +35,11 @@
                     HTML = HTML + '<td>'+datos[i].telefono+'</td>';
                     HTML = HTML + '<td>'+datos[i].direccion+'</td>';
                     HTML = HTML + '<td>'+datos[i].perfil+'</td>';
-                    HTML = HTML + '<td>'+datos[i].ubigeo+'</td>';
                     var editar='/sisjungla/empleados/editar/'+datos[i].idempleado; 
                     var eliminar='/sisjungla/empleados/eliminar/'+datos[i].idempleado;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" class="imgview"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -37,7 +49,14 @@
                     dataSource: {
                         pageSize: 5
                     },
-                    pageable: true
+                    pageable: true,
+                    columns: [{field:"Codigo", width:6},
+                        {field:"Nombre", width:10},
+                        {field:"Apellidos", width:10},
+                        {field:"Telefono", width:10},
+                        {field:"Direccion", width:10},
+                        {field:"Perfil", width:10},
+                        {field:"Acciones", width:9}]
                 });
             },'json');
         }

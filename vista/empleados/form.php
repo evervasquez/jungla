@@ -56,7 +56,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." required name="ubigeo" id="ubigeo">
-                    <option></option>
+                    <option>Seleccione...</option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>

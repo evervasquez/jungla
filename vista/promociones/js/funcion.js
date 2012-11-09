@@ -1,4 +1,16 @@
     $(function(){
+        $(".tabgrilla").kendoGrid({
+            dataSource: {
+                pageSize: 5
+            },
+            pageable: true,
+            columns: [{field:"Codigo", width:8},
+                {field:"Descripcion", width:10},
+                {field:"Descuento", width:10},
+                {field:"FechadeInicio", width:20},
+                {field:"FechadeFinalizacion", width:20},
+                {field:"Acciones", width:10}]
+        });
         $( "#buscar" ).focus();
         
         function buscar(){
@@ -33,7 +45,13 @@
                     dataSource: {
                         pageSize: 5
                     },
-                    pageable: true
+                    pageable: true,
+                    columns: [{field:"Codigo", width:8},
+                        {field:"Descripcion", width:10},
+                        {field:"Descuento", width:10},
+                        {field:"FechadeInicio", width:20},
+                        {field:"FechadeFinalizacion", width:20},
+                        {field:"Acciones", width:10}]
                 });
             },'json');
         }

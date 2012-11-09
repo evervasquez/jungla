@@ -33,9 +33,6 @@ class proveedores_controlador extends controller {
         if($_POST['filtro']==2){
             $this->_proveedores->ruc = $_POST['cadena'];
         }
-        if($_POST['filtro']==3){
-            $this->_proveedores->ubigeo = $_POST['cadena'];
-        }
         echo json_encode($this->_proveedores->selecciona());
     }
 

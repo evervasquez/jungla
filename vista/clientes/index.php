@@ -9,7 +9,6 @@
             <th><label>Fecha de Nacimiento</label></th>
             <th><label>Telefono</label></th>
             <th><label>Email</label></th>
-            <th><label>Sexo</label></th>
             <th><label>Estado Civil</label></th>
             <th><label>Profesion</label></th>
             <th><label>Ubigeo</label></th>
@@ -25,13 +24,6 @@
                 <td><?php echo $this->datos[$i]['fecha_nacimiento'] ?></td>
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['email'] ?></td>
-                <?php if($this->datos[$i]['sexo']==1){ ?>
-                <td>M</td>
-                <?php } if($this->datos[$i]['sexo']==0 && !is_null($this->datos[$i]['sexo'])){ ?>
-                <td>F</td>
-                <?php }else{ ?>
-                <td>&nbsp;</td>
-                <?php } ?>
                 <td><?php echo $this->datos[$i]['estado_civil'] ?></td>
                 <td><?php echo $this->datos[$i]['profesion'] ?></td>
                 <td><?php echo $this->datos[$i]['ubigeo'] ?></td>

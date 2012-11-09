@@ -32,7 +32,6 @@ class clientes_controlador extends controller {
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-            $this->_clientes->idcliente = 0;
             $this->_clientes->nombres = $_POST['nombres'];
             if(isset ($_POST['apellidos'])){
                 $this->_clientes->apellidos = $_POST['apellidos'];
@@ -77,31 +76,29 @@ class clientes_controlador extends controller {
             $this->_clientes->inserta();
             $this->redireccionar('clientes');
         }
-        $this->_paises->idpais = 0;
-        $this->_vista->datos_paises = $this->_paises->selecciona();
-        $this->_membresias->idmembresia= 0;
+        $this->_regiones->idpais = 193;
+        $this->_vista->datos_regiones = $this->_regiones->selecciona();
+        
+        $this->_provincias->codigo_region = 1901;
+        $this->_vista->datos_provincias = $this->_provincias->selecciona();
+        
+        $this->_ubigeos->codigo_provincia = 1968;
+        $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
+        
         $this->_vista->datos_membresias= $this->_membresias->selecciona();
-        $this->_profesiones->idprofesion = 0;
+        
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->titulo = 'Registrar Cliente';
         $this->_vista->action = BASE_URL . 'clientes/nuevo';
         $this->_vista->renderizar('form');
     }
     
-    public function get_regiones() {
-        $this->_regiones->codigo_region = 0;
-        $this->_regiones->idpais = $_POST['idpais'];
-        echo json_encode($this->_regiones->selecciona());
-    }
-
     public function get_provincias() {
-        $this->_provincias->codigo_provincia = 0;
         $this->_provincias->codigo_region = $_POST['idregion'];
         echo json_encode($this->_provincias->selecciona());
     }
 
     public function get_ciudades() {
-        $this->_ubigeos->idubigeo = 0;
         $this->_ubigeos->codigo_provincia = $_POST['idprovincia'];
         echo json_encode($this->_ubigeos->selecciona());
     }
@@ -110,11 +107,11 @@ class clientes_controlador extends controller {
         if (!$this->filtrarInt($id)) {
             $this->redireccionar('empleados');
         }
+        if ($_POST['guardar'] == 1) {
 //            echo '<pre>';
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-        if ($_POST['guardar'] == 1) {
             $this->_clientes->idcliente= $_POST['codigo'];
             $this->_clientes->nombres = $_POST['nombres'];
             if(isset ($_POST['apellidos'])){
@@ -124,7 +121,7 @@ class clientes_controlador extends controller {
             }
             $this->_clientes->documento = $_POST['documento'];
             if(isset ($_POST['fecha_nacimiento']) && $_POST['fecha_nacimiento']!=""){
-                $this->_clientes->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
+                $this->_clientes->fecha_nacimiento = null;
             }else{
                 $this->_clientes->fecha_nacimiento = null;
             }
@@ -164,25 +161,18 @@ class clientes_controlador extends controller {
         $this->_clientes->idcliente = $this->filtrarInt($id);
         $datos = $this->_clientes->selecciona();
         //obtenemos todos los paises
-        $this->_paises->idpais = 0;
-        $this->_vista->datos_paises = $this->_paises->selecciona();
         //obtenemos todas las regiones que pertenecen al pais del empleado
-        $this->_regiones->codigo_region = 0;
         $this->_regiones->idpais = $datos[0]['idpais'];
         $this->_vista->datos_regiones = $this->_regiones->selecciona();
         //obtenemos todas las provincias que pertenecen a la región del empleado
-        $this->_provincias->codigo_provincia = 0;
         $this->_provincias->codigo_region = $datos[0]['idregion'];
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         //obtenemos todas las ciudades que pertenecen a la provincia del empleado
-        $this->_ubigeos->idubigeo = 0;
         $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
         $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
 
         $this->_vista->datos = $datos;
-        $this->_membresias->idmembresia= 0;
         $this->_vista->datos_membresias= $this->_membresias->selecciona();
-        $this->_profesiones->idprofesion = 0;
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->titulo = 'Actualizar Cliente';
         $this->_vista->renderizar('form');

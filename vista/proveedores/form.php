@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"
            value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
@@ -8,13 +8,13 @@
             <td><label>Razon Social:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="razon_social"
-                   id="" value="<?php if(isset ($this->datos[0]['razon_social']))echo $this->datos[0]['razon_social']?>"/>
+                   id="razon_social" value="<?php if(isset ($this->datos[0]['razon_social']))echo $this->datos[0]['razon_social']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>RUC:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="ruc"
-                   id="" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="ruc" onKeyPress="return soloNumeros(event);"
+                   id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
             </td>
         </tr>
          <tr>
@@ -45,7 +45,7 @@
         <tr>
             <td><label>Provincia:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="provincias">
+                <select placeholder="Seleccione..." required id="provincias" class="combo">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
@@ -71,7 +71,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." required name="ubigeo" id="ciudades_proveedores">
-                    <option></option>
+                    <option>Seleccione...</option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
@@ -87,31 +87,31 @@
         <tr>
             <td><label>Direccion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
-                   id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
+                   id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>Representante:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese nombre representante" required name="representante"
-                   id="" value="<?php if(isset ($this->datos[0]['representante']))echo $this->datos[0]['representante']?>"/>
+                   id="representante" value="<?php if(isset ($this->datos[0]['representante']))echo $this->datos[0]['representante']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>Telefono:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" required name="telefono"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" name="telefono"
                    id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>Email:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese email" required name="email"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese email" name="email"
                    id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
             </td>
         </tr>
         <tr>
             <td colspan="2" align="center">
                 <p>
-                    <button type="submit" class="k-button">Guardar</button>
+                    <button type="submit" class="k-button" id="saveform">Guardar</button>
                     <a href="<?php echo BASE_URL ?>proveedores" class="k-button cancel">Cancelar</a>
                 </p>
             </td>
