@@ -7,15 +7,13 @@ abstract class controller {
 
     //aqui ya tenemos el objeto vista disponible en el controlador
     public function __construct() {
-        
+
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
         $this->_modelo->descripcion = '';
         $this->_modelo->modulo_padre = '';
-        $menu=$this->_modelo->selecciona();
+        $menu = $this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
-        
-        
     }
 
     abstract public function index();
@@ -65,25 +63,36 @@ abstract class controller {
             return 0;
         }
     }
-    
+
     protected function fecha_en($fecha) {
-	$d=substr($fecha,0,2);
-	$m=substr($fecha,3,2);
-	$a=substr($fecha,6,4);
-	return "$a-$m-$d";
+        $d = substr($fecha, 0, 2);
+        $m = substr($fecha, 3, 2);
+        $a = substr($fecha, 6, 4);
+        return "$a-$m-$d";
     }
-    
-    public function acceso($perfil,$modulo){
+
+    public function acceso($perfil, $modulo) {
         if (!session::get('autenticado')) {
             header('location:' . BASE_URL . 'error/access/5050');
             exit;
         }
         $permisos = $this->cargar_modelo('permisos');
-        $permiso=$permisos->seleccionar($perfil,$modulo);
-        if($permiso[0]['perfil']==''){
+        $permiso = $permisos->seleccionar($perfil, $modulo);
+        if ($permiso[0]['perfil'] == '') {
             return false;
-        }else{
+        } else {
             return true;
+        }
+    }
+
+    protected function get_Libreria($libreria) {
+        //ruta 
+        $rutaLibreria = ROOT . 'lib' . DS . 'highchart' . DS . $libreria . '.php';
+        //verificamos si existe y es legible
+        if (is_readable($rutaLibreria)) {
+            require_once $rutaLibreria;
+        } else {
+            throw new Exception('Error de libreria');
         }
     }
 
