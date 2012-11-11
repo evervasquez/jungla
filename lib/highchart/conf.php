@@ -4,9 +4,9 @@
  * Paths and names for the javascript libraries needed by higcharts/highstock charts
  */
 $jsFiles = array(
-//    'jQuery' => array(
-//        'name' => 'jquery.min.js',
-//        'path' => 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/'),
+    'jQuery' => array(
+        'name' => 'jquery.js',
+        'path' => BASE_URL.'lib/js/'),
 //
 //    'mootools' => array(
 //        'name' => 'mootools-yui-compressed.js',

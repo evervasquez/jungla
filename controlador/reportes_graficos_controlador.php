@@ -16,7 +16,7 @@ class reportes_graficos_controlador extends controller {
     public function __construct() {
         $this->get_Libreria('Highchart');
         parent::__construct();
-        $this->_modulos = $this->cargar_modelo('modulos');
+        $this->_vista->setJs(array('funciones'));
     }
 
     public function index() {
@@ -24,15 +24,15 @@ class reportes_graficos_controlador extends controller {
     }
 
     public function r_ventas() {
-        $this->_vista->renderizar('r_ventas');
+        $this->_vista->renderizar_reporte('r_ventas');
     }
 
     public function r_estadias() {
-        $this->_vista->renderizar('r_estadias');
+        $this->_vista->renderizar_reporte('r_estadias');
     }
 
     public function r_pasajeros() {
-        $this->_vista->renderizar('r_pasajeros');
+        $this->_vista->renderizar_reporte('r_pasajeros');
     }
 
 }
