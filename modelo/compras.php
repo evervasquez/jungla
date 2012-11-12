@@ -19,9 +19,13 @@ class compras {
             $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
             $this->idtipo_transaccion, $this->confirmacion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_compras", $datos);
-        $error = $r[1];
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
         $r = null;
-        return $error;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function actualiza() {

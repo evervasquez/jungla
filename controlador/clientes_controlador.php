@@ -3,7 +3,6 @@
 class clientes_controlador extends controller {
     
     private $_clientes;
-    private $_paises;
     private $_regiones;
     private $_provincias;
     private $_ubigeos;
@@ -13,7 +12,6 @@ class clientes_controlador extends controller {
     public function __construct() {
         parent::__construct();
         $this->_clientes = $this->cargar_modelo('clientes');
-        $this->_paises = $this->cargar_modelo('paises');
         $this->_regiones = $this->cargar_modelo('regiones');
         $this->_provincias = $this->cargar_modelo('provincias');
         $this->_ubigeos = $this->cargar_modelo('ubigeos');
@@ -105,7 +103,7 @@ class clientes_controlador extends controller {
     
     public function editar($id) {
         if (!$this->filtrarInt($id)) {
-            $this->redireccionar('empleados');
+            $this->redireccionar('pasajeros');
         }
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';

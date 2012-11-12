@@ -10,14 +10,12 @@ class tipo_habitacion_controlador extends controller {
     }
 
     public function index() {
-        $this->_tipo_habitacion->idtipo_habitacion = 0;
         $this->_vista->datos = $this->_tipo_habitacion->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_tipo_habitacion->idtipo_habitacion = 0;
         if($_POST['filtro']==0){
             $this->_tipo_habitacion->descripcion=$_POST['descripcion'];
         }
@@ -26,8 +24,9 @@ class tipo_habitacion_controlador extends controller {
     
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-            $this->_tipo_habitacion->idtipo_habitacion = 0;
             $this->_tipo_habitacion->descripcion = $_POST['descripcion'];
+            $this->_tipo_habitacion->costo = $_POST['costo'];
+            $this->_tipo_habitacion->camas = $_POST['camas'];
             $this->_tipo_habitacion->inserta();
             $this->redireccionar('tipo_habitacion');
         }
@@ -48,6 +47,8 @@ class tipo_habitacion_controlador extends controller {
         if ($_POST['guardar'] == 1) {
             $this->_tipo_habitacion->idtipo_habitacion = $_POST['codigo'];
             $this->_tipo_habitacion->descripcion = $_POST['descripcion'];
+            $this->_tipo_habitacion->costo = $_POST['costo'];
+            $this->_tipo_habitacion->camas = $_POST['camas'];
             $this->_tipo_habitacion->actualiza();
             $this->redireccionar('tipo_habitacion');
         }

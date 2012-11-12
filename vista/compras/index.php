@@ -23,16 +23,15 @@
                 <td><?php ?></td>
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td>
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idalmacen'] ?>')">
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idcompra'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idalmacen'] ?>')">
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idcompra'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>
     <?php } else { ?>
         <tr>
             <td><p>No hay compras</p>
-        <a href="<?php echo BASE_URL?>compras/nuevo" class="k-button">Nuevo</a></td>
         </tr>
     <?php } ?>
 </table>

@@ -9,11 +9,16 @@ class habitaciones {
     public $estado;
     
     public function inserta() {
-        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado);
+        $datos = array(0, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
-        $error = $r[1];
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
         $r = null;
-        return $error;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);  
+        return $stmt->fetch();
     }
 
     public function actualiza() {
@@ -25,6 +30,9 @@ class habitaciones {
     }
 
     public function selecciona() {
+        if(is_null($this->idhabitacion)){
+            $this->idhabitacion=0;
+        }
         $datos = array($this->idhabitacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_habitaciones", $datos);
         if ($r[1] == '') {
@@ -33,7 +41,7 @@ class habitaciones {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function elimina() {
