@@ -11,7 +11,7 @@
         <a href="<?php echo BASE_URL?>proveedores/nuevo" class="k-button">Nuevo</a>
     </p>
     <div id="grilla">
-    <table border="1" class="tabgrilla">
+    <table border="1" class="tabgrilla" id="tbl_proveedores">
         <tr>
             <th>Codigo</th>
             <th>Razon Social</th>
@@ -33,7 +33,7 @@
                 <td><?php echo $this->datos[$i]['email'] ?></td>
                 <td><a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgedit"></a>
                 <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgdelete"></a>
-                <a href="javascript:void(0)" class="imgview"></a></td>
+                <a href="javascript:void(0)" class="imgview ver"></a></td>
             </tr>
         <?php } ?>
 </table>
@@ -42,3 +42,6 @@
             <p>No hay proveedores</p>
             <a href="<?php echo BASE_URL?>proveedores/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
+
+            
+            <div id="vtna_ver_proveedor"></div>
