@@ -1,46 +1,3 @@
-<script>
-$(document).ready(function(){
-
-    $("#asignar_costo").click(function(){
-       idth=$("#tipo_habitacion").val();
-       th=$("#tipo_habitacion option:selected").html(); 
-       c=$("#costo").val();
-       o=$("#observacion").val();
-       error= false;
-       msg='';
-       
-       $("#tbl_habitacion_especifica tr").each(function(){
-           id_th = $("#tbl_habitacion_especifica tr td:eq(0) :input").val();
-           if(idth==id_th){
-               error= true;
-               msg = "Este tipo de habitacion ya fue asignado";
-           }
-       });
-       
-       if(error){
-           alert(msg);
-       }else{
-           html="<tr>";
-           html=html+"<td width='60px'><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
-           html=html+"<td><input type='hidden' name='costo[]' value='"+c+"'/>"+c+"</td>";
-           html=html+"<td><input type='hidden' name='observacion[]' value='"+o+"'/>"+o+"</td>";
-           html=html+'<td><a class="delete" title="Eliminar item" href="javascript:">[Eliminar]</a></td>';
-           html=html+"</tr>";
-
-           $("#tbl_habitacion_especifica").append(html);
-           $("#tipo_habitacion option:eq(0)").attr('selected',true);
-           $("#tipo_habitacion").kendoComboBox();
-           $("#costo").val('');
-           $("#observacion").val('');
-       }
-   });
-   
-   $(".delete").live('click', function() {
-       i = $(this).parent().parent().index();
-       $("#tbl_habitacion_especifica tr:eq("+i+")").remove();
-   });
-});
-</script>
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
@@ -113,7 +70,8 @@ $(document).ready(function(){
                 <td><label>Observaciones:</label></td>
                 <td>
                     <textarea class="k-editable-area" placeholder="Ingrese observacion" id="observacion"></textarea>
-                    <input type="button" class="k-button" value="Asignar" id="asignar_costo"/>
+                    <input type="button" class="k-button" value="Asignar" <?php if(isset ($this->datos_habitacion_especifica)){?>id="agrega_he"
+                                                                    <?php }else{ ?> id="asignar_costo" <?php } ?> />
                 </td>
             </tr>
             <tr>
@@ -122,6 +80,25 @@ $(document).ready(function(){
                         <tr>
                             <th width='60px'>Tipo de Habitacion</th><th>Costo</th><th>Observacion</th><th>Acciones</th>
                         </tr>
+                        <?php if(isset ($this->datos_habitacion_especifica)){?>
+                            <?php for($i=0;$i<count($this->datos_habitacion_especifica);$i++){ ?>
+                        <tr>
+                            <td>
+                                <input type="hidden" class="tipo_habitacion" value="<?php echo $this->datos_habitacion_especifica[$i]['idtipo_habitacion']?>" />
+                                <?php echo $this->datos_habitacion_especifica[$i]['tipo_habitacion']?>
+                            </td>
+                            <td>
+                                <?php echo $this->datos_habitacion_especifica[$i]['costo'] ?>
+                            </td>
+                            <td>
+                                <?php echo $this->datos_habitacion_especifica[$i]['observaciones'] ?>
+                            </td>
+                            <td>
+                                <a href="#" class="eliminar">[Eliminar]</a>
+                            </td>
+                        </tr>
+                            <?php } ?>
+                        <?php } ?>
                     </table>
                 </td>        
             </tr>

@@ -45,7 +45,7 @@
         <tr>
             <td><label>Provincia:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="provincias" class="combo">
+                <select placeholder="Seleccione..." required id="provincias">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>

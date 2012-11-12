@@ -1,4 +1,15 @@
 $(document).ready(function(){
+    a=1;
+    imp=0;
+    $("#tbl_detalle_compra tr").each(function(){
+        if(!isNaN(parseFloat($("#tbl_detalle_compra tr:eq("+a+") td:eq(5)").html()))){
+            imp += parseFloat($("#tbl_detalle_compra tr:eq("+a+") td:eq(5)").html());
+        }
+        a++;
+    });
+    $("#importe").val(imp);
+    tot= (1 + parseFloat($("#igv").val()) ) * parseFloat($("#importe").val())
+    $("#total").val(tot);
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
             var pwd = $(this).next().html();
@@ -7,9 +18,9 @@ $(document).ready(function(){
             $("#txt_buscar_proveedor").focus();
     }); 
      $(".cancela_prov").click(function(){
-            $("#vtna_busca_proveedor").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
-        });
+        $("#vtna_busca_proveedor").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    });
         
     
     $("#txt_buscar_proveedor").keypress(function(event){
@@ -111,15 +122,16 @@ $(document).ready(function(){
     }
     
     //asignacion de productos al detalle
-    item = 0;
-    importe = 0;
+    item = $("#tbl_detalle_compra tr:last td:eq(0)").html();
+    importe = parseFloat($("#importe").val());
     $("#asignar_producto").click(function(){
+        idc=$("#codigo").val();
         idp=$("#idproducto").val();
         pro=$("#producto").val();
         um=$("#unidad_medida").val();
         c=$("#cantidad").val();
         pre=$("#precio").val();
-        igv = $("#igv").val();
+        igv = parseFloat($("#igv").val());
         error=false;
         msg='';
         x=0;
@@ -136,16 +148,18 @@ $(document).ready(function(){
         if(error){
             alert(msg);
         }else{
+            $.post('/sisjungla/compras/insertar_detalle_compra','idcompra='+idc+'&idprodutos='+idp+'&cantidad='+c+'&precio='+pre);
+            
             item++;
             html = '<tr>';
             html +='<td width="40px">'+item+'</td>';
-            html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
+            html +='<td><input type="hidden" value="'+idp+'" class="producto"/>'+pro+'</td>';
             html +='<td>'+um+'</td>';
-            html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
-            html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
+            html +='<td>'+c+'</td>';
+            html +='<td>'+pre+'</td>';
             st=pre*c;
             html +='<td>'+st+'</td>';
-            html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
+            html +='<td><a href="#" class="imgdelete eliminar"></a></td>';
             html +='</tr>';
             
             importe += st;
@@ -181,18 +195,23 @@ $(document).ready(function(){
     
     $(".eliminar").live('click', function() {
        i = $(this).parent().parent().index();
+       idc=$("#codigo").val();
+       idp=$("#tbl_detalle_compra tr:eq("+i+") td:eq(1) .producto").val();
+       $.post('/sisjungla/compras/eliminar_detalle_compra','idcompra='+idc+'&idprodutos='+idp);
        importe=importe-$("#tbl_detalle_compra tr:eq("+i+") td:eq(5)").html();
        $("#tbl_detalle_compra tr:eq("+i+")").remove();
        item=0;       
-       x=0;
+       x=1;
        $("#tbl_detalle_compra tr").each(function(){
            item++;
            $("#tbl_detalle_compra tr:eq("+x+") td:eq(0)").html(item);
            x++;
        });
+       item--;
        $("#importe").val(importe);
        $("#igv").blur();
    });
+   
 });
 function seleccionar(id,proveedor){
     $("#idproveedor").val(id);

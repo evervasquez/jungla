@@ -20,7 +20,7 @@ class productos {
     
 
     public function inserta() {
-        $datos = array($this->idproducto, $this->descripcion, $this->precio_unitario, $this->observaciones, 
+        $datos = array(0, $this->descripcion, $this->precio_unitario, $this->observaciones, 
             $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
             $this->idpromocion, $this->stock, $this->estado, $this->precio_compra);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);
@@ -40,6 +40,9 @@ class productos {
     }
 
     public function selecciona() {
+        if(is_null($this->idproducto)){
+            $this->idproducto=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }

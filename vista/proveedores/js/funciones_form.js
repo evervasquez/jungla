@@ -18,16 +18,15 @@ $(document).ready(function(){
     
     $("#regiones").change(function(){
         if(!$("#regiones").val()){
-            $("#provincias").html('<option></option>');
+            $("#provincias").html('<option>Seleccione...</option>');
             $("#ciudades_proveedores").html('<option>Seleccione...</option>');
         }else{
-            $("#provincias").html('<option></option>');
+            $("#provincias").html('<option>Seleccione...</option>');
             $("#ciudades_proveedores").html('<option>Seleccione...</option>');
             $.post('/sisjungla/proveedores/get_provincias','idregion='+$("#regiones").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
-                $("#provincias").kendoComboBox();
             },'json');
         }
     });

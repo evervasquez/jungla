@@ -4,8 +4,13 @@ class tipo_habitacion {
 
     public $idtipo_habitacion;
     public $descripcion;
+    public $costo;
+    public $camas;
 
     public function selecciona() {
+        if(is_null($this->idtipo_habitacion)){
+            $this->idtipo_habitacion=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -30,7 +35,7 @@ class tipo_habitacion {
     }
 
     public function inserta() {
-        $datos = array($this->idtipo_habitacion, $this->descripcion);
+        $datos = array(0, $this->descripcion, $this->costo, $this->camas);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_tipo_habitacion", $datos);
         $error = $r[1];
         $r = null;
@@ -38,7 +43,7 @@ class tipo_habitacion {
     }
 
     public function actualiza() {
-        $datos = array($this->idtipo_habitacion, $this->descripcion);
+        $datos = array($this->idtipo_habitacion, $this->descripcion, $this->costo, $this->camas);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_tipo_habitacion", $datos);
         $error = $r[1];
         $r = null;

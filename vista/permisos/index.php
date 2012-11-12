@@ -11,7 +11,7 @@ $(document).ready(function(){
                     $("#"+datos[i].idmodulo).attr('checked','checked');
                 }
             },'json');
-            $("#div_modulos").show();            
+            $("#div_modulos").show();
         }            
     });
     $("input:checkbox").click(function(){

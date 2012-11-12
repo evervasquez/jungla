@@ -128,6 +128,11 @@ class proveedores_controlador extends controller {
         $this->_proveedores->elimina();
         $this->redireccionar('proveedores');
     }
+    
+    public function ver(){
+        $this->_proveedores->idproveedor=$_POST['idproveedor'];
+        echo json_encode($this->_proveedores->selecciona());
+    }
 
 }
 

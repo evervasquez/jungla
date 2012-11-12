@@ -53,7 +53,7 @@ class clientes {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
 }

@@ -9,7 +9,13 @@ class habitacion_especifica {
     public $idhabitacion_especifica;
 
     public function selecciona() {
-        $datos = array($this->idhabitacion_especifica);
+        if(is_null($this->idhabitacion_especifica)){
+            $this->idhabitacion_especifica=0;
+        }
+        if(is_null($this->idhabitacion)){
+            $this->idhabitacion=0;
+        }
+        $datos = array($this->idhabitacion_especifica, $this->idhabitacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_habitacion_especifica", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -21,7 +27,7 @@ class habitacion_especifica {
     }
 
     public function elimina() {
-        $datos = array($this->idhabitacion_especifica);
+        $datos = array($this->idhabitacion, $this->idtipo_habitacion);
         $r = consulta::procedimientoAlmacenado("pa_elimina_habitacion_especifica", $datos);
         $error = $r[1];
         $r = null;
@@ -30,7 +36,7 @@ class habitacion_especifica {
 
     public function inserta() {
         $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones
-                , $this->idhabitacion_especifica);
+                , 0);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitacion_especifica", $datos);
         $error = $r[1];
         $r = null;

@@ -6,6 +6,9 @@ class tipo_transaccion {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idtipo_transaccion)){
+            $this->idtipo_transaccion=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }

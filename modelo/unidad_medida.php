@@ -7,6 +7,9 @@ class unidad_medida {
     public $abreviatura;
 
     public function selecciona() {
+        if(is_null($this->idunidad_medida)){
+            $this->idunidad_medida=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -34,7 +37,7 @@ class unidad_medida {
     }
 
     public function inserta() {
-        $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
+        $datos = array(0, $this->descripcion, $this->abreviatura);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_unidad_medida", $datos);
         $error = $r[1];
         $r = null;

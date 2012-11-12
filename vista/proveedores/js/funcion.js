@@ -74,5 +74,51 @@
             buscar();
             $("#buscar").focus();
         });
-        
+       
+       //ver proveedores
+       $("#vtna_ver_proveedor").hide();
+       $("#aceptar").live('click',function(){
+           $("#vtna_ver_proveedor").hide("slow");
+       });
+       $(".ver").click(function(){
+           i = $(this).parent().parent().index();
+           idp=$("#tbl_proveedores tr:eq("+i+") td:eq(0)").html();
+           $.post('/sisjungla/proveedores/ver','idproveedor='+idp,function(datos){
+               html= '<h3>Datos del Proveedor "'+datos[0]['razon_social']+'"</h3>';
+               html+='<table>';
+               html+= '<tr>';
+               html+= '<td>Razon Social:</td>';
+               html+= '<td>'+datos[0]['razon_social']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Representante:</td>';
+               html+= '<td>'+datos[0]['representante']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Ruc:</td>';
+               html+= '<td>'+datos[0]['ruc']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Telefono:</td>';
+               html+= '<td>'+datos[0]['telefono']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<tr>';
+               html+= '<td>Ciudad:</td>';
+               html+= '<td>'+datos[0]['ubigeo']+'</td>';
+               html+= '</tr>';
+               html+= '<td>Direccion:</td>';
+               html+= '<td>'+datos[0]['direccion']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Email:</td>';
+               html+= '<td>'+datos[0]['email']+'</td>';
+               html+= '</tr>';
+               html+= '</table>';
+               html+= '<p><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
+               $("#vtna_ver_proveedor").html(html);
+               $("#vtna_ver_proveedor").show();
+           },'json');
+       });
+       
     });

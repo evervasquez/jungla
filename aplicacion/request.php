@@ -35,7 +35,6 @@ class request {
             $this->_argumentos = $url;           
             
         }
-        
         //si no existe parametro controlador lo establecemos por el default
         if (!$this->_controlador) {
             $this->_controlador = DEFAULT_CONTROLLER;

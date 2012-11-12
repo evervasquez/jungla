@@ -14,8 +14,8 @@ class habitaciones_controlador extends controller {
     }
 
     public function index() {
-        $this->_habitaciones->idhabitacion = 0;
         $this->_vista->datos = $this->_habitaciones->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
@@ -25,24 +25,81 @@ class habitaciones_controlador extends controller {
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-            $this->_habitaciones->idhabitacion=0;
+            //inserta habitacion
             $this->_habitaciones->descripcion=$_POST['descripcion'];
             $this->_habitaciones->nro_habitacion=$_POST['nro_habitacion'];
             $this->_habitaciones->ventilacion=$_POST['ventilacion'];
             $this->_habitaciones->estado=$_POST['estado'];
+            $dato_habitacion=$this->_habitaciones->inserta();
+            //inserta habitacion especifica
+            for($i=0;$i<count($_POST['tipo_habitacion']);$i++){
+                $this->_habitacion_especifica->idhabitacion=$dato_habitacion['idhabitacion'];
+                $this->_habitacion_especifica->idtipo_habitacion= $_POST['tipo_habitacion'][$i];
+                $this->_habitacion_especifica->costo= $_POST['costo'][$i];
+                $this->_habitacion_especifica->observaciones= $_POST['observacion'][$i];
+                $this->_habitacion_especifica->inserta();
+            }
+            $this->redireccionar('habitaciones');
+            
         }
-        $this->_tipo_habitacion->idtipo_habitacion=0;
         $this->_vista->datos_tipo_habitacion=$this->_tipo_habitacion->selecciona();
         $this->_vista->titulo = 'Registrar Habitacion';
         $this->_vista->action = BASE_URL . 'habitaciones/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
     
-    public function inserta_tmphabitacion(){
-        $this->_tmp_habitacion->idtmp_habitacion=$POST['idtmp_habitacion'];
-        $this->_tmp_habitacion->idtipo_habitacion=$POST['idtipo_habitacion'];
-        $this->_tmp_habitacion->costo=$POST['costo'];   
-        $this->_tmp_habitacion->observacion=$POST['observacion'];   
+    public function editar($id){
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('habitaciones');
+        }
+        if ($_POST['guardar'] == 1) {
+//            echo '<pre>';
+//            print_r($_POST);
+//            echo '</pre>';
+//            exit;
+            //inserta habitacion
+            $this->_habitaciones->idhabitacion=$_POST['codigo'];
+            $this->_habitaciones->descripcion=$_POST['descripcion'];
+            $this->_habitaciones->nro_habitacion=$_POST['nro_habitacion'];
+            $this->_habitaciones->ventilacion=$_POST['ventilacion'];
+            $this->_habitaciones->estado=$_POST['estado'];
+            $this->_habitaciones->actualiza();
+            $this->redireccionar('habitaciones');
+            
+        }
+        $this->_habitaciones->idhabitacion=$this->filtrarInt($id);
+        $datos=$this->_habitaciones->selecciona();
+        $this->_habitacion_especifica->idhabitacion=$datos[0]['idhabitacion'];
+        $this->_vista->datos_habitacion_especifica=$this->_habitacion_especifica->selecciona();
+        $this->_vista->datos_tipo_habitacion=$this->_tipo_habitacion->selecciona();
+        $this->_vista->datos=$datos;
+        $this->_vista->titulo = 'Actualizar Habitacion';
+        $this->_vista->setJs(array('funciones_form'));
+        $this->_vista->renderizar('form');
+    }
+    
+    public function eliminar($id) {
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('habitaciones');
+        }
+        $this->_habitaciones->idhabitacion = $this->filtrarInt($id);
+        $this->_habitaciones->elimina();
+        $this->redireccionar('habitaciones');
+    }
+    
+    public function eliminar_habitacion_especifica(){
+        $this->_habitacion_especifica->idhabitacion=$_POST['idhabitacion'];
+        $this->_habitacion_especifica->idtipo_habitacion=$_POST['idtipo_habitacion'];
+        $this->_habitacion_especifica->elimina();
+    }
+    
+    public function insertar_habitacion_especifica(){
+        $this->_habitacion_especifica->idhabitacion=$_POST['idhabitacion'];
+        $this->_habitacion_especifica->idtipo_habitacion=$_POST['idtipo_habitacion'];
+        $this->_habitacion_especifica->costo=$_POST['costo'];
+        $this->_habitacion_especifica->observaciones=$_POST['observaciones'];
+        $this->_habitacion_especifica->inserta();
     }
     
 }

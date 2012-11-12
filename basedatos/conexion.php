@@ -36,6 +36,7 @@ class conexion {
         return call_user_func_array($callback, $args);
     }
 
+    /*  para mostrar en que servidor estamos*/
     public static function get_servidor() {
         switch (self::$_servidor) {
             case 'mssql': $_servidor = "SQL Server ";
