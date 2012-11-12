@@ -7,21 +7,21 @@
     <table width="50%" align="center">
         <tr>
             <td><label>Nombres:</label></td>
-            <td>
+            <td colspan="2">
                 <input type="text" class="k-textbox" placeholder="Ingrese nombres" required name="nombres" onkeypress="return soloLetras(event)"
-                   value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
+                   id="nombre" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
             </td>
             <td><label>Apellidos:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required onkeypress="return soloLetras(event)" name="apellidos"
-                    value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
+                    id="apellidos" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
             </td>
         </tr>
         <tr>
             <td><label>DNI:</label></td>
-            <td>
+            <td colspan="2">
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required onKeyPress="return soloNumeros(event);" maxlength="8"
-                    name="dni" id="dni" value="<?php if(isset ($this->datos[0]['dni']))echo $this->datos[0]['dni']?>"/>
+                    id="dni" name="dni" id="dni" value="<?php if(isset ($this->datos[0]['dni']))echo $this->datos[0]['dni']?>"/>
             </td>
             <td><label>Telefono:</label></td>
             <td>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td><label>Provincia:</label></td>
-            <td>
+            <td colspan="2">
                 <select placeholder="Seleccione..." required id="provincias" class="combo">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
@@ -56,7 +56,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." required name="ubigeo" id="ubigeo">
-                    <option>Seleccione...</option>
+                    <option value="0">Seleccione...</option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
@@ -71,7 +71,7 @@
         </tr>
         <tr>
             <td><label>Direccion:</label></td>
-            <td>
+            <td colspan="2">
                 <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
                    id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
             </td>
@@ -91,7 +91,7 @@
         </tr>
         <tr>
             <td><label>Fecha de Nacimiento:</label></td>
-            <td>
+            <td colspan="2">
                 <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_nacimiento"
                    id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
                            $fecha= $this->datos[0]['fecha_nacimiento'];
@@ -125,7 +125,9 @@
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese usuario" required name="usuario"
                    id="usuario" value="<?php if(isset ($this->datos[0]['usuario']))echo $this->datos[0]['usuario']?>"/>
-                <span id="valida_usuario"></span>
+            </td>
+            <td>
+                <span id="valida_usuario">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </td>
             <td><label>Contraseña:</label></td>
             <td>
@@ -135,8 +137,8 @@
         </tr>
         <tr>
             <td><label>Actividades:</label></td>
-            <td>
-                <select class="combo" placeholder="Seleccione..." required name="actividad">
+            <td colspan="2">
+                <select class="combo" placeholder="Seleccione..." required name="actividad" id="actividad">
                     <option value="0"></option>
                     <?php for($i=0;$i<count($this->datos_actividades);$i++){ ?>
                         <?php if( $this->datos[0]['idactividad'] == $this->datos_actividades[$i]['idactividad'] ){ ?>
@@ -149,7 +151,7 @@
             </td>
             <td><label>Tipo Empleado:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." required name="tipo_empleado">
+                <select class="combo" placeholder="Seleccione..." required name="tipo_empleado" id="tipo_empleado">
                     <option value="0"></option>
                     <?php for($i=0;$i<count($this->datos_tipo_empleado);$i++){ ?>
                         <?php if( $this->datos[0]['idtipo_empleado'] == $this->datos_tipo_empleado[$i]['idtipo_empleado'] ){ ?>

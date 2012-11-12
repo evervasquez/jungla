@@ -150,7 +150,7 @@
                <td colspan="5" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>compras" class="k-button">Cancelar</a>
+                        <a href="<?php echo BASE_URL ?>compras" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
@@ -166,9 +166,9 @@
             <option value="0">Razon Social</option>
             <option value="1">Representante</option>
         </select>
-        <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_proveedor">
+        <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_proveedor">
         <button type="button" class="k-button" id="btn_buscar_proveedor"><span class="k-icon k-i-search"></span></button>
-        <a class="k-button cancela_prov">Cancelar</a>
+        <a class="k-button cancela_prov cancel">Cancelar</a>
     </p>
     <div id="grilla_proveedores">
     <table border="1" class="tabgrilla" id="tbl_busca_proveedor">
@@ -196,9 +196,9 @@
         <select class="combo" id="filtro_productos">
             <option value="0">Descripcion</option>
         </select>
-        <input type="text" class="k-textbox" style="width: 50%" id="txt_buscar_productos">
+        <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_productos">
         <button type="button" class="k-button" id="btn_buscar_producto"><span class="k-icon k-i-search"></span></button>
-        <a class="k-button cancela_prod">Cancelar</a>
+        <a class="k-button cancela_prod cancel">Cancelar</a>
     </p>
     <div id="grilla_productos">
     <table border="1" class="tabgrilla" id="tbl_busca_productos">

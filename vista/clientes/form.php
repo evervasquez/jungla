@@ -1,62 +1,3 @@
-<script>
-$(document).ready(function(){
-    
-    $("#region").change(function(){
-        if(!$(this).val()){
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-        }else{
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-            $.post('/sisjungla/clientes/get_provincias','idregion='+$(this).val(),function(datos){
-                for(var i=0;i<datos.length;i++){
-                    $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-            },'json');
-        }
-    });
-    
-    $("#regiones").change(function(){
-        if(!$(this).val()){
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-        }else{
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-            $.post('/sisjungla/clientes/get_provincias','idregion='+$(this).val(),function(datos){
-                for(var i=0;i<datos.length;i++){
-                    $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-            },'json');
-        }
-    });
-    
-    $(".provincias").change(function(){
-        if(!$(this).val()){
-            $(".ciudades").html('<option value="0">Seleccione...</option>');
-        }else{
-            $(".ciudades").html('<option value="0">Seleccione...</option>');
-            $.post('/sisjungla/clientes/get_ciudades','idprovincia='+$(this).val(),function(datos){
-                for(var i=0;i<datos.length;i++){
-                    $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }       
-            },'json');
-        }
-    });
-    $("#frm_cliente_juridico").hide();
-    $("#tipo_cliente").change(function(){
-        if($(this).val()=='natural'){
-            $("#frm_cliente_natural").show();
-            $("#frm_cliente_juridico").hide();
-        }else{
-            $("#frm_cliente_natural").hide();
-            $("#frm_cliente_juridico").show();
-        }
-    });
-    
-}); 
-        
-</script>
 <h3><?php echo $this->titulo ?></h3>
 <?php if(isset($this->action)){?>
 <table>
@@ -79,8 +20,8 @@ $(document).ready(function(){
 });
 </script>
 <?php } ?>
-<div id="frm_cliente_natural">
-    <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<div id="frm_cliente_natural" class="tabForm">
+    <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm_natural">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="natural"/>
         <input type="hidden" name="codigo" id="codigo"
@@ -90,29 +31,25 @@ $(document).ready(function(){
             <tr>
                 <td><label>Nombre:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
-                       id="" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres" onkeypress="return soloLetras(event)"
+                       id="nombre" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Apellidos:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required name="apellidos"
-                       id="" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required name="apellidos" onkeypress="return soloLetras(event)"
+                       id="apellidos" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Nro.Documento:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento"
-                       id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                       id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Direccion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
-                       id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
+                       id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
                 </td>
             </tr>
             <tr>
@@ -125,9 +62,7 @@ $(document).ready(function(){
                     <input type="radio" name="sexo" value ="1" checked="checked"/>M
                     <input type="radio" name="sexo" value="0" />F
                     <?php } ?>
-                <td>
-            </tr>
-            <tr>
+                </td>
                 <td><label>Telefono:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono"
@@ -140,8 +75,6 @@ $(document).ready(function(){
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
@@ -164,8 +97,6 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                 </td>
-            </tr>        
-            <tr>
                 <td><label>Estado Civil:</label></td>
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="estado_civil">
@@ -217,8 +148,6 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                </td>
-            </tr>
-            <tr>
                 <td><label>Provincia:</label></td>
                 <td>
                     <select placeholder="Seleccione..." class="provincias">
@@ -259,8 +188,6 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Membresia:</label></td>
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="membresia">
@@ -276,10 +203,10 @@ $(document).ready(function(){
                 </td>
             </tr>
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="4" align="center">
                     <p>
-                        <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>clientes" class="k-button">Cancelar</a>
+                        <button type="submit" class="k-button" id="saveformnatural">Guardar</button>
+                        <a href="<?php echo BASE_URL ?>clientes" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
@@ -288,33 +215,32 @@ $(document).ready(function(){
 </div>
 
 
-<div id="frm_cliente_juridico">
-    <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<div id="frm_cliente_juridico" class="tabForm">
+    <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm_juridico">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="juridico"/>
         <input type="hidden" name="codigo" id="codigo"
                value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
         <table width="50%" align="center">
-            </tr>
             <tr>
                 <td><label>Razon Social:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
-                       id="" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
+                       id="razonsocial" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Ruc:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento"
-                       id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                       id="ruc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
             </tr>
             <tr>
                 <td><label>Direccion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
-                       id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
+                       id="direccionrs" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
                 </td>
             </tr>
             <tr>
@@ -401,8 +327,8 @@ $(document).ready(function(){
             <tr>
                 <td colspan="2" align="center">
                     <p>
-                        <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>clientes" class="k-button">Cancelar</a>
+                        <button type="submit" class="k-button" id="saveformjuridico">Guardar</button>
+                        <a href="<?php echo BASE_URL ?>clientes" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>

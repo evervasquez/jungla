@@ -1,5 +1,14 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Clientes</h3>
+    <p>
+        <select class="combo" id="filtro">
+            <option value="0">Nombre</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="buscar">
+        <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
+        <a href="<?php echo BASE_URL?>clientes/nuevo" class="k-button">Nuevo</a>
+    </p>
+    <div id="grilla">
     <table border="1">
         <tr>
             <th><label>Codigo</label></th>
@@ -34,11 +43,9 @@
                 </td>
             </tr>
         <?php } ?>
-
-    <?php } else { ?>
-        <tr>
-            <td><p>No hay clientes</p></td>
-        </tr>
-    <?php } ?>
 </table>
-<p><a href="<?php echo BASE_URL?>clientes/nuevo" class="k-button">Nuevo</a></p>
+    </div>
+    <?php } else { ?>
+        <p>No hay clientes</p>
+        <p><a href="<?php echo BASE_URL?>clientes/nuevo" class="k-button">Nuevo</a></p>
+    <?php } ?>

@@ -71,4 +71,16 @@
             $("#buscar").focus();
         });
         
+    $("#aceptaempleado").click(function(){
+            $("#infoempleado").fadeOut(300);
+            $("#fondooscuro").fadeOut(300);
+            window.location = '/sisjungla/empleados/';
+        });
+        
     });
+    function ver(id){
+            href=id;
+            window.location = href;
+            $("#infoempleado").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
+        }

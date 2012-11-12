@@ -7,17 +7,16 @@ $(document).ready(function(){
         bval = bval && $( "#dni" ).required(); 
         bval = bval && $( "#telefono" ).required(); 
         bval = bval && $( "#direccion" ).required(); 
-        bval = bval && $( "#paises" ).required(); 
-        bval = bval && $( "#regiones" ).required(); 
-        bval = bval && $( "#provincias" ).required(); 
-        bval = bval && $( "#ubigeo" ).required();   
+        bval = bval && $( "#provincias" ).required();    
         bval = bval && $( "#profesion" ).required(); 
         bval = bval && $( "#fechanac" ).required(); 
         bval = bval && $( "#fechacon" ).required();   
         bval = bval && $( "#perfil" ).required(); 
         bval = bval && $( "#usuario" ).required(); 
         bval = bval && $( "#clave" ).required(); 
-        if ( bval ) {
+        bval = bval && $( "#actividad" ).required(); 
+        bval = bval && $( "#tipo_emepleado" ).required(); 
+        if ( bval && $( "#ubigeo" ).val()!=0) {
             $("#frm").submit();
         }
         return false;

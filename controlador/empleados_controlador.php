@@ -31,9 +31,10 @@ class empleados_controlador extends controller {
     public function index() {
         $this->_vista->datos = $this->_empleados->selecciona();
         $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
     }
-    
+        
     public function buscador(){
         if($_POST['filtro']==0){
             $this->_empleados->nombres=$_POST['cadena'];
@@ -102,10 +103,27 @@ class empleados_controlador extends controller {
     public function valida_usuario() {
         $usuario = $this->_empleados->seleccionar($_POST['usuario'], '');
         if ($usuario[0]['usuario'] == '') {
-            echo 'correcto';
+            echo '<a class="imgselect" title="Valido" ></a>';
         } else {
-            echo 'incorrecto';
+            echo '<a class="imgdelete" title="En uso" ></a>';
         }
+    }
+    
+    public function ver($id){
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('empleados');
+        }
+        $this->_empleados->idempleado = $this->filtrarInt($id);
+        $datos = $this->_empleados->selecciona();
+
+        $this->_vista->ver = $datos;
+        
+        $this->_vista->ver_actividades = $this->_actividades->selecciona();
+        
+        $this->_vista->ver_tipo_empleado = $this->_tipo_empleado->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
+        $this->_vista->renderizar('index');
     }
 
     public function editar($id) {

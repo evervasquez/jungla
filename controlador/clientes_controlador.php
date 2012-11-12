@@ -90,6 +90,7 @@ class clientes_controlador extends controller {
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->titulo = 'Registrar Cliente';
         $this->_vista->action = BASE_URL . 'clientes/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
     
@@ -175,6 +176,7 @@ class clientes_controlador extends controller {
         $this->_vista->datos_membresias= $this->_membresias->selecciona();
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->titulo = 'Actualizar Cliente';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
         

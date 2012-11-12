@@ -1,0 +1,37 @@
+/* 
+    Document   : estilos_index
+    Created on : 09/11/2012, 02:01:37 PM
+    Author     : Ja1R
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#fondooscuro{
+        display: block;
+	position: fixed;
+	left: 0%;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-image: url('/sisjungla/lib/img/negro.png');
+}
+#infoempleado{
+	padding:10px;
+	color: black;
+	position: fixed;
+	left: 37.5%;
+	top: 20%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border:10px solid grey;
+}
+#infoempleado label{
+        text-align: right;
+}
+
