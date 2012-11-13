@@ -19,6 +19,7 @@ class proveedores_controlador extends controller {
 
     public function index() {
         $this->_vista->datos = $this->_proveedores->selecciona();
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }

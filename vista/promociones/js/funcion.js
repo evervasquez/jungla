@@ -1,7 +1,7 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
             dataSource: {
-                pageSize: 5
+                pageSize: 7
             },
             pageable: true,
             columns: [{field:"Codigo", width:8},
@@ -9,7 +9,7 @@
                 {field:"Descuento", width:10},
                 {field:"FechadeInicio", width:20},
                 {field:"FechadeFinalizacion", width:20},
-                {field:"Acciones", width:10}]
+                {field:"Acciones", width:10,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
         
@@ -43,7 +43,7 @@
                 $("#grilla").html(HTML);
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},
@@ -51,7 +51,7 @@
                         {field:"Descuento", width:10},
                         {field:"FechadeInicio", width:20},
                         {field:"FechadeFinalizacion", width:20},
-                        {field:"Acciones", width:10}]
+                        {field:"Acciones", width:10,attributes:{class:"acciones"}}]
                 });
             },'json');
         }

@@ -1,6 +1,5 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
-    <fieldset>
-        <legend><h3><?php echo $this->titulo ?></h3></legend>
+    <h3><?php echo $this->titulo ?></h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <table width="50%" align="center" class="tabForm">
             <tr>
@@ -133,7 +132,6 @@
                 </td>
             </tr>
         </table>
-    </fieldset>
     </form>
     <div id="ventana_unidad_medida" align="center">
         <form method="post" action="#">

@@ -1,7 +1,7 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
             dataSource: {
-                pageSize: 5
+                pageSize: 7
             },
             pageable: true,
             columns: [{field:"Codigo", width:6},
@@ -10,7 +10,7 @@
                 {field:"Telefono", width:10},
                 {field:"Direccion", width:10},
                 {field:"Perfil", width:10},
-                {field:"Acciones", width:8}]
+                {field:"Acciones", width:8,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
         
@@ -47,7 +47,7 @@
                 $("#grilla").html(HTML);
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:6},
@@ -56,7 +56,7 @@
                         {field:"Telefono", width:10},
                         {field:"Direccion", width:10},
                         {field:"Perfil", width:10},
-                        {field:"Acciones", width:9}]
+                        {field:"Acciones", width:8,attributes:{class:"acciones"}}]
                 });
             },'json');
         }
@@ -71,16 +71,84 @@
             $("#buscar").focus();
         });
         
-    $("#aceptaempleado").click(function(){
-            $("#infoempleado").fadeOut(300);
+    //ver empleados
+       $("#vtna_ver_empleado").hide();
+       $("#aceptar").live('click',function(){
+            $("#vtna_ver_empleado").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
-            window.location = '/sisjungla/empleados/';
-        });
-        
-    });
-    function ver(id){
-            href=id;
-            window.location = href;
-            $("#infoempleado").fadeIn(300);
+       });
+       $(".ver").click(function(){
+           i = $(this).parent().parent().index();
+           idp=$("#tbl_empleado tr:eq("+i+") td:eq(0)").html();
+           $.post('/sisjungla/empleados/ver','idempleado='+idp,function(datos){
+               html= '<h3>Datos del Empleado: '+datos[0]['nombres']+' '+datos[0]['apellidos']+'</h3>';
+               html+='<table>';
+               html+= '<tr>';
+               html+= '<td>Nombres:</td>';
+               html+= '<td>'+datos[0]['nombres']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Apellidos:</td>';
+               html+= '<td>'+datos[0]['apellidos']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Dni:</td>';
+               html+= '<td>'+datos[0]['dni']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Telefono:</td>';
+               html+= '<td>'+datos[0]['telefono']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<tr>';
+               html+= '<td>Ciudad:</td>';
+               html+= '<td>'+datos[0]['ubigeo']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Direccion:</td>';
+               html+= '<td>'+datos[0]['direccion']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Fecha de Nacimiento:</td>';
+               html+= '<td>'+datos[0]['fecha_nacimiento']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Fecha de Contratacion:</td>';
+               html+= '<td>'+datos[0]['fecha_contratacion']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Profesion:</td>';
+               html+= '<td>'+datos[0]['profesion']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Perfil:</td>';
+               html+= '<td>'+datos[0]['perfil']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Usuario:</td>';
+               html+= '<td>'+datos[0]['usuario']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Clave:</td>';
+               html+= '<td>'+datos[0]['clave']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Estado:</td>';
+               html+= '<td>'+datos[0]['estado']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Actividad:</td>';
+               html+= '<td>'+datos[0]['actividad']+'</td>';
+               html+= '</tr>';
+               html+= '<tr>';
+               html+= '<td>Tipo de Empleado:</td>';
+               html+= '<td>'+datos[0]['tipo_empleado']+'</td>';
+               html+= '</tr>';
+               html+= '</table>';
+               html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
+               $("#vtna_ver_empleado").html(html);
+            $("#vtna_ver_empleado").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
-        }
+           },'json');
+       });
+    });

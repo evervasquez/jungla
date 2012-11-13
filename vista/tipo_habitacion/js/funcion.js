@@ -1,12 +1,14 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
             dataSource: {
-                pageSize: 5
+                pageSize: 7
             },
             pageable: true,
             columns: [{field:"Codigo", width:8},
-                {field:"Descripcion", width:80},
-                {field:"Acciones", width:10}]
+                {field:"Descripcion", width:20},
+                        {field:"Costo", width:20},
+                        {field:"camas", width:20},
+                {field:"Acciones", width:10,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
         
@@ -16,6 +18,8 @@
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
+                            '<th>Costo</th>'+
+                            '<th>Nro.de Camas</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
@@ -23,6 +27,8 @@
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].idtipo_habitacion+'</td>';
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                    HTML = HTML + '<td>'+datos[i].costo+'</td>';
+                    HTML = HTML + '<td>'+datos[i].camas+'</td>';
                     var editar='/sisjungla/tipo_habitacion/editar/'+datos[i].idtipo_habitacion; 
                     var eliminar='/sisjungla/tipo_habitacion/eliminar/'+datos[i].idtipo_habitacion;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
@@ -34,12 +40,14 @@
                 $("#grilla").html(HTML);
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},
-                        {field:"Descripcion", width:80},
-                        {field:"Acciones", width:10}]
+                        {field:"Descripcion", width:20},
+                        {field:"Costo", width:20},
+                        {field:"camas", width:20},
+                        {field:"Acciones", width:10,attributes:{class:"acciones"}}]
                 });
             },'json');
         }

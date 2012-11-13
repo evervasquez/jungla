@@ -45,3 +45,4 @@
 
             
             <div id="vtna_ver_proveedor"></div>
+            <div id="fondooscuro"></div>

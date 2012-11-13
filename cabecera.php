@@ -9,7 +9,8 @@
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.js"></script>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>funciones.js"></script>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>validaciones.js"></script>
-        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.all.min.js"></script>
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.web.min.js"></script>
         <link type="text/css" href="<?php echo $_params['ruta_css']; ?>estilosprincipal.css" rel="stylesheet" media="screen" />
         <?php if(isset($_params['js']) && count($_params['js'])): ?>
         <?php for($i=0; $i < count($_params['js']); $i++): ?>

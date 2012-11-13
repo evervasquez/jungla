@@ -109,21 +109,9 @@ class empleados_controlador extends controller {
         }
     }
     
-    public function ver($id){
-        if (!$this->filtrarInt($id)) {
-            $this->redireccionar('empleados');
-        }
-        $this->_empleados->idempleado = $this->filtrarInt($id);
-        $datos = $this->_empleados->selecciona();
-
-        $this->_vista->ver = $datos;
-        
-        $this->_vista->ver_actividades = $this->_actividades->selecciona();
-        
-        $this->_vista->ver_tipo_empleado = $this->_tipo_empleado->selecciona();
-        $this->_vista->setJs(array('funcion'));
-        $this->_vista->setCss(array('estilos_index'));
-        $this->_vista->renderizar('index');
+    public function ver(){
+        $this->_empleados->idempleado=$_POST['idempleado'];
+        echo json_encode($this->_empleados->selecciona());
     }
 
     public function editar($id) {

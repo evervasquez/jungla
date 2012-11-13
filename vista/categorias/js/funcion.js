@@ -1,13 +1,13 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},
                         {field:"Descripcion", width:50},
                         {field:"elemento", width:20},
-                        {title:"Acciones", width:10}]
+                        {title:"Acciones", width:10,attributes:{class:"acciones"}}]
                 });
         $( "#buscar" ).focus();
         
@@ -37,13 +37,13 @@
                 $("#grilla").html(HTML);
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},
                         {field:"Descripcion", width:50},
                         {field:"elemento", width:20},
-                        {title:"Acciones", width:10}]
+                        {title:"Acciones", width:10,attributes:{class:"acciones"}}]
                 });
             },'json');
         }

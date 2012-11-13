@@ -19,7 +19,15 @@ body{
 	-o-border-radius:0px 0px 35px 35px;
 }
 .menu{
-        padding-top: 12px;
+        padding-top: 1%;
+}
+.acciones{
+        text-align: center;
+}
+.k-grid > table > tbody > tr:hover,
+.k-grid-content > table > tbody > tr:hover
+{
+        background:#6F9;
 }
 .imgedit{
 		background-image:url(../img/edit.png);
@@ -170,20 +178,6 @@ body{
 }
 .cancel:hover{
         color: #FFF;
-}
-#ventana_tipo_habitacion{
-	padding:20px;
-	display:none;
-	color: black;
-	position: fixed;
-	left: 37.5%;
-	top: 30%;
-	width: 25%;
-	height:35%;
-	z-index: 1000;
-	text-align: center;
-	background-color: white;
-	border: 1px solid black;
 }
 input:-moz-placeholder, textarea:-moz-placeholder {
     color: #999;

@@ -12,7 +12,7 @@
         <a href="<?php echo BASE_URL?>productos/nuevo" class="k-button">Nuevo</a>
     </p>
     <div id="grilla">
-    <table border="1" class="tabgrilla">
+    <table border="1" class="tabgrilla" id="tbl_producto">
         <tr>
             <th>Codigo</th>
             <th>Descripcion</th>
@@ -33,7 +33,7 @@
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>productos/editar/<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>productos/eliminar/<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgdelete"></a>
-                    <a href="javascript:void(0)" class="imgview"></a>
+                    <a href="javascript:void(0)" class="imgview ver"></a>
                 </td>
             </tr>
         <?php } ?>
@@ -43,3 +43,6 @@
             <p>No hay productos</p>
             <a href="<?php echo BASE_URL?>productos/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
+            
+<div id="vtna_ver_producto"></div>
+<div id="fondooscuro"></div>

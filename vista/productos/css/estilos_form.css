@@ -7,8 +7,8 @@
 */
 
 #ventana_unidad_medida{
+        display: none;
 	padding:20px;
-	display:none;
 	color: black;
 	position: fixed;
 	left: 37.5%;

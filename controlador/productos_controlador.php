@@ -23,7 +23,13 @@ class productos_controlador extends controller {
         $this->_productos->idproducto = 0;
         $this->_vista->datos = $this->_productos->selecciona();
         $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function ver(){
+        $this->_productos->idproducto=$_POST['idproducto'];
+        echo json_encode($this->_productos->selecciona());
     }
     
     public function buscador(){

@@ -1,7 +1,7 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:6},
@@ -11,7 +11,7 @@
                         {field:"Direccion", width:10},
                         {field:"Telefono", width:10},
                         {field:"Email", width:10},
-                        {field:"Acciones", width:8}]
+                        {field:"Acciones", width:8,attributes:{class:"acciones"}}]
                 });
         $( "#buscar" ).focus();
         
@@ -50,7 +50,7 @@
                 $("#grilla").html(HTML);
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:6},
@@ -60,7 +60,7 @@
                         {field:"Direccion", width:10},
                         {field:"Telefono", width:10},
                         {field:"Email", width:10},
-                        {field:"Acciones", width:8}]
+                        {field:"Acciones", width:8,attributes:{class:"acciones"}}]
                 });
             },'json');
         }
@@ -78,7 +78,8 @@
        //ver proveedores
        $("#vtna_ver_proveedor").hide();
        $("#aceptar").live('click',function(){
-           $("#vtna_ver_proveedor").hide("slow");
+            $("#vtna_ver_proveedor").fadeOut(300);
+            $("#fondooscuro").fadeOut(300);
        });
        $(".ver").click(function(){
            i = $(this).parent().parent().index();
@@ -115,9 +116,10 @@
                html+= '<td>'+datos[0]['email']+'</td>';
                html+= '</tr>';
                html+= '</table>';
-               html+= '<p><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
+               html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
                $("#vtna_ver_proveedor").html(html);
-               $("#vtna_ver_proveedor").show();
+            $("#vtna_ver_proveedor").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
            },'json');
        });
        

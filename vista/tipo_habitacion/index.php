@@ -9,7 +9,7 @@
         <a href="<?php echo BASE_URL?>tipo_habitacion/nuevo" class="k-button">Nuevo</a>
     </p>
     <div id="grilla">
-    <table border="1" class="">
+    <table border="1" class="tabgrilla">
         <tr>
             <th>Codigo</th>
             <th>Descripcion</th>
