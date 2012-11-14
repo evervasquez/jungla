@@ -12,7 +12,6 @@ class compras {
     public $idproveedor;
     public $idtipo_transaccion;
     public $confirmacion;
-    
 
     public function inserta() {
         $datos = array(0, $this->fecha_compra, $this->estado, $this->observaciones, 
