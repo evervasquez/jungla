@@ -10,31 +10,33 @@
             </td>
             </tr>
             <tr>
-            	<td><label>Descripcion:</label></td>
+            	<td><label for="descripcion">Descripcion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" name="descripcion" id="descripcion" onkeypress="return soloLetras(event)"
+                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion" onkeypress="return soloLetras(event)"
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                 </td>
-                <td><label>Stock</label></td>
+                <td><label for="stock">Stock</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese stock" required name="stock" id="stock"
+                    <input type="text" class="k-textbox" placeholder="Ingrese stock" required name="stock" id="stock" onkeypress="return soloNumeros(event)"
                            value="<?php if(isset ($this->datos[0]['stock']))echo $this->datos[0]['stock']?>"/>
                 </td>
             </tr>
             <tr>
-            	<td><label>Precio Unitario</label></td>
+            	<td><label for="precio_unitario">Precio Unitario</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese precio" required name="precio_unitario" id="precio_unitario"
+                    <input type="text" class="k-textbox precio" placeholder="Ingrese precio" required name="precio_unitario" id="precio_unitario"
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
+                    <span class="k-invalid-msg" data-for="precio_unitario"></span>
                 </td>
-                <td><label>Precio de Compra</label></td>
+                <td><label for="precio_compra">Precio de Compra</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese precio" required name="precio_compra" id="precio_compra"
+                    <input type="text" class="k-textbox precio" placeholder="Ingrese precio" required name="precio_compra" id="precio_compra"
                            value="<?php if(isset ($this->datos[0]['precio_compra']))echo $this->datos[0]['precio_compra']?>"/>
+                    <span class="k-invalid-msg" data-for="precio_compra"></span>
                 </td>
             </tr>
             <tr>
-            	<td><label>Tipo de Producto</label></td>
+            	<td><label for="tipo_producto">Tipo de Producto</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." required name="tipo_producto" id="tipo_producto">
                     <option></option>
@@ -46,8 +48,9 @@
                         <?php } ?>
                     <?php } ?>
                     </select>
+                    <span class="k-invalid-msg" data-for="tipo_producto"></span>
             	</td>
-            	<td><label>Unidad de Medida</label></td>
+            	<td><label for="unidad_medida">Unidad de Medida</label></td>
                 <td>
                     <select placeholder="Seleccione..." required name="unidad_medida" id="unidad_medida">
                     <option></option>
@@ -59,15 +62,16 @@
                         <?php } ?>
                     <?php } ?>
                     </select>
+                    <span class="k-invalid-msg" data-for="unidad_medida"></span>
             	</td>
-                   <td>
+                   <td valign="center">
                     <a id="um" class="k-button btn_icn plus"><span class="k-icon k-i-plus"></span></a>
                    </td>
             </tr>
             <tr>
                 <td><label>Ubicacion</label></td>
                 <td>
-                    <select class="combo"  placeholder="Seleccione..." required name="ubicacion" id="ubicacion">
+                    <select class="combo"  placeholder="Seleccione..." name="ubicacion" id="ubicacion">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_ubicaciones);$i++){ ?>
                         <?php if( $this->datos[0]['idubicacion'] == $this->datos_ubicaciones[$i]['idubicacion'] ){ ?>
@@ -80,7 +84,7 @@
             	</td>
             	<td><label>Servicio</label></td>
                 <td>
-                    <select class="combo"  placeholder="Seleccione..." required name="servicio">
+                    <select class="combo"  placeholder="Seleccione..." name="servicio">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_servicios);$i++){ ?>
                         <?php if( $this->datos[0]['idservicio'] == $this->datos_servicios[$i]['idservicio'] ){ ?>
@@ -95,7 +99,7 @@
             <tr>
                 <td><label>Promocion</label></td>
                 <td>
-                    <select class="combo"  placeholder="Seleccione..." required name="promocion">
+                    <select class="combo"  placeholder="Seleccione..." name="promocion">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_promociones);$i++){ ?>
                         <?php if( $this->datos[0]['idpromocion'] == $this->datos_promociones[$i]['idpromocion'] ){ ?>
@@ -120,7 +124,7 @@
             <tr>
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                 </td>
             </tr>
             <tr>
@@ -134,7 +138,7 @@
         </table>
     </form>
     <div id="ventana_unidad_medida" align="center">
-        <form method="post" action="#">
+        <form method="post" action="" id="frmum">
             <table align="center">
                     <caption><h3>Registrar Unidad de Medida</h3></caption>
                 <tr>
@@ -142,16 +146,16 @@
                     <td><input type="text" readonly="readonly" class="k-textbox" /></td>
                 </tr>
                 <tr>
-                    <td><label>Descripcion:</label></td>
-                    <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required id="des_um" onkeypress="return soloLetras(event)"/></td>
+                    <td><label for="des_um">Descripcion:</label></td>
+                    <td><input type="text" class="k-textbox" name="des_um" placeholder="Ingrese unidad de medida" required id="des_um" onkeypress="return soloLetras(event)"/></td>
                 </tr>
                 <tr>
-                    <td><label>Abreviatura:</label></td>
-                    <td><input type="text" class="k-textbox" placeholder="Ingrese abreviatura" required id="abreviatura_um"/></td>
+                    <td><label for="abreviatura_um">Abreviatura:</label></td>
+                    <td><input type="text" class="k-textbox" name="abreviatura_um" placeholder="Ingrese abreviatura" required id="abreviatura_um"/></td>
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
-                        <p><button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
+                        <p><button type="submit" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
                         <button type="button" class="k-button close cancel">Cancelar</button></p>
                     </td>
                 </tr>

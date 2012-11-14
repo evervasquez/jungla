@@ -31,6 +31,7 @@ class configurarbd_controlador extends controller{
                     </script>';
         }
         $this->_vista->action = BASE_URL . 'configurarbd';
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

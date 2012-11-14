@@ -5,8 +5,12 @@ class paquetes {
     public $idpaquete;
     public $descuento;
     public $costo;
+    public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idpaquete)){
+            $this->idpaquete=0;
+        }
         $datos = array($this->idpaquete);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_paquetes", $datos);
         if ($r[1] == '') {
@@ -15,7 +19,7 @@ class paquetes {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function elimina() {
@@ -27,15 +31,19 @@ class paquetes {
     }
 
     public function inserta() {
-        $datos = array($this->idpaquete, $this->descuento, $this->costo);
+        $datos = array(0, $this->descuento, $this->costo, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_paquetes", $datos);
-        $error = $r[1];
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
         $r = null;
-        return $error;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function actualiza() {
-        $datos = array($this->idpaquete, $this->descuento, $this->costo);
+        $datos = array($this->idpaquete, $this->descuento, $this->costo, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_paquetes", $datos);
         $error = $r[1];
         $r = null;

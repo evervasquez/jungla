@@ -13,23 +13,27 @@
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>" /></td>
         </tr>
         <tr>
-            <td><label>Descuento:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese descuento" required name="descuento" onkeypress="return dosDecimales(event, this)"
-                       id="descuento" value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>" /></td>
+            <td><label for="descuento">Descuento:</label></td>
+            <td><input type="number" class="k-textbox k-input" placeholder="Ingrese descuento" required data-max-msg="Dato requerido" name="descuento" onkeypress="return dosDecimales(event, this)"
+                       id="descuento" value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>" />
+                <span class="k-invalid-msg" data-for="descuento"></span>
+            </td>
         </tr>
         <tr>
-            <td><label>Fecha de Inicio:</label></td>
+            <td><label for="fecha_inicio">Fecha de Inicio:</label></td>
             <td><input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_inicio"
                        id="fechaini" value="<?php if(isset ($this->datos[0]['fecha_inicio'])){
                                $fecha=$this->datos[0]['fecha_inicio'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
+                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+            <span class="k-invalid-msg" data-for="fecha_inicio"></span></td>
         </tr>
         <tr>
-            <td><label>Fecha de Finalizacion:</label></td>
+            <td><label for="fecha_final">Fecha de Finalizacion:</label></td>
             <td><input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_final"
                        id="fechafin" value="<?php if(isset ($this->datos[0]['fecha_final'])){
                                $fecha=$this->datos[0]['fecha_final'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/></td>
+                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+            <span class="k-invalid-msg" data-for="fecha_final"></span></td>
         </tr>
         <tr>
             <td colspan="2" align="center">

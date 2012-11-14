@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $( "#nro_habitacion" ).focus();
     $("#asignar_costo").click(function(){
        idth=$("#tipo_habitacion").val();
        th=$("#tipo_habitacion option:selected").html(); 

@@ -1,0 +1,40 @@
+/* 
+    Document   : estilos_form
+    Created on : 08/11/2012, 09:26:25 AM
+    Author     : Ja1R
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#vtna_busca_proveedor{
+	padding:20px;
+	display:none;
+	color: black;
+	position: fixed;
+        width: 35%;
+	left: 30%;
+	top: 20%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border: 10px solid grey;
+}
+#vtna_busca_productos{
+	padding:20px;
+	display:none;
+	color: black;
+	position: fixed;
+        width: 35%;
+	left: 30%;
+	top: 20%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border: 10px solid grey;
+}
+
