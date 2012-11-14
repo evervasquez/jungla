@@ -82,9 +82,9 @@ abstract class controller {
         }
     }
 
-    protected function get_Libreria($ruta,$libreria) {
+    protected function get_Libreria($libreria) {
         //ruta 
-        $rutaLibreria = $ruta.$libreria . '.php';
+        $rutaLibreria = ROOT .'lib'.DS.$libreria.'.php';
         //verificamos si existe y es legible
         if (is_readable($rutaLibreria)) {
             require_once $rutaLibreria;

@@ -14,7 +14,7 @@ class reportes_graficos_controlador extends controller {
 
     //put your code here
     public function __construct() {
-        $this->get_Libreria('Highchart');
+        $this->get_Libreria('highchart'.DS.'Highchart');
         parent::__construct();
         $this->_vista->setJs(array('funciones'));
     }
