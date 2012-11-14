@@ -2,12 +2,10 @@
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
+        <input type="hidden" name="codigo" id="codigo"
+                   value="<?php if(isset ($this->datos[0]['idcompra']))echo $this->datos[0]['idcompra']?>"/>
         <table width="50%" align="center" class="tabCompra">
             <tr>
-                <td><label>Codigo:</label></td>
-                <td colspan="2"><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                           value="<?php if(isset ($this->datos[0]['idcompra']))echo $this->datos[0]['idcompra']?>"/>
-                </td>
                 <td><label>Nro. Documento:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese Nro.de Comprobante" required name="nro_comprobante"
@@ -36,6 +34,21 @@
                         <?php } ?>
                     </select>
                 </td>
+            </tr>
+            <tr>
+                <td><label>Fecha Vencimiento:</label></td>
+                <td colspan="2">
+                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_vencimiento"
+                       id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
+                               $fecha=$this->datos[0]['fecha_vencimiento'];
+                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                </td>
+                <td><label>Interes:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese interes" required name="interes"
+                       id="nro_comprobante" value="<?php if(isset ($this->datos[0]['interes']))echo $this->datos[0]['interes']?>"/>
+                </td>
+                    
             </tr>
             <tr>
                 <td><label>Fecha de Compra:</label></td>
