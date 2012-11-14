@@ -10,6 +10,15 @@ class modulos {
     public $modulo_padre;
     
     public function selecciona() {
+        if(is_null($this->idmodulo)){
+            $this->idmodulo=0;
+        }
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
+        if(is_null($this->modulo_padre)){
+            $this->modulo_padre='';
+        }
         $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos", $datos);
         if ($r[1] == '') {
@@ -23,7 +32,7 @@ class modulos {
     }
     
     public function inserta() {
-        $datos = array($this->idmodulo, $this->descripcion, $this->url, $this->estado, 
+        $datos = array(0, $this->descripcion, $this->url, $this->estado, 
             $this->idmodulo_padre);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_modulos", $datos);
         $error = $r[1];

@@ -24,32 +24,33 @@ $(document).ready(function(){
            if(c == ''){
                alert("Ingrese costo");
                $(".precio").focus();
-           }
-           else{
-             $("#tbl_habitacion_especifica tr").each(function(){
-                id_th = $("#tbl_habitacion_especifica tr td:eq(0) :input").val();
-                if(idth==id_th){
-                    error= true;
-                    msg = "Este tipo de habitacion ya fue asignado";
-                }
-            });
+           }else{
+               x=0;
+                $("#tbl_habitacion_especifica tr").each(function(){
+                    id_th = $("#tbl_habitacion_especifica tr:eq("+x+") td:eq(0) :input").val();
+                    if(idth==id_th){
+                        error= true;
+                        msg = "Este tipo de habitacion ya fue asignado";
+                    }
+                    x++;
+                });
 
-            if(error){
-                alert(msg);
-            }else{
-                html="<tr>";
-                html=html+"<td width='60px'><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
-                html=html+"<td><input type='hidden' name='costo[]' value='"+c+"'/>S/. "+c+"</td>";
-                html=html+"<td><input type='hidden' name='observacion[]' value='"+o+"'/>"+o+"</td>";
-                html=html+'<td><a class="delete imgdelete" title="Eliminar item" href="javascript:"></a></td>';
-                html=html+"</tr>";
+                if(error){
+                    alert(msg);
+                }else{
+                    html="<tr>";
+                    html=html+"<td width='60px'><input type='hidden' name='tipo_habitacion[]' value='"+idth+"'/>"+th+"</td>";
+                    html=html+"<td><input type='hidden' name='costo[]' value='"+c+"'/>S/. "+c+"</td>";
+                    html=html+"<td><input type='hidden' name='observacion[]' value='"+o+"'/>"+o+"</td>";
+                    html=html+'<td><a class="delete imgdelete" title="Eliminar item" href="javascript:"></a></td>';
+                    html=html+"</tr>";
 
-                $("#tbl_habitacion_especifica").append(html);
-                $("#tipo_habitacion option:eq(0)").attr('selected',true);
-                $("#tipo_habitacion").kendoComboBox();
-                $(".precio").val('');
-                $("#observacion").val('');
-            }  
+                    $("#tbl_habitacion_especifica").append(html);
+                    $("#tipo_habitacion option:eq(0)").attr('selected',true);
+                    $("#tipo_habitacion").kendoComboBox();
+                    $(".precio").val('');
+                    $("#observacion").val('');
+                }  
             }
        }
        
@@ -69,32 +70,42 @@ $(document).ready(function(){
        o=$("#observacion").val();
        error= false;
        msg='';
-       
-       $("#tbl_habitacion_especifica tr").each(function(){
-           id_th = $("#tbl_habitacion_especifica tr td:eq(0) :input").val();
-           if(idth==id_th){
-               error= true;
-               msg = "Este tipo de habitacion ya fue asignado";
-           }
-       });
-       
-       if(error){
-           alert(msg);
-       }else{
-           $.post('/sisjungla/habitaciones/insertar_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth+'&costo='+c+'&observaciones='+o);
-           
-           html="<tr>";
-           html=html+"<td><input type='hidden' class='tipo_habitacion' value='"+idth+"'/>"+th+"</td>";
-           html=html+"<td><input type='hidden' />"+c+"</td>";
-           html=html+"<td><input type='hidden' />"+o+"</td>";
-           html=html+'<td><a href="#" class="eliminar imgdelete"></a></td>';
-           html=html+"</tr>";
-           $("#tbl_habitacion_especifica").append(html);
-           $("#tipo_habitacion option:eq(0)").attr('selected',true);
-           $("#tipo_habitacion").kendoComboBox();
+       if(idth == 0){
+           alert("Seleccione o cambie Tipo de Habitacion");
            $("#tipo_habitacion").focus();
-           $("#costo").val('');
-           $("#observacion").val('');
+       }else{
+           if(c == ''){
+               alert("Ingrese costo");
+               $(".precio").focus();
+           }else{
+               x=0;
+               $("#tbl_habitacion_especifica tr").each(function(){
+                   id_th = $("#tbl_habitacion_especifica tr:eq("+x+") td:eq(0) :input").val();
+                   if(idth==id_th){
+                       error= true;
+                       msg = "Este tipo de habitacion ya fue asignado";
+                   }
+                   x++;
+               });
+
+               if(error){
+                   alert(msg);
+               }else{
+                   $.post('/sisjungla/habitaciones/insertar_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth+'&costo='+c+'&observaciones='+o);
+                   html="<tr>";
+                   html=html+"<td><input type='hidden' class='tipo_habitacion' value='"+idth+"'/>"+th+"</td>";
+                   html=html+"<td><input type='hidden' />"+c+"</td>";
+                   html=html+"<td><input type='hidden' />"+o+"</td>";
+                   html=html+'<td><a href="#" class="eliminar imgdelete"></a></td>';
+                   html=html+"</tr>";
+                   $("#tbl_habitacion_especifica").append(html);
+                   $("#tipo_habitacion option:eq(0)").attr('selected',true);
+                   $("#tipo_habitacion").kendoComboBox();
+                   $("#tipo_habitacion").focus();
+                   $("#costo").val('');
+                   $("#observacion").val('');
+               }
+           }
        }
    });
    

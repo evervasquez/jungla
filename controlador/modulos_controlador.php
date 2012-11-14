@@ -10,17 +10,12 @@ class modulos_controlador extends controller{
     }
 
     public function index() {
-        $this->_modulos->idmodulo = 0;
-        $this->_modulos->descripcion = '';
-        $this->_modulos->modulo_padre = '';
         $this->_vista->datos = $this->_modulos->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_modulos->idmodulo=0;
-        
         if($_POST['filtro']==0){
             $this->_modulos->descripcion=$_POST['cadena'];
             $this->_modulos->modulo_padre='';
@@ -38,7 +33,6 @@ class modulos_controlador extends controller{
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-            $this->_modulos->idmodulo = 0;
             $this->_modulos->descripcion = $_POST['descripcion'];
             $this->_modulos->url = $_POST['url'];
             if(isset ($_POST['modulo_padre'])){
