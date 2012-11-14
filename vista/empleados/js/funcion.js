@@ -39,7 +39,7 @@
                     var eliminar='/sisjungla/empleados/eliminar/'+datos[i].idempleado;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" class="imgview"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].idempleado+'\')"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -77,10 +77,10 @@
             $("#vtna_ver_empleado").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
        });
-       $(".ver").click(function(){
-           i = $(this).parent().parent().index();
-           idp=$("#tbl_empleado tr:eq("+i+") td:eq(0)").html();
-           $.post('/sisjungla/empleados/ver','idempleado='+idp,function(datos){
+       
+    });
+    function ver(id){
+           $.post('/sisjungla/empleados/ver','idempleado='+id,function(datos){
                html= '<h3>Datos del Empleado: '+datos[0]['nombres']+' '+datos[0]['apellidos']+'</h3>';
                html+='<table>';
                html+= '<tr>';
@@ -147,5 +147,4 @@
             $("#vtna_ver_empleado").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
            },'json');
-       });
-    });
+       }

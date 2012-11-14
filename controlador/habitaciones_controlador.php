@@ -14,11 +14,18 @@ class habitaciones_controlador extends controller {
     }
 
     public function index() {
+        $this->_habitaciones->idhabitacion = 0;
         $this->_vista->datos = $this->_habitaciones->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
-    
+    public function buscador(){
+        $this->_habitaciones->idhabitacion = 0;
+        if($_POST['filtro']==0){
+            $this->_habitaciones->nro_habitacion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_habitaciones->selecciona());
+    }
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';

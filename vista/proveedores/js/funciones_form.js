@@ -1,20 +1,5 @@
 $(document).ready(function(){
     $( "#razon_social" ).focus(); 
-    $( "#saveform" ).click(function(){
-        bval = true;        
-        bval = bval && $( "#razon_social" ).required();
-        bval = bval && $( "#ruc" ).required();      
-        bval = bval && $( "#paises" ).required();
-        bval = bval && $( "#regiones" ).required();
-        bval = bval && $( "#provincias" ).required();
-        bval = bval && $( "#ciudades_proveedores" ).required();
-        bval = bval && $( "#direccion" ).required();
-        bval = bval && $( "#representante" ).required();
-        if ( bval ) {
-            $("#frm").submit();
-        }
-        return false;
-    });   
     
     $("#regiones").change(function(){
         if(!$("#regiones").val()){

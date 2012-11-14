@@ -78,14 +78,22 @@ body{
         margin: 10px 10px 10px 30px;
         text-align: right;
 }
+.tabCompra label{
+        width: 90px;
+        display: block;
+        margin: 10px 10px 10px 30px;
+        text-align: right;
+}
 #btn_buscar{
-        height: 29px;
+        height: 25px;
+        width: 28px;
 }
 .btn_icn{
-        height: 23px;
+        height: 25px;
+        width: 28px;
 }
 .k-icon{
-        margin: 3px 0px 2px 0px;
+        margin: 1px 0px 2px -2px;
 }
 #buscar{
         width: 50%;

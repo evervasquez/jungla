@@ -32,7 +32,7 @@
                 <td class="tabtr" align="center">
                 <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgedit"></a>
                 <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgdelete"></a>
-                <a href="javascript:void(0)" class="imgview ver"></a></td>
+                <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idempleado'] ?>')"></a></td>
             </tr>
         <?php } ?>
 </table>
