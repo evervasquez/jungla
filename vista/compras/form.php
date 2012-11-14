@@ -35,7 +35,7 @@
                     </select>
                 </td>
             </tr>
-            <tr>
+            <tr id="celda_credito">
                 <td><label>Fecha Vencimiento:</label></td>
                 <td colspan="2">
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_vencimiento"
@@ -43,12 +43,13 @@
                                $fecha=$this->datos[0]['fecha_vencimiento'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
                 </td>
-                <td><label>Interes:</label></td>
+                <td><label>Intervalo de dias:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese interes" required name="interes"
-                       id="nro_comprobante" value="<?php if(isset ($this->datos[0]['interes']))echo $this->datos[0]['interes']?>"/>
+                    <select class="combo" placeholder="Seleccione..." name="intervalo_dias">
+                        <option value="7">7</option>
+                        <option value="14">14</option>
+                    </select>
                 </td>
-                    
             </tr>
             <tr>
                 <td><label>Fecha de Compra:</label></td>

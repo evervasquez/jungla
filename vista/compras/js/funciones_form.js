@@ -54,6 +54,16 @@ $(document).ready(function(){
             
         },'json');        
     }
+    $("#celda_credito").hide();
+    //tipo_transaccion
+    $("#tipo_transaccion").change(function(){
+        if($(this).val()==2){
+            $("#celda_credito").show();
+        }else{
+            $("#celda_credito").hide();
+        }
+    });
+    
     //ventana de busqueda de productos
     $("#btn_vtna_productos").click(function(){
             buscar_producto();
