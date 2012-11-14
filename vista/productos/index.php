@@ -33,7 +33,7 @@
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>productos/editar/<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>productos/eliminar/<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgdelete"></a>
-                    <a href="javascript:void(0)" class="imgview ver"></a>
+                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idproducto'] ?>')" class="imgview ver"></a>
                 </td>
             </tr>
         <?php } ?>

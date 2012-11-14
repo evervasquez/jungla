@@ -19,7 +19,7 @@
                        id="url" value="<?php if(isset ($this->datos[0]['url']))echo $this->datos[0]['url']?>"/></td>
         </tr>
         <tr>
-            <td><label>Modulo Padre:</label></td>
+            <td><label for="modulo_padre">Modulo Padre:</label></td>
             <td>
                 <select class="combo" placeholder="Seleccione..." required name="modulo_padre">
                     <option></option>
@@ -31,6 +31,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
+                <span class="k-invalid-msg" data-for="modulo_padre"></span>
             </td>
         </tr>
         <tr>

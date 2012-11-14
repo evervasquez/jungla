@@ -7,11 +7,8 @@ abstract class controller {
 
     //aqui ya tenemos el objeto vista disponible en el controlador
     public function __construct() {
-
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
-        $this->_modelo->descripcion = '';
-        $this->_modelo->modulo_padre = '';
         $menu = $this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
     }
@@ -95,11 +92,12 @@ abstract class controller {
             throw new Exception('Error de libreria');
         }
     }
-    public function get_matriz($datos,$cabeceras){
+
+    public function get_matriz($datos, $cabeceras) {
         $nuevo;
-        for($i=0;$i<count($datos);$i++){
-            for($j=0;$j<count($cabeceras);$j++){
-                $nuevo[$i][$cabeceras[$j]]=$datos[$i][$cabeceras[$j]];
+        for ($i = 0; $i < count($datos); $i++) {
+            for ($j = 0; $j < count($cabeceras); $j++) {
+                $nuevo[$i][$cabeceras[$j]] = $datos[$i][$cabeceras[$j]];
             }
         }
         return $nuevo;

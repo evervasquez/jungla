@@ -1,5 +1,5 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
-<p><h3>Lista de Servicios</h3></p>
+<h3>Lista de Servicios</h3>
     <p>
         <select class="combo" id="filtro">
             <option value="0">Descripcion</option>

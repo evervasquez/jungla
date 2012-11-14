@@ -24,13 +24,14 @@ class configurarbd_controlador extends controller{
                 fwrite($fp, "\n" . $key . " = " . $valor);
             }
             fclose($fp);
-            conexion::conexionSingleton();
+//            conexion::conexionSingleton();
             echo '<script>
                         alert("conexion correcta");
                         window.location="'.BASE_URL.'";
                     </script>';
         }
         $this->_vista->action = BASE_URL . 'configurarbd';
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     

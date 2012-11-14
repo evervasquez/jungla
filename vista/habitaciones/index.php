@@ -1,5 +1,14 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Habitaciones</h3>
+    <p>
+        <select class="combo" id="filtro">
+            <option value="0">Nro.de Habitacion</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="buscar">
+        <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
+        <a href="<?php echo BASE_URL?>habitaciones/nuevo" class="k-button">Nuevo</a>
+    </p>
+    <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
             <th><label>Codigo</label></th>
@@ -25,19 +34,15 @@
                 <td>En Mantenimiento</td>
                 <?php } ?>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['idhabitacion'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['idhabitacion'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a>
-                <a href="#">[ver]</a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgdelete"></a>
+                <a href="javacript:void(0)" class="imgview ver"></a></td>
             </tr>
         <?php } ?>
-
+    </table>
+    </div>
     <?php } else { ?>
-        <tr>
-            <td><p>No hay habitaciones</p></td>
-        </tr>
+        <p>No hay habitaciones</p>
+        <a href="<?php echo BASE_URL?>habitaciones/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
-</table>
-<p><a href="<?php echo BASE_URL?>habitaciones/nuevo" class="k-button">Nuevo</a></p>
         

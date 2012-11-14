@@ -12,14 +12,12 @@ class ubicaciones_controlador extends controller {
     }
 
     public function index() {
-        $this->_ubicaciones->idubicacion = 0;
         $this->_vista->datos = $this->_ubicaciones->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_ubicaciones->idubicacion = 0;
         if($_POST['filtro']==0){
             $this->_ubicaciones->descripcion=$_POST['cadena'];
         }else{
@@ -30,13 +28,11 @@ class ubicaciones_controlador extends controller {
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-            $this->_ubicaciones->idubicacion = 0;
             $this->_ubicaciones->descripcion = $_POST['descripcion'];
             $this->_ubicaciones->idalmacen = $this->filtrarInt($_POST['almacen']);
             $this->_ubicaciones->inserta();
             $this->redireccionar('ubicaciones');
         }
-        $this->_almacenes->idalmacen = 0;
         $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
         $this->_vista->titulo = 'Registrar Ubicacion';
         $this->_vista->action = BASE_URL . 'ubicaciones/nuevo';
@@ -59,7 +55,6 @@ class ubicaciones_controlador extends controller {
             $this->_ubicaciones->actualiza();
             $this->redireccionar('ubicaciones');
         }
-        $this->_almacenes->idalmacen = 0;
         $this->_vista->datosAlmacen = $this->_almacenes->selecciona();
         $this->_vista->titulo = 'Actualizar Ubicacion';
         $this->_vista->setJs(array('funciones_form'));
