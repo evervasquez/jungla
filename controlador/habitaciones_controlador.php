@@ -76,11 +76,10 @@ class habitaciones_controlador extends controller {
             
         }
         $this->_habitaciones->idhabitacion=$this->filtrarInt($id);
-        $datos=$this->_habitaciones->selecciona();
-        $this->_habitacion_especifica->idhabitacion=$datos[0]['idhabitacion'];
+        $this->_vista->datos=$this->_habitaciones->selecciona();
+        $this->_habitacion_especifica->idhabitacion=$this->filtrarInt($id);
         $this->_vista->datos_habitacion_especifica=$this->_habitacion_especifica->selecciona();
         $this->_vista->datos_tipo_habitacion=$this->_tipo_habitacion->selecciona();
-        $this->_vista->datos=$datos;
         $this->_vista->titulo = 'Actualizar Habitacion';
         $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
