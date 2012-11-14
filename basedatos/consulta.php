@@ -39,6 +39,7 @@ class consulta extends conexion {
         }
 //        die($sql);
         try {
+
             if($driver=='mysql'){
                 $stmt = $bd->prepare($sql,array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
             }else{
@@ -57,9 +58,6 @@ class consulta extends conexion {
                     if (is_double($datos[$i])) {
                         $stmt->bindValue($j, $datos[$i], PDO::PARAM_INT);
                     }
-                    if (is_null($datos[$i])) {
-                        $stmt->bindValue($j, $datos[$i], PDO::PARAM_NULL);
-                    }
                 }
             }
             $stmt->execute();
@@ -73,6 +71,10 @@ class consulta extends conexion {
             } else {
                 return array($stmt, $error[2]);
             }
+
+//            return array($stmt,$error[2]);
+//            return $stmt;
+            
         } catch (PDOException $e) {
             return false;
             echo '<script>
