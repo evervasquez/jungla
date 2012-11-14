@@ -65,11 +65,12 @@ class productos_controlador extends controller {
             $this->_productos->estado = $_POST['estado'];
             $this->_productos->precio_compra = $_POST['precio_compra'];
             $this->_productos->inserta();
-            $this->redireccionar('productos');
+            die("<script> window.location='".BASE_URL."productos'; </script>");
         }
         $this->_vista->datos_servicios= $this->_servicios->selecciona();
         $this->_vista->datos_tipo= $this->_tipo_producto->selecciona();
         $this->_vista->datos_um= $this->_unidad_medida->selecciona();
+        $this->_vista->datos_ubicaciones= $this->_ubicaciones->selecciona();
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Registrar Producto';
         $this->_vista->action = BASE_URL . 'productos/nuevo';
@@ -91,7 +92,7 @@ class productos_controlador extends controller {
     
     public function editar($id) {
         if (!$this->filtrarInt($id)) {
-            $this->redireccionar('productos');
+            die("<script> window.location='".BASE_URL."productos'; </script>");
         }        
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';
@@ -111,7 +112,7 @@ class productos_controlador extends controller {
             $this->_productos->estado = $_POST['estado'];
             $this->_productos->precio_compra = $_POST['precio_compra'];
             $this->_productos->actualiza();
-            $this->redireccionar('productos');
+            die("<script> window.location='".BASE_URL."productos'; </script>");
         }
         
         $this->_productos->idproducto = $this->filtrarInt($id);
@@ -129,11 +130,11 @@ class productos_controlador extends controller {
     
     public function eliminar($id) {
         if (!$this->filtrarInt($id)) {
-            $this->redireccionar('productos');
+            die("<script> window.location='".BASE_URL."productos'; </script>");
         }
         $this->_productos->idproducto = $this->filtrarInt($id);
         $this->_productos->elimina();
-        $this->redireccionar('productos');
+        die("<script> window.location='".BASE_URL."productos'; </script>");
     }
     
 }

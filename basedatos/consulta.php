@@ -3,6 +3,7 @@
 class consulta extends conexion {
 
     public static function procedimientoAlmacenado($pa, $datos) {
+        $bd = new conexion();
         $config = parse_ini_file('config.ini', TRUE);
         $driver = $config['database']['driver']; 
         switch ($driver) {
@@ -38,11 +39,11 @@ class consulta extends conexion {
         }
 //        die($sql);
         try {
-//            if($driver=='mysql'){
-//                $stmt = self::prepare($sql,array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
-//            }else{
-            $stmt = self::prepare($sql);
-//            }
+            if($driver=='mysql'){
+                $stmt = $bd->prepare($sql,array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
+            }else{
+                $stmt=$bd->prepare($sql);
+            }
             $j = 0;
             if ($datos != null) {
                 for ($i = 0; $i < count($datos); $i++) {
@@ -63,11 +64,6 @@ class consulta extends conexion {
             }
             $stmt->execute();
             $error = $stmt->errorInfo();
-//            if($error[2]==''){
-//                die('no hay error');
-//            }else{
-//                die($error[2]);
-//            }
             if ($driver == 'mssql') {
                 if ($error[2] == '(null) [0] (severity 0) [(null)]') {
                     return array($stmt, '');
@@ -77,8 +73,6 @@ class consulta extends conexion {
             } else {
                 return array($stmt, $error[2]);
             }
-//            return array($stmt,$error[2]);
-//            return $stmt;
         } catch (PDOException $e) {
             return false;
             echo '<script>

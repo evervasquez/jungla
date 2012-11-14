@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $("#descripcion").focus(); 
-    $("#unidad_medida").kendoComboBox();
     var validator = $("#frmum").kendoValidator();
     function get_um(unidad){
         $.post('/sisjungla/productos/get_um','id=0',function(datos){
@@ -23,8 +22,7 @@ $(document).ready(function(){
     }); 
     $("#btn_um").click(function(){
         if (validator.validate()) {
-               $.post('/sisjungla/productos/inserta_um',
-            'descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
+            $.post('/sisjungla/productos/inserta_um','descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
             $("#ventana_unidad_medida").fadeOut(300);
             $("#fondooscuro").fadeOut(300); 
             get_um($("#des_um").val());

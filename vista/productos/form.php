@@ -34,7 +34,7 @@
             	</td>
             	<td><label for="unidad_medida">Unidad de Medida</label></td>
                 <td>
-                    <select placeholder="Seleccione..." required name="unidad_medida" id="unidad_medida">
+                    <select placeholder="Seleccione..." class="combo" required name="unidad_medida" id="unidad_medida">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_um);$i++){ ?>
                         <?php if( $this->datos[0]['idunidad_medida'] == $this->datos_um[$i]['idunidad_medida'] ){ ?>
@@ -137,7 +137,7 @@
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
-                        <p><button type="submit" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
+                        <p><button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
                         <button type="button" class="k-button close cancel">Cancelar</button></p>
                     </td>
                 </tr>
