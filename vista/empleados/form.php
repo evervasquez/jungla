@@ -86,7 +86,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
-                <span class="k-invalid-msg" data-for="profesion">
+                <span class="k-invalid-msg" data-for="profesion"></span>
             </td>
         </tr>
         <tr>

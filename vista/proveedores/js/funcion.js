@@ -42,7 +42,7 @@
                     var eliminar='/sisjungla/proveedores/eliminar/'+datos[i].idproveedor;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" class="imgview"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].idproveedor+'\')"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -81,10 +81,9 @@
             $("#vtna_ver_proveedor").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
        });
-       $(".ver").click(function(){
-           i = $(this).parent().parent().index();
-           idp=$("#tbl_proveedores tr:eq("+i+") td:eq(0)").html();
-           $.post('/sisjungla/proveedores/ver','idproveedor='+idp,function(datos){
+    });
+       function ver(id){
+           $.post('/sisjungla/proveedores/ver','idproveedor='+id,function(datos){
                html= '<h3>Datos del Proveedor "'+datos[0]['razon_social']+'"</h3>';
                html+='<table>';
                html+= '<tr>';
@@ -121,6 +120,4 @@
             $("#vtna_ver_proveedor").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
            },'json');
-       });
-       
-    });
+       }

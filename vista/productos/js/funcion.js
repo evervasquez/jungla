@@ -39,7 +39,7 @@
                     var eliminar='/sisjungla/productos/eliminar/'+datos[i].idproducto;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" class="imgview"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].idproducto+'\')"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -76,10 +76,9 @@
             $("#vtna_ver_producto").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
        });
-       $(".ver").click(function(){
-           i = $(this).parent().parent().index();
-           idp=$("#tbl_producto tr:eq("+i+") td:eq(0)").html();
-           $.post('/sisjungla/productos/ver','idproducto='+idp,function(datos){
+    });
+       function ver(id){
+           $.post('/sisjungla/productos/ver','idproducto='+id,function(datos){
                html= '<h3>Datos del Producto "'+datos[0]['descripcion']+'"</h3>';
                html+='<table>';
                html+= '<tr>';
@@ -132,5 +131,4 @@
             $("#vtna_ver_producto").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
            },'json');
-       });
-    });
+       }

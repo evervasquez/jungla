@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
@@ -7,7 +7,7 @@
             <tr>
                 <td><label>Nro.de Habitacion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese Nro.de habitacion" required name="nro_habitacion" 
+                    <input type="text" class="k-textbox" placeholder="Ingrese Nro.de habitacion" required name="nro_habitacion" onKeyPress="return soloNumeros(event);"
                            id="nro_habitacion" value="<?php if(isset ($this->datos[0]['nro_habitacion']))echo $this->datos[0]['nro_habitacion']?>"/>
                 </td>
                 <td><label>Descripcion:</label></td>
@@ -46,8 +46,8 @@
             <tr>
                 <td><label>Tipo Habitacion:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
-                        <option></option>
+                    <select placeholder="Seleccione..." class="list" id="tipo_habitacion">
+                        <option value="0">Seleccione...</option>
                         <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
                         <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
                         <?php }?>
@@ -55,7 +55,7 @@
                 </td>
                 <td><label>Costo:</label></td>
                 <td>
-                    <input type="text" class="k-textbox precio" placeholder="Ingrese costo" id="costo" />
+                    <input type="text" class="precio" placeholder="Ingrese costo" id="costo" />
                 </td>
             </tr> 
             <tr>
@@ -65,8 +65,10 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4" align="center"><input type="button" class="k-button" value="Asignar" <?php if(isset ($this->datos_habitacion_especifica)){?>id="agrega_he"
-                                                                    <?php }else{ ?> id="asignar_costo" <?php } ?> /></td>
+                <td colspan="4" align="center">
+                    <input type="button" class="k-button" value="Asignar" <?php if(isset ($this->datos_habitacion_especifica)){?>id="agrega_he"
+                                                                    <?php }else{ ?> id="asignar_costo" <?php } ?> />
+                </td>
             </tr>
             <tr>
                 <td colspan="7" align="center">
@@ -88,7 +90,7 @@
                                 <?php echo $this->datos_habitacion_especifica[$i]['observaciones'] ?>
                             </td>
                             <td>
-                                <a href="#" class="eliminar">[Eliminar]</a>
+                                <a href="#" class="eliminar imgdelete"></a>
                             </td>
                         </tr>
                             <?php } ?>

@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td><label for="descuento">Descuento:</label></td>
-            <td><input type="number" class="k-textbox k-input" placeholder="Ingrese descuento" required data-max-msg="Dato requerido" name="descuento" onkeypress="return dosDecimales(event, this)"
+            <td><input type="number" class="descuento" placeholder="Ingrese descuento" required data-max-msg="Dato requerido" name="descuento" onkeypress="return dosDecimales(event, this)"
                        id="descuento" value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>" />
                 <span class="k-invalid-msg" data-for="descuento"></span>
             </td>
