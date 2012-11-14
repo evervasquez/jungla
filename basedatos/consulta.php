@@ -4,9 +4,8 @@ class consulta extends conexion {
 
     public static function procedimientoAlmacenado($pa, $datos) {
         $config = parse_ini_file('config.ini', TRUE);
-        $driver = $config['database']['driver']; 
-        $sql;
-        $result;
+        $driver = $config['database']['driver'];
+
         switch ($driver) {
             case 'mssql': $sql = "execute ";
                 break;
@@ -43,7 +42,12 @@ class consulta extends conexion {
 //            if($driver=='mysql'){
 //                $stmt = self::prepare($sql,array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
 //            }else{
-            $stmt = self::prepare($sql);
+
+            if ($driver == 'mysql') {
+                $stmt = self::prepare($sql, array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
+            } else {
+                $stmt = self::prepare($sql);
+            }
 //            }
             $j = 0;
             if ($datos != null) {
@@ -57,9 +61,6 @@ class consulta extends conexion {
                     }
                     if (is_double($datos[$i])) {
                         $stmt->bindValue($j, $datos[$i], PDO::PARAM_INT);
-                    }
-                    if (is_null($datos[$i])) {
-                        $stmt->bindValue($j, $datos[$i], PDO::PARAM_NULL);
                     }
                 }
             }
@@ -81,6 +82,7 @@ class consulta extends conexion {
             }
 //            return array($stmt,$error[2]);
 //            return $stmt;
+            
         } catch (PDOException $e) {
             return false;
             echo '<script>

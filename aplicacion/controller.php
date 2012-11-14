@@ -1,13 +1,10 @@
 <?php
 
 abstract class controller {
-
     protected $_vista;
     protected $_modelo;
-
     //aqui ya tenemos el objeto vista disponible en el controlador
     public function __construct() {
-
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
         $this->_modelo->descripcion = '';
@@ -85,9 +82,9 @@ abstract class controller {
         }
     }
 
-    protected function get_Libreria($libreria) {
+    protected function get_Libreria($ruta,$libreria) {
         //ruta 
-        $rutaLibreria = ROOT . 'lib' . DS . 'highchart' . DS . $libreria . '.php';
+        $rutaLibreria = $ruta.$libreria . '.php';
         //verificamos si existe y es legible
         if (is_readable($rutaLibreria)) {
             require_once $rutaLibreria;

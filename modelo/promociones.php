@@ -24,7 +24,9 @@ class promociones {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDOS::FETCH_ASSOC);
+        
+        //Consider using PDOStatement::fetchAll().
         return $stmt->fetchall();
     }
 
