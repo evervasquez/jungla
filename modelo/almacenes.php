@@ -6,6 +6,9 @@ class almacenes {
     public $descripcion;
 
     public function selecciona() {
+        if(is_null($this->idalmacen)){
+            $this->idalmacen=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -30,7 +33,7 @@ class almacenes {
     }
 
     public function inserta() {
-        $datos = array($this->idalmacen, $this->descripcion);
+        $datos = array(0, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_almacenes", $datos);
         $error = $r[1];
         $r = null;

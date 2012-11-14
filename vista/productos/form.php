@@ -1,13 +1,8 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <h3><?php echo $this->titulo ?></h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
+    <input type="hidden" name="codigo" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
     <table width="50%" align="center" class="tabForm">
-            <tr>
-            	<td><label>Codigo:</label></td>
-            <td>
-                <input type="text" class="k-textbox" readonly="readonly" name="codigo"
-                       value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
-            </td>
             </tr>
             <tr>
             	<td><label for="descripcion">Descripcion:</label></td>
@@ -15,30 +10,17 @@
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion" onkeypress="return soloLetras(event)"
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                 </td>
-                <td><label for="stock">Stock</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese stock" required name="stock" id="stock" onkeypress="return soloNumeros(event)"
-                           value="<?php if(isset ($this->datos[0]['stock']))echo $this->datos[0]['stock']?>"/>
-                </td>
-            </tr>
-            <tr>
             	<td><label for="precio_unitario">Precio Unitario</label></td>
                 <td>
                     <input type="text" class="k-textbox precio" placeholder="Ingrese precio" required name="precio_unitario" id="precio_unitario"
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
                     <span class="k-invalid-msg" data-for="precio_unitario"></span>
                 </td>
-                <td><label for="precio_compra">Precio de Compra</label></td>
-                <td>
-                    <input type="text" class="k-textbox precio" placeholder="Ingrese precio" required name="precio_compra" id="precio_compra"
-                           value="<?php if(isset ($this->datos[0]['precio_compra']))echo $this->datos[0]['precio_compra']?>"/>
-                    <span class="k-invalid-msg" data-for="precio_compra"></span>
-                </td>
             </tr>
             <tr>
             	<td><label for="tipo_producto">Tipo de Producto</label></td>
                 <td>
-                    <select class="combo"  placeholder="Seleccione..." required name="tipo_producto" id="tipo_producto">
+                    <select class="combo"  placeholder="Seleccione..." name="tipo_producto" id="tipo_producto">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_tipo);$i++){ ?>
                         <?php if( $this->datos[0]['idtipo_producto'] == $this->datos_tipo[$i]['idtipo_producto'] ){ ?>
@@ -52,7 +34,7 @@
             	</td>
             	<td><label for="unidad_medida">Unidad de Medida</label></td>
                 <td>
-                    <select placeholder="Seleccione..." required name="unidad_medida" id="unidad_medida">
+                    <select placeholder="Seleccione..." class="combo" required name="unidad_medida" id="unidad_medida">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_um);$i++){ ?>
                         <?php if( $this->datos[0]['idunidad_medida'] == $this->datos_um[$i]['idunidad_medida'] ){ ?>
@@ -155,7 +137,7 @@
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
-                        <p><button type="submit" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
+                        <p><button type="button" class="k-button" id="btn_um">Guardar y  Seleccionar</button>
                         <button type="button" class="k-button close cancel">Cancelar</button></p>
                     </td>
                 </tr>
