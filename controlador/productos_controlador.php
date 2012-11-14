@@ -20,7 +20,6 @@ class productos_controlador extends controller {
     }
 
     public function index() {
-        $this->_productos->idproducto = 0;
         $this->_vista->datos = $this->_productos->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->setCss(array('estilos_index'));
@@ -33,7 +32,6 @@ class productos_controlador extends controller {
     }
     
     public function buscador(){
-        $this->_productos->idproducto = 0;
         if($_POST['filtro']==0){
             $this->_productos->descripcion=$_POST['cadena'];
         }
@@ -55,7 +53,6 @@ class productos_controlador extends controller {
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-            $this->_productos->idproducto= 0;
             $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
             $this->_productos->precio_unitario= $_POST['precio_unitario'];
             $this->_productos->observaciones = $_POST['observaciones'];
@@ -70,15 +67,9 @@ class productos_controlador extends controller {
             $this->_productos->inserta();
             $this->redireccionar('productos');
         }
-        $this->_servicios->idservicio=0;
         $this->_vista->datos_servicios= $this->_servicios->selecciona();
-        $this->_tipo_producto->idtipo_producto=0;
         $this->_vista->datos_tipo= $this->_tipo_producto->selecciona();
-        $this->_unidad_medida->idunidad_medida=0;
         $this->_vista->datos_um= $this->_unidad_medida->selecciona();
-        $this->_ubicaciones->idubicacion=0;
-        $this->_vista->datos_ubicaciones= $this->_ubicaciones->selecciona();
-        $this->_promociones->idpromocion=0;
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Registrar Producto';
         $this->_vista->action = BASE_URL . 'productos/nuevo';
@@ -88,7 +79,6 @@ class productos_controlador extends controller {
     }
     
     public function inserta_um(){        
-        $this->_unidad_medida->idunidad_medida=0;
         $this->_unidad_medida->descripcion=$_POST['descripcion'];
         $this->_unidad_medida->abreviatura=$_POST['abreviatura'];
         $this->_unidad_medida->inserta();
@@ -126,15 +116,10 @@ class productos_controlador extends controller {
         
         $this->_productos->idproducto = $this->filtrarInt($id);
         $this->_vista->datos= $this->_productos->selecciona();
-        $this->_servicios->idservicio=0;
         $this->_vista->datos_servicios= $this->_servicios->selecciona();
-        $this->_tipo_producto->idtipo_producto=0;
         $this->_vista->datos_tipo= $this->_tipo_producto->selecciona();
-        $this->_unidad_medida->idunidad_medida=0;
         $this->_vista->datos_um= $this->_unidad_medida->selecciona();
-        $this->_ubicaciones->idubicacion=0;
         $this->_vista->datos_ubicaciones= $this->_ubicaciones->selecciona();
-        $this->_promociones->idpromocion=0;
         $this->_vista->datos_promociones= $this->_promociones->selecciona();
         $this->_vista->titulo = 'Actualizar Producto';
         $this->_vista->setJs(array('funciones_form'));
