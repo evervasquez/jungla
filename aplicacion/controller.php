@@ -87,13 +87,22 @@ abstract class controller {
 
     protected function get_Libreria($libreria) {
         //ruta 
-        $rutaLibreria = ROOT . 'lib' . DS . 'highchart' . DS . $libreria . '.php';
+        $rutaLibreria = ROOT . 'lib' . DS . $libreria . '.php';
         //verificamos si existe y es legible
         if (is_readable($rutaLibreria)) {
             require_once $rutaLibreria;
         } else {
             throw new Exception('Error de libreria');
         }
+    }
+    public function get_matriz($datos,$cabeceras){
+        $nuevo;
+        for($i=0;$i<count($datos);$i++){
+            for($j=0;$j<count($cabeceras);$j++){
+                $nuevo[$i][$cabeceras[$j]]=$datos[$i][$cabeceras[$j]];
+            }
+        }
+        return $nuevo;
     }
 
 }
