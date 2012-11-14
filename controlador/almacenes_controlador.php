@@ -10,14 +10,12 @@ class almacenes_controlador extends controller {
     }
 
     public function index() {
-        $this->_almacenes->idalmacen = 0;
         $this->_vista->datos = $this->_almacenes->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
-        $this->_almacenes->idalmacen = 0;
         if($_POST['filtro']==0){
             $this->_almacenes->descripcion=$_POST['descripcion'];
         }
@@ -26,7 +24,6 @@ class almacenes_controlador extends controller {
     
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-            $this->_almacenes->idalmacen = 0;
             $this->_almacenes->descripcion = $_POST['descripcion'];
             $this->_almacenes->inserta();
             $this->redireccionar('almacenes');

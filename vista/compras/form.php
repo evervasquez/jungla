@@ -65,7 +65,6 @@
                 </td>
             </tr>
         </table>
-    </fieldset>
     <fieldset>
         <legend>Detalle Compra:</legend>
         <table class="tabCompra" align="center">
@@ -166,8 +165,11 @@
                            value='0'/>
                 </td>
             </tr>
+        </table>
+    </fieldset>
+        <table>
             <tr>
-               <td colspan="5" align="center">
+               <td align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
                         <a href="<?php echo BASE_URL ?>compras" class="k-button cancel">Cancelar</a>

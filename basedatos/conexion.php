@@ -1,12 +1,12 @@
 <?php
 
-class conexion {
+class conexion extends PDO{
 
     private static $instancia = null;
     public static $_servidor = null;
-
-    public static function conexionSingleton() {
-        if (self::$instancia != null) {
+    
+    public function __construct() {
+        if (!is_null(self::$instancia)) {
             return self::$instancia;
         }
         $file = 'config.ini';
@@ -15,13 +15,8 @@ class conexion {
         self::$_servidor=$settings['database']['driver'];
         $user = $settings['database']['usuario'];
         $password = trim($settings['database']['password']);
-//        die($dsn . " - " . $user . " - " . $password);
-
         try {
-            self::$instancia = new PDO($dsn, $user, $password);
-//            echo '<script>
-//                alert("conexion correcta ' . $settings['database']['driver'] . '");
-//                </script>';
+            self::$instancia = parent::__construct($dsn, $user, $password);
             return self::$instancia;
         } catch (PDOException $e) {
             echo '<script>

@@ -8,6 +8,9 @@ class ubicaciones {
     public $almacenes;
 
     public function selecciona() {
+        if(is_null($this->idubicacion)){
+            $this->idubicacion=0;
+        }
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
@@ -35,7 +38,7 @@ class ubicaciones {
     }
 
     public function inserta() {
-        $datos = array($this->idubicacion, $this->descripcion, $this->idalmacen);
+        $datos = array(0, $this->descripcion, $this->idalmacen);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
