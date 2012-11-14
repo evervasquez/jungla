@@ -1,13 +1,13 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
-                    dataSource: {
-                        pageSize: 7
-                    },
-                    pageable: true,
-                    columns: [{field:"Codigo", width:8},
-                        {field:"Descripcion", width:80},
-                        {field:"Acciones", width:10,attributes:{class:"acciones"}}]
-                });
+            dataSource: {
+                pageSize: 7
+            },
+            pageable: true,
+            columns: [{field:"Codigo", width:8},
+                {field:"Descripcion", width:80},
+                {field:"Acciones", width:10,attributes:{class:"acciones"}}]
+        });
         $( "#buscar" ).focus();
         function buscar(){
             $.post('/sisjungla/almacenes/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){

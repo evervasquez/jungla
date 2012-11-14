@@ -13,7 +13,7 @@
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         <tr>
-            <td><label>Almacen:</label></td>
+            <td><label for="almacen">Almacen:</label></td>
             <td>
                 <select class="combo" placeholder="Seleccione..." required name="almacen" id="almacen">
                     <option></option>
@@ -25,6 +25,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
+                <span class="k-invalid-msg" data-for="almacen"></span>
             </td>
         </tr>
         <tr>

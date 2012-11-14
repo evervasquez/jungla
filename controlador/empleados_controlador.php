@@ -103,9 +103,9 @@ class empleados_controlador extends controller {
     public function valida_usuario() {
         $usuario = $this->_empleados->seleccionar($_POST['usuario'], '');
         if ($usuario['usuario'] == '') {
-            echo '<a class="imgselect" title="Valido" ></a>';
+            echo '<a class="imgselect" title="Valido"></a><input type="hidden" id="val_usuario" value="1" />';
         } else {
-            echo '<a class="imgdelete" title="En uso" ></a>';
+            echo '<a class="imgdelete" title="En uso"></a><input type="hidden" id="val_usuario" value="0" />';
         }
     }
     

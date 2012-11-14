@@ -30,10 +30,10 @@ class habitaciones {
     }
 
     public function selecciona() {
-        if(is_null($this->idhabitacion)){
-            $this->idhabitacion=0;
+        if(is_null($this->nro_habitacion)){
+            $this->nro_habitacion='';
         }
-        $datos = array($this->idhabitacion);
+        $datos = array($this->idhabitacion, $this->nro_habitacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_habitaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -41,7 +41,8 @@ class habitaciones {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
     }
 
     public function elimina() {

@@ -5,8 +5,6 @@ class consulta extends conexion {
     public static function procedimientoAlmacenado($pa, $datos) {
         $config = parse_ini_file('config.ini', TRUE);
         $driver = $config['database']['driver']; 
-        $sql;
-        $result;
         switch ($driver) {
             case 'mssql': $sql = "execute ";
                 break;

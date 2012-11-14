@@ -9,12 +9,12 @@
         </tr>
         <tr>
             <td><label>Descripcion:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" name="descripcion" onkeypress="return soloLetras(event)"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required name="descripcion" onkeypress="return soloLetras(event)"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
         </tr>
         <tr>
             <td><label>Abreviatura:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese abreviatura" name="abreviatura"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese abreviatura" name="abreviatura" required
                        id="abreviatura" value="<?php if(isset ($this->datos[0]['abreviatura']))echo $this->datos[0]['abreviatura']?>"/></td>
         </tr>
         <tr>

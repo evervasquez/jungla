@@ -43,6 +43,6 @@
                             <div id="linkSesion"><a href="<?php echo BASE_URL?>login/index">iniciar sesion</a></div>
                         <?php } ?>
                         <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label> | 
-                            <label>IP: <?php echo $_SERVER['REMOTE_ADDR'] ?></label>
+                            <label>IP: <?php echo $_SERVER['SERVER_NAME'] ?></label>
                         </div>
                 </div>
