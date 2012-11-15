@@ -14,7 +14,7 @@
         <tr>
             <td><label>RUC:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="ruc" onKeyPress="return soloNumeros(event);"
-                   id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
+                   maxlength="11" id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
             </td>
         </tr>
          <tr>
@@ -98,7 +98,7 @@
         </tr>
         <tr>
             <td><label>Telefono:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" name="telefono"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                    id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
             </td>
         </tr>
