@@ -13,8 +13,23 @@ class pasajeros_controlador extends controller {
         $this->_profesiones = $this->cargar_modelo('profesiones');
     }
     
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_clientes->nombresyapellidos=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_clientes->razonsocial = $_POST['cadena'];
+        }
+        if($_POST['filtro']==2){
+            $this->_clientes->documento= $_POST['cadena'];
+        }
+        echo json_encode($this->_clientes->selecciona());
+    }
+    
     public function index() {
         $this->_vista->datos=$this->_clientes->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
     }
     
@@ -95,6 +110,11 @@ class pasajeros_controlador extends controller {
         echo json_encode($this->_ubigeos->selecciona());
     }
     
+    public function ver(){
+        $this->_clientes->idcliente=$_POST['idcliente'];
+        echo json_encode($this->_clientes->selecciona());
+    }
+    
     public function editar($id) {
         if (!$this->filtrarInt($id)) {
             $this->redireccionar('pasajeros');
@@ -157,9 +177,7 @@ class pasajeros_controlador extends controller {
 //        echo '</pre>';
 //        exit;
         //obtenemos todos los paises
-        $this->_vista->datos_paises = $this->_paises->selecciona();
-        if($datos[0]['idpais']==193){
-        //obtenemos todas las regiones que pertenecen al pais del empleado
+        if($datos[0]['idpais']!=0){
             $this->_regiones->idpais = $datos[0]['idpais'];
             $this->_vista->datos_regiones = $this->_regiones->selecciona();
             //obtenemos todas las provincias que pertenecen a la región del empleado
@@ -169,9 +187,8 @@ class pasajeros_controlador extends controller {
             $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
             $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
         }else{
-            $this->_ubigeos->idpais = $datos[0]['idpais'];
-            $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
-            $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
+            $this->_regiones->idpais = 193;
+            $this->_vista->datos_regiones = $this->_regiones->selecciona();
         }
         
 

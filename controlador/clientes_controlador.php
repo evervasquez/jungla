@@ -21,7 +21,27 @@ class clientes_controlador extends controller {
     
     public function index() {
         $this->_vista->datos=$this->_clientes->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_clientes->nombresyapellidos=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_clientes->razonsocial = $_POST['cadena'];
+        }
+        if($_POST['filtro']==2){
+            $this->_clientes->documento= $_POST['cadena'];
+        }
+        echo json_encode($this->_clientes->selecciona());
+    }
+    
+    public function ver(){
+        $this->_clientes->idcliente=$_POST['idcliente'];
+        echo json_encode($this->_clientes->selecciona());
     }
     
     public function nuevo(){
@@ -161,14 +181,19 @@ class clientes_controlador extends controller {
         $datos = $this->_clientes->selecciona();
         //obtenemos todos los paises
         //obtenemos todas las regiones que pertenecen al pais del empleado
-        $this->_regiones->idpais = $datos[0]['idpais'];
-        $this->_vista->datos_regiones = $this->_regiones->selecciona();
-        //obtenemos todas las provincias que pertenecen a la región del empleado
-        $this->_provincias->codigo_region = $datos[0]['idregion'];
-        $this->_vista->datos_provincias = $this->_provincias->selecciona();
-        //obtenemos todas las ciudades que pertenecen a la provincia del empleado
-        $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
-        $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
+        if($datos[0]['idpais']!=0){
+            $this->_regiones->idpais = $datos[0]['idpais'];
+            $this->_vista->datos_regiones = $this->_regiones->selecciona();
+            //obtenemos todas las provincias que pertenecen a la región del empleado
+            $this->_provincias->codigo_region = $datos[0]['idregion'];
+            $this->_vista->datos_provincias = $this->_provincias->selecciona();
+            //obtenemos todas las ciudades que pertenecen a la provincia del empleado
+            $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
+            $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
+        }else{
+            $this->_regiones->idpais = 193;
+            $this->_vista->datos_regiones = $this->_regiones->selecciona();
+        }
 
         $this->_vista->datos = $datos;
         $this->_vista->datos_membresias= $this->_membresias->selecciona();

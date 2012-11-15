@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    
+    $("#frm_natural").kendoValidator();
+    $("#frm_juridico").kendoValidator();
+    $("#tipo_cliente").focus();
     $( "#saveformnatural" ).click(function(){
         bval = true;        
         bval = bval && $( "#nombre" ).required();   

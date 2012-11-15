@@ -20,8 +20,8 @@ $(document).ready(function(){
 });
 </script>
 <?php } ?>
-<div id="frm_cliente_natural">
-    <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<div id="frm_cliente_natural" class="tabCompra">
+    <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm_natural">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="natural"/>
         <input type="hidden" name="codigo" id="codigo"
@@ -31,14 +31,12 @@ $(document).ready(function(){
             <tr>
                 <td><label>Nombre:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres" onkeypress="return soloLetras(event)"
                        id="" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Apellidos:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required name="apellidos"
+                    <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required name="apellidos" onkeypress="return soloLetras(event)"
                        id="" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
                 </td>
             </tr>
@@ -48,8 +46,6 @@ $(document).ready(function(){
                     <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
                        id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
@@ -61,11 +57,9 @@ $(document).ready(function(){
             <tr>
                 <td><label>Telefono:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Email:</label></td>
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
@@ -86,8 +80,6 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                 </td>
-            </tr>        
-            <tr>
                 <td><label>Estado Civil:</label></td>
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="estado_civil">
@@ -203,11 +195,9 @@ $(document).ready(function(){
             <tr>
                 <td><label>Doc. de Identidad:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
                        id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Membresia:</label></td>
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="membresia">
@@ -235,10 +225,10 @@ $(document).ready(function(){
                 <td>
             </tr>
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="4" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>pasajeros" class="k-button">Cancelar</a>
+                        <a href="<?php echo BASE_URL ?>pasajeros" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
@@ -267,7 +257,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Ruc:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento"
+                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
                        id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
             </tr>
@@ -281,7 +271,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Telefono:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
             </tr>
@@ -368,7 +358,7 @@ $(document).ready(function(){
                 <td colspan="2" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>pasajeros" class="k-button">Cancelar</a>
+                        <a href="<?php echo BASE_URL ?>pasajeros" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>

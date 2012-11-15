@@ -20,7 +20,7 @@ $(document).ready(function(){
 });
 </script>
 <?php } ?>
-<div id="frm_cliente_natural" class="tabForm">
+<div id="frm_cliente_natural" class="tabCompra">
     <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm_natural">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="natural"/>
@@ -43,8 +43,8 @@ $(document).ready(function(){
             <tr>
                 <td><label>Nro.Documento:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento"
-                       id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
+                      maxlength="8" id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
                 <td><label>Direccion:</label></td>
                 <td>
@@ -65,7 +65,7 @@ $(document).ready(function(){
                 </td>
                 <td><label>Telefono:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
             </tr>
@@ -215,7 +215,7 @@ $(document).ready(function(){
 </div>
 
 
-<div id="frm_cliente_juridico" class="tabForm">
+<div id="frm_cliente_juridico" class="tabCompra">
     <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm_juridico">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="juridico"/>
@@ -232,7 +232,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Ruc:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento"
+                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
                        id="ruc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
             </tr>
@@ -246,7 +246,7 @@ $(document).ready(function(){
             <tr>
                 <td><label>Telefono:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono"
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
             </tr>
