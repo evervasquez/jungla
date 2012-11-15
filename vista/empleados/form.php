@@ -139,7 +139,7 @@
             </td>
         </tr>
         <tr>
-            <td><label for="actividad">Actividades:</label></td>
+            <td><label for="actividad">Actividad:</label></td>
             <td colspan="2">
                 <select class="combo" placeholder="Seleccione..." name="actividad" id="actividad" required>
                     <option value="0"></option>

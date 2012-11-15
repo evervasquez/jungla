@@ -176,7 +176,7 @@
                 <td><label>Total:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" id="total" 
-                           value='0'/>
+                           value='0' name="total"/>
                 </td>
             </tr>
         </table>

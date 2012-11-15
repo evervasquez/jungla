@@ -26,10 +26,12 @@ class promociones_controlador extends controller{
         if ($_POST['guardar'] == 1) {
             $this->_promociones->descripcion = $_POST['descripcion'];
             $this->_promociones->descuento = (double)$_POST['descuento'];
-            $this->_promociones->fecha_inicio = $this->fecha_en($_POST['fecha_inicio']);
-            $this->_promociones->fecha_final = $this->fecha_en($_POST['fecha_final']);
+//            $this->_promociones->fecha_inicio = $this->fecha_en($_POST['fecha_inicio']);
+            $this->_promociones->fecha_inicio = $_POST['fecha_inicio'];
+            $this->_promociones->fecha_final = $_POST['fecha_final'];
+//            $this->_promociones->fecha_final = $this->fecha_en($_POST['fecha_final']);
             $this->_promociones->inserta();
-            die("<script> window.location='".BASE_URL."promociones'; </script>");
+            $this->redireccionar('promociones');
         }
         $this->_vista->titulo = 'Registrar Promocion';
         $this->_vista->action = BASE_URL . 'promociones/nuevo';
@@ -39,7 +41,7 @@ class promociones_controlador extends controller{
 
     public function editar($id) {
         if (!$this->filtrarInt($id)) {
-            die("<script> window.location='".BASE_URL."promociones'; </script>");
+            $this->redireccionar('promociones');
         }
 
         $this->_promociones->idpromocion = $this->filtrarInt($id);
@@ -49,10 +51,12 @@ class promociones_controlador extends controller{
             $this->_promociones->idpromocion = $_POST['codigo'];
             $this->_promociones->descripcion = $_POST['descripcion'];
             $this->_promociones->descuento = (double) $_POST['descuento'];
-            $this->_promociones->fecha_inicio = $this->fecha_en($_POST['fecha_inicio']);
-            $this->_promociones->fecha_final = $this->fecha_en($_POST['fecha_final']);
+//            $this->_promociones->fecha_inicio = $this->fecha_en($_POST['fecha_inicio']);
+            $this->_promociones->fecha_inicio = $_POST['fecha_inicio'];
+            $this->_promociones->fecha_final = $_POST['fecha_final'];
+//            $this->_promociones->fecha_final = $this->fecha_en($_POST['fecha_final']);
             $this->_promociones->actualiza();
-            die("<script> window.location='".BASE_URL."promociones'; </script>");
+            $this->redireccionar('promociones');
         }
         $this->_vista->titulo = 'Actualizar Promocion';
         $this->_vista->setJs(array('funciones_form'));
@@ -61,11 +65,11 @@ class promociones_controlador extends controller{
 
     public function eliminar($id) {
         if (!$this->filtrarInt($id)) {
-            die("<script> window.location='".BASE_URL."promociones'; </script>");
+            $this->redireccionar('promociones');
         }
         $this->_promociones->idpromocion = $this->filtrarInt($id);
         $this->_promociones->elimina();
-        die("<script> window.location='".BASE_URL."promociones'; </script>");
+        $this->redireccionar('promociones');
     }
     
 }

@@ -44,10 +44,12 @@ abstract class controller {
 
     protected function redireccionar($ruta = false) {
         if ($ruta) {
-            header('location:' . BASE_URL . $ruta);
+            die("<script> window.location='".BASE_URL."$ruta'; </script>");
+//            header('location:' . BASE_URL . $ruta);
             exit;
         } else {
-            header('location:' . BASE_URL);
+             die("<script> window.location='".BASE_URL."'; </script>");
+//            header('location:' . BASE_URL);
             exit;
         }
     }

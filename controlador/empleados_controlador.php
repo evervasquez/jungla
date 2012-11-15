@@ -55,8 +55,10 @@ class empleados_controlador extends controller {
             $this->_empleados->dni = $_POST['dni'];
             $this->_empleados->telefono = $_POST['telefono'];
             $this->_empleados->direccion = $_POST['direccion'];
-            $this->_empleados->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
-            $this->_empleados->fecha_contratacion = $this->fecha_en($_POST['fecha_contratacion']);
+//            $this->_empleados->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
+            $this->_empleados->fecha_nacimiento = $_POST['fecha_nacimiento'];
+            $this->_empleados->fecha_contratacion = $_POST['fecha_contratacion'];
+//            $this->_empleados->fecha_contratacion = $this->fecha_en($_POST['fecha_contratacion']);
             $this->_empleados->idubigeo = $_POST['ubigeo'];
             $this->_empleados->idperfil = $_POST['perfil'];
             $this->_empleados->idprofesion = $_POST['profesion'];
@@ -125,8 +127,10 @@ class empleados_controlador extends controller {
             $this->_empleados->dni = $_POST['dni'];
             $this->_empleados->telefono = $_POST['telefono'];
             $this->_empleados->direccion = $_POST['direccion'];
-            $this->_empleados->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
-            $this->_empleados->fecha_contratacion = $this->fecha_en($_POST['fecha_contratacion']);
+//            $this->_empleados->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
+            $this->_empleados->fecha_nacimiento = $_POST['fecha_nacimiento'];
+            $this->_empleados->fecha_contratacion = $_POST['fecha_contratacion'];
+//            $this->_empleados->fecha_contratacion = $this->fecha_en($_POST['fecha_contratacion']);
             $this->_empleados->idubigeo = $_POST['ubigeo'];
             $this->_empleados->idperfil = $_POST['perfil'];
             $this->_empleados->idprofesion = $_POST['profesion'];
@@ -141,6 +145,8 @@ class empleados_controlador extends controller {
 
         $this->_empleados->idempleado = $this->filtrarInt($id);
         $datos = $this->_empleados->selecciona();
+//        echo '<pre>';
+//        print_r($datos);exit;
         //obtenemos todas las provincias que pertenecen a la región del empleado
         $this->_provincias->codigo_region = $datos[0]['idregion'];
         $this->_vista->datos_provincias = $this->_provincias->selecciona();

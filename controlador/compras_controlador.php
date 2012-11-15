@@ -7,6 +7,7 @@ class compras_controlador extends controller{
     private $_tipo_transaccion;
     private $_productos;
     private $_detalle_compra;
+    private $_cuota_pago;
 
     public function __construct() {
         parent::__construct();
@@ -15,6 +16,7 @@ class compras_controlador extends controller{
         $this->_tipo_transaccion= $this->cargar_modelo('tipo_transaccion');
         $this->_productos= $this->cargar_modelo('productos');
         $this->_detalle_compra= $this->cargar_modelo('detalle_compra');
+        $this->_cuota_pago = $this->cargar_modelo('cuota_pago');
     }
 
     public function index() {
@@ -46,6 +48,49 @@ class compras_controlador extends controller{
                 $this->_detalle_compra->cantidad= $_POST['cantidad'][$i];
                 $this->_detalle_compra->precio= $_POST['precio'][$i];
                 $this->_detalle_compra->inserta();
+            }
+            //inserta cronograma si es al credito
+            if($_POST['tipo_transaccion']==2){
+                $fecha=$_POST['fecha_compra'];
+                $fecha_compra = date("Y-m-d",mktime(0,0,0,substr($fecha,3,2),substr($fecha,0,2),substr($fecha,6,4)));
+                $fecha=$_POST['fecha_vencimiento'];
+                $fecha_vencimiento = date("Y-m-d",mktime(0,0,0,substr($fecha,3,2),substr($fecha,0,2),substr($fecha,6,4)));
+                $intervalo_dias = $_POST['intervalo_dias'];
+                $monto = $_POST['total'];
+                $c=0;
+                $fecha_temp = $fecha_compra;
+                $mayor = true;
+                $cuota = array();
+                while($mayor){
+                    $c++;
+                    $fecha_temp =  date("Y-m-d", strtotime("$fecha_temp +$intervalo_dias day"));
+                    if(new DateTime($fecha_temp) >= new DateTime($fecha_vencimiento)){
+                        $mayor = false;
+                    }
+                }
+                if(new DateTime($fecha_temp) > new DateTime($fecha_vencimiento)){
+                    $c=$c-1;
+                }
+                $monto_pagado = 0;
+                $pago_mensual = (int)($monto / $c);
+
+                for($i=1;$i<=$c;$i++){
+                    $cuota[$i]=$pago_mensual;
+                    $monto_pagado = $monto_pagado + $pago_mensual;
+                }
+                if($monto_pagado != $monto){
+                    $cuota[$c]=	$cuota[$c] + ($monto- $monto_pagado);
+                }
+                $fecha_temp = date("d-m-Y", strtotime("$fecha_compra +$intervalo_dias day"));
+
+                for($i=1;$i<=$c;$i++){
+                    $this->_cuota_pago->idcompra=$dato_compra['idcompra'];
+                    $this->_cuota_pago->fecha_pago=$fecha_temp;
+                    $this->_cuota_pago->monto_cuota=$cuota[$i];
+                    $this->_cuota_pago->nro_cuota=$i;
+                    $this->_cuota_pago->inserta();
+                    $fecha_temp = date("d-m-Y", strtotime("$fecha_temp +$intervalo_dias day"));
+                }
             }
             $this->redireccionar('compras');
         }
@@ -113,6 +158,15 @@ class compras_controlador extends controller{
         $this->_detalle_compra->idcompra=$_POST['idcompra'];
         $this->_detalle_compra->idproducto= $_POST['idprodutos'];
         $this->_detalle_compra->elimina();
+    }
+    
+    public function eliminar($id){
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('compras');
+        }
+        $this->_compras->idcompra=$this->filtrarInt($id);
+        $this->_compras->elimina();
+        $this->redireccionar('compras');
     }
 }
 
