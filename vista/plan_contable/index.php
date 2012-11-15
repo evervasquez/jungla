@@ -1,5 +1,6 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Planes Contables</h3>
+    <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
             <th>Codigo</th>
@@ -32,4 +33,5 @@
         </tr>
     <?php } ?>
 </table>
+        </div>
 <p><a href="<?php echo BASE_URL?>plan_contable/nuevo" class="k-button">Nuevo</a></p>

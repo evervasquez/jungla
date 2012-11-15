@@ -14,6 +14,7 @@ class plan_contable_controlador extends controller {
     public function index() {
         $this->_plan_contable->idcuenta = 0;
         $this->_vista->datos = $this->_plan_contable->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
 
