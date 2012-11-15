@@ -65,7 +65,7 @@ class productos_controlador extends controller {
             $this->_productos->estado = $_POST['estado'];
             $this->_productos->precio_compra = $_POST['precio_compra'];
             $this->_productos->inserta();
-            die("<script> window.location='".BASE_URL."productos'; </script>");
+            $this->redireccionar('productos');
         }
         $this->_vista->datos_servicios= $this->_servicios->selecciona();
         $this->_vista->datos_tipo= $this->_tipo_producto->selecciona();
@@ -92,7 +92,7 @@ class productos_controlador extends controller {
     
     public function editar($id) {
         if (!$this->filtrarInt($id)) {
-            die("<script> window.location='".BASE_URL."productos'; </script>");
+            $this->redireccionar('productos');
         }        
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';
@@ -112,7 +112,7 @@ class productos_controlador extends controller {
             $this->_productos->estado = $_POST['estado'];
             $this->_productos->precio_compra = $_POST['precio_compra'];
             $this->_productos->actualiza();
-            die("<script> window.location='".BASE_URL."productos'; </script>");
+            $this->redireccionar('productos');
         }
         
         $this->_productos->idproducto = $this->filtrarInt($id);
@@ -130,11 +130,11 @@ class productos_controlador extends controller {
     
     public function eliminar($id) {
         if (!$this->filtrarInt($id)) {
-            die("<script> window.location='".BASE_URL."productos'; </script>");
+            $this->redireccionar('productos');
         }
         $this->_productos->idproducto = $this->filtrarInt($id);
         $this->_productos->elimina();
-        die("<script> window.location='".BASE_URL."productos'; </script>");
+        $this->redireccionar('productos');
     }
     
 }

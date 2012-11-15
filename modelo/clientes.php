@@ -16,6 +16,8 @@ class clientes {
     public $idmembresia;        
     public $direccion;        
     public $tipo;        
+    public $nombresyapellidos;
+    public $razonsocial;
 
     public function inserta() {
         $datos = array(0, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
@@ -45,7 +47,16 @@ class clientes {
         if(is_null($this->idcliente)){
             $this->idcliente=0;
         }
-        $datos = array($this->idcliente);
+        if(is_null($this->nombresyapellidos)){
+            $this->nombresyapellidos='';
+        }
+        if(is_null($this->razonsocial)){
+            $this->razonsocial='';
+        }
+        if(is_null($this->documento)){
+            $this->documento='';
+        }
+        $datos = array($this->idcliente, $this->nombresyapellidos, $this->razonsocial, $this->documento);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_clientes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -53,7 +64,8 @@ class clientes {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
     }
 
 }

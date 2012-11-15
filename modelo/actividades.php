@@ -20,30 +20,6 @@ class actividades {
         return $stmt->fetchall();
     }
 
-    public function elimina() {
-        $datos = array($this->idactividad);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_actividades", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function inserta() {
-        $datos = array($this->idactividad, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_actividades", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function actualiza() {
-        $datos = array($this->idactividad, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_actividades", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
 }
 
 ?>

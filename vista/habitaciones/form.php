@@ -103,7 +103,7 @@
                <td colspan="7" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>habitaciones" class="k-button">Cancelar</a>
+                        <a href="<?php echo BASE_URL ?>habitaciones" class="k-button cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>

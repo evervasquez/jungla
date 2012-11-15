@@ -12,7 +12,7 @@
                 </td>
             	<td><label for="precio_unitario">Precio Unitario</label></td>
                 <td>
-                    <input type="text" class="k-textbox precio" placeholder="Ingrese precio" required name="precio_unitario" id="precio_unitario"
+                    <input type="text" class="precio" placeholder="Ingrese precio" required name="precio_unitario" id="precio_unitario"
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
                     <span class="k-invalid-msg" data-for="precio_unitario"></span>
                 </td>

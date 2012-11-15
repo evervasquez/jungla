@@ -1,44 +1,48 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Pasajeros</h3>
-    <table border="1">
+    <p>
+        <select class="combo" id="filtro">
+            <option value="0">Nombre</option>
+            <option value="1">Razon Social</option>
+            <option value="2">RUC / DNI</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="buscar">
+        <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
+        <a href="<?php echo BASE_URL?>pasajeros/nuevo" class="k-button">Nuevo</a>
+    </p>
+    <div id="grilla">
+    <table border="1" class="tabgrilla">
         <tr>
             <th><label>Codigo</label></th>
-            <th><label>Nombre</label></th>
-            <th><label>Apellidos</label></th>
-            <th><label>Nro.Documento</label></th>
-            <th><label>Fecha de Nacimiento</label></th>
+            <th><label>Tipo</label></th>
+            <th><label>Nombre / Razon Social</label></th>
+            <th><label>DNI / RUC</label></th>
             <th><label>Telefono</label></th>
             <th><label>Email</label></th>
-            <th><label>Estado Civil</label></th>
-            <th><label>Profesion</label></th>
-            <th><label>Pais</label></th>
-            <th><label>Membresia</label></th>
+            <th><label>Ubigeo</label></th>
             <th><label>Acciones</label></th>
         </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos[$i]['idcliente'] ?></td>
-                <td><?php echo $this->datos[$i]['nombres'] ?></td>
-                <td><?php echo $this->datos[$i]['apellidos'] ?></td>
+                <td><?php echo $this->datos[$i]['tipo'] ?></td>
+                <td><?php echo utf8_encode($this->datos[$i]['nombres'].' '.$this->datos[$i]['apellidos']) ?></td>
                 <td><?php echo $this->datos[$i]['documento'] ?></td>
-                <td><?php echo $this->datos[$i]['fecha_nacimiento'] ?></td>
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['email'] ?></td>
-                <td><?php echo $this->datos[$i]['estado_civil'] ?></td>
-                <td><?php echo $this->datos[$i]['profesion'] ?></td>
-                <td><?php echo $this->datos[$i]['pais'] ?></td>
-                <td><?php echo $this->datos[$i]['membresia'] ?></td>
+                <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>pasajeros/editar/<?php echo $this->datos[$i]['idcliente'] ?>')">
-                <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>pasajeros/editar/<?php echo $this->datos[$i]['idcliente'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idcliente'] ?>')"></a>  
                 </td>
             </tr>
         <?php } ?>
-
-    <?php } else { ?>
-        <tr>
-            <td><p>No hay pasajeros</p></td>
-        </tr>
-    <?php } ?>
 </table>
-<p><a href="<?php echo BASE_URL?>pasajeros/nuevo" class="k-button">Nuevo</a></p>
+    </div>
+    <?php } else { ?>
+        <p>No hay pasajeros</p>
+        <p><a href="<?php echo BASE_URL?>pasajeros/nuevo" class="k-button">Nuevo</a></p>
+    <?php } ?>
+    
+<div id="vtna_ver_pasajero"></div>
+<div id="fondooscuro"></div>

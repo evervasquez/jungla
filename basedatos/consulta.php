@@ -58,6 +58,9 @@ class consulta extends conexion {
                     if (is_double($datos[$i])) {
                         $stmt->bindValue($j, $datos[$i], PDO::PARAM_INT);
                     }
+                    if (is_null($datos[$i])) {
+                        $stmt->bindValue($j, $datos[$i], PDO::PARAM_NULL);
+                    }
                 }
             }
             $stmt->execute();

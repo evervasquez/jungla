@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $("#celda_credito").hide();
+    $("#tipo_transaccion").prop("disabled",true);
+    $("#tipo_transaccion").kendoComboBox();
     a=1;
     imp=0;
     $("#tbl_detalle_compra tr").each(function(){

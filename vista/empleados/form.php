@@ -24,7 +24,7 @@
             </td>
             <td><label for="telefono">Telefono:</label></td>
             <td>
-                <input type="text" class="k-textbox" placeholder="Ingrese Nro.Telefonico" required name="telefono"
+                <input type="text" class="k-textbox" placeholder="Ingrese Nro.Telefonico" required name="telefono" onKeyPress="return numeroTelefonico(event);"
                    id="telefono" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
             </td>
         </tr>
@@ -139,7 +139,7 @@
             </td>
         </tr>
         <tr>
-            <td><label for="actividad">Actividades:</label></td>
+            <td><label for="actividad">Actividad:</label></td>
             <td colspan="2">
                 <select class="combo" placeholder="Seleccione..." name="actividad" id="actividad" required>
                     <option value="0"></option>
