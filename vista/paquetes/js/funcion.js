@@ -5,37 +5,31 @@
             },
             pageable: true,
             columns: [{field:"Codigo", width:8},
-                {field:"NrodeCuenta", width:12},
-                {field:"Descripcion", width:27},
-                {field:"Nivel", width:8},
-                {field:"AsientoPadre", width:27},
-                {field:"Categoria", width:8},
-                {field:"Acciones", width:8,attributes:{class:"acciones"}}]
+                {field:"Descripcion", width:40},
+                {field:"Descuento", width:20},
+                {field:"Costo", width:20},
+                {field:"Acciones", width:10,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/plan_contable/buscador','filtro='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/sisjungla/paquetes/buscador','filtro='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
-                            '<th>Nro.de Cuenta</th>'+
                             '<th>Descripcion</th>'+
-                            '<th>Nivel</th>'+
-                            '<th>Asiento Padre</th>'+
-                            '<th>Categoria</th>'+
+                            '<th>Descuento</th>'+
+                            '<th>Costo</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idcuenta+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nro_cuenta+'</td>';
+                    HTML = HTML + '<td>'+datos[i].idpaquete+'</td>';
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nivel+'</td>';
-                    HTML = HTML + '<td>'+datos[i].cuenta_padre+'</td>';
-                    HTML = HTML + '<td>'+datos[i].idcategoria+'</td>';
-                    var editar='/sisjungla/plan_contable/editar/'+datos[i].idpaquete; 
-                    var eliminar='/sisjungla/plan_contable/eliminar/'+datos[i].idpaquete;   
+                    HTML = HTML + '<td>'+datos[i].descuento+'</td>';
+                    HTML = HTML + '<td>'+datos[i].costo+'</td>';
+                    var editar='/sisjungla/paquetes/editar/'+datos[i].idpaquete; 
+                    var eliminar='/sisjungla/paquetes/eliminar/'+datos[i].idpaquete;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
@@ -49,12 +43,10 @@
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},
-                        {field:"NrodeCuenta", width:12},
-                        {field:"Descripcion", width:27},
-                        {field:"Nivel", width:8},
-                        {field:"AsientoPadre", width:27},
-                        {field:"Categoria", width:8},
-                        {field:"Acciones", width:8,attributes:{class:"acciones"}}]
+                        {field:"Descripcion", width:40},
+                        {field:"Descuento", width:20},
+                        {field:"Costo", width:20},
+                        {field:"Acciones", width:10,attributes:{class:"acciones"}}]
                 });
             },'json');
         }
@@ -69,4 +61,6 @@
             $("#buscar").focus();
         });
         
-    });       
+    });
+
+

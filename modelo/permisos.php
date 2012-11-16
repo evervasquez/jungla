@@ -42,20 +42,6 @@ class permisos {
         $r = null;
         return $error;
     }
-    
-    public function seleccionar($perfil,$modulo){
-        $datos = array($perfil, $modulo);
-        $r = consulta::procedimientoAlmacenado("pa_valida_acceso", $datos);
-        if ($r[1] == '') {
-            $stmt = $r[0];
-        } else {
-            die($r[1]);
-        }
-        $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
-    }
-
 }
 
 ?>

@@ -13,7 +13,7 @@ class empleados_controlador extends controller {
     private $_tipo_empleado;
     
     public function __construct() {
-        if (!$this->acceso(session::get('perfil'), 'Empleados')) {
+        if (!$this->acceso(2)) {
             $this->redireccionar('error/access/5050');
         }
         parent::__construct();

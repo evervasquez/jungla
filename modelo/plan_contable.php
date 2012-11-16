@@ -31,6 +31,18 @@ class plan_contable {
         if(is_null($this->idcuenta)){
             $this->idcuenta=0;
         }
+        if(is_null($this->nro_cuenta)){
+            $this->nro_cuenta='';
+        }
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
+        if(is_null($this->nivel)){
+            $this->nivel='';
+        }
+        if(is_null($this->idcuenta_padre)){
+            $this->idcuenta_padre='';
+        }
         $datos = array($this->idcuenta);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_cuentas", $datos);
         if ($r[1] == '') {

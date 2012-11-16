@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    $("#codigo").focus();
+    $("#tbl_productos_paquete").kendoGrid();
+    $("#tbl_busca_productos").kendoGrid({
+                    dataSource: {
+                        pageSize: 5
+                    },
+                    pageable: true
+                });
     $("#vtna_busca_productos").hide();
 
     //ventana de busqueda de productos
@@ -33,6 +41,7 @@ $(document).ready(function(){
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
+                            '<th>Unidad Medida</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -40,6 +49,7 @@ $(document).ready(function(){
                 HTML = HTML + '<tr>';
                 HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
                 HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                HTML = HTML + '<td>'+datos[i].um+'</td>';
                 id=datos[i].idproducto;
                 producto=datos[i].descripcion;
                 um=datos[i].um;
@@ -65,31 +75,42 @@ $(document).ready(function(){
         c=$("#cantidad").val();
         error=false;
         msg='';
-        x=0;
-        $("#tbl_productos_paquete tr").each(function(){
-            id_p=$("#tbl_productos_paquete tr:eq("+x+") td:eq(0) :input").val();
-            if(id_p==idp){
-                error=true;
-                msg='este producto ya fue seleccionado';
+        if(pro == ''){
+           alert("Seleccione producto");
+        }
+        else{
+            if(c == 0 || c == ''){
+                alert("Ingrese cantidad");
+                $(".cantidad").focus();
             }
-            x++;
-        });
-        
-        if(error){
-            alert(msg);
-        }else{
-            html = '<tr>';
-            html +='<td><input type="hidden" value="'+idp+'" name="idproducto[]"/>'+pro+'</td>';
-            html +='<td>'+um+'</td>';
-            html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
-            html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
-            html +='</tr>';
-            
-            $("#tbl_productos_paquete").append(html);
-            $("#unidad_medida").val('');
-            $("#producto").val('');
-            $("#cantidad").val('');
-            $("#txt_buscar_productos").val('');
+            else{
+                x=0;
+                $("#tbl_productos_paquete tr").each(function(){
+                    id_p=$("#tbl_productos_paquete tr:eq("+x+") td:eq(0) :input").val();
+                    if(id_p==idp){
+                        error=true;
+                        msg='este producto ya fue seleccionado';
+                    }
+                    x++;
+                });
+
+                if(error){
+                    alert(msg);
+                }else{
+                    html = '<tr>';
+                    html +='<td><input type="hidden" value="'+idp+'" name="idproducto[]"/>'+pro+'</td>';
+                    html +='<td>'+um+'</td>';
+                    html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
+                    html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
+                    html +='</tr>';
+
+                    $("#tbl_productos_paquete").append(html);
+                    $("#unidad_medida").val('');
+                    $("#producto").val('');
+                    $(".cantidad").val('');
+                    $("#txt_buscar_productos").val('');
+                }
+            }
         }
     });
     

@@ -12,7 +12,10 @@ class cuota_pago {
     public $nro_cuota;
 
     public function selecciona() {
-        $datos = array($this->idcuota_pago);
+        if(is_null($this->idcompra)){
+            $this->idcompra=0;
+        }
+        $datos = array($this->idcompra);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_cuota_pago", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -25,7 +28,7 @@ class cuota_pago {
     }
 
     public function elimina() {
-        $datos = array($this->idcuota_pago);
+        $datos = array($this->idcompra);
         $r = consulta::procedimientoAlmacenado("pa_elimina_cuota_pago", $datos);
         $error = $r[1];
         $r = null;

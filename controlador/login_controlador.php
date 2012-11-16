@@ -9,6 +9,7 @@ class login_controlador extends controller {
         session::set('autenticado', true);
         session::set('empleado', 'Mauro Flores');
         session::set('perfil', 'administrador');
+        session::set('idperfil', 1);
 //        session::set('perfil', 'vendedor');
         
         $this->redireccionar();

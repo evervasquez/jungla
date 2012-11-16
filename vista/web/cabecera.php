@@ -7,17 +7,17 @@
         <meta name="keywords" content="jungla, tarapoto, turismo, hospedaje, selva" />
 			
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jquery.js"></script>
-        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jqueryui.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/script.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>vista/web/js/funciones.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/jquery.textshadow.js"></script>
-        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/kendo.all.min.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL?>lib/js/kendo.web.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL?>vista/web/js/jquery.skitter.min.js"></script>
         <link rel="stylesheet" href="<?php echo BASE_URL?>vista/web/css/estilos.css" media="all" />
         <link rel="shortcut icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="<?php echo BASE_URL?>lib/css/le-frog/jquery-ui-1.9.0.custom.css" media="all" />
-        <link href="<?php echo BASE_URL?>vista/web/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
-        <link href="<?php echo BASE_URL?>vista/web/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BASE_URL?>lib/css/styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BASE_URL?>lib/css/styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="<?php echo BASE_URL?>vista/web/css/skitter.styles.css" type="text/css" media="all" rel="stylesheet" />
         
     </head>

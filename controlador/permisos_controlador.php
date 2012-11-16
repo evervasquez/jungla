@@ -20,6 +20,8 @@ class permisos_controlador extends controller {
         $this->_modulos->descripcion='';
         $this->_modulos->modulo_padre='';
         $this->_vista->datos_modulos=$this->_modulos->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos'));
         $this->_vista->renderizar('index');
     }
 

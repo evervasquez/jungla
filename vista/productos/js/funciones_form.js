@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $("#descripcion").focus(); 
-    var validator = $("#frmum").kendoValidator();
     function get_um(unidad){
         $.post('/sisjungla/productos/get_um','id=0',function(datos){
             $("#unidad_medida").html('<option></option>');
@@ -21,14 +20,26 @@ $(document).ready(function(){
             $("#fondooscuro").fadeIn(300);
     }); 
     $("#btn_um").click(function(){
-        if (validator.validate()) {
-            $.post('/sisjungla/productos/inserta_um','descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
-            $("#ventana_unidad_medida").fadeOut(300);
-            $("#fondooscuro").fadeOut(300); 
-            get_um($("#des_um").val());
-            $("#des_um").val(''); 
-            $("#abreviatura_um").val(''); 
+        um = $("#des_um").val();
+        ab = $("#abreviatura_um").val();
+        if (um =="") {
+            alert("Ingrese descripcion");
+            $("#des_um").focus();
         }
+        else{
+            if(ab == ""){
+                alert("Ingrese abreviatura");
+                $("#abreviatura_um").focus();
+            }
+            else{
+                $.post('/sisjungla/productos/inserta_um','descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
+                $("#ventana_unidad_medida").fadeOut(300);
+                $("#fondooscuro").fadeOut(300); 
+                get_um($("#des_um").val());
+                $("#des_um").val(''); 
+                $("#abreviatura_um").val(''); 
+            }
+        }      
     });
     $(".close").click(function(){
             $("#ventana_unidad_medida").fadeOut(300);

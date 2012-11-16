@@ -1,16 +1,14 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
-        <table width="50%" align="center">
+        <table width="50%" align="center" class="tabCompra">
             <tr>
                 <td><label>Codigo:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
                            value="<?php if(isset ($this->datos[0]['idpaquete']))echo $this->datos[0]['idpaquete']?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td><label>Descripcion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
@@ -18,28 +16,29 @@
                 </td>
             </tr>
             <tr>
-                <td><label>Costo:</label></td>
+                <td><label for="costo">Costo:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese costo" required name="costo" 
+                    <input type="text" class="precio" placeholder="Ingrese costo" required name="costo" 
                            value="<?php if(isset ($this->datos[0]['costo']))echo $this->datos[0]['costo']?>"/>
+                    <span class="k-invalid-msg" data-for="costo"></span>
                 </td>
-            </tr>
-            <tr>
-                <td><label>Descuento:</label></td>
+                <td><label for="descuento">Descuento:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descuento" required name="descuento" 
+                    <input type="text" class="descuento" placeholder="Ingrese descuento" required name="descuento" 
                            value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>"/>
+                    <span class="k-invalid-msg" data-for="descuento"></span>
                 </td>
             </tr>
         </table>
     <fieldset>
+        <div id="tbl_detalle">
         <legend>Productos x Paquete:</legend>
         <table class="tabCompra" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>
                     <input type="hidden" id="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
-                    <input type="text" class="k-textbox" placeholder="Busque producto" required  readonly="readonly"  
+                    <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly"  
                        id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
                 </td>
                 <td>
@@ -47,13 +46,13 @@
                 </td>
                 <td><label>Unidad de Medida:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" id="unidad_medida" placeholder="Unidad Medida"/>
+                    <input type="text" class="k-textbox" id="unidad_medida" placeholder="Unidad Medida" readonly="readonly" />
             	</td>
             </tr>
             <tr>
                 <td><label>Cantidad:</label></td>
                 <td colspan="2">
-                    <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" />
+                    <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
             </tr>
             <tr align="center">
@@ -91,6 +90,7 @@
                 </td>
             </tr>
         </table>
+    </div>
     </fieldset>
         <table>
             <tr>
@@ -123,7 +123,7 @@
             <th>Codigo</th>
             <th>Descripcion</th>
             <th>Unidad Medida</th>
-            <th>Selecciona</th>
+            <th>Seleccionar</th>
         </tr>
         <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
             <tr>
