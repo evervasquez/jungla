@@ -10,8 +10,8 @@
 	padding:20px;
 	color: black;
 	position: fixed;
-	left: 37.5%;
-	top: 20%;
+	left: 35%;
+	top: 12%;
 	z-index: 1000;
 	text-align: left;
 	background-color: white;
@@ -19,5 +19,5 @@
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         -o-border-radius: 10px;
-        border:10px solid grey;
+        border:10px solid #aaa;
 }

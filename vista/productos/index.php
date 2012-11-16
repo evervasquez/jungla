@@ -1,7 +1,7 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Productos</h3>
     <p>
-        <select class="combo" id="filtro">
+        <select class="list" id="filtro">
             <option value="0">Descripcion</option>
             <option value="1">Tipo de Producto</option>
             <option value="2">Unidad de Medida</option>

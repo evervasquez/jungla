@@ -4,12 +4,12 @@
                 pageSize: 7
             },
             pageable: true,
-            columns: [{field:"Codigo", width:8},
-                {field:"NroHabitacion", width:10},
+            columns: [{field:"Codigo", width:7},
+                {field:"NroHabitacion", width:11},
                 {field:"Descripcion", width:30},
-                {field:"Ventilacion", width:15},
-                {field:"Estado", width:15},
-                {field:"Acciones", width:10,attributes:{class:"acciones"}}]
+                {field:"Ventilacion", width:13},
+                {field:"Estado", width:12},
+                {field:"Acciones", width:9,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
         
@@ -55,12 +55,12 @@
                         pageSize: 7
                     },
                     pageable: true,
-                    columns: [{field:"Codigo", width:8},
-                        {field:"NroHabitacion", width:10},
+                    columns: [{field:"Codigo", width:7},
+                        {field:"NroHabitacion", width:11},
                         {field:"Descripcion", width:30},
-                        {field:"Ventilacion", width:15},
-                        {field:"Estado", width:15},
-                        {field:"Acciones", width:10,attributes:{class:"acciones"}}]
+                        {field:"Ventilacion", width:13},
+                        {field:"Estado", width:12},
+                        {field:"Acciones", width:9,attributes:{class:"acciones"}}]
                 });
             },'json');
         }

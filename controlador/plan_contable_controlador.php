@@ -14,6 +14,7 @@ class plan_contable_controlador extends controller {
     public function index() {
         $this->_plan_contable->idcuenta = 0;
         $this->_vista->datos = $this->_plan_contable->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
 
@@ -33,6 +34,22 @@ class plan_contable_controlador extends controller {
         $this->_vista->titulo = 'Registrar Cuenta';
         $this->_vista->action = BASE_URL . 'plan_contable/nuevo';
         $this->_vista->renderizar('form');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_plan_contable->nro_cuenta=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_plan_contable->descripcion= $_POST['cadena'];
+        }
+        if($_POST['filtro']==2){
+            $this->_plan_contable->nivel = $_POST['cadena'];
+        }
+        if($_POST['filtro']==3){
+            $this->_plan_contable->idcuenta_padre = $_POST['cadena'];
+        }
+        echo json_encode($this->_plan_contable->selecciona());
     }
     
     public function editar($id) {

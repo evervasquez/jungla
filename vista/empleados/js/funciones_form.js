@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $( "#nombre" ).focus(); 
+    $( "#codigo" ).focus(); 
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
             $("#ubigeo").html('<option>Seleccione...</option>');
