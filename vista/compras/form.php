@@ -1,29 +1,39 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <fieldset>
-        <legend><?php echo $this->titulo ?></legend>
+        <legend><?php echo $this->titulo ?></legend><br>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="codigo" id="codigo"
                    value="<?php if(isset ($this->datos[0]['idcompra']))echo $this->datos[0]['idcompra']?>"/>
-        <table width="50%" align="center" class="tabCompra">
-            <tr>
-                <td><label>Nro. Documento:</label></td>
+        <table align="center" class="tabFormComplejo">
+            <tr valign="top">
+                <td><label for="nro_comprobante">Nro. Documento:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese Nro.de Comprobante" required name="nro_comprobante"
                        id="nro_comprobante" value="<?php if(isset ($this->datos[0]['nro_comprobante']))echo $this->datos[0]['nro_comprobante']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="nro_comprobante"></div>
                 </td>
-            </tr>
-            <tr>
-                <td><label>Proveedor:</label></td>
+                <td><label for="proveedor">Proveedor:</label></td>
                 <td>
                     <input type="hidden" name="idproveedor" id="idproveedor" value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
-                    <input type="text" class="k-textbox" placeholder="Busque proveedor" required  readonly="readonly" 
+                    <input type="text" class="k-textbox" placeholder="Busque proveedor" required  readonly="readonly" name="proveedor"
                        id="proveedor" value="<?php if(isset ($this->datos[0]['proveedor']))echo $this->datos[0]['proveedor']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="proveedor"></div>
                 </td>
                 <td><button type="button" class="k-button" id="btn_vtna_proveedores"><span class="k-icon k-i-search"></span></button>
                 </td>
-                <td><label>Tipo de Transaccion:</label></td>
+            </tr>
+            <tr valign="top">
+                <td><label for="fecha_compra">Fecha de Compra:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion">
+                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
+                       id="fecha_compra" value="<?php if(isset ($this->datos[0]['fecha_compra'])){
+                               $fecha=$this->datos[0]['fecha_compra'];
+                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="fecha_compra"></div>
+                </td>
+                <td><label for="tipo_transaccion">Tipo de Transaccion:</label></td>
+                <td>
+                    <select class="combo" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
                         <option></option>
                         <?php for($i=0;$i<count($this->datos_tipo_transaccion);$i++){ ?>
                             <?php if( $this->datos[0]['idtipo_transaccion'] == $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ){ ?>
@@ -33,13 +43,15 @@
                             <?php } ?>
                         <?php } ?>
                     </select>
+                    <br><div class="k-invalid-msg msgerror" data-for="tipo_transaccion"></div>
                 </td>
+                <td></td>
             </tr>
             <tr id="celda_credito">
                 <td><label>Fecha Vencimiento:</label></td>
-                <td colspan="2">
-                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_vencimiento"
-                       id="fechaven" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
+                <td>
+                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_vencimiento"
+                       id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
                                $fecha=$this->datos[0]['fecha_vencimiento'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
                 </td>
@@ -50,25 +62,19 @@
                         <option value="14">14</option>
                     </select>
                 </td>
+                <td></td>
             </tr>
-            <tr>
-                <td><label>Fecha de Compra:</label></td>
-                <td>
-                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
-                       id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_compra'])){
-                               $fecha=$this->datos[0]['fecha_compra'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Observaciones:</label></td>
+            <tr valign="top">
+                <td><label for="observaciones">Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <div class="k-invalid-msg msgerror" data-for="observaciones"></div>
                 </td>
+                <td></td>
             </tr>
-            <tr>
+            <tr valign="top">
                 <td><label>Estado:</label></td>
-                <td>
+                <td colspan="3">
                     <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
                     <input type="radio" name="estado" value ="1" />Activo
                     <input type="radio" name="estado" value="0" checked="checked"/>Inactivo
@@ -77,16 +83,18 @@
                     <input type="radio" name="estado" value="0" />Inactivo
                     <?php } ?>
                 </td>
+                <td></td>
             </tr>
         </table>
     <fieldset>
+        <div id="tbl_detalle">
         <legend>Detalle Compra:</legend>
-        <table class="tabCompra" align="center">
+        <table class="tabFormComplejo" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>
                     <input type="hidden" id="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
-                    <input type="text" class="k-textbox" placeholder="Busque producto" required  readonly="readonly"  
+                    <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly"  
                        id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
                 </td>
                 <td>
@@ -94,17 +102,17 @@
                 </td>
                 <td><label>Unidad de Medida:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" id="unidad_medida" placeholder="Unidad Medida"/>
+                    <input type="text" class="k-textbox" id="unidad_medida" placeholder="Unidad Medida" readonly="readonly"/>
             	</td>
             </tr>
             <tr>
                 <td><label>Cantidad:</label></td>
                 <td colspan="2">
-                    <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" readonly="readonly"/>
+                    <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
                 <td><label>Precio de Compra:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese precio" id="precio" />
+                    <input type="text" class="precio" placeholder="Ingrese precio" id="precio" />
                 </td>
             </tr>
             <tr align="center">
@@ -167,7 +175,7 @@
                 <td colspan="3">&nbsp;</td>
                 <td><label>IGV:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="0" name="igv" id="igv" 
+                    <input type="text" class="descuento" placeholder="0" name="igv" id="igv" 
                        value="<?php if(isset ($this->datos[0]['igv'])){echo $this->datos[0]['igv'];}else{echo '0';}?>" />
                 </td>
             </tr>
@@ -180,6 +188,7 @@
                 </td>
             </tr>
         </table>
+    </div>
     </fieldset>
         <table>
             <tr>
@@ -193,9 +202,6 @@
         </table>
     </fieldset>
 </form>
-
-
-
 <div id="vtna_busca_proveedor">
     <h3>Lista de Proveedores</h3>
     <p>
@@ -226,9 +232,6 @@
     </table>
     </div>
 </div>
-
-
-
 <div id="vtna_busca_productos">
     <h3>Lista de Productos</h3>
     <p>

@@ -1,39 +1,40 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <fieldset>
-        <legend><?php echo $this->titulo ?></legend>
+        <legend><?php echo $this->titulo ?></legend><br>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
-        <table width="50%" align="center" class="tabCompra">
-            <tr>
+        <table align="center" class="tabFormComplejo">
+            <tr valign="top">
                 <td><label>Codigo:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
                            value="<?php if(isset ($this->datos[0]['idpaquete']))echo $this->datos[0]['idpaquete']?>"/>
                 </td>
-                <td><label>Descripcion:</label></td>
+                <td><label for="descripcion">Descripcion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
             </tr>
-            <tr>
+            <tr valign="top">
                 <td><label for="costo">Costo:</label></td>
                 <td>
                     <input type="text" class="precio" placeholder="Ingrese costo" required name="costo" 
                            value="<?php if(isset ($this->datos[0]['costo']))echo $this->datos[0]['costo']?>"/>
-                    <span class="k-invalid-msg" data-for="costo"></span>
+                    <br><div class="k-invalid-msg msgerror" data-for="costo"></div>
                 </td>
                 <td><label for="descuento">Descuento:</label></td>
                 <td>
                     <input type="text" class="descuento" placeholder="Ingrese descuento" required name="descuento" 
                            value="<?php if(isset ($this->datos[0]['descuento']))echo $this->datos[0]['descuento']?>"/>
-                    <span class="k-invalid-msg" data-for="descuento"></span>
+                    <br><div class="k-invalid-msg msgerror" data-for="descuento"></div>
                 </td>
             </tr>
         </table>
     <fieldset>
         <div id="tbl_detalle">
-        <legend>Productos x Paquete:</legend>
-        <table class="tabCompra" align="center">
+        <br><legend>Productos x Paquete:</legend><br>
+        <table class="tabForm" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>

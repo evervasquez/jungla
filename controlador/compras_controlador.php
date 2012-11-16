@@ -21,7 +21,18 @@ class compras_controlador extends controller{
 
     public function index() {
         $this->_vista->datos = $this->_compras->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_compras->nro_comprobante=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_compras->proveedor = $_POST['cadena'];
+        }
+        echo json_encode($this->_compras->selecciona());
     }
     
     public function nuevo(){
