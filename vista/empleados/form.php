@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm" onsubmit="return validarEmpleado();">
     <h3><?php echo $this->titulo ?></h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"

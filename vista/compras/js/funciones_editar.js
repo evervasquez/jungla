@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
     $("#tbl_busca_productos").kendoGrid({
         dataSource: {
-            pageSize: 5
+            pageSize: 7
         },
         pageable: true
     });
@@ -87,7 +87,7 @@ $(document).ready(function(){
             $("#grilla_proveedores").html(HTML);
             $("#tbl_busca_proveedor").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true
                 });
@@ -143,7 +143,7 @@ $(document).ready(function(){
                 $("#grilla_productos").html(HTML);
                 $("#tbl_busca_productos").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true
                 });
