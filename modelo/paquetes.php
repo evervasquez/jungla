@@ -11,6 +11,9 @@ class paquetes {
         if(is_null($this->idpaquete)){
             $this->idpaquete=0;
         }
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
         $datos = array($this->idpaquete);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_paquetes", $datos);
         if ($r[1] == '') {

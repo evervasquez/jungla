@@ -72,11 +72,21 @@
         });
         
     //ver empleados
-       $("#vtna_ver_empleado").hide();
-       $("#aceptar").live('click',function(){
+        function salir(){
             $("#vtna_ver_empleado").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
+        }
+       $("#vtna_ver_empleado").hide();
+       $("#aceptar").live('click',function(){
+            salir();
+            $("#buscar").focus();
        });
+       $(".imgview").keypress(function(event){
+           if(event.which == 27){
+               salir();
+                $("#buscar").focus();
+           } 
+        });
        
     });
     function ver(id){

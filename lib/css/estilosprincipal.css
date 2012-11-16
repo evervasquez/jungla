@@ -18,6 +18,12 @@ body{
 	-webkit-border-radius:0px 0px 35px 35px;
 	-o-border-radius:0px 0px 35px 35px;
 }
+.msgerror{
+	display:block;
+	width:115px;
+	height:28px;
+	position:static;
+}
 .acciones{
         text-align: center;
 }
@@ -69,10 +75,22 @@ body{
         width: 90%;
         margin: 0 auto;
 }
+#tabla{
+		margin-left:10%;
+}
+.comboX{
+		width:150px;
+}
 .tabForm label{
-        width: 110px;
+        width: 85px;
         display: block;
-        margin: 10px 10px 10px 30px;
+        margin: 10px;
+        text-align: right;
+}
+.tabFormComplejo label{
+        width: 85px;
+        display: block;
+        margin: 0px 10px 0px 10px;
         text-align: right;
 }
 .tabCompra label{
@@ -81,9 +99,9 @@ body{
         margin: 10px 10px 10px 30px;
         text-align: right;
 }
-#tbl_hb_esp{
+#tbl_detalle{
         width: 50%;
-        margin-right: 10%;
+        margin-right: 15%;
 }
 #btn_buscar{
         height: 25px;
@@ -156,10 +174,11 @@ body{
         background-image: url("/sisjungla/lib/img/logo.png");
         background-repeat: no-repeat;
         margin: 0 auto;
-        width:768px;
-        height: 182px;
+        width:80%;
+        height: 100%;
         margin-top: 60px;
-        padding-bottom: 60px;
+        padding-bottom: 200px;
+        margin-bottom: 60px;
 }
 #fondooscuro{
 	display: none;

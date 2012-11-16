@@ -120,7 +120,7 @@
         </table>
     </form>
     <div id="ventana_unidad_medida" align="center">
-        <form method="post" action="" id="frmum">
+        <form method="post" action="">
             <table align="center">
                     <caption><h3>Registrar Unidad de Medida</h3></caption>
                 <tr>
@@ -129,11 +129,11 @@
                 </tr>
                 <tr>
                     <td><label for="des_um">Descripcion:</label></td>
-                    <td><input type="text" class="k-textbox" name="des_um" placeholder="Ingrese unidad de medida" required id="des_um" onkeypress="return soloLetras(event)"/></td>
+                    <td><input type="text" class="k-textbox" name="des_um" placeholder="Ingrese unidad de medida" id="des_um" onkeypress="return soloLetras(event)"/></td>
                 </tr>
                 <tr>
                     <td><label for="abreviatura_um">Abreviatura:</label></td>
-                    <td><input type="text" class="k-textbox" name="abreviatura_um" placeholder="Ingrese abreviatura" required id="abreviatura_um"/></td>
+                    <td><input type="text" class="k-textbox" name="abreviatura_um" placeholder="Ingrese abreviatura" id="abreviatura_um"/></td>
                 </tr>
                 <tr>
                     <td align="center" colspan="2">

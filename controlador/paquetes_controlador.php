@@ -19,6 +19,13 @@ class paquetes_controlador extends controller{
         $this->_vista->renderizar('index');
     }
     
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_paquetes->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_paquetes->selecciona());
+    }
+    
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';

@@ -41,7 +41,7 @@
         </table>
     </fieldset>
     <fieldset>
-        <div id="tbl_hb_esp">
+        <div id="tbl_detalle">
         <legend>Costos de habitacion</legend>
         <table class="tabCompra">
             <tr>
