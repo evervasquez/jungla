@@ -29,4 +29,12 @@ $(document).ready(function(){
         }
     });
 }); 
+function validarEmpleado(){
+    des = $( "#val_usuario" ).val();
+    if(des == 0){
+        alert("Debes cambiar cuenta de usuario");
+        return false;
+    }
+    else return true;
+}
         
