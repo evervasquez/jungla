@@ -89,7 +89,7 @@
     <fieldset>
         <div id="tbl_detalle">
         <legend>Detalle Compra:</legend>
-        <table class="tabCompra" align="center">
+        <table class="tabFormComplejo" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>

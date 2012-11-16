@@ -16,6 +16,18 @@ $(document).ready(function(){
     $("#celda_credito").hide();
     $("#tipo_transaccion").prop("disabled",true);
     $("#tipo_transaccion").kendoComboBox();
+    if($("#tipo_transaccion :selected").val()==2){
+        $("#celda_credito").show();
+    }else{
+        $("#celda_credito").hide();
+    }
+    $("#tipo_transaccion").change(function(){
+        if($(this).val()==2){
+            $("#celda_credito").show();
+        }else{
+            $("#celda_credito").hide();
+        }
+    });
     a=1;
     imp=0;
     $("#tbl_detalle_compra tr").each(function(){
