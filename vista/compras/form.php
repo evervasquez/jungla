@@ -39,7 +39,7 @@
                 <td><label>Fecha Vencimiento:</label></td>
                 <td colspan="2">
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_vencimiento"
-                       id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
+                       id="fechaven" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
                                $fecha=$this->datos[0]['fecha_vencimiento'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
                 </td>
@@ -63,7 +63,7 @@
             <tr>
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                 </td>
             </tr>
             <tr>
@@ -100,7 +100,7 @@
             <tr>
                 <td><label>Cantidad:</label></td>
                 <td colspan="2">
-                    <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" />
+                    <input type="text" class="k-textbox" placeholder="Ingrese cantidad" id="cantidad" readonly="readonly"/>
                 </td>
                 <td><label>Precio de Compra:</label></td>
                 <td>
