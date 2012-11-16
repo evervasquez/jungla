@@ -2,22 +2,23 @@
     <h3><?php echo $this->titulo ?></h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
-    <table width="50%" align="center" class="tabForm">
-            </tr>
-            <tr>
+    <table align="center" class="tabFormComplejo">
+            <tr valign="top">
             	<td><label for="descripcion">Descripcion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion" onkeypress="return soloLetras(event)"
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
             	<td><label for="precio_unitario">Precio Unitario</label></td>
                 <td>
                     <input type="text" class="precio" placeholder="Ingrese precio" required name="precio_unitario" id="precio_unitario"
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
-                    <span class="k-invalid-msg" data-for="precio_unitario"></span>
+                    <br><div class="k-invalid-msg msgerror" data-for="precio_unitario"></div>
                 </td>
+                <td></td>
             </tr>
-            <tr>
+            <tr valign="top">
             	<td><label for="tipo_producto">Tipo de Producto</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="tipo_producto" id="tipo_producto">
@@ -30,7 +31,7 @@
                         <?php } ?>
                     <?php } ?>
                     </select>
-                    <span class="k-invalid-msg" data-for="tipo_producto"></span>
+                    <br><div class="k-invalid-msg msgerror" data-for="tipo_producto"></div>
             	</td>
             	<td><label for="unidad_medida">Unidad de Medida</label></td>
                 <td>
@@ -44,13 +45,14 @@
                         <?php } ?>
                     <?php } ?>
                     </select>
-                    <span class="k-invalid-msg" data-for="unidad_medida"></span>
+                    <br><div class="k-invalid-msg msgerror" data-for="unidad_medida"></div>
             	</td>
                    <td valign="center">
                     <a id="um" class="k-button btn_icn plus"><span class="k-icon k-i-plus"></span></a>
+                    <br><br>&nbsp;</div>
                    </td>
             </tr>
-            <tr>
+            <tr valign="top">
                 <td><label>Ubicacion</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="ubicacion" id="ubicacion">
@@ -78,7 +80,7 @@
                     </select>
             	</td>
             </tr>
-            <tr>
+            <tr valign="top">
                 <td><label>Promocion</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="promocion">
@@ -103,13 +105,13 @@
                     <?php } ?>
                 </td>
             </tr>
-            <tr>
+            <tr valign="top">
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox" style="height: 80px; width: 500px"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                 </td>
             </tr>
-            <tr>
+            <tr valign="top">
             	<td colspan="4" align="center">
                     <p>
                         <button type="submit" class="k-button" id="saveform">Guardar</button>

@@ -12,7 +12,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/paquetes/buscador','filtro='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/sisjungla/paquetes/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+

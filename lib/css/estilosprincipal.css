@@ -21,7 +21,7 @@ body{
 .msgerror{
 	display:block;
 	width:115px;
-	height:28px;
+	height:24px;
 	position:static;
 }
 .acciones{
@@ -88,20 +88,14 @@ body{
         text-align: right;
 }
 .tabFormComplejo label{
-        width: 85px;
-        display: block;
-        margin: 0px 10px 0px 10px;
-        text-align: right;
-}
-.tabCompra label{
         width: 90px;
         display: block;
-        margin: 10px 10px 10px 30px;
+        margin: 5px 10px 20px 10px;
         text-align: right;
 }
 #tbl_detalle{
         width: 50%;
-        margin-right: 15%;
+        margin-right: 5%;
 }
 #btn_buscar{
         height: 25px;

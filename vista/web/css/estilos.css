@@ -13,6 +13,7 @@ body{
 	font-family: Verdana, Geneva, sans-serif, Arial, Helvetica, sans-serif;
 	background-image: url(../../../lib/img/negro.png), url(../../../lib/img/bg.png);
 	background-attachment:fixed;
+	font-size:12px;
 }
 h6{
 	color:#FFF;
@@ -56,7 +57,7 @@ h6{
         font-size: 14px;
 }
 #sesion .k-button{
-        color: #0C6;
+        color: #FFF;
 }
 #sesion .k-button:hover{
         color: #FFF;
@@ -101,10 +102,10 @@ header{
 }
 #menu li a{
 	text-align:center;
-	color:#0C6;
+	color:#FFF;
 }
 #menu li a label{
-	font-size:18px;
+	font-size:16px;
 }
 #menu li a:hover, a label:hover{
 	color:#FFF;
