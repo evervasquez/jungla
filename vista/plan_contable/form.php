@@ -18,11 +18,11 @@
             <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de Cuenta" required name="nro_cuenta"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['nro_cuenta']))echo $this->datos[0]['nro_cuenta']?>"/></td>
         </tr>
-<!--        <tr>
+        <tr>
             <td><label>Nivel:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese nivel" name="nivel"
-                       id="descripcion" value="<?//php if(isset ($this->datos[0]['nivel']))echo $this->datos[0]['nivel']?>"/></td>
-        </tr>-->
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['nivel']))echo $this->datos[0]['nivel']?>"/></td>
+        </tr>
         <tr>
             <td><label>Nro.Cuenta Padre:</label></td>
             <td>
