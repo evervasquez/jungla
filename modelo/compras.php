@@ -12,6 +12,7 @@ class compras {
     public $idproveedor;
     public $idtipo_transaccion;
     public $confirmacion;
+    public $proveedor;
 
     public function inserta() {
         $datos = array(0, $this->fecha_compra, $this->estado, $this->observaciones, 
@@ -41,7 +42,13 @@ class compras {
         if(is_null($this->idcompra)){
             $this->idcompra=0;
         }
-        $datos = array($this->idcompra);
+        if(is_null($this->nro_comprobante)){
+            $this->nro_comprobante='';
+        }
+        if(is_null($this->proveedor)){
+            $this->proveedor='';
+        }
+        $datos = array($this->idcompra,$this->nro_comprobante,$this->proveedor);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_compras", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -49,7 +56,8 @@ class compras {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
     }
 
     public function elimina() {

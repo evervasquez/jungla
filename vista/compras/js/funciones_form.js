@@ -1,4 +1,18 @@
 $(document).ready(function(){
+    $("#nro_comprobante").focus();
+    $("#tbl_busca_proveedor").kendoGrid({
+        dataSource: {
+            pageSize: 7
+        },
+        pageable: true
+    });
+    $("#tbl_busca_productos").kendoGrid({
+        dataSource: {
+            pageSize: 7
+        },
+        pageable: true
+    });
+    $("#tbl_detalle_compra").kendoGrid();
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
             var pwd = $(this).next().html();
@@ -138,42 +152,58 @@ $(document).ready(function(){
         error=false;
         msg='';
         x=0;
-        
-        $("#tbl_detalle_compra tr").each(function(){
-            id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
-            if(id_p==idp){
-                error=true;
-                msg='este producto ya fue seleccionado';
+        if(pro == ""){
+            alert("Seleccione un producto");
+        }
+        else{
+            if(c == "" || c == 0){
+                alert("Ingrese cantidad");
+                $(".cantidad").focus();
             }
-            x++;
-        });
-        
-        if(error){
-            alert(msg);
-        }else{
-            item++;
-            html = '<tr>';
-            html +='<td width="40px">'+item+'</td>';
-            html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
-            html +='<td>'+um+'</td>';
-            html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
-            html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
-            st=pre*c;
-            html +='<td>'+st+'</td>';
-            html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
-            html +='</tr>';
-            
-            importe += st;
-            t = importe + igv * (importe);
-            $("#importe").val(importe);
-            $("#total").val(t);
-            
-            $("#tbl_detalle_compra").append(html);
-            $("#unidad_medida").val('');
-            $("#producto").val('');
-            $("#cantidad").val('');
-            $("#precio").val('');
-            $("#txt_buscar_productos").val('');
+            else{
+                if(pre == ""){
+                    alert("Ingrese precio");
+                    $(".precio").focus();
+                }
+                else{
+                    $("#tbl_detalle_compra tr").each(function(){
+                        id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
+                        if(id_p==idp){
+                            error=true;
+                            msg='este producto ya fue seleccionado';
+                        }
+                        x++;
+                    });
+
+                    if(error){
+                        alert(msg);
+                    }else{
+                        item++;
+                        html = '<tr>';
+                        html +='<td width="40px">'+item+'</td>';
+                        html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
+                        html +='<td>'+um+'</td>';
+                        html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
+                        html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
+                        st=pre*c;
+                        html +='<td>'+st+'</td>';
+                        html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
+                        html +='</tr>';
+
+                        importe += st;
+                        t = importe + igv * (importe);
+                        $("#importe").val(importe);
+                        $("#total").val(t);
+
+                        $("#tbl_detalle_compra").append(html);
+                        $("#unidad_medida").val('');
+                        $("#producto").val('');
+                        $(".cantidad").val('');
+                        $(".precio").val('');
+                        $("#txt_buscar_productos").val('');
+                    }
+                }
+            }
         }
     });
 

@@ -1,19 +1,21 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <fieldset>
-        <legend><?php echo $this->titulo ?></legend>
+        <legend><?php echo $this->titulo ?></legend><br>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="codigo" id="codigo" value="<?php if(isset ($this->datos[0]['idhabitacion']))echo $this->datos[0]['idhabitacion']?>"/>
-        <table width="50%" align="center" class="tabCompra">
-            <tr>
-                <td><label>Nro.de Habitacion:</label></td>
+        <table width="50%" align="center" class="tabFormComplejo">
+            <tr valign="top">
+                <td><label for="nro_habitacion">Nro.de Habitacion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese Nro.de habitacion" required name="nro_habitacion" onKeyPress="return soloNumeros(event);"
                            id="nro_habitacion" value="<?php if(isset ($this->datos[0]['nro_habitacion']))echo $this->datos[0]['nro_habitacion']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="nro_habitacion"></div>
                 </td>
-                <td><label>Descripcion:</label></td>
+                <td><label for="descripcion">Descripcion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
             </tr>
             <tr>
@@ -42,8 +44,8 @@
     </fieldset>
     <fieldset>
         <div id="tbl_detalle">
-        <legend>Costos de habitacion</legend>
-        <table class="tabCompra">
+        <br><legend>Costos de habitacion</legend><br>
+        <table class="tabForm">
             <tr>
                 <td><label>Tipo Habitacion:</label></td>
                 <td>

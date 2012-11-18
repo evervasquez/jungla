@@ -1,51 +1,35 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm" onsubmit="return validarEmpleado();">
     <h3><?php echo $this->titulo ?></h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
-    <table align="center" width="50%">
-        <tr>
-            <td>
-                <div class="msgerror"></div>
-            </td>
-            <td><label>Codigo:</label></td>
-            <td>
-                <input type="text" name="codigo" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idempleado']))echo $this->datos[0]['idempleado']?>"/>
-            </td>
+    <input type="hidden" name="codigo" id="codigo"
+            value="<?php if(isset ($this->datos[0]['idempleado']))echo $this->datos[0]['idempleado']?>"/>
+    <table align="center" class="tabFormComplejo">
+        <tr valign="top">
             <td><label for="nombres">Nombres:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese nombres" required name="nombres" onkeypress="return soloLetras(event)"
                    id="nombre" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="nombres"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="apellidos"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="nombres"></div>
             </td>
             <td><label for="apellidos">Apellidos:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required onkeypress="return soloLetras(event)" name="apellidos"
                     id="apellidos" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="apellidos"></div>
             </td>
             <td><label for="dni">DNI:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.de DNI" required onKeyPress="return soloNumeros(event);" maxlength="8"
                     id="dni" name="dni" value="<?php if(isset ($this->datos[0]['dni']))echo $this->datos[0]['dni']?>"/>
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="dni"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="dni"></div>
             </td>
         </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="telefono"></div>
-            </td>
+        <tr valign="top">
             <td><label for="telefono">Telefono:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese Nro.Telefonico" required name="telefono" onKeyPress="return numeroTelefonico(event);"
                    id="telefono" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="telefono"></div>
             </td>
             <td><label for="provincias">Provincia:</label></td>
             <td>
@@ -69,14 +53,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="provincias"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="ciudad"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="provincias"></div>
             </td>
             <td><label for="ciudad">Ciudad:</label></td>
             <td>
@@ -92,19 +69,15 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
+                <br><div class="k-invalid-msg msgerror" data-for="ciudad"></div>
             </td>
+        </tr>
+        <tr valign="top">
             <td><label for="direccion">Direccion:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese direccion" name="direccion" required
                    id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="direccion"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="profesion"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="direccion"></div>
             </td>
             <td><label for="profesion">Profesion:</label></td>
             <td>
@@ -118,6 +91,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
+                <br><div class="k-invalid-msg msgerror" data-for="profesion"></div>
             </td>
             <td><label for="fecha_nacimiento">Fecha de Nacimiento:</label></td>
             <td>
@@ -125,62 +99,17 @@
                    id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
                            $fecha= $this->datos[0]['fecha_nacimiento'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="fecha_nacimiento"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="fecha_nacimiento"></div>
             </td>
         </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
-            </td>
+        <tr valign="top">
             <td><label for="fecha_contratacion">Fecha de Contratacion:</label></td>
             <td>
                 <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
                    id="fechacon" value="<?php if(isset ($this->datos[0]['fecha_contratacion'])){
                            $fecha=$this->datos[0]['fecha_contratacion'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
-            </td>
-            <td><label for="perfil">Perfil:</label></td>
-            <td>
-                <select class="combo" placeholder="Seleccione..." name="perfil" id="perfil" required>
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_perfiles);$i++){ ?>
-                        <?php if( $this->datos[0]['idperfil'] == $this->datos_perfiles[$i]['idperfil'] ){ ?>
-                    <option value="<?php echo $this->datos_perfiles[$i]['idperfil'] ?>" selected="selected"><?php echo $this->datos_perfiles[$i]['descripcion'] ?></option>
-                        <?php } else { ?>
-                    <option value="<?php echo $this->datos_perfiles[$i]['idperfil'] ?>"><?php echo $this->datos_perfiles[$i]['descripcion'] ?></option>
-                        <?php } ?>
-                    <?php } ?>
-                </select>
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="perfil"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="usuario"></div>
-            </td>
-            <td>
-                <label for="usuario"><span id="valida_usuario"></span>&nbsp;&nbsp;Usuario:</label>
-            </td>
-            <td>
-                <input type="text" class="k-textbox" placeholder="Ingrese usuario" name="usuario" required
-                   id="usuario" value="<?php if(isset ($this->datos[0]['usuario']))echo $this->datos[0]['usuario']?>"/>
-            </td>
-            <td><label for="clave">Contraseña:</label></td>
-            <td>
-                <input type="password" class="k-textbox" placeholder="Ingrese clave" name="clave" id="clave" required
-                   value="<?php if(isset ($this->datos[0]['clave']))echo $this->datos[0]['clave']?>"/>                
-            </td>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="clave"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="k-invalid-msg msgerror" data-for="idactividad"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
             </td>
             <td><label for="idactividad">Actividad:</label></td>
             <td>
@@ -194,6 +123,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
+                <br><div class="k-invalid-msg msgerror" data-for="idactividad"></div>
             </td>
             <td><label for="tipo_empleado">Tipo Empleado:</label></td>
             <td>
@@ -207,15 +137,40 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
+                <br><div class="k-invalid-msg msgerror" data-for="tipo_empleado"></div>
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><label for="perfil">Perfil:</label></td>
+            <td>
+                <select class="combo" placeholder="Seleccione..." name="perfil" id="perfil" required>
+                    <option></option>
+                    <?php for($i=0;$i<count($this->datos_perfiles);$i++){ ?>
+                        <?php if( $this->datos[0]['idperfil'] == $this->datos_perfiles[$i]['idperfil'] ){ ?>
+                    <option value="<?php echo $this->datos_perfiles[$i]['idperfil'] ?>" selected="selected"><?php echo $this->datos_perfiles[$i]['descripcion'] ?></option>
+                        <?php } else { ?>
+                    <option value="<?php echo $this->datos_perfiles[$i]['idperfil'] ?>"><?php echo $this->datos_perfiles[$i]['descripcion'] ?></option>
+                        <?php } ?>
+                    <?php } ?>
+                </select>
+                <br><div class="k-invalid-msg msgerror" data-for="perfil"></div>
             </td>
             <td>
-                <div class="k-invalid-msg msgerror" data-for="tipo_empleado"></div>
+                <label for="usuario"><span id="valida_usuario"></span>&nbsp;&nbsp;Usuario:</label>
+            </td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese usuario" name="usuario" required
+                   id="usuario" value="<?php if(isset ($this->datos[0]['usuario']))echo $this->datos[0]['usuario']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="usuario"></div>
+            </td>
+            <td><label for="clave">Contraseña:</label></td>
+            <td>
+                <input type="password" class="k-textbox" placeholder="Ingrese clave" name="clave" id="clave" required
+                   value="<?php if(isset ($this->datos[0]['clave']))echo $this->datos[0]['clave']?>"/>                
+                <br><div class="k-invalid-msg msgerror" data-for="clave"></div>
             </td>
         </tr>
         <tr>
-            <td>
-                <div class="msgerror"></div>
-            </td>
             <td><label>Estado:</label></td>
             <td>
                 <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
@@ -225,12 +180,13 @@
                 <input type="radio" name="estado" value ="1" checked="checked"/>Activo
                 <input type="radio" name="estado" value="0" />Inactivo
                 <?php } ?>
+                <br><div class="msgerror"></div>
             </td>
             <td colspan="4">
                 <div class="msgerror"></div>
             </td>
         </tr>
-        <tr>
+        <tr valign="top">
             <td>
                 <div class="msgerror"></div>
             </td>

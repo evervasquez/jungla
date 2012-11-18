@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $( "#codigo" ).focus(); 
+    $( "#nombre" ).focus(); 
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
             $("#ubigeo").html('<option>Seleccione...</option>');
@@ -29,4 +29,12 @@ $(document).ready(function(){
         }
     });
 }); 
+function validarEmpleado(){
+    des = $( "#val_usuario" ).val();
+    if(des == 0){
+        alert("Debes cambiar cuenta de usuario");
+        return false;
+    }
+    else return true;
+}
         
