@@ -5,12 +5,12 @@ class plan_contable {
     public $idcuenta;
     public $descripcion;
     public $nro_cuenta;
-    //public $nivel;
+    public $nivel;
     public $idcuenta_padre;
     public $idcategoria;
 
     public function inserta() {
-        $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta, /*$this->nivel,*/
+        $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta, $this->nivel,
             $this->idcuenta_padre, $this->idcategoria);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plan_contable", $datos);
         $error = $r[1];
@@ -51,9 +51,23 @@ class plan_contable {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
-
+    
+        public function seleccionar($idcuenta_padre){
+        $datos = array($idcuenta_padre);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_cuentas_padre", $datos);
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
+        $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
+    }
+    
     public function elimina() {
         $datos = array($this->idcuenta);
         $r = consulta::procedimientoAlmacenado("pa_elimina_plan_contable", $datos);

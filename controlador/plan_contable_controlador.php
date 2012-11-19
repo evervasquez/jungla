@@ -23,13 +23,13 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->idcuenta = 0;
             $this->_plan_contable->descripcion = $_POST['descripcion'];
             $this->_plan_contable->nro_cuenta = $_POST['nro_cuenta'];
-            $this->_plan_contable->nivel = $_POST['nivel'];
             $this->_plan_contable->idcuenta_padre = $_POST['cuenta_padre'];
             $this->_plan_contable->idcategoria = $_POST['idcategoria'];
             $this->_plan_contable->inserta();
             $this->redireccionar('plan_contable');
         }
         $this->_categorias->idcategoria = 0;
+        $this->_vista->datos_cuentas=  $this->_plan_contable->seleccionar(0);
         $this->_vista->datos_categorias = $this->_categorias->selecciona();
         $this->_vista->titulo = 'Registrar Cuenta';
         $this->_vista->action = BASE_URL . 'plan_contable/nuevo';
@@ -64,12 +64,14 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->idcuenta = $_POST['codigo'];
             $this->_plan_contable->descripcion = $_POST['descripcion'];
             $this->_plan_contable->nro_cuenta = $_POST['nro_cuenta'];
-            $this->_plan_contable->nivel = $_POST['nivel'];
             $this->_plan_contable->idcuenta_padre = $_POST['cuenta_padre'];
             $this->_plan_contable->idcategoria = $_POST['idcategoria'];
             $this->_plan_contable->actualiza();
             $this->redireccionar('plan_contable');
         }
+        $this->_vista->datos_categorias = $this->_categorias->selecciona();
+        $this->_vista->datos_cuentas =  $this->_plan_contable->seleccionar(0);
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->titulo = 'Actualizar Cuenta';
         $this->_vista->renderizar('form');
     }

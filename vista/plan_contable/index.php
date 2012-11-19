@@ -4,8 +4,7 @@
         <select class="list" id="filtro">
             <option value="0">Nro.de Cuenta</option>
             <option value="1">Descripcion</option>
-            <option value="2">Nivel</option>
-            <option value="3">Asiento Padre</option>
+            <option value="2">Cuenta Padre</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button search" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
@@ -17,8 +16,7 @@
             <th>Codigo</th>
             <th>Nro.de Cuenta</th>
             <th>Descripcion</th>
-            <th>Nivel</th>
-            <th>Asiento Padre</th>
+            <th>Cuenta Padre</th>
             <th>Categoria</th>
             <th>Accion</th>
         </tr>
@@ -27,12 +25,11 @@
                 <td class="tabtr"><?php echo $this->datos[$i]['idcuenta'] ?></td>
                 <td><?php echo $this->datos[$i]['nro_cuenta'] ?></td>
                 <td><?php echo utf8_encode($this->datos[$i]['descripcion']) ?></td>
-                <td><?php echo $this->datos[$i]['nivel'] ?></td>
                 <td><?php echo utf8_encode($this->datos[$i]['cuenta_padre']) ?></td>
                 <td><?php echo $this->datos[$i]['idcategoria'] ?></td>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>plan_contable/editar/<?php echo $this->datos[$i]['idalmacen'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>plan_contable/eliminar/<?php echo $this->datos[$i]['idalmacen'] ?>')" class="imgdelete"></a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>plan_contable/editar/<?php echo $this->datos[$i]['idcuenta'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>plan_contable/eliminar/<?php echo $this->datos[$i]['idcuenta'] ?>')" class="imgdelete"></a></td>
             </tr>
         <?php } ?>
     </table>
