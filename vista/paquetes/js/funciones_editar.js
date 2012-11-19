@@ -11,17 +11,26 @@ $(document).ready(function(){
     //ventana de busqueda de productos
     $("#btn_vtna_productos").click(function(){
             buscar_producto();
-            var pwd = $(this).next().html();
             $("#vtna_busca_productos").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
             $("#txt_buscar_productos").focus();
     });
     
+    function salir(){
+        $("#txt_buscar_productos").val('');
+        $("#vtna_busca_productos").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    }
      $(".cancela_prod").click(function(){
-            $("#txt_buscar_productos").val('');
-            $("#vtna_busca_productos").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
+         salir();
         });
+        
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };
     
     $("#txt_buscar_productos").keypress(function(event){
        if(event.which == 13){

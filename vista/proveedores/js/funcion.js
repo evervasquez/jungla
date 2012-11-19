@@ -1,18 +1,18 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
-                    dataSource: {
-                        pageSize: 7
-                    },
-                    pageable: true,
-                    columns: [{field:"Codigo", width:6},
-                        {field:"RazonSocial", width:10},
-                        {field:"Representante", width:10},
-                        {field:"RUC", width:10},
-                        {field:"Direccion", width:10},
-                        {field:"Telefono", width:10},
-                        {field:"Email", width:10},
-                        {field:"Acciones", width:8,attributes:{class:"acciones"}}]
-                });
+            dataSource: {
+                pageSize: 7
+            },
+            pageable: true,
+            columns: [{field:"Codigo", width:6},
+                {field:"RazonSocial", width:10},
+                {field:"Representante", width:10},
+                {field:"RUC", width:10},
+                {field:"Direccion", width:10},
+                {field:"Telefono", width:10},
+                {field:"Email", width:10},
+                {field:"Acciones", width:8,attributes:{class:"acciones"}}]
+        });
         $( "#buscar" ).focus();
         
         function buscar(){
@@ -76,11 +76,22 @@
         });
        
        //ver proveedores
-       $("#vtna_ver_proveedor").hide();
-       $("#aceptar").live('click',function(){
+       function salir(){
             $("#vtna_ver_proveedor").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
+       }
+       $("#vtna_ver_proveedor").hide();
+       $("#aceptar").live('click',function(){
+           salir();
+            $("#buscar").focus();
        });
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+                $("#buscar").focus();
+            }
+        };
     });
        function ver(id){
            $.post('/sisjungla/proveedores/ver','idproveedor='+id,function(datos){

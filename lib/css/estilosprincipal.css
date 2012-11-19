@@ -33,31 +33,31 @@ body{
         background:#6F9;
 }
 .imgedit{
-		background-image:url(../img/edit.png);
+	background-image:url(../img/edit.png);
         width: 20px;
-		height: 20px;
-		display:inline-block;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 .imgdelete{
-		background-image:url(../img/delete.png);
+	background-image:url(../img/delete.png);
         width: 20px;
-		height: 20px;
-		display:inline-block;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 .imgselect{
-		background-image:url(../img/select.png);
+	background-image:url(../img/select.png);
         width: 20px;
-		height: 20px;
-		display:inline-block;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 .imgview{
-		background-image:url(../img/view.png);
+	background-image:url(../img/view.png);
         width: 20px;
-		height: 20px;
-		display:inline-block;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 #cabecera{
@@ -76,10 +76,10 @@ body{
         margin: 0 auto;
 }
 #tabla{
-		margin-left:10%;
+	margin-left:10%;
 }
 .comboX{
-		width:150px;
+	width:150px;
 }
 .tabForm label{
         width: 85px;
@@ -119,7 +119,7 @@ body{
         background:#096;
         width: 100%;
         margin: auto;
-		border:solid 1px #000;
+	border:solid 1px #000;
         border-radius:0px 0px 15px 15px;
         -moz-border-radius:0px 0px 15px 15px;
         -webkit-border-radius:0px 0px 15px 15px;
@@ -127,7 +127,7 @@ body{
 }
 #txtFooter{
         padding: 10px;
-		color:#FFF;
+	color:#FFF;
 }
 #footer a{
         text-decoration: none;

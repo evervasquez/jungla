@@ -70,12 +70,23 @@
             buscar();
             $("#buscar").focus();
         });
-        //ver empleados
-       $("#vtna_ver_producto").hide();
-       $("#aceptar").live('click',function(){
+        //ver productos
+        function salir(){
             $("#vtna_ver_producto").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
+        }
+       $("#vtna_ver_producto").hide();
+       $("#aceptar").live('click',function(){
+           salir();
+            $("#buscar").focus();
        });
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+                $("#buscar").focus();
+            }
+        };
     });
        function ver(id){
            $.post('/sisjungla/productos/ver','idproducto='+id,function(datos){

@@ -1,14 +1,7 @@
     $(function(){
         $( "#buscar" ).focus();
-        $(".tabgrilla").kendoGrid({
-            dataSource: {
-                pageSize: 7
-            },
-            pageable: true,
-            columns: [{field:"Codigo", width:10},
-                        {field:"Descripcion", width:80},
-                        {field:"Acciones", width:10,attributes:{class:"acciones"}}]
-        });
+        var obj= new estilos_vistas();
+        obj.kendo_grilla();
         
         function buscar(){
             $.post('/sisjungla/servicios/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
@@ -32,15 +25,8 @@
                 }
                 HTML = HTML + '</table>'
                 $("#grilla").html(HTML);
-                $(".tabgrilla").kendoGrid({
-                    dataSource: {
-                        pageSize: 7
-                    },
-                    pageable: true,
-                    columns: [{field:"Codigo", width:10},
-                                {field:"Descripcion", width:80},
-                                {field:"Acciones", width:10,attributes:{class:"acciones"}}]
-                });
+                var obj= new estilos_vistas();
+                obj.kendo_grilla();
             },'json');
         }
         $("#buscar").keypress(function(event){

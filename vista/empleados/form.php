@@ -127,7 +127,7 @@
             </td>
             <td><label for="tipo_empleado">Tipo Empleado:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." name="tipo_empleado" id="tipo_empleado" required>
+                <select class="combo" placeholder="Seleccione..." name="tipo_empleado" id="tipo_empleadoz" required>
                     <option value="0"></option>
                     <?php for($i=0;$i<count($this->datos_tipo_empleado);$i++){ ?>
                         <?php if( $this->datos[0]['idtipo_empleado'] == $this->datos_tipo_empleado[$i]['idtipo_empleado'] ){ ?>

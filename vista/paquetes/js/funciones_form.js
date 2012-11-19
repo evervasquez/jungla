@@ -18,11 +18,21 @@ $(document).ready(function(){
             $("#txt_buscar_productos").focus();
     });
     
+    function salir(){
+        $("#txt_buscar_productos").val('');
+        $("#vtna_busca_productos").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    }
      $(".cancela_prod").click(function(){
-            $("#txt_buscar_productos").val('');
-            $("#vtna_busca_productos").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
+         salir();
         });
+        
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };
     
     $("#txt_buscar_productos").keypress(function(event){
        if(event.which == 13){
