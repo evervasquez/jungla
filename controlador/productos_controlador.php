@@ -54,16 +54,30 @@ class productos_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
-            $this->_productos->precio_unitario= $_POST['precio_unitario'];
+            if($_POST['precio_unitario']==''){
+                $this->_productos->precio_unitario=null;
+            }else{
+                $this->_productos->precio_unitario= $_POST['precio_unitario'];
+            }
             $this->_productos->observaciones = $_POST['observaciones'];
             $this->_productos->idservicio = $_POST['servicio'];
-            $this->_productos->idtipo_producto = $_POST['tipo_producto'];
+            if($_POST['tipo_producto']==''){
+                $this->_productos->idtipo_producto=0;
+            }else{
+                $this->_productos->idtipo_producto = $_POST['tipo_producto'];
+            }
             $this->_productos->idunidad_medida = $_POST['unidad_medida'];
-            $this->_productos->idubicacion = $_POST['ubicacion'];
-            $this->_productos->idpromocion= $_POST['promocion'];
-            $this->_productos->stock = $_POST['stock'];
+            if($_POST['ubicacion']==''){
+                $this->_productos->idubicacion=0;
+            }else{
+                $this->_productos->idubicacion = $_POST['ubicacion'];
+            }
+            if($_POST['promocion']==''){
+                $this->_productos->idpromocion=0;
+            }else{
+                $this->_productos->idpromocion= $_POST['promocion'];
+            }
             $this->_productos->estado = $_POST['estado'];
-            $this->_productos->precio_compra = $_POST['precio_compra'];
             $this->_productos->inserta();
             $this->redireccionar('productos');
         }
@@ -101,16 +115,30 @@ class productos_controlador extends controller {
 //            exit;
             $this->_productos->idproducto = $_POST['codigo'];
             $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
-            $this->_productos->precio_unitario= $_POST['precio_unitario'];
+            if($_POST['precio_unitario']==''){
+                $this->_productos->precio_unitario=null;
+            }else{
+                $this->_productos->precio_unitario= $_POST['precio_unitario'];
+            }
             $this->_productos->observaciones = $_POST['observaciones'];
             $this->_productos->idservicio = $_POST['servicio'];
-            $this->_productos->idtipo_producto = $_POST['tipo_producto'];
+            if($_POST['tipo_producto']==''){
+                $this->_productos->idtipo_producto=0;
+            }else{
+                $this->_productos->idtipo_producto = $_POST['tipo_producto'];
+            }
             $this->_productos->idunidad_medida = $_POST['unidad_medida'];
-            $this->_productos->idubicacion = $_POST['ubicacion'];
-            $this->_productos->idpromocion= $_POST['promocion'];
-            $this->_productos->stock = $_POST['stock'];
+            if($_POST['ubicacion']==''){
+                $this->_productos->idubicacion=0;
+            }else{
+                $this->_productos->idubicacion = $_POST['ubicacion'];
+            }
+            if($_POST['promocion']==''){
+                $this->_productos->idpromocion=0;
+            }else{
+                $this->_productos->idpromocion= $_POST['promocion'];
+            }
             $this->_productos->estado = $_POST['estado'];
-            $this->_productos->precio_compra = $_POST['precio_compra'];
             $this->_productos->actualiza();
             $this->redireccionar('productos');
         }
