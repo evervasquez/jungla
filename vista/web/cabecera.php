@@ -5,17 +5,40 @@
         <title>La Jungla</title>
         <meta name="description" content="Albergue Turistico La Jungla Tarapoto" />
         <meta name="keywords" content="jungla, tarapoto, turismo, hospedaje, selva" />
-
-        <link rel="shortcut icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />		
-        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.js"></script>
+	
+        <link rel="shortcut icon" href="<?php echo BASE_URL?>lib/img/favicon.ico" type="image/x-icon" />
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.min.js"></script>
-            <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>funcionesweb.js"></script>
-            <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.web.min.js"></script>
-            <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
-            <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
-            <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>estilosweb.css" media="all" />
-            <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jflow.plus.min.js"></script>
-            <link href="<?php echo $_params['ruta_css']; ?>jflow.style.css" type="text/css" media="all" rel="stylesheet" />
+        
+        <!-- compartir-->
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "658251a0-6222-4f0c-a9c3-235584b8e73a"});</script>
+        
+        <!--facebook-->
+        <script type="text/javascript">
+            jQuery.noConflict();jQuery(function (){jQuery(".slide_likebox").hover(function(){jQuery(".slide_likebox").stop(true, false).animate({right:"0"},"medium");},
+                function(){jQuery(".slide_likebox").stop(true, false).animate({right:"-250"},"medium");},500);return false;});
+        </script>
+        <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>fanbox.css" type="text/css" media="screen">
+        <div class="slide_likebox">    
+            <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
+                <div class='likeboxwrap'> 
+                    <span>
+                        <iframe src="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/lajungla.tarapoto&amp;width=238&amp;colorscheme=light&amp;connections=15&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:228px; height:320px;">
+                        </iframe>
+                    </span>        
+                </div>    
+            </div>
+        </div>	
+            
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.js"></script>
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>funcionesweb.js"></script>
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.web.min.js"></script>
+        <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>estilosweb.css" media="all" />
+        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jflow.plus.min.js"></script>
+	<link href="<?php echo $_params['ruta_css']; ?>jflow.style.css" type="text/css" media="all" rel="stylesheet" />
 
         <?php if(isset($_params['js']) && count($_params['js'])): ?>
         <?php for($i=0; $i < count($_params['js']); $i++): ?>
@@ -48,13 +71,13 @@
                     <table>
                         <tr>
                             <td>
-                                <input type="text" required placeholder="Usuario" name="usuario" class="k-textbox" style="width:120px"/>
+                                <input type="text" required placeholder="Usuario" name="usuario" class="k-textbox" validationMessage="Ingrese Usuario ↑"/>
                             </td>
                             <td>
-                                <input type="password" required placeholder="Clave" name="clave" class="k-textbox" style="width:120px"/>
+                                <input type="password" required placeholder="Clave" name="clave" class="k-textbox" validationMessage="Ingrese Clave ↑"/>
                             </td>
                             <td>
-                                <button type="submit" class="k-button">Ingresar</button>
+                                <button type="submit" class="k-button" style="width: 100px">Ingresar</button>
                             </td>
                         </tr>
                         <tr>
@@ -69,7 +92,14 @@
                     </table>
                 </form>
                 <div>
-                    <a href="http://www.facebook.com/" class="normaltip" title="Siguenos en Facebook"><img src="<?php echo $_params['ruta_img']; ?>fb.jpg" alt=""></a>
+                    <span class='st_fblike_large' displayText='Facebook Like'></span>
+                    <span class='st_facebook_large' displayText='Facebook'></span>
+                    <span class='st_twitter_large' displayText='Tweet'></span>
+                    <span class='st_googleplus_large' displayText='Google +'></span>
+                    <span class='st_blogger_large' displayText='Blogger'></span>
+                    <span class='st_messenger_large' displayText='Messenger'></span>
+                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                    <span class='st_email_large' displayText='Email'></span>
                 </div>
             </div>
             <nav id="menuNav">

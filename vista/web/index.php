@@ -54,38 +54,6 @@
                     <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
                 </span>
             </div>
-            <div class="article">
-                <img src="<?php echo BASE_URL?>vista/web/photos/piscina.jpg" class="fotoArt">
-                <span class="contArt">
-                    <h3>Bienvenidos al Portal de la Jungla</h3>
-                    <h4>Un rinc&oacute;n en la selva</h4>
-                    <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
-                </span>
-            </div>
-            <div class="article">
-                <img src="<?php echo BASE_URL?>vista/web/photos/recepcion.jpg" class="fotoArt">
-                <span class="contArt">
-                    <h3>Bienvenidos al Portal de la Jungla</h3>
-                    <h4>Un rinc&oacute;n en la selva</h4>
-                    <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
-                </span>
-            </div>
-            <div class="article">
-                <img src="<?php echo BASE_URL?>vista/web/photos/piscina.jpg" class="fotoArt">
-                <span class="contArt">
-                    <h3>Bienvenidos al Portal de la Jungla</h3>
-                    <h4>Un rinc&oacute;n en la selva</h4>
-                    <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
-                </span>
-            </div>
-            <div class="article">
-                <img src="<?php echo BASE_URL?>vista/web/photos/recepcion.jpg" class="fotoArt">
-                <span class="contArt">
-                    <h3>Bienvenidos al Portal de la Jungla</h3>
-                    <h4>Un rinc&oacute;n en la selva</h4>
-                    <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
-                </span>
-            </div>
         </td>
         <td align="center">
             <span id="position">
@@ -114,10 +82,6 @@ con alto nivel de calidad de servicio, seguridad y tranquilidad.</p>
             <div class="iframe">
                 <h4 class="k-widget k-header">Encuentranos en YouTube</h4>
                 <iframe width="420" height="315" src="http://www.youtube.com/embed/3a0iGZ-IOSA" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="iframe">
-                <h4 class="k-widget k-header">Nuestras actualizaciones en Facebook</h4>
-                <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FDOYLE.PE&amp;width=292&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:590px; background:#ffffff" allowTransparency="true"></iframe>
             </div>
         </td>
     </tr>
