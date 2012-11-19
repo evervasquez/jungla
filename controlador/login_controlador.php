@@ -8,7 +8,8 @@ class login_controlador extends controller {
     public function index() {
         session::set('autenticado', true);
         session::set('empleado', 'Mauro Flores');
-        session::set('perfil', 'administrador');
+        session::set('idempleado', '1');
+        session::set('perfil', 'Administrador');
         session::set('idperfil', 1);
 //        session::set('perfil', 'vendedor');
         

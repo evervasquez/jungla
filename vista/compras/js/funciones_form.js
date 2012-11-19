@@ -229,13 +229,12 @@ $(document).ready(function(){
        importe=importe-$("#tbl_detalle_compra tr:eq("+i+") td:eq(5)").html();
        $("#tbl_detalle_compra tr:eq("+i+")").remove();
        item=0;       
-       x=1;
+       x=0;
        $("#tbl_detalle_compra tr").each(function(){
            item++;
            $("#tbl_detalle_compra tr:eq("+x+") td:eq(0)").html(item);
            x++;
        });
-       item--;
        $("#importe").val(importe);
        $("#igv").blur();
    });

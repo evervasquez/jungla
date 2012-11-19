@@ -13,9 +13,6 @@ $(document).ready(function(){
         pageable: true
     });
     $("#tbl_detalle_compra").kendoGrid();
-    $("#celda_credito").hide();
-    $("#tipo_transaccion").prop("disabled",true);
-    $("#tipo_transaccion").kendoComboBox();
     if($("#tipo_transaccion :selected").val()==2){
         $("#celda_credito").show();
     }else{
@@ -28,7 +25,7 @@ $(document).ready(function(){
             $("#celda_credito").hide();
         }
     });
-    a=1;
+    a=0;
     imp=0;
     $("#tbl_detalle_compra tr").each(function(){
         if(!isNaN(parseFloat($("#tbl_detalle_compra tr:eq("+a+") td:eq(5)").html()))){
@@ -37,7 +34,8 @@ $(document).ready(function(){
         a++;
     });
     $("#importe").val(imp);
-    tot= (1 + parseFloat($("#igv").val()) ) * parseFloat($("#importe").val())
+    tot= (1 + parseFloat($("#igv").val())) * parseFloat($("#importe").val());
+    tot=tot.toFixed(2);
     $("#total").val(tot);
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
@@ -154,15 +152,15 @@ $(document).ready(function(){
     item = $("#tbl_detalle_compra tr:last td:eq(0)").html();
     importe = parseFloat($("#importe").val());
     $("#asignar_producto").click(function(){
+        idc=$("#codigo").val();
         idp=$("#idproducto").val();
         pro=$("#producto").val();
         um=$("#unidad_medida").val();
         c=$("#cantidad").val();
         pre=$("#precio").val();
-        igv = $("#igv").val();
+        igv = parseFloat($("#igv").val());
         error=false;
         msg='';
-        x=0;
         if(pro == ""){
             alert("Seleccione un producto");
         }
@@ -177,6 +175,7 @@ $(document).ready(function(){
                     $(".precio").focus();
                 }
                 else{
+                    x=0;
                     $("#tbl_detalle_compra tr").each(function(){
                         id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
                         if(id_p==idp){
@@ -189,13 +188,14 @@ $(document).ready(function(){
                     if(error){
                         alert(msg);
                     }else{
+                        $.post('/sisjungla/compras/insertar_detalle_compra','idcompra='+idc+'&idprodutos='+idp+'&cantidad='+c+'&precio='+pre);
                         item++;
                         html = '<tr>';
                         html +='<td width="40px">'+item+'</td>';
                         html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
                         html +='<td>'+um+'</td>';
-                        html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
-                        html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
+                        html +='<td>'+c+'</td>';
+                        html +='<td>'+pre+'</td>';
                         st=pre*c;
                         html +='<td>'+st+'</td>';
                         html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
@@ -243,13 +243,12 @@ $(document).ready(function(){
        importe=importe-$("#tbl_detalle_compra tr:eq("+i+") td:eq(5)").html();
        $("#tbl_detalle_compra tr:eq("+i+")").remove();
        item=0;       
-       x=1;
+       x=0;
        $("#tbl_detalle_compra tr").each(function(){
            item++;
            $("#tbl_detalle_compra tr:eq("+x+") td:eq(0)").html(item);
            x++;
        });
-       item--;
        $("#importe").val(importe);
        $("#igv").blur();
    });
