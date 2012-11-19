@@ -24,7 +24,7 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->descripcion = $_POST['descripcion'];
             $this->_plan_contable->nro_cuenta = $_POST['nro_cuenta'];
             $this->_plan_contable->idcuenta_padre = $_POST['cuenta_padre'];
-            $this->_plan_contable->idcategoria = $_POST['idcategoria'];
+            $this->_plan_contable->idcategoria = $_POST['categoria'];
             $this->_plan_contable->inserta();
             $this->redireccionar('plan_contable');
         }
@@ -65,7 +65,7 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->descripcion = $_POST['descripcion'];
             $this->_plan_contable->nro_cuenta = $_POST['nro_cuenta'];
             $this->_plan_contable->idcuenta_padre = $_POST['cuenta_padre'];
-            $this->_plan_contable->idcategoria = $_POST['idcategoria'];
+            $this->_plan_contable->idcategoria = $_POST['categoria'];
             $this->_plan_contable->actualiza();
             $this->redireccionar('plan_contable');
         }
