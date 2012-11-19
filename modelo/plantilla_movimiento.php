@@ -4,9 +4,14 @@ class plantilla_movimiento {
 
     public $idplantilla_movimiento;
     public $descripcion;
-    public $idasiento;
+    public $idcuenta;
+    public $idconcepto_movimiento;
+    public $debe_haber;
 
     public function selecciona() {
+        if(is_null($this->idplantilla_movimiento)){
+            $this->idplantilla_movimiento=0;
+        }
         $datos = array($this->idplantilla_movimiento);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_plantilla_movimiento", $datos);
         if ($r[1] == '') {
@@ -15,6 +20,7 @@ class plantilla_movimiento {
             die($r[1]);
         }
         $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
 
@@ -27,7 +33,7 @@ class plantilla_movimiento {
     }
 
     public function inserta() {
-        $datos = array($this->idplantilla_movimiento, $this->descripcion, $this->idasiento);
+        $datos = array(0,$this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plantilla_movimiento", $datos);
         $error = $r[1];
         $r = null;

@@ -6,7 +6,10 @@ class concepto_movimiento {
     public $descripcion;
 
     public function selecciona() {
-        if(is_null($this->descripcion)){
+        if(is_null($this->idconcepto_movimiento)){
+            $this->idconcepto_movimiento=0;
+        }
+         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
         $datos = array($this->idconcepto_movimiento, $this->descripcion);

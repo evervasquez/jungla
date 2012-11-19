@@ -11,23 +11,25 @@
         <tr>
             <td><label>Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese almacen" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo utf8_encode ($this->datos[0]['descripcion'])?>"/></td>
         </tr>
         <tr>
             <td><label>Nro.de Cuenta:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de Cuenta" required name="nro_cuenta"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['nro_cuenta']))echo $this->datos[0]['nro_cuenta']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['nro_cuenta']))echo utf8_encode($this->datos[0]['nro_cuenta'])?>"/></td>
         </tr>
-        <tr>
-            <td><label>Nivel:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese nivel" name="nivel"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['nivel']))echo $this->datos[0]['nivel']?>"/></td>
-        </tr>
-        <tr>
-            <td><label>Nro.Cuenta Padre:</label></td>
+          <tr>
+            <td><label>Cuenta Padre:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione...">
+                <select class="combo" placeholder="Seleccione..." name="cuenta_padre">
                     <option></option>
+                    <?php for($i=0;$i<count($this->datos_cuentas);$i++){ ?>
+                        <?php if( $this->datos[0]['idcuenta_padre'] == $this->datos_cuentas[$i]['idcuenta'] ){ ?>
+                    <option value="<?php echo $this->datos_cuentas[$i]['idcuenta'] ?>" selected="selected"><?php echo $this->datos_cuentas[$i]['descripcion'] ?></option>
+                        <?php } else { ?>
+                    <option value="<?php echo $this->datos_cuentas[$i]['idcuenta'] ?>"><?php echo $this->datos_cuentas[$i]['descripcion'] ?></option>
+                        <?php } ?>
+                    <?php } ?>
                 </select>
             </td>
         </tr>
@@ -37,7 +39,7 @@
                 <select class="combo" placeholder="Seleccione..." name="categoria">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_categorias);$i++){ ?>
-                        <?php if( $this->datos[0]['idcategoria'] == $this->datos_perfiles[$i]['idcategoria'] ){ ?>
+                        <?php if( $this->datos[0]['idcategoria'] == $this->datos_categorias[$i]['idcategoria'] ){ ?>
                     <option value="<?php echo $this->datos_categorias[$i]['idcategoria'] ?>" selected="selected"><?php echo $this->datos_categorias[$i]['descripcion'] ?></option>
                         <?php } else { ?>
                     <option value="<?php echo $this->datos_categorias[$i]['idcategoria'] ?>"><?php echo $this->datos_categorias[$i]['descripcion'] ?></option>
