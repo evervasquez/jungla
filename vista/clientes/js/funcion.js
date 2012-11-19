@@ -75,12 +75,23 @@
             $("#buscar").focus();
         });
         
-    //ver empleados
-       $("#vtna_ver_cliente").hide();
-       $("#aceptar").live('click',function(){
+    //ver clientes
+        function salir(){
             $("#vtna_ver_cliente").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
+        }
+       $("#vtna_ver_cliente").hide();
+       $("#aceptar").live('click',function(){
+           salir();
+            $("#buscar").focus();
        });
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+                $("#buscar").focus();
+            }
+        };
        
     });
     function ver(id){

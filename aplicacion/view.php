@@ -85,6 +85,22 @@ class view {
     }
 
     public function renderiza_web($vista, $item = false) {
+        $js = array();
+        $css = array();
+
+        if (count($this->_js)) {
+            $js = $this->_js;
+        }
+        if (count($this->_css)) {
+            $css = $this->_css;
+        }
+        $_params = array(
+            'ruta_css' => BASE_URL . 'lib/css/',
+            'ruta_js' => BASE_URL . 'lib/js/',
+            'ruta_img' => BASE_URL . 'lib/img/',
+            'js' => $js,
+            'css' => $css
+        );
         $ruta_vista = ROOT . 'vista' . DS . $this->_controlador . DS . $vista . '.php';
         if (is_readable($ruta_vista)) {
             include_once ROOT . 'vista' . DS . $this->_controlador . DS . 'cabecera.php';

@@ -81,12 +81,13 @@
             salir();
             $("#buscar").focus();
        });
-       $(".imgview").keypress(function(event){
-           if(event.which == 27){
-               salir();
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
                 $("#buscar").focus();
-           } 
-        });
+            }
+        };
        
     });
     function ver(id){
@@ -161,3 +162,4 @@
             $("#fondooscuro").fadeIn(300);
            },'json');
        }
+       
