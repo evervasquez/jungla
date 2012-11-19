@@ -15,7 +15,6 @@ $(document).ready(function(){
     }
     
     $("#um").click(function(){
-            var pwd = $(this).next().html();
             $("#ventana_unidad_medida").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
     }); 
@@ -41,11 +40,17 @@ $(document).ready(function(){
             }
         }      
     });
+    function salir(){
+        $("#ventana_unidad_medida").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    }
     $(".close").click(function(){
-            $("#ventana_unidad_medida").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
-            $("#des_um").css('border','solid 1px #000');
-            $("#abreviatura_um").css('border','solid 1px #000');
+        salir();
     });
-    
+     document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };
 }); 
