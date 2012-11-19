@@ -48,7 +48,7 @@ abstract class controller {
 //            header('location:' . BASE_URL . $ruta);
             exit;
         } else {
-             die("<script> window.location='".BASE_URL."'; </script>");
+             die("<script> window.location='".BASE_URL."index'; </script>");
 //            header('location:' . BASE_URL);
             exit;
         }
@@ -72,7 +72,7 @@ abstract class controller {
 
     public function acceso($idmodulo) {
         if (!session::get('autenticado')) {
-            header('location:' . BASE_URL . 'error/access/5050');
+            header('location:' . BASE_URL );
             exit;
         }
         $permisos = $this->cargar_modelo('permisos');

@@ -1,21 +1,21 @@
     <div class="contacto">
     	<form action="#" method="post" id="frmContacto">
             <h1 class="titleContacto">Dejenos su mensaje</h1>
-            <table align="center">
+            <table align="center" id="tbl_contacto">
             	<tr>
                     <td><label class="txtCont">Nombre</label></td>
-                    <td><input type="text" id="nombreContacto" class="k-textbox" placeholder="Ingrese su nombre" required /></td>
+                    <td><input type="text" id="nombreContacto" class="k-textbox inpCont" placeholder="Ingrese su nombre" required /></td>
                 </tr>
                 <tr>
                     <td><label class="txtCont">E-mail</label></td>
-                    <td><input type="email" id="emailContacto" class="k-textbox" placeholder="Ingrese su e-mail" required></td>
+                    <td><input type="email" id="emailContacto" class="k-textbox inpCont" placeholder="Ingrese su e-mail" required></td>
                 </tr>
                 <tr>
                     <td><label class="txtCont">Tel&eacute;fono</label></td>
-                    <td><input type="text" id="telefonoContacto" class="k-textbox" placeholder="Ingrese su numero telefonico" required></td>
+                    <td><input type="text" id="telefonoContacto" class="k-textbox inpCont" placeholder="Ingrese su numero telefonico" required></td>
                 <tr>
                     <td><label class="txtCont">Mensaje</label></td>
-                    <td><textarea id="mensaje" class="k-textbox" placeholder="Ingrese su mensaje" required/></textarea></td>
+                    <td><textarea id="mensaje" class="k-textbox inpCont" placeholder="Ingrese su mensaje" required/></textarea></td>
                 </tr>
                 <tr align="center">
                     <td colspan="2">

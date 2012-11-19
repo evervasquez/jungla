@@ -29,7 +29,7 @@
         <?php endif; ?>
     </head>
     <body>
-        <a href="<?php echo BASE_URL ?>" id="cabecera"></a>
+        <a href="<?php echo BASE_URL ?>index" id="cabecera"></a>
         <div id="principal">
         	<div id="siscom"><h1 class="k-label">La Jungla</h1></div>
             	<div id="sesion">
@@ -40,7 +40,7 @@
                                 <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
                         <?php }else{ ?>
                             <div id="userSesion"><label>&nbsp;</label></div>
-                            <div id="linkSesion"><a href="<?php echo BASE_URL?>login/index">iniciar sesion</a></div>
+                            <div id="linkSesion"><a href="<?php echo BASE_URL?>">iniciar sesion</a></div>
                         <?php } ?>
                         <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label> | 
                             <label>IP: <?php echo $_SERVER['SERVER_NAME'] ?></label>

@@ -1,20 +1,27 @@
 <?php
 
 class login_controlador extends controller {
+    
+    private $_empleados;
+    
     public function __construct() {
         parent::__construct();
+        $this->_empleados=  $this->cargar_modelo('empleados');
     }
 
     public function index() {
-        session::set('autenticado', true);
-        session::set('empleado', 'Mauro Flores');
-        session::set('idempleado', '1');
-        session::set('perfil', 'Administrador');
-        session::set('idperfil', 1);
-//        session::set('perfil', 'vendedor');
-        
-        $this->redireccionar();
-//        $this->redireccionar('login/mostrar');
+        $datos=$this->_empleados->seleccionar($_POST['usuario'],$_POST['clave']);
+        if($datos['usuario']=$_POST['usuario'] && $datos['idempleado']!=''){
+            session::set('autenticado', true);
+            session::set('empleado', $datos['nombres'].' '.$datos['apellidos']);
+            session::set('idempleado', $datos['idempleado']);
+            session::set('perfil', $datos['perfil']);
+            session::set('idperfil', $datos['idperfil']);
+            $this->redireccionar();
+        }else{
+            echo '<script>alert("usuario o clave incorrecta")</script>';
+            $this->redireccionar('web');
+        }
     }
     
     public function mostrar() {
@@ -24,7 +31,7 @@ class login_controlador extends controller {
 
     public function cerrar() {
         session::destroy();
-        $this->redireccionar();
+        $this->redireccionar('web');
 //        $this->redireccionar('login/mostrar');
     }
 

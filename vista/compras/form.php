@@ -57,7 +57,7 @@
                 </td>
                 <td><label>Intervalo de dias:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="intervalo_dias">
+                    <select class="list" placeholder="Seleccione..." name="intervalo_dias">
                         <option></option>
                         <option value="7">7</option>
                         <option value="14">14</option>

@@ -19,7 +19,7 @@
             <th>Telefono</th>
             <th>Direccion</th>
             <th>Perfil</th>
-            <th>Accion</th>
+            <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>

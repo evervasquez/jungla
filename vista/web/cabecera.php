@@ -67,27 +67,23 @@
                 </span>
             </div>
             <div id="sesion">
-                <form method="post" action="<?php echo BASE_URL?>" id="login">
+                <form method="post" action="<?php echo BASE_URL?>login" id="login">
                     <table>
-                        <tr>
+                        <tr valign="top">
+                            <td>
+                                <label></label>
+                            </td>
                             <td>
                                 <input type="text" required placeholder="Usuario" name="usuario" class="k-textbox" validationMessage="Ingrese Usuario ↑"/>
+                                <br><span class="k-invalid-msg msgerror" data-for="usuario"></span>
                             </td>
                             <td>
                                 <input type="password" required placeholder="Clave" name="clave" class="k-textbox" validationMessage="Ingrese Clave ↑"/>
+                                <br><span class="k-invalid-msg msgerror" data-for="clave"></span>
                             </td>
                             <td>
-                                <button type="submit" class="k-button" style="width: 100px">Ingresar</button>
+                                <button type="submit" class="k-button">Ingresar</button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="k-invalid-msg msgerror" data-for="usuario"></span>
-                            </td>
-                            <td>
-                                <span class="k-invalid-msg msgerror" data-for="clave"></span>
-                            </td>
-                            <td></td>
                         </tr>
                     </table>
                 </form>
@@ -104,7 +100,7 @@
             </div>
             <nav id="menuNav">
                 <ul id="menu">
-                    <li><a href="<?php echo BASE_URL ?>web/"><label>INICIO</label><br>Home</a></li>
+                    <li><a href="<?php echo BASE_URL ?>"><label>INICIO</label><br>Home</a></li>
                     <li><a href="<?php echo BASE_URL ?>web/servicios"><label>SERVICIOS</label><br>Services</a></li>
                     <li><a href="<?php echo BASE_URL ?>web/fotos"><label>FOTOS</label><br>Photos</a></li>
                     <li><a href="<?php echo BASE_URL ?>web/contactenos"><label>CONTACTENOS</label><br>Contac Us</a></li>

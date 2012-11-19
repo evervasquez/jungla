@@ -5,6 +5,9 @@ class servicios_controlador extends controller {
     private $_servicios;
 
     public function __construct() {
+        if (!$this->acceso(3)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_servicios = $this->cargar_modelo('servicios');
     }

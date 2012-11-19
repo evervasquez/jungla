@@ -57,11 +57,12 @@ body{
 	right:5px;
 	margin:5px;
 }
+#sesion label{
+        display: block;
+        margin-bottom: 55px;
+}
 .msgerror{
 	display:block;
-	width:115px;
-	height:24px;
-	position:static;
 }
 /*Estilos de Menu*/
 #menu.k-header,.k-state-default{

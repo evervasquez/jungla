@@ -39,7 +39,7 @@
                     var eliminar='/sisjungla/empleados/eliminar/'+datos[i].idempleado;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" class="imgview ver"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].idempleado+'\')" class="imgview"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
