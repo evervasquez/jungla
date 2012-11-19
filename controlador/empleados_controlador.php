@@ -148,7 +148,7 @@ class empleados_controlador extends controller {
 //        echo '<pre>';
 //        print_r($datos);exit;
         //obtenemos todas las provincias que pertenecen a la región del empleado
-        $this->_provincias->codigo_region = $datos[0]['idregion'];
+        $this->_provincias->codigo_region = 1901;
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         //obtenemos todas las ciudades que pertenecen a la provincia del empleado
         $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];

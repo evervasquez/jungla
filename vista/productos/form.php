@@ -10,7 +10,7 @@
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
-            	<td><label for="precio_unitario">Precio Unitario</label></td>
+            	<td><label for="precio_unitario">Precio Unitario:</label></td>
                 <td>
                     <input type="text" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario"
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
@@ -19,7 +19,7 @@
                 <td></td>
             </tr>
             <tr valign="top">
-            	<td><label for="tipo_producto">Tipo de Producto</label></td>
+            	<td><label for="tipo_producto">Tipo de Producto:</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="tipo_producto" id="tipo_producto">
                     <option></option>
@@ -33,7 +33,7 @@
                     </select>
                     <br><div class="k-invalid-msg msgerror" data-for="tipo_producto"></div>
             	</td>
-            	<td><label for="unidad_medida">Unidad de Medida</label></td>
+            	<td><label for="unidad_medida">Unidad de Medida:</label></td>
                 <td>
                     <select placeholder="Seleccione..." class="combo" required name="unidad_medida" id="unidad_medida">
                     <option></option>
@@ -53,7 +53,7 @@
                    </td>
             </tr>
             <tr valign="top">
-                <td><label>Ubicacion</label></td>
+                <td><label>Ubicacion:</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="ubicacion" id="ubicacion">
                     <option></option>
@@ -66,7 +66,7 @@
                     <?php } ?>
                     </select>
             	</td>
-            	<td><label>Servicio</label></td>
+            	<td><label>Servicio:</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="servicio">
                     <option></option>
@@ -81,7 +81,7 @@
             	</td>
             </tr>
             <tr valign="top">
-                <td><label>Promocion</label></td>
+                <td><label>Promocion:</label></td>
                 <td>
                     <select class="combo"  placeholder="Seleccione..." name="promocion">
                     <option></option>
@@ -94,7 +94,7 @@
                     <?php } ?>
                     </select>
             	</td>
-                <td><label>Estado</label></td>
+                <td><label>Estado:</label></td>
                 <td>
                     <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
                     <input type="radio" name="estado" value ="1" />Activo

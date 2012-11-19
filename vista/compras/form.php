@@ -58,6 +58,7 @@
                 <td><label>Intervalo de dias:</label></td>
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="intervalo_dias">
+                        <option></option>
                         <option value="7">7</option>
                         <option value="14">14</option>
                     </select>
@@ -67,7 +68,7 @@
             <tr valign="top">
                 <td><label for="observaciones">Observaciones:</label></td>
                 <td colspan="3">
-                    <textarea placeholder="Ingrese observacion" required id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
+                    <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
                     <div class="k-invalid-msg msgerror" data-for="observaciones"></div>
                 </td>
                 <td></td>
