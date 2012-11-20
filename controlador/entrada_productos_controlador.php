@@ -19,14 +19,18 @@ class entrada_productos_controlador extends controller{
     }
     
     public function confirmacion(){
-        $this->_vista->datos = $this->_compras->selecciona();
+        $this->_vista->datos = $this->_compras->selecciona();   
         $this->_vista->setJs(array('funciones_confirmacion'));
         $this->_vista->renderizar('confirmacion');
     }
     
     public function get_detalle_compra(){
         $this->_detalle_compra->idcompra = $_POST['idcompra'];
-        json_encode($this->_detalle_compra->selecciona());
+        echo json_encode($this->_detalle_compra->selecciona());
+    }
+    
+    public function inserta(){
+        $_POST['idcompra'];
     }
     
 }
