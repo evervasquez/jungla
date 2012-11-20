@@ -5,6 +5,9 @@ class perfiles_controlador extends controller {
     private $_perfiles;
 
     public function __construct() {
+        if (!$this->acceso(41)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_perfiles = $this->cargar_modelo('perfiles');
     }

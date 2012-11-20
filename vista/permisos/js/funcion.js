@@ -3,7 +3,7 @@ $(document).ready(function(){
     $("#div_modulos").hide();
     $("#perfil").change(function(){
         $(document).find(':checkbox').attr('checked',false);
-        if($(this).val()==''){
+        if($(this).val()==0){
             $("#div_modulos").hide("slow");
         }else{
             $.post('/sisjungla/permisos/get_permisos','idperfil='+$(this).val(),function(datos){

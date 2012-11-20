@@ -10,6 +10,9 @@ class compras_controlador extends controller{
     private $_cuota_pago;
 
     public function __construct() {
+        if (!$this->acceso(16)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_compras = $this->cargar_modelo('compras');
         $this->_proveedores = $this->cargar_modelo('proveedores');

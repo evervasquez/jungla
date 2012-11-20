@@ -5,6 +5,9 @@ class concepto_movimiento_controlador extends controller {
     private $_concepto_movimiento;
 
     public function __construct() {
+        if (!$this->acceso(33)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_concepto_movimiento = $this->cargar_modelo('concepto_movimiento');
     }

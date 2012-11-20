@@ -5,6 +5,9 @@ class categorias_controlador extends controller {
     private $_categorias;
 
     public function __construct() {
+        if (!$this->acceso(34)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_categorias = $this->cargar_modelo('categorias');
     }

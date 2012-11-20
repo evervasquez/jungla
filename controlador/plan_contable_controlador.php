@@ -6,6 +6,9 @@ class plan_contable_controlador extends controller {
     private $_categorias;
 
     public function __construct() {
+        if (!$this->acceso(36)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_plan_contable = $this->cargar_modelo('plan_contable');
         $this->_categorias= $this->cargar_modelo('categorias');

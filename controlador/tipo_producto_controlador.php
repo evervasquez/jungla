@@ -5,6 +5,9 @@ class tipo_producto_controlador extends controller {
  private $_tipo_producto;
 
     public function __construct() {
+        if (!$this->acceso(14)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_tipo_producto = $this->cargar_modelo('tipo_producto');
     }

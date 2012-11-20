@@ -16,6 +16,7 @@ Class menu {
         echo "<div class='menu'>";
         echo "<ul id='menu'>";
         $this->cargarmenu();
+        echo "<li><a href='".BASE_URL."' title='Acceda a la pagina web'>Web</a></li>";
         echo '</ul>';
         echo "</div>";
         echo "<div align='center' id='cuerpo'>";

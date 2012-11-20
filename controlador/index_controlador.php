@@ -18,7 +18,13 @@ class index_controlador extends controller {
         //$this->_vista->titulo = 'Portada';
         //llamamos al metodo renderizar para que muestre la vista enviada
         //por parametro
-        $this->_vista->renderizar('index');
+        if(session::get('autenticado')){
+            $this->_vista->renderizar('index');
+        }
+        else{
+            header('location:' . BASE_URL );
+            exit;
+        }
     }
 
 }

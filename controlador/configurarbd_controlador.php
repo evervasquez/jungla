@@ -3,6 +3,9 @@
 class configurarbd_controlador extends controller{
     
     public function __construct() {
+        if (!$this->acceso(46)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
     }
     

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -67,30 +68,35 @@
                 </span>
             </div>
             <div id="sesion">
-                <form method="post" action="<?php echo BASE_URL?>" id="login">
+                <?php if(session::get('autenticado')){ ?>
+                            <div id="userSesion"><label><?php echo session::get('empleado')?></label></div>
+                            <div id="linkSesion"><label><?php echo session::get('perfil')?></label> | <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
+                            <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label> | 
+                                <label>IP: <?php echo $_SERVER['SERVER_NAME'] ?></label>
+                            </div>
+                        <?php }else{ ?>
+                <form method="post" action="<?php echo BASE_URL?>login" id="login">
                     <table>
-                        <tr>
+                        <tr valign="top">
+                            <td>
+                                <label id="lablogin"></label>
+                            </td>
                             <td>
                                 <input type="text" required placeholder="Usuario" name="usuario" class="k-textbox" validationMessage="Ingrese Usuario ↑"/>
+                                <br><span class="k-invalid-msg msgerror" data-for="usuario"></span>&nbsp;
                             </td>
                             <td>
                                 <input type="password" required placeholder="Clave" name="clave" class="k-textbox" validationMessage="Ingrese Clave ↑"/>
+                                <br><span class="k-invalid-msg msgerror" data-for="clave"></span>&nbsp;&nbsp;
                             </td>
                             <td>
-                                <button type="submit" class="k-button" style="width: 100px">Ingresar</button>
+                                <button type="submit" class="k-button">Ingresar</button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="k-invalid-msg msgerror" data-for="usuario"></span>
-                            </td>
-                            <td>
-                                <span class="k-invalid-msg msgerror" data-for="clave"></span>
-                            </td>
-                            <td></td>
                         </tr>
                     </table>
                 </form>
+                        <?php } ?>
+                <br>
                 <div>
                     <span class='st_fblike_large' displayText='Facebook Like'></span>
                     <span class='st_facebook_large' displayText='Facebook'></span>
@@ -104,10 +110,18 @@
             </div>
             <nav id="menuNav">
                 <ul id="menu">
-                    <li><a href="<?php echo BASE_URL ?>web/"><label>INICIO</label><br>Home</a></li>
+                    <li><a href="<?php echo BASE_URL ?>"><label>INICIO</label><br>Home</a></li>
                     <li><a href="<?php echo BASE_URL ?>web/servicios"><label>SERVICIOS</label><br>Services</a></li>
                     <li><a href="<?php echo BASE_URL ?>web/fotos"><label>FOTOS</label><br>Photos</a></li>
                     <li><a href="<?php echo BASE_URL ?>web/contactenos"><label>CONTACTENOS</label><br>Contac Us</a></li>
+                    <?php if(session::get('autenticado')){ ?>
+                    <li><a href="<?php echo BASE_URL ?>index"><label>SISTEMA</label><br>System</a></li>
+                    <style type="text/css">
+                        #menu li{
+                            width:19.907%;
+                        }
+                    </style>
+                    <?php }?>
                 </ul>
             </nav>
             <div id="contenido">

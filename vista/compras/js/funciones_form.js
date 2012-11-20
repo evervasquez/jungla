@@ -15,16 +15,25 @@ $(document).ready(function(){
     $("#tbl_detalle_compra").kendoGrid();
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
-            var pwd = $(this).next().html();
             $("#vtna_busca_proveedor").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
             $("#txt_buscar_proveedor").focus();
     }); 
+     function salir(){
+        $("#vtna_busca_proveedor").fadeOut(300);
+        $("#txt_buscar_productos").val('');
+        $("#vtna_busca_productos").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    }
      $(".cancela_prov").click(function(){
-            $("#vtna_busca_proveedor").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
-        });
-        
+         salir();
+    });
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };        
     
     $("#txt_buscar_proveedor").keypress(function(event){
        if(event.which == 13){
@@ -93,10 +102,14 @@ $(document).ready(function(){
     });
     
      $(".cancela_prod").click(function(){
-            $("#txt_buscar_productos").val('');
-            $("#vtna_busca_productos").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
+            salir();
         });
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };
     
     $("#txt_buscar_productos").keypress(function(event){
        if(event.which == 13){
@@ -252,4 +265,24 @@ function seleccionar_productos(id,producto,um){
     $("#unidad_medida").val(um);
     $("#vtna_busca_productos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
+}
+
+function validarCompra(){
+    des = $( "#tipo_transaccion" ).val();
+    fv = $( "#fecha_vencimiento" ).val();
+    id = $( "#intervalo_dias" ).val();
+    if(des == 2){
+        if(fv == ""){
+            alert("Seleccione fecha de vencimiento");
+            return false;
+        }
+        else{
+            if(id == ""){
+                alert("Seleccione intervalo de dias");
+                return false;
+            }
+            else return true;
+        }
+    }
+    else return true;
 }

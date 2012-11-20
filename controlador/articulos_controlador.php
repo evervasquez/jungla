@@ -5,6 +5,9 @@ class articulos_controlador extends controller {
     private $_articulos;
 
     public function __construct() {
+        if (!$this->acceso(38)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_articulos = $this->cargar_modelo('articulos');
     }

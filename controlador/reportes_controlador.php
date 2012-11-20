@@ -6,6 +6,9 @@ class reportes_controlador extends controller {
     private $_fpdf;
 
     public function __construct() {
+        if (!$this->acceso(47)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->get_Libreria('fpdf' . DS . 'fpdf');
         $this->_fpdf = new FPDF();

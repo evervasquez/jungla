@@ -9,6 +9,9 @@ class proveedores_controlador extends controller {
     private $_ubigeos;
 
     public function __construct() {
+        if (!$this->acceso(17)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_proveedores = $this->cargar_modelo('proveedores');
         $this->_paises = $this->cargar_modelo('paises');
