@@ -7,8 +7,7 @@
             columns: [{field:"Codigo", width:8},
                 {field:"NrodeCuenta", width:12},
                 {field:"Descripcion", width:27},
-                {field:"Nivel", width:8},
-                {field:"AsientoPadre", width:27},
+                {field:"CuentaPadre", width:27},
                 {field:"Categoria", width:8},
                 {field:"Acciones", width:8,attributes:{class:"acciones"}}]
         });
@@ -20,8 +19,7 @@
                             '<th>Codigo</th>'+
                             '<th>Nro.de Cuenta</th>'+
                             '<th>Descripcion</th>'+
-                            '<th>Nivel</th>'+
-                            '<th>Asiento Padre</th>'+
+                            '<th>Cuenta Padre</th>'+
                             '<th>Categoria</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
@@ -31,7 +29,6 @@
                     HTML = HTML + '<td>'+datos[i].idcuenta+'</td>';
                     HTML = HTML + '<td>'+datos[i].nro_cuenta+'</td>';
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nivel+'</td>';
                     HTML = HTML + '<td>'+datos[i].cuenta_padre+'</td>';
                     HTML = HTML + '<td>'+datos[i].idcategoria+'</td>';
                     var editar='/sisjungla/plan_contable/editar/'+datos[i].idpaquete; 
@@ -51,8 +48,7 @@
                     columns: [{field:"Codigo", width:8},
                         {field:"NrodeCuenta", width:12},
                         {field:"Descripcion", width:27},
-                        {field:"Nivel", width:8},
-                        {field:"AsientoPadre", width:27},
+                        {field:"CuentaPadre", width:27},
                         {field:"Categoria", width:8},
                         {field:"Acciones", width:8,attributes:{class:"acciones"}}]
                 });
