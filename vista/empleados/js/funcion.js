@@ -1,4 +1,4 @@
-    $(function(){
+ $(function(){
         $(".tabgrilla").kendoGrid({
             dataSource: {
                 pageSize: 7
@@ -39,7 +39,7 @@
                     var eliminar='/sisjungla/empleados/eliminar/'+datos[i].idempleado;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].idempleado+'\')"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" class="imgview ver"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -72,11 +72,22 @@
         });
         
     //ver empleados
-       $("#vtna_ver_empleado").hide();
-       $("#aceptar").live('click',function(){
+        function salir(){
             $("#vtna_ver_empleado").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
+        }
+       $("#vtna_ver_empleado").hide();
+       $("#aceptar").live('click',function(){
+            salir();
+            $("#buscar").focus();
        });
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+                $("#buscar").focus();
+            }
+        };
        
     });
     function ver(id){
@@ -133,6 +144,9 @@
                html+= '<td>'+datos[0]['clave']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
+               html+= '<td>Estado:</td>';
+               html+= '<td>'+datos[0]['estado']+'</td>';
+               html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Actividad:</td>';
                html+= '<td>'+datos[0]['actividad']+'</td>';
@@ -148,3 +162,4 @@
             $("#fondooscuro").fadeIn(300);
            },'json');
        }
+       

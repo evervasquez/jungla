@@ -2,23 +2,30 @@
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"
            value="<?php if(isset ($this->datos[0]['idproveedor']))echo $this->datos[0]['idproveedor']?>"/>
-    <table width="50%" align="center">
-        <caption><h3><?php echo $this->titulo ?></h3></caption>
+    <h3><?php echo $this->titulo ?></h3>
+    <div id="tabla">
+    <table align="center" class="tabForm">
         <tr>
-            <td><label>Razon Social:</label></td>
+            <td><label for="razon_social">Razon Social:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="razon_social"
                    id="razon_social" value="<?php if(isset ($this->datos[0]['razon_social']))echo $this->datos[0]['razon_social']?>"/>
             </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="razon_social"></div>
+            </td>
         </tr>
         <tr>
-            <td><label>RUC:</label></td>
+            <td><label for="ruc">RUC:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="ruc" onKeyPress="return soloNumeros(event);"
-                   id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
+                   maxlength="11" id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="ruc"></div>
             </td>
         </tr>
          <tr>
-            <td><label>Region:</label></td>
+            <td><label for="regiones">Region:</label></td>
             <td>
                 <select placeholder="Seleccione..." required id="regiones" class="combo">
                     <option></option>
@@ -41,11 +48,14 @@
                     <?php } ?>
                 </select>
            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="regiones"></div>
+            </td>
         </tr>
         <tr>
-            <td><label>Provincia:</label></td>
+            <td><label for="provincias">Provincia:</label></td>
             <td>
-                <select placeholder="Seleccione..." required id="provincias">
+                <select placeholder="Seleccione..." required id="provincias" class="comboX">
                     <option></option>
                     <?php if(isset ($this->datos)){ ?>
                         <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
@@ -66,11 +76,14 @@
                     <?php } ?>
                 </select>
             </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="provincias"></div>
+            </td>
         </tr>
         <tr>
-            <td><label>Ciudad:</label></td>
+            <td><label for="ubigeo">Ciudad:</label></td>
             <td>
-                <select placeholder="Seleccione..." required name="ubigeo" id="ciudades_proveedores">
+                <select placeholder="Seleccione..." required name="ubigeo" id="ciudades_proveedores" class="comboX">
                     <option>Seleccione...</option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
@@ -83,29 +96,44 @@
                     <?php } ?>
                 </select>
             </td>
-        </tr>
-        <tr>
-            <td><label>Direccion:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
-                   id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="ubigeo"></div>
             </td>
         </tr>
         <tr>
-            <td><label>Representante:</label></td>
+            <td><label for="direccion">Direccion:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
+                   id="direccion" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="direccion"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="representante">Representante:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese nombre representante" required name="representante"
                    id="representante" value="<?php if(isset ($this->datos[0]['representante']))echo $this->datos[0]['representante']?>"/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="representante"></div>
             </td>
         </tr>
         <tr>
             <td><label>Telefono:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" name="telefono"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese numero telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                    id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+            </td>
+            <td>
+                <div class="msgerror"></div>
             </td>
         </tr>
         <tr>
             <td><label>Email:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese email" name="email"
                    id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
+            </td>
+            <td>
+                <div class="msgerror"></div>
             </td>
         </tr>
         <tr>
@@ -115,6 +143,10 @@
                     <a href="<?php echo BASE_URL ?>proveedores" class="k-button cancel">Cancelar</a>
                 </p>
             </td>
+            <td>
+                <div class="msgerror"></div>
+            </td>
         </tr>
     </table>
+    </div>
 </form>

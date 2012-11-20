@@ -12,7 +12,10 @@ class cuota_pago {
     public $nro_cuota;
 
     public function selecciona() {
-        $datos = array($this->idcuota_pago);
+        if(is_null($this->idcompra)){
+            $this->idcompra=0;
+        }
+        $datos = array($this->idcompra);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_cuota_pago", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -25,7 +28,7 @@ class cuota_pago {
     }
 
     public function elimina() {
-        $datos = array($this->idcuota_pago);
+        $datos = array($this->idcompra);
         $r = consulta::procedimientoAlmacenado("pa_elimina_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
@@ -33,16 +36,15 @@ class cuota_pago {
     }
 
     public function inserta() {
-        $datos = array(
-            $this->idcuota_pago,
-            $this->idcompra,
-            $this->fecha_pago,
-            $this->fecha_vencimiento,
-            $this->interes,
-            $this->monto_cuota,
-            $this->monto_pagado,
-            $this->nro_cuota);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_cuota_pago", $datos);
+        if(is_null($this->interes)){
+            $this->interes=0;
+        }
+        if(is_null($this->monto_pagado)){
+            $this->monto_pagado=0;
+        }
+        $datos = array(0, $this->idcompra, $this->fecha_pago, $this->fecha_vencimiento, $this->interes,
+            $this->monto_cuota, $this->monto_pagado, $this->nro_cuota);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -58,7 +60,7 @@ class cuota_pago {
             $this->monto_cuota,
             $this->monto_pagado,
             $this->nro_cuota);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_cuota_pago", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;

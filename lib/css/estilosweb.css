@@ -1,0 +1,116 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Estilos principales*/
+body{ 
+	text-align:justify;
+	font:12px Verdana, Geneva, sans-serif, Arial, Helvetica, sans-serif;
+	background-image: url(../img/linea.jpg);
+	background-attachment:fixed;
+}
+/*Estilos del main*/
+#main{
+	margin:auto;
+	width:80%;
+	position:relative;
+	background:rgba(256,256,256,0.7);
+	border-radius:0px 0px 15px 15px;
+	-moz-border-radius:0px 0px 15px 15px;
+	-webkit-border-radius:0px 0px 15px 15px;
+	-o-border-radius:0px 0px 15px 15px;
+}
+/*Estilos de Header*/
+#header{
+	display:table;
+	width:100%;
+	background:#063;
+}
+#logoJungla{
+	width:120px;
+	height:120px;
+	display:inline;
+	position:relative;
+}
+.titJungla{
+	position:absolute;
+	color:#0F9;
+	font-size:36px;
+	margin-top:20px;
+	margin-left:20px;
+	letter-spacing:0px;
+	display:inline;
+}
+.subtitJungla{
+	position:absolute;
+	color:#FFF;
+	font-size:18px;
+	margin-top:70px;
+	margin-left:20px;
+	letter-spacing:0px;
+	display:inline;
+}
+/*Estilos del Login*/
+#sesion{
+	text-align:right;
+	position:absolute;
+	top:10px;
+	right:5px;
+	margin:5px;
+}
+.msgerror{
+	display:block;
+	width:115px;
+	height:24px;
+	position:static;
+}
+/*Estilos de Menu*/
+#menu.k-header,.k-state-default{
+    border-color:#096;
+}
+#menu.k-header:hover,.k-state-default:hover{
+    border-color:#096;
+}
+#menu li{
+	width:24.907%;
+}
+#menu li a{
+	text-align:center;
+}
+#menu li a label{
+	font-size:16px;
+}
+#menu li a:hover, a label:hover{
+	cursor:pointer;
+}
+/*Estilos del contenido*/
+#contenido{
+	width:100%;
+}
+#footer{
+        background:#096;
+        width: 100%;
+        margin: auto;
+	border:solid 1px #096;
+        border-radius:0px 0px 15px 15px;
+        -moz-border-radius:0px 0px 15px 15px;
+        -webkit-border-radius:0px 0px 15px 15px;
+        -o-border-radius:0px 0px 15px 15px;
+}
+#txtFooter{
+        padding: 10px;
+		color:#FFF;
+}
+#footer a{
+        text-decoration: none;
+        color:#FFF;
+}
+#footer a:hover{
+        text-decoration: underline;
+        color: #EEE;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #999;
+}
+input:hover:-moz-placeholder, textarea:hover:-moz-placeholder {
+    color: #999;
+}

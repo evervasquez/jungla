@@ -14,6 +14,7 @@ class plan_contable_controlador extends controller {
     public function index() {
         $this->_plan_contable->idcuenta = 0;
         $this->_vista->datos = $this->_plan_contable->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
 
@@ -22,17 +23,33 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->idcuenta = 0;
             $this->_plan_contable->descripcion = $_POST['descripcion'];
             $this->_plan_contable->nro_cuenta = $_POST['nro_cuenta'];
-            $this->_plan_contable->nivel = $_POST['nivel'];
             $this->_plan_contable->idcuenta_padre = $_POST['cuenta_padre'];
-            $this->_plan_contable->idcategoria = $_POST['idcategoria'];
+            $this->_plan_contable->idcategoria = $_POST['categoria'];
             $this->_plan_contable->inserta();
             $this->redireccionar('plan_contable');
         }
         $this->_categorias->idcategoria = 0;
+        $this->_vista->datos_cuentas=  $this->_plan_contable->seleccionar(0);
         $this->_vista->datos_categorias = $this->_categorias->selecciona();
         $this->_vista->titulo = 'Registrar Cuenta';
         $this->_vista->action = BASE_URL . 'plan_contable/nuevo';
         $this->_vista->renderizar('form');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_plan_contable->nro_cuenta=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_plan_contable->descripcion= $_POST['cadena'];
+        }
+        if($_POST['filtro']==2){
+            $this->_plan_contable->nivel = $_POST['cadena'];
+        }
+        if($_POST['filtro']==3){
+            $this->_plan_contable->idcuenta_padre = $_POST['cadena'];
+        }
+        echo json_encode($this->_plan_contable->selecciona());
     }
     
     public function editar($id) {
@@ -47,12 +64,14 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->idcuenta = $_POST['codigo'];
             $this->_plan_contable->descripcion = $_POST['descripcion'];
             $this->_plan_contable->nro_cuenta = $_POST['nro_cuenta'];
-            $this->_plan_contable->nivel = $_POST['nivel'];
             $this->_plan_contable->idcuenta_padre = $_POST['cuenta_padre'];
-            $this->_plan_contable->idcategoria = $_POST['idcategoria'];
+            $this->_plan_contable->idcategoria = $_POST['categoria'];
             $this->_plan_contable->actualiza();
             $this->redireccionar('plan_contable');
         }
+        $this->_vista->datos_categorias = $this->_categorias->selecciona();
+        $this->_vista->datos_cuentas =  $this->_plan_contable->seleccionar(0);
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->titulo = 'Actualizar Cuenta';
         $this->_vista->renderizar('form');
     }

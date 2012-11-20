@@ -10,6 +10,9 @@ class categorias {
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
+        if(is_null($this->idcategoria)){
+            $this->idcategoria=0;
+        }
         $datos = array($this->idcategoria, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_categorias", $datos);
         if ($r[1] == '') {

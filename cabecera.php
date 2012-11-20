@@ -35,8 +35,8 @@
             	<div id="sesion">
 <!--                	<div id="userSesion"><label>Jair Vasquez</label></div>-->
                         <?php if(session::get('autenticado')){ ?>
-                            <div id="userSesion"><label><?php echo session::get('empleado') ?></label></div>
-                            <div id="linkSesion"><a href="#" onclick="alert('<?php echo session::get('perfil')?>')">perfil</a> | 
+                            <div id="userSesion"><label><?php echo session::get('empleado')?></label></div>
+                            <div id="linkSesion"><label><?php echo session::get('perfil')?></label> | 
                                 <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
                         <?php }else{ ?>
                             <div id="userSesion"><label>&nbsp;</label></div>

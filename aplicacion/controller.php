@@ -44,10 +44,12 @@ abstract class controller {
 
     protected function redireccionar($ruta = false) {
         if ($ruta) {
-            header('location:' . BASE_URL . $ruta);
+            die("<script> window.location='".BASE_URL."$ruta'; </script>");
+//            header('location:' . BASE_URL . $ruta);
             exit;
         } else {
-            header('location:' . BASE_URL);
+             die("<script> window.location='".BASE_URL."'; </script>");
+//            header('location:' . BASE_URL);
             exit;
         }
     }
@@ -68,14 +70,17 @@ abstract class controller {
         return "$a-$m-$d";
     }
 
-    public function acceso($perfil, $modulo) {
+    public function acceso($idmodulo) {
         if (!session::get('autenticado')) {
             header('location:' . BASE_URL . 'error/access/5050');
             exit;
         }
         $permisos = $this->cargar_modelo('permisos');
-        $permiso = $permisos->seleccionar($perfil, $modulo);
-        if ($permiso[0]['perfil'] == '') {
+        $permisos->idperfil= session::get('idperfil');
+        $permisos->idmodulo= $idmodulo;
+        $permiso = $permisos->selecciona();
+//        print_r($permiso);exit;
+        if ($permiso[0]['idperfil']!=session::get('idperfil') || $permiso[0]['estado'] ==0) {
             return false;
         } else {
             return true;

@@ -1,5 +1,31 @@
 $(document).ready(function(){
-    a=1;
+    $("#nro_comprobante").focus();
+    $("#tbl_busca_proveedor").kendoGrid({
+        dataSource: {
+            pageSize: 7
+        },
+        pageable: true
+    });
+    $("#tbl_busca_productos").kendoGrid({
+        dataSource: {
+            pageSize: 7
+        },
+        pageable: true
+    });
+    $("#tbl_detalle_compra").kendoGrid();
+    if($("#tipo_transaccion :selected").val()==2){
+        $("#celda_credito").show();
+    }else{
+        $("#celda_credito").hide();
+    }
+    $("#tipo_transaccion").change(function(){
+        if($(this).val()==2){
+            $("#celda_credito").show();
+        }else{
+            $("#celda_credito").hide();
+        }
+    });
+    a=0;
     imp=0;
     $("#tbl_detalle_compra tr").each(function(){
         if(!isNaN(parseFloat($("#tbl_detalle_compra tr:eq("+a+") td:eq(5)").html()))){
@@ -8,7 +34,8 @@ $(document).ready(function(){
         a++;
     });
     $("#importe").val(imp);
-    tot= (1 + parseFloat($("#igv").val()) ) * parseFloat($("#importe").val())
+    tot= (1 + parseFloat($("#igv").val())) * parseFloat($("#importe").val());
+    tot=tot.toFixed(2);
     $("#total").val(tot);
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
@@ -58,7 +85,7 @@ $(document).ready(function(){
             $("#grilla_proveedores").html(HTML);
             $("#tbl_busca_proveedor").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true
                 });
@@ -114,7 +141,7 @@ $(document).ready(function(){
                 $("#grilla_productos").html(HTML);
                 $("#tbl_busca_productos").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true
                 });
@@ -134,45 +161,60 @@ $(document).ready(function(){
         igv = parseFloat($("#igv").val());
         error=false;
         msg='';
-        x=0;
-        
-        $("#tbl_detalle_compra tr").each(function(){
-            id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
-            if(id_p==idp){
-                error=true;
-                msg='este producto ya fue seleccionado';
+        if(pro == ""){
+            alert("Seleccione un producto");
+        }
+        else{
+            if(c == "" || c == 0){
+                alert("Ingrese cantidad");
+                $(".cantidad").focus();
             }
-            x++;
-        });
-        
-        if(error){
-            alert(msg);
-        }else{
-            $.post('/sisjungla/compras/insertar_detalle_compra','idcompra='+idc+'&idprodutos='+idp+'&cantidad='+c+'&precio='+pre);
-            
-            item++;
-            html = '<tr>';
-            html +='<td width="40px">'+item+'</td>';
-            html +='<td><input type="hidden" value="'+idp+'" class="producto"/>'+pro+'</td>';
-            html +='<td>'+um+'</td>';
-            html +='<td>'+c+'</td>';
-            html +='<td>'+pre+'</td>';
-            st=pre*c;
-            html +='<td>'+st+'</td>';
-            html +='<td><a href="#" class="imgdelete eliminar"></a></td>';
-            html +='</tr>';
-            
-            importe += st;
-            t = importe + igv * (importe);
-            $("#importe").val(importe);
-            $("#total").val(t);
-            
-            $("#tbl_detalle_compra").append(html);
-            $("#unidad_medida").val('');
-            $("#producto").val('');
-            $("#cantidad").val('');
-            $("#precio").val('');
-            $("#txt_buscar_productos").val('');
+            else{
+                if(pre == ""){
+                    alert("Ingrese precio");
+                    $(".precio").focus();
+                }
+                else{
+                    x=0;
+                    $("#tbl_detalle_compra tr").each(function(){
+                        id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
+                        if(id_p==idp){
+                            error=true;
+                            msg='este producto ya fue seleccionado';
+                        }
+                        x++;
+                    });
+
+                    if(error){
+                        alert(msg);
+                    }else{
+                        $.post('/sisjungla/compras/insertar_detalle_compra','idcompra='+idc+'&idprodutos='+idp+'&cantidad='+c+'&precio='+pre);
+                        item++;
+                        html = '<tr>';
+                        html +='<td width="40px">'+item+'</td>';
+                        html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
+                        html +='<td>'+um+'</td>';
+                        html +='<td>'+c+'</td>';
+                        html +='<td>'+pre+'</td>';
+                        st=pre*c;
+                        html +='<td>'+st+'</td>';
+                        html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
+                        html +='</tr>';
+
+                        importe += st;
+                        t = importe + igv * (importe);
+                        $("#importe").val(importe);
+                        $("#total").val(t);
+
+                        $("#tbl_detalle_compra").append(html);
+                        $("#unidad_medida").val('');
+                        $("#producto").val('');
+                        $(".cantidad").val('');
+                        $(".precio").val('');
+                        $("#txt_buscar_productos").val('');
+                    }
+                }
+            }
         }
     });
 
@@ -201,13 +243,12 @@ $(document).ready(function(){
        importe=importe-$("#tbl_detalle_compra tr:eq("+i+") td:eq(5)").html();
        $("#tbl_detalle_compra tr:eq("+i+")").remove();
        item=0;       
-       x=1;
+       x=0;
        $("#tbl_detalle_compra tr").each(function(){
            item++;
            $("#tbl_detalle_compra tr:eq("+x+") td:eq(0)").html(item);
            x++;
        });
-       item--;
        $("#importe").val(importe);
        $("#igv").blur();
    });

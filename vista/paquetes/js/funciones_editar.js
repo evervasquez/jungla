@@ -1,20 +1,36 @@
 $(document).ready(function(){
+    $("#tbl_productos_paquete").kendoGrid();
+    $("#tbl_busca_productos").kendoGrid({
+                    dataSource: {
+                        pageSize: 5
+                    },
+                    pageable: true
+                });
     $("#vtna_busca_productos").hide();
 
     //ventana de busqueda de productos
     $("#btn_vtna_productos").click(function(){
             buscar_producto();
-            var pwd = $(this).next().html();
             $("#vtna_busca_productos").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
             $("#txt_buscar_productos").focus();
     });
     
+    function salir(){
+        $("#txt_buscar_productos").val('');
+        $("#vtna_busca_productos").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    }
      $(".cancela_prod").click(function(){
-            $("#txt_buscar_productos").val('');
-            $("#vtna_busca_productos").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
+         salir();
         });
+        
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };
     
     $("#txt_buscar_productos").keypress(function(event){
        if(event.which == 13){
@@ -33,6 +49,7 @@ $(document).ready(function(){
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
+                            '<th>Unidad Medida</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -40,6 +57,7 @@ $(document).ready(function(){
                 HTML = HTML + '<tr>';
                 HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
                 HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                HTML = HTML + '<td>'+datos[i].um+'</td>';
                 id=datos[i].idproducto;
                 producto=datos[i].descripcion;
                 um=datos[i].um;
@@ -66,32 +84,42 @@ $(document).ready(function(){
         c=$("#cantidad").val();
         error=false;
         msg='';
-        x=0;
-        $("#tbl_productos_paquete tr").each(function(){
-            id_p=$("#tbl_productos_paquete tr:eq("+x+") td:eq(0) :input").val();
-            if(id_p==idp){
-                error=true;
-                msg='este producto ya fue seleccionado';
+        if(pro == ''){
+           alert("Seleccione producto");
+        }
+        else{
+            if(c == 0 || c == ''){
+                alert("Ingrese cantidad");
+                $(".cantidad").focus();
             }
-            x++;
-        });
-        
-        if(error){
-            alert(msg);
-        }else{
-            $.post('/sisjungla/paquetes/insertar_producto_paquete','idpaquete='+idpaq+'&idproducto='+idp+'&cantidad='+c);
-            html = '<tr>';
-            html +='<td><input type="hidden" value="'+idp+'" name="idproducto[]"/>'+pro+'</td>';
-            html +='<td>'+um+'</td>';
-            html +='<td>'+c+'</td>';
-            html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
-            html +='</tr>';
-            
-            $("#tbl_productos_paquete").append(html);
-            $("#unidad_medida").val('');
-            $("#producto").val('');
-            $("#cantidad").val('');
-            $("#txt_buscar_productos").val('');
+            else{
+                x=0;
+                $("#tbl_productos_paquete tr").each(function(){
+                    id_p=$("#tbl_productos_paquete tr:eq("+x+") td:eq(0) :input").val();
+                    if(id_p==idp){
+                        error=true;
+                        msg='este producto ya fue seleccionado';
+                    }
+                    x++;
+                });
+
+                if(error){
+                    alert(msg);
+                }else{
+                    html = '<tr>';
+                    html +='<td><input type="hidden" value="'+idp+'" name="idproducto[]"/>'+pro+'</td>';
+                    html +='<td>'+um+'</td>';
+                    html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
+                    html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
+                    html +='</tr>';
+
+                    $("#tbl_productos_paquete").append(html);
+                    $("#unidad_medida").val('');
+                    $("#producto").val('');
+                    $(".cantidad").val('');
+                    $("#txt_buscar_productos").val('');
+                }
+            }
         }
     });
     

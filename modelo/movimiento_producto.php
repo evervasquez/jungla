@@ -30,6 +30,9 @@ class movimiento_producto {
     }
 
     public function selecciona() {
+        if(is_null($this->idmovimiento_producto)){
+            $this->idmovimiento_producto=0;
+        }
         $datos = array($this->idmovimiento_producto);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_movimiento_producto", $datos);
         if ($r[1] == '') {

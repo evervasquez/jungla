@@ -29,10 +29,6 @@ class modulos_controlador extends controller{
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
-//            echo '<pre>';
-//            print_r($_POST);
-//            echo '</pre>';
-//            exit;
             $this->_modulos->descripcion = $_POST['descripcion'];
             $this->_modulos->url = $_POST['url'];
             if(isset ($_POST['modulo_padre'])){

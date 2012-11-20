@@ -9,7 +9,7 @@ body{
         text-align: left;
 }
 #principal{
-	padding-top:20px;
+	padding-top:31px;
 	margin:0 auto;
 	width:80%;
         background:rgba(256,256,256,0.2);
@@ -18,8 +18,11 @@ body{
 	-webkit-border-radius:0px 0px 35px 35px;
 	-o-border-radius:0px 0px 35px 35px;
 }
-.menu{
-        padding-top: 1%;
+.msgerror{
+	display:block;
+	width:115px;
+	height:24px;
+	position:static;
 }
 .acciones{
         text-align: center;
@@ -30,31 +33,31 @@ body{
         background:#6F9;
 }
 .imgedit{
-		background-image:url(../img/edit.png);
-        width: 25px;
-		height: 25px;
-		display:inline-block;
+	background-image:url(../img/edit.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 .imgdelete{
-		background-image:url(../img/delete.png);
-        width: 25px;
-		height: 25px;
-		display:inline-block;
+	background-image:url(../img/delete.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 .imgselect{
-		background-image:url(../img/select.png);
-        width: 25px;
-		height: 25px;
-		display:inline-block;
+	background-image:url(../img/select.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 .imgview{
-		background-image:url(../img/view.png);
-        width: 25px;
-		height: 25px;
-		display:inline-block;
+	background-image:url(../img/view.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
         border: none;
 }
 #cabecera{
@@ -72,19 +75,25 @@ body{
         width: 90%;
         margin: 0 auto;
 }
+#tabla{
+	margin-left:10%;
+}
+.comboX{
+	width:150px;
+}
 .tabForm label{
-        width: 110px;
+        width: 85px;
         display: block;
-        margin: 10px 10px 10px 30px;
+        margin: 10px;
         text-align: right;
 }
-.tabCompra label{
+.tabFormComplejo label{
         width: 90px;
         display: block;
-        margin: 10px 10px 10px 30px;
+        margin: 5px 10px 20px 10px;
         text-align: right;
 }
-#tbl_hb_esp{
+#tbl_detalle{
         width: 50%;
         margin-right: 10%;
 }
@@ -110,7 +119,7 @@ body{
         background:#096;
         width: 100%;
         margin: auto;
-		border:solid 1px #000;
+	border:solid 1px #000;
         border-radius:0px 0px 15px 15px;
         -moz-border-radius:0px 0px 15px 15px;
         -webkit-border-radius:0px 0px 15px 15px;
@@ -118,7 +127,7 @@ body{
 }
 #txtFooter{
         padding: 10px;
-		color:#FFF;
+	color:#FFF;
 }
 #footer a{
         text-decoration: none;
@@ -159,10 +168,11 @@ body{
         background-image: url("/sisjungla/lib/img/logo.png");
         background-repeat: no-repeat;
         margin: 0 auto;
-        width:768px;
-        height: 182px;
+        width:80%;
+        height: 100%;
         margin-top: 60px;
-        padding-bottom: 60px;
+        padding-bottom: 200px;
+        margin-bottom: 60px;
 }
 #fondooscuro{
 	display: none;

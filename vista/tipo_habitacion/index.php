@@ -1,7 +1,7 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <p><h3>Lista de Tipos de Habitacion</h3></p>
     <p>
-        <select class="combo" id="filtro">
+        <select class="list" id="filtro">
             <option value="0">Descripcion</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">

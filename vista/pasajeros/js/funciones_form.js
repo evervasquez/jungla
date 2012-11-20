@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $("#frm_natural").kendoValidator();
+    $("#frm_juridico").kendoValidator();
+    $("#tipo_cliente").focus();
     $("#pais").change(function(){
         if($(this).val()==193){
             $(".celda_region").show();
