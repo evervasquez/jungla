@@ -79,7 +79,7 @@
                     <table>
                         <tr valign="top">
                             <td>
-                                <label></label>
+                                <label id="lablogin"></label>
                             </td>
                             <td>
                                 <input type="text" required placeholder="Usuario" name="usuario" class="k-textbox" validationMessage="Ingrese Usuario ↑"/>

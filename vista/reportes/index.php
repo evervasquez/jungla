@@ -1,6 +1,9 @@
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
-//        $("#tablaok").kendoGrid();
+        $("#tablaok").kendoGrid({
+            columns: [{field:"Reportes", width:80},
+                {field:"Generar", width:20,attributes:{class:"acciones"}}]
+        });
     });
 </script>
 <h3>Reportes Disponibles</h3>
@@ -18,8 +21,8 @@
     <tr>
 
     <form method="post" action="<?php echo BASE_URL ?>reportes/estadistica_mensual" target="_blank">
-        <td width="85%">Estadística Mensual de Turismo 20120 <br>PARA ESTABLECIMIENTOS DE HOSPEDAJE<br>* Seleccione el mes: 
-            <select name="estadistica_mes">
+        <td>Estadística Mensual de Turismo 20120 <br>PARA ESTABLECIMIENTOS DE HOSPEDAJE<br>* Seleccione el mes: 
+            <select name="estadistica_mes" class="list">
                 <option value="1">Enero</option> 
                 <option value="2">Febrero</option> 
                 <option value="3">Marzo</option> 
@@ -33,7 +36,7 @@
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option> 
             </select>
-            <select name="estadistica_anio">
+            <select name="estadistica_anio" class="list">
                 <option value="2012">2012</option> 
                 <option value="2013">2013</option> 
                 <option value="2014">2014</option> 

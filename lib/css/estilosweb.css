@@ -58,6 +58,10 @@ body{
 	right:5px;
 	margin:5px;
 }
+#lablogin{
+        display: block;
+        margin-bottom: 55px;
+}
 #userSesion{
 	font-size:22px;
 	margin-bottom:5px;

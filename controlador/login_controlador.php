@@ -11,7 +11,7 @@ class login_controlador extends controller {
 
     public function index() {
         $datos=$this->_empleados->seleccionar($_POST['usuario'],$_POST['clave']);
-        if($datos['usuario']=$_POST['usuario'] && $datos['idempleado']!=''){
+        if($datos['usuario']==$_POST['usuario'] && $datos['idempleado']!=''){
             session::set('autenticado', true);
             session::set('empleado', $datos['nombres'].' '.$datos['apellidos']);
             session::set('idempleado', $datos['idempleado']);
@@ -33,7 +33,6 @@ class login_controlador extends controller {
         session::destroy();
         echo '<script>alert("Sesion finalizada")</script>';
         $this->redireccionar();
-//        $this->redireccionar('login/mostrar');
     }
 
 }
