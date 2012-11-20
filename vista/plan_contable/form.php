@@ -40,7 +40,7 @@
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_categorias);$i++){ ?>
                         <?php if( $this->datos[0]['idcategoria'] == $this->datos_categorias[$i]['idcategoria'] ){ ?>
-                    <option value="<?php echo $this->datos_categorias[$i]['idcategoria'] ?>" selected="selected"><?php $this->datos_categorias[$i]['descripcion'] ?></option>
+                    <option value="<?php echo $this->datos_categorias[$i]['idcategoria'] ?>" selected="selected"><?php echo $this->datos_categorias[$i]['descripcion'] ?></option>
                         <?php } else { ?>
                     <option value="<?php echo $this->datos_categorias[$i]['idcategoria'] ?>"><?php echo $this->datos_categorias[$i]['descripcion'] ?></option>
                         <?php } ?>

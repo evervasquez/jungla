@@ -69,5 +69,5 @@ class plantilla_movimiento_controlador extends controller {
         $this->redireccionar('plantilla_movimiento');
     }
 }
-
+ 
 ?>
