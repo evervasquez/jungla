@@ -87,6 +87,13 @@ class reportes_controlador extends controller {
         return $datos;
     }
     
+    public function obtener_habitaciones_x_tipo_habitacion() {
+        $datos =$this->_reportes->selecciona_habitaciones_x_tipo_habitacion();
+        $cabeceras = array ('idtipo_habitacion', 'descripcion', 'cantidad');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
     public function obtener_stock_total() {
         $datos = $this->_reportes->selecciona_stock_total(0);
         $cabeceras = array('idproducto', 'descripcion', 'precio_unitario', 'observaciones', 'servicio', 'tipo_producto', 'unidad_medida', 'idubicacion', 'ubicacion', 'almacen', 'promocion', 'stock', 'precio_compra');
@@ -211,7 +218,7 @@ class reportes_controlador extends controller {
     public function estadistica_mensual() {
         $mes = $_POST['estadistica_mes'];
         //$mes = 10;
-        $ano = $_POST['estadistica_mes'];
+        $ano = $_POST['estadistica_ano'];
         //$ano = 2012;
 
         switch ($mes) {
@@ -319,14 +326,53 @@ class reportes_controlador extends controller {
 
 //CAPITULO 2 CAPACIDAD DE ALOJAMIENTO OFERTADA / UTILIZADA
 //CON BAÑO
+//        $setx = 36.45;
+//        $sety = 94.80;
+//        
+        $datos = $this->obtener_habitaciones_x_tipo_habitacion();
+        $datacount = count($datos);
         $setx = 36.45;
         $sety = 94.80;
-        for ($i = 0; $i <= 6; $i++) {
+        $habitacioncuenta = 1;
+        $conteok = false;
+        $total = 0;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                $dato = $datos[$j]['cantidad'];
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    if($dato!=0){$this->_fpdf->Cell(21.05, 4.30, $dato, 0, 0, 'C');}
+                    else{$this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');}
+                    $total = $total + $dato;
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+        $this->_fpdf->SetY($sety);
+        $this->_fpdf->SetX($setx);
+        $this->_fpdf->Cell(21.05, 4.30, $total, 0, 0, 'C');
+//        for ($i = 0; $i <= 6; $i++) {
+//            $this->_fpdf->SetY($sety);
+//            $this->_fpdf->SetX($setx);
+//            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+//            $sety = $sety + 4.30;
+//        }
 //SIN BAÑO (TODOS 0)
         $setx = $setx + 21.05;
         $sety = 94.80;
@@ -334,7 +380,7 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             if ($i != 2) {
-                $this->_fpdf->Cell(21.05, 4.30, '0', 0, 0, 'C');
+                $this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');
             }
             $sety = $sety + 4.30;
         }
@@ -349,8 +395,10 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
+                $dato = $datos[$j]['camas'];
                 if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
-                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['camas'], 0, 0, 'C');
+                    if($dato!=0){$this->_fpdf->Cell(21.05, 4.30, $dato, 0, 0, 'C');}
+                    else{$this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');}
                     //siguiente habitacion:
                     $conteok = true;
                     switch ($habitacioncuenta) {
@@ -373,12 +421,7 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
         $this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');
-//        for ($i = 0; $i <= 6; $i++) {
-//            $this->_fpdf->SetY($sety);
-//            $this->_fpdf->SetX($setx);
-//            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
-//            $sety = $sety + 4.30;
-//        }
+        
 //NUMERO DE ARRIBOS DE PERSONAS
         $setx = $setx + 21.05;
         $sety = 94.80;
@@ -446,8 +489,10 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
+                $dato = $datos[$j]['costo'];
                 if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
-                    $this->_fpdf->Cell(21.05, 4.30, 'S/.  '.$datos[$j]['costo'].'0', 0, 0, 'C');
+                    if($dato!=0){$this->_fpdf->Cell(21.05, 4.30, 'S/.  '.$dato, 0, 0, 'C');}
+                    else {$this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');}
                     //siguiente habitacion:
                     $conteok = true;
                     switch ($habitacioncuenta) {
@@ -489,12 +534,12 @@ class reportes_controlador extends controller {
         $setx = 18.43;
         $sety = 136;
         $contadorhuesped = 0;
-        $conforme = 0;
 //CAPITULO 3
 //numero de arribos de huespedes por dia del mes
         $mesano = array($mes, $ano);
         $datos = $this->obtener_numero_arribos_huesped_dia_mes($mesano);
         $datacount=count($datos);
+        $conforme = 0;
         for ($i = 1; $i <= 31; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
@@ -528,6 +573,9 @@ class reportes_controlador extends controller {
         $paiscuenta = 28;
         $conteok = false;
         $internacionaltotal = 0;
+        $otroamerica=0;
+        $otroeuropa=0;
+        $otroasia=0;
         for ($i = 0; $i < 31; $i++) {
             if ($i == 4) {
                 $sety = 188.35;
