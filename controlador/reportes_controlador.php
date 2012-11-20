@@ -35,7 +35,11 @@ class reportes_controlador extends controller {
 
     public function obtener_datos_empresa() {
         $datos =$this->_reportes->selecciona_datos_empresa();
-        $cabeceras = array ('razon_social','ruc','nombre_comercial','clase','categoria','numero_certificado','direccion','telefono','fax','region','provincia','distrito','pagina_web','e_mail');
+        $cabeceras = array ('razon_social','ruc','nombre_comercial',
+            'clase','categoria','numero_certificado',
+            'direccion','telefono','fax','region',
+            'provincia','distrito','pagina_web',
+            'e_mail','rep_venta_1','rep_venta_2','rep_venta_3','rep_venta_4','rep_venta_5','rep_venta_6','rep_venta_7');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -86,6 +90,13 @@ class reportes_controlador extends controller {
     public function obtener_stock_total() {
         $datos = $this->_reportes->selecciona_stock_total(0);
         $cabeceras = array('idproducto', 'descripcion', 'precio_unitario', 'observaciones', 'servicio', 'tipo_producto', 'unidad_medida', 'idubicacion', 'ubicacion', 'almacen', 'promocion', 'stock', 'precio_compra');
+        $datos = $this->get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_tipo_habitacion_total(){
+        $datos = $this->_reportes->selecciona_tipo_habitacion_total();
+        $cabeceras = array('idtipo_habitacion', 'descripcion', 'costo', 'camas');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -328,14 +339,46 @@ class reportes_controlador extends controller {
             $sety = $sety + 4.30;
         }
 //NUMERO DE PLAZAS CAMA
+        $datos = $this->obtener_tipo_habitacion_total();
+        $datacount = count($datos);
         $setx = $setx + 21.05;
         $sety = 94.80;
-        for ($i = 0; $i <= 6; $i++) {
+        $habitacioncuenta = 1;
+        $conteok = false;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['camas'], 0, 0, 'C');
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+        $this->_fpdf->SetY($sety);
+        $this->_fpdf->SetX($setx);
+        $this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');
+//        for ($i = 0; $i <= 6; $i++) {
+//            $this->_fpdf->SetY($sety);
+//            $this->_fpdf->SetX($setx);
+//            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+//            $sety = $sety + 4.30;
+//        }
 //NUMERO DE ARRIBOS DE PERSONAS
         $setx = $setx + 21.05;
         $sety = 94.80;
@@ -393,14 +436,45 @@ class reportes_controlador extends controller {
             $sety = $sety + 4.30;
         }
 //TARIFA CON BAÑO
+        $datos = $this->obtener_tipo_habitacion_total();
+        $datacount = count($datos);
         $setx = $setx + 21.05;
         $sety = 94.80;
-        for ($i = 0; $i <= 5; $i++) {
+        $habitacioncuenta = 1;
+        $conteok = false;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, 'S/.  '.$datos[$j]['costo'].'0', 0, 0, 'C');
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+//        $setx = $setx + 21.05;
+//        $sety = 94.80;
+//        for ($i = 0; $i <= 5; $i++) {
+//            $this->_fpdf->SetY($sety);
+//            $this->_fpdf->SetX($setx);
+//            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+//            $sety = $sety + 4.30;
+//        }
 //TARIFA SIN BAÑO
         $setx = $setx + 21.05;
         $sety = 94.80;
@@ -408,7 +482,7 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             if ($i != 2) {
-                $this->_fpdf->Cell(21.05, 4.30, '0', 0, 0, 'C');
+                $this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');
             }
             $sety = $sety + 4.30;
         }
@@ -1116,6 +1190,132 @@ class reportes_controlador extends controller {
         $this->_fpdf->Output();
     }
 
+    public function comprobante_venta(){
+        $ancho = 73;
+        $alto = 130;
+        $ancho_celda_datos = 3.8;
+        $espac = 0;
+        $this->_fpdf = new FPDF('P', 'mm', array($ancho, $alto));
+        $this->_fpdf->AddPage();
+        $this->_fpdf->SetFont('Courier', '', 9);
+        $this->_fpdf->SetFillColor(255, 255, 255);
+        $datos = $this->obtener_datos_empresa();
+        $rep_venta = array('',$datos[0]['rep_venta_1'], $datos[0]['rep_venta_2'],
+            $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
+            $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
+            $datos[0]['rep_venta_7']);
+        
+        $this->_fpdf->SetY(0);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[2]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[3]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[4]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[5]),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.'01/01/2001'.'  '.'HORA:'.'10:10:10'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE  :'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTES VARIOS'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos-2;
+        $this->_fpdf->SetY($espac-1);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  PRODUCTO                   IMPORTE'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos-1;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        //
+        //
+        //
+        //
+        //  ESPACIO DISPONIBLE PARA LISTADO DE PRODUCTOS
+        //
+        //
+        //
+        //$this->_fpdf->Cell($ancho, 6, 'Texto de Prueba', 1, '', 'C', true);
+        
+        $espac = $espac + 10;
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $espac = $espac - 3;
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *   V.VENTA  S/.'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          **  IGV(18%) S/.'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *** TOTAL    S/.'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('              EFECTIVO S/.'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('              VUELTO   S/.'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $espac = $espac + $ancho_celda_datos;
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: X'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: X'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $espac = $espac + $ancho_celda_datos;
+        $espac = $espac + $ancho_celda_datos;
+        
+        //PIE DE PÁGINA
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[6]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[7]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $this->_fpdf->Output();
+    }
+    
 }
 
 ?>
