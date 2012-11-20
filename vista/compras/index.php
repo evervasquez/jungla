@@ -12,15 +12,15 @@
     <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
-            <th><label>Codigo</label></th>
-            <th><label>Nro.Comprobante</label></th>
-            <th><label>Proveedor</label></th>
-            <th><label>Fecha de Compra</label></th>
-            <th><label>Importe</label></th>
-            <th><label>IGV</label></th>
-            <th><label>Total</label></th>
-            <th><label>Tipo de Transaccion</label></th>
-            <th><label>Acciones</label></th>
+            <th>Codigo</th>
+            <th>Nro.Comprobante</th>
+            <th>Proveedor</th>
+            <th>Fecha de Compra</th>
+            <th>Importe</th>
+            <th>IGV</th>
+            <th>Total</th>
+            <th>Tipo de Transaccion</th>
+            <th>Acciones</th>
         </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
@@ -33,8 +33,9 @@
                 <td><?php ?></td>
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td>
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgdelete"></a></td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgdelete"></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

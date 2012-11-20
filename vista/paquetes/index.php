@@ -23,8 +23,9 @@
                 <td><?php echo utf8_encode($this->datos[$i]['descripcion']) ?></td>
                 <td><?php echo $this->datos[$i]['descuento'] ?></td>
                 <td><?php echo $this->datos[$i]['costo'] ?></td>
-                <td><a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>paquetes/editar/<?php echo $this->datos[$i]['idpaquete'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>paquetes/eliminar/<?php echo $this->datos[$i]['idpaquete'] ?>')" class="imgdelete"></a>
+                <td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>paquetes/editar/<?php echo $this->datos[$i]['idpaquete'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>paquetes/eliminar/<?php echo $this->datos[$i]['idpaquete'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

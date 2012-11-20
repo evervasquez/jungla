@@ -11,12 +11,12 @@
     <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
-            <th><label>Codigo</label></th>
-            <th><label>Nro.de Habitacion</label></th>
-            <th><label>Descripcion</label></th>
-            <th><label>Ventilacion</label></th>
-            <th><label>Estado</label></th>
-            <th><label>Acciones</label></th>
+            <th>Codigo</th>
+            <th>Nro.de Habitacion</th>
+            <th>Descripcion</th>
+            <th>Ventilacion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
@@ -33,10 +33,11 @@
                 <?php }else{ ?>
                 <td>En Mantenimiento</td>
                 <?php } ?>
-                <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgdelete"></a>
-                <a href="javacript:void(0)" class="imgview ver"></a></td>
+                <td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgdelete"></a>
+                    <a href="javacript:void(0)" class="imgview ver"></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

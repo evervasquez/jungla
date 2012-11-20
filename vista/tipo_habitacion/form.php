@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td><label for="costo">Costo:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese costo" required name="costo" 
+            <td><input type="text" class="precio" placeholder="Ingrese costo" required name="costo" 
                        id="costo" value="<?php if(isset ($this->datos[0]['costo']))echo $this->datos[0]['costo']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="costo"></div>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td><label for="camas">Numero de camas:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese nro de camas" required name="camas" 
+            <td><input type="text" class="cantidad" placeholder="Ingrese nro de camas" required name="camas" 
                        id="camas" value="<?php if(isset ($this->datos[0]['camas']))echo $this->datos[0]['camas']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="camas"></div>

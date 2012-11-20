@@ -55,10 +55,10 @@
                 </select>
                 <br><div class="k-invalid-msg msgerror" data-for="provincias"></div>
             </td>
-            <td><label for="ciudad">Ciudad:</label></td>
+            <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." name="ubigeo" id="ubigeo" required class="comboX">
-                    <option value="0">Seleccione...</option>
+                    <option></option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
@@ -69,7 +69,7 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
-                <br><div class="k-invalid-msg msgerror" data-for="ciudad"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="ubigeo"></div>
             </td>
         </tr>
         <tr valign="top">
@@ -111,10 +111,10 @@
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
             </td>
-            <td><label for="idactividad">Actividad:</label></td>
+            <td><label>Actividad:</label></td>
             <td>
                 <select class="combo" placeholder="Seleccione..." name="actividad" id="actividad" required>
-                    <option value="0"></option>
+                    <option></option>
                     <?php for($i=0;$i<count($this->datos_actividades);$i++){ ?>
                         <?php if( $this->datos[0]['idactividad'] == $this->datos_actividades[$i]['idactividad'] ){ ?>
                     <option value="<?php echo $this->datos_actividades[$i]['idactividad'] ?>" selected="selected"><?php echo utf8_encode($this->datos_actividades[$i]['descripcion']) ?></option>
@@ -123,12 +123,12 @@
                         <?php } ?>
                     <?php } ?>
                 </select>
-                <br><div class="k-invalid-msg msgerror" data-for="idactividad"></div>
+                <br><div class="k-invalid-msg msgerror" data-for="actividad"></div>
             </td>
-            <td><label for="tipo_empleado">Tipo Empleado:</label></td>
+            <td><label>Tipo Empleado:</label></td>
             <td>
-                <select class="combo" placeholder="Seleccione..." name="tipo_empleado" id="tipo_empleadoz" required>
-                    <option value="0"></option>
+                <select class="combo" placeholder="Seleccione..." name="tipo_empleado" id="tipo_empleado" required>
+                    <option></option>
                     <?php for($i=0;$i<count($this->datos_tipo_empleado);$i++){ ?>
                         <?php if( $this->datos[0]['idtipo_empleado'] == $this->datos_tipo_empleado[$i]['idtipo_empleado'] ){ ?>
                     <option value="<?php echo $this->datos_tipo_empleado[$i]['idtipo_empleado'] ?>" selected="selected"><?php echo $this->datos_tipo_empleado[$i]['descripcion'] ?></option>

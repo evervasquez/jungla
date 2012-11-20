@@ -123,7 +123,7 @@
                     <div id="detalle_compra">
                     <table border="1" class="tabgrilla" id="tbl_detalle_compra">
                         <tr>
-                            <th width="40px">Item</th>
+                            <th>Item</th>
                             <th>Producto</th>
                             <th>Unidad de Medida</th>
                             <th>Cantidad</th>
@@ -224,7 +224,7 @@
         <?php for ($i = 0; $i < count($this->datos_proveedores); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos_proveedores[$i]['idproveedor'] ?></td>
-                <td><?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?></td>
+                <td><?php echo $this->datos_proveedores[$i]['razon_social'] ?></td>
                 <td><?php echo $this->datos_proveedores[$i]['representante'] ?></td>
                 <td><a href="javascript:void(0)" onclick="seleccionar('<?php echo $this->datos_proveedores[$i]['idproveedor'] ?>','<?php echo utf8_encode($this->datos_proveedores[$i]['razon_social']) ?>')"class="imgselect" ></a></td>
             </tr>
@@ -253,7 +253,7 @@
         <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
-                <td><?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?></td>
+                <td><?php echo $this->datos_productos[$i]['descripcion'] ?></td>
                 <td><?php echo $this->datos_productos[$i]['um'] ?></td>
                 <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>','<?php echo $this->datos_productos[0]['um']?>')" class="imgselect"></a></td>
             </tr>

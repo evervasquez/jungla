@@ -15,12 +15,11 @@
             <th>Descripcion</th>
             <th>Acciones</th>
         </tr>
-
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idalmacen'] ?></td>
+                <td><?php echo $this->datos[$i]['idalmacen'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td class="tabtr" align="center">
+                <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>almacenes/editar/<?php echo $this->datos[$i]['idalmacen'] ?>')" class="imgedit" ></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>almacenes/eliminar/<?php echo $this->datos[$i]['idalmacen'] ?>')" class="imgdelete"></a>
                 </td>

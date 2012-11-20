@@ -12,7 +12,7 @@
                 </td>
             	<td><label for="precio_unitario">Precio Unitario:</label></td>
                 <td>
-                    <input type="text" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario"
+                    <input type="text" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario" required
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="precio_unitario"></div>
                 </td>
@@ -21,7 +21,7 @@
             <tr valign="top">
             	<td><label for="tipo_producto">Tipo de Producto:</label></td>
                 <td>
-                    <select class="combo"  placeholder="Seleccione..." name="tipo_producto" id="tipo_producto">
+                    <select class="combo" required  placeholder="Seleccione..." name="tipo_producto" id="tipo_producto">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_tipo);$i++){ ?>
                         <?php if( $this->datos[0]['idtipo_producto'] == $this->datos_tipo[$i]['idtipo_producto'] ){ ?>
