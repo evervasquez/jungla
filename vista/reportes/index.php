@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function(){
-//        $("#tablaok").kendoGrid();
+        //        $("#tablaok").kendoGrid();
     });
 </script>
 <h3>Reportes Disponibles</h3>
@@ -59,6 +59,12 @@
     <td width="85%">Stock Por Ubicación</td>
     <td width="15%" align="center">
         <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual_ubicac')"/>
+    </td>   
+</tr>
+<tr>
+    <td width="85%">Comprobante de Venta</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/comprobante_venta')"/>
     </td>   
 </tr>
 </table>

@@ -38,7 +38,7 @@ class reportes{
     }
     public function selecciona_cantidad_empleados_x_tipo_x_actividad() {
         $dat=null;
-        $r = consulta::procedimientoAlmacenado("pa_cantidad_empleados_x_tipo_x_actividad", $dat);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_cantidad_empleados_x_tipo_x_actividad", $dat);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
@@ -69,6 +69,13 @@ class reportes{
     public function selecciona_ubicaciones() {
         $datos = array(0,'','');
         $r = consulta::procedimientoAlmacenado("pa_selecciona_ubicaciones", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
+    
+    public function selecciona_tipo_habitacion_total(){
+        $datos = array(0,"");
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_habitacion", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
