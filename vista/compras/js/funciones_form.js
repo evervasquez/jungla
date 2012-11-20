@@ -15,9 +15,10 @@ $(document).ready(function(){
     $("#tbl_detalle_compra").kendoGrid();
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
-            $("#vtna_busca_proveedor").fadeIn(300);
-            $("#fondooscuro").fadeIn(300);
-            $("#txt_buscar_proveedor").focus();
+        buscar_proveedor();
+        $("#vtna_busca_proveedor").fadeIn(300);
+        $("#fondooscuro").fadeIn(300);
+        $("#txt_buscar_proveedor").focus();
     }); 
      function salir(){
         $("#vtna_busca_proveedor").fadeOut(300);
@@ -70,7 +71,7 @@ $(document).ready(function(){
             $("#grilla_proveedores").html(HTML);
             $("#tbl_busca_proveedor").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true
                 });
@@ -95,7 +96,6 @@ $(document).ready(function(){
     //ventana de busqueda de productos
     $("#btn_vtna_productos").click(function(){
             buscar_producto();
-            var pwd = $(this).next().html();
             $("#vtna_busca_productos").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
             $("#txt_buscar_productos").focus();
@@ -128,6 +128,7 @@ $(document).ready(function(){
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
+                            '<th>Unidad Medida</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -135,6 +136,7 @@ $(document).ready(function(){
                 HTML = HTML + '<tr>';
                 HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
                 HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                HTML = HTML + '<td>'+datos[i].um+'</td>';
                 id=datos[i].idproducto;
                 producto=datos[i].descripcion;
                 um=datos[i].um;
@@ -145,7 +147,7 @@ $(document).ready(function(){
                 $("#grilla_productos").html(HTML);
                 $("#tbl_busca_productos").kendoGrid({
                     dataSource: {
-                        pageSize: 5
+                        pageSize: 7
                     },
                     pageable: true
                 });

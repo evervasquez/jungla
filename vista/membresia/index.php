@@ -18,9 +18,9 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idmembresia'] ?></td>
+                <td><?php echo $this->datos[$i]['idmembresia'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td align="center" class="tabtr">
+                <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>')" class="imgdelete"></a>
                 </td>

@@ -39,9 +39,10 @@ $(document).ready(function(){
     $("#total").val(tot);
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
-            $("#vtna_busca_proveedor").fadeIn(300);
-            $("#fondooscuro").fadeIn(300);
-            $("#txt_buscar_proveedor").focus();
+        buscar_proveedor();
+        $("#vtna_busca_proveedor").fadeIn(300);
+        $("#fondooscuro").fadeIn(300);
+        $("#txt_buscar_proveedor").focus();
     }); 
     function salir(){
         $("#vtna_busca_proveedor").fadeOut(300);
@@ -137,6 +138,7 @@ $(document).ready(function(){
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
+                            '<th>Unidad Medida</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -144,6 +146,7 @@ $(document).ready(function(){
                 HTML = HTML + '<tr>';
                 HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
                 HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                HTML = HTML + '<td>'+datos[i].um+'</td>';
                 id=datos[i].idproducto;
                 producto=datos[i].descripcion;
                 um=datos[i].um;

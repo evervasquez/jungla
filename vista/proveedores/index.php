@@ -31,9 +31,11 @@
                 <td><?php echo $this->datos[$i]['direccion'] ?></td>
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['email'] ?></td>
-                <td><a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgdelete"></a>
-                <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idproveedor'] ?>')"></a></td>
+                <td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idproveedor'] ?>')"></a>
+                </td>
             </tr>
         <?php } ?>
 </table>

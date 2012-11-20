@@ -84,7 +84,7 @@
             <td><label for="ubigeo">Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." required name="ubigeo" id="ciudades_proveedores" class="comboX">
-                    <option>Seleccione...</option>
+                    <option></option>
                     <?php if(count($this->datos_ubigeos)){ ?>
                         <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
                             <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>

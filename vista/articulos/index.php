@@ -12,17 +12,17 @@
     <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
-            <th><label>Codigo</label></th>
-            <th><label>Titulo</label></th>
-            <th><label>Descripcion</label></th>
-            <th><label>Acciones</label></th>
+            <th>Codigo</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idarticulo'] ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['titulo']) ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['descripcion']) ?></td>
-                <td class="tabtr" align="center">
+                <td><?php echo $this->datos[$i]['idarticulo'] ?></td>
+                <td><?php echo $this->datos[$i]['titulo'] ?></td>
+                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>articulos/editar/<?php echo $this->datos[$i]['idarticulo'] ?>')" class="imgedit" ></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>articulos/eliminar/<?php echo $this->datos[$i]['idarticulo'] ?>')" class="imgdelete"></a>
                 </td>
