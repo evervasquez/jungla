@@ -3,6 +3,9 @@
 class pasajeros_controlador extends controller {
     
     public function __construct() {
+        if (!$this->acceso(26)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_clientes = $this->cargar_modelo('clientes');
         $this->_paises = $this->cargar_modelo('paises');

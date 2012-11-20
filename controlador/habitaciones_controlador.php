@@ -7,6 +7,9 @@ class habitaciones_controlador extends controller {
     private $_tipo_habitacion;
 
     public function __construct() {
+        if (!$this->acceso(27)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_habitaciones = $this->cargar_modelo('habitaciones');
         $this->_habitacion_especifica= $this->cargar_modelo('habitacion_especifica');

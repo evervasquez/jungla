@@ -5,6 +5,9 @@ class membresia_controlador extends controller{
     private $_membresias;
 
     public function __construct() {
+        if (!$this->acceso(4)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_membresias = $this->cargar_modelo('membresia');
     }

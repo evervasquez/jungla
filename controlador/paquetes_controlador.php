@@ -7,6 +7,9 @@ class paquetes_controlador extends controller{
     private $_productos;
 
     public function __construct() {
+        if (!$this->acceso(24)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_paquetes = $this->cargar_modelo('paquetes');
         $this->_producto_paquete= $this->cargar_modelo('producto_paquete');

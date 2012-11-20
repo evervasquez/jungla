@@ -8,8 +8,14 @@ class error_controlador extends controller
     
     public function index()
     {
-        $this->_vista->mensaje = $this->_get_error();
-        $this->_vista->renderizar('index');
+        if(session::get('autenticado')){
+            $this->_vista->mensaje = $this->_get_error();
+            $this->_vista->renderizar('index');
+        }
+        else{
+            header('location:' . BASE_URL );
+            exit;
+        }
     }
     
     public function access($codigo)

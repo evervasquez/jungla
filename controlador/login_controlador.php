@@ -20,7 +20,7 @@ class login_controlador extends controller {
             $this->redireccionar();
         }else{
             echo '<script>alert("usuario o clave incorrecta")</script>';
-            $this->redireccionar('web');
+            $this->redireccionar();
         }
     }
     
@@ -31,7 +31,8 @@ class login_controlador extends controller {
 
     public function cerrar() {
         session::destroy();
-        $this->redireccionar('web');
+        echo '<script>alert("Sesion finalizada")</script>';
+        $this->redireccionar();
 //        $this->redireccionar('login/mostrar');
     }
 

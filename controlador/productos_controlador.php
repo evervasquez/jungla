@@ -10,6 +10,9 @@ class productos_controlador extends controller {
     private $_promociones;
 
     public function __construct() {
+        if (!$this->acceso(8)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_productos = $this->cargar_modelo('productos');
         $this->_servicios= $this->cargar_modelo('servicios');

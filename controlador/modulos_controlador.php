@@ -5,6 +5,9 @@ class modulos_controlador extends controller{
     private $_modulos;
 
     public function __construct() {
+        if (!$this->acceso(42)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_modulos = $this->cargar_modelo('modulos');
     }

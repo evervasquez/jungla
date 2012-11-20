@@ -180,24 +180,24 @@ $(document).ready(function(){
                     <select class="combo" placeholder="Seleccione..." name="estado_civil">
                         <option></option>
                         <?php if($this->datos[0]['estado_civil']=='soltero'){?>
-                        <option value="soltero" selected="selected">Soltero(a)</option>
+                        <option value="Soltero(a)" selected="selected">Soltero(a)</option>
                         <?php }else{ ?>
-                        <option value="soltero">Soltero(a)</option>
+                        <option value="Soltero(a)">Soltero(a)</option>
                         <?php } ?>
                         <?php if($this->datos[0]['estado_civil']=='casado'){?>
-                        <option value="casado" selected="selected">Casado(a)</option>
+                        <option value="Casado(a)" selected="selected">Casado(a)</option>
                         <?php }else{ ?>
-                        <option value="casado">Casado(a)</option>
+                        <option value="Casado(a)">Casado(a)</option>
                         <?php } ?>
                         <?php if($this->datos[0]['estado_civil']=='viudo'){?>
-                        <option value="viudo" selected="selected">Viudo(a)</option>
+                        <option value="Viudo(a)" selected="selected">Viudo(a)</option>
                         <?php }else{ ?>
-                        <option value="viudo">Viudo(a)</option>
+                        <option value="Viudo(a)">Viudo(a)</option>
                         <?php } ?>
                         <?php if($this->datos[0]['estado_civil']=='divorciado'){?>
-                        <option value="divorciado" selected="selected">Divorciado(a)</option>
+                        <option value="Divorciado(a)" selected="selected">Divorciado(a)</option>
                         <?php }else{ ?>
-                        <option value="divorciado">Divorciado(a)</option>
+                        <option value="Divorciado(a)">Divorciado(a)</option>
                         <?php } ?>
                     </select>
                 </td>

@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm" onsubmit="return validarCompra();">
     <fieldset>
         <legend><?php echo $this->titulo ?></legend><br>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
@@ -47,17 +47,17 @@
                 </td>
                 <td></td>
             </tr>
-            <tr id="celda_credito">
+            <tr id="celda_credito" valign="top">
                 <td><label>Fecha Vencimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_vencimiento"
-                       id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
+                       id="fecha_vencimiento" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
                                $fecha=$this->datos[0]['fecha_vencimiento'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
                 </td>
                 <td><label>Intervalo de dias:</label></td>
                 <td>
-                    <select class="list" placeholder="Seleccione..." name="intervalo_dias">
+                    <select class="list" placeholder="Seleccione..." name="intervalo_dias" id="intervalo_dias">
                         <option></option>
                         <option value="7">7</option>
                         <option value="14">14</option>
@@ -69,7 +69,6 @@
                 <td><label for="observaciones">Observaciones:</label></td>
                 <td colspan="3">
                     <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
-                    <div class="k-invalid-msg msgerror" data-for="observaciones"></div>
                 </td>
                 <td></td>
             </tr>

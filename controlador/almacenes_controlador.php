@@ -5,6 +5,9 @@ class almacenes_controlador extends controller {
     private $_almacenes;
 
     public function __construct() {
+        if (!$this->acceso(11)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_almacenes = $this->cargar_modelo('almacenes');
     }

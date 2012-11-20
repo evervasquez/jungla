@@ -5,6 +5,9 @@ class unidad_medida_controlador extends controller{
     private $_unidad_medida;
 
     public function __construct() {
+        if (!$this->acceso(13)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_unidad_medida = $this->cargar_modelo('unidad_medida');
     }

@@ -6,6 +6,9 @@ class ubicaciones_controlador extends controller {
     private $_almacenes;
 
     public function __construct() {
+        if (!$this->acceso(10)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_ubicaciones = $this->cargar_modelo('ubicaciones');
         $this->_almacenes = $this->cargar_modelo('almacenes');

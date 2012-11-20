@@ -7,6 +7,9 @@ class permisos_controlador extends controller {
     private $_modulos;
 
     public function __construct() {
+        if (!$this->acceso(43)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_permisos = $this->cargar_modelo('permisos');
         $this->_perfiles= $this->cargar_modelo('perfiles');

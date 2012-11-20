@@ -39,3 +39,6 @@
             <div>E-mail:<br>&nbsp;&nbsp;lajungla_convenciones@hotmail.com<br>&nbsp;&nbsp;alberguelajungla@gmail.com</div>
         </div>
     </div>
+<div>
+    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.pe/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=tarapoto+la+jungla&amp;aq=&amp;sll=-9.243538,-75.019515&amp;sspn=24.413792,43.286133&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-9.243538,-75.019515&amp;spn=24.413792,43.286133&amp;t=m&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.pe/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=tarapoto+la+jungla&amp;aq=&amp;sll=-9.243538,-75.019515&amp;sspn=24.413792,43.286133&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-9.243538,-75.019515&amp;spn=24.413792,43.286133&amp;t=m" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
+</div>

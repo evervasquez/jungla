@@ -5,6 +5,9 @@ class promociones_controlador extends controller{
     private $_promociones;
 
     public function __construct() {
+        if (!$this->acceso(5)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_promociones = $this->cargar_modelo('promociones');
     }

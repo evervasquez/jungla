@@ -10,6 +10,9 @@ class clientes_controlador extends controller {
     private $_profesiones;
     
     public function __construct() {
+        if (!$this->acceso(22)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_clientes = $this->cargar_modelo('clientes');
         $this->_regiones = $this->cargar_modelo('regiones');
