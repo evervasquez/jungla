@@ -30,7 +30,7 @@
                 <td><?php echo $this->datos[$i]['fecha_compra'] ?></td>
                 <td><?php echo $this->datos[$i]['importe'] ?></td>
                 <td><?php echo $this->datos[$i]['igv'] ?></td>
-                <td><?php ?></td>
+                <td><?php echo $this->datos[$i]['importe'] * ($this->datos[$i]['igv'] + 1) ?></td>
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgedit"></a>
