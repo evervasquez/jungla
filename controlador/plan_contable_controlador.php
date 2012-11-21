@@ -36,6 +36,7 @@ class plan_contable_controlador extends controller {
         $this->_vista->datos_categorias = $this->_categorias->selecciona();
         $this->_vista->titulo = 'Registrar Cuenta';
         $this->_vista->action = BASE_URL . 'plan_contable/nuevo';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
     
@@ -47,10 +48,7 @@ class plan_contable_controlador extends controller {
             $this->_plan_contable->descripcion= $_POST['cadena'];
         }
         if($_POST['filtro']==2){
-            $this->_plan_contable->nivel = $_POST['cadena'];
-        }
-        if($_POST['filtro']==3){
-            $this->_plan_contable->idcuenta_padre = $_POST['cadena'];
+            $this->_plan_contable->cuenta_padre = $_POST['cadena'];
         }
         echo json_encode($this->_plan_contable->selecciona());
     }
@@ -74,8 +72,8 @@ class plan_contable_controlador extends controller {
         }
         $this->_vista->datos_categorias = $this->_categorias->selecciona();
         $this->_vista->datos_cuentas =  $this->_plan_contable->seleccionar(0);
-        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->titulo = 'Actualizar Cuenta';
+        $this->_vista->setJs(array('funciones_form'));
         $this->_vista->renderizar('form');
     }
 

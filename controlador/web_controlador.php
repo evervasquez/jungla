@@ -7,8 +7,10 @@ class web_controlador extends controller {
     }
     
     public function index() {
+        $this->_vista->setJs(array('jflow.plus.min'));
         $this->_vista->setJs(array('funciones_index'));
         $this->_vista->setCss(array('estilos_index'));
+        $this->_vista->setCss(array('jflow.style'));
         $this->_vista->renderiza_web('index');
     }
     

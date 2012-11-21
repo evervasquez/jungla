@@ -26,9 +26,9 @@
                         <option></option>
                         <?php for ($i = 0; $i < count($this->datosCuentas); $i++) { ?>
                             <?php if ($this->datos[0]['idcuenta'] == $this->datosCuentas[$i]['idcuenta']) { ?>
-                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>" selected="selected"><?php echo utf8_encode($this->datosCuentas[$i]['nro_cuenta'] . ':' . $this->datosCuentas[$i]['descripcion']); ?></option>
+                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>" selected="selected"><?php echo $this->datosCuentas[$i]['nro_cuenta'] . ':' . utf8_encode($this->datosCuentas[$i]['descripcion']); ?></option>
                             <?php } else { ?>
-                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>"><?php echo utf8_encode($this->datosCuentas[$i]['nro_cuenta'] . ':' . $this->datosCuentas[$i]['descripcion']); ?></option>
+                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>"><?php echo $this->datosCuentas[$i]['nro_cuenta'] . ':' . utf8_encode($this->datosCuentas[$i]['descripcion']); ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -45,7 +45,7 @@
 
                         <?php for ($i = 0; $i < count($this->datosConcepto); $i++) { ?>
                             <?php if ($this->datos[0]['idconcepto_movimiento'] == $this->datosConcepto[$i]['idconcepto_movimiento']) { ?>
-                                <option value="<?php echo $this->datosConcepto[$i]['idconcepto_movimiento'] ?>" selected="selected"><?php echo utf8_encode($this->datosConcepto[$i]['descripcion']); ?></option>
+                        <option value="<?php echo $this->datosConcepto[$i]['idconcepto_movimiento'] ?>" selected="selected"><?php echo utf8_encode($this->datosConcepto[$i]['descripcion']); ?></option>
                             <?php } else { ?>
                                 <option value="<?php echo $this->datosConcepto[$i]['idconcepto_movimiento'] ?>"><?php echo utf8_encode($this->datosConcepto[$i]['descripcion']); ?></option>
                             <?php } ?>
@@ -61,17 +61,20 @@
                 <td>
                     <select class="combo" placeholder="Seleccione..." required name="debe_haber" id="debe_haber">
                         <option></option>
-                        <?php if ($this->datos[0]['debe_haber'] == 'debe') { ?>
-                            <option value="debe" selected="selected">debe</option>
-                            <option value="haber">haber</option>
-                            <?php } if ($this->datos[0]['debe_haber'] == 'haber') { ?>
-                            <option value="debe">debe</option>
-                            <option value="haber" selected="selected">haber</option>
+                        <?php if ($this->datos[0]['debe_haber'] == 'Debe') { ?>
+                            <option value="Debe" selected="selected">Debe</option>
+                            <option value="Haber">Haber</option>
+                            <?php } if ($this->datos[0]['debe_haber'] == 'Haber') { ?>
+                            <option value="Debe">Debe</option>
+                            <option value="Haber" selected="selected">Haber</option>
                         <?php }else{ ?>
-                            <option value="debe">debe</option>
-                            <option value="haber">haber</option>
+                            <option value="Debe">Debe</option>
+                            <option value="Haber">Haber</option>
                             <?php }?>
                     </select>
+                </td>
+                <td>
+                    <div class="k-invalid-msg msgerror" data-for="debe_haber"></div>
                 </td>
             </tr>
             <tr>

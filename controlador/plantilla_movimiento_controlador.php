@@ -7,6 +7,9 @@ class plantilla_movimiento_controlador extends controller {
     private $_concepto_movimiento;
 
     public function __construct() {
+        if (!$this->acceso(32)) {
+            $this->redireccionar('error/access/5050');
+        }
         $this->_plantilla_movimiento = $this->cargar_modelo('plantilla_movimiento');
         $this->_plan_contable = $this->cargar_modelo('plan_contable');
         $this->_concepto_movimiento = $this->cargar_modelo('concepto_movimiento');

@@ -5,13 +5,19 @@ class articulos {
     public $idarticulo;
     public $titulo;
     public $descripcion;
-    public $idmodulo;
+    public $imagen;
 
     public function selecciona() {
         if(is_null($this->idarticulo)){
             $this->idarticulo=0;
         }
-        $datos = array($this->idarticulo);
+        if(is_null($this->titulo)){
+            $this->titulo="";
+        }
+        if(is_null($this->descripcion)){
+            $this->descripcion="";
+        }
+        $datos = array($this->idarticulo,$this->titulo,$this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_articulos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -32,7 +38,7 @@ class articulos {
     }
 
     public function inserta() {
-        $datos = array(0, $this->titulo, $this->descripcion, 37);
+        $datos = array(0, $this->titulo, $this->descripcion, $this->imagen);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_articulos", $datos);
         $error = $r[1];
         $r = null;
@@ -40,7 +46,7 @@ class articulos {
     }
 
     public function actualiza() {
-        $datos = array($this->idarticulo, $this->titulo, $this->descripcion, $this->idmodulo);
+        $datos = array($this->idarticulo, $this->titulo, $this->descripcion, $this->imagen);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_articulos", $datos);
         $error = $r[1];
         $r = null;

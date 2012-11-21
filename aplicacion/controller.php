@@ -9,6 +9,9 @@ abstract class controller {
     public function __construct() {
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
+        if(session::get('autenticado')){
+            $this->_modelo->idperfil = session::get('idperfil');
+        }
         $menu = $this->_modelo->selecciona();
         $this->_vista = new view(new request, $menu);
     }
