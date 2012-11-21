@@ -17,17 +17,15 @@
             <th>Accion</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
-            <?php if($this->datos[$i]['confirmacion']==0){ ?>
-            <tr>
-                <td><?php echo $this->datos[$i]['nro_comprobante'] ?></td>
-                <td><?php echo $this->datos[$i]['proveedor'] ?></td>
-                <td><?php echo $this->datos[$i]['fecha_compra'] ?></td>
-                <td class="tabtr" align="center">
-                    <a href="<?php echo BASE_URL ?>entrada_productos/confirmacion/<?php echo $this->datos[$i]['idcompra']?>">[Verificar]</a>
-                </td>
-            </tr>
-            <?php } ?>
-        <?php } ?>
+        <tr>
+            <td><?php echo $this->datos[$i]['nro_comprobante'] ?></td>
+            <td><?php echo $this->datos[$i]['proveedor'] ?></td>
+            <td><?php echo $this->datos[$i]['fecha_compra'] ?></td>
+            <td class="tabtr" align="center">
+                <a href="<?php echo BASE_URL ?>entrada_productos/confirmacion/<?php echo $this->datos[$i]['idcompra']?>">[Verificar]</a>
+            </td>
+        </tr>
+    <?php } ?>
 </table>
 <p><a href="<?php echo BASE_URL?>entrada_productos" class="k-button cancelar">Aceptar</a></p>
 </div>

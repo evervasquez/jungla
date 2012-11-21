@@ -17,12 +17,12 @@ class productos {
     public $tipo_producto;
     public $unidad_medida;
     public $ubicacion;
-    
+    public $aumenta;
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->precio_unitario, $this->observaciones, 
             $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
-            $this->idpromocion, $this->stock, $this->estado, $this->precio_compra, 0);
+            $this->idpromocion, $this->stock, $this->estado, $this->precio_compra, null);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);
         $error = $r[1];
         $r = null;
@@ -30,10 +30,18 @@ class productos {
     }
 
     public function actualiza() {
-        $datos = array($this->idproducto, $this->descripcion, $this->precio_unitario, $this->observaciones, 
-            $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
-            $this->idpromocion, $this->stock, $this->estado, $this->precio_compra, 0);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);
+        if(is_null($this->stock)){
+            $datos = array($this->idproducto, $this->descripcion, $this->precio_unitario, $this->observaciones, 
+                $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
+                $this->idpromocion, $this->stock, $this->estado, $this->precio_compra, null);
+            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);
+        }else{
+            if(is_null($this->aumenta)){
+                $this->aumenta = 0;
+            }
+            $datos = array ($this->idproducto, $this->stock, $this->aumenta);
+            $r = consulta::procedimientoAlmacenado("pa_actualizar_stock_producto", $datos);
+        }
         $error = $r[1];
         $r = null;
         return $error;

@@ -49,7 +49,7 @@ class compras {
             $this->proveedor='';
         }
         if(is_null($this->confirmacion)){
-            $this->confirmacion='';
+            $this->confirmacion=null;
         }
         $datos = array($this->idcompra,$this->nro_comprobante,$this->proveedor, $this->confirmacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_compras", $datos);

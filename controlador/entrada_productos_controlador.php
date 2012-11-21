@@ -16,8 +16,8 @@ class entrada_productos_controlador extends controller{
     }
     
     public function index(){
-        $this->_compras->confirmacion=1;
-        $this->_vista->datos = $this->_compras->selecciona();
+        $this->_vista->datos = $this->_movimiento_producto->selecciona();
+//        echo '<pre>';print_r($this->_vista->datos);exit;
         $this->_vista->renderizar('index');
     }
     
@@ -36,14 +36,24 @@ class entrada_productos_controlador extends controller{
     }
     
     public function inserta(){
-        //actualiza stock de productos
-        
-        
-        //inserta movimiento_producto
 //        echo '<pre>';
 //        print_r($_POST);exit;
-        $_POST['idcompra'];
-        $this->_vista->renderizar('entradas_pendientes');
+        //actualiza stock de productos
+        for($i=0;$i<count($_POST['idproducto']);$i++){
+            $this->_productos->idproducto=$_POST['idproducto'][$i];
+            $this->_productos->stock=$_POST['cantidad'][$i];
+            $this->_productos->aumenta=1;
+            $this->_productos->actualiza();
+        }
+        
+        //inserta movimiento_producto
+        $this->_movimiento_producto->idcompra=$_POST['idcompra'];
+        $this->_movimiento_producto->idtipo_movimiento=1;
+        $this->_movimiento_producto->idempleado=session::get('idempleado');
+        $this->_movimiento_producto->fecha=date("d-m-Y");
+        $this->_movimiento_producto->inserta();
+        
+        $this->entradas_pendientes();
     }
     
 }
