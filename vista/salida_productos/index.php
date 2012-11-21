@@ -1,38 +1,36 @@
-<?php if (isset($this->datos) && count($this->datos)) { ?>
-<p><h3>Lista de Empleados</h3></p>
-<p>
-    <select class="list" id="filtro">
-        <option value="0">Nombre</option>
-        <option value="1">Apellidos</option>
-        <option value="2">Perfil</option>
-    </select>
-    <input type="text" class="k-textbox" style="width: 50%" id="buscar">
-    <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
-    <a href="<?php echo BASE_URL?>empleados/nuevo" class="k-button">Nuevo</a>
-</p>
-<div id="grilla">
+<?php if (isset($this->datos) && count($this->datos) ){ ?>
+<h3>Salida de productos</h3>
+    <p>
+        <select class="combo" id="filtro">
+            <option value="0">Producto</option>
+            <option value="1">Empleado</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 50%" id="buscar">
+        <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
+        <a href="<?php echo BASE_URL?>salida_productos/registrar_salida" class="k-button">Registrar Salida</a>
+    </p>
+    <div id="grilla">
     <table border="1" class="tabgrilla" id="tbl_empleado">
         <tr>
-            <th></th>
+            <th>Empleado</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
         </tr>
-        <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+    <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+        <?php if($this->datos[$i]['idtipo_movimiento'] != 1){ ?>
         <tr>
-            <td><?php echo $this->datos[$i]['idempleado'] ?></td>
-            <td><?php echo $this->datos[$i]['nombres'] ?></td>
-            <td><?php echo $this->datos[$i]['apellidos'] ?></td>
-            <td><?php echo $this->datos[$i]['telefono'] ?></td>
-            <td><?php echo $this->datos[$i]['direccion'] ?></td>
-            <td><?php echo $this->datos[$i]['perfil'] ?></td>
-            <td class="tabtr" align="center">
-            <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgedit"></a>
-            <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgdelete"></a>
-            <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idempleado'] ?>')"></a></td>
+            <td><?php echo $this->datos[$i]['empleados_n'].' '.$this->datos[$i]['empleados_a'] ?></td>
+            <td><?php echo $this->datos[$i]['producto'] ?></td>
+            <td><?php echo $this->datos[$i]['cantidad'] ?></td>
+            <td><?php echo $this->datos[$i]['fecha'] ?></td>
         </tr>
         <?php } ?>
-    </table>
+    <?php } ?>
+</table>
 </div>
 
 <?php } else{ ?>
-    <p>No hay empleados</p>
-    <a href="<?php echo BASE_URL?>empleados/nuevo" class="k-button">Nuevo</a>
-<?php } ?>
+    <p>No hay salida de productos</p>
+    <a href="<?php echo BASE_URL?>salida_productos/registrar_salida" class="k-button">Registrar Salida</a>
+<?php } ?>  

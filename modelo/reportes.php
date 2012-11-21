@@ -72,13 +72,20 @@ class reportes{
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
-    
+   
     public function selecciona_tipo_habitacion_total(){
         $datos = array(0,"");
         $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_habitacion", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
+    public function selecciona_habitaciones_x_tipo_habitacion(){
+        $datos = null;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_habitaciones_x_tipo_habitacion", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
+    
     
 //    public function index() {
 //        //$this->_membresias->idreportes = 0;

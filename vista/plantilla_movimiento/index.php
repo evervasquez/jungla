@@ -23,7 +23,7 @@
             <tr>
                 <td><?php echo $this->datos[$i]['idplantilla_movimiento'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos[$i]['idcuenta'] ?></td>
+                <td><?php echo $this->datos[$i]['nro_cuenta'].':'.$this->datos[$i]['idcuenta'] ?></td>
                 <td><?php echo $this->datos[$i]['concepto'] ?></td>
                 <td><?php echo $this->datos[$i]['debe_haber'] ?></td>
                 <td>

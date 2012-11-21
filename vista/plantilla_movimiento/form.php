@@ -26,9 +26,9 @@
                         <option></option>
                         <?php for ($i = 0; $i < count($this->datosCuentas); $i++) { ?>
                             <?php if ($this->datos[0]['idcuenta'] == $this->datosCuentas[$i]['idcuenta']) { ?>
-                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>" selected="selected"><?php echo utf8_encode($this->datosCuentas[$i]['nro_cuenta'] . ':' . $this->datosCuentas[$i]['descripcion']); ?></option>
+                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>" selected="selected"><?php echo $this->datosCuentas[$i]['nro_cuenta'] . ':' . utf8_encode($this->datosCuentas[$i]['descripcion']); ?></option>
                             <?php } else { ?>
-                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>"><?php echo utf8_encode($this->datosCuentas[$i]['nro_cuenta'] . ':' . $this->datosCuentas[$i]['descripcion']); ?></option>
+                                <option value="<?php echo $this->datosCuentas[$i]['idcuenta'] ?>"><?php echo $this->datosCuentas[$i]['nro_cuenta'] . ':' . utf8_encode($this->datosCuentas[$i]['descripcion']); ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -45,7 +45,7 @@
 
                         <?php for ($i = 0; $i < count($this->datosConcepto); $i++) { ?>
                             <?php if ($this->datos[0]['idconcepto_movimiento'] == $this->datosConcepto[$i]['idconcepto_movimiento']) { ?>
-                                <option value="<?php echo $this->datosConcepto[$i]['idconcepto_movimiento'] ?>" selected="selected"><?php echo utf8_encode($this->datosConcepto[$i]['descripcion']); ?></option>
+                        <option value="<?php echo $this->datosConcepto[$i]['idconcepto_movimiento'] ?>" selected="selected"><?php echo utf8_encode($this->datosConcepto[$i]['descripcion']); ?></option>
                             <?php } else { ?>
                                 <option value="<?php echo $this->datosConcepto[$i]['idconcepto_movimiento'] ?>"><?php echo utf8_encode($this->datosConcepto[$i]['descripcion']); ?></option>
                             <?php } ?>
