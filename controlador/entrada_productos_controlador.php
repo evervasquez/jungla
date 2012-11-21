@@ -16,16 +16,17 @@ class entrada_productos_controlador extends controller{
     }
     
     public function index(){
+        $this->_compras->confirmacion=0;
+        $this->_vista->datos_compras = $this->_compras->selecciona();
         $this->_vista->datos = $this->_movimiento_producto->selecciona();
-//        echo '<pre>';print_r($this->_vista->datos);exit;
         $this->_vista->renderizar('index');
     }
     
-    public function entradas_pendientes(){
-        $this->_compras->confirmacion=0;
-        $this->_vista->datos = $this->_compras->selecciona();   
-        $this->_vista->renderizar('entradas_pendientes');
-    }
+//    public function entradas_pendientes(){
+//        $this->_compras->confirmacion=0;
+//        $this->_vista->datos = $this->_compras->selecciona();   
+//        $this->_vista->renderizar('entradas_pendientes');
+//    }
     
     public function confirmacion($id){
         $this->_detalle_compra->idcompra = $id;
@@ -53,7 +54,7 @@ class entrada_productos_controlador extends controller{
         $this->_movimiento_producto->fecha=date("d-m-Y");
         $this->_movimiento_producto->inserta();
         
-        $this->entradas_pendientes();
+        $this->redireccionar('entrada_productos');
     }
     
 }

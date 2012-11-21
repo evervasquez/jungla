@@ -31,9 +31,7 @@
         <tr>
             <td><label for="fecha_inicio">Fecha de Inicio:</label></td>
             <td><input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_inicio"
-                       id="fechaini" value="<?php if(isset ($this->datos[0]['fecha_inicio'])){
-                               $fecha=$this->datos[0]['fecha_inicio'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                       id="fechaini" value="<?php echo $this->datos[0]['fecha_inicio'] ?>"/>
             </td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="fecha_inicio"></div>
@@ -42,9 +40,7 @@
         <tr>
             <td><label for="fecha_final">Fecha de Finalizacion:</label></td>
             <td><input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_final"
-                       id="fechafin" value="<?php if(isset ($this->datos[0]['fecha_final'])){
-                               $fecha=$this->datos[0]['fecha_final'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                       id="fechafin" value="<?php echo $this->datos[0]['fecha_final'] ?>"/>
             </td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="fecha_final"></div>

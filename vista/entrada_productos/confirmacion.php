@@ -29,6 +29,6 @@
 </form>
 
 <?php } else{ ?>
-    <p>No hay entradas por confirmar</p>
+    <p>No hay productos por confirmar</p>
     <a href="<?php echo BASE_URL?>entrada_productos/entradas_pendientes" class="k-button cancelar">Aceptar</a>
 <?php } ?>  

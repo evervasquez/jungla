@@ -13,6 +13,8 @@ class caja {
             $this->idcaja=0;
         }
         $datos = array($this->idcaja);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_selecciona_caja", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -20,36 +22,11 @@ class caja {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
-    }
-    
-    public function apertura(){
-        $datos = array($this->fecha, $this->idempleado);
-        $r = consulta::procedimientoAlmacenado("pa_apertura_caja", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-    
-    public function reapertura(){
-        $datos = array($this->fecha, $this->idempleado);
-        $r = consulta::procedimientoAlmacenado("pa_reapertura_caja", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-    
-    public function cierra(){
-        $datos = array($this->idcaja);
-        $r = consulta::procedimientoAlmacenado("pa_cierra_caja", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
     
     public function inserta() {
-        $datos = array($this->idcaja, $this->estado, $this->fecha, $this->saldo, 
-            $this->idempleado);
+        $datos = array(0, $this->estado, $this->fecha, $this->idempleado);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_caja", $datos);
         $error = $r[1];
         $r = null;
@@ -57,8 +34,7 @@ class caja {
     }
 
     public function actualiza() {
-        $datos = array($this->idcaja, $this->estado, $this->fecha, $this->saldo, 
-            $this->idempleado);
+        $datos = array($this->idcaja, $this->estado, $this->fecha, $this->idempleado);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_caja", $datos);
         $error = $r[1];
         $r = null;

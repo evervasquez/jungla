@@ -16,10 +16,14 @@
         <td><?php echo $this->datos[$i]['monto_pagado']?></td>
         <td>
             <?php 
-            if(new DateTime($this->datos[$i]['fecha_pago'])>new DateTime(date("M d Y")) && $this->datos[$i]['monto_cuota'] > $this->datos[$i]['monto_pagado']){
-                echo 'normal';
+            if($this->datos[$i]['monto_cuota'] ==$this->datos[$i]['monto_pagado']){
+                echo 'cancelado';
             }else{
-                echo 'vencido';
+                if(new DateTime($this->datos[$i]['fecha_pago'])>new DateTime(date("M d Y")) && $this->datos[$i]['monto_cuota'] > $this->datos[$i]['monto_pagado']){
+                    echo 'normal';
+                }else{
+                    echo 'vencido';
+                }
             }
             ?>
         </td>

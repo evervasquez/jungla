@@ -11,15 +11,15 @@ class caja_controlador extends controller{
 
     public function index(){
         $datos=  $this->_caja->selecciona();
-//        echo '<pre>';print_r($datos);
-//        echo count($datos)-1; exit;
+//        echo '<pre>';
+//                print_r($datos);exit;
         if($datos[0]['estado']==1){
             $this->_vista->lbl_boton = 'Cerrar';
             $this->_vista->action = 'cerrar/'.$datos[0]['idcaja'];
         }else{
-            if(new DateTime($datos[0]['fecha'])==new DateTime(date("M d Y"))){
+            if(new DateTime($datos[0]['fecha'])==new DateTime(date("d-m-Y"))){
                 $this->_vista->lbl_boton = 'Reaperturar';
-                $this->_vista->action = 'reaperturar';
+                $this->_vista->action = 'reaperturar/'.$datos[0]['idcaja'];
             }else{
                 $this->_vista->lbl_boton = 'Aperturar';
                 $this->_vista->action = 'aperturar';
@@ -30,23 +30,25 @@ class caja_controlador extends controller{
     }
     
     public function aperturar(){
-        $this->_caja->fecha=  date("Y-m-d");
+        $this->_caja->estado=1;
+        $this->_caja->fecha=date("d-m-Y");
         $this->_caja->idempleado=session::get('idempleado');
-        $this->_caja->apertura();
+        $this->_caja->inserta();
         $this->index();
     }
     
-    public function reaperturar(){
-        $this->_caja->fecha=  date("Y-m-d");
-        $this->_caja->idempleado=session::get('idempleado');
-        $this->_caja->reapertura();
-        $this->index();
+    public function reaperturar($id){
+        $this->_caja->idcaja=$id;
+        $this->_caja->estado=1;
+        $this->_caja->actualiza();
+        $this->redireccionar('caja');
     }
     
     public function cerrar($id){
         $this->_caja->idcaja=$id;
-        $this->_caja->cierra();
-        $this->index();
+        $this->_caja->estado=0;
+        $this->_caja->actualiza();
+        $this->redireccionar('caja');
     }
   
 }

@@ -31,7 +31,7 @@ class movimiento_producto {
 
     public function actualiza() {
         $datos = array($this->idcompra, $this->idproducto, $this->idtipo_movimiento, $this->cantidad,
-                $this->idempleado, 0, $this->fecha);
+                $this->idempleado, $this->idmovimiento_producto, $this->fecha);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_movimiento_producto", $datos);
         $error = $r[1];
         $r = null;

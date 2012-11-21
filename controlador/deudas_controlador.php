@@ -22,6 +22,10 @@ class deudas_controlador extends controller{
         $this->_vista->titulo = 'Cronograma de Pagos';
         $this->_vista->renderizar('cronograma');
     }
+    
+    public function amortizar(){
+        $this->_vista->renderizar('amortizar');
+    }
 }   
     
 ?>

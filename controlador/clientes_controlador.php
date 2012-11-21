@@ -182,6 +182,8 @@ class clientes_controlador extends controller {
 
         $this->_clientes->idcliente = $this->filtrarInt($id);
         $datos = $this->_clientes->selecciona();
+//        echo '<pre>';
+//        print_r($datos);exit;
         //obtenemos todos los paises
         //obtenemos todas las regiones que pertenecen al pais del empleado
         if($datos[0]['idpais']!=0){
