@@ -37,9 +37,6 @@ class plan_contable {
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
-        if(is_null($this->nivel)){
-            $this->nivel='';
-        }
         if(is_null($this->idcuenta_padre)){
             $this->idcuenta_padre='';
         }
