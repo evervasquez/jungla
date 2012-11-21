@@ -13,14 +13,14 @@
     <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
-            <th><label>Codigo</label></th>
-            <th><label>Tipo</label></th>
-            <th><label>Nombre / Razon Social</label></th>
-            <th><label>DNI / RUC</label></th>
-            <th><label>Telefono</label></th>
-            <th><label>Email</label></th>
-            <th><label>Ubigeo</label></th>
-            <th><label>Acciones</label></th>
+            <th>Codigo</th>
+            <th>Tipo</th>
+            <th>Nombre / Razon Social</th>
+            <th>DNI / RUC</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Ubigeo</th>
+            <th>Acciones</th>
         </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
@@ -31,9 +31,9 @@
                 <td><?php echo $this->datos[$i]['telefono'] ?></td>
                 <td><?php echo $this->datos[$i]['email'] ?></td>
                 <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
-                <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>clientes/editar/<?php echo $this->datos[$i]['idcliente'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idcliente'] ?>')"></a>  
+                <td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>clientes/editar/<?php echo $this->datos[$i]['idcliente'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idcliente'] ?>')"></a>  
                 </td>
             </tr>
         <?php } ?>

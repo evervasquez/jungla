@@ -118,7 +118,7 @@
                     <li><a href="<?php echo BASE_URL ?>index"><label>SISTEMA</label><br>System</a></li>
                     <style type="text/css">
                         #menu li{
-                            width:19.907%;
+                            width:19.905%;
                         }
                     </style>
                     <?php }?>

@@ -15,14 +15,13 @@
             <th>Descripcion</th>
             <th>Acciones</th>
         </tr>
-
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idperfil'] ?></td>
+                <td><?php echo $this->datos[$i]['idperfil'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>perfiles/editar/<?php echo $this->datos[$i]['idperfil'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>perfiles/eliminar/<?php echo $this->datos[$i]['idperfil'] ?>')" class="imgdelete"></a>
+                <td>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>perfiles/editar/<?php echo $this->datos[$i]['idperfil'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>perfiles/eliminar/<?php echo $this->datos[$i]['idperfil'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>
