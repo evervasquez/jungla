@@ -61,17 +61,20 @@
                 <td>
                     <select class="combo" placeholder="Seleccione..." required name="debe_haber" id="debe_haber">
                         <option></option>
-                        <?php if ($this->datos[0]['debe_haber'] == 'debe') { ?>
-                            <option value="debe" selected="selected">debe</option>
-                            <option value="haber">haber</option>
-                            <?php } if ($this->datos[0]['debe_haber'] == 'haber') { ?>
-                            <option value="debe">debe</option>
-                            <option value="haber" selected="selected">haber</option>
+                        <?php if ($this->datos[0]['debe_haber'] == 'Debe') { ?>
+                            <option value="Debe" selected="selected">Debe</option>
+                            <option value="Haber">Haber</option>
+                            <?php } if ($this->datos[0]['debe_haber'] == 'Haber') { ?>
+                            <option value="Debe">Debe</option>
+                            <option value="Haber" selected="selected">Haber</option>
                         <?php }else{ ?>
-                            <option value="debe">debe</option>
-                            <option value="haber">haber</option>
+                            <option value="Debe">Debe</option>
+                            <option value="Haber">Haber</option>
                             <?php }?>
                     </select>
+                </td>
+                <td>
+                    <div class="k-invalid-msg msgerror" data-for="debe_haber"></div>
                 </td>
             </tr>
             <tr>

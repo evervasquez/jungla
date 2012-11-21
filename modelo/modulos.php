@@ -8,6 +8,7 @@ class modulos {
     public $estado;
     public $idmodulo_padre;
     public $modulo_padre;
+    public $idperfil;
     
     public function selecciona() {
         if(is_null($this->idmodulo)){
@@ -19,7 +20,10 @@ class modulos {
         if(is_null($this->modulo_padre)){
             $this->modulo_padre='';
         }
-        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre);
+        if(is_null($this->idperfil)){
+            $this->idperfil='';
+        }
+        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre,$this->idperfil);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

@@ -13,7 +13,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/plan_contable/buscador','filtro='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/sisjungla/plan_contable/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+

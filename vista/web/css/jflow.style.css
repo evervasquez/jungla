@@ -13,7 +13,7 @@ Date: July 29, 2010
 
 #sliderContainer { width: 940px; height: 300px; position: relative; border-top: 5px solid #999; border-bottom: 5px solid #999; margin: 0 auto; }
 
-.slideContent {  background:url("../img/contentBg.png") repeat scroll 0 0 transparent; position: absolute; bottom:0px; right:0px; padding: 10px; width: 920px; }
+.slideContent {  background:url("../../../lib/img/contentBg.png") repeat scroll 0 0 transparent; position: absolute; bottom:0px; right:0px; padding: 10px; width: 920px; }
 
 .slide h3 {  font: 26px/1em 'Rokkitt', serif; color: #FFF;  margin: 0 0 5px 0; }
 
@@ -27,9 +27,9 @@ Date: July 29, 2010
 
 .jFlowSlideContainer a:focus { position: relative; top: 1px; }
 
-.jFlowNext { background:url("../img/arrows.png") no-repeat scroll 0 -35px transparent; height:130px; position:absolute; top:75px; right: -50px; width:50px; cursor:pointer; }
+.jFlowNext { background:url("../../../lib/img/arrows.png") no-repeat scroll 0 -35px transparent; height:130px; position:absolute; top:75px; right: -50px; width:50px; cursor:pointer; }
 
-.jFlowPrev { background:url("../img/arrows.png") no-repeat scroll -84px -35px transparent; height:130px; position:absolute; top:75px; left: -50px; width:50px; cursor:pointer; }
+.jFlowPrev { background:url("../../../lib/img/arrows.png") no-repeat scroll -84px -35px transparent; height:130px; position:absolute; top:75px; left: -50px; width:50px; cursor:pointer; }
 
 .jFlowPrev:hover { background-position: -84px -235px; }
 
@@ -40,7 +40,7 @@ Date: July 29, 2010
 
 #myController {position: absolute; top: 5px; right: 5px; }
 
-.jFlowControl { background:url("../img/bullet.png") no-repeat scroll 0px 0px transparent;  float: left; width: 15px; height: 15px;}
+.jFlowControl { background:url("../../../lib/img/bullet.png") no-repeat scroll 0px 0px transparent;  float: left; width: 15px; height: 15px;}
 
 .jFlowControl:hover { background-position: -32px 0px; cursor: pointer; }
 

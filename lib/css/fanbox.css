@@ -1,27 +1,43 @@
 .slide_likebox { 
-float:right; 
-width:288px; 
-height:345px; 
-background: url(../img/fb_bg.png) no-repeat !important; 
-display:block; 
-right:-250px; 
-padding:0; 
-position:fixed; 
-top: 130px; 
-z-index:1002; 
-border-radius:10px; 
--moz-border-radius:10px; 
--webkit-border-radius:10px; 
+    float:right; 
+    width:288px; 
+    height:345px; 
+    background: url(../img/fb_bg.png) no-repeat !important; 
+    display:block; 
+    right:-250px; 
+    padding:0; 
+    position:fixed; 
+    top: 130px; 
+    z-index:1002; 
+    border-radius:10px; 
+    -moz-border-radius:10px; 
+    -webkit-border-radius:10px; 
 } 
 div.likeboxwrap { 
-margin-top:2px; 
-margin-left:-5px; 
-width:238px; 
-height:325px; 
-background-color:#fff; 
-overflow:hidden; 
-border-radius:10px; 
--moz-border-radius:10px; 
--webkit-border-radius:10px; 
+    color: #000;
+    margin-top:2px; 
+    margin-left:-5px; 
+    width:238px; 
+    height:325px; 
+    background-color:#fff; 
+    overflow:hidden; 
+    border-radius:10px; 
+    -moz-border-radius:10px; 
+    -webkit-border-radius:10px; 
 } 
 div.likeboxwrap iframe {margin:-1px}
+.mensaje { 
+    float:right; 
+    width:288px; 
+    height:345px; 
+    background: url(../img/mensaje2.png) no-repeat !important; 
+    display:block; 
+    right:-250px; 
+    padding:0; 
+    position:fixed; 
+    top: 130px; 
+    z-index:998; 
+    border-radius:10px; 
+    -moz-border-radius:10px; 
+    -webkit-border-radius:10px; 
+} 

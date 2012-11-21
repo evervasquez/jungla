@@ -95,7 +95,7 @@
             </td>
             <td><label for="fecha_nacimiento">Fecha de Nacimiento:</label></td>
             <td>
-                <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento" required
+                <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento" required
                    id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
                            $fecha= $this->datos[0]['fecha_nacimiento'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
@@ -105,7 +105,7 @@
         <tr valign="top">
             <td><label for="fecha_contratacion">Fecha de Contratacion:</label></td>
             <td>
-                <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
+                <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
                    id="fechacon" value="<?php if(isset ($this->datos[0]['fecha_contratacion'])){
                            $fecha=$this->datos[0]['fecha_contratacion'];
                            echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
