@@ -56,7 +56,7 @@ class compras_controlador extends controller{
             $this->_compras->confirmacion = 0;
             $dato_compra=$this->_compras->inserta();
             //inserta detalle compra
-            for($i=0;$i<count($_POST['idprodutos']);$i++){
+                for($i=0;$i<count($_POST['idprodutos']);$i++){
                 $this->_detalle_compra->idcompra=$dato_compra['idcompra'];
                 $this->_detalle_compra->idproducto= $_POST['idprodutos'][$i];
                 $this->_detalle_compra->cantidad= $_POST['cantidad'][$i];
