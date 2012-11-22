@@ -80,6 +80,17 @@ class reportes_controlador extends controller {
         return $datos;
     }
     
+    public function obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano) {
+        $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
+        if($mesano[2]==1){
+            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','codigo_provincia','cantidad');
+        } else {
+            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','cantidad');
+        }
+        $datos = $this->get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
     public function obtener_cantidad_empleados_x_tipo_x_actividad() {
         $datos =$this->_reportes->selecciona_cantidad_empleados_x_tipo_x_actividad();
         $cabeceras = array ('idactividad', 'idtipo_empleado', 'cantidad');
@@ -91,6 +102,24 @@ class reportes_controlador extends controller {
         $datos =$this->_reportes->selecciona_habitaciones_x_tipo_habitacion();
         $cabeceras = array ('idtipo_habitacion', 'descripcion', 'cantidad');
         $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_numero_pernoctaciones_x_tipo_habitacion($mesano) {
+        $datos =$this->_reportes->selecciona_numero_pernoctaciones_x_tipo_habitacion($mesano);
+        $cabeceras = array ('idtipo_habitacion', 'descripcion', 'pernoctaciones', 'habitaciones_noche');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano) {
+        $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
+        if($mesano[2]==1){
+            $cabeceras = array ('idcontinente', 'descripcion_continente','cantidad');
+        } else {
+            $cabeceras = array ('idpais', 'descripcion', 'cantidad');
+        }
+        $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
@@ -463,21 +492,88 @@ class reportes_controlador extends controller {
 //NUMERO DE HABITACIONES-NOCHE OCUPADAS
         $setx = $setx + 21.05;
         $sety = 94.80;
-        for ($i = 0; $i <= 6; $i++) {
+        $mesano = array($mes, $ano);
+        $datos= $this->obtener_numero_pernoctaciones_x_tipo_habitacion($mesano);
+        $datacount = count($datos);
+        $habitacioncuenta = 1;
+        $conteok = false;
+        $total = 0;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['habitaciones_noche'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['habitaciones_noche'];
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+        $this->_fpdf->SetY($sety);
+        $this->_fpdf->SetX($setx);
+        $this->_fpdf->Cell(21.05, 4.30, $total, 0, 0, 'C');
+//        $setx = $setx + 21.05;
+//        $sety = 94.80;
+//        for ($i = 0; $i <= 6; $i++) {
+//            $this->_fpdf->SetY($sety);
+//            $this->_fpdf->SetX($setx);
+//            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+//            $sety = $sety + 4.30;
+//        }
 //NUMERO DE PERNOCTACIONES
         $setx = $setx + 21.05;
         $sety = 94.80;
-        for ($i = 0; $i <= 6; $i++) {
+        $mesano = array($mes, $ano);
+        $datos= $this->obtener_numero_pernoctaciones_x_tipo_habitacion($mesano);
+        $datacount = count($datos);
+        $habitacioncuenta = 1;
+        $conteok = false;
+        $total = 0;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['pernoctaciones'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['pernoctaciones'];
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+        $this->_fpdf->SetY($sety);
+        $this->_fpdf->SetX($setx);
+        $this->_fpdf->Cell(21.05, 4.30, $total, 0, 0, 'C');
+        
 //TARIFA CON BAÑO
         $datos = $this->obtener_tipo_habitacion_total();
         $datacount = count($datos);
@@ -573,10 +669,8 @@ class reportes_controlador extends controller {
         $paiscuenta = 28;
         $conteok = false;
         $internacionaltotal = 0;
-        $otroamerica=0;
-        $otroeuropa=0;
-        $otroasia=0;
-        for ($i = 0; $i < 31; $i++) {
+        
+        for ($i = 0; $i < 26; $i++) {
             if ($i == 4) {
                 $sety = 188.35;
             }
@@ -591,70 +685,115 @@ class reportes_controlador extends controller {
                     $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
                     //Siguiente país:
                     $conteok = true;
-                    switch ($paiscuenta) {
-                        case 28:$paiscuenta = 15;
-                            break;
-                        case 15:$paiscuenta = 41;
-                            break;
-                        case 41:$paiscuenta = 43;
-                            break;
-                        case 43:$paiscuenta = 53;
-                            break;
-                        case 53:$paiscuenta = 191;
-                            break; //panama
-                        case 191:$paiscuenta = 58;
-                            break;
-                        case 58:$paiscuenta = 70;
-                            break;
-                        case 70:$paiscuenta = 77;
-                            break;
-                        case 77:$paiscuenta = 85;
-                            break;
-                        case 85:$paiscuenta = 82;
-                            break;
-                        case 82:$paiscuenta = 91;
-                            break;
-                        case 91:$paiscuenta = 115;
-                            break;
-                        case 115:$paiscuenta = 126;
-                            break;
-                        case 126:$paiscuenta = 127;
-                            break;
-                        case 127:$paiscuenta = 130;
-                            break;
-                        case 130:$paiscuenta = 62;
-                            break;
-                        case 62:$paiscuenta = 63;
-                            break;
-                        case 63:$paiscuenta = 163;
-                            break;
-                        case 163:$paiscuenta = 192;
-                            break;
-                        case 192:$paiscuenta = 200;
-                            break;
-                        case 200:$paiscuenta = 71;
-                            break;
-                        case 71:$paiscuenta = 227;
-                            break;
-                        case 227:$paiscuenta = 72;
-                            break;
-                        case 72:$paiscuenta = 0;
-                            break;
-                    }
                 }
+            }
+            switch ($paiscuenta) {
+                case 28:$paiscuenta = 15;
+                    break;
+                case 15:$paiscuenta = 41;
+                    break;
+                case 41:$paiscuenta = 43;
+                    break;
+                case 43:$paiscuenta = 53;
+                    break;
+                case 53:$paiscuenta = 191;
+                    break; /* panama */
+                case 191:$paiscuenta = 58;
+                    break;
+                case 58:$paiscuenta = 70;
+                    break;
+                case 70:$paiscuenta = 77;
+                    break;
+                case 77:$paiscuenta = 85;
+                    break;
+                case 85:$paiscuenta = 82;
+                    break;
+                case 82:$paiscuenta = 91;
+                    break;
+                case 91:$paiscuenta = 115;
+                    break;
+                case 115:$paiscuenta = 126;
+                    break;
+                case 126:$paiscuenta = 127;
+                    break;
+                case 127:$paiscuenta = 130;
+                    break;
+                case 130:$paiscuenta = 62;
+                    break;
+                case 62:$paiscuenta = 63;
+                    break;
+                case 63:$paiscuenta = 163;
+                    break;
+                case 163:$paiscuenta = 192;
+                    break;
+                case 192:$paiscuenta = 200;
+                    break;
+                case 200:$paiscuenta = 71;
+                    break;
+                case 71:$paiscuenta = 227;
+                    break;
+                case 227:$paiscuenta = 72;
+                    break;
+                case 72:$paiscuenta = 257;
+                    break;
+                case 257:$paiscuenta = 259;
+                    break;
+                case 259:$paiscuenta = 0;
+                    break;
             }
             $conteok = false;
             $sety = $sety + 3.706;
         }
-//total
-        $this->_fpdf->SetY($sety);
+        
+        //CONTINENTES
+        $mesano = array($mes, $ano, 1);
+        $datos = $this->obtener_numero_arribos_huesped_ubigeo_internacional($mesano);
+        $datacount = count($datos);
+        /* COMIENZA CON AFRICA, CODIGO 4 */
+        $continentecuenta = 4;
+        $conteok = false;
+        for ($i = 0; $i < 5; $i++) {
+            $this->_fpdf->SetY($sety);
+            $this->_fpdf->SetX($setx);
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idcontinente'] == $continentecuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                    //Siguiente CONTINENTE:
+                    $conteok = true;
+                }
+            }
+            switch ($continentecuenta) {
+                case 4:$continentecuenta = 5;
+                    break;
+                case 5:$continentecuenta = 1;
+                    break;
+                case 1:$continentecuenta = 3;
+                    break;
+                case 3:$continentecuenta = 2;
+                    break;
+                case 2:$continentecuenta = 0;
+                    break;
+            }
+            $conteok = false;
+            $sety = $sety + 3.706;
+        }
+        $this->_fpdf->SetY($sety-0.5);
         $this->_fpdf->SetX($setx);
         $this->_fpdf->Cell(26.33, 3.706, $internacionaltotal, '', 0, 'C');
 
-//internacional pernoctaciones en el mes
+//internacional PERNOCTACIONES en el mes
         $setx = 70.32;
         $sety = 173.2;
-        for ($i = 0; $i < 31; $i++) {
+        $mesano = array($mes, $ano, 0);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
+        $datacount = count($datos);
+        /* COMIENZA CON ARGENTINA, CODIGO 28 */
+        $paiscuenta = 28;
+        $conteok = false;
+        $internacionaltotal = 0;
+        
+        for ($i = 0; $i < 26; $i++) {
             if ($i == 4) {
                 $sety = 188.35;
             }
@@ -663,13 +802,108 @@ class reportes_controlador extends controller {
             }
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idpais'] == $paiscuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                    //Siguiente país:
+                    $conteok = true;
+                }
+            }
+            switch ($paiscuenta) {
+                case 28:$paiscuenta = 15;
+                    break;
+                case 15:$paiscuenta = 41;
+                    break;
+                case 41:$paiscuenta = 43;
+                    break;
+                case 43:$paiscuenta = 53;
+                    break;
+                case 53:$paiscuenta = 191;
+                    break; /* panama */
+                case 191:$paiscuenta = 58;
+                    break;
+                case 58:$paiscuenta = 70;
+                    break;
+                case 70:$paiscuenta = 77;
+                    break;
+                case 77:$paiscuenta = 85;
+                    break;
+                case 85:$paiscuenta = 82;
+                    break;
+                case 82:$paiscuenta = 91;
+                    break;
+                case 91:$paiscuenta = 115;
+                    break;
+                case 115:$paiscuenta = 126;
+                    break;
+                case 126:$paiscuenta = 127;
+                    break;
+                case 127:$paiscuenta = 130;
+                    break;
+                case 130:$paiscuenta = 62;
+                    break;
+                case 62:$paiscuenta = 63;
+                    break;
+                case 63:$paiscuenta = 163;
+                    break;
+                case 163:$paiscuenta = 192;
+                    break;
+                case 192:$paiscuenta = 200;
+                    break;
+                case 200:$paiscuenta = 71;
+                    break;
+                case 71:$paiscuenta = 227;
+                    break;
+                case 227:$paiscuenta = 72;
+                    break;
+                case 72:$paiscuenta = 257;
+                    break;
+                case 257:$paiscuenta = 259;
+                    break;
+                case 259:$paiscuenta = 0;
+                    break;
+            }
+            $conteok = false;
             $sety = $sety + 3.706;
-            $this->_fpdf->Cell(26.33, 3.71, $i, '', 0, 'C');
         }
-//total
-        $this->_fpdf->SetY($sety);
+        
+        //CONTINENTES
+        $mesano = array($mes, $ano, 1);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
+        $datacount = count($datos);
+        /* COMIENZA CON AFRICA, CODIGO 4 */
+        $continentecuenta = 4;
+        $conteok = false;
+        for ($i = 0; $i < 5; $i++) {
+            $this->_fpdf->SetY($sety);
+            $this->_fpdf->SetX($setx);
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idcontinente'] == $continentecuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                    //Siguiente CONTINENTE:
+                    $conteok = true;
+                }
+            }
+            switch ($continentecuenta) {
+                case 4:$continentecuenta = 5;
+                    break;
+                case 5:$continentecuenta = 1;
+                    break;
+                case 1:$continentecuenta = 3;
+                    break;
+                case 3:$continentecuenta = 2;
+                    break;
+                case 2:$continentecuenta = 0;
+                    break;
+            }
+            $conteok = false;
+            $sety = $sety + 3.706;
+        }
+        $this->_fpdf->SetY($sety-0.5);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(26.33, 3.706, 'TOTAL', '', 0, 'C');
+        $this->_fpdf->Cell(26.33, 3.706, $internacionaltotal, '', 0, 'C');
 
 //nacional arribos en el mes
         $setx = 152.75;
@@ -735,27 +969,65 @@ class reportes_controlador extends controller {
 //nacional pernoctaciones en el mes
         $setx = 178.65;
         $sety = 173.30;
+        $limametro = 0;
+        $lima = 0;
+        $nacionaltotal = 0;
+//obtener datos
+        $mesano = array($mes, $ano, 1);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
+        $datacount = count($datos);
+        for ($i = 0; $i < $datacount; $i++) {
+            if ($datos[$i]['codigo_region'] == 7) {
+                $limametro = $limametro + $datos[$i]['cantidad'];
+            } else {
+                if ($datos[$i]['codigo_provincia'] == 0 || $datos[$i]['codigo_provincia'] == 1) {
+                    $limametro = $limametro + $datos[$i]['cantidad'];
+                } else {
+                    $lima = lima + $datos[$i]['cantidad'];
+                }
+            }
+        }
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(25.90, 6.11, 'cero', 0, 0, 'C');
-        $sety = 173.30 + 6.11;
+        if ($limametro != 0) {
+            $this->_fpdf->Cell(25.90, 6.11, $limametro, 0, 0, 'C');
+        }
+        $sety = $sety + 6.11;
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(25.90, 10.13, 'cero', 0, 0, 'C');
+        if ($lima != 0) {
+            $this->_fpdf->Cell(25.90, 10.13, $lima, 0, 0, 'C');
+        }
+        $nacionaltotal = $nacionaltotal + $limametro + $lima;
+
+        $mesano = array($mes, $ano, 0);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
+        $datacount = count($datos);
         $sety = $sety + 10.13;
-        for ($i = 0; $i < 23; $i++) {
+        $regioncount = 1;
+        for ($i = 1; $i < 24; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
+            for ($j = 0; $j <= $datacount; $j++) {
+                if ($datos[$j]['codigo_region'] == $regioncount) {
+                    $this->_fpdf->Cell(25.90, 3.63, $datos[$j]['cantidad'], 1, 0, 'C');
+                    $nacionaltotal = $nacionaltotal + $datos[$j]['cantidad'];
+                }
+            }
             $sety = $sety + 3.63;
-            $this->_fpdf->Cell(25.90, 3.63, $i, 0, 0, 'C');
+            if ($i == 6 || $i == 13) {
+                $regioncount = $regioncount + 2;
+            } else {
+                $regioncount = $regioncount + 1;
+            }
         }
 //total
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(25.90, 17.41, 'TOTAL', 0, 0, 'C');
+        $this->_fpdf->Cell(25.90, 17.41, $nacionaltotal, 1, 0, 'C');
 
         $this->_fpdf->AddPage();
-        $this->_fpdf->Image(ROOT . 'vista' . DS . 'reportes' . DS . 'img' . DS . 'estadistica_mensual_back.jpg', 0, 0, 210, 297, 'JPG');
+        $this->_fpdf->Image(ROOT . 'vista' . DS . 'reportes' . DS . 'img' . DS . 'estadistica_mensual_back.jpg', 0, 0, 210, 297, 'PNG');
 
 
 //CAPITULO 5 NUMERO DE PUESTOS DE TRABAJO
