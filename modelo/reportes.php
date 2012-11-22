@@ -85,6 +85,24 @@ class reportes{
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
+    public function selecciona_numero_pernoctaciones_x_tipo_habitacion($mesano){
+        $datos = $mesano;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_pernoctaciones_x_tipo_habitacion", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
+    public function selecciona_numero_pernoctaciones_huesped_ubigeo_internacional($mesano){
+        $datos = $mesano;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_pernoctaciones_huesped_ubigeo_internacional", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
+    public function selecciona_numero_pernoctaciones_huesped_ubigeo_nacional($mesano){
+        $datos = $mesano;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_pernoctaciones_huesped_ubigeo_nacional", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
     
     
 //    public function index() {
