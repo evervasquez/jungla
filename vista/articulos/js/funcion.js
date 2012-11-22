@@ -28,9 +28,11 @@
                     HTML = HTML + '<td>'+datos[i].titulo+'</td>';
                     HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
                     HTML = HTML + '<td>';
+                    if(datos[i].imagen != null){
                     HTML = HTML + '<a href="/sisjungla/lib/img/articulos/'+datos[i].imagen+'">';
                     HTML = HTML + '<img src="/sisjungla/lib/img/articulos/thumb/thumb_'+datos[i].imagen+'" />';
                     HTML = HTML +'</a>';
+                    }
                     HTML = HTML + '</td>';
                     var editar='/sisjungla/articulos/editar/'+datos[i].idarticulo; 
                     var eliminar='/sisjungla/articulos/eliminar/'+datos[i].idarticulo;   

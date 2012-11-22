@@ -26,7 +26,15 @@ class caja_controlador extends controller{
             }
         }
         $this->_vista->datos=$datos;
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_caja->empleado=$_POST['descripcion'];
+        }
+        echo json_encode($this->_caja->selecciona());
     }
     
     public function aperturar(){

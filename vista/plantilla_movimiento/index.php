@@ -3,6 +3,8 @@
     <p>
         <select class="list" id="filtro">
             <option value="0">Descripcion</option>
+            <option value="1">Cuenta</option>
+            <option value="2">Concepto Movimiento</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>

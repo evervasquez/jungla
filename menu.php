@@ -23,7 +23,6 @@ Class menu {
     }
 
     function cargarmenu() {
-        $idperfil = session::get('idperfil');
         for($i=0; $i< count($this->_datos); $i++){
             if($this->_c==0){
                 $descripcion=  $this->_datos[$i]['modulos'];

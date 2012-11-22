@@ -33,15 +33,24 @@
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].idcliente+'</td>';
                     HTML = HTML + '<td>'+datos[i].tipo+'</td>';
+                    if(datos[i].apellidos != null){
                     HTML = HTML + '<td>'+datos[i].nombres+' '+datos[i].apellidos+'</td>';
+                    }
+                    else{
+                    HTML = HTML + '<td>'+datos[i].nombres+'</td>';
+                    }
                     HTML = HTML + '<td>'+datos[i].documento+'</td>';
                     HTML = HTML + '<td>'+datos[i].telefono+'</td>';
                     HTML = HTML + '<td>'+datos[i].email+'</td>';
+                    if(datos[i].ubigeo != null){
                     HTML = HTML + '<td>'+datos[i].ubigeo+'</td>';
+                    }
+                    else{
+                    HTML = HTML + '<td></td>';
+                    }
                     var editar='/sisjungla/clientes/editar/'+datos[i].idcliente; 
                     var eliminar='/sisjungla/clientes/eliminar/'+datos[i].idcliente;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].idcliente+'\')"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
@@ -96,10 +105,10 @@
     });
     function ver(id){
            $.post('/sisjungla/clientes/ver','idcliente='+id,function(datos){
-            html= '<h3>Datos del Cliente: '+datos[0]['nombres']+' '+datos[0]['apellidos']+'</h3>';
-            html+='<table>';
-            html+= '<tr>';
                if(datos[0]['tipo']=="natural"){
+                    html= '<h3>Datos del Cliente: '+datos[0]['nombres']+' '+datos[0]['apellidos']+'</h3>';
+                    html+='<table>';
+                    html+= '<tr>';
                     html+= '<td>Nombres:</td>';
                     html+= '<td>'+datos[0]['nombres']+'</td>';
                     html+= '</tr>';
@@ -113,7 +122,11 @@
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Direccion:</td>';
-                    html+= '<td>'+datos[0]['direccion']+'</td>';
+                    if(datos[0]['direccion']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['direccion']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Sexo:</td>';
@@ -126,36 +139,67 @@
                     html+= '</tr>'
                     html+= '<tr>';
                     html+= '<td>Telefono:</td>';
-                    html+= '<td>'+datos[0]['telefono']+'</td>';
+                    if(datos[0]['telefono']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['telefono']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Email:</td>';
-                    html+= '<td>'+datos[0]['email']+'</td>';
+                    if(datos[0]['email']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['email']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Fecha de Nacimiento:</td>';
-                    html+= '<td>'+datos[0]['fecha_nacimiento']+'</td>';
+                    if(datos[0]['fecha_nacimiento']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['fecha_nacimiento']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Profesion:</td>';
-                    html+= '<td>'+datos[0]['profesion']+'</td>';
+                    if(datos[0]['profesion']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['profesion']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Estado Civil:</td>';
-                    html+= '<td>'+datos[0]['estado_civil']+'</td>';
+                    if(datos[0]['estado_civil']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['estado_civil']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Ciudad:</td>';
-                    html+= '<td>'+datos[0]['ubigeo']+'</td>';
+                    if(datos[0]['ubigeo']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['ubigeo']+'</td>';
+                    }
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Membresia:</td>';
-                    html+= '<td>'+datos[0]['membresia']+'</td>';
+                    if(datos[0]['membresia']==null){
+                        html+= '<td></td>';
+                    }else{
+                        html+= '<td>'+datos[0]['membresia']+'</td>';
+                    }
                     html+= '</tr>';
                }
                else{
+                    html= '<h3>Datos del Cliente: '+datos[0]['nombres']+'</h3>';
+                    html+='<table>';
+                    html+= '<tr>';
                     html+= '<td>Razon Social:</td>';
-                    html+= '<td>'+datos[0]['nombres']+' '+datos[0]['apellidos']+'</td>';
+                    html+= '<td>'+datos[0]['nombres']+'</td>';
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>RUC:</td>';
@@ -167,7 +211,7 @@
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Telefono:</td>';
-                    if(datos[0]['telefono']=="null"){
+                    if(datos[0]['telefono']==null){
                         html+= '<td></td>';
                     }
                     else{
@@ -176,7 +220,7 @@
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Email:</td>';
-                    if(datos[0]['email']=="null"){
+                    if(datos[0]['email']==null){
                         html+= '<td></td>';
                     }
                     else{
@@ -185,7 +229,7 @@
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Ciudad:</td>';
-                    if(datos[0]['ubigeo']=="null"){
+                    if(datos[0]['ubigeo']==null){
                         html+= '<td></td>';
                     }
                     else{

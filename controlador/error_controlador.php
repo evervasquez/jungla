@@ -21,9 +21,15 @@ class error_controlador extends controller
     
     public function access($codigo)
     {
-        $this->_vista->titulo = 'Error';
-        $this->_vista->mensaje = $this->_get_error($codigo);
-        $this->_vista->renderizar('access');
+        if(session::get('autenticado')){
+            $this->_vista->titulo = 'Error';
+            $this->_vista->mensaje = $this->_get_error($codigo);
+            $this->_vista->renderizar('access');
+        }
+        else{
+            header('location:' . BASE_URL );
+            exit;
+        }
     }
     
     private function _get_error($codigo = false)

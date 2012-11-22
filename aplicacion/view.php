@@ -16,6 +16,7 @@ class view {
     private $_menu;
     private $_js;
     private $_css;
+    private $_mensajes;
     //parametro request = es el parametro del ccontrolador
     public function __construct(request $peticion, $menu) {
         //guardamos el nombre del controlador
@@ -23,6 +24,7 @@ class view {
         $this->_menu = $menu;
         $this->_js = array();
         $this->_css = array();
+        $this->_mensajes = array();
     }
 
     public function renderizar($vista, $item = false) {
@@ -33,6 +35,7 @@ class view {
 
         $js = array();
         $css = array();
+        $mensajes = array();
 
         if (count($this->_js)) {
             $js = $this->_js;
@@ -40,13 +43,17 @@ class view {
         if (count($this->_css)) {
             $css = $this->_css;
         }
+        if (count($this->_mensajes)) {
+            $mensajes = $this->_mensajes;
+        }
 
         $_params = array(
             'ruta_css' => BASE_URL . 'lib/css/',
             'ruta_js' => BASE_URL . 'lib/js/',
             'ruta_img' => BASE_URL . 'lib/img/',
             'js' => $js,
-            'css' => $css
+            'css' => $css,
+            'mensajes' => $mensajes
         );
 
         //die($ruta_vista);
@@ -129,6 +136,16 @@ class view {
             }
         } else {
             throw new Exception('Error de css');
+        }
+    }
+    
+    public function newMensaje(array $mensajes) {
+        if (is_array($mensajes) && count($mensajes)){
+            for ($i = 0; $i < count($mensajes); $i++ ) {
+                $this->_mensajes[] = $mensajes[$i];
+            }
+        } else {
+            throw new Exception ('Error de mensaje');
         }
     }
 

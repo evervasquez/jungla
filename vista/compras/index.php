@@ -35,6 +35,7 @@
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgview"></a>
                 </td>
             </tr>
         <?php } ?>
@@ -44,3 +45,5 @@
         <p>No hay compras</p>
         <a href="<?php echo BASE_URL?>compras/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
+<div id="vtna_ver_compra"></div>
+<div id="fondooscuro"></div>

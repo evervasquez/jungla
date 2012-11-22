@@ -57,14 +57,8 @@
 
     </head>
     <body>
-        <div id="main">
-            <div id="header">
-                <span id="logo"><img src="<?php echo BASE_URL?>lib/img/logoweb.png" id="logoJungla"></span>
-                <span id="titleJungla">
-                    <h1 class="titJungla">LA JUNGLA</h1>
-                    <h2 class="subtitJungla">El &uacute;nico rinc&oacute;n de la selva en la ciudad</h2>
-                </span>
-            </div>
+        <a id="cabecera"></a>
+        <div id="principal">
             <div id="sesion">
                 <?php if(session::get('autenticado')){ ?>
                             <div id="userSesion"><label><?php echo session::get('empleado')?></label></div>
