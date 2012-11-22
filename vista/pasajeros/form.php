@@ -52,9 +52,7 @@ $(document).ready(function(){
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
-                       id="" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
-                           $fecha=$this->datos[0]['fecha_nacimiento'];
-                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                       id="" value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
                 </td>
                 <td><label>Telefono:</label></td>
                 <td>

@@ -9,6 +9,7 @@ class error_controlador extends controller
     public function index()
     {
         if(session::get('autenticado')){
+            $this->_vista->titulo = 'Error';
             $this->_vista->mensaje = $this->_get_error();
             $this->_vista->renderizar('index');
         }

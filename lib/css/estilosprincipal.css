@@ -5,7 +5,6 @@ body{
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:12px;
         background-image: url(../img/linea.jpg);
-        background-attachment:fixed;
         text-align: left;
 }
 #principal{
@@ -17,6 +16,9 @@ body{
 	-moz-border-radius:0px 0px 35px 35px;
 	-webkit-border-radius:0px 0px 35px 35px;
 	-o-border-radius:0px 0px 35px 35px;
+}
+.msg_pendientes{
+        padding: 10px;
 }
 .msgerror{
 	display:block;

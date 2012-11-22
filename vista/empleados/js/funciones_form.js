@@ -1,5 +1,15 @@
 $(document).ready(function(){
     $( "#nombre" ).focus(); 
+    $("#fechanac").kendoDatePicker({
+        start: "century",
+        depth: "1990-1999",
+        format: "dd-MM-yyyy"
+    });
+    $("#fechacon").kendoDatePicker({
+        start: "year",
+        depth: "month",
+        format: "dd-MM-yyyy"
+    });
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
             $("#ubigeo").html('<option>Seleccione...</option>');

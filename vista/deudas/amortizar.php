@@ -8,9 +8,7 @@
         <td><label>Fecha Pago:</label></td>
         <td>
             <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_pagada" required
-                   id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
-                           $fecha= $this->datos[0]['fecha_nacimiento'];
-                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                   id="fechapago" value=""/>
         </td>
     </tr>
     <tr>

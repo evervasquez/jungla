@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm" enctype="multipart/form-data">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <h3><?php echo $this->titulo ?></h3>
     <div id="tabla">
@@ -17,7 +17,7 @@
             <tr>
             	<td><label>Titulo</label></td>
                 <td colspan="2"><input type="text" class="k-textbox textarea" placeholder="Ingrese titulo" required name="titulo"
-                                       id="titulo" value="<?php if(isset ($this->datos[0]['titulo']))echo utf8_encode ($this->datos[0]['titulo'])?>"/></td>
+                                       id="titulo" value="<?php if(isset ($this->datos[0]['titulo']))echo $this->datos[0]['titulo']?>"/></td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="titulo"></div>
                 </td>
@@ -25,9 +25,17 @@
             <tr>
             	<td><label>Descripcion</label></td>
                 <td colspan="2"><textarea class="k-textbox textarea" style="height: 100px" placeholder="Escribe el contenido del articulo" required name="descripcion"
-                       id="descripcion"><?php if(isset ($this->datos[0]['descripcion']))echo utf8_encode ($this->datos[0]['descripcion'])?></textarea></td>
+                       id="descripcion"><?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?></textarea></td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
+                </td>
+            </tr>
+            <tr>
+            	<td><label>Adjuntar Imagen</label></td>
+                <td colspan="2"><input type="file" name="imagen" id="imagen" 
+                    value="<?php if(isset ($this->datos[0]['imagen']))echo $this->datos[0]['imagen']?>" /></td>
+                <td>
+                    <div class="msgerror"></div>
                 </td>
             </tr>
             <tr>

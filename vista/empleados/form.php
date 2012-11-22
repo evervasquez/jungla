@@ -95,20 +95,16 @@
             </td>
             <td><label for="fecha_nacimiento">Fecha de Nacimiento:</label></td>
             <td>
-                <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento" required
-                   id="fechanac" value="<?php if(isset ($this->datos[0]['fecha_nacimiento'])){
-                           $fecha= $this->datos[0]['fecha_nacimiento'];
-                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento" required
+                   id="fechanac" value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_nacimiento"></div>
             </td>
         </tr>
         <tr valign="top">
             <td><label for="fecha_contratacion">Fecha de Contratacion:</label></td>
             <td>
-                <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
-                   id="fechacon" value="<?php if(isset ($this->datos[0]['fecha_contratacion'])){
-                           $fecha=$this->datos[0]['fecha_contratacion'];
-                           echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
+                   id="fechacon" value="<?php echo $this->datos[0]['fecha_contratacion'] ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
             </td>
             <td><label>Actividad:</label></td>

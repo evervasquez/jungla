@@ -1,22 +1,32 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
-    <table width="50%" align="center" class="tabForm">
-        <caption><h3><?php echo $this->titulo ?></h3></caption>
+     <h3><?php echo $this->titulo ?></h3>
+    <div id="tabla">
+    <table align="center" class="tabForm">
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
                        value="<?php if(isset ($this->datos[0]['idcuenta']))echo $this->datos[0]['idcuenta']?>"/>
+            </td>
+            <td>
+                <div class="msgerror"></div>
             </td>
         </tr>
         <tr>
             <td><label>Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese almacen" required name="descripcion"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo utf8_encode ($this->datos[0]['descripcion'])?>"/></td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
+            </td>
         </tr>
         <tr>
             <td><label>Nro.de Cuenta:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de Cuenta" required name="nro_cuenta"
                        id="descripcion" value="<?php if(isset ($this->datos[0]['nro_cuenta']))echo utf8_encode($this->datos[0]['nro_cuenta'])?>"/></td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="nro_cuenta"></div>
+            </td>
         </tr>
           <tr>
             <td><label>Cuenta Padre:</label></td>
@@ -55,4 +65,5 @@
             </td>
         </tr>
     </table>
+    </div>
 </form>

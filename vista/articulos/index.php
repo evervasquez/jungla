@@ -15,6 +15,7 @@
             <th>Codigo</th>
             <th>Titulo</th>
             <th>Descripcion</th>
+            <th>Imagen</th>
             <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -22,6 +23,13 @@
                 <td><?php echo $this->datos[$i]['idarticulo'] ?></td>
                 <td><?php echo $this->datos[$i]['titulo'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td>
+                    <?php if (isset ($this->datos[$i]['imagen'])){?>
+                    <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>">
+                            <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" />
+                        </a>
+                    <?php } ?>
+                </td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>articulos/editar/<?php echo $this->datos[$i]['idarticulo'] ?>')" class="imgedit" ></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>articulos/eliminar/<?php echo $this->datos[$i]['idarticulo'] ?>')" class="imgdelete"></a>

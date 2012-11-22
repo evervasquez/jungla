@@ -5,15 +5,24 @@ class movimiento_producto {
     public $idcompra;
     public $idproducto;
     public $idtipo_movimiento;
-    public $idventa;
+//    public $idventa;
     public $cantidad;
     public $idempleado;
     public $idmovimiento_producto;
+    public $fecha;
     
 
     public function inserta() {
-        $datos = array($this->idcompra, $this->idproducto, $this->idtipo_movimiento, $this->idventa, $this->cantidad,
-                $this->idempleado, $this->idmovimiento_producto);
+        if(is_null($this->idcompra)){
+            $this->idcompra=0;
+        }
+        if(is_null($this->idproducto)){
+            $this->idproducto=0;
+        }
+        $datos = array($this->idcompra, $this->idproducto, $this->idtipo_movimiento, $this->cantidad,
+                $this->idempleado, 0, $this->fecha);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_movimiento_producto", $datos);
         $error = $r[1];
         $r = null;
@@ -21,8 +30,8 @@ class movimiento_producto {
     }
 
     public function actualiza() {
-        $datos = array($this->idcompra, $this->idproducto, $this->idtipo_movimiento, $this->idventa, $this->cantidad,
-                $this->idempleado, $this->idmovimiento_producto);
+        $datos = array($this->idcompra, $this->idproducto, $this->idtipo_movimiento, $this->cantidad,
+                $this->idempleado, $this->idmovimiento_producto, $this->fecha);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_movimiento_producto", $datos);
         $error = $r[1];
         $r = null;

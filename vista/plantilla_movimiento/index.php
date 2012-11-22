@@ -15,18 +15,18 @@
             <th>Descripcion</th>
             <th>Cuenta</th>
             <th>Concepto Movimiento</th>
-            <th>debe/haber</th>
+            <th>Debe/Haber</th>
             <th>Acciones</th>
         </tr>
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idplantilla_movimiento'] ?></td>
+                <td><?php echo $this->datos[$i]['idplantilla_movimiento'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos[$i]['idcuenta'] ?></td>
+                <td><?php echo $this->datos[$i]['nro_cuenta'].':'.$this->datos[$i]['idcuenta'] ?></td>
                 <td><?php echo $this->datos[$i]['concepto'] ?></td>
                 <td><?php echo $this->datos[$i]['debe_haber'] ?></td>
-                <td class="tabtr" align="center">
+                <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>plantilla_movimiento/editar/<?php echo $this->datos[$i]['idplantilla_movimiento'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>plantilla_movimiento/eliminar/<?php echo $this->datos[$i]['idplantilla_movimiento'] ?>')" class="imgdelete"></a>
                 </td>

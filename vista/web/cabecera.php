@@ -38,8 +38,6 @@
         <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>estilosweb.css" media="all" />
-        <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jflow.plus.min.js"></script>
-	<link href="<?php echo $_params['ruta_css']; ?>jflow.style.css" type="text/css" media="all" rel="stylesheet" />
 
         <?php if(isset($_params['js']) && count($_params['js'])): ?>
         <?php for($i=0; $i < count($_params['js']); $i++): ?>
@@ -98,8 +96,8 @@
                         <?php } ?>
                 <br>
                 <div>
-                    <span class='st_fblike_large' displayText='Facebook Like'></span>
-                    <span class='st_facebook_large' displayText='Facebook'></span>
+<!--                    <span class='st_fblike_large' displayText='Facebook Like'></span>-->
+<!--                    <span class='st_facebook_large' displayText='Facebook'></span>-->
                     <span class='st_twitter_large' displayText='Tweet'></span>
                     <span class='st_googleplus_large' displayText='Google +'></span>
                     <span class='st_blogger_large' displayText='Blogger'></span>

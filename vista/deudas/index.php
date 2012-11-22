@@ -16,6 +16,7 @@
             <th>Fecha Compra</th>
             <th>Total</th>
             <th>Monto Pagado</th>
+            <th>Monto Restante</th>
             <th>Accion</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -25,8 +26,10 @@
                 <td><?php echo $this->datos[$i]['fecha_compra'] ?></td>
                 <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] ?></td>
                 <td><?php echo $this->datos[$i]['monto_pagado'] ?></td>
+                <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_pagado'] ?></td>
                 <td class="tabtr" align="center">
                     <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra']?>">[Cronograma]</a>
+                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra']?>">[Amortizar]</a>
                 </td>
             </tr>
         <?php } ?>
@@ -34,5 +37,5 @@
 </div>
 
 <?php } else{ ?>
-            <p>No hay deudas</p>
-    <?php } ?>  
+    <p>No hay deudas</p>
+<?php } ?>  

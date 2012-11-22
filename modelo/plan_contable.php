@@ -5,9 +5,9 @@ class plan_contable {
     public $idcuenta;
     public $descripcion;
     public $nro_cuenta;
-    public $nivel;
     public $idcuenta_padre;
     public $idcategoria;
+    public $cuenta_padre;
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->nro_cuenta,
@@ -37,13 +37,10 @@ class plan_contable {
         if(is_null($this->descripcion)){
             $this->descripcion='';
         }
-        if(is_null($this->nivel)){
-            $this->nivel='';
+        if(is_null($this->cuenta_padre)){
+            $this->cuenta_padre='';
         }
-        if(is_null($this->idcuenta_padre)){
-            $this->idcuenta_padre='';
-        }
-        $datos = array($this->idcuenta);
+        $datos = array($this->idcuenta,$this->descripcion,$this->nro_cuenta,$this->cuenta_padre);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_cuentas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
