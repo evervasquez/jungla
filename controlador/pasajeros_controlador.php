@@ -26,6 +26,9 @@ class pasajeros_controlador extends controller {
         if($_POST['filtro']==2){
             $this->_clientes->documento= $_POST['cadena'];
         }
+        if($_POST['filtro']==3){
+            $this->_clientes->tipo= $_POST['cadena'];
+        }
         echo json_encode($this->_clientes->selecciona());
     }
     

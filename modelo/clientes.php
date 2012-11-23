@@ -56,7 +56,10 @@ class clientes {
         if(is_null($this->documento)){
             $this->documento='';
         }
-        $datos = array($this->idcliente, $this->nombresyapellidos, $this->razonsocial, $this->documento);
+        if(is_null($this->tipo)){
+            $this->tipo='';
+        }
+        $datos = array($this->idcliente, $this->nombresyapellidos, $this->razonsocial, $this->documento, $this->tipo);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_clientes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

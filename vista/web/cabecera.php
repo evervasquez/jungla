@@ -25,7 +25,7 @@
             <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
                 <div class='likeboxwrap'> 
                     <span>
-                        <iframe src="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/lajungla.tarapoto&amp;width=238&amp;colorscheme=light&amp;connections=15&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:228px; height:320px;">
+                        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Flajungla.tarapoto&amp;width=238&amp;colorscheme=light&amp;connections=15&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:228px; height:320px;">
                         </iframe>
                     </span>        
                 </div>    
@@ -57,14 +57,8 @@
 
     </head>
     <body>
-        <div id="main">
-            <div id="header">
-                <span id="logo"><img src="<?php echo BASE_URL?>lib/img/logoweb.png" id="logoJungla"></span>
-                <span id="titleJungla">
-                    <h1 class="titJungla">LA JUNGLA</h1>
-                    <h2 class="subtitJungla">El &uacute;nico rinc&oacute;n de la selva en la ciudad</h2>
-                </span>
-            </div>
+        <a id="cabecera"></a>
+        <div id="principal">
             <div id="sesion">
                 <?php if(session::get('autenticado')){ ?>
                             <div id="userSesion"><label><?php echo session::get('empleado')?></label></div>

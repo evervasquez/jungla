@@ -21,7 +21,7 @@ $(document).ready(function(){
 });
 </script>
 <?php } ?>
-<div id="frm_cliente_natural" class="tabFormComplejo">
+<div id="frm_cliente_natural">
     <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm_natural">
         <input type="hidden" name="guardar" id="guardar" value="1"/>
         <input type="hidden" name="tipo_cliente" value="natural"/>
@@ -76,6 +76,7 @@ $(document).ready(function(){
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
+                    <br><div class="msgerror"></div>
                 </td>
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
@@ -119,6 +120,7 @@ $(document).ready(function(){
                             <?php } ?>
                         <?php } ?>
                     </select>
+                    <br><div class="msgerror"></div>
                </td>
                 <td><label>Provincia:</label></td>
                 <td>
@@ -172,6 +174,7 @@ $(document).ready(function(){
                             <?php } ?>
                         <?php } ?>
                     </select>
+                    <br><div class="msgerror"></div>
                 </td>
                 <td><label>Estado Civil:</label></td>
                 <td>
@@ -257,12 +260,18 @@ $(document).ready(function(){
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr>
                 <td><label>Email:</label></td>
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
                 </td>
             </tr>
              <tr>
@@ -289,6 +298,9 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr>
                 <td><label>Provincia:</label></td>
@@ -314,6 +326,9 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                 </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr>
                 <td><label>Ciudad:</label></td>
@@ -331,6 +346,9 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                 </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
@@ -338,6 +356,9 @@ $(document).ready(function(){
                         <button type="submit" class="k-button" id="saveformjuridico">Guardar</button>
                         <a href="<?php echo BASE_URL ?>clientes" class="k-button cancel">Cancelar</a>
                     </p>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
                 </td>
             </tr>
         </table>

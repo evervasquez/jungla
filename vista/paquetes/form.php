@@ -32,8 +32,8 @@
             </tr>
         </table>
     <fieldset>
+        <br><legend>Productos x Paquete:</legend>
         <div id="tbl_detalle">
-        <br><legend>Productos x Paquete:</legend><br>
         <table class="tabForm" align="center">
             <tr>
                 <td><label>Producto:</label></td>

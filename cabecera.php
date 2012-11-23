@@ -15,7 +15,21 @@
                 function(){jQuery(".mensaje").stop(true, false).animate({right:"-250"},"medium");},500);return false;});
         </script>
         <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>fanbox.css" type="text/css" media="screen">
-        <div class="mensaje">    
+        <?php if(isset($_params['mensajes']) && count($_params['mensajes'])) {
+            for($i=0; $i < count($_params['mensajes']); $i++) {?>
+        <div class="mensaje red">    
+            <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
+                <div class='likeboxwrap'> 
+                    <div class="msg_pendientes">
+                        <ul>
+                            <li><?php echo $_params['mensajes'][$i] ?></li>
+                        </ul>
+                    </div>        
+                </div>    
+            </div>
+        </div>	
+        <?php }} else {?>
+        <div class="mensaje green">    
             <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
                 <div class='likeboxwrap'> 
                     <div class="msg_pendientes">
@@ -24,6 +38,7 @@
                 </div>    
             </div>
         </div>	
+        <?php }?>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.web.min.js"></script>
         <link type="text/css" href="<?php echo $_params['ruta_css']; ?>estilosprincipal.css" rel="stylesheet" media="screen" />
         <?php if(isset($_params['js']) && count($_params['js'])): ?>

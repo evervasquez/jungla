@@ -21,6 +21,19 @@ class plantilla_movimiento_controlador extends controller {
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_plantilla_movimiento->descripcion=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_plantilla_movimiento->cuenta=$_POST['cadena'];
+        }
+        if($_POST['filtro']==2){
+            $this->_plantilla_movimiento->concepto_movimiento=$_POST['cadena'];
+        }
+        echo json_encode($this->_plantilla_movimiento->selecciona());
+    }
 
     public function nuevo() {
         if ($_POST['guardar'] == 1) {

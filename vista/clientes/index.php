@@ -5,6 +5,7 @@
             <option value="0">Nombre</option>
             <option value="1">Razon Social</option>
             <option value="2">RUC / DNI</option>
+            <option value="3">Tipo de Cliente</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
