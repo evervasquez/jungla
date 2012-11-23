@@ -24,7 +24,7 @@
                 <td><?php echo $this->datos[$i]['titulo'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <td>
-                    <?php if (isset ($this->datos[$i]['imagen'])){?>
+                    <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
                     <a href="" onclick="window.open('<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>')" title="Clic para ver la imagen">
                         <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" />
                     </a>

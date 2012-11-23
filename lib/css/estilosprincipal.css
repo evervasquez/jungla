@@ -62,12 +62,19 @@ body{
 	display:inline-block;
         border: none;
 }
+.imgconfirm{
+	background-image:url(../img/select.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
 #cabecera{
-        background-image: url(../img/banner.jpg);
+        background-image: url(../img/banner_web.jpg);
         background-repeat: no-repeat;
-        top:0px;
+        top:-10px;
         width: 79%;
-        height:100px;
+        height:110px;
         position:absolute;
         margin: 0 auto;
         left: 10.5%;

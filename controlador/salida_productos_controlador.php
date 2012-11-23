@@ -13,7 +13,18 @@ class salida_productos_controlador extends controller{
 
     public function index() {
         $this->_vista->datos = $this->_movimiento_producto->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_movimiento_producto->producto=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_movimiento_producto->empleado = $_POST['cadena'];
+        }
+        echo json_encode($this->_proveedores->selecciona());
     }
     
     public function registrar_salida(){

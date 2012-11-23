@@ -142,7 +142,10 @@ class view {
     public function newMensaje(array $mensajes) {
         if (is_array($mensajes) && count($mensajes)){
             for ($i = 0; $i < count($mensajes); $i++ ) {
-                $this->_mensajes[] = $mensajes[$i];
+                $filename = '/sisjungla/lib/texto.txt';
+//                $filename = BASE_URL . 'lib/' . $mensajes[$i] . ".txt";
+                $file[$i] = fopen($filename,"a+");
+                $this->_mensajes[] = $file[$i];
             }
         } else {
             throw new Exception ('Error de mensaje');

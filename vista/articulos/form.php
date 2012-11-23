@@ -32,8 +32,7 @@
             </tr>
             <tr>
             	<td><label>Adjuntar Imagen</label></td>
-                <td colspan="2"><input type="file" name="imagen" id="imagen" 
-                    value="<?php if(isset ($this->datos[0]['imagen']))echo $this->datos[0]['imagen']?>" /></td>
+                <td colspan="2"><input type="file" name="imagen" id="imagen" /></td>
                 <td>
                     <div class="msgerror"></div>
                 </td>
