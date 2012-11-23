@@ -33,8 +33,8 @@ class promociones_controlador extends controller{
             $this->_promociones->fecha_inicio = $_POST['fecha_inicio'];
             $this->_promociones->fecha_final = $_POST['fecha_final'];
 //            $this->_promociones->fecha_final = $this->fecha_en($_POST['fecha_final']);
-            $this->_promociones->inserta();
-            $this->redireccionar('promociones');
+                        $this->_promociones->inserta();
+                        $this->redireccionar('promociones');
         }
         $this->_vista->titulo = 'Registrar Promocion';
         $this->_vista->action = BASE_URL . 'promociones/nuevo';

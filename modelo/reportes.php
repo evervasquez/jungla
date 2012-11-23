@@ -103,6 +103,18 @@ class reportes{
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
+    public function selecciona_datos_comprobante_venta($idventa){
+        $datos = $idventa;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_comprobante_venta", $idventa);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
+    public function selecciona_datos_detalle_comprobante_venta($idventa){
+        $datos = $idventa;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_detalle_comprobante_venta", $idventa);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
     
     
 //    public function index() {

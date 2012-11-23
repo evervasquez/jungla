@@ -65,9 +65,15 @@
     </td>   
 </tr>
 <tr>
-    <td width="85%">Comprobante de Venta</td>
+    <td width="85%">Comprobante de Venta Ticket Simple</td>
     <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/comprobante_venta')"/>
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_boleta_venta')"/>
+    </td>   
+</tr>
+<tr>
+    <td width="85%">Comprobante de Venta Ticket Factura</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
     </td>   
 </tr>
 </table>
