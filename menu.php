@@ -23,23 +23,24 @@ Class menu {
     }
 
     function cargarmenu() {
-        $idperfil = session::get('idperfil');
-        for($i=0; $i< count($this->_datos); $i++){
-            if($this->_c==0){
-                $descripcion=  $this->_datos[$i]['modulos'];
-                echo "<li>$descripcion<ul>";
-                $this->_c = 1;
+        if(isset($this->_datos) && count($this->_datos)){
+            for($i=0; $i< count($this->_datos); $i++){
+                if($this->_c==0){
+                    $descripcion=  $this->_datos[$i]['modulos'];
+                    echo "<li>$descripcion<ul>";
+                    $this->_c = 1;
+                }
+                if ($descripcion == $this->_datos[$i]['modulos']){
+                    $url = BASE_URL . $this->_datos[$i]['url'];
+                    echo "<li><a href='$url'>" . $this->_datos[$i]['modulos_hijos'] . "</a></li>";
+                } else {
+                    echo "</ul></li>";
+                    $this->_c = 0;
+                    $i = $i -1;
+                }
             }
-            if ($descripcion == $this->_datos[$i]['modulos']){
-                $url = BASE_URL . $this->_datos[$i]['url'];
-                echo "<li><a href='$url'>" . $this->_datos[$i]['modulos_hijos'] . "</a></li>";
-            } else {
-                echo "</ul></li>";
-                $this->_c = 0;
-                $i = $i -1;
-            }
+            echo "</ul></li>";
         }
-        echo "</ul></li>";
     }
 }
 ?>

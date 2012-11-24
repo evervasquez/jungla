@@ -25,7 +25,19 @@ class compras_controlador extends controller{
     public function index() {
         $this->_vista->datos = $this->_compras->selecciona();
         $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function ver(){
+        $this->_compras->idcompra=$_POST['idcompra'];
+        echo json_encode($this->_compras->selecciona());
+                
+    }
+    
+    public function ver2(){
+        $this->_detalle_compra->idcompra=$_POST['idcompra'];
+        echo json_encode($this->_detalle_compra->selecciona());
     }
     
     public function buscador(){
@@ -40,10 +52,6 @@ class compras_controlador extends controller{
     
     public function nuevo(){
         if ($_POST['guardar'] == 1) {
-//            echo '<pre>';
-//            print_r($_POST);
-//            echo '</pre>';
-//            exit;
             //inserta compra
             $this->_compras->fecha_compra = $_POST['fecha_compra'];
             $this->_compras->estado = $_POST['estado'];

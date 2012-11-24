@@ -275,12 +275,18 @@ $(document).ready(function(){
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr>
                 <td><label>Email:</label></td>
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
                 </td>
             </tr>
             <tr class="celda_pais">
@@ -303,6 +309,9 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr class="celda_region">
                 <td><label>Region:</label></td>
@@ -320,6 +329,9 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr class="celda_provincia">
                 <td><label>Provincia:</label></td>
@@ -336,6 +348,9 @@ $(document).ready(function(){
                             <?php } ?>
                         <?php } ?>
                     </select>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
                 </td>
             </tr>
             <tr class="celda_ciudad">
@@ -354,13 +369,19 @@ $(document).ready(function(){
                         <?php } ?>
                     </select>
                 </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
             </tr>
             <tr>
-                <td colspan="3" align="center">
+                <td colspan="2" align="center">
                     <p>
                         <button type="submit" class="k-button">Guardar</button>
                         <a href="<?php echo BASE_URL ?>pasajeros" class="k-button cancel">Cancelar</a>
                     </p>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
                 </td>
             </tr>
         </table>

@@ -80,6 +80,17 @@ class reportes_controlador extends controller {
         return $datos;
     }
     
+    public function obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano) {
+        $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
+        if($mesano[2]==1){
+            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','codigo_provincia','cantidad');
+        } else {
+            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','cantidad');
+        }
+        $datos = $this->get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
     public function obtener_cantidad_empleados_x_tipo_x_actividad() {
         $datos =$this->_reportes->selecciona_cantidad_empleados_x_tipo_x_actividad();
         $cabeceras = array ('idactividad', 'idtipo_empleado', 'cantidad');
@@ -91,6 +102,38 @@ class reportes_controlador extends controller {
         $datos =$this->_reportes->selecciona_habitaciones_x_tipo_habitacion();
         $cabeceras = array ('idtipo_habitacion', 'descripcion', 'cantidad');
         $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_numero_pernoctaciones_x_tipo_habitacion($mesano) {
+        $datos =$this->_reportes->selecciona_numero_pernoctaciones_x_tipo_habitacion($mesano);
+        $cabeceras = array ('idtipo_habitacion', 'descripcion', 'pernoctaciones', 'habitaciones_noche');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_datos_comprobante_venta($idventa) {
+        $datos =$this->_reportes->selecciona_datos_comprobante_venta($idventa);
+        $cabeceras = array ('idventa', 'fecha_venta', 'estado', 'observaciones', 'nro_documento', 'idtipo_comprobante','serie','abreviatura', 'idempleado', 'nombres_empleado', 'apellidos_empleado', 'idtipo_transaccion', 'registro_venta', 'idcliente', 'nombres_cliente', 'apellidos_cliente', 'documento', 'direccion_cliente');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_datos_detalle_comprobante_venta($idventa) {
+        $datos =$this->_reportes->selecciona_datos_detalle_comprobante_venta($idventa);
+        $cabeceras = array ('idventa','idpaquete','cantidad','precio_venta','idproducto','descripcion','idunidad_medida','abreviatura');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano) {
+        $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
+        if($mesano[2]==1){
+            $cabeceras = array ('idcontinente', 'descripcion_continente','cantidad');
+        } else {
+            $cabeceras = array ('idpais', 'descripcion', 'cantidad');
+        }
+        $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
@@ -463,21 +506,88 @@ class reportes_controlador extends controller {
 //NUMERO DE HABITACIONES-NOCHE OCUPADAS
         $setx = $setx + 21.05;
         $sety = 94.80;
-        for ($i = 0; $i <= 6; $i++) {
+        $mesano = array($mes, $ano);
+        $datos= $this->obtener_numero_pernoctaciones_x_tipo_habitacion($mesano);
+        $datacount = count($datos);
+        $habitacioncuenta = 1;
+        $conteok = false;
+        $total = 0;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['habitaciones_noche'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['habitaciones_noche'];
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+        $this->_fpdf->SetY($sety);
+        $this->_fpdf->SetX($setx);
+        $this->_fpdf->Cell(21.05, 4.30, $total, 0, 0, 'C');
+//        $setx = $setx + 21.05;
+//        $sety = 94.80;
+//        for ($i = 0; $i <= 6; $i++) {
+//            $this->_fpdf->SetY($sety);
+//            $this->_fpdf->SetX($setx);
+//            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+//            $sety = $sety + 4.30;
+//        }
 //NUMERO DE PERNOCTACIONES
         $setx = $setx + 21.05;
         $sety = 94.80;
-        for ($i = 0; $i <= 6; $i++) {
+        $mesano = array($mes, $ano);
+        $datos= $this->obtener_numero_pernoctaciones_x_tipo_habitacion($mesano);
+        $datacount = count($datos);
+        $habitacioncuenta = 1;
+        $conteok = false;
+        $total = 0;
+        for ($i = 1; $i <= 6; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(21.05, 4.30, utf8_decode($i), 0, 0, 'C');
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['pernoctaciones'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['pernoctaciones'];
+                    //siguiente habitacion:
+                    $conteok = true;
+                    switch ($habitacioncuenta) {
+                        case 1: $habitacioncuenta = 2;
+                            break;
+                        case 2: $habitacioncuenta = 5;
+                            break;
+                        case 5: $habitacioncuenta = 3;
+                            break;
+                        case 3: $habitacioncuenta = 6;
+                            break;
+                        case 6: $habitacioncuenta = 0;
+                            break;
+                    }
+                }
+            }
+            $conteok = false;
             $sety = $sety + 4.30;
         }
+        $this->_fpdf->SetY($sety);
+        $this->_fpdf->SetX($setx);
+        $this->_fpdf->Cell(21.05, 4.30, $total, 0, 0, 'C');
+        
 //TARIFA CON BAÑO
         $datos = $this->obtener_tipo_habitacion_total();
         $datacount = count($datos);
@@ -573,10 +683,8 @@ class reportes_controlador extends controller {
         $paiscuenta = 28;
         $conteok = false;
         $internacionaltotal = 0;
-        $otroamerica=0;
-        $otroeuropa=0;
-        $otroasia=0;
-        for ($i = 0; $i < 31; $i++) {
+        
+        for ($i = 0; $i < 26; $i++) {
             if ($i == 4) {
                 $sety = 188.35;
             }
@@ -591,70 +699,115 @@ class reportes_controlador extends controller {
                     $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
                     //Siguiente país:
                     $conteok = true;
-                    switch ($paiscuenta) {
-                        case 28:$paiscuenta = 15;
-                            break;
-                        case 15:$paiscuenta = 41;
-                            break;
-                        case 41:$paiscuenta = 43;
-                            break;
-                        case 43:$paiscuenta = 53;
-                            break;
-                        case 53:$paiscuenta = 191;
-                            break; //panama
-                        case 191:$paiscuenta = 58;
-                            break;
-                        case 58:$paiscuenta = 70;
-                            break;
-                        case 70:$paiscuenta = 77;
-                            break;
-                        case 77:$paiscuenta = 85;
-                            break;
-                        case 85:$paiscuenta = 82;
-                            break;
-                        case 82:$paiscuenta = 91;
-                            break;
-                        case 91:$paiscuenta = 115;
-                            break;
-                        case 115:$paiscuenta = 126;
-                            break;
-                        case 126:$paiscuenta = 127;
-                            break;
-                        case 127:$paiscuenta = 130;
-                            break;
-                        case 130:$paiscuenta = 62;
-                            break;
-                        case 62:$paiscuenta = 63;
-                            break;
-                        case 63:$paiscuenta = 163;
-                            break;
-                        case 163:$paiscuenta = 192;
-                            break;
-                        case 192:$paiscuenta = 200;
-                            break;
-                        case 200:$paiscuenta = 71;
-                            break;
-                        case 71:$paiscuenta = 227;
-                            break;
-                        case 227:$paiscuenta = 72;
-                            break;
-                        case 72:$paiscuenta = 0;
-                            break;
-                    }
                 }
+            }
+            switch ($paiscuenta) {
+                case 28:$paiscuenta = 15;
+                    break;
+                case 15:$paiscuenta = 41;
+                    break;
+                case 41:$paiscuenta = 43;
+                    break;
+                case 43:$paiscuenta = 53;
+                    break;
+                case 53:$paiscuenta = 191;
+                    break; /* panama */
+                case 191:$paiscuenta = 58;
+                    break;
+                case 58:$paiscuenta = 70;
+                    break;
+                case 70:$paiscuenta = 77;
+                    break;
+                case 77:$paiscuenta = 85;
+                    break;
+                case 85:$paiscuenta = 82;
+                    break;
+                case 82:$paiscuenta = 91;
+                    break;
+                case 91:$paiscuenta = 115;
+                    break;
+                case 115:$paiscuenta = 126;
+                    break;
+                case 126:$paiscuenta = 127;
+                    break;
+                case 127:$paiscuenta = 130;
+                    break;
+                case 130:$paiscuenta = 62;
+                    break;
+                case 62:$paiscuenta = 63;
+                    break;
+                case 63:$paiscuenta = 163;
+                    break;
+                case 163:$paiscuenta = 192;
+                    break;
+                case 192:$paiscuenta = 200;
+                    break;
+                case 200:$paiscuenta = 71;
+                    break;
+                case 71:$paiscuenta = 227;
+                    break;
+                case 227:$paiscuenta = 72;
+                    break;
+                case 72:$paiscuenta = 257;
+                    break;
+                case 257:$paiscuenta = 259;
+                    break;
+                case 259:$paiscuenta = 0;
+                    break;
             }
             $conteok = false;
             $sety = $sety + 3.706;
         }
-//total
-        $this->_fpdf->SetY($sety);
+        
+        //CONTINENTES
+        $mesano = array($mes, $ano, 1);
+        $datos = $this->obtener_numero_arribos_huesped_ubigeo_internacional($mesano);
+        $datacount = count($datos);
+        /* COMIENZA CON AFRICA, CODIGO 4 */
+        $continentecuenta = 4;
+        $conteok = false;
+        for ($i = 0; $i < 5; $i++) {
+            $this->_fpdf->SetY($sety);
+            $this->_fpdf->SetX($setx);
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idcontinente'] == $continentecuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                    //Siguiente CONTINENTE:
+                    $conteok = true;
+                }
+            }
+            switch ($continentecuenta) {
+                case 4:$continentecuenta = 5;
+                    break;
+                case 5:$continentecuenta = 1;
+                    break;
+                case 1:$continentecuenta = 3;
+                    break;
+                case 3:$continentecuenta = 2;
+                    break;
+                case 2:$continentecuenta = 0;
+                    break;
+            }
+            $conteok = false;
+            $sety = $sety + 3.706;
+        }
+        $this->_fpdf->SetY($sety-0.5);
         $this->_fpdf->SetX($setx);
         $this->_fpdf->Cell(26.33, 3.706, $internacionaltotal, '', 0, 'C');
 
-//internacional pernoctaciones en el mes
+//internacional PERNOCTACIONES en el mes
         $setx = 70.32;
         $sety = 173.2;
-        for ($i = 0; $i < 31; $i++) {
+        $mesano = array($mes, $ano, 0);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
+        $datacount = count($datos);
+        /* COMIENZA CON ARGENTINA, CODIGO 28 */
+        $paiscuenta = 28;
+        $conteok = false;
+        $internacionaltotal = 0;
+        
+        for ($i = 0; $i < 26; $i++) {
             if ($i == 4) {
                 $sety = 188.35;
             }
@@ -663,13 +816,108 @@ class reportes_controlador extends controller {
             }
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idpais'] == $paiscuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                    //Siguiente país:
+                    $conteok = true;
+                }
+            }
+            switch ($paiscuenta) {
+                case 28:$paiscuenta = 15;
+                    break;
+                case 15:$paiscuenta = 41;
+                    break;
+                case 41:$paiscuenta = 43;
+                    break;
+                case 43:$paiscuenta = 53;
+                    break;
+                case 53:$paiscuenta = 191;
+                    break; /* panama */
+                case 191:$paiscuenta = 58;
+                    break;
+                case 58:$paiscuenta = 70;
+                    break;
+                case 70:$paiscuenta = 77;
+                    break;
+                case 77:$paiscuenta = 85;
+                    break;
+                case 85:$paiscuenta = 82;
+                    break;
+                case 82:$paiscuenta = 91;
+                    break;
+                case 91:$paiscuenta = 115;
+                    break;
+                case 115:$paiscuenta = 126;
+                    break;
+                case 126:$paiscuenta = 127;
+                    break;
+                case 127:$paiscuenta = 130;
+                    break;
+                case 130:$paiscuenta = 62;
+                    break;
+                case 62:$paiscuenta = 63;
+                    break;
+                case 63:$paiscuenta = 163;
+                    break;
+                case 163:$paiscuenta = 192;
+                    break;
+                case 192:$paiscuenta = 200;
+                    break;
+                case 200:$paiscuenta = 71;
+                    break;
+                case 71:$paiscuenta = 227;
+                    break;
+                case 227:$paiscuenta = 72;
+                    break;
+                case 72:$paiscuenta = 257;
+                    break;
+                case 257:$paiscuenta = 259;
+                    break;
+                case 259:$paiscuenta = 0;
+                    break;
+            }
+            $conteok = false;
             $sety = $sety + 3.706;
-            $this->_fpdf->Cell(26.33, 3.71, $i, '', 0, 'C');
         }
-//total
-        $this->_fpdf->SetY($sety);
+        
+        //CONTINENTES
+        $mesano = array($mes, $ano, 1);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
+        $datacount = count($datos);
+        /* COMIENZA CON AFRICA, CODIGO 4 */
+        $continentecuenta = 4;
+        $conteok = false;
+        for ($i = 0; $i < 5; $i++) {
+            $this->_fpdf->SetY($sety);
+            $this->_fpdf->SetX($setx);
+            for ($j = 0; $j < $datacount; $j++) {
+                if ($datos[$j]['idcontinente'] == $continentecuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                    //Siguiente CONTINENTE:
+                    $conteok = true;
+                }
+            }
+            switch ($continentecuenta) {
+                case 4:$continentecuenta = 5;
+                    break;
+                case 5:$continentecuenta = 1;
+                    break;
+                case 1:$continentecuenta = 3;
+                    break;
+                case 3:$continentecuenta = 2;
+                    break;
+                case 2:$continentecuenta = 0;
+                    break;
+            }
+            $conteok = false;
+            $sety = $sety + 3.706;
+        }
+        $this->_fpdf->SetY($sety-0.5);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(26.33, 3.706, 'TOTAL', '', 0, 'C');
+        $this->_fpdf->Cell(26.33, 3.706, $internacionaltotal, '', 0, 'C');
 
 //nacional arribos en el mes
         $setx = 152.75;
@@ -735,27 +983,65 @@ class reportes_controlador extends controller {
 //nacional pernoctaciones en el mes
         $setx = 178.65;
         $sety = 173.30;
+        $limametro = 0;
+        $lima = 0;
+        $nacionaltotal = 0;
+//obtener datos
+        $mesano = array($mes, $ano, 1);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
+        $datacount = count($datos);
+        for ($i = 0; $i < $datacount; $i++) {
+            if ($datos[$i]['codigo_region'] == 7) {
+                $limametro = $limametro + $datos[$i]['cantidad'];
+            } else {
+                if ($datos[$i]['codigo_provincia'] == 0 || $datos[$i]['codigo_provincia'] == 1) {
+                    $limametro = $limametro + $datos[$i]['cantidad'];
+                } else {
+                    $lima = lima + $datos[$i]['cantidad'];
+                }
+            }
+        }
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(25.90, 6.11, 'cero', 0, 0, 'C');
-        $sety = 173.30 + 6.11;
+        if ($limametro != 0) {
+            $this->_fpdf->Cell(25.90, 6.11, $limametro, 0, 0, 'C');
+        }
+        $sety = $sety + 6.11;
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(25.90, 10.13, 'cero', 0, 0, 'C');
+        if ($lima != 0) {
+            $this->_fpdf->Cell(25.90, 10.13, $lima, 0, 0, 'C');
+        }
+        $nacionaltotal = $nacionaltotal + $limametro + $lima;
+
+        $mesano = array($mes, $ano, 0);
+        $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
+        $datacount = count($datos);
         $sety = $sety + 10.13;
-        for ($i = 0; $i < 23; $i++) {
+        $regioncount = 1;
+        for ($i = 1; $i < 24; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
+            for ($j = 0; $j <= $datacount; $j++) {
+                if ($datos[$j]['codigo_region'] == $regioncount) {
+                    $this->_fpdf->Cell(25.90, 3.63, $datos[$j]['cantidad'], 1, 0, 'C');
+                    $nacionaltotal = $nacionaltotal + $datos[$j]['cantidad'];
+                }
+            }
             $sety = $sety + 3.63;
-            $this->_fpdf->Cell(25.90, 3.63, $i, 0, 0, 'C');
+            if ($i == 6 || $i == 13) {
+                $regioncount = $regioncount + 2;
+            } else {
+                $regioncount = $regioncount + 1;
+            }
         }
 //total
         $this->_fpdf->SetY($sety);
         $this->_fpdf->SetX($setx);
-        $this->_fpdf->Cell(25.90, 17.41, 'TOTAL', 0, 0, 'C');
+        $this->_fpdf->Cell(25.90, 17.41, $nacionaltotal, 1, 0, 'C');
 
         $this->_fpdf->AddPage();
-        $this->_fpdf->Image(ROOT . 'vista' . DS . 'reportes' . DS . 'img' . DS . 'estadistica_mensual_back.jpg', 0, 0, 210, 297, 'JPG');
+        $this->_fpdf->Image(ROOT . 'vista' . DS . 'reportes' . DS . 'img' . DS . 'estadistica_mensual_back.jpg', 0, 0, 210, 297, 'PNG');
 
 
 //CAPITULO 5 NUMERO DE PUESTOS DE TRABAJO
@@ -1238,12 +1524,21 @@ class reportes_controlador extends controller {
         $this->_fpdf->Output();
     }
 
-    public function comprobante_venta(){
-        $ancho = 73;
-        $alto = 130;
+    public function ticket_boleta_venta($idventa){
+        // DATOS QUE DEBE RECIBIR ESTE REPORTE: IDVENTA 
+        $idventa = array($idventa);
+        
+        //PRIMERO SE OBTIENE LA CANTIDAD DE ITEMS EN EL DETALLE PARA DETERMINAR EL ALTO DE PAGINA DEL TICKET
+        $detalle = $this->obtener_datos_detalle_comprobante_venta($idventa);
+        $items = count($detalle);
+        // EL TAMAÑO INICIAL, ESDECIR, SIN ITEMS REGISTRADOS, ES DE VALOR: $alto=95;
+        
         $ancho_celda_datos = 3.8;
-        $espac = 0;
+        $alto = 92 + ($ancho_celda_datos*$items);
+        $ancho = 73;
+        $espac = 8;
         $this->_fpdf = new FPDF('P', 'mm', array($ancho, $alto));
+        $this->_fpdf->SetAutoPageBreak(false);
         $this->_fpdf->AddPage();
         $this->_fpdf->SetFont('Courier', '', 9);
         $this->_fpdf->SetFillColor(255, 255, 255);
@@ -1252,8 +1547,7 @@ class reportes_controlador extends controller {
             $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
             $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
             $datos[0]['rep_venta_7']);
-        
-        $this->_fpdf->SetY(0);
+        $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
         $espac = $espac + $ancho_celda_datos;
@@ -1273,18 +1567,31 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
+        
+        $datos = $this->obtener_datos_comprobante_venta($idventa);
+        $horafecha = array(
+            substr($datos[0]['fecha_venta'],8,2),
+            substr($datos[0]['fecha_venta'],5,2),
+            substr($datos[0]['fecha_venta'],0,4),
+            substr($datos[0]['fecha_venta'],11,2),
+            substr($datos[0]['fecha_venta'],14,2),
+            substr($datos[0]['fecha_venta'],17,2)
+            );
+        
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.'01/01/2001'.'  '.'HORA:'.'10:10:10'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE  :'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTES VARIOS'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('  '.$datos[0]['nombres_cliente'].' '.$datos[0]['apellidos_cliente']),0,36),0,0,'L',1);
+        
+        $espac = $espac + $ancho_celda_datos+2;
+        
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
@@ -1296,60 +1603,297 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
-        //
-        //
-        //
-        //
-        //  ESPACIO DISPONIBLE PARA LISTADO DE PRODUCTOS
-        //
-        //
-        //
-        //$this->_fpdf->Cell($ancho, 6, 'Texto de Prueba', 1, '', 'C', true);
+        $espac = $espac  + 1;
         
-        $espac = $espac + 10;
-        
+        $sbtotal = 0;
+        for($i=0;$i<$items;$i++){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            if($detalle[$i]['idpaquete']==0){//NO ES UN PAQUETE
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].$detalle[$i]['abreviatura'].' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            if($detalle[$i]['idproducto']==0){
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].'PQT'.' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(50);
+            $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
+            //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
+            $prec = number_format($detalle[$i]['precio_venta'], 2);
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(55);
+            $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
+            //SUMAR LOS VALORES DEL PRECIO PARA OBTENER EL TOTAL:
+            $sbtotal = $sbtotal + $prec;
+            
+            $espac = $espac + $ancho_celda_datos;
+        }
+        if($items==0){
+            $this->_fpdf->SetY($espac+1.2);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,1,utf8_decode('  >>NO SE REGISTRARON ITEMS'),0,0,'L',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         
         $espac = $espac - 3;
+        //IGV (CERO POR DEFECTO Y SIEMPRE)
+        $igv = number_format('0', 2);
         
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *   V.VENTA  S/.'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *   V.VENTA  S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($sbtotal, 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          **  IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           **  IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        //CALCULAR TOTAL SUMADO EL IGV:
+        $total = $sbtotal + ($igv*$sbtotal);
+        
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($sbtotal*$igv), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *** TOTAL    S/.'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *** TOTAL    S/.'),0,0,'L',1);
         $this->_fpdf->SetY($espac);
-        $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('              EFECTIVO S/.'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
-        $this->_fpdf->SetY($espac);
-        $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('              VUELTO   S/.'),0,0,'L',1);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($total, 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
         
+        $espac = $espac + $ancho_celda_datos - 3;
+        //necesito: vendedor, items, condicion (contado, credito), campo obsrevaciones (si estado = 0: observacion = anulado)
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.$items),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['idempleado'].'/'.$datos[0]['nombres_empleado'].' '.$datos[0]['apellidos_empleado']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['idtipo_transaccion']==1){$datos[0]['idtipo_transaccion']='CONTADO';}else{$datos[0]['idtipo_transaccion']='CREDITO';}
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['idtipo_transaccion']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
+        if($datos[0]['estado']==0){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('*** ANULADO ***'),0,36),0,0,'L',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
+        
+        $espac = $espac + 3;
+        
+        //PIE DE PÁGINA
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[6]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[7]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $this->_fpdf->Output();
+    }
+    
+    public function ticket_factura_venta($idventa){
+        // DATOS QUE DEBE RECIBIR ESTE REPORTE: IDVENTA 
+        $idventa = array($idventa);
+        
+        //PRIMERO SE OBTIENE LA CANTIDAD DE ITEMS EN EL DETALLE PARA DETERMINAR EL ALTO DE PAGINA DEL TICKET
+        $detalle = $this->obtener_datos_detalle_comprobante_venta($idventa);
+        $items = count($detalle);
+        // EL TAMAÑO INICIAL, ESDECIR, SIN ITEMS REGISTRADOS, ES DE VALOR: $alto=112;
+        
+        $ancho_celda_datos = 3.8;
+        $alto = 112 + ($ancho_celda_datos*$items);
+        $ancho = 73;
+        $espac = 8;
+        $this->_fpdf = new FPDF('P', 'mm', array($ancho, $alto));
+        $this->_fpdf->SetAutoPageBreak(false);
+        $this->_fpdf->AddPage();
+        $this->_fpdf->SetFont('Courier', '', 9);
+        $this->_fpdf->SetFillColor(255, 255, 255);
+        $datos = $this->obtener_datos_empresa();
+        $rep_venta = array('',$datos[0]['rep_venta_1'], $datos[0]['rep_venta_2'],
+            $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
+            $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
+            $datos[0]['rep_venta_7']);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[2]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[3]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[4]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[5]),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $datos = $this->obtener_datos_comprobante_venta($idventa);
+        $horafecha = array(
+            substr($datos[0]['fecha_venta'],8,2),
+            substr($datos[0]['fecha_venta'],5,2),
+            substr($datos[0]['fecha_venta'],0,4),
+            substr($datos[0]['fecha_venta'],11,2),
+            substr($datos[0]['fecha_venta'],14,2),
+            substr($datos[0]['fecha_venta'],17,2)
+            );
         
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: X'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: X'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('*** TICKET FACTURA ***'),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        //$this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos + 2;
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos-2;
+        $this->_fpdf->SetY($espac-1);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  PRODUCTO                   IMPORTE'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos-1;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac  + 1;
+        
+        $sbtotal = 0;
+        for($i=0;$i<$items;$i++){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            if($detalle[$i]['idpaquete']==0){//NO ES UN PAQUETE
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].$detalle[$i]['abreviatura'].' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            if($detalle[$i]['idproducto']==0){
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].'PQT'.' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(50);
+            $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
+            //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
+            $prec = number_format($detalle[$i]['precio_venta'], 2);
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(55);
+            $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
+            //SUMAR LOS VALORES DEL PRECIO PARA OBTENER EL TOTAL:
+            $sbtotal = $sbtotal + $prec;
+            
+            $espac = $espac + $ancho_celda_datos;
+        }
+        if($items==0){
+            $this->_fpdf->SetY($espac+1.2);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,1,utf8_decode('  >>NO SE REGISTRARON ITEMS'),0,0,'L',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         
+        $espac = $espac - 3;
+        //IGV (CERO POR DEFECTO Y SIEMPRE)
+        $igv = number_format('0', 2);
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *   V.VENTA  S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($sbtotal, 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           **  IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        //CALCULAR TOTAL SUMADO EL IGV:
+        $total = $sbtotal + ($igv*$sbtotal);
+        
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($sbtotal*$igv), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *** TOTAL    S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($total, 2)),0,0,'R',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $espac = $espac + $ancho_celda_datos - 3;
+        //necesito: vendedor, items, condicion (contado, credito), campo obsrevaciones (si estado = 0: observacion = anulado)
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.$items),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' RAZON SOCIAL: '),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['nombres_cliente']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' DIRECCION: '),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['direccion_cliente']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' RUC: '.$datos[0]['documento']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['idempleado'].'/'.$datos[0]['nombres_empleado'].' '.$datos[0]['apellidos_empleado']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['idtipo_transaccion']==1){$datos[0]['idtipo_transaccion']='CONTADO';}else{$datos[0]['idtipo_transaccion']='CREDITO';}
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['idtipo_transaccion']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
+        if($datos[0]['estado'] == 0){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('*** ANULADO ***'),0,36),0,0,'C',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
+        
+        $espac = $espac + 3;
         
         //PIE DE PÁGINA
         $this->_fpdf->SetY($espac);

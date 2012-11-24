@@ -19,10 +19,10 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['empleado_n'].' '.$this->datos[$i]['empleado_a'] ?></td>
-                <td class="tabtr"><?php echo $this->datos[$i]['fecha'] ?></td>
-                <td class="tabtr"><?php echo $this->datos[$i]['saldo'] ?></td>
-                <td class="tabtr"><?php if($this->datos[$i]['estado']==1){echo 'Aperturado';}else{echo 'Cerrado';}?></td>
+                <td><?php echo $this->datos[$i]['empleado_n'].' '.$this->datos[$i]['empleado_a'] ?></td>
+                <td><?php echo $this->datos[$i]['fecha'] ?></td>
+                <td><?php echo $this->datos[$i]['saldo'] ?></td>
+                <td><?php if($this->datos[$i]['estado']==1){echo 'Aperturado';}else{echo 'Cerrado';}?></td>
             </tr>
         <?php } ?>
     </table>

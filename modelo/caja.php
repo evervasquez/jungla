@@ -17,8 +17,6 @@ class caja {
             $this->empleado='';
         }
         $datos = array($this->idcaja, $this->empleado);
-//        echo '<pre>';
-//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_selecciona_caja", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

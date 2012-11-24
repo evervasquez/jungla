@@ -19,6 +19,8 @@ class entrada_productos_controlador extends controller{
         $this->_compras->confirmacion=0;
         $this->_vista->datos_compras = $this->_compras->selecciona();
         $this->_vista->datos = $this->_movimiento_producto->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
     }
     

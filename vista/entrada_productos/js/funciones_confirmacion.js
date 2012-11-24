@@ -1,4 +1,10 @@
 $(document).ready(function(){
+        $(".tabgrilla").kendoGrid({
+            dataSource: {
+                pageSize: 7
+            },
+            pageable: true
+        });
     $("#confirma_entrada").click(function(){
         tc=$('input:checkbox').length;
         cs=$('input:checkbox').filter(":checked").length;

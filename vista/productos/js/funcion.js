@@ -34,7 +34,12 @@
                     HTML = HTML + '<td>'+datos[i].tipo+'</td>';
                     HTML = HTML + '<td>'+datos[i].stock+'</td>';
                     HTML = HTML + '<td>'+datos[i].um+'</td>';
+                    if(datos[i].ubicacion != null){
                     HTML = HTML + '<td>'+datos[i].ubicacion+'</td>';
+                    }
+                    else{
+                    HTML = HTML + '<td></td>';    
+                    }
                     var editar='/sisjungla/productos/editar/'+datos[i].idproducto; 
                     var eliminar='/sisjungla/productos/eliminar/'+datos[i].idproducto;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';

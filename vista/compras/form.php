@@ -88,7 +88,7 @@
     <fieldset>
         <legend>Detalle Compra:</legend>
         <div id="tbl_detalle">
-        <table class="tabFormComplejo" align="center">
+        <table class="tabForm" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>
@@ -107,7 +107,7 @@
             <tr>
                 <td><label>Cantidad:</label></td>
                 <td colspan="2">
-                    <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
+                    <input type="numeric" min="0" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
                 <td><label>Precio de Compra:</label></td>
                 <td>

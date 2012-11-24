@@ -1,15 +1,17 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <h3><?php echo $this->titulo ?></h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
-    <table>
-        <tr>
+    <div id="tbl_detalle">
+    <table align="center" class="tabFormComplejo">
+        <tr valign="top">
             <td><label>Motivo:</label></td>
             <td>
-                <select class="combo" placeholder="Selecciona" id="motivo">
+                <select class="combo" placeholder="Selecciona" id="motivo" name="motivo" required>
                     <option></option>
                     <option value="2">Pedido</option>
                     <option value="3">Perdida</option>
                 </select>
+                <br><div class="k-invalid-msg msgerror" data-for="motivo"></div>
             </td>
             <td><label>Producto:</label></td>
             <td>
@@ -20,14 +22,14 @@
                 <button type="button" class="k-button" id="btn_vtna_productos"><span class="k-icon k-i-search"></span></button>
             </td>
         </tr>
-        <tr>
+        <tr valign="top">
             <td><label>Unidad de Medida:</label></td>
             <td>
                 <input type="text" class="k-textbox" id="unidad_medida" placeholder="Unidad Medida" readonly="readonly"/>
             </td>
             <td><label>Cantidad:</label></td>
             <td colspan="2">
-                <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
+                <input type="numeric" min="1" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
             </td>
         </tr
         <tr>
@@ -56,6 +58,7 @@
             </td>
         </tr>
     </table>
+    </div>
 </form>
 
 
