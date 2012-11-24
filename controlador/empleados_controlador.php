@@ -120,6 +120,10 @@ class empleados_controlador extends controller {
         if (!$this->filtrarInt($id)) {
             $this->redireccionar('empleados');
         }
+        if($this->filtrarInt($id)!=session::get('idempleado')){
+            echo "<script>alert('No puede editar los datos de otro empleado')</script>";
+            $this->redireccionar('empleados');
+        }
         if ($_POST['guardar'] == 1) {
             $this->_empleados->idempleado = $_POST['codigo'];
             $this->_empleados->nombres = $_POST['nombres'];

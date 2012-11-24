@@ -37,7 +37,10 @@ class clientes_controlador extends controller {
             $this->_clientes->razonsocial = $_POST['cadena'];
         }
         if($_POST['filtro']==2){
-            $this->_clientes->documento= $_POST['cadena'];
+            $this->_clientes->dni= $_POST['cadena'];
+        }
+        if($_POST['filtro']==3){
+            $this->_clientes->ruc= $_POST['cadena'];
         }
         echo json_encode($this->_clientes->selecciona());
     }

@@ -7,12 +7,16 @@ class caja {
     public $fecha;
     public $saldo;
     public $idempleado;
+    public $empleado;
     
     public function selecciona() {
         if(is_null($this->idcaja)){
             $this->idcaja=0;
         }
-        $datos = array($this->idcaja);
+        if(is_null($this->empleado)){
+            $this->empleado='';
+        }
+        $datos = array($this->idcaja, $this->empleado);
 //        echo '<pre>';
 //                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_selecciona_caja", $datos);
