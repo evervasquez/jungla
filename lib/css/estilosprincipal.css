@@ -5,7 +5,7 @@ body{
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:12px;
         background-image: url(../img/linea.jpg);
-        text-align: left;
+        text-align: justify;
 }
 #principal{
 	padding-top:31px;
@@ -62,12 +62,19 @@ body{
 	display:inline-block;
         border: none;
 }
+.imgconfirm{
+	background-image:url(../img/select.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
 #cabecera{
-        background-image: url(../img/banner.jpg);
+        background-image: url(../img/banner_web.jpg);
         background-repeat: no-repeat;
-        top:0px;
+        top:-10px;
         width: 79%;
-        height:100px;
+        height:110px;
         position:absolute;
         margin: 0 auto;
         left: 10.5%;
@@ -92,7 +99,7 @@ body{
 .tabFormComplejo label{
         width: 90px;
         display: block;
-        margin: 5px 10px 20px 10px;
+        margin: 5px 10px 30px 10px;
         text-align: right;
 }
 #tbl_detalle{

@@ -18,6 +18,8 @@ class compras {
         $datos = array(0, $this->fecha_compra, $this->estado, $this->observaciones, 
             $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
             $this->idtipo_transaccion, $this->confirmacion);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_compras", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

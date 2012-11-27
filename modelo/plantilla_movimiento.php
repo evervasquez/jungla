@@ -7,12 +7,23 @@ class plantilla_movimiento {
     public $idcuenta;
     public $idconcepto_movimiento;
     public $debe_haber;
+    public $cuenta;
+    public $concepto_movimiento;
 
     public function selecciona() {
         if(is_null($this->idplantilla_movimiento)){
             $this->idplantilla_movimiento=0;
         }
-        $datos = array($this->idplantilla_movimiento);
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
+        if(is_null($this->cuenta)){
+            $this->cuenta='';
+        }
+        if(is_null($this->concepto_movimiento)){
+            $this->concepto_movimiento='';
+        }
+        $datos = array($this->idplantilla_movimiento, $this->descripcion, $this->cuenta, $this->concepto_movimiento);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_plantilla_movimiento", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

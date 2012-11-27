@@ -68,6 +68,7 @@ class paquetes_controlador extends controller{
 //            echo '</pre>';
 //            exit;
             //inserta habitacion
+            $this->_paquetes->idpaquete=$_POST['codigo'];
             $this->_paquetes->descripcion=$_POST['descripcion'];
             $this->_paquetes->descuento=$_POST['descuento'];
             $this->_paquetes->costo=$_POST['costo'];

@@ -36,7 +36,7 @@
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgdelete"></a>
-                    <a href="javacript:void(0)" class="imgview ver"></a>
+                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgview"></a>
                 </td>
             </tr>
         <?php } ?>
@@ -46,4 +46,5 @@
         <p>No hay habitaciones</p>
         <a href="<?php echo BASE_URL?>habitaciones/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
-        
+<div id="vtna_ver_habitacion"></div>
+<div id="fondooscuro"></div>        

@@ -38,22 +38,20 @@
 <table>
     <tr valign="top">
         <td width="60%">
+            <?php if (isset($this->datos) && count($this->datos)) {
+            for ($i = 0; $i < count($this->datos); $i++) { ?>
             <div class="article">
-                <img src="<?php echo BASE_URL?>vista/web/photos/piscina.jpg" class="fotoArt">
+                <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
+                    <a href="" onclick="window.open('<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>')" title="Clic para ver la imagen">
+                        <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" class="fotoArt" />
+                    </a>
+                    <?php } ?>
                 <span class="contArt">
-                    <h3>Bienvenidos al Portal de la Jungla</h3>
-                    <h4>Un rinc&oacute;n en la selva</h4>
-                    <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
+                    <h3><?php echo $this->datos[$i]['titulo'] ?></h3>
+                    <p><?php echo $this->datos[$i]['descripcion'] ?></p>
                 </span>
             </div>
-            <div class="article">
-                <img src="<?php echo BASE_URL?>vista/web/photos/recepcion.jpg" class="fotoArt">
-                <span class="contArt">
-                    <h3>Bienvenidos al Portal de la Jungla</h3>
-                    <h4>Un rinc&oacute;n en la selva</h4>
-                    <p>Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla, Esta es la jungla</p>
-                </span>
-            </div>
+            <?php }} ?>
         </td>
         <td align="center">
             <span id="position">
@@ -80,7 +78,7 @@ con alto nivel de calidad de servicio, seguridad y tranquilidad.</p>
                 </ul>
             </span>
             <div class="iframe">
-                <h4 class="k-widget k-header">Encuentranos en YouTube</h4>
+                <h4 class="k-widget k-header">Nuestro video en YouTube</h4>
                 <iframe width="420" height="315" src="http://www.youtube.com/embed/3a0iGZ-IOSA" frameborder="0" allowfullscreen></iframe>
             </div>
         </td>

@@ -30,7 +30,6 @@ div.likeboxwrap iframe {margin:-1px}
     float:right; 
     width:288px; 
     height:345px; 
-    background: url(../img/mensaje2.png) no-repeat !important; 
     display:block; 
     right:-250px; 
     padding:0; 
@@ -41,3 +40,9 @@ div.likeboxwrap iframe {margin:-1px}
     -moz-border-radius:10px; 
     -webkit-border-radius:10px; 
 } 
+.green{
+    background: url(../img/mensaje2.png) no-repeat !important; 
+}
+.red{
+    background: url(../img/mensaje.png) no-repeat !important; 
+}

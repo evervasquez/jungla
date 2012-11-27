@@ -4,11 +4,15 @@ class tipo_comprobante {
 
     public $idtipo_comprobante;
     public $descripcion;
-    public $serie;
-    public $correlativo;
 
     public function selecciona() {
-        $datos = array($this->idtipo_comprobante);
+        if(is_null($this->idtipo_comprobante)){
+            $this->idtipo_comprobante=0;
+        }
+        if(is_null($this->descripcion)){
+            $this->descripcion='';
+        }
+        $datos = array($this->idtipo_comprobante, $this->descripcion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_comprobante", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -16,34 +20,9 @@ class tipo_comprobante {
             die($r[1]);
         }
         $r = null;
-//        $stmt = $r[0];
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
-
-    public function elimina() {
-        $datos = array($this->idtipo_comprobante);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_tipo_comprobante", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function inserta() {
-        $datos = array($this->idtipo_comprobante, $this->descripcion, $this->serie, $this->correlativo);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_tipo_comprobante", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function actualiza() {
-        $datos = array($this->idtipo_comprobante, $this->descripcion, $this->serie, $this->correlativo);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_tipo_comprobante", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
+    
 }
 
 ?>

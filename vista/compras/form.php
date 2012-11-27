@@ -33,8 +33,7 @@
                 </td>
                 <td><label for="tipo_transaccion">Tipo de Transaccion:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
-                        <option></option>
+                    <select class="list" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
                         <?php for($i=0;$i<count($this->datos_tipo_transaccion);$i++){ ?>
                             <?php if( $this->datos[0]['idtipo_transaccion'] == $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ){ ?>
                         <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['descripcion']) ?></option>
@@ -89,7 +88,7 @@
     <fieldset>
         <legend>Detalle Compra:</legend>
         <div id="tbl_detalle">
-        <table class="tabFormComplejo" align="center">
+        <table class="tabForm" align="center">
             <tr>
                 <td><label>Producto:</label></td>
                 <td>
@@ -108,7 +107,7 @@
             <tr>
                 <td><label>Cantidad:</label></td>
                 <td colspan="2">
-                    <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
+                    <input type="numeric" min="0" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
                 <td><label>Precio de Compra:</label></td>
                 <td>

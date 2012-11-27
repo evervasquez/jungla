@@ -20,6 +20,7 @@ class habitaciones_controlador extends controller {
         $this->_habitaciones->idhabitacion = 0;
         $this->_vista->datos = $this->_habitaciones->selecciona();
         $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos'));
         $this->_vista->renderizar('index');
     }
     public function buscador(){
@@ -29,6 +30,18 @@ class habitaciones_controlador extends controller {
         }
         echo json_encode($this->_habitaciones->selecciona());
     }
+    
+    public function ver(){
+        $this->_habitaciones->idhabitacion=$_POST['idhabitacion'];
+        echo json_encode($this->_habitaciones->selecciona());
+                
+    }
+    
+    public function ver2(){
+        $this->_habitacion_especifica->idhabitacion=$_POST['idhabitacion'];
+        echo json_encode($this->_habitacion_especifica->selecciona());
+    }
+    
     public function nuevo() {
         if ($_POST['guardar'] == 1) {
 //            echo '<pre>';

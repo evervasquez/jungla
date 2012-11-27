@@ -18,6 +18,8 @@ class clientes {
     public $tipo;        
     public $nombresyapellidos;
     public $razonsocial;
+    public $dni;
+    public $ruc;
 
     public function inserta() {
         $datos = array(0, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
@@ -48,15 +50,18 @@ class clientes {
             $this->idcliente=0;
         }
         if(is_null($this->nombresyapellidos)){
-            $this->nombresyapellidos='';
+            $this->nombresyapellidos=null;
         }
         if(is_null($this->razonsocial)){
-            $this->razonsocial='';
+            $this->razonsocial=null;
         }
-        if(is_null($this->documento)){
-            $this->documento='';
+        if(is_null($this->dni)){
+            $this->dni=null;
         }
-        $datos = array($this->idcliente, $this->nombresyapellidos, $this->razonsocial, $this->documento);
+        if(is_null($this->ruc)){
+            $this->ruc=null;
+        }
+        $datos = array($this->idcliente, $this->nombresyapellidos, $this->razonsocial, $this->dni, $this->ruc);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_clientes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

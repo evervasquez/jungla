@@ -73,12 +73,37 @@ class articulos_controlador extends controller {
 
         $this->_articulos->idarticulo = $this->filtrarInt($id);
         $this->_vista->datos = $this->_articulos->selecciona();
+        
+        $imagen = "";
+        if(isset($_FILES['imagen']['name'])){
+                $this->get_Libreria('upload' . DS . 'class.upload');
+                $ruta = ROOT . 'lib' . DS . 'img' . DS . 'articulos' . DS;
+                $upload = new upload($_FILES['imagen'], 'es_ES');
+                $upload->allowed = array('image/*');
+                $upload->file_new_name_body = 'upl_' . uniqid();
+                $upload->process($ruta);
+                
+                if($upload->processed){
+                    $imagen = $upload->file_dst_name;
+                    $thumb = new upload($upload->file_dst_pathname);
+                    $thumb->image_resize = true;
+                    $thumb->image_x = 100;
+                    $thumb->image_y = 50;
+                    $thumb->file_name_body_pre = 'thumb_';
+                    $thumb->process($ruta . 'thumb' . DS);
+                }
+                else{
+                    $this->_view->assign('_error', $upload->error);
+                    $this->_view->renderizar('form');
+                    exit;
+                }
+            }
 
         if ($_POST['guardar'] == 1) {
             $this->_articulos->idarticulo = $_POST['codigo'];
             $this->_articulos->titulo = $_POST['titulo'];
             $this->_articulos->descripcion = $_POST['descripcion'];
-            $this->_articulos->imagen = $_POST['imagen'];
+            $this->_articulos->imagen = $imagen;
             $this->_articulos->actualiza();
             $this->redireccionar('articulos');
         }
