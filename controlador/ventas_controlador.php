@@ -5,13 +5,6 @@ class ventas_controlador extends controller {
     public function __construct() {
         parent::__construct();
     }
-    
-    public function grilla() {
-        $objventas = new ventas();
-        $objventas->idventa= 0;
-        $stmt = $objventas->selecciona();
-        return $stmt;
-    }
 
     public function selecciona($id) {
         $objventas = new ventas();
