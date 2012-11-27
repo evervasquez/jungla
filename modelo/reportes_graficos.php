@@ -11,12 +11,17 @@
  * @author eveR
  */
 class reportes_graficos {
+
     //put your code here
-    
-        public function reporte_pasajero() {
-        $datos = array($this->codigo_region, $this->idpais);
+    public $anio;
+
+    public function reporte_pasajero() {
+        if (is_null($this->anio)) {
+           $this->anio=  getdate('Y') ;
+        }
+        $datos = array($this->anio);
         //pa_reporte_pasajeros->procedimiento de pasajeros nacionales e internacionales por mes
-        $r = consulta::procedimientoAlmacenado("pa_reporte_pasajeros", $datos);
+        $r = consulta::procedimientoAlmacenado("pasajeros_porcentaje_nacionales_internacionales", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -26,12 +31,15 @@ class reportes_graficos {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
-    
+
     public function reporte_estadias() {
-        $datos = array($this->codigo_region, $this->idpais);
+         if (is_null($this->anio)) {
+           $this->anio=  getdate('Y') ;
+        }
+        $datos = array($this->anio);
         //pa_reporte_estadias->estadias x mes
         //en porcentaje
-        $r = consulta::procedimientoAlmacenado("pa_reporte_estadias", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_estadias_mes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -41,11 +49,14 @@ class reportes_graficos {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
-    
+
     public function reporte_ventas() {
-        $datos = array($this->codigo_region, $this->idpais);
+         if (is_null($this->anio)) {
+           $this->anio=  getdate('Y') ;
+        }
+        $datos = array($this->anio);
         //pa_reporte_ventas->ventas x mes
-        $r = consulta::procedimientoAlmacenado("pa_reporte_ventas", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_reporte_ventasxestadia", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -55,6 +66,7 @@ class reportes_graficos {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
+
 }
 
 ?>

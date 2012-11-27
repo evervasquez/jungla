@@ -33,8 +33,7 @@
                 </td>
                 <td><label for="tipo_transaccion">Tipo de Transaccion:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
-                        <option></option>
+                    <select class="list" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
                         <?php for($i=0;$i<count($this->datos_tipo_transaccion);$i++){ ?>
                             <?php if( $this->datos[0]['idtipo_transaccion'] == $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ){ ?>
                         <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['descripcion']) ?></option>

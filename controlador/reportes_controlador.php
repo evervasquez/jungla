@@ -112,6 +112,20 @@ class reportes_controlador extends controller {
         return $datos;
     }
     
+    public function obtener_datos_comprobante_venta($idventa) {
+        $datos =$this->_reportes->selecciona_datos_comprobante_venta($idventa);
+        $cabeceras = array ('idventa', 'fecha_venta', 'estado', 'observaciones', 'nro_documento', 'idtipo_comprobante','serie','abreviatura', 'idempleado', 'nombres_empleado', 'apellidos_empleado', 'idtipo_transaccion', 'registro_venta', 'idcliente', 'nombres_cliente', 'apellidos_cliente', 'documento', 'direccion_cliente');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
+    public function obtener_datos_detalle_comprobante_venta($idventa) {
+        $datos =$this->_reportes->selecciona_datos_detalle_comprobante_venta($idventa);
+        $cabeceras = array ('idventa','idpaquete','cantidad','precio_venta','idproducto','descripcion','idunidad_medida','abreviatura');
+        $datos = controller::get_matriz($datos, $cabeceras);
+        return $datos;
+    }
+    
     public function obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano) {
         $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
         if($mesano[2]==1){
@@ -1510,12 +1524,21 @@ class reportes_controlador extends controller {
         $this->_fpdf->Output();
     }
 
-    public function comprobante_venta(){
-        $ancho = 73;
-        $alto = 130;
+    public function ticket_boleta_venta($idventa){
+        // DATOS QUE DEBE RECIBIR ESTE REPORTE: IDVENTA 
+        $idventa = array($idventa);
+        
+        //PRIMERO SE OBTIENE LA CANTIDAD DE ITEMS EN EL DETALLE PARA DETERMINAR EL ALTO DE PAGINA DEL TICKET
+        $detalle = $this->obtener_datos_detalle_comprobante_venta($idventa);
+        $items = count($detalle);
+        // EL TAMAÑO INICIAL, ESDECIR, SIN ITEMS REGISTRADOS, ES DE VALOR: $alto=95;
+        
         $ancho_celda_datos = 3.8;
-        $espac = 0;
+        $alto = 92 + ($ancho_celda_datos*$items);
+        $ancho = 73;
+        $espac = 8;
         $this->_fpdf = new FPDF('P', 'mm', array($ancho, $alto));
+        $this->_fpdf->SetAutoPageBreak(false);
         $this->_fpdf->AddPage();
         $this->_fpdf->SetFont('Courier', '', 9);
         $this->_fpdf->SetFillColor(255, 255, 255);
@@ -1524,8 +1547,7 @@ class reportes_controlador extends controller {
             $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
             $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
             $datos[0]['rep_venta_7']);
-        
-        $this->_fpdf->SetY(0);
+        $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
         $espac = $espac + $ancho_celda_datos;
@@ -1545,18 +1567,31 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
+        
+        $datos = $this->obtener_datos_comprobante_venta($idventa);
+        $horafecha = array(
+            substr($datos[0]['fecha_venta'],8,2),
+            substr($datos[0]['fecha_venta'],5,2),
+            substr($datos[0]['fecha_venta'],0,4),
+            substr($datos[0]['fecha_venta'],11,2),
+            substr($datos[0]['fecha_venta'],14,2),
+            substr($datos[0]['fecha_venta'],17,2)
+            );
+        
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.'01/01/2001'.'  '.'HORA:'.'10:10:10'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE  :'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTES VARIOS'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('  '.$datos[0]['nombres_cliente'].' '.$datos[0]['apellidos_cliente']),0,36),0,0,'L',1);
+        
+        $espac = $espac + $ancho_celda_datos+2;
+        
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
@@ -1568,60 +1603,297 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
-        //
-        //
-        //
-        //
-        //  ESPACIO DISPONIBLE PARA LISTADO DE PRODUCTOS
-        //
-        //
-        //
-        //$this->_fpdf->Cell($ancho, 6, 'Texto de Prueba', 1, '', 'C', true);
+        $espac = $espac  + 1;
         
-        $espac = $espac + 10;
-        
+        $sbtotal = 0;
+        for($i=0;$i<$items;$i++){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            if($detalle[$i]['idpaquete']==0){//NO ES UN PAQUETE
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].$detalle[$i]['abreviatura'].' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            if($detalle[$i]['idproducto']==0){
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].'PQT'.' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(50);
+            $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
+            //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
+            $prec = number_format($detalle[$i]['precio_venta'], 2);
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(55);
+            $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
+            //SUMAR LOS VALORES DEL PRECIO PARA OBTENER EL TOTAL:
+            $sbtotal = $sbtotal + $prec;
+            
+            $espac = $espac + $ancho_celda_datos;
+        }
+        if($items==0){
+            $this->_fpdf->SetY($espac+1.2);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,1,utf8_decode('  >>NO SE REGISTRARON ITEMS'),0,0,'L',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         
         $espac = $espac - 3;
+        //IGV (CERO POR DEFECTO Y SIEMPRE)
+        $igv = number_format('0', 2);
         
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *   V.VENTA  S/.'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *   V.VENTA  S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($sbtotal, 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          **  IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           **  IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        //CALCULAR TOTAL SUMADO EL IGV:
+        $total = $sbtotal + ($igv*$sbtotal);
+        
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($sbtotal*$igv), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *** TOTAL    S/.'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *** TOTAL    S/.'),0,0,'L',1);
         $this->_fpdf->SetY($espac);
-        $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('              EFECTIVO S/.'),0,0,'L',1);
-        $espac = $espac + $ancho_celda_datos;
-        $this->_fpdf->SetY($espac);
-        $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('              VUELTO   S/.'),0,0,'L',1);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($total, 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
         
+        $espac = $espac + $ancho_celda_datos - 3;
+        //necesito: vendedor, items, condicion (contado, credito), campo obsrevaciones (si estado = 0: observacion = anulado)
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.$items),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['idempleado'].'/'.$datos[0]['nombres_empleado'].' '.$datos[0]['apellidos_empleado']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['idtipo_transaccion']==1){$datos[0]['idtipo_transaccion']='CONTADO';}else{$datos[0]['idtipo_transaccion']='CREDITO';}
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['idtipo_transaccion']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
+        if($datos[0]['estado']==0){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('*** ANULADO ***'),0,36),0,0,'L',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
+        
+        $espac = $espac + 3;
+        
+        //PIE DE PÁGINA
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[6]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[7]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $this->_fpdf->Output();
+    }
+    
+    public function ticket_factura_venta($idventa){
+        // DATOS QUE DEBE RECIBIR ESTE REPORTE: IDVENTA 
+        $idventa = array($idventa);
+        
+        //PRIMERO SE OBTIENE LA CANTIDAD DE ITEMS EN EL DETALLE PARA DETERMINAR EL ALTO DE PAGINA DEL TICKET
+        $detalle = $this->obtener_datos_detalle_comprobante_venta($idventa);
+        $items = count($detalle);
+        // EL TAMAÑO INICIAL, ESDECIR, SIN ITEMS REGISTRADOS, ES DE VALOR: $alto=112;
+        
+        $ancho_celda_datos = 3.8;
+        $alto = 112 + ($ancho_celda_datos*$items);
+        $ancho = 73;
+        $espac = 8;
+        $this->_fpdf = new FPDF('P', 'mm', array($ancho, $alto));
+        $this->_fpdf->SetAutoPageBreak(false);
+        $this->_fpdf->AddPage();
+        $this->_fpdf->SetFont('Courier', '', 9);
+        $this->_fpdf->SetFillColor(255, 255, 255);
+        $datos = $this->obtener_datos_empresa();
+        $rep_venta = array('',$datos[0]['rep_venta_1'], $datos[0]['rep_venta_2'],
+            $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
+            $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
+            $datos[0]['rep_venta_7']);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[2]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[3]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[4]),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[5]),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $datos = $this->obtener_datos_comprobante_venta($idventa);
+        $horafecha = array(
+            substr($datos[0]['fecha_venta'],8,2),
+            substr($datos[0]['fecha_venta'],5,2),
+            substr($datos[0]['fecha_venta'],0,4),
+            substr($datos[0]['fecha_venta'],11,2),
+            substr($datos[0]['fecha_venta'],14,2),
+            substr($datos[0]['fecha_venta'],17,2)
+            );
         
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: X'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: X'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('*** TICKET FACTURA ***'),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        //$this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'C',1);
+        $espac = $espac + $ancho_celda_datos + 2;
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos-2;
+        $this->_fpdf->SetY($espac-1);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  PRODUCTO                   IMPORTE'),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos-1;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
+        $espac = $espac  + 1;
+        
+        $sbtotal = 0;
+        for($i=0;$i<$items;$i++){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            if($detalle[$i]['idpaquete']==0){//NO ES UN PAQUETE
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].$detalle[$i]['abreviatura'].' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            if($detalle[$i]['idproducto']==0){
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].'PQT'.' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            }
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(50);
+            $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
+            //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
+            $prec = number_format($detalle[$i]['precio_venta'], 2);
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(55);
+            $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
+            //SUMAR LOS VALORES DEL PRECIO PARA OBTENER EL TOTAL:
+            $sbtotal = $sbtotal + $prec;
+            
+            $espac = $espac + $ancho_celda_datos;
+        }
+        if($items==0){
+            $this->_fpdf->SetY($espac+1.2);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,1,utf8_decode('  >>NO SE REGISTRARON ITEMS'),0,0,'L',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,1,utf8_decode('  ----------------------------------'),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         
+        $espac = $espac - 3;
+        //IGV (CERO POR DEFECTO Y SIEMPRE)
+        $igv = number_format('0', 2);
+        
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *   V.VENTA  S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($sbtotal, 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           **  IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        //CALCULAR TOTAL SUMADO EL IGV:
+        $total = $sbtotal + ($igv*$sbtotal);
+        
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($sbtotal*$igv), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('           *** TOTAL    S/.'),0,0,'L',1);
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(55);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format($total, 2)),0,0,'R',1);
+        $espac = $espac + $ancho_celda_datos;
+        
+        $espac = $espac + $ancho_celda_datos - 3;
+        //necesito: vendedor, items, condicion (contado, credito), campo obsrevaciones (si estado = 0: observacion = anulado)
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.$items),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' RAZON SOCIAL: '),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['nombres_cliente']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' DIRECCION: '),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['direccion_cliente']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' RUC: '.$datos[0]['documento']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['idempleado'].'/'.$datos[0]['nombres_empleado'].' '.$datos[0]['apellidos_empleado']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        $this->_fpdf->SetY($espac);
+        $this->_fpdf->SetX(0);
+        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['idtipo_transaccion']==1){$datos[0]['idtipo_transaccion']='CONTADO';}else{$datos[0]['idtipo_transaccion']='CREDITO';}
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['idtipo_transaccion']),0,36),0,0,'L',1);
+        $espac = $espac + $ancho_celda_datos;
+        /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
+        if($datos[0]['estado'] == 0){
+            $this->_fpdf->SetY($espac);
+            $this->_fpdf->SetX(0);
+            $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('*** ANULADO ***'),0,36),0,0,'C',1);
+            $espac = $espac + $ancho_celda_datos;
+        }
+        
+        $espac = $espac + 3;
         
         //PIE DE PÁGINA
         $this->_fpdf->SetY($espac);

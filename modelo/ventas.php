@@ -34,6 +34,9 @@ class ventas {
     }
 
     public function selecciona() {
+        if(is_null($this->idventa)){
+            $this->idventa=0;
+        }
         $datos = array($this->idventa);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_ventas", $datos);
         if ($r[1] == '') {

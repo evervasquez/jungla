@@ -21,7 +21,7 @@ class detalle_estadia {
         $r = null;
         return $stmt->fetchall();
     }
-
+    
     public function elimina() {
         $datos = array($this->idhabitacion, $this->idcliente, $this->idventa);
         $r = consulta::procedimientoAlmacenado("pa_elimina_detalle_estadia", $datos);

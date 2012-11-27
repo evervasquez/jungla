@@ -7,6 +7,7 @@ class entrada_productos_controlador extends controller{
     private $_detalle_compra;
     private $_productos;
     private $_alertas;
+    private $_asientos;
     
     public function __construct() {
         parent::__construct();
@@ -15,6 +16,7 @@ class entrada_productos_controlador extends controller{
         $this->_detalle_compra = $this->cargar_modelo('detalle_compra');
         $this->_productos = $this->cargar_modelo('productos');
         $this->_alertas = $this->cargar_modelo('alertas');
+        $this->_asientos=  $this->cargar_modelo('asientos');
     }
     
     public function index(){
@@ -51,8 +53,12 @@ class entrada_productos_controlador extends controller{
             $this->_productos->idproducto=$_POST['idproducto'][$i];
             $this->_productos->stock=$_POST['cantidad'][$i];
             $this->_productos->aumenta=1;
+            /*$dato= $_POST['idcompra'];
+            echo "<script type='text/javascript'>alert($dato)</script>";
+            exit;*/
             $this->_productos->actualiza();
         }
+        $this->_asientos->inserta($_POST['idcompra'],0);
         
         //inserta movimiento_producto
         $this->_movimiento_producto->idcompra=$_POST['idcompra'];

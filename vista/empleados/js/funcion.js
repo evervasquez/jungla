@@ -140,10 +140,6 @@
                html+= '<td>'+datos[0]['usuario']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
-               html+= '<td>Clave:</td>';
-               html+= '<td>'+datos[0]['clave']+'</td>';
-               html+= '</tr>';
-               html+= '<tr>';
                html+= '<td>Actividad:</td>';
                html+= '<td>'+datos[0]['actividad']+'</td>';
                html+= '</tr>';
