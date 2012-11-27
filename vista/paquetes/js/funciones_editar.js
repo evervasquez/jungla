@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#descripcion").focus();
     $("#tbl_productos_paquete").kendoGrid();
     $("#tbl_busca_productos").kendoGrid({
                     dataSource: {

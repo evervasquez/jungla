@@ -1,22 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-body{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;
-        background-image: url(../img/linea.jpg);
-        text-align: justify;
-}
-#principal{
-	padding-top:31px;
-	margin:0 auto;
-	width:80%;
-        background:rgba(256,256,256,0.2);
-	border-radius:0px 0px 35px 35px;
-	-moz-border-radius:0px 0px 35px 35px;
-	-webkit-border-radius:0px 0px 35px 35px;
-	-o-border-radius:0px 0px 35px 35px;
-}
 .msg_pendientes{
         padding: 10px;
 }
@@ -69,16 +53,6 @@ body{
 	display:inline-block;
         border: none;
 }
-#cabecera{
-        background-image: url(../img/banner_web.jpg);
-        background-repeat: no-repeat;
-        top:-10px;
-        width: 79%;
-        height:110px;
-        position:absolute;
-        margin: 0 auto;
-        left: 10.5%;
-}
 #cuerpo{
         padding: 20px;
         width: 90%;
@@ -89,6 +63,13 @@ body{
 }
 .comboX{
 	width:150px;
+        border:4px solid #096;
+        color: #000;
+        margin-bottom: 0px;
+}
+.comboX option{
+        color: #FFF;
+        background-color:#096;
 }
 .tabForm label{
         width: 85px;
@@ -123,55 +104,6 @@ body{
 .textarea{
         width: 100%;
         height: 75px;
-}
-#footer{
-        background:#096;
-        width: 100%;
-        margin: auto;
-	border:solid 1px #096;
-        border-radius:0px 0px 15px 15px;
-        -moz-border-radius:0px 0px 15px 15px;
-        -webkit-border-radius:0px 0px 15px 15px;
-        -o-border-radius:0px 0px 15px 15px;
-}
-#txtFooter{
-        padding: 10px;
-	color:#FFF;
-}
-#footer a{
-        text-decoration: none;
-        color:#FFF;
-}
-#footer a:hover{
-        text-decoration: underline;
-        color: #EEE;
-}
-#sesion{
-	text-align:right;
-	position:absolute;
-	top:10px;
-	right:11%;
-	margin:5px;
-}
-#userSesion{
-	font-size:22px;
-	margin-bottom:5px;
-}
-#linkSesion{
-        font-size:11px;
-}
-#sesion a{
-	text-decoration:none;
-	color:#333;
-	padding:0px;
-}
-#sesion a:hover{
-	text-decoration:underline;
-	color:#666;
-}
-#servidorSesion{
-        margin-top: 5px;
-        font-size: 9px;
 }
 #logo{
         background-image: url("/sisjungla/lib/img/logo.png");
@@ -209,10 +141,4 @@ body{
 }
 .cancel:hover{
         color: #FFF;
-}
-input:-moz-placeholder, textarea:-moz-placeholder {
-    color: #999;
-}
-input:hover:-moz-placeholder, textarea:hover:-moz-placeholder {
-    color: #999;
 }

@@ -6,13 +6,13 @@
             <tr valign="top">
             	<td><label for="descripcion">Descripcion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion" onkeypress="return soloLetras(event)"
+                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion"
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
             	<td><label for="precio_unitario">Precio Unitario:</label></td>
                 <td>
-                    <input type="text" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario" required
+                    <input type="numeric" min="0" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario" required
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="precio_unitario"></div>
                 </td>

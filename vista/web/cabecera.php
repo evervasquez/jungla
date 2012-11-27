@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -37,6 +36,7 @@
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.web.min.js"></script>
         <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.common.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="<?php echo $_params['ruta_css']; ?>styles/kendo.black.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>estilosgeneral.css" media="all" />
         <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>estilosweb.css" media="all" />
 
         <?php if(isset($_params['js']) && count($_params['js'])): ?>
@@ -57,8 +57,9 @@
 
     </head>
     <body>
-        <a id="cabecera"></a>
+        <a href="<?php echo BASE_URL ?>" id="cabecera"></a>
         <div id="principal">
+            <div><h1 class="k-label">La Jungla</h1></div>
             <div id="sesion">
                 <?php if(session::get('autenticado')){ ?>
                             <div id="userSesion"><label><?php echo session::get('empleado')?></label></div>
@@ -88,16 +89,15 @@
                     </table>
                 </form>
                         <?php } ?>
-                <br>
-                <div>
-<!--                    <span class='st_fblike_large' displayText='Facebook Like'></span>-->
-<!--                    <span class='st_facebook_large' displayText='Facebook'></span>-->
-                    <span class='st_twitter_large' displayText='Tweet'></span>
-                    <span class='st_googleplus_large' displayText='Google +'></span>
-                    <span class='st_blogger_large' displayText='Blogger'></span>
-                    <span class='st_messenger_large' displayText='Messenger'></span>
-                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                    <span class='st_email_large' displayText='Email'></span>
+                <div id="icn_compartir">
+<!--                    <span class='st_fblike_large' displayText='Facebook Like'></span>
+                    <span class='st_facebook_large' displayText='Facebook'></span>-->
+                    <div class='st_twitter_large' displayText='Tweet'>&nbsp;&nbsp;&nbsp;</div><br>
+                    <div class='st_googleplus_large' displayText='Google +'></div><br>
+                    <div class='st_blogger_large' displayText='Blogger'></div><br>
+                    <div class='st_messenger_large' displayText='Messenger'></div><br>
+                    <div class='st_linkedin_large' displayText='LinkedIn'></div><br>
+                    <div class='st_email_large' displayText='Email'></div>
                 </div>
             </div>
             <nav id="menuNav">

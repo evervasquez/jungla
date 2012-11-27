@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-
+            $('#gallery a').lightBox();
 	    $("#myController").jFlow({
 
 			controller: ".jFlowControl", // must be class, use . sign

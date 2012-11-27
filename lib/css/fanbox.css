@@ -8,7 +8,19 @@
     padding:0; 
     position:fixed; 
     top: 130px; 
-    z-index:1002; 
+    z-index:998; 
+    border-radius:10px; 
+    -moz-border-radius:10px; 
+    -webkit-border-radius:10px; 
+} 
+#icn_compartir { 
+    float:left; 
+    display:block; 
+    left:0px; 
+    padding:0; 
+    position:fixed; 
+    top: 130px; 
+    z-index:998; 
     border-radius:10px; 
     -moz-border-radius:10px; 
     -webkit-border-radius:10px; 
@@ -26,23 +38,23 @@ div.likeboxwrap {
     -webkit-border-radius:10px; 
 } 
 div.likeboxwrap iframe {margin:-1px}
-.mensaje { 
-    float:right; 
-    width:288px; 
-    height:345px; 
-    display:block; 
-    right:-250px; 
-    padding:0; 
-    position:fixed; 
-    top: 130px; 
-    z-index:998; 
-    border-radius:10px; 
-    -moz-border-radius:10px; 
-    -webkit-border-radius:10px; 
-} 
 .green{
     background: url(../img/mensaje2.png) no-repeat !important; 
 }
 .red{
     background: url(../img/mensaje.png) no-repeat !important; 
+}
+.msg_pendientes{
+    text-align: left;
+    font-size: 16px;
+    color: #666;
+    font-weight: bold;
+}
+.msg_pendientes a{
+    text-decoration: none;
+    color: #666;
+}
+.msg_pendientes a:hover{
+    text-decoration: underline;
+    color: #999;
 }

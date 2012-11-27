@@ -5,12 +5,10 @@
             },
             pageable: true,
             columns: [{field:"Codigo", width:6},
-                {field:"RazonSocial", width:10},
-                {field:"Representante", width:10},
-                {field:"RUC", width:10},
-                {field:"Direccion", width:10},
-                {field:"Telefono", width:10},
-                {field:"Email", width:10},
+                {field:"RazonSocial", width:15},
+                {field:"Representante", width:15},
+                {field:"RUC", width:15},
+                {field:"Direccion", width:15},
                 {field:"Acciones", width:8,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
@@ -24,8 +22,6 @@
                             '<th>Representante</th>'+
                             '<th>RUC</th>'+
                             '<th>Direccion</th>'+
-                            '<th>Telefono</th>'+
-                            '<th>Email</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
@@ -36,8 +32,6 @@
                     HTML = HTML + '<td>'+datos[i].representante+'</td>';
                     HTML = HTML + '<td>'+datos[i].ruc+'</td>';
                     HTML = HTML + '<td>'+datos[i].direccion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].telefono+'</td>';
-                    HTML = HTML + '<td>'+datos[i].email+'</td>';
                     var editar='/sisjungla/proveedores/editar/'+datos[i].idproveedor; 
                     var eliminar='/sisjungla/proveedores/eliminar/'+datos[i].idproveedor;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
@@ -54,12 +48,10 @@
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:6},
-                        {field:"RazonSocial", width:10},
-                        {field:"Representante", width:10},
-                        {field:"RUC", width:10},
-                        {field:"Direccion", width:10},
-                        {field:"Telefono", width:10},
-                        {field:"Email", width:10},
+                        {field:"RazonSocial", width:15},
+                        {field:"Representante", width:15},
+                        {field:"RUC", width:15},
+                        {field:"Direccion", width:15},
                         {field:"Acciones", width:8,attributes:{class:"acciones"}}]
                 });
             },'json');
@@ -109,10 +101,12 @@
                html+= '<td>Ruc:</td>';
                html+= '<td>'+datos[0]['ruc']+'</td>';
                html+= '</tr>';
+               if(datos[0]['telefono'] != null && datos[0]['telefono'] != ' '){
                html+= '<tr>';
                html+= '<td>Telefono:</td>';
                html+= '<td>'+datos[0]['telefono']+'</td>';
                html+= '</tr>';
+               }
                html+= '<tr>';
                html+= '<tr>';
                html+= '<td>Ciudad:</td>';
@@ -121,10 +115,12 @@
                html+= '<td>Direccion:</td>';
                html+= '<td>'+datos[0]['direccion']+'</td>';
                html+= '</tr>';
+               if(datos[0]['email'] != null && datos[0]['email'] != ' '){
                html+= '<tr>';
                html+= '<td>Email:</td>';
                html+= '<td>'+datos[0]['email']+'</td>';
                html+= '</tr>';
+               }
                html+= '</table>';
                html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
                $("#vtna_ver_proveedor").html(html);

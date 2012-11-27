@@ -76,12 +76,12 @@ $(document).ready(function(){
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
-                    <br><div class="msgerror"></div>
+                    <br><div class="k-invalid-msg msgerror" data-for="email"></div>
                 </td>
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
-                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
-                       id="" value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
+                    <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
+                       id="fechanac" value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
                 </td>
                 <td><label>Profesion:</label></td>
                 <td>
@@ -238,7 +238,7 @@ $(document).ready(function(){
                 <td><label>Ruc:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="ruc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                       maxlength="11" id="ruc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="documento"></div>

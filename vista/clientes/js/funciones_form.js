@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    $("#fechanac").kendoDatePicker({
+        start: "century",
+        depth: "1990-1999",
+        format: "dd-MM-yyyy"
+    });
     $("#frm_natural").kendoValidator();
     $("#frm_juridico").kendoValidator();
     $("#tipo_cliente").focus();

@@ -152,11 +152,12 @@
                 <br><div class="k-invalid-msg msgerror" data-for="perfil"></div>
             </td>
             <td>
-                <label for="usuario"><span id="valida_usuario"></span>&nbsp;&nbsp;Usuario:</label>
+                <label for="usuario">&nbsp;&nbsp;Usuario:</label>
             </td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese usuario" name="usuario" required
                    id="usuario" value="<?php if(isset ($this->datos[0]['usuario']))echo $this->datos[0]['usuario']?>"/>
+                <span id="valida_usuario"></span>
                 <br><div class="k-invalid-msg msgerror" data-for="usuario"></div>
             </td>
             <td><label for="clave">Contraseña:</label></td>

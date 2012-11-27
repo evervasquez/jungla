@@ -56,7 +56,7 @@ class productos_controlador extends controller {
 //            print_r($_POST);
 //            echo '</pre>';
 //            exit;
-            $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
+            $this->_productos->descripcion = $_POST['descripcion'];
             if($_POST['precio_unitario']==''){
                 $this->_productos->precio_unitario=null;
             }else{
@@ -117,7 +117,7 @@ class productos_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             $this->_productos->idproducto = $_POST['codigo'];
-            $this->_productos->descripcion = utf8_decode($_POST['descripcion']);
+            $this->_productos->descripcion = $_POST['descripcion'];
             if($_POST['precio_unitario']==''){
                 $this->_productos->precio_unitario=null;
             }else{

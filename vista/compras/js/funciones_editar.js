@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $("#fecha_compra").kendoDatePicker({
+       format: "dd-MM-yyyy"
+    });
     $("#nro_comprobante").focus();
     $("#tbl_busca_proveedor").kendoGrid({
         dataSource: {

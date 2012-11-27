@@ -52,23 +52,26 @@ $(document).ready(function(){
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
-                       id="" value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
+                       id="fecha_nacimiento" required value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="fecha_nacimiento"></div>
                 </td>
                 <td><label>Telefono:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
-                       id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+                       id="telefono" required value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="telefono"></div>
                 </td>
                 <td><label>Email:</label></td>
                 <td>
-                    <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
+                    <input type="email" class="k-textbox" placeholder="Ingrese email" name="email" required
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="email"></div>
                 </td>
             </tr>
             <tr valign="top">
                 <td><label>Profesion:</label></td>
                 <td>
-                   <select class="combo" placeholder="Seleccione..." name="profesion">
+                   <select class="combo" placeholder="Seleccione..." name="profesion" required>
                         <option value="67"></option>
                         <?php for($i=0;$i<count($this->datos_profesiones);$i++){ ?>
                             <?php if( $this->datos[0]['idprofesion'] == $this->datos_profesiones[$i]['idprofesion'] ){ ?>
@@ -78,10 +81,11 @@ $(document).ready(function(){
                             <?php } ?>
                         <?php } ?>
                     </select>
+                    <br><div class="k-invalid-msg msgerror" data-for="profesion"></div>
                 </td>
                 <td><label>Estado Civil:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="estado_civil">
+                    <select class="combo" placeholder="Seleccione..." name="estado_civil" required>
                         <option></option>
                         <?php if($this->datos[0]['estado_civil']=='soltero'){?>
                         <option value="soltero" selected="selected">Soltero(a)</option>
@@ -104,18 +108,19 @@ $(document).ready(function(){
                         <option value="divorciado">Divorciado(a)</option>
                         <?php } ?>
                     </select>
+                    <br><div class="k-invalid-msg msgerror" data-for="estado_civil"></div>
                 </td>
                 <td><label>Doc. de Identidad:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                    <input type="numeric" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
+                       id="" maxlength="8" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
                 </td>
             </tr>
             <tr class="celda_pais" valign="top">
                 <td><label>Pais:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="combo" id="paises">
+                    <select placeholder="Seleccione..." class="combo" id="paises" required name="pais">
                         <option></option>
                         <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
@@ -131,6 +136,7 @@ $(document).ready(function(){
                             <?php } ?>
                         <?php } ?>
                     </select>
+                    <br><div class="k-invalid-msg msgerror" data-for="pais"></div>
                </td>
             <?php if($this->datos[0]['idpais']==193){?>
             <script>
@@ -163,7 +169,7 @@ $(document).ready(function(){
             <?php } ?>
                 <td class="celda_provincia"><label>Provincia:</label></td>
                 <td class="celda_provincia">
-                    <select placeholder="Seleccione..." class="provincias">
+                    <select placeholder="Seleccione..." class="provincias comboX">
                         <option>Seleccione...</option>
                         <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
@@ -196,8 +202,8 @@ $(document).ready(function(){
             <tr valign="top">
                 <td><label>Membresia:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="membresia">
-                        <option value="0"></option>
+                    <select class="combo" placeholder="Seleccione..." name="membresia" required>
+                        <option></option>
                         <?php for($i=0;$i<count($this->datos_membresias);$i++){ ?>
                             <?php if( $this->datos[0]['idmembresia'] == $this->datos_membresias[$i]['idmembresia'] ){ ?>
                         <option value="<?php echo $this->datos_membresias[$i]['idmembresia'] ?>" selected="selected"><?php echo utf8_encode($this->datos_membresias[$i]['descripcion']) ?></option>
@@ -206,6 +212,7 @@ $(document).ready(function(){
                             <?php } ?>
                         <?php } ?>
                     </select>
+                    <br><div class="k-invalid-msg msgerror" data-for="membresia"></div>
                 </td>
                 <td><label>Sexo:</label></td>
                 <td>
@@ -252,8 +259,8 @@ $(document).ready(function(){
             <tr>
                 <td><label>Ruc:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                    <input type="numeric" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
+                       id="" maxlength="8" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                 </td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="documento"></div>

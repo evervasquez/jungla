@@ -32,10 +32,10 @@
                     HTML = HTML + '<td>'+datos[i].fecha+'</td>';
                     HTML = HTML + '<td>';
                     if(datos[i].estado == 0){
-                        HTML = HTML + '<label class="noleido">No Leido</label>';
+                        HTML = HTML + '<label class="noleido">Mensaje No Leido</label>';
                     }
                     else{
-                        HTML = HTML + '<label class="leido">Leido</label>';
+                        HTML = HTML + '<label class="leido">Mensaje Leido</label>';
                     }
                     HTML = HTML + '</td>';
                     var eliminar='/sisjungla/mensajes/eliminar/'+datos[i].idmensaje;   
@@ -115,5 +115,8 @@
                $("#vtna_ver_mensaje").html(html);
             $("#vtna_ver_mensaje").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
-           },'json');
+           }
+           ,'json'),
+           $.post('/sisjungla/mensajes/elimina_alerta','idmensaje='+id,function(datos){
+           })
        }

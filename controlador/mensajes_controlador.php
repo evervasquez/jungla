@@ -3,10 +3,12 @@
 class mensajes_controlador extends controller {
     
     private $_mensajes;
+    private $_alertas;
 
     public function __construct() {
         parent::__construct();
         $this->_mensajes = $this->cargar_modelo('mensajes');
+        $this->_alertas = $this->cargar_modelo('alertas');
     }
 
     public function index() {
@@ -23,7 +25,10 @@ class mensajes_controlador extends controller {
         $this->_mensajes->idmensaje=$_POST['idmensaje'];
         $this->_mensajes->estado();
         echo json_encode($this->_mensajes->selecciona());
-        
+    }
+    
+    public function elimina_alerta(){
+        $this->_alertas->desactiva_alerta();
     }
     
     public function buscador(){
@@ -44,7 +49,8 @@ class mensajes_controlador extends controller {
         $this->_mensajes->fecha = date("d-m-Y H:i:s");
         $this->_mensajes->estado = 0;
         $this->_mensajes->inserta();
-        $this->_vista->newMensaje (array('Nuevos mensajes'));
+        $this->_alertas->idalerta = 1;
+        $this->_alertas->activa_alerta();
         echo "<script>alert('Mensaje enviado')</script>";
         $this->redireccionar ('web/contactenos');
     }
@@ -55,6 +61,7 @@ class mensajes_controlador extends controller {
         }
         $this->_mensajes->idmensaje = $this->filtrarInt($id);
         $this->_mensajes->elimina();
+        $this->_alertas->desactiva_alerta();
         $this->redireccionar('mensajes');
     }
 }

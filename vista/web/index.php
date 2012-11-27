@@ -40,9 +40,9 @@
         <td width="60%">
             <?php if (isset($this->datos) && count($this->datos)) {
             for ($i = 0; $i < count($this->datos); $i++) { ?>
-            <div class="article">
+            <div class="article" id="gallery">
                 <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
-                    <a href="" onclick="window.open('<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>')" title="Clic para ver la imagen">
+                    <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>" title="<?php echo $this->datos[$i]['titulo'] ?>">
                         <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" class="fotoArt" />
                     </a>
                     <?php } ?>

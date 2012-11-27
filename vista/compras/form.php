@@ -25,7 +25,7 @@
             <tr valign="top">
                 <td><label for="fecha_compra">Fecha de Compra:</label></td>
                 <td>
-                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
+                    <input readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
                        id="fecha_compra" value="<?php if(isset ($this->datos[0]['fecha_compra'])){
                                $fecha=$this->datos[0]['fecha_compra'];
                                echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>

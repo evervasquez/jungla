@@ -18,19 +18,15 @@
             <th>Representante</th>
             <th>RUC</th>
             <th>Direccion</th>
-            <th>Telefono</th>
-            <th>Email</th>
             <th>Acciones</th>
         </tr>
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos[$i]['idproveedor'] ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['razon_social']) ?></td>
+                <td><?php echo $this->datos[$i]['razon_social'] ?></td>
                 <td><?php echo $this->datos[$i]['representante'] ?></td>
                 <td><?php echo $this->datos[$i]['ruc'] ?></td>
                 <td><?php echo $this->datos[$i]['direccion'] ?></td>
-                <td><?php echo $this->datos[$i]['telefono'] ?></td>
-                <td><?php echo $this->datos[$i]['email'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgdelete"></a>
