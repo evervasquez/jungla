@@ -1,27 +1,27 @@
 <?php
     
-class deudas_controlador extends controller{
+class cobros_controlador extends controller{
     
-    private $_deudas;
-    private $_cuota_pago;
+    private $_cobros;
+    private $_cuota_cobro;
     private $_caja;
     
     public function __construct() {
         parent::__construct();
-        $this->_deudas = $this->cargar_modelo('deudas');
-        $this->_cuota_pago = $this->cargar_modelo('cuota_pago');
+        $this->_cobros = $this->cargar_modelo('cobros');
+        $this->_cuota_cobro = $this->cargar_modelo('cuota_pago');
         $this->_caja = $this->cargar_modelo('caja');
     }
     
     public function index(){
-        $this->_vista->datos=$this->_deudas->selecciona();
+        $this->_vista->datos= $this->_cobros->selecciona();
         $this->_vista->renderizar('index');
     }    
     
-    public function cronograma($idcompra){
-        $this->_cuota_pago->idcompra=$idcompra;
-        $this->_vista->datos=$this->_cuota_pago->selecciona();
-        $this->_vista->titulo = 'Cronograma de Pagos';
+    public function cronograma($idventa){
+        $this->_cuota_cobro->idventa=$idventa;
+        $this->_vista->datos=$this->_cuota_cobro->selecciona();
+        $this->_vista->titulo = 'Cronograma de Cobros';
         $this->_vista->renderizar('cronograma');
     }
     

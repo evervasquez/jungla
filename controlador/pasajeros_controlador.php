@@ -24,10 +24,10 @@ class pasajeros_controlador extends controller {
             $this->_clientes->razonsocial = $_POST['cadena'];
         }
         if($_POST['filtro']==2){
-            $this->_clientes->documento= $_POST['cadena'];
+            $this->_clientes->dni= $_POST['cadena'];
         }
         if($_POST['filtro']==3){
-            $this->_clientes->tipo= $_POST['cadena'];
+            $this->_clientes->ruc= $_POST['cadena'];
         }
         echo json_encode($this->_clientes->selecciona());
     }
@@ -53,7 +53,7 @@ class pasajeros_controlador extends controller {
             }
             $this->_clientes->documento = $_POST['documento'];
             if(isset ($_POST['fecha_nacimiento']) && $_POST['fecha_nacimiento']!=""){
-                $this->_clientes->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
+                $this->_clientes->fecha_nacimiento = $_POST['fecha_nacimiento'];
             }else{
                 $this->_clientes->fecha_nacimiento = null;
             }
@@ -139,7 +139,7 @@ class pasajeros_controlador extends controller {
             }
             $this->_clientes->documento = $_POST['documento'];
             if(isset ($_POST['fecha_nacimiento']) && $_POST['fecha_nacimiento']!=""){
-                $this->_clientes->fecha_nacimiento = null;
+                $this->_clientes->fecha_nacimiento = $_POST['fecha_nacimiento'];
             }else{
                 $this->_clientes->fecha_nacimiento = null;
             }
@@ -183,6 +183,8 @@ class pasajeros_controlador extends controller {
 //        echo '</pre>';
 //        exit;
         //obtenemos todos los paises
+        
+        $this->_vista->datos_paises = $this->_paises->selecciona();
         if($datos[0]['idpais']!=0){
             $this->_regiones->idpais = $datos[0]['idpais'];
             $this->_vista->datos_regiones = $this->_regiones->selecciona();

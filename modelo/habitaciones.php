@@ -7,9 +7,10 @@ class habitaciones {
     public $nro_habitacion;
     public $ventilacion;
     public $estado;
+    public $tipo_habitacion_predet;
     
     public function inserta() {
-        $datos = array(0, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado);
+        $datos = array(0, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado, $this->tipo_habitacion_predet);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -22,7 +23,7 @@ class habitaciones {
     }
 
     public function actualiza() {
-        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado);
+        $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado, $this->tipo_habitacion_predet);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
         $error = $r[1];
         $r = null;
@@ -30,6 +31,9 @@ class habitaciones {
     }
 
     public function selecciona() {
+        if(is_null($this->idhabitacion)){
+            $this->idhabitacion=0;
+        }
         if(is_null($this->nro_habitacion)){
             $this->nro_habitacion='';
         }

@@ -49,10 +49,11 @@ class habitaciones_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             //inserta habitacion
-            $this->_habitaciones->descripcion=$_POST['descripcion'];
+            $this->_habitaciones->descripcion=$_POST['nro_habitacion'];
             $this->_habitaciones->nro_habitacion=$_POST['nro_habitacion'];
             $this->_habitaciones->ventilacion=$_POST['ventilacion'];
             $this->_habitaciones->estado=$_POST['estado'];
+            $this->_habitaciones->tipo_habitacion_predet=$_POST['tipo_habitacion_predet'];
             $dato_habitacion=$this->_habitaciones->inserta();
             //inserta habitacion especifica
             for($i=0;$i<count($_POST['tipo_habitacion']);$i++){
@@ -82,11 +83,11 @@ class habitaciones_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             //inserta habitacion
-            $this->_habitaciones->idhabitacion=$_POST['codigo'];
-            $this->_habitaciones->descripcion=$_POST['descripcion'];
+            $this->_habitaciones->descripcion=$_POST['nro_habitacion'];
             $this->_habitaciones->nro_habitacion=$_POST['nro_habitacion'];
             $this->_habitaciones->ventilacion=$_POST['ventilacion'];
             $this->_habitaciones->estado=$_POST['estado'];
+            $this->_habitaciones->tipo_habitacion_predet=$_POST['tipo_habitacion_predet'];
             $this->_habitaciones->actualiza();
             $this->redireccionar('habitaciones');
             

@@ -75,12 +75,8 @@ class productos_controlador extends controller {
             }else{
                 $this->_productos->idubicacion = $_POST['ubicacion'];
             }
-            if($_POST['promocion']==''){
-                $this->_productos->idpromocion=0;
-            }else{
-                $this->_productos->idpromocion= $_POST['promocion'];
-            }
-            $this->_productos->estado = $_POST['estado'];
+            $this->_productos->idpromocion=0;
+            $this->_productos->estado = 1;
             $this->_productos->inserta();
             $this->redireccionar('productos');
         }
@@ -136,12 +132,8 @@ class productos_controlador extends controller {
             }else{
                 $this->_productos->idubicacion = $_POST['ubicacion'];
             }
-            if($_POST['promocion']==''){
-                $this->_productos->idpromocion=0;
-            }else{
-                $this->_productos->idpromocion= $_POST['promocion'];
-            }
-            $this->_productos->estado = $_POST['estado'];
+            $this->_productos->idpromocion=0;
+            $this->_productos->estado = 1;
             $this->_productos->actualiza();
             $this->redireccionar('productos');
         }

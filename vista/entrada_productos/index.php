@@ -8,7 +8,6 @@
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
-        <a href="<?php echo BASE_URL?>entrada_productos/entradas_pendientes" class="k-button">Ver Entradas Pendientes</a>
     </p>
     <div id="grilla">
     <table border="1" class="tabgrilla" id="tbl_empleado">

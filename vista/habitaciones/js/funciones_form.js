@@ -66,7 +66,7 @@ $(document).ready(function(){
        idh=$("#codigo").val();
        idth=$("#tipo_habitacion").val();
        th=$("#tipo_habitacion option:selected").html(); 
-       c=$("#costo").val();
+       c=$(".precio").val();
        o=$("#observacion").val();
        error= false;
        msg='';
@@ -102,7 +102,7 @@ $(document).ready(function(){
                    $("#tipo_habitacion option:eq(0)").attr('selected',true);
                    $("#tipo_habitacion").kendoComboBox();
                    $("#tipo_habitacion").focus();
-                   $("#costo").val('');
+                   $(".precio").val('');
                    $("#observacion").val('');
                }
            }

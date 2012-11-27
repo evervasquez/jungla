@@ -42,9 +42,6 @@ class clientes_controlador extends controller {
         if($_POST['filtro']==3){
             $this->_clientes->ruc= $_POST['cadena'];
         }
-        if($_POST['filtro']==3){
-            $this->_clientes->tipo= $_POST['cadena'];
-        }
         echo json_encode($this->_clientes->selecciona());
     }
     
@@ -67,7 +64,7 @@ class clientes_controlador extends controller {
             }
             $this->_clientes->documento = $_POST['documento'];
             if(isset ($_POST['fecha_nacimiento']) && $_POST['fecha_nacimiento']!=""){
-                $this->_clientes->fecha_nacimiento = $this->fecha_en($_POST['fecha_nacimiento']);
+                $this->_clientes->fecha_nacimiento = $_POST['fecha_nacimiento'];
             }else{
                 $this->_clientes->fecha_nacimiento = null;
             }
@@ -76,7 +73,7 @@ class clientes_controlador extends controller {
             }else{
                 $this->_clientes->sexo = null;
             }
-            $this->_clientes->telefono=$_POST['telefono'] ;
+            $this->_clientes->telefono=$_POST['telefono'];
             $this->_clientes->email= $_POST['email'];
             if(isset ($_POST['estado_civil'])){
                 $this->_clientes->estado_civil = $_POST['estado_civil'];
@@ -149,7 +146,7 @@ class clientes_controlador extends controller {
             }
             $this->_clientes->documento = $_POST['documento'];
             if(isset ($_POST['fecha_nacimiento']) && $_POST['fecha_nacimiento']!=""){
-                $this->_clientes->fecha_nacimiento = null;
+                $this->_clientes->fecha_nacimiento = $_POST['fecha_nacimiento'];
             }else{
                 $this->_clientes->fecha_nacimiento = null;
             }

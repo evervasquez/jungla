@@ -64,7 +64,7 @@ class empleados_controlador extends controller {
             $this->_empleados->idprofesion = $_POST['profesion'];
             $this->_empleados->usuario = $_POST['usuario'];
             $this->_empleados->clave = $_POST['clave'];
-            $this->_empleados->estado = $_POST['estado'];
+            $this->_empleados->estado = 1;
             $this->_empleados->idactividad = $_POST['actividad'];
             $this->_empleados->idtipo_empleado = $_POST['tipo_empleado'];
             $this->_empleados->inserta();
@@ -140,7 +140,7 @@ class empleados_controlador extends controller {
             $this->_empleados->idprofesion = $_POST['profesion'];
             $this->_empleados->usuario = $_POST['usuario'];
             $this->_empleados->clave = $_POST['clave'];
-            $this->_empleados->estado = $_POST['estado'];
+            $this->_empleados->estado = 1;
             $this->_empleados->idactividad = $_POST['actividad'];
             $this->_empleados->idtipo_empleado = $_POST['tipo_empleado'];
             $this->_empleados->actualiza();
@@ -174,6 +174,10 @@ class empleados_controlador extends controller {
 
     public function eliminar($id) {
         if (!$this->filtrarInt($id)) {
+            $this->redireccionar('empleados');
+        }
+        if($this->filtrarInt($id)!=session::get('idempleado')){
+            echo "<script>alert('No puede eliminar los datos de otro empleado')</script>";
             $this->redireccionar('empleados');
         }
         $this->_empleados->idempleado = $this->filtrarInt($id);

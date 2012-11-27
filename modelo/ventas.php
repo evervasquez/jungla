@@ -3,31 +3,41 @@
 class ventas {
 
     public $idventa;
-    public $fecha_venta;
     public $estado;
     public $observaciones;
-    public $nro_documento;
     public $idtipo_comprobante;
     public $idcliente;
     public $idempleado;
     public $idtipo_transaccion;
+    public $importe;
+    public $igv;
+    public $fecha_venta;
+    public $nro_documento;
+    public $estado_pago;
     
 
     public function inserta() {
-        $datos = array($this->idventa, $this->fecha_venta, $this->estado, $this->observaciones, 
-            $this->nro_documento, $this->idtipo_comprobante, $this->idcliente, $this->idempleado,  
-            $this->idtipo_transaccion);
+            $datos = array(0, $this->estado, $this->observaciones, $this->idtipo_comprobante, 
+            $this->idcliente, $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
-        $error = $r[1];
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
         $r = null;
-        return $error;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function actualiza() {
-        $datos = array($this->idventa, $this->fecha_venta, $this->estado, $this->observaciones, 
-            $this->nro_documento, $this->idtipo_comprobante, $this->idcliente, $this->idempleado,  
-            $this->idtipo_transaccion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
+        if(is_null($this->estado_pago)){
+            $datos = array($this->idventa, $this->estado, $this->observaciones, $this->idtipo_comprobante, 
+                $this->idcliente, $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
+            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
+        }  else {
+            $datos = array($this->idventa, $this->estado_pago);
+            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_estado_pago_ventas", $datos);
+        }
         $error = $r[1];
         $r = null;
         return $error;

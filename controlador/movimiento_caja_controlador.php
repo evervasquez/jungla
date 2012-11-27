@@ -1,48 +1,49 @@
 <?php
 
-class movimiento_caja_controlador {
+class movimiento_caja_controlador extends controller{
+    
+    private $_movimiento_caja;
+    private $_ventas;
+    private $_caja;
 
-    public function grilla() {
-        $objmovimiento_caja = new movimiento_caja();
-        $objmovimiento_caja->idmovimiento_caja= 0;
-        $stmt = $objmovimiento_caja->selecciona();
-        return $stmt;
+
+    public function __construct() {
+        parent::__construct();
+        $this->_movimiento_caja=  $this->cargar_modelo('movimiento_caja');
+        $this->_ventas=  $this->cargar_modelo('ventas');
+        $this->_caja=  $this->cargar_modelo('caja');
     }
 
-    public function selecciona($id) {
-        $objmovimiento_caja = new movimiento_caja();
-        $objmovimiento_caja->idmovimiento_caja = $id;
-        $stmt = $objmovimiento_caja->selecciona();
-        return $stmt;
+    public function index() {
+        
+        $this->_vista->datos_ventas=$this->_ventas->selecciona();
+        $this->_vista->renderizar('index');
     }
-
-    public function elimina($id) {
-        $objmovimiento_caja = new movimiento_caja();
-        $objmovimiento_caja->idmovimiento_caja = $id;
-        $error = $objmovimiento_caja->elimina();
-        return $error;
+    
+    public function cobrar($idventa, $monto){
+        $datos_caja=$this->_caja->selecciona();
+        if($datos_caja[0]['estado']==0){
+            echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
+            $this->redireccionar('caja');
+        }
+        if(new DateTime($datos_caja[0]['fecha'])!=new DateTime(date('d-m-Y'))){
+            echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el día de hoy")</script>';
+            $this->redireccionar('caja');
+        }
+        //insertar movimiento caja
+        $this->_movimiento_caja->idconcepto_caja=1;
+        $this->_movimiento_caja->idcaja=$datos_caja[0]['idcaja'];
+        $this->_movimiento_caja->monto=$monto;
+        $this->_movimiento_caja->idcompra=0;
+        $this->_movimiento_caja->idventa=$idventa;
+        $this->_movimiento_caja->inserta();
+        
+        //actualizar el estado de venta a pagado
+        $this->_ventas->idventa=$idventa;
+        $this->_ventas->estado_pago=1;
+        $this->_ventas->actualiza();
+        $this->redireccionar('movimiento_caja');
     }
-
-    public function inserta($datos) {
-        $objmovimiento_caja = new movimiento_caja();
-        $objmovimiento_caja->idmovimiento_caja = $datos[0];
-        $objmovimiento_caja->idconcepto_movimiento = $datos[1];
-        $objmovimiento_caja->idcaja = $datos[2];
-        $objmovimiento_caja->monto = $datos[3];
-        $error = $objmovimiento_caja->inserta();
-        return $error;
-    }
-
-    public function actualiza($datos) {
-        $objmovimiento_caja = new movimiento_caja();
-        $objmovimiento_caja->idmovimiento_caja = $datos[0];
-        $objmovimiento_caja->idconcepto_movimiento = $datos[1];
-        $objmovimiento_caja->idcaja = $datos[2];
-        $objmovimiento_caja->monto = $datos[3];
-        $error = $objmovimiento_caja->actualiza();
-        return $error;
-    }
-
 }
 
 ?>

@@ -189,7 +189,7 @@
            <td align="center">
                 <p>
                     <button type="submit" class="k-button">Guardar</button>
-                    <a href="<?php echo BASE_URL ?>compras" class="k-button cancel">Cancelar</a>
+                    <a href="<?php echo BASE_URL ?>ventas" class="k-button cancel">Cancelar</a>
                 </p>
             </td>
         </tr>

@@ -4,7 +4,7 @@
     <tr>
         <td><label>Tipo de Pasajero:</label></td>
         <td>
-            <select class="combo" placeholder="Seleccione..." id="tipo_cliente">
+            <select class="list" placeholder="Seleccione..." id="tipo_cliente">
                 <option value="natural" selected="selected">Natural</option>
                 <option value="juridico">Juridico</option>
             </select>
@@ -29,6 +29,12 @@ $(document).ready(function(){
                value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
         <table class="tabFormComplejo" align="center">
             <tr valign="top">
+                <td><label>Doc. de Identidad:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
+                       id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
+                </td>
                 <td><label>Nombre:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres" onkeypress="return soloLetras(event)"
@@ -41,14 +47,14 @@ $(document).ready(function(){
                        id="" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="apellidos"></div>
                 </td>
+            </tr>
+            <tr valign="top">
                 <td><label>Direccion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
                        id="" value="<?php if(isset ($this->datos[0]['direccion']))echo $this->datos[0]['direccion']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="direccion"></div>
                 </td>
-            </tr>
-            <tr valign="top">
                 <td><label>Fecha de Nacimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento"
@@ -59,13 +65,13 @@ $(document).ready(function(){
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
                        id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
+            </tr>
+            <tr valign="top">
                 <td><label>Email:</label></td>
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
                 </td>
-            </tr>
-            <tr valign="top">
                 <td><label>Profesion:</label></td>
                 <td>
                    <select class="combo" placeholder="Seleccione..." name="profesion">
@@ -83,33 +89,27 @@ $(document).ready(function(){
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="estado_civil">
                         <option></option>
-                        <?php if($this->datos[0]['estado_civil']=='soltero'){?>
-                        <option value="soltero" selected="selected">Soltero(a)</option>
+                        <?php if($this->datos[0]['estado_civil']=='Soltero(a)'){?>
+                        <option value="Soltero(a)" selected="selected">Soltero(a)</option>
                         <?php }else{ ?>
-                        <option value="soltero">Soltero(a)</option>
+                        <option value="Soltero(a)">Soltero(a)</option>
                         <?php } ?>
-                        <?php if($this->datos[0]['estado_civil']=='casado'){?>
-                        <option value="casado" selected="selected">Casado(a)</option>
+                        <?php if($this->datos[0]['estado_civil']=='Casado(a)'){?>
+                        <option value="Casado(a)" selected="selected">Casado(a)</option>
                         <?php }else{ ?>
-                        <option value="casado">Casado(a)</option>
+                        <option value="Casado(a)">Casado(a)</option>
                         <?php } ?>
-                        <?php if($this->datos[0]['estado_civil']=='viudo'){?>
-                        <option value="viudo" selected="selected">Viudo(a)</option>
+                        <?php if($this->datos[0]['estado_civil']=='Viudo(a)'){?>
+                        <option value="Viudo(a)" selected="selected">Viudo(a)</option>
                         <?php }else{ ?>
-                        <option value="viudo">Viudo(a)</option>
+                        <option value="Viudo(a)">Viudo(a)</option>
                         <?php } ?>
-                        <?php if($this->datos[0]['estado_civil']=='divorciado'){?>
-                        <option value="divorciado" selected="selected">Divorciado(a)</option>
+                        <?php if($this->datos[0]['estado_civil']=='Divorciado(a)'){?>
+                        <option value="Divorciado(a)" selected="selected">Divorciado(a)</option>
                         <?php }else{ ?>
-                        <option value="divorciado">Divorciado(a)</option>
+                        <option value="Divorciado(a)">Divorciado(a)</option>
                         <?php } ?>
                     </select>
-                </td>
-                <td><label>Doc. de Identidad:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
-                    <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
                 </td>
             </tr>
             <tr class="celda_pais" valign="top">
@@ -240,6 +240,16 @@ $(document).ready(function(){
         <table align="center" class="tabForm">
             </tr>
             <tr>
+                <td><label>Ruc:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
+                       id="ruc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                </td>
+                <td>
+                    <div class="k-invalid-msg msgerror" data-for="documento"></div>
+                </td>
+            </tr>
+            <tr>
                 <td><label>Razon Social:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
@@ -247,16 +257,6 @@ $(document).ready(function(){
                 </td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="nombres"></div>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Ruc:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
-                </td>
-                <td>
-                    <div class="k-invalid-msg msgerror" data-for="documento"></div>
                 </td>
             </tr>
             <tr>
@@ -316,7 +316,7 @@ $(document).ready(function(){
             <tr class="celda_region">
                 <td><label>Region:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="regiones">
+                    <select placeholder="Seleccione..." class="regiones comboX">
                         <option>Seleccione...</option>
                         <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
