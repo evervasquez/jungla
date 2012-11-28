@@ -6,3 +6,27 @@
 #tbl_gr{
     height: 410px;
 }
+.hab_dis{
+    height: 75px;
+    width: 75px;
+    margin: 10px;
+}
+.imagen{
+    background-image: url(/sisjungla/lib/img/blanco.png);
+    width: 50px;
+    height: 50px;
+    color:black;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin: 8px 5px 5px 5px;
+}
+.rojo{
+    background-image:url(/sisjungla/lib/css/styles/textures/glass.png);
+    background-color: #f00;
+    border-color: brown;
+}
+.rojo:hover{
+    background-color: #FF5252;
+    border-color: brown;
+}

@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td><label>Nro.Elemento:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese nro. elemento" required name="nro_elemento" onKeyPress="return soloNumeros(event);"
+            <td><input type="numeric" class="cantidad" placeholder="Ingrese nro. elemento" required name="nro_elemento" 
                    id="nro_elemento" value="<?php if(isset ($this->datos[0]['nro_elemento']))echo $this->datos[0]['nro_elemento']?>"/>
             </td>
             <td>

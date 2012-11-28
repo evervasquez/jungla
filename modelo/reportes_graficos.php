@@ -66,6 +66,7 @@ class reportes_graficos {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchall();
     }
+   
 
 }
 

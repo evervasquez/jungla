@@ -117,3 +117,12 @@ $(document).ready(function(){
        $("#tbl_habitacion_especifica tr:eq("+i+")").remove();
    });
 });
+function validarHabitacion(){
+   hp = $("#tipo_habitacion_predet").val();
+   if(hp == 0){
+       alert("Elija Tipo Habitacion Predeterminada");
+       $("#tipo_habitacion_predet").focus();
+       return false;
+   }
+   else return true;
+}

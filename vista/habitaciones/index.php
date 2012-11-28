@@ -13,7 +13,6 @@
         <tr>
             <th>Codigo</th>
             <th>Nro.de Habitacion</th>
-            <th>Descripcion</th>
             <th>Ventilacion</th>
             <th>Estado</th>
             <th>Acciones</th>
@@ -22,7 +21,6 @@
             <tr>
                 <td><?php echo $this->datos[$i]['idhabitacion'] ?></td>
                 <td><?php echo $this->datos[$i]['nro_habitacion'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <?php if($this->datos[$i]['ventilacion']==1){ ?>
                 <td>Ventilador</td>
                 <?php }else{ ?>

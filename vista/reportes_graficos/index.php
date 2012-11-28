@@ -6,6 +6,7 @@
                 <li><a href="javascript:void(0)" onclick="cargar_php('r_pasajeros','grafico')">Pasajeros nacionales/internacionales x Mes(pastel)</a></li>
                 <li><a href="javascript:void(0)" onclick="cargar_php('r_estadias','grafico')">Estadias x Mes(barras)</a></li>
                 <li><a href="javascript:void(0)" onclick="cargar_php('r_ventas','grafico')">Reporte de Ventas x Mes</a></li>
+                <li><a href="javascript:void(0)" onclick="cargar_php('r_habitaciones','grafico')">Habitaciones disponibles</a></li>
             </ul>
             </div>
         </td>

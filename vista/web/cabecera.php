@@ -68,21 +68,26 @@
                                 <label>IP: <?php echo $_SERVER['SERVER_NAME'] ?></label>
                             </div>
                         <?php }else{ ?>
-                <form method="post" action="<?php echo BASE_URL?>login" id="login">
+                <form method="post" action="<?php echo BASE_URL?>login" id="login" onsubmit="return validarLogin();">
                     <table>
-                        <tr valign="top">
+                        <tr>
                             <td>
-                                <label id="lablogin"></label>
+                                <label>Usuario:&nbsp;</label> 
                             </td>
                             <td>
-                                <input type="text" required placeholder="Usuario" name="usuario" class="k-textbox" validationMessage="Ingrese Usuario ↑"/>
-                                <br><span class="k-invalid-msg msgerror" data-for="usuario"></span>&nbsp;
+                                <input type="text" placeholder="Ingrese Usuario" id="usuario" name="usuario" class="k-textbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Clave:&nbsp;</label> 
                             </td>
                             <td>
-                                <input type="password" required placeholder="Clave" name="clave" class="k-textbox" validationMessage="Ingrese Clave ↑"/>
-                                <br><span class="k-invalid-msg msgerror" data-for="clave"></span>&nbsp;&nbsp;
+                                <input type="password" placeholder="Ingrese Clave" id="clave" name="clave" class="k-textbox" />
                             </td>
-                            <td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
                                 <button type="submit" class="k-button">Ingresar</button>
                             </td>
                         </tr>
