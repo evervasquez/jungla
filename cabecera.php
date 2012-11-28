@@ -11,36 +11,13 @@
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>validaciones.js"></script>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>jquery.min.js"></script>
         <script type="text/javascript">
-            jQuery(function (){jQuery(".mensaje").hover(function(){jQuery(".mensaje").stop(true, false).animate({right:"0"},"medium");},
-                function(){jQuery(".mensaje").stop(true, false).animate({right:"-250"},"medium");},500);return false;});
+            jQuery(function (){jQuery(".slide_likebox").hover(function(){jQuery(".slide_likebox").stop(true, false).animate({right:"0"},"medium");},
+                function(){jQuery(".slide_likebox").stop(true, false).animate({right:"-250"},"medium");},500);return false;});
         </script>
         <link rel="stylesheet" href="<?php echo $_params['ruta_css']; ?>fanbox.css" type="text/css" media="screen">
-        <?php if(isset($_params['mensajes']) && count($_params['mensajes'])) {
-            for($i=0; $i < count($_params['mensajes']); $i++) {?>
-        <div class="mensaje red">    
-            <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
-                <div class='likeboxwrap'> 
-                    <div class="msg_pendientes">
-                        <ul>
-                            <li><?php echo $_params['mensajes'][$i] ?></li>
-                        </ul>
-                    </div>        
-                </div>    
-            </div>
-        </div>	
-        <?php }} else {?>
-        <div class="mensaje green">    
-            <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
-                <div class='likeboxwrap'> 
-                    <div class="msg_pendientes">
-                        <p>No hay mensajes pendientes</p>
-                    </div>        
-                </div>    
-            </div>
-        </div>	
-        <?php }?>
         <script type="text/javascript" src="<?php echo $_params['ruta_js']; ?>kendo.web.min.js"></script>
-        <link type="text/css" href="<?php echo $_params['ruta_css']; ?>estilosprincipal.css" rel="stylesheet" media="screen" />
+        <link type="text/css" href="<?php echo $_params['ruta_css']; ?>estilosgeneral.css" rel="stylesheet" media="screen" />
+        <link type="text/css" href="<?php echo $_params['ruta_css']; ?>estilossistema.css" rel="stylesheet" media="screen" />
         <?php if(isset($_params['js']) && count($_params['js'])): ?>
         <?php for($i=0; $i < count($_params['js']); $i++): ?>
         

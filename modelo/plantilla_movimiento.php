@@ -44,7 +44,10 @@ class plantilla_movimiento {
     }
 
     public function inserta() {
-        $datos = array(0,$this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber);
+         if(is_null($this->idplantilla_movimiento)){
+            $this->idplantilla_movimiento=0;
+        }
+        $datos = array($this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber,$this->idplantilla_movimiento);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plantilla_movimiento", $datos);
         $error = $r[1];
         $r = null;
@@ -52,7 +55,7 @@ class plantilla_movimiento {
     }
 
     public function actualiza() {
-        $datos = array($this->idplantilla_movimiento, $this->descripcion, $this->idasiento);
+        $datos = array($this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber,$this->idplantilla_movimiento);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plantilla_movimiento", $datos);
         $error = $r[1];
         $r = null;

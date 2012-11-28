@@ -20,9 +20,9 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="cuenta">Cuenta:</label></td>
+                <td><label for="idcuenta">Cuenta:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." required name="cuenta" id="cuenta">
+                    <select class="combo" placeholder="Seleccione..." required name="idcuenta" id="idcuenta">
                         <option></option>
                         <?php for ($i = 0; $i < count($this->datosCuentas); $i++) { ?>
                             <?php if ($this->datos[0]['idcuenta'] == $this->datosCuentas[$i]['idcuenta']) { ?>
@@ -34,13 +34,13 @@
                     </select>
                 </td>
                 <td>
-                    <div class="k-invalid-msg msgerror" data-for="cuenta"></div>
+                    <div class="k-invalid-msg msgerror" data-for="idcuenta"></div>
                 </td>
             </tr>
             <tr>
-                <td><label for="concepto_movimiento">Concepto Movimiento:</label></td>
+                <td><label for="idconcepto_movimiento">Concepto Movimiento:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." required name="concepto_movimiento" id="concepto_movimiento">
+                    <select class="combo" placeholder="Seleccione..." required name="idconcepto_movimiento" id="idconcepto_movimiento">
                         <option></option>
 
                         <?php for ($i = 0; $i < count($this->datosConcepto); $i++) { ?>
@@ -53,7 +53,7 @@
                     </select>
                 </td>
                 <td>
-                    <div class="k-invalid-msg msgerror" data-for="concepto_movimiento"></div>
+                    <div class="k-invalid-msg msgerror" data-for="idconcepto_movimiento"></div>
                 </td>
             </tr>
             <tr>
@@ -61,16 +61,18 @@
                 <td>
                     <select class="combo" placeholder="Seleccione..." required name="debe_haber" id="debe_haber">
                         <option></option>
-                        <?php if ($this->datos[0]['debe_haber'] == 'Debe') { ?>
-                            <option value="Debe" selected="selected">Debe</option>
-                            <option value="Haber">Haber</option>
-                            <?php } if ($this->datos[0]['debe_haber'] == 'Haber') { ?>
-                            <option value="Debe">Debe</option>
-                            <option value="Haber" selected="selected">Haber</option>
+                        <?php if ($this->datos[0]['debe_haber'] == 'debe') { ?>
+                            <option value="debe" selected="selected">debe</option>
+                            <option value="haber">haber</option>
+                            <?php } 
+                            else{
+                            if ($this->datos[0]['debe_haber'] == 'haber') { ?>
+                            <option value="debe">debe</option>
+                            <option value="haber" selected="selected">haber</option>
                         <?php }else{ ?>
-                            <option value="Debe">Debe</option>
-                            <option value="Haber">Haber</option>
-                            <?php }?>
+                            <option value="debe">debe</option>
+                            <option value="haber">haber</option>
+                            <?php }}?>
                     </select>
                 </td>
                 <td>

@@ -40,7 +40,7 @@ class plan_contable {
         if(is_null($this->cuenta_padre)){
             $this->cuenta_padre='';
         }
-        $datos = array($this->idcuenta,$this->descripcion,$this->nro_cuenta,$this->cuenta_padre);
+        $datos = array($this->idcuenta/*,$this->descripcion,$this->nro_cuenta,$this->cuenta_padre*/);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_cuentas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

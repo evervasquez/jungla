@@ -11,6 +11,8 @@ class web_controlador extends controller {
     
     public function index() {
         $this->_vista->datos = $this->_web->selecciona();
+        $this->_vista->setJs(array('jquery.lightbox'));
+        $this->_vista->setCss(array('jquery.lightbox'));
         $this->_vista->setJs(array('jflow.plus.min'));
         $this->_vista->setJs(array('funciones_index'));
         $this->_vista->setCss(array('estilos_index'));

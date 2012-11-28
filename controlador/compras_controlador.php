@@ -8,6 +8,7 @@ class compras_controlador extends controller{
     private $_productos;
     private $_detalle_compra;
     private $_cuota_pago;
+    private $_alertas;
 
     public function __construct() {
         if (!$this->acceso(16)) {
@@ -20,6 +21,7 @@ class compras_controlador extends controller{
         $this->_productos= $this->cargar_modelo('productos');
         $this->_detalle_compra= $this->cargar_modelo('detalle_compra');
         $this->_cuota_pago = $this->cargar_modelo('cuota_pago');
+        $this->_alertas = $this->cargar_modelo('alertas');
     }
 
     public function index() {
@@ -62,6 +64,8 @@ class compras_controlador extends controller{
             $this->_compras->idproveedor = $_POST['idproveedor'];
             $this->_compras->idtipo_transaccion = $_POST['tipo_transaccion'];
             $this->_compras->confirmacion = 0;
+            $this->_alertas->idalerta = 2;
+            $this->_alertas->activa_alerta();
             $dato_compra=$this->_compras->inserta();
             //inserta detalle compra
                 for($i=0;$i<count($_POST['idprodutos']);$i++){
@@ -250,6 +254,7 @@ class compras_controlador extends controller{
         }
         $this->_compras->idcompra=$this->filtrarInt($id);
         $this->_compras->elimina();
+        $this->_alertas->desactiva_alerta();
         $this->redireccionar('compras');
     }
 }

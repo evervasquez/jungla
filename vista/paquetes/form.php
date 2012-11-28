@@ -11,7 +11,7 @@
                 </td>
                 <td><label for="descripcion">Descripcion:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
+                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion"
                            value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
@@ -19,7 +19,7 @@
             <tr valign="top">
                 <td><label for="costo">Costo:</label></td>
                 <td>
-                    <input type="text" class="precio" placeholder="Ingrese costo" required name="costo" 
+                    <input type="numeric" class="precio" placeholder="Ingrese costo" required name="costo" 
                            value="<?php if(isset ($this->datos[0]['costo']))echo $this->datos[0]['costo']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="costo"></div>
                 </td>

@@ -111,11 +111,11 @@
         </tr>
         <tr>
             <td><label for="representante">Representante:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese nombre representante" required name="representante"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese nombre representante" name="representante"
                    id="representante" value="<?php if(isset ($this->datos[0]['representante']))echo $this->datos[0]['representante']?>"/>
             </td>
             <td>
-                <div class="k-invalid-msg msgerror" data-for="representante"></div>
+                <div class="msgerror"></div>
             </td>
         </tr>
         <tr>
@@ -129,7 +129,7 @@
         </tr>
         <tr>
             <td><label>Email:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese email" name="email"
+            <td><input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                    id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
             </td>
             <td>

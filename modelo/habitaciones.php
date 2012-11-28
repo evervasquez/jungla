@@ -56,7 +56,19 @@ class habitaciones {
         $r = null;
         return $error;
     }
-
+    
+     public function selecciona_android() {
+        $datos = array();
+        $r = consulta::procedimientoAlmacenado("pa_habitacion_android", $datos);
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
+        $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
+    }
 }
 
 ?>

@@ -109,38 +109,38 @@
                html+= '<td>Observaciones:</td>';
                html+= '<td>'+datos[0]['observaciones']+'</td>';
                html+= '</tr>';
+               if(datos[0]['servicio'] != null){
                html+= '<tr>';
                html+= '<td>Servicio:</td>';
                html+= '<td>'+datos[0]['servicio']+'</td>';
                html+= '</tr>';
+               }
                html+= '<tr>';
                html+= '<td>Tipo de Producto:</td>';
-               html+= '<td>'+datos[0]['tipo_producto']+'</td>';
+               html+= '<td>'+datos[0]['tipo']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Unidad de Medida:</td>';
-               html+= '<td>'+datos[0]['unidad_medida']+'</td>';
+               html+= '<td>'+datos[0]['um']+'</td>';
                html+= '</tr>';
+               if(datos[0]['ubicacion'] != null){
                html+= '<tr>';
                html+= '<td>Ubicacion:</td>';
                html+= '<td>'+datos[0]['ubicacion']+'</td>';
                html+= '</tr>';
-               html+= '<tr>';
-               html+= '<td>Promocion:</td>';
-               html+= '<td>'+datos[0]['promocion']+'</td>';
-               html+= '</tr>';
+               }
+               if(datos[0]['stock'] != null){
                html+= '<tr>';
                html+= '<td>Stock:</td>';
                html+= '<td>'+datos[0]['stock']+'</td>';
                html+= '</tr>';
-               html+= '<tr>';
-               html+= '<td>Estado:</td>';
-               html+= '<td>'+datos[0]['estado']+'</td>';
-               html+= '</tr>';
+               }
+               if(datos[0]['precio_compra'] != null){
                html+= '<tr>';
                html+= '<td>Precio de Compra:</td>';
                html+= '<td>'+datos[0]['precio_compra']+'</td>';
                html+= '</tr>';
+               }
                html+= '</table>';
                html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
                $("#vtna_ver_producto").html(html);

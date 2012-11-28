@@ -14,17 +14,17 @@ class view {
     //put your code here
     private $_controlador;
     private $_menu;
+    private $_alerta;
     private $_js;
     private $_css;
-    private $_mensajes;
     //parametro request = es el parametro del ccontrolador
-    public function __construct(request $peticion, $menu) {
+    public function __construct(request $peticion, $menu, $alerta) {
         //guardamos el nombre del controlador
         $this->_controlador = $peticion->get_controlador();
         $this->_menu = $menu;
+        $this->_alerta = $alerta;
         $this->_js = array();
         $this->_css = array();
-        $this->_mensajes = array();
     }
 
     public function renderizar($vista, $item = false) {
@@ -35,7 +35,6 @@ class view {
 
         $js = array();
         $css = array();
-        $mensajes = array();
 
         if (count($this->_js)) {
             $js = $this->_js;
@@ -43,17 +42,13 @@ class view {
         if (count($this->_css)) {
             $css = $this->_css;
         }
-        if (count($this->_mensajes)) {
-            $mensajes = $this->_mensajes;
-        }
 
         $_params = array(
             'ruta_css' => BASE_URL . 'lib/css/',
             'ruta_js' => BASE_URL . 'lib/js/',
             'ruta_img' => BASE_URL . 'lib/img/',
             'js' => $js,
-            'css' => $css,
-            'mensajes' => $mensajes
+            'css' => $css
         );
 
         //die($ruta_vista);
@@ -64,6 +59,8 @@ class view {
             //archivos propios del template
             //incluimos los layout
             include_once ROOT . DS . 'cabecera.php';
+            include_once ROOT . DS . 'alerta.php';
+            new alerta($this->_alerta);
             include_once ROOT . DS . 'menu.php';
             new menu($this->_menu);
             include_once $ruta_vista;
@@ -136,19 +133,6 @@ class view {
             }
         } else {
             throw new Exception('Error de css');
-        }
-    }
-    
-    public function newMensaje(array $mensajes) {
-        if (is_array($mensajes) && count($mensajes)){
-            for ($i = 0; $i < count($mensajes); $i++ ) {
-                $filename = '/sisjungla/lib/texto.txt';
-//                $filename = BASE_URL . 'lib/' . $mensajes[$i] . ".txt";
-                $file[$i] = fopen($filename,"a+");
-                $this->_mensajes[] = $file[$i];
-            }
-        } else {
-            throw new Exception ('Error de mensaje');
         }
     }
 

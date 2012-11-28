@@ -1,14 +1,14 @@
 
 /*Estilos del Panel*/
-.k-content{background-color:#BBB;color:#000}
-/*maquetacion index*/
+.k-content{background:rgba(256,256,256,0.8);color:#000}
 
+/*maquetacion index*/
 #position{
 	padding:20px;
         display: block;
 }
 .article{
-	background:#6f9;
+	background:rgba(256,256,256,0.3);
 	display:table;
 	margin:20px;
 	padding:10px;

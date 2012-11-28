@@ -2,6 +2,7 @@
 
 class asientos {
 
+    public $idcompra;
     public $idasiento;
     public $fecha;
     public $glosa;
@@ -29,9 +30,13 @@ class asientos {
         return $error;
     }
 
-    public function inserta() {
-        $datos = array($this->idasiento, $this->fecha, $this->glosa, $this->idplantilla_movimiento, $this->nro_asiento);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_articulo", $datos);
+    public function inserta($idcompra,$idventa) {
+        $datos = array($idcompra,$idventa);
+        if($idventa === 0){
+            $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_compra", $datos);
+        }else{
+            $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_venta", $datos);
+        }
         $error = $r[1];
         $r = null;
         return $error;

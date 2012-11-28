@@ -18,9 +18,7 @@
             <th>Tipo</th>
             <th>Nombre / Razon Social</th>
             <th>DNI / RUC</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Ubigeo</th>
+            <th>Direccion</th>
             <th>Acciones</th>
         </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -29,9 +27,7 @@
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td><?php echo utf8_encode($this->datos[$i]['nombres'].' '.$this->datos[$i]['apellidos']) ?></td>
                 <td><?php echo $this->datos[$i]['documento'] ?></td>
-                <td><?php echo $this->datos[$i]['telefono'] ?></td>
-                <td><?php echo $this->datos[$i]['email'] ?></td>
-                <td><?php echo $this->datos[$i]['ubigeo'] ?></td>
+                <td><?php echo $this->datos[$i]['direccion'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>clientes/editar/<?php echo $this->datos[$i]['idcliente'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idcliente'] ?>')"></a>  

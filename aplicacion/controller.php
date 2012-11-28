@@ -4,16 +4,20 @@ abstract class controller {
 
     protected $_vista;
     protected $_modelo;
+    protected $_modeloalert;
 
     //aqui ya tenemos el objeto vista disponible en el controlador
     public function __construct() {
         $this->_modelo = $this->cargar_modelo('modulos');
         $this->_modelo->idmodulo = 9999;
+        $this->_modeloalert = $this->cargar_modelo('alertas');
         if(session::get('autenticado')){
             $this->_modelo->idperfil = session::get('idperfil');
+            $this->_modeloalert->idperfil = session::get('idperfil');
         }
         $menu = $this->_modelo->selecciona();
-        $this->_vista = new view(new request, $menu);
+        $alerta = $this->_modeloalert->selecciona();
+        $this->_vista = new view(new request, $menu, $alerta);
     }
 
     abstract public function index();

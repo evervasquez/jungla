@@ -24,8 +24,8 @@
                 <td><?php echo $this->datos[$i]['nombre'] ?></td>
                 <td><?php echo $this->datos[$i]['email'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha'] ?></td>
-                <?php if($this->datos[$i]['estado'] == 0) echo"<td><label class='noleido'>No Leido</label></td>"; 
-                else echo "<td><label class='leido'>Leido</label></td>"; ?>
+                <?php if($this->datos[$i]['estado'] == 0) echo"<td><label class='noleido'>Mensaje No Leido</label></td>"; 
+                else echo "<td><label class='leido'>Mensaje Leido</label></td>"; ?>
                 <td>
                     <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idmensaje'] ?>')" class="imgview ver" ></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>mensajes/eliminar/<?php echo $this->datos[$i]['idmensaje'] ?>')" class="imgdelete"></a>

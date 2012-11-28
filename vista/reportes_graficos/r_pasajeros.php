@@ -5,7 +5,7 @@ $chart->chart->renderTo = "container";
 $chart->chart->plotBackgroundColor = null;
 $chart->chart->plotBorderWidth = null;
 $chart->chart->plotShadow = false;
-$chart->title->text = "Browser market shares at a specific website, 2010";
+$chart->title->text = "Porcetanje de Pasajeros en el Albergue Turistico La Jungla";
 
 $chart->tooltip->formatter = new HighchartJsExpr("function() {
     return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';}");
@@ -22,20 +22,20 @@ $chart->plotOptions->pie->dataLabels->formatter = new HighchartJsExpr("function(
 
 $chart->series[] = array('type' => "pie",
                          'name' => "Browser share",
-                         'data' => array(array("Firefox", 45),
-                                         array("IE", 26.8),
-                                         array('name' => 'Chrome',
+                         'data' => array(array("Nacionales",(float)$this->datos[0]['nacionales']),
+                                         array("Internacionales",(float)$this->datos[0]['internacionales'])
+                                         /*array('name' => 'Chrome',
                                                'y' => 12.8,
                                                'sliced' => true,
                                                'selected' => true),
                                          array("Safari", 8.5),
                                          array("Opera", 6.2),
-                                         array("Others", 0.7)));
+                                         array("Others", 0.7)*/));
 ?>
 
 <html>
   <head>
-    <title>Pie chart</title>
+    <title>Pasajeros</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <?php
       foreach ($chart->getScripts() as $script) {

@@ -8,9 +8,27 @@ function validarContacto(){
     e = $("#emailContacto").val();
     t = $("#telefonoContacto").val();
     m = $("#mensaje").val();
-    if(n == "" || e == "" || t == "" || m == "" ){
-        $("#mensaje_validacion").html("<p>Debe llenar todos los campos</p>");
+    if(n == ""){
+        alert("Debe ingresar nombre");
         return false;
     }
-    else return true;
+    else{
+        if(e == ""){
+            alert("Debe ingresar email");
+            return false;
+        }
+        else{
+            if(t == ""){
+                alert("Debe ingresar etelefono");
+                return false;
+            }
+            else{
+                if(m == ""){
+                    alert("Debe ingresar mensaje");
+                    return false;
+                }
+                else return true;
+            }
+        }
+    }
 }

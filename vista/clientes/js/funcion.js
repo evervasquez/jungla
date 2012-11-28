@@ -5,12 +5,10 @@
             },
             pageable: true,
             columns: [{field:"Codigo", width:6},
-                {field:"Tipo", width:6},
-                {field:"NombreRazonSocial", width:15},
-                {field:"Documento", width:8},
-                {field:"Telefono", width:8},
-                {field:"Email", width:10},
-                {field:"Ubigeo", width:10},
+                {field:"Tipo", width:10},
+                {field:"NombreRazonSocial", width:20},
+                {field:"Documento", width:15},
+                {field:"Direccion", width:15},
                 {field:"Acciones", width:6,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();
@@ -40,14 +38,7 @@
                     HTML = HTML + '<td>'+datos[i].nombres+'</td>';
                     }
                     HTML = HTML + '<td>'+datos[i].documento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].telefono+'</td>';
-                    HTML = HTML + '<td>'+datos[i].email+'</td>';
-                    if(datos[i].ubigeo != null){
-                    HTML = HTML + '<td>'+datos[i].ubigeo+'</td>';
-                    }
-                    else{
-                    HTML = HTML + '<td></td>';
-                    }
+                    HTML = HTML + '<td>'+datos[i].direccion+'</td>';
                     var editar='/sisjungla/clientes/editar/'+datos[i].idcliente; 
                     var eliminar='/sisjungla/clientes/eliminar/'+datos[i].idcliente;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
@@ -63,12 +54,10 @@
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:6},
-                        {field:"Tipo", width:6},
-                        {field:"NombreRazonSocial", width:15},
-                        {field:"Documento", width:8},
-                        {field:"Telefono", width:8},
-                        {field:"Email", width:10},
-                        {field:"Ubigeo", width:10},
+                        {field:"Tipo", width:10},
+                        {field:"NombreRazonSocial", width:20},
+                        {field:"Documento", width:15},
+                        {field:"Direccion", width:15},
                         {field:"Acciones", width:6,attributes:{class:"acciones"}}]
                 });
             },'json');
@@ -122,11 +111,7 @@
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Direccion:</td>';
-                    if(datos[0]['direccion']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['direccion']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['direccion']+'</td>';
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Sexo:</td>';
@@ -137,62 +122,48 @@
                         html+= '<td>Masculino</td>';
                     }
                     html+= '</tr>'
+                    if(datos[0]['telefono'] != null && datos[0]['telefono'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Telefono:</td>';
-                    if(datos[0]['telefono']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['telefono']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['telefono']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['email'] != null && datos[0]['email'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Email:</td>';
-                    if(datos[0]['email']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['email']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['email']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['fecha_nacimiento'] != null && datos[0]['fecha_nacimiento'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Fecha de Nacimiento:</td>';
-                    if(datos[0]['fecha_nacimiento']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['fecha_nacimiento']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['fecha_nacimiento']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['profesion'] != null && datos[0]['profesion'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Profesion:</td>';
-                    if(datos[0]['profesion']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['profesion']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['profesion']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['estado_civil'] != null && datos[0]['estado_civil'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Estado Civil:</td>';
-                    if(datos[0]['estado_civil']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['estado_civil']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['estado_civil']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['ubigeo'] != null && datos[0]['ubigeo'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Ciudad:</td>';
-                    if(datos[0]['ubigeo']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['ubigeo']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['ubigeo']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['membresia'] != "Desconocido"){
                     html+= '<tr>';
                     html+= '<td>Membresia:</td>';
-                    if(datos[0]['membresia']==null){
-                        html+= '<td></td>';
-                    }else{
-                        html+= '<td>'+datos[0]['membresia']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['membresia']+'</td>';
                     html+= '</tr>';
+                    }
                }
                else{
                     html= '<h3>Datos del Cliente: '+datos[0]['nombres']+'</h3>';
@@ -209,33 +180,24 @@
                     html+= '<td>Direccion:</td>';
                     html+= '<td>'+datos[0]['direccion']+'</td>';
                     html+= '</tr>';
+                    if(datos[0]['telefono'] != null && datos[0]['telefono'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Telefono:</td>';
-                    if(datos[0]['telefono']==null){
-                        html+= '<td></td>';
-                    }
-                    else{
-                        html+= '<td>'+datos[0]['telefono']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['telefono']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['email'] != null && datos[0]['email'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Email:</td>';
-                    if(datos[0]['email']==null){
-                        html+= '<td></td>';
-                    }
-                    else{
-                        html+= '<td>'+datos[0]['email']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['email']+'</td>';
                     html+= '</tr>';
+                    }
+                    if(datos[0]['ubigeo'] != null && datos[0]['ubigeo'] != ' '){
                     html+= '<tr>';
                     html+= '<td>Ciudad:</td>';
-                    if(datos[0]['ubigeo']==null){
-                        html+= '<td></td>';
-                    }
-                    else{
-                        html+= '<td>'+datos[0]['ubigeo']+'</td>';
-                    }
+                    html+= '<td>'+datos[0]['ubigeo']+'</td>';
                     html+= '</tr>';
+                    }
                }
                html+= '</table>';
                html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
