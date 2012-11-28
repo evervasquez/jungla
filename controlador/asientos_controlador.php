@@ -1,11 +1,14 @@
 <?php
 
 class asientos_controlador extends controller{
+    private $_asientos;
     public function __construct() {
         parent::__construct();
+        $this->_asientos=  $this->cargar_modelo('asientos');
     }
     
     public function index() {
+        $this->_vista->datos=  $this->_asientos->selecciona();
         $this->_vista->renderizar('index');
     }
     
