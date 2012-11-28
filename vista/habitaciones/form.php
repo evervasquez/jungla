@@ -11,11 +11,18 @@
                            id="nro_habitacion" value="<?php if(isset ($this->datos[0]['nro_habitacion']))echo $this->datos[0]['nro_habitacion']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="nro_habitacion"></div>
                 </td>
-                <td><label for="descripcion">Descripcion:</label></td>
+                <td><label>Tipo Habitacion Predet:</label></td>
                 <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" 
-                           value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/>
-                    <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
+                    <select placeholder="Seleccione..." class="list" name="tipo_habitacion_predet">
+                        <option></option>
+                        <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){ ?>
+                            <?php if( $this->datos[0]['tipo_habitacion_predet'] == $this->datos_tipo_habitacion[$i]['idtipo_habitacion'] ){ ?>
+                        <option value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_habitacion[$i]['descripcion']) ?></option>
+                            <?php } else { ?>
+                        <option value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion'] ?>"><?php echo utf8_encode($this->datos_tipo_habitacion[$i]['descripcion']) ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -41,10 +48,9 @@
                 </td>
             </tr>
         </table>
-    </fieldset>
     <fieldset>
         <div id="tbl_detalle">
-        <br><legend>Costos de habitacion</legend><br>
+        <legend>Costos de habitacion</legend>
         <table class="tabForm">
             <tr>
                 <td><label>Tipo Habitacion:</label></td>
@@ -101,15 +107,12 @@
                     </table>
                 </td>        
             </tr>
-            <tr>
-               <td colspan="7" align="center">
-                    <p>
-                        <button type="submit" class="k-button">Guardar</button>
-                        <a href="<?php echo BASE_URL ?>habitaciones" class="k-button cancel">Cancelar</a>
-                    </p>
-                </td>
-            </tr>
         </table>
+    </fieldset>
+        <p>
+            <button type="submit" class="k-button">Guardar</button>
+            <a href="<?php echo BASE_URL ?>habitaciones" class="k-button cancel">Cancelar</a>
+        </p>
     </div>
     </fieldset>
 </form>

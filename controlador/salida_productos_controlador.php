@@ -52,7 +52,7 @@ class salida_productos_controlador extends controller{
             $this->_movimiento_producto->fecha=date("d-m-Y");
             $this->_movimiento_producto->inserta();
         }
-        $this->registrar_salida();
+        $this->redireccionar('salida_productos');
     }
 }
 

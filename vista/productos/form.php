@@ -81,31 +81,6 @@
             	</td>
             </tr>
             <tr valign="top">
-                <td><label>Promocion:</label></td>
-                <td>
-                    <select class="combo"  placeholder="Seleccione..." name="promocion">
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_promociones);$i++){ ?>
-                        <?php if( $this->datos[0]['idpromocion'] == $this->datos_promociones[$i]['idpromocion'] ){ ?>
-                    <option value="<?php echo $this->datos_promociones[$i]['idpromocion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_promociones[$i]['descripcion']) ?></option>
-                        <?php } else { ?>
-                    <option value="<?php echo $this->datos_promociones[$i]['idpromocion'] ?>"><?php echo utf8_encode($this->datos_promociones[$i]['descripcion']) ?></option>
-                        <?php } ?>
-                    <?php } ?>
-                    </select>
-            	</td>
-                <td><label>Estado:</label></td>
-                <td>
-                    <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
-                    <input type="radio" name="estado" value ="1" />Activo
-                    <input type="radio" name="estado" value="0" checked="checked"/>Inactivo
-                    <?php } else { ?>
-                    <input type="radio" name="estado" value ="1" checked="checked"/>Activo
-                    <input type="radio" name="estado" value="0" />Inactivo
-                    <?php } ?>
-                </td>
-            </tr>
-            <tr valign="top">
                 <td><label>Observaciones:</label></td>
                 <td colspan="3">
                     <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>

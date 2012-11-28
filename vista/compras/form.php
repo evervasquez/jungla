@@ -25,10 +25,8 @@
             <tr valign="top">
                 <td><label for="fecha_compra">Fecha de Compra:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
-                       id="fecha_compra" value="<?php if(isset ($this->datos[0]['fecha_compra'])){
-                               $fecha=$this->datos[0]['fecha_compra'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                    <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
+                       id="fecha_compra" value="<?php if(isset ($this->datos[0]['fecha_compra']))echo $this->datos[0]['fecha_compra']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="fecha_compra"></div>
                 </td>
                 <td><label for="tipo_transaccion">Tipo de Transaccion:</label></td>
@@ -50,9 +48,7 @@
                 <td><label>Fecha Vencimiento:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_vencimiento"
-                       id="fecha_vencimiento" value="<?php if(isset ($this->datos[0]['fecha_vencimiento'])){
-                               $fecha=$this->datos[0]['fecha_vencimiento'];
-                               echo substr($fecha,8,2).'-'.substr($fecha,5,2).'-'.substr($fecha,0,4);}?>"/>
+                       id="fecha_vencimiento" value="<?php if(isset ($this->datos[0]['fecha_vencimiento']))echo $this->datos[0]['fecha_vencimiento']?>"/>
                 </td>
                 <td><label>Intervalo de dias:</label></td>
                 <td>
@@ -68,19 +64,6 @@
                 <td><label for="observaciones">Observaciones:</label></td>
                 <td colspan="3">
                     <textarea placeholder="Ingrese observacion" id="observaciones" name="observaciones" class="k-textbox textarea"><?php if(isset ($this->datos[0]['observaciones']))echo utf8_encode($this->datos[0]['observaciones'])?></textarea>
-                </td>
-                <td></td>
-            </tr>
-            <tr valign="top">
-                <td><label>Estado:</label></td>
-                <td colspan="3">
-                    <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
-                    <input type="radio" name="estado" value ="1" />Activo
-                    <input type="radio" name="estado" value="0" checked="checked"/>Inactivo
-                    <?php } else { ?>
-                    <input type="radio" name="estado" value ="1" checked="checked"/>Activo
-                    <input type="radio" name="estado" value="0" />Inactivo
-                    <?php } ?>
                 </td>
                 <td></td>
             </tr>
@@ -109,7 +92,7 @@
                 <td colspan="2">
                     <input type="numeric" min="0" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
-                <td><label>Precio de Compra:</label></td>
+                <td><label>Precio Unitario:</label></td>
                 <td>
                     <input type="text" class="precio" placeholder="Ingrese precio" id="precio" />
                 </td>

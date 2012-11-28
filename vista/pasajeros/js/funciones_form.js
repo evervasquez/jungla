@@ -124,4 +124,33 @@ $(document).ready(function(){
         }
     });
     
+    //valida existencia de pasajeros
+    $("#nrodoc").blur(function(){
+        if($(this).val()!=''){
+            $.post('/sisjungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
+                if(datos.length>0){
+                    if(confirm('Ya existe un pasajero con este Nro de DNI...\nDesea editar sus datos?')){
+                        window.location = '/sisjungla/pasajeros/editar/'+datos[0].idcliente
+                    }else{
+                        window.location = '/sisjungla/pasajeros/';
+                    }
+                }   
+            },'json');
+        }
+    });
+    
+    $("#ruc").blur(function(){
+        if($(this).val()!=''){
+            $.post('/sisjungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+                if(datos.length>0){
+                    if(confirm('Ya existe un pasajero con este Nro de RUC...\nDesea editar sus datos?')){
+                        window.location = '/sisjungla/pasajeros/editar/'+datos[0].idcliente
+                    }else{
+                        window.location = '/sisjungla/pasajeros/';
+                    }
+                }   
+            },'json');
+        }
+    });
+    
 }); 

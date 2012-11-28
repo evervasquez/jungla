@@ -4,7 +4,7 @@
     <tr>
         <td><label>Tipo de Cliente:</label></td>
         <td>
-            <select class="combo" placeholder="Seleccione..." id="tipo_cliente">
+            <select class="list" placeholder="Seleccione..." id="tipo_cliente">
                 <option value="natural" selected="selected">Natural</option>
                 <option value="juridico">Juridico</option>
             </select>
@@ -29,6 +29,12 @@ $(document).ready(function(){
                value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
         <table align="center" class="tabFormComplejo">
             <tr valign="top">
+                <td><label>Nro.Documento:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
+                      maxlength="8" id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
+                </td>
                 <td><label>Nombre:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres" onkeypress="return soloLetras(event)"
@@ -40,12 +46,6 @@ $(document).ready(function(){
                     <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required name="apellidos" onkeypress="return soloLetras(event)"
                        id="apellidos" value="<?php if(isset ($this->datos[0]['apellidos']))echo $this->datos[0]['apellidos']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="apellidos"></div>
-                </td>
-                <td><label>Nro.Documento:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
-                      maxlength="8" id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
-                    <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
                 </td>
             </tr>
             <tr valign="top">
@@ -97,70 +97,6 @@ $(document).ready(function(){
                     </select>
                 </td>
             </tr>
-             <tr valign="top">
-                <td><label>Region:</label></td>
-                <td>
-                    <select placeholder="Seleccione..." class="combo" id="region">
-                        <option></option>
-                        <?php if(isset ($this->datos)){ ?>
-                            <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
-                                <?php if( $this->datos[0]['idregion'] == $this->datos_regiones[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php }else{ ?>
-                            <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
-                                <?php if( 1901 == $this->datos_regiones[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                    <br><div class="msgerror"></div>
-               </td>
-                <td><label>Provincia:</label></td>
-                <td>
-                    <select placeholder="Seleccione..." class="provincias comboX">
-                        <option>Seleccione...</option>
-                        <?php if(isset ($this->datos)){ ?>
-                            <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
-                                <?php if( $this->datos[0]['idprovincia'] == $this->datos_provincias[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php }else{ ?>
-                            <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
-                                <?php if( 1968 == $this->datos_provincias[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                </td>
-                <td><label>Ciudad:</label></td>
-                <td>
-                    <select placeholder="Seleccione..." name="ubigeo" class="ciudades comboX">
-                        <option value="0">Seleccione...</option>
-                        <?php if(count($this->datos_ubigeos)){ ?>
-                            <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
-                                <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_ubigeos[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_ubigeos[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_ubigeos[$i]['idubigeo'] ?>"><?php echo $this->datos_ubigeos[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                </td>
-            </tr>
             <tr valign="top">
                 <td><label>Membresia:</label></td>
                 <td>
@@ -180,22 +116,22 @@ $(document).ready(function(){
                 <td>
                     <select class="combo" placeholder="Seleccione..." name="estado_civil">
                         <option></option>
-                        <?php if($this->datos[0]['estado_civil']=='soltero'){?>
+                        <?php if($this->datos[0]['estado_civil']=='Soltero(a)'){?>
                         <option value="Soltero(a)" selected="selected">Soltero(a)</option>
                         <?php }else{ ?>
                         <option value="Soltero(a)">Soltero(a)</option>
                         <?php } ?>
-                        <?php if($this->datos[0]['estado_civil']=='casado'){?>
+                        <?php if($this->datos[0]['estado_civil']=='Casado(a)'){?>
                         <option value="Casado(a)" selected="selected">Casado(a)</option>
                         <?php }else{ ?>
                         <option value="Casado(a)">Casado(a)</option>
                         <?php } ?>
-                        <?php if($this->datos[0]['estado_civil']=='viudo'){?>
+                        <?php if($this->datos[0]['estado_civil']=='Viudo(a)'){?>
                         <option value="Viudo(a)" selected="selected">Viudo(a)</option>
                         <?php }else{ ?>
                         <option value="Viudo(a)">Viudo(a)</option>
                         <?php } ?>
-                        <?php if($this->datos[0]['estado_civil']=='divorciado'){?>
+                        <?php if($this->datos[0]['estado_civil']=='Divorciado(a)'){?>
                         <option value="Divorciado(a)" selected="selected">Divorciado(a)</option>
                         <?php }else{ ?>
                         <option value="Divorciado(a)">Divorciado(a)</option>
@@ -225,16 +161,6 @@ $(document).ready(function(){
         <div id="tabla">
         <table align="center" class="tabForm">
             <tr>
-                <td><label>Razon Social:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
-                       id="razonsocial" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
-                </td>
-                <td>
-                    <div class="k-invalid-msg msgerror" data-for="nombres"></div>
-                </td>
-            </tr>
-            <tr>
                 <td><label>Ruc:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
@@ -242,6 +168,16 @@ $(document).ready(function(){
                 </td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="documento"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Razon Social:</label></td>
+                <td>
+                    <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
+                       id="razonsocial" value="<?php if(isset ($this->datos[0]['nombres']))echo $this->datos[0]['nombres']?>"/>
+                </td>
+                <td>
+                    <div class="k-invalid-msg msgerror" data-for="nombres"></div>
                 </td>
             </tr>
             <tr>
@@ -269,82 +205,6 @@ $(document).ready(function(){
                 <td>
                     <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
-                </td>
-                <td>
-                    <div class="msgerror"></div>
-                </td>
-            </tr>
-             <tr>
-                <td><label>Region:</label></td>
-                <td>
-                    <select placeholder="Seleccione..." id="regiones" class="combo">
-                        <option></option>
-                        <?php if(isset ($this->datos)){ ?>
-                            <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
-                                <?php if( $this->datos[0]['idregion'] == $this->datos_regiones[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php }else{ ?>
-                            <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
-                                <?php if( 1901 == $this->datos_regiones[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_regiones[$i]['idubigeo'] ?>"><?php echo $this->datos_regiones[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-               </td>
-                <td>
-                    <div class="msgerror"></div>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Provincia:</label></td>
-                <td>
-                    <select placeholder="Seleccione..." class="provincias comboX">
-                        <option>Seleccione...</option>
-                        <?php if(isset ($this->datos)){ ?>
-                            <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
-                                <?php if( $this->datos[0]['idprovincia'] == $this->datos_provincias[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php }else{ ?>
-                            <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
-                                <?php if( 1968 == $this->datos_provincias[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_provincias[$i]['idubigeo'] ?>"><?php echo $this->datos_provincias[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                </td>
-                <td>
-                    <div class="msgerror"></div>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Ciudad:</label></td>
-                <td>
-                    <select placeholder="Seleccione..." name="ubigeo" class="ciudades comboX">
-                        <option value="0">Seleccione...</option>
-                        <?php if(count($this->datos_ubigeos)){ ?>
-                            <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>
-                                <?php if( $this->datos[0]['idubigeo'] == $this->datos_ubigeos[$i]['idubigeo'] ){ ?>
-                            <option value="<?php echo $this->datos_ubigeos[$i]['idubigeo'] ?>" selected="selected"><?php echo $this->datos_ubigeos[$i]['descripcion'] ?></option>
-                                <?php } else { ?>
-                            <option value="<?php echo $this->datos_ubigeos[$i]['idubigeo'] ?>"><?php echo $this->datos_ubigeos[$i]['descripcion'] ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
                 </td>
                 <td>
                     <div class="msgerror"></div>

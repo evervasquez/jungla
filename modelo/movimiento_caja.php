@@ -6,10 +6,13 @@ class movimiento_caja {
     public $idconcepto_movimiento;
     public $idcaja;
     public $monto;
+    public $idcompra;
+    public $idventa;
     
 
     public function inserta() {
-        $datos = array($this->idmovimiento_caja, $this->idconcepto_caja, $this->idcaja, $this->monto);
+        $datos = array(0, $this->idconcepto_caja, $this->idcaja, $this->monto, 
+            $this->idcompra, $this->idventa);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_movimiento_caja", $datos);
         $error = $r[1];
         $r = null;
@@ -17,7 +20,8 @@ class movimiento_caja {
     }
 
     public function actualiza() {
-        $datos = array($this->idmovimiento_caja, $this->idconcepto_caja, $this->idcaja, $this->monto);
+        $datos = array($this->idmovimiento_caja, $this->idconcepto_caja, $this->idcaja, $this->monto, 
+            $this->idcompra, $this->idventa);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_movimiento_caja", $datos);
         $error = $r[1];
         $r = null;

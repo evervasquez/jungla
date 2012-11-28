@@ -38,6 +38,6 @@
 </table>
     </div>
     <?php } else { ?>
-        <p>No hay clientes</p>
+        <p>No hay ventas</p>
         <p><a href="<?php echo BASE_URL?>ventas/nuevo" class="k-button">Nuevo</a></p>
     <?php } ?>

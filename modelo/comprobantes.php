@@ -19,7 +19,7 @@ class comprobantes {
             $this->tipo='';
         }
         $datos = array($this->idcomprobante, $this->descripcion, $this->tipo);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_comprobante", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_comprobantes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -31,7 +31,7 @@ class comprobantes {
 
     public function elimina() {
         $datos = array($this->idcomprobante);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_comprobante", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_elimina_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -39,7 +39,7 @@ class comprobantes {
 
     public function inserta() {
         $datos = array(0, $this->serie, $this->correlativo, $this->idtipo_comprobante);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_comprobante", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -47,7 +47,7 @@ class comprobantes {
 
     public function actualiza() {
         $datos = array($this->idcomprobante, $this->serie, $this->correlativo, $this->idtipo_comprobante);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_comprobante", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;

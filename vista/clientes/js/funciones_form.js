@@ -30,49 +30,6 @@ $(document).ready(function(){
         }
         return false;
     }); 
-    
-    $("#region").change(function(){
-        if(!$(this).val()){
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-        }else{
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-            $.post('/sisjungla/clientes/get_provincias','idregion='+$(this).val(),function(datos){
-                for(var i=0;i<datos.length;i++){
-                    $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-            },'json');
-        }
-    });
-    
-    $("#regiones").change(function(){
-        if(!$(this).val()){
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-        }else{
-            $(".provincias").html('<option value="0">Seleccione...</option>');
-            $(".ciudades").html('<option value="0">Seleccione...</option>')
-            $.post('/sisjungla/clientes/get_provincias','idregion='+$(this).val(),function(datos){
-                for(var i=0;i<datos.length;i++){
-                    $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }
-            },'json');
-        }
-    });
-    
-    $(".provincias").change(function(){
-        if(!$(this).val()){
-            $(".ciudades").html('<option value="0">Seleccione...</option>');
-        }else{
-            $(".ciudades").html('<option value="0">Seleccione...</option>');
-            $.post('/sisjungla/clientes/get_ciudades','idprovincia='+$(this).val(),function(datos){
-                for(var i=0;i<datos.length;i++){
-                    $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
-                }       
-            },'json');
-        }
-    });
     $("#frm_cliente_juridico").hide();
     $("#tipo_cliente").change(function(){
         if($(this).val()=='natural'){
@@ -81,6 +38,35 @@ $(document).ready(function(){
         }else{
             $("#frm_cliente_natural").hide();
             $("#frm_cliente_juridico").show();
+        }
+    });
+    
+    //valida existencia de cliente
+    $("#nrodoc").blur(function(){
+        if($(this).val()!=''){
+            $.post('/sisjungla/clientes/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
+                if(datos.length>0){
+                    if(confirm('Ya existe un cliente con este Nro de DNI...\nDesea editar sus datos?')){
+                        window.location = '/sisjungla/clientes/editar/'+datos[0].idcliente
+                    }else{
+                        window.location = '/sisjungla/clientes/';
+                    }
+                }   
+            },'json');
+        }
+    });
+    
+    $("#ruc").blur(function(){
+        if($(this).val()!=''){
+            $.post('/sisjungla/clientes/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+                if(datos.length>0){
+                    if(confirm('Ya existe un cliente con este Nro de RUC...\nDesea editar sus datos?')){
+                        window.location = '/sisjungla/clientes/editar/'+datos[0].idcliente
+                    }else{
+                        window.location = '/sisjungla/clientes/';
+                    }
+                }   
+            },'json');
         }
     });
     

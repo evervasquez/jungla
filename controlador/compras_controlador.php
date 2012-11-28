@@ -56,7 +56,7 @@ class compras_controlador extends controller{
         if ($_POST['guardar'] == 1) {
             //inserta compra
             $this->_compras->fecha_compra = $_POST['fecha_compra'];
-            $this->_compras->estado = $_POST['estado'];
+            $this->_compras->estado = 1;
             $this->_compras->observaciones = $_POST['observaciones'];
             $this->_compras->nro_comprobante = $_POST['nro_comprobante'];
             $this->_compras->importe = $_POST['importe'];
@@ -143,7 +143,7 @@ class compras_controlador extends controller{
             //inserta compra
             $this->_compras->idcompra = $_POST['codigo'];
             $this->_compras->fecha_compra = $_POST['fecha_compra'];
-            $this->_compras->estado = $_POST['estado'];
+            $this->_compras->estado = 1;
             $this->_compras->observaciones = $_POST['observaciones'];
             $this->_compras->nro_comprobante = $_POST['nro_comprobante'];
             $this->_compras->importe = $_POST['importe'];
@@ -204,14 +204,20 @@ class compras_controlador extends controller{
         }
         $this->_compras->idcompra=$this->filtrarInt($id);
         $datos=$this->_compras->selecciona();
-        if($datos[0]['confirmacion']==1){
-            echo '<script>alert("No puede editar esta compra...\nYa fue ingresada al almacen")</script>';
+//        echo '<pre>';
+//                print_r($datos);exit;
+        if($datos[0]['idtipo_transaccion']==2){
+            echo '<script>alert("No puede editar las compras al credito")</script>';
             $this->redireccionar('compras');
         }
-        if($datos[0]['monto_pagado']!=0){
-            echo '<script>alert("No puede editar esta compra...\nYa fue amortizada")</script>';
-            $this->redireccionar('compras');
-        }
+//        if($datos[0]['confirmacion']==1){
+//            echo '<script>alert("No puede editar esta compra...\nYa fue ingresada al almacen")</script>';
+//            $this->redireccionar('compras');
+//        }
+//        if($datos[0]['monto_pagado']!=0){
+//            echo '<script>alert("No puede editar esta compra...\nYa fue amortizada")</script>';
+//            $this->redireccionar('compras');
+//        }
         $this->_vista->datos = $datos;
         $this->_detalle_compra->idcompra=$this->filtrarInt($id);
         $this->_vista->datos_detalle_compra=$this->_detalle_compra->selecciona();
