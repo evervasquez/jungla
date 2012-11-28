@@ -280,26 +280,26 @@ $(document).ready(function(){
                 <td><label>Telefono:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.telefonico" name="telefono" onKeyPress="return numeroTelefonico(event);"
-                       id="" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+                       id="" required value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
                 </td>
                 <td>
-                    <div class="msgerror"></div>
+                    <div class="k-invalid-msg msgerror" data-for="telefono"></div>
                 </td>
             </tr>
             <tr>
                 <td><label>Email:</label></td>
                 <td>
-                    <input type="email" class="k-textbox" placeholder="Ingrese email" name="email"
+                    <input type="email" class="k-textbox" placeholder="Ingrese email" name="email" required
                        id="" value="<?php if(isset ($this->datos[0]['email']))echo $this->datos[0]['email']?>"/>
                 </td>
                 <td>
-                    <div class="msgerror"></div>
+                    <div class="k-invalid-msg msgerror" data-for="email"></div>
                 </td>
             </tr>
             <tr class="celda_pais">
                 <td><label>Pais:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="combo" id="pais">
+                    <select placeholder="Seleccione..." class="combo" id="pais" name="pais" required>
                         <option></option>
                         <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
@@ -317,13 +317,13 @@ $(document).ready(function(){
                     </select>
                </td>
                 <td>
-                    <div class="msgerror"></div>
+                    <div class="k-invalid-msg msgerror" data-for="pais"></div>
                 </td>
             </tr>
             <tr class="celda_region">
                 <td><label>Region:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="regiones">
+                    <select placeholder="Seleccione..." class="regiones comboX">
                         <option>Seleccione...</option>
                         <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
@@ -343,7 +343,7 @@ $(document).ready(function(){
             <tr class="celda_provincia">
                 <td><label>Provincia:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="provincias">
+                    <select placeholder="Seleccione..." class="provincias comboX">
                         <option>Seleccione...</option>
                         <?php if(isset ($this->datos)){ ?>
                             <?php for($i=0;$i<count($this->datos_provincias);$i++){ ?>
@@ -363,7 +363,7 @@ $(document).ready(function(){
             <tr class="celda_ciudad">
                 <td><label>Ciudad:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." name="ubigeo" class="ciudades">
+                    <select placeholder="Seleccione..." name="ubigeo" class="ciudades comboX">
                         <option value="0">Seleccione...</option>
                         <?php if(count($this->datos_ubigeos)){ ?>
                             <?php for($i=0;$i<count($this->datos_ubigeos);$i++){ ?>

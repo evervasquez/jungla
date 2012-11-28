@@ -152,7 +152,7 @@
                 <br><div class="k-invalid-msg msgerror" data-for="perfil"></div>
             </td>
             <td>
-                <label for="usuario">&nbsp;&nbsp;Usuario:</label>
+                <label for="usuario">Usuario:</label>
             </td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese usuario" name="usuario" required
