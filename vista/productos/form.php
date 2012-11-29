@@ -12,9 +12,9 @@
                 </td>
             	<td><label for="precio_unitario">Precio Unitario:</label></td>
                 <td>
-                    <input type="numeric" min="0" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario" required
+                    <input type="numeric" min="0" class="precio" placeholder="Ingrese precio" name="precio_unitario" id="precio_unitario"
                            value="<?php if(isset ($this->datos[0]['precio_unitario']))echo $this->datos[0]['precio_unitario']?>"/>
-                    <br><div class="k-invalid-msg msgerror" data-for="precio_unitario"></div>
+                    <br><div class="msgerror"></div>
                 </td>
                 <td></td>
             </tr>
