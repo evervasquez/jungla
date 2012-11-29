@@ -1,13 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
-
-/*Estilos del Login*/
-#lablogin{
-        display: block;
-        margin-bottom: 55px;
-}
-.msgerror{
-	display:block;
+#login{
+        margin-top:-10px;
 }
 /*Estilos de Menu*/
 #menu li{

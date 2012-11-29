@@ -39,7 +39,7 @@ body{
 	margin-bottom:5px;
 }
 #linkSesion{
-        font-size:11px;
+        font-size:12px;
 }
 #sesion a{
 	text-decoration:none;
@@ -52,7 +52,7 @@ body{
 }
 #servidorSesion{
         margin-top: 5px;
-        font-size: 9px;
+        font-size: 10px;
 }
 #footer{
         background:#096;
@@ -85,3 +85,6 @@ input:hover:-moz-placeholder, textarea:hover:-moz-placeholder {
 input:-ms-input-placeholder{
     color: #999;
 } 
+textarea{
+    resize: none;
+}

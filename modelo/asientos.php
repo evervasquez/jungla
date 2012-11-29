@@ -10,8 +10,11 @@ class asientos {
     public $nro_asiento;
 
     public function selecciona() {
+         if(is_null($this->idasiento)){
+            $this->idasiento=0;
+        }
         $datos = array($this->idasiento);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_articulo", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_asientos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

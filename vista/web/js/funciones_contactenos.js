@@ -10,21 +10,25 @@ function validarContacto(){
     m = $("#mensaje").val();
     if(n == ""){
         alert("Debe ingresar nombre");
+        $("#nombreContacto").focus();
         return false;
     }
     else{
         if(e == ""){
             alert("Debe ingresar email");
+            $("#emailContacto").focus();
             return false;
         }
         else{
             if(t == ""){
                 alert("Debe ingresar etelefono");
+                $("#telefonoContacto").focus();
                 return false;
             }
             else{
                 if(m == ""){
                     alert("Debe ingresar mensaje");
+                    $("#mensaje").focus();
                     return false;
                 }
                 else return true;

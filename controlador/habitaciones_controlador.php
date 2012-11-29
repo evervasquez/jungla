@@ -83,6 +83,7 @@ class habitaciones_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             //inserta habitacion
+            $this->_habitaciones->idhabitacion=$_POST['codigo'];
             $this->_habitaciones->descripcion=$_POST['nro_habitacion'];
             $this->_habitaciones->nro_habitacion=$_POST['nro_habitacion'];
             $this->_habitaciones->ventilacion=$_POST['ventilacion'];

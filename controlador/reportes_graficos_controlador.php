@@ -25,6 +25,7 @@ class reportes_graficos_controlador extends controller {
         $this->_vista->setJs(array('funciones'));
         $this->_vista->setCss(array('estilos'));
         $this->_reportes_graficos = $this->cargar_modelo('reportes_graficos');
+        $this->_habitaciones = $this->cargar_modelo('habitaciones');
     }
 
     public function index() {
@@ -51,6 +52,11 @@ class reportes_graficos_controlador extends controller {
 //        print_r($this->_vista->datos);
 //        exit;
         $this->_vista->renderizar_reporte('r_pasajeros');
+    }
+    
+    public function r_habitaciones(){
+        $this->_vista->datos = $this->_habitaciones->selecciona();
+        $this->_vista->renderizar_reporte('r_habitaciones');
     }
 
 }
