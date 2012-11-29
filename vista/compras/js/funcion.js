@@ -110,7 +110,7 @@
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Fecha de Compra:</td>';
-                html+= '<td>'+datos[0]['fecha_compra']+'</td>';
+                html+= '<td>'+datos[0]['c_fecha_compra']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Tipo de Transacción:</td>';

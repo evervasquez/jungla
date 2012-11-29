@@ -14,7 +14,7 @@
     <table border="1" class="tabgrilla">
         <tr>
             <td>Codigo</td>
-            <td>Tipo de Comprobante</td>
+            <td>Tipo de Transaccion</td>
             <td>Nro.Comprobante</td>
             <td>Cliente</td>
             <td>Fecha de Venta</td>
@@ -24,13 +24,12 @@
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos[$i]['idventa'] ?></td>
-                <td><?php echo $this->datos[$i]['tipo_comprobante'] ?></td>
+                <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td><?php echo $this->datos[$i]['nro_documento'] ?></td>
                 <td><?php echo utf8_encode($this->datos[$i]['cliente']) ?></td>
                 <td><?php echo $this->datos[$i]['fecha_venta'] ?></td>
                 <td><?php echo $this->datos[$i]['empleado'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>ventas/editar/<?php echo $this->datos[$i]['idventa'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idventa'] ?>')"></a>  
                 </td>
             </tr>

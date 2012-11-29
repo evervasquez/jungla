@@ -28,12 +28,6 @@ class entrada_productos_controlador extends controller{
         $this->_vista->renderizar('index');
     }
     
-//    public function entradas_pendientes(){
-//        $this->_compras->confirmacion=0;
-//        $this->_vista->datos = $this->_compras->selecciona();   
-//        $this->_vista->renderizar('entradas_pendientes');
-//    }
-    
     public function confirmacion($id){
         $this->_detalle_compra->idcompra = $id;
         $this->_vista->datos = $this->_detalle_compra->selecciona();   
@@ -53,9 +47,6 @@ class entrada_productos_controlador extends controller{
             $this->_productos->idproducto=$_POST['idproducto'][$i];
             $this->_productos->stock=$_POST['cantidad'][$i];
             $this->_productos->aumenta=1;
-            /*$dato= $_POST['idcompra'];
-            echo "<script type='text/javascript'>alert($dato)</script>";
-            exit;*/
             $this->_productos->actualiza();
         }
         $this->_asientos->inserta($_POST['idcompra'],0);

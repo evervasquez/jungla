@@ -121,11 +121,11 @@
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Fecha de Nacimiento:</td>';
-               html+= '<td>'+datos[0]['fecha_nacimiento']+'</td>';
+               html+= '<td>'+datos[0]['e_fecha_nacimiento']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Fecha de Contratacion:</td>';
-               html+= '<td>'+datos[0]['fecha_contratacion']+'</td>';
+               html+= '<td>'+datos[0]['e_fecha_contratacion']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Profesion:</td>';

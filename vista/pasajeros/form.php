@@ -116,12 +116,6 @@ $(document).ready(function(){
                     </select>
                     <br><div class="k-invalid-msg msgerror" data-for="estado_civil"></div>
                 </td>
-                <td><label>Doc. de Identidad:</label></td>
-                <td>
-                    <input type="numeric" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="" maxlength="8" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
-                    <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
-                </td>
             </tr>
             <tr class="celda_pais" valign="top">
                 <td><label>Pais:</label></td>
@@ -208,7 +202,7 @@ $(document).ready(function(){
             <tr valign="top">
                 <td><label>Membresia:</label></td>
                 <td>
-                    <select class="combo" placeholder="Seleccione..." name="membresia" required>
+                    <select class="combo" placeholder="Seleccione..." name="membresia">
                         <option></option>
                         <?php for($i=0;$i<count($this->datos_membresias);$i++){ ?>
                             <?php if( $this->datos[0]['idmembresia'] == $this->datos_membresias[$i]['idmembresia'] ){ ?>

@@ -27,7 +27,7 @@
                 <td><?php echo $this->datos[$i]['idcompra'] ?></td>
                 <td><?php echo $this->datos[$i]['nro_comprobante'] ?></td>
                 <td><?php echo $this->datos[$i]['proveedor'] ?></td>
-                <td><?php echo $this->datos[$i]['fecha_compra'] ?></td>
+                <td><?php echo $this->datos[$i]['c_fecha_compra'] ?></td>
                 <td><?php echo $this->datos[$i]['importe'] ?></td>
                 <td><?php echo $this->datos[$i]['igv'] ?></td>
                 <td><?php echo $this->datos[$i]['importe'] * ($this->datos[$i]['igv'] + 1) ?></td>
