@@ -7,7 +7,6 @@ class productos_controlador extends controller {
     private $_tipo_producto;
     private $_unidad_medida;
     private $_ubicaciones;
-    private $_promociones;
 
     public function __construct() {
         if (!$this->acceso(8)) {
@@ -19,7 +18,6 @@ class productos_controlador extends controller {
         $this->_tipo_producto= $this->cargar_modelo('tipo_producto');
         $this->_unidad_medida= $this->cargar_modelo('unidad_medida');
         $this->_ubicaciones= $this->cargar_modelo('ubicaciones');
-        $this->_promociones= $this->cargar_modelo('promociones');
     }
 
     public function index() {
@@ -75,7 +73,6 @@ class productos_controlador extends controller {
             }else{
                 $this->_productos->idubicacion = $_POST['ubicacion'];
             }
-            $this->_productos->idpromocion=0;
             $this->_productos->estado = 1;
             $this->_productos->inserta();
             $this->redireccionar('productos');
@@ -132,7 +129,6 @@ class productos_controlador extends controller {
             }else{
                 $this->_productos->idubicacion = $_POST['ubicacion'];
             }
-            $this->_productos->idpromocion=0;
             $this->_productos->estado = 1;
             $this->_productos->actualiza();
             $this->redireccionar('productos');

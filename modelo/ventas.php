@@ -17,8 +17,10 @@ class ventas {
     
 
     public function inserta() {
-            $datos = array(0, $this->estado, $this->observaciones, $this->idtipo_comprobante, 
-            $this->idcliente, $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
+        $datos = array(0, $this->observaciones, $this->idtipo_comprobante, $this->idcliente, 
+            $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -31,8 +33,8 @@ class ventas {
 
     public function actualiza() {
         if(is_null($this->estado_pago)){
-            $datos = array($this->idventa, $this->estado, $this->observaciones, $this->idtipo_comprobante, 
-                $this->idcliente, $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
+            $datos = array(0, $this->observaciones, $this->idtipo_comprobante, $this->idcliente, 
+            $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
             $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
         }  else {
             $datos = array($this->idventa, $this->estado_pago);

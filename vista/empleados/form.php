@@ -96,7 +96,7 @@
             <td><label for="fecha_nacimiento">Fecha de Nacimiento:</label></td>
             <td>
                 <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento" required
-                   id="fechanac" value="<?php echo $this->datos[0]['fecha_nacimiento'] ?>"/>
+                   id="fechanac" value="<?php echo $this->datos[0]['e_fecha_nacimiento'] ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_nacimiento"></div>
             </td>
         </tr>
@@ -104,7 +104,7 @@
             <td><label for="fecha_contratacion">Fecha de Contratacion:</label></td>
             <td>
                 <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
-                   id="fechacon" value="<?php echo $this->datos[0]['fecha_contratacion'] ?>"/>
+                   id="fechacon" value="<?php echo $this->datos[0]['e_fecha_contratacion'] ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
             </td>
             <td><label>Actividad:</label></td>

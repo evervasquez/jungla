@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $("#vtna_busca_pasajero").hide();
+    $("#detalle_estadia").kendoGrid();
     
     //salir
     function salir(){
@@ -99,7 +100,7 @@ $(document).ready(function(){
             html="<tr>";
             html=html+"<td><input type='hidden' name='idpasajero[]' value='"+idp+"'/>"+p+"</td>";
             html=html+"<td><input type='hidden' name='idhabitacion[]' value='"+idh+"'/>"+h+"</td>";
-            html=html+"<td><input type='radio' name='representante' /></td>";
+            html=html+"<td><input type='hidden' name='representante[]' value='0'/> <input type='radio' name='estado'/></td>";
             html=html+'<td><a class="imgdelete eliminar" title="Eliminar item" href="javascript:"></a></td>';
             html=html+"</tr>";
 
@@ -115,6 +116,34 @@ $(document).ready(function(){
     $(".eliminar").live('click', function() {
        i = $(this).parent().parent().index();
        $("#detalle_estadia tr:eq("+i+")").remove();
+   });
+   
+   $("#btn_guardar").click(function(){
+       tr=$("input:radio").length;
+       rc=$("input:radio").filter(":checked").length;
+       if(tr<2){
+           $("input:radio").attr('checked','checked');
+           $("#frm").submit();
+       }else{
+           if(rc!=1){
+               alert('Debe seleccionar un representante');
+           }else{
+               $("#frm").submit();
+           }
+       }
+   });
+   
+   $("input:radio").live('click',function(){
+       i = $(this).parent().parent().index();
+       x=0;
+        $("#detalle_estadia tr").each(function(){
+            if(x==i){
+                $("#detalle_estadia tr:eq("+x+") td:eq(2) :hidden").val('1');
+            }else{
+                $("#detalle_estadia tr:eq("+x+") td:eq(2) :hidden").val('0');
+            }
+            x++;
+        });
    });
    
 });

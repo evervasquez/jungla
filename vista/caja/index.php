@@ -20,7 +20,7 @@
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos[$i]['empleado_n'].' '.$this->datos[$i]['empleado_a'] ?></td>
-                <td><?php echo $this->datos[$i]['fecha'] ?></td>
+                <td><?php echo $this->datos[$i]['c_fecha'] ?></td>
                 <td><?php echo $this->datos[$i]['saldo'] ?></td>
                 <td><?php if($this->datos[$i]['estado']==1){echo 'Aperturado';}else{echo 'Cerrado';}?></td>
             </tr>

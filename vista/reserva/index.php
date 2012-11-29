@@ -32,10 +32,8 @@
                             <tr>
                                 <td><label>Pasajero:</label></td>
                                 <td>
-                                    <input type="hidden" name="idcliente" id="idcliente" 
-                                           value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
-                                    <input type="text" class="k-textbox" placeholder="Busque pasajero" required  readonly="readonly" name="cliente"
-                                           id="cliente" value="<?php if(isset ($this->datos[0]['cliente']))echo $this->datos[0]['cliente']?>"/>
+                                    <input type="hidden" id="idcliente"/>
+                                    <input type="text" class="k-textbox" placeholder="Busque pasajero" readonly="readonly" id="cliente"/>
                                 </td>
                                 <td>
                                     <button type="button" class="k-button" id="btn_vtna_busca_pasajeros"><span class="k-icon k-i-search"></span></button>
@@ -72,7 +70,7 @@
             </tr>
         </table>
         <p>
-            <button type="submit" class="k-button">Guardar</button>
+            <button type="button" class="k-button" id="btn_guardar">Guardar</button>
             <a href="<?php echo BASE_URL ?>index" class="k-button cancel">Cancelar</a>
         </p>
     </fieldset>
