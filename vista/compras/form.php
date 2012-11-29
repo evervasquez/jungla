@@ -26,7 +26,7 @@
                 <td><label for="fecha_compra">Fecha de Compra:</label></td>
                 <td>
                     <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" required name="fecha_compra"
-                       id="fecha_compra" value="<?php if(isset ($this->datos[0]['fecha_compra']))echo $this->datos[0]['fecha_compra']?>"/>
+                       id="fecha_compra" value="<?php if(isset ($this->datos[0]['c_fecha_compra']))echo $this->datos[0]['c_fecha_compra']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="fecha_compra"></div>
                 </td>
                 <td><label for="tipo_transaccion">Tipo de Transaccion:</label></td>
