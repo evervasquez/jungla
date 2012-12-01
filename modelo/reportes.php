@@ -115,6 +115,18 @@ class reportes{
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
+    public function selecciona_ventas_x_producto($idprod_fecha_inicio_fecha_fin){
+        $datos = $idprod_fecha_inicio_fecha_fin;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_ventas_x_producto", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
+    public function selecciona_productos_vendidos($fecha_inicio_fecha_fin){
+        $datos = $fecha_inicio_fecha_fin;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_productos_vendidos", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
     
     
 //    public function index() {

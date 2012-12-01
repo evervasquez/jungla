@@ -1,26 +1,30 @@
-<!--<script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function(){
-        $("#tablaok").kendoGrid({
+        
+        $(".tablaok").kendoGrid({
             columns: [{field:"Reportes", width:80},
                 {field:"Generar", width:20,attributes:{class:"acciones"}}]
         });
     });
-</script>-->
-<h3>Reportes Disponibles</h3>
-<table border="1" width="40%" id="tablaok">
-    <tr>
-        <th><label>Reportes</label></th>
-        <th><label>Generar</label></th>
-    </tr>
-    <tr>
-        <td width="85%">Listado de Promociones</td>
-        <td width="15%" align="center">
-            <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/promociones_todo')"/>
-        </td>   
-    </tr>
-    <tr>
 
-    <form method="post" action="<?php echo BASE_URL ?>reportes/estadistica_mensual" target="_blank">
+function todo(Form)
+{
+    if(Form.chk_todo.checked){
+        Form.idproducto.value = '*';
+        Form.idproducto.readOnly = 'readonly';
+    } else{
+        Form.idproducto.value = '';
+        Form.idproducto.placeholder = 'Ingrese...';
+        Form.idproducto.readOnly = '';
+    }
+    
+}
+</SCRIPT>
+</script>
+<h3>Reportes Disponibles</h3>
+
+<form method="post" action="<?php echo BASE_URL ?>reportes/estadistica_mensual" target="_blank">
+    <table border="1" width="40%" class="tablaok">
         <td>Estadística Mensual de Turismo 20120 <br>PARA ESTABLECIMIENTOS DE HOSPEDAJE<br>* Seleccione el mes: 
             <select name="estadistica_mes" class="">
                 <option value="1">Enero</option> 
@@ -49,7 +53,10 @@
         <td width="15%" align="center">
             <input type="submit" value="Generar" class="k-button"/>
         </td>
-    </form>
+    </table>
+</form>
+<!-- -->
+<table border="1" width="40%" class="tablaok">
 </tr>
 <tr>
     <td width="85%">Stock Actual</td>
@@ -76,4 +83,24 @@
         <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
     </td>   
 </tr>
+<tr>
+    <td width="85%">Reporte de Ventas por Producto</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
+    </td>   
+</tr>
 </table>
+<form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
+    <table border="1" width="100%" >
+        <td>Reporte de Ventas por Producto<br>
+            Producto: <input type="text" value="%" id="idproducto" name="idproducto"/>
+            <input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Todos)
+            <br>
+            Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+            Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+        </td>
+        <td width="15%" align="center">
+            <input type="submit" value="Generar" class="k-button"/>
+        </td>
+    </table>
+</form>

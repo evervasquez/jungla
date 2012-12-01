@@ -11,7 +11,7 @@ class reportes_controlador extends controller {
         }
         parent::__construct();
         $this->get_Libreria('fpdf' . DS . 'fpdf');
-        $this->_fpdf = new FPDF();
+        $this->_fpdf = new FPDF('P','mm','A4');
         $this->_reportes = $this->cargar_modelo('reportes');
     }
 
@@ -150,52 +150,18 @@ class reportes_controlador extends controller {
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
-
-    public function promociones_todo() {
-        $datos = $this->_reportes->promociones_todo();
-        $cabeceras = array('idpromocion', 'descripcion', 'descuento', 'fecha_inicio', 'fecha_final');
+   
+    public function obtener_ventas_x_producto($datos){
+        $datos = $this->_reportes->selecciona_ventas_x_producto($datos);
+        $cabeceras = array('idproducto', 'fecha_venta','tipo_comprobante', 'nro_documento', 'cliente', 'documento','abreviatura','cantidad','precio_venta','sub_total');
         $datos = $this->get_matriz($datos, $cabeceras);
-        $datacount = count($datos);
-        for ($i = 0; $i < $datacount; $i++) {
-            $c_codigo = $c_codigo . $datos[$i]['idpromocion'] . "\n";
-            $c_descripcion = $c_descripcion . $datos[$i]['descripcion'] . "\n";
-            $c_descuento = $c_descuento . $datos[$i]['descuento'] . "\n";
-        }
-
-        $this->_fpdf->AddPage();
-        $Y_fields_name_position = 20;
-        $Y_table_position = 26;
-        $this->_fpdf->SetFillColor(232, 232, 232);
-        $this->_fpdf->SetFont('Arial', 'B', 12);
-        $this->_fpdf->SetY($Y_fields_name_position);
-        $this->_fpdf->SetX(45);
-        $this->_fpdf->Cell(20, 6, utf8_decode('Código'), 1, 0, 'L', 1);
-        $this->_fpdf->SetX(65);
-        $this->_fpdf->Cell(100, 6, utf8_decode('Descripción'), 1, 0, 'L', 1);
-        $this->_fpdf->SetX(135);
-        $this->_fpdf->Cell(30, 6, utf8_decode('Descuento'), 1, 0, 'L', 1);
-        $this->_fpdf->Ln();
-        $this->_fpdf->SetFont('Arial', '', 12);
-        $this->_fpdf->SetY($Y_table_position);
-        $this->_fpdf->SetX(45);
-        $this->_fpdf->MultiCell(20, 6, $c_codigo, 1);
-        $this->_fpdf->SetY($Y_table_position);
-        $this->_fpdf->SetX(65);
-        $this->_fpdf->MultiCell(100, 6, $c_descripcion, 1);
-        $this->_fpdf->SetY($Y_table_position);
-        $this->_fpdf->SetX(135);
-        $this->_fpdf->MultiCell(30, 6, $c_descuento, 1);
-        $i = 0;
-        $this->_fpdf->SetY($Y_table_position);
-        while ($i < $datacount) {
-            $this->_fpdf->SetX(45);
-            $this->_fpdf->MultiCell(120, 6, '', 1);
-            $i = $i + 1;
-        }
-        $this->_fpdf->Ln();
-        $this->_fpdf->Cell(185, 17, 'Lista de ' . $rep, 0, 0, 'C');
-        $this->_fpdf->AddPage();
-        $this->_fpdf->Output();
+        return $datos;
+    }
+    public function obtener_productos_vendidos($datos){
+        $datos = $this->_reportes->selecciona_productos_vendidos($datos);
+        $cabeceras = array('idproducto', 'descripcion');
+        $datos = $this->get_matriz($datos, $cabeceras);
+        return $datos;
     }
 
     public function stock_actual() {
@@ -1521,6 +1487,161 @@ class reportes_controlador extends controller {
             $abs = 1;
             $contapag = 1;
         }
+        $this->_fpdf->Output();
+    }
+    
+    public function ventas_x_producto(){
+        $producto=$_POST['idproducto'];
+        $fecha_inicio = $_POST['fecha_inicio'];
+        $fecha_fin = $_POST['fecha_fin'];
+        /*echo "<pre>";
+        print_r(array($producto, $fecha_inicio, $fecha_fin));
+        die();*/
+        $Y_table_position = 41;
+        /*OBTENER LOS PRODUCTOS*/
+        if($producto=='*'){
+            $productos = $this->obtener_productos_vendidos(array(0, $fecha_inicio, $fecha_fin));
+        } else {
+            $productos = $this->obtener_productos_vendidos(array($producto, $fecha_inicio, $fecha_fin));
+        }
+        $n_productos = count($productos);
+        
+        /*Objetos Por pagina (opp)*/$opp = 47;
+        $contapag = 1;
+        $abs = 1;
+            for ($x = 0; $x < $n_productos; $x++) {
+                $datos = $this->obtener_ventas_x_producto(array($productos[$x]['idproducto'], $fecha_inicio, $fecha_fin));
+                $datacount = count($datos);
+                $contaobj = 0;
+                $contador[$contapag] = "";
+                $c_fecha_venta[$contapag] = "";
+                $c_nro_documento[$contapag] = "";
+                $c_cliente[$contapag] = "";
+                $c_documento[$contapag] = "";
+                $c_abreviatura[$contapag] = "";
+                $c_cantidad[$contapag] = "";
+                $c_precio_venta[$contapag] = "";
+                $c_sub_total[$contapag] = "";
+                
+                $total_cantidad = 0;
+                $total_sub_total = 0;
+                /*$horafecha = array(
+            
+            substr($datos[0]['fecha_venta'],11,2),
+            substr($datos[0]['fecha_venta'],14,2),
+            substr($datos[0]['fecha_venta'],17,2)
+            );*/
+                for ($i = 0; $i < $datacount; $i++) {
+                    $contador[$contapag] = $contador[$contapag] . substr((($i+1)*$contapag),0,4)."\n";
+                    $c_fecha_venta[$contapag] = $c_fecha_venta[$contapag] . substr($datos[0]['fecha_venta'],8,2).'/'.substr($datos[0]['fecha_venta'],5,2).'/'.substr($datos[0]['fecha_venta'],0,4) . "\n";
+                    $c_nro_documento[$contapag] = $c_nro_documento[$contapag] .substr($datos[$i]['tipo_comprobante'],0,2).'/' . substr($datos[$i]['nro_documento'], 0, 8) . "\n";
+                    $c_cliente[$contapag] = $c_cliente[$contapag] . substr(utf8_decode($datos[$i]['cliente']), 0, 24) . "\n";
+                    $c_documento[$contapag] = $c_documento[$contapag] . substr($datos[$i]['documento'], 0, 11) . "\n";
+                    $c_abreviatura[$contapag] = $c_abreviatura[$contapag] . substr($datos[$i]['abreviatura'],0,4) . "\n";
+                    $c_cantidad[$contapag] = $c_cantidad[$contapag] . substr(number_format($datos[$i]['cantidad'],3),0,9) . "\n";
+                    /*contar total cantidades*/$total_cantidad = $total_cantidad + $datos[$i]['cantidad'];
+                    $c_precio_venta[$contapag] = $c_precio_venta[$contapag] . substr(number_format($datos[$i]['precio_venta'],3),0,9) . "\n";
+                    $c_sub_total[$contapag] = $c_sub_total[$contapag] . substr(number_format($datos[$i]['sub_total'],2),0,9) . "\n";
+                    /*contar total sub totales*/$total_sub_total = $total_sub_total + $datos[$i]['sub_total'];
+                    $contaobj = $contaobj + 1;
+                    if ($contaobj == $opp) {
+                        $contaobj = 0;
+                        $contapag = $contapag + 1;
+                    }
+                }
+                if ($contaobj == 0) {
+                    $contapag = $contapag - 1;
+                }
+                for ($i = $abs; $i <= $contapag; $i++) {
+                    $this->_fpdf->AddPage();
+                    //ENCABEZADO TITULO DE REPORTE
+                    $this->_fpdf->SetFont('Arial','B',12);
+                    $this->_fpdf->SetY(24);
+                    $this->_fpdf->SetX(0);
+                    $this->_fpdf->Cell(210,5, utf8_decode('REGISTRO DE VENTAS POR PRODUCTO'),0,0,'C');
+                    $this->_fpdf->SetFillColor(232,232,232);
+                    $this->_fpdf->SetFont('Courier','B',9);
+                    $this->_fpdf->SetY(35);
+                    $this->_fpdf->SetX(5);
+                    $this->_fpdf->Cell(10,6,utf8_decode('Nro.'),'BT',0,'L',1);
+                    $this->_fpdf->SetX(15);
+                    $this->_fpdf->Cell(22,6,utf8_decode('Fec.Emis.'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(37);
+                    $this->_fpdf->Cell(28,6,utf8_decode('Comprobante'),'BT',0,'L',1);
+                    $this->_fpdf->SetX(65);
+                    $this->_fpdf->Cell(49,6,utf8_decode('Cliente Ref.'),'BT',0,'L',1);
+                    $this->_fpdf->SetX(114);
+                    $this->_fpdf->Cell(23,6,utf8_decode('DNI/RUC'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(137);
+                    $this->_fpdf->Cell(10,6,utf8_decode('U.M.'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(147);
+                    $this->_fpdf->Cell(20,6,utf8_decode('Cantidad'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(167);
+                    $this->_fpdf->Cell(20,6,utf8_decode('Precio'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(187);
+                    $this->_fpdf->Cell(18,6,utf8_decode('SubTotal'),'BT',0,'R',1);
+                    //MARGEN TOTAL: HASTA=195 (ULTIMO SETX + ANCHO DE ULTIMO CELL)
+                    //UBICACIÓN:
+                    $this->_fpdf->SetFont('Courier', '', 11);
+                    $this->_fpdf->SetFillColor(255, 255, 255);
+                    $this->_fpdf->SetY(29);
+                    $this->_fpdf->SetX(15);
+                    $this->_fpdf->Cell(30, 5, utf8_decode('Producto :   ' . $productos[$x]['descripcion'] . '     /   Código:  ' . $productos[$x]['idproducto']), '', 0, 'L', 1);
+                    $this->_fpdf->SetFont('Courier', '', 9);
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(5);
+                    $this->_fpdf->MultiCell(10, 5, $contador[$i], 1);
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(15);
+                    $this->_fpdf->MultiCell(22, 5, $c_fecha_venta[$i], 1);
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(37);
+                    $this->_fpdf->MultiCell(28, 5, $c_nro_documento[$i], 1);
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(65);
+                    $this->_fpdf->MultiCell(49, 5, $c_cliente[$i], 1);
+                    /*$this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(164);
+                    $this->_fpdf->MultiCell(23, 5, $c_documento[$i], 1, 'C');
+                     */
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(114);
+                    $this->_fpdf->MultiCell(23, 5, $c_documento[$i], 1, 'C');
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(137);
+                    $this->_fpdf->MultiCell(10, 5, $c_abreviatura[$i], 1, 'C');
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(147);
+                    $this->_fpdf->MultiCell(20, 5, $c_cantidad[$i], 1, 'R');
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(167);
+                    $this->_fpdf->MultiCell(20, 5, $c_precio_venta[$i], 1, 'R');
+                    /*(---)*/
+                    $this->_fpdf->SetFont('Courier', '', 8);
+                    $this->_fpdf->SetY($Y_table_position);
+                    $this->_fpdf->SetX(187);
+                    $this->_fpdf->MultiCell(18, 5, $c_sub_total[$i], 1, 'R');
+                    if($i==$contapag){
+                        $this->_fpdf->SetFont('Courier', 'B', 10);
+                        $this->_fpdf->SetY((5*$contaobj)+$Y_table_position+2);
+                        $this->_fpdf->SetX(105);
+                        $this->_fpdf->Cell(18,8,utf8_decode('TOTALES'),'BT',0,'L',1);
+                        $this->_fpdf->SetX(123);
+                        $this->_fpdf->Cell(44,8,substr(number_format($total_cantidad,3),0,15).' '.$datos[0]['abreviatura'],'BTR',0,'R',1);
+                        $this->_fpdf->SetFont('Courier', '', 9);
+                        $this->_fpdf->SetX(167);
+                        $this->_fpdf->Cell(9,8,utf8_decode('S/.'),'LBT',0,'R',1);
+                        $this->_fpdf->SetFont('Courier', 'B', 10);
+                        $this->_fpdf->SetX(176);
+                        $this->_fpdf->Cell(29,8,substr(number_format($total_sub_total,2),0,13),'BT',0,'R',1);
+                    }
+                    
+                    $abs = $abs + 1;
+                }
+                $abs = 1;
+                $contapag = 1;
+            }
+        
         $this->_fpdf->Output();
     }
 
