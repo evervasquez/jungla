@@ -1,18 +1,19 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabFormComplejo">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
 <fieldset>
     <legend><?php echo $this->titulo ?></legend>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"
             value="<?php if(isset ($this->datos[0]['idventa']))echo $this->datos[0]['idventa']?>"/>
-    <table align="center">
-            <tr>
-                <td><label>Fecha de Venta:</label></td>
+    <table align="center" class="tabFormComplejo">
+            <tr valign="top">
+                <td>Fecha de Venta:</td>
                 <td>
                     <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_venta" required class="datepicker"
                        value="<?php if(isset ($this->datos[0]['fecha_venta'])){echo $this->datos[0]['fecha_venta'];} else {echo date("d-m-Y");} ?>"/>
+                    <br><div class="msgerror"></div>
                 </td>
                 <td></td>
-                <td><label>Tipo de Comprobante:</label></td>
+                <td>Tipo de Comprobante:</td>
                 <td>
                     <select class="list" placeholder="Seleccione..." name="tipo_comprobante" id="tipo_comprobante" required>
                         <?php for($i=0;$i<count($this->datos_tipo_comprobante);$i++){ ?>
@@ -25,13 +26,14 @@
                     </select>
                 </td>
             </tr>
-            <tr>
+            <tr valign="top">
                 <td><label>Cliente:</label></td>
                 <td>
-                    <input type="hidden" name="idcliente" id="idcliente" 
+                    <input type="hidden" name="idcliente" id="idcliente"
                            value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
                     <input type="text" class="k-textbox" placeholder="Busque cliente" required  readonly="readonly" name="cliente"
                            id="cliente" value="<?php if(isset ($this->datos[0]['cliente']))echo $this->datos[0]['cliente']?>"/>
+                    <br><div class="k-invalid-msg msgerror" data-for="cliente"></div>
                 </td>
                 <td>
                     <button type="button" class="k-button" id="btn_vtna_clientes"><span class="k-icon k-i-search"></span></button>
@@ -65,11 +67,11 @@
                     </select>
                 </td>
             </tr>
-            <tr>
-                <td colspan="5">
+        </table>
                 <fieldset>
                     <legend>Detalle Venta:</legend>
-                    <table>
+                    <div id="tbl_detalle">
+                    <table class="tabForm" align="center">
                         <tr>
                             <td colspan="5" align="center">
                                 <label>Seleccionar:</label>
@@ -179,12 +181,10 @@
                                        value='0' name="total"/>
                             </td>
                         </tr>
-                    </table>
-                </fieldset>
-                </td>
-            </tr>
-    </table>
-    <table>
+        </table>
+    </div>
+    </fieldset>
+        <table>
         <tr>
            <td align="center">
                 <p>
@@ -193,8 +193,8 @@
                 </p>
             </td>
         </tr>
-    </table>
-</fieldset>
+        </table>
+    </fieldset>
 </form>
 
 
