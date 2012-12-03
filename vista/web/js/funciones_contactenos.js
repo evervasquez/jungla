@@ -2,6 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+$(document).ready(function(){
+    $(".horayfecha").kendoDateTimePicker({
+        format: "dd-MM-yyyy HH:mm"
+    });
+});
 
 function validarContacto(){
     n = $("#nombreContacto").val();

@@ -35,7 +35,7 @@ class asientos {
 
     public function inserta($idcompra,$idventa) {
         $datos = array($idcompra,$idventa);
-        if($idventa === 0){
+        if($idventa == 0){
             $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_compra", $datos);
         }else{
             $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_venta", $datos);

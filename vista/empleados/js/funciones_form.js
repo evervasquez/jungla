@@ -30,7 +30,7 @@ $(document).ready(function(){
             $.ajax({
                 type:"POST",
                 url:'/sisjungla/empleados/valida_usuario',
-                data:"usuario="+$("#usuario").val(),
+                data:"usuarioz="+$("#usuario").val(),
                 beforeSend:function(){
                     $("#valida_usuario").html("cargando...");    
                 },

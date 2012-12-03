@@ -32,7 +32,7 @@ $(document).ready(function(){
                 <td><label>Doc. de Identidad:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="nrodoc" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
+                       id="nrodoc" maxlength="8" value="<?php if(isset ($this->datos[0]['documento']))echo $this->datos[0]['documento']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
                 </td>
                 <td><label>Nombre:</label></td>

@@ -9,6 +9,8 @@ class asientos_controlador extends controller{
     
     public function index() {
         $this->_vista->datos=  $this->_asientos->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
     }
     

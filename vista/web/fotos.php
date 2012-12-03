@@ -1,59 +1,23 @@
-<style type='text/css'>
-   body
-   {
-      font-family:arial;
-   }
-   #wrapper
-   {
-      width:80%;
-      margin:0 auto;
-   }
-   #back
-   {
-      display:block;
-      padding:5px;
-      float:left;
-   }
-   #backAlbums
-   {
-      display:block;
-      padding:5px;
-      float:right;
-   }
-   #next
-   {
-      float:right;
-      display:block;
-      padding:5px;
-   }
-   #prev
-   {
-      float:left;
-      display:block;
-      padding:5px;
-   }
-   .ImageLink
-   {
-      display:block;
-      float:left;
-      padding:5px;
-      margin:5px;
-   }
-   .ImageLink img
-   {
-      width:150px;
-   }
-</style>
-<div id="gallery">								
-<h3>Mis Fotos de Facebook</h3>
-<div id ="wrapper">
-<?php
-   define('PAGE_ID', '472148372819412');
-   define('APP_ID','');
-   define('APP_SECRET','');
-   include("phpcUrl.php");
-   $face = new FacePageAlbum(PAGE_ID, $_GET['aid'], $_GET['aurl'], APP_ID, APP_SECRET);
+<div id="gallery">
+<?php 
+    $divfotos = '';
+    include("fb.php");
+    $listafotos =  fb_albums('472148372819412');
+    echo "<h1>Galería</h1>";
+    foreach($listafotos as $index => $valor){
+            $galeria = file_get_contents("https://graph.facebook.com/".$valor['ida']."/photos?limit=100");
+            $galeria = json_decode($galeria);
+            $fotos = $galeria->data;
+            $divfotos .=
+                '<ul class="scroll-pane">
+                <p style="font-weight:bold;" title="'.$valor['nombre'].'">'.cortar_string ($valor['nombre'], 50).'</p>
+                <p>'. $valor['total'].' fotos publicadas</p>';
+                    foreach($fotos as $idfoto => $foto){
+                        $divfotos .= '<span><a rel="sexylightbox[kmx]" title="Foto '.($idfoto+1).' de la galería" href="'.$foto->source.'"><img class="imgfb" title="Foto '.($idfoto+1).' de la galería" src="'.$foto->picture.'" /></a></span>';
+                    }
+            $divfotos .='<br>
+                </ul>';
+    }
+    echo $divfotos;
 ?>
 </div>
-</div>
-    

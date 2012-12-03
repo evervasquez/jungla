@@ -62,6 +62,19 @@ class proveedores {
         $r = null;
         return $error;
     }
+    
+    public function selecciona_ruc($ruc) {
+        $datos = array($ruc);
+        $r = consulta::procedimientoAlmacenado("pa_valida_ruc", $datos);
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
+        $r = null;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
+    }
 
 }
 

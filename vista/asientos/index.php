@@ -1,6 +1,5 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
 <h3>Lista de Asientos Contables</h3>
-    <div id="grilla">
 <table border="1" class="tabgrilla">
     <tr>
         <th>Nro Operacion</th>
@@ -29,8 +28,6 @@
         </tr>
     <?php } ?>
     </table>
-    </div>
 <?php } else { ?>
-        <p>No hay categorias</p>
-        <a href="<?php echo BASE_URL?>asientos/nuevo" class="k-button">Nuevo</a>
+        <p>No hay aientos</p>
     <?php } ?>

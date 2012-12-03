@@ -22,12 +22,12 @@
         </tr>
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idcuenta'] ?></td>
+                <td><?php echo $this->datos[$i]['idcuenta'] ?></td>
                 <td><?php echo $this->datos[$i]['nro_cuenta'] ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['descripcion']) ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['cuenta_padre']) ?></td>
+                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td><?php echo $this->datos[$i]['cuenta_padre'] ?></td>
                 <td><?php echo $this->datos[$i]['idcategoria'] ?></td>
-                <td class="tabtr" align="center">
+                <td>
                 <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>plan_contable/editar/<?php echo $this->datos[$i]['idcuenta'] ?>')" class="imgedit"></a>
                 <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>plan_contable/eliminar/<?php echo $this->datos[$i]['idcuenta'] ?>')" class="imgdelete"></a></td>
             </tr>

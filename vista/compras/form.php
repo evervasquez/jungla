@@ -34,9 +34,9 @@
                     <select class="list" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
                         <?php for($i=0;$i<count($this->datos_tipo_transaccion);$i++){ ?>
                             <?php if( $this->datos[0]['idtipo_transaccion'] == $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ){ ?>
-                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['descripcion']) ?></option>
+                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>" selected="selected"><?php echo $this->datos_tipo_transaccion[$i]['descripcion'] ?></option>
                             <?php } else { ?>
-                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['descripcion']) ?></option>
+                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>"><?php echo $this->datos_tipo_transaccion[$i]['descripcion'] ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -103,7 +103,7 @@
             <tr>
                 <td colspan="5">
                     <div id="detalle_compra">
-                    <table border="1" class="tabgrilla" id="tbl_detalle_compra">
+                    <table border="1" id="tbl_detalle_compra">
                         <tr>
                             <th>Item</th>
                             <th>Producto</th>

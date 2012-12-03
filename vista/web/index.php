@@ -38,20 +38,23 @@
 <table>
     <tr valign="top">
         <td width="60%">
-            <?php if (isset($this->datos) && count($this->datos)) {
-            for ($i = 0; $i < count($this->datos); $i++) { ?>
-            <div class="article" id="gallery">
-                <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
-                    <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>" title="<?php echo $this->datos[$i]['titulo'] ?>">
-                        <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" class="fotoArt" />
-                    </a>
-                    <?php } ?>
-                <span class="contArt">
-                    <h3><?php echo $this->datos[$i]['titulo'] ?></h3>
-                    <p><?php echo $this->datos[$i]['descripcion'] ?></p>
-                </span>
+            <div id="articulos">
+                <?php if (isset($this->datos) && count($this->datos)) {?>
+                <h4 class="k-widget k-header">Nuestros Articulos</h4>
+                <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+                <div class="article" id="gallery">
+                    <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
+                        <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>" title="<?php echo $this->datos[$i]['titulo'] ?>">
+                            <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" class="fotoArt" />
+                        </a>
+                        <?php } ?>
+                    <span class="contArt">
+                        <h3><?php echo $this->datos[$i]['titulo'] ?></h3>
+                        <p><?php echo $this->datos[$i]['descripcion'] ?></p>
+                    </span>
+                </div>
+                <?php }} ?>
             </div>
-            <?php }} ?>
         </td>
         <td align="center">
             <span id="position">

@@ -20,6 +20,13 @@
                         <td><label class="txtCont">Mensaje</label></td>
                         <td><textarea name="mensaje" id="mensaje"  class="k-textbox inpCont" placeholder="Ingrese su mensaje" /></textarea></td>
                     </tr>
+                    <tr>
+                        <td><label>Fecha y Hora:</label></td>
+            <td><input class="horayfecha" placeholder="Ingrese direccion" required name="hora"
+                       id="hora" value=""/>
+                <br><div class="k-invalid-msg msgerror" data-for="hora"></div>
+            </td>
+                    </tr>
                     <tr align="center">
                         <td colspan="2">
                             <button type="submit" class="k-button" id="btn_contacto">Enviar</button>
@@ -45,7 +52,8 @@
         </td>
         <td>
             <div class="contacto">
-                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.pe/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=tarapoto+la+jungla&amp;aq=&amp;sll=-9.243538,-75.019515&amp;sspn=24.413792,43.286133&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-9.243538,-75.019515&amp;spn=24.413792,43.286133&amp;t=m&amp;output=embed"></iframe><br /><small><a href="" onclick="window.open('https://maps.google.com.pe/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=tarapoto+la+jungla&amp;aq=&amp;sll=-9.243538,-75.019515&amp;sspn=24.413792,43.286133&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-9.243538,-75.019515&amp;spn=24.413792,43.286133&amp;t=m')" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
+            <h1 class="titleContacto">Nuestra Ubicación en Google Maps</h1>
+                <iframe width="425" height="700" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=+&amp;q=tarapoto+la+jungla&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-6.484483,-76.35336&amp;spn=12.399078,21.643066&amp;t=m&amp;z=6&amp;iwloc=A&amp;cid=8407359377180249452&amp;output=embed"></iframe><br /><small><a href="javascript:void(0)" onclick="window.open('http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=+&amp;q=tarapoto+la+jungla&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-6.484483,-76.35336&amp;spn=12.399078,21.643066&amp;t=m&amp;z=6&amp;iwloc=A&amp;cid=8407359377180249452')" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
             </div>
         </td>
     </tr>

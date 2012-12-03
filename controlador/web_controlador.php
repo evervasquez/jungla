@@ -26,8 +26,9 @@ class web_controlador extends controller {
     }
     
     public function fotos(){
-        $this->_vista->setJs(array('jquery.lightbox'));
-        $this->_vista->setCss(array('jquery.lightbox'));
+        $this->_vista->setJs(array('sexylightbox'));
+        $this->_vista->setJs(array('jquery.easing'));
+        $this->_vista->setCss(array('sexylightbox'));
         $this->_vista->setJs(array('funciones_fotos'));
         $this->_vista->setCss(array('estilos_fotos'));
         $this->_vista->renderiza_web('fotos');
