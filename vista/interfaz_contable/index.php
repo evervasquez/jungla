@@ -2,8 +2,8 @@
     $(document).ready(function(){
         
         $(".tablaok").kendoGrid({
-            columns: [{field:"Reportes", width:80},
-                {field:"Generar", width:20,attributes:{class:"acciones"}}]
+            columns: [{field:"", width:80},
+                {field:"", width:20,attributes:{class:"acciones"}}]
         });
     });
 
@@ -56,15 +56,21 @@ function todo(Form)
     </table>
 </form>
 <!-- -->
-<table border="1" width="40%" class="tablaok">
+<form method="post" action="<?php echo BASE_URL ?>interfaz_contable/prueba" target="_blank" id="form_libro_diario">
+    <table border="1" width="40%" class="tablaok">
+    <tr>
+        <td width="85%">Registro de Libro Diario
+        <br>
+                    Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                    Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+        </td>
+        <td width="15%" align="center">
+            <input type="submit" value="Generar" class="k-button"/>
 
-<tr>
-    <td width="85%">Registro de Libro Diario</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>interfaz_contable/prueba')"/>
-    </td>   
-</tr>
-</table>
+        </td> 
+    </tr>
+    </table>
+</form>
 <!--
 <form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
     <table border="1" width="100%" >

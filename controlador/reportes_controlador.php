@@ -13,9 +13,13 @@ class reportes_controlador extends controller {
         $this->get_Libreria('fpdf' . DS . 'fpdf');
         $this->_fpdf = new FPDF('P','mm','A4');
         $this->_reportes = $this->cargar_modelo('reportes');
+        $this->_productos = $this->cargar_modelo('productos');
     }
-
+    
     public function index() {
+        $this->_vista->datos_productos=$this->_productos->selecciona();
+        $this->_vista->setJs(array('funciones_index'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
     }
     
@@ -157,6 +161,7 @@ class reportes_controlador extends controller {
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
+    
     public function obtener_productos_vendidos($datos){
         $datos = $this->_reportes->selecciona_productos_vendidos($datos);
         $cabeceras = array('idproducto', 'descripcion');
@@ -1494,9 +1499,10 @@ class reportes_controlador extends controller {
         $producto=$_POST['idproducto'];
         $fecha_inicio = $_POST['fecha_inicio'];
         $fecha_fin = $_POST['fecha_fin'];
-        /*echo "<pre>";
-        print_r(array($producto, $fecha_inicio, $fecha_fin));
-        die();*/
+        if($producto=="" || $fecha_inicio=="" || $fecha_fin==""){
+            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes')</script>";
+            die();
+        }
         $Y_table_position = 41;
         /*OBTENER LOS PRODUCTOS*/
         if($producto=='*'){

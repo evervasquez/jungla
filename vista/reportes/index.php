@@ -14,12 +14,13 @@
 function todo(Form)
 {
     if(Form.chk_todo.checked){
+        
         Form.idproducto.value = '*';
-        Form.idproducto.readOnly = 'readonly';
+        Form.producto.value = '(TODOS)';
     } else{
         Form.idproducto.value = '';
-        Form.idproducto.placeholder = 'Ingrese...';
-        Form.idproducto.readOnly = '';
+        Form.producto.value = '';
+        Form.producto.placeholder = 'Busque Producto';
     }
     
 }
@@ -60,7 +61,7 @@ function todo(Form)
     </table>
 </form>
 <!-- -->
-<table border="1" width="40%" class="tablaok2">
+<table border="1" width="40%" class="">
 <tr>
     <td width="85%">Stock Actual</td>
     <td width="15%" align="center">
@@ -95,11 +96,21 @@ function todo(Form)
 </table>
 
 <form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
-    <table border="1" width="100%" >
+    <table border="1" width="100%" class="tablaok2">
         <tr>
             <td>Reporte de Ventas por Producto<br>
-                Producto: <input type="text" value="%" id="idproducto" name="idproducto"/>
-                <input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Todos)
+                Producto: 
+                
+                <span class="">
+                                <input type="hidden" id="idproducto" name="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                                <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
+                                   id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
+                            </span>
+                            <span  class="">
+                                <button type="button" class="k-button" id="btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
+                            </span>
+                
+                <input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Incluir todos los Productos)
                 <br>
                 Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
                 Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
@@ -110,3 +121,39 @@ function todo(Form)
         </tr>
     </table>
 </form>
+
+<div id="vtna_busca_productos">
+    <h3>Lista de Productos</h3>
+    <p>
+        <select class="combo" id="filtro_productos">
+            <option value="0">Descripcion</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_productos">
+        <button type="button" class="k-button" id="btn_buscar_producto"><span class="k-icon k-i-search"></span></button>
+        <a class="k-button cancela_prod cancel">Cancelar</a>
+    </p>
+    <div id="grilla_productos">
+    <table border="1" class="tabgrilla" id="tbl_busca_productos">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Unidad Medida</th>
+            <th>Precio Venta</th>
+            <th>Selecciona</th>
+        </tr>
+        <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
+            <tr>
+                <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['descripcion'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['um'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['precio_unitario'] ?></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>',
+                    '<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>','<?php echo $this->datos_productos[0]['um']?>',
+                        <?php echo $this->datos_productos[$i]['precio_unitario'] ?>)" class="imgselect"></a></td>
+            </tr>
+        <?php } ?>
+    </table>
+    </div>
+</div>
+<div id="fondooscuro">
+</div>

@@ -10,120 +10,12 @@
  * @author doraliza santa cruz
  */
 class interfaz_contable{
-    public $idpromocion;
+    
     public $datos;
     
-    public function selecciona() {
-        $datos = null;
-        $r = consulta::procedimientoAlmacenado("pa_promociones_todo", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function promociones_todo() {
-        $datos = array($this->idpromocion);
-        $r = consulta::procedimientoAlmacenado("pa_promociones_todo", null);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_datos_empresa() {
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_empresa", null);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_arribos_huesped_dia_mes($mesano) {
-        $datos=$mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_arribos_huesped_dia_mes", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_cantidad_empleados_x_tipo_x_actividad() {
-        $dat=null;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_cantidad_empleados_x_tipo_x_actividad", $dat);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_arribos_huesped_ubigeo_nacional($mesano) {
-        $datos=$mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_arribos_huesped_ubigeo_nacional", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_arribos_huesped_ubigeo_internacional($mesano) {
-        $datos=$mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_arribos_huesped_ubigeo_internacional", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_arribos_x_tipo_habitacion($mesano) {
-        $datos=$mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_arribos_x_tipo_habitacion", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_stock_total($ubicacion) {
-        $datos = array($ubicacion);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_stock_total", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_ubicaciones() {
-        $datos = array(0,'','');
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_ubicaciones", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-   
-    public function selecciona_tipo_habitacion_total(){
-        $datos = array(0,"");
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_tipo_habitacion", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_habitaciones_x_tipo_habitacion(){
-        $datos = null;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_habitaciones_x_tipo_habitacion", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_pernoctaciones_x_tipo_habitacion($mesano){
-        $datos = $mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_pernoctaciones_x_tipo_habitacion", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_pernoctaciones_huesped_ubigeo_internacional($mesano){
-        $datos = $mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_pernoctaciones_huesped_ubigeo_internacional", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_numero_pernoctaciones_huesped_ubigeo_nacional($mesano){
-        $datos = $mesano;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_numero_pernoctaciones_huesped_ubigeo_nacional", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_datos_comprobante_venta($idventa){
-        $datos = $idventa;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_comprobante_venta", $idventa);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_datos_detalle_comprobante_venta($idventa){
-        $datos = $idventa;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_detalle_comprobante_venta", $idventa);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_ventas_x_producto($idprod_fecha_inicio_fecha_fin){
-        $datos = $idprod_fecha_inicio_fecha_fin;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_ventas_x_producto", $datos);
-        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
-    }
-    public function selecciona_productos_vendidos($fecha_inicio_fecha_fin){
+    public function selecciona_asientos_intervalo_fechas($fecha_inicio_fecha_fin){
         $datos = $fecha_inicio_fecha_fin;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_productos_vendidos", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_asientos_intervalo_fechas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
