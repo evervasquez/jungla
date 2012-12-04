@@ -8,6 +8,7 @@ class caja {
     public $saldo;
     public $idempleado;
     public $empleado;
+    public $aumenta;
     
     public function selecciona() {
         if(is_null($this->idcaja)){
@@ -36,8 +37,13 @@ class caja {
     }
 
     public function actualiza() {
-        $datos = array($this->idcaja, $this->estado, $this->fecha, $this->idempleado);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_caja", $datos);
+        if(is_null($this->saldo)){
+            $datos = array($this->idcaja, $this->estado, $this->fecha, $this->idempleado);
+            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_caja", $datos);
+        }else{
+            $datos = array($this->idcaja, $this->saldo, $this->aumenta);
+            $r = consulta::procedimientoAlmacenado("pa_actualizar_saldo_caja", $datos);
+        }
         $error = $r[1];
         $r = null;
         return $error;

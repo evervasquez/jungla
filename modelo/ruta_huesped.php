@@ -10,8 +10,7 @@ class ruta_huesped {
     
 
     public function inserta() {
-        $datos = array($this->idruta_huesped, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, 
-            $this->idcliente);
+        $datos = array(0, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, $this->idcliente);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ruta_huesped", $datos);
         $error = $r[1];
         $r = null;

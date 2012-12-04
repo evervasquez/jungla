@@ -279,6 +279,7 @@ $(document).ready(function(){
         c=$("#cantidad").val();
         pre=$("#precio").val();
         igv = $("#igv").val();
+        desc= $("#descuento").val();
         error=false;
         msg='';
         x=0;
@@ -335,7 +336,7 @@ $(document).ready(function(){
             html +='</tr>';
 
             importe += st;
-            t = importe + igv * (importe);
+            t = importe + igv * (importe) - desc;
             $("#importe").val(importe);
             $("#total").val(t);
 
@@ -350,14 +351,30 @@ $(document).ready(function(){
             $("#txt_buscar_clientes").val('');
         }
     });
-
+    
+    $("#descuento").blur(function(){
+        $("#igv").blur();
+    });
+    
+    $("#descuento").keypress(function(event){
+        if(event.which == 13){
+            $("#igv").blur();
+            event.preventDefault();
+        }
+    });
+    
     $("#igv").blur(function(){
         if($(this).val()==''){
             igv=0;
         }else{
             igv=$("#igv").val();
         }
-        t = importe + igv * (importe);
+        if($("#descuento").val()==''){
+            desc=0;
+        }else{
+            desc= $("#descuento").val();
+        }
+        t = importe + igv * (importe) - desc;
         $("#total").val(t);
     });
     

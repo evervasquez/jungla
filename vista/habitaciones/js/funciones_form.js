@@ -66,7 +66,7 @@ $(document).ready(function(){
        idh=$("#codigo").val();
        idth=$("#tipo_habitacion").val();
        th=$("#tipo_habitacion option:selected").html(); 
-       c=$(".precio").val();
+       c=$(".precio").val().substring(3);
        o=$("#observacion").val();
        error= false;
        msg='';

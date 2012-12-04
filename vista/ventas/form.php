@@ -173,6 +173,14 @@
                         </tr>
                         <tr>
                             <td colspan="3">&nbsp;</td>
+                            <td><label>Descuento:</label></td>
+                            <td>
+                                <input type="text" class="k-textbox" placeholder="0" id="descuento" 
+                                       value='0' name="descuento"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
                             <td><label>Total:</label></td>
                             <td>
                                 <input type="text" class="k-textbox" readonly="readonly" id="total" 

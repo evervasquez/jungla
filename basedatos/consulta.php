@@ -43,7 +43,7 @@ class consulta extends conexion {
             if($driver=='mysql'){
                 $stmt = $bd->prepare($sql,array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
             }else{
-                $stmt=$bd->prepare($sql);
+                $stmt = $bd->prepare($sql);
             }
             $j = 0;
             if ($datos != null) {

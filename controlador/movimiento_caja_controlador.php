@@ -26,12 +26,12 @@ class movimiento_caja_controlador extends controller{
             echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
             $this->redireccionar('caja');
         }
-        if(new DateTime($datos_caja[0]['fecha'])!=new DateTime(date('d-m-Y'))){
+        if(new DateTime($datos_caja[0]['c_fecha'])!=new DateTime(date('d-m-Y'))){
             echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el día de hoy")</script>';
             $this->redireccionar('caja');
         }
         //insertar movimiento caja
-        $this->_movimiento_caja->idconcepto_caja=1;
+        $this->_movimiento_caja->idconcepto_movimiento=2;
         $this->_movimiento_caja->idcaja=$datos_caja[0]['idcaja'];
         $this->_movimiento_caja->monto=$monto;
         $this->_movimiento_caja->idcompra=0;
@@ -42,6 +42,13 @@ class movimiento_caja_controlador extends controller{
         $this->_ventas->idventa=$idventa;
         $this->_ventas->estado_pago=1;
         $this->_ventas->actualiza();
+        
+        //actualiza saldo caja
+        $this->_caja->idcaja=$datos_caja[0]['idcaja'];
+        $this->_caja->saldo=$monto;
+        $this->_caja->aumenta=1;
+        $this->_caja->actualiza();
+        
         $this->redireccionar('movimiento_caja');
     }
 }

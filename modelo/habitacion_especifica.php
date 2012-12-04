@@ -15,7 +15,10 @@ class habitacion_especifica {
         if(is_null($this->idhabitacion)){
             $this->idhabitacion=0;
         }
-        $datos = array($this->idhabitacion_especifica, $this->idhabitacion);
+        if(is_null($this->idtipo_habitacion)){
+            $this->idtipo_habitacion=0;
+        }
+        $datos = array($this->idhabitacion_especifica, $this->idhabitacion, $this->idtipo_habitacion);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_habitacion_especifica", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -23,7 +26,7 @@ class habitacion_especifica {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function elimina() {

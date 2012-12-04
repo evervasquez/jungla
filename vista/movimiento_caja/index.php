@@ -30,7 +30,7 @@
                 <td><?php echo $this->datos_ventas[$i]['importe'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['igv'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['importe'] * ($this->datos_ventas[$i]['igv'] + 1) ?></td>
-                <td><?php echo $this->datos_ventas[$i]['Tipo'] ?></td>
+                <td><?php echo $this->datos_ventas[$i]['tipo'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos_ventas[$i]['idventa'] ?>')" class="imgview"></a>
         <?php if($this->datos_ventas[$i]['estado_pago']==0){?>

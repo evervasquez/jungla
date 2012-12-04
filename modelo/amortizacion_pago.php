@@ -7,6 +7,22 @@ class amortizacion_pago {
     public $fecha;
     public $monto;
 
+    public function inserta() {
+        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_amortizacion_pago", $datos);
+        $error = $r[1];
+        $r = null;
+        return $error;
+    }
+
+    public function actualiza() {
+        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_amortizacion_pago", $datos);
+        $error = $r[1];
+        $r = null;
+        return $error;
+    }
+    
     public function selecciona() {
         $datos = array($this->idcuota_pago, $this->idmovimiento_caja);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_amortizacion_pago", $datos);
@@ -17,7 +33,7 @@ class amortizacion_pago {
         }
         $r = null;
 //        $stmt = $r[0];
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function elimina() {
@@ -28,21 +44,6 @@ class amortizacion_pago {
         return $error;
     }
 
-    public function inserta() {
-        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_amortizacion_pago", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function actualiza() {
-        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_amortizacion_pago", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
 
 }
 
