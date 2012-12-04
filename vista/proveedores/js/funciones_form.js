@@ -3,11 +3,11 @@ $(document).ready(function(){
     
     $("#regiones").change(function(){
         if(!$("#regiones").val()){
-            $("#provincias").html('<option>Seleccione...</option>');
-            $("#ciudades_proveedores").html('<option>Seleccione...</option>');
+            $("#provincias").html('<option></option>');
+            $("#ciudades_proveedores").html('<option></option>');
         }else{
-            $("#provincias").html('<option>Seleccione...</option>');
-            $("#ciudades_proveedores").html('<option>Seleccione...</option>');
+            $("#provincias").html('<option></option>');
+            $("#ciudades_proveedores").html('<option></option>');
             $.post('/sisjungla/proveedores/get_provincias','idregion='+$("#regiones").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
@@ -18,9 +18,9 @@ $(document).ready(function(){
     
     $("#provincias").change(function(){
         if(!$("#provincias").val()){
-            $("#ciudades_proveedores").html('<option>Seleccione...</option>');
+            $("#ciudades_proveedores").html('<option>.</option>');
         }else{
-            $("#ciudades_proveedores").html('<option>Seleccione...</option>');
+            $("#ciudades_proveedores").html('<option></option>');
             $.post('/sisjungla/proveedores/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#ciudades_proveedores").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
@@ -29,4 +29,29 @@ $(document).ready(function(){
         }
     });
     
+    $("#ruc").blur(function(){
+        if($("#ruc").val()!=''){
+            $.ajax({
+                type:"POST",
+                url:'/sisjungla/proveedores/valida_ruc',
+                data:"ruc="+$("#ruc").val(),
+                beforeSend:function(){
+                    $("#valida_ruc").html("cargando...");    
+                },
+                success:function(respuesta){
+                    $("#valida_ruc").html(respuesta);
+                }
+            });
+        }
+    });
+    
 }); 
+
+function validarProveedor(){
+    des = $( "#val_ruc" ).val();
+    if(des == 0){
+        alert("Debes cambiar numero de RUC porque ya esta en uso");
+        return false;
+    }
+    else return true;
+}

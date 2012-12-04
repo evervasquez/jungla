@@ -12,6 +12,7 @@ class salida_productos_controlador extends controller{
     }
 
     public function index() {
+        $this->_movimiento_producto->idtipo_movimiento = 2;
         $this->_vista->datos = $this->_movimiento_producto->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
@@ -24,7 +25,8 @@ class salida_productos_controlador extends controller{
         if($_POST['filtro']==1){
             $this->_movimiento_producto->empleado = $_POST['cadena'];
         }
-        echo json_encode($this->_proveedores->selecciona());
+        $this->_movimiento_producto->idtipo_movimiento=2;
+        echo json_encode($this->_movimiento_producto->selecciona());
     }
     
     public function registrar_salida(){
@@ -46,7 +48,7 @@ class salida_productos_controlador extends controller{
             
             //inserta movimiento_producto
             $this->_movimiento_producto->idproducto=$_POST['idproducto'][$i];
-            $this->_movimiento_producto->idtipo_movimiento=$_POST['idtipo_movimiento'][$i];;
+            $this->_movimiento_producto->idtipo_movimiento=2;
             $this->_movimiento_producto->cantidad=$_POST['cantidad'][$i];
             $this->_movimiento_producto->idempleado=session::get('idempleado');
             $this->_movimiento_producto->fecha=date("d-m-Y");

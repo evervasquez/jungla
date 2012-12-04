@@ -20,7 +20,7 @@ $(function(){
                 for(var i=0;i<datos.length;i++){
                     if(datos[i].idtipo_movimiento !=1){
                         HTML = HTML + '<tr>';
-                        HTML = HTML + '<td>'+datos[i].empleados_n+''+datos[i].empleados_a+'</td>';
+                        HTML = HTML + '<td>'+datos[i].empleados_n+' '+datos[i].empleados_a+'</td>';
                         HTML = HTML + '<td>'+datos[i].producto+'</td>';
                         HTML = HTML + '<td>'+datos[i].cantidad+'</td>';
                         HTML = HTML + '<td>'+datos[i].fecha+'</td>';

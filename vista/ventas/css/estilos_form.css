@@ -5,7 +5,7 @@
     Description:
         Purpose of the stylesheet follows.
 */
-#vtna_busca_productos{
+#vtna_busca_clientes, #vtna_busca_productos, #vtna_busca_clientes_juridicos, #vtna_busca_paquetes{
 	padding:20px;
 	display:none;
 	color: black;
@@ -21,4 +21,3 @@
         -o-border-radius: 10px;
         border: 10px solid grey;
 }
-

@@ -39,6 +39,7 @@ $(document).ready(function(){
             $("#vtna_busca_clientes_juridicos").fadeIn(300);
             $("#txt_buscar_clientes_juridicos").focus();
         }
+        $("#fondooscuro").fadeIn(300);
     });
     
      $(".cancela_cli").click(function(){
@@ -144,6 +145,7 @@ $(document).ready(function(){
     $("#btn_vtna_paquetes").click(function(){
         buscar_producto();
         $("#txt_buscar_paquetes").focus();
+            $("#fondooscuro").fadeIn(300);
     });
     
     function buscar_paquetes(){
@@ -201,7 +203,7 @@ $(document).ready(function(){
         $("#txt_buscar_clientes").val('');
         $("#vtna_busca_clientes").fadeOut(300);
         $("#txt_buscar_clientes_juridicos").val('');
-        $("#vtna_busca_clientes_juridicos").fadeIn(300);
+        $("#vtna_busca_clientes_juridicos").fadeOut(300);
         $("#fondooscuro").fadeOut(300);
     }
     
@@ -426,4 +428,24 @@ function seleccionar_cliente(id,cliente){
     $("#vtna_busca_clientes_juridicos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
     
+}
+
+function validarVenta(){
+    des = $( "#tipo_transaccion" ).val();
+    fv = $( "#fecha_vencimiento" ).val();
+    id = $( "#intervalo_dias" ).val();
+    if(des == 2){
+        if(fv == ""){
+            alert("Seleccione fecha de vencimiento");
+            return false;
+        }
+        else{
+            if(id == ""){
+                alert("Seleccione intervalo de dias");
+                return false;
+            }
+            else return true;
+        }
+    }
+    else return true;
 }

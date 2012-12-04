@@ -210,7 +210,7 @@ $(document).ready(function(){
                         $.post('/sisjungla/compras/insertar_detalle_compra','idcompra='+idc+'&idprodutos='+idp+'&cantidad='+c+'&precio='+pre);
                         item++;
                         html = '<tr>';
-                        html +='<td width="40px">'+item+'</td>';
+                        html +='<td>'+item+'</td>';
                         html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
                         html +='<td>'+um+'</td>';
                         html +='<td>'+c+'</td>';

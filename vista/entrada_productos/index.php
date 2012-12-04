@@ -12,7 +12,7 @@
     <table border="1" class="tabgrilla" id="tbl_empleado">
         <tr>
             <th>Nro.Comprobante</th>
-            <th>Prvoeedor</th>
+            <th>Proveedor</th>
             <th>Fecha</th>
             <th>Accion</th>
             <th>Estado</th>

@@ -13,12 +13,13 @@ class comprobantes_controlador extends controller{
     
     public function index() {
         $this->_vista->datos = $this->_comprobantes->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
     }
     
     public function buscador(){
         if($_POST['filtro']==0){
-            $this->_comprobantes->descripcion=$_POST['descripcion'];
+            $this->_comprobantes->tipo=$_POST['cadena'];
         }
         echo json_encode($this->_comprobantes->selecciona());
     }

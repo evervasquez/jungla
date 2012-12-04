@@ -13,20 +13,20 @@
     <div id="grilla">
     <table border="1" class="tabgrilla">
         <tr>
-            <td>Codigo</td>
-            <td>Tipo de Transaccion</td>
-            <td>Nro.Comprobante</td>
-            <td>Cliente</td>
-            <td>Fecha de Venta</td>
-            <td>Empleado</td>
-            <td>Acciones</td>
+            <th>Codigo</th>
+            <th>Tipo de Transaccion</th>
+            <th>Nro.Comprobante</th>
+            <th>Cliente</th>
+            <th>Fecha de Venta</th>
+            <th>Empleado</th>
+            <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
                 <td><?php echo $this->datos[$i]['idventa'] ?></td>
                 <td><?php echo $this->datos[$i]['tipo'] ?></td>
                 <td><?php echo $this->datos[$i]['nro_documento'] ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['cliente']) ?></td>
+                <td><?php echo $this->datos[$i]['cliente'] ?></td>
                 <td><?php echo $this->datos[$i]['fecha_venta'] ?></td>
                 <td><?php echo $this->datos[$i]['empleado'] ?></td>
                 <td>
@@ -40,3 +40,5 @@
         <p>No hay ventas</p>
         <p><a href="<?php echo BASE_URL?>ventas/nuevo" class="k-button">Nuevo</a></p>
     <?php } ?>
+<div id="vtna_ver_venta"></div>
+<div id="fondooscuro"></div>

@@ -14,8 +14,8 @@
         </tr>
         <tr>
             <td><label>Descripcion:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese almacen" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo utf8_encode ($this->datos[0]['descripcion'])?>"/></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion"
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
             </td>
@@ -23,7 +23,7 @@
         <tr>
             <td><label>Nro.de Cuenta:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese Nro.de Cuenta" required name="nro_cuenta"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['nro_cuenta']))echo utf8_encode($this->datos[0]['nro_cuenta'])?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['nro_cuenta']))echo $this->datos[0]['nro_cuenta']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="nro_cuenta"></div>
             </td>

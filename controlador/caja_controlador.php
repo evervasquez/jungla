@@ -42,7 +42,7 @@ class caja_controlador extends controller{
         $this->_caja->fecha=date("d-m-Y");
         $this->_caja->idempleado=session::get('idempleado');
         $this->_caja->inserta();
-        $this->index();
+        $this->redireccionar('caja');
     }
     
     public function reaperturar($id){

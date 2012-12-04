@@ -23,7 +23,29 @@ class ventas_controlador extends controller {
     
     public function index(){
         $this->_vista->datos=$this->_ventas->selecciona();
+        $this->_vista->setJs(array('funcion'));
+        $this->_vista->SetCss(array('estilos'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function ver(){
+        $this->_ventas->idventa=$_POST['idventa'];
+        echo json_encode($this->_ventas->selecciona());
+    }
+    
+    public function ver2(){
+        $this->_detalle_venta->idventa=$_POST['idventa'];
+        echo json_encode($this->_detalle_venta->selecciona());
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_compras->nro_comprobante=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_compras->proveedor = $_POST['cadena'];
+        }
+        echo json_encode($this->_compras->selecciona());
     }
     
     public function nuevo(){

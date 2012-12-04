@@ -30,7 +30,7 @@ class productos {
 
     public function actualiza() {
         if(is_null($this->stock)){
-            $datos = array(0, $this->descripcion, $this->precio_unitario, $this->observaciones, 
+            $datos = array($this->idproducto, $this->descripcion, $this->precio_unitario, $this->observaciones, 
             $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
             $this->stock, $this->estado, $this->precio_compra, '');
             $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);

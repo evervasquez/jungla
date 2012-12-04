@@ -22,10 +22,33 @@ class entrada_productos_controlador extends controller{
     public function index(){
         $this->_compras->confirmacion=0;
         $this->_vista->datos_compras = $this->_compras->selecciona();
+        $this->_movimiento_producto->idtipo_movimiento = 1;
         $this->_vista->datos = $this->_movimiento_producto->selecciona();
         $this->_vista->setJs(array('funcion'));
         $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador_c(){
+        if($_POST['filtro']==0){
+            $this->_compras->nro_comprobante=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_compras->proveedor=$_POST['cadena'];
+        }
+        $this->_compras->confirmacion=0;
+        echo json_encode($this->_compras->selecciona());
+    }
+    
+    public function buscador_m(){
+        if($_POST['filtro']==0){
+            $this->_movimiento_producto->nro_comprobante=$_POST['cadena'];
+        }
+        if($_POST['filtro']==1){
+            $this->_movimiento_producto->proveedor=$_POST['cadena'];
+        }
+        $this->_movimiento_producto->idtipo_movimiento=1;
+        echo json_encode($this->_movimiento_producto->selecciona());
     }
     
     public function confirmacion($id){

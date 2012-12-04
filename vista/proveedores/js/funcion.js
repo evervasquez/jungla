@@ -72,7 +72,6 @@
             $("#vtna_ver_proveedor").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
        }
-       $("#vtna_ver_proveedor").hide();
        $("#aceptar").live('click',function(){
            salir();
             $("#buscar").focus();

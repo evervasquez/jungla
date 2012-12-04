@@ -33,19 +33,22 @@
             <h1 class="titleContacto">Contactenos</h1>
             <div id="mensajeContacto">
                 <p>Si deseas visitar la ciudad de Tarapoto y disfrutar de los mejores lugares turisticos somos tu mejor opcion.</p>
-                        <h3>Informate</h3>
-                <div>Psje. Abelardo Ramírez Nº 273<br>La Banda de Shilcayo - San Martin - Per&uacute;</div>
-                <div>Teléfono: 042-522502/ 042–528953</div>
-                <div>RPM: #452050/ #885542/ #596764</div>
-                <div>Movistar: 942899186/ 942821644</div>
-                <div>RPC: 993515577</div>
-                <div>E-mail:<br>&nbsp;&nbsp;lajungla_convenciones@hotmail.com<br>&nbsp;&nbsp;alberguelajungla@gmail.com</div>
+                <h3>Informate</h3>
+                <?php if (isset($this->datos_jungla) && count($this->datos_jungla)) {?>
+                <div><?php echo $this->datos_jungla[0]['direccion'] ?><br><?php echo $this->datos_jungla[0]['distrito'] ?> - <?php echo $this->datos_jungla[0]['provincia'] ?> - <?php echo $this->datos_jungla[0]['region'] ?> - Per&uacute;</div>
+                <div>Teléfono: <?php echo $this->datos_jungla[0]['telefono'] ?></div>
+                <div>RPM: <?php echo $this->datos_jungla[0]['rpm'] ?></div>
+                <div>Movistar: <?php echo $this->datos_jungla[0]['movistar'] ?></div>
+                <div>RPC: <?php echo $this->datos_jungla[0]['rpc'] ?></div>
+                <div>E-mail: <?php echo $this->datos_jungla[0]['e_mail'] ?></div>
+                <?php } ?>
             </div>
         </div>
         </td>
         <td>
             <div class="contacto">
-                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.pe/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=tarapoto+la+jungla&amp;aq=&amp;sll=-9.243538,-75.019515&amp;sspn=24.413792,43.286133&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-9.243538,-75.019515&amp;spn=24.413792,43.286133&amp;t=m&amp;output=embed"></iframe><br /><small><a href="" onclick="window.open('https://maps.google.com.pe/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=tarapoto+la+jungla&amp;aq=&amp;sll=-9.243538,-75.019515&amp;sspn=24.413792,43.286133&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-9.243538,-75.019515&amp;spn=24.413792,43.286133&amp;t=m')" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
+            <h1 class="titleContacto">Nuestra Ubicación en Google Maps</h1>
+                <iframe width="425" height="700" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=+&amp;q=tarapoto+la+jungla&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-6.484483,-76.35336&amp;spn=12.399078,21.643066&amp;t=m&amp;z=6&amp;iwloc=A&amp;cid=8407359377180249452&amp;output=embed"></iframe><br /><small><a href="javascript:void(0)" onclick="window.open('http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=+&amp;q=tarapoto+la+jungla&amp;ie=UTF8&amp;hq=tarapoto+la+jungla&amp;hnear=&amp;ll=-6.484483,-76.35336&amp;spn=12.399078,21.643066&amp;t=m&amp;z=6&amp;iwloc=A&amp;cid=8407359377180249452')" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
             </div>
         </td>
     </tr>

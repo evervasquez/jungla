@@ -7,13 +7,16 @@
 	padding:20px;
         display: block;
 }
+#articulos{
+        padding: 0 20px 0 20px;
+}
 .article{
 	background:rgba(256,256,256,0.3);
 	display:table;
 	margin:20px;
 	padding:10px;
 	height:100%;
-        width: 90%;
+        width: 93%;
 	border:1px solid white;
 	border-radius:0px 25px 0px 25px;
 	-moz-border-radius:0px 25px 0px 25px;
@@ -33,7 +36,7 @@
 .iframe{
         margin: 20px 0px 20px 0px;
 }
-.iframe h4.k-header{
+.iframe h4.k-header, #articulos h4.k-header{
         margin: 1.4em 0 1em;
         padding: .4em 1.4em;
         font-size: 1.1em;

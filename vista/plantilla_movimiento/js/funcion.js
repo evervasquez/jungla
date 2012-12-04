@@ -5,8 +5,8 @@
             },
             pageable: true,
             columns: [{field:"Codigo", width:8},
-                {field:"Descripcion", width:30},
-                {field:"Cuenta", width:10},
+                {field:"Descripcion", width:15},
+                {field:"Cuenta", width:25},
                 {field:"ConceptoMovimiento", width:20},
                 {field:"DebeHaber", width:10},
                 {field:"Acciones", width:8,attributes:{class:"acciones"}}]
@@ -46,8 +46,8 @@
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},
-                        {field:"Descripcion", width:30},
-                        {field:"Cuenta", width:10},
+                        {field:"Descripcion", width:15},
+                        {field:"Cuenta", width:25},
                         {field:"ConceptoMovimiento", width:20},
                         {field:"DebeHaber", width:10},
                         {field:"Acciones", width:8,attributes:{class:"acciones"}}]

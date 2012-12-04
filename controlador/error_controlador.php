@@ -54,6 +54,14 @@ class error_controlador extends controller
             return $error['default'];
         }
     }
+    
+    public function error_bd($url){
+        $this->_vista->titulo = 'Error';
+        $url=str_replace('_', ' ', $url);
+        $this->_vista->mensaje = $url;
+        $this->_vista->renderizar('index');
+    }
+    
 }
 
 ?>

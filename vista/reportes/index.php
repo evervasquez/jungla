@@ -1,26 +1,46 @@
-<!--<script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function(){
-        $("#tablaok").kendoGrid({
+        
+        $(".tablaok").kendoGrid({
             columns: [{field:"Reportes", width:80},
                 {field:"Generar", width:20,attributes:{class:"acciones"}}]
         });
+        $(".tablaok2").kendoGrid({
+            columns: [{field:"", width:80},
+                {field:"", width:20,attributes:{}}]
+        });
     });
-</script>-->
-<h3>Reportes Disponibles</h3>
-<table border="1" width="40%" id="tablaok">
-    <tr>
-        <th><label>Reportes</label></th>
-        <th><label>Generar</label></th>
-    </tr>
-    <tr>
-        <td width="85%">Listado de Promociones</td>
-        <td width="15%" align="center">
-            <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/promociones_todo')"/>
-        </td>   
-    </tr>
-    <tr>
 
-    <form method="post" action="<?php echo BASE_URL ?>reportes/estadistica_mensual" target="_blank">
+function todo(Form)
+{
+    if(Form.chk_todo.checked){
+        
+        Form.idproducto.value = '*';
+        Form.producto.value = '(TODOS)';
+    } else{
+        Form.idproducto.value = '';
+        Form.producto.value = '';
+        Form.producto.placeholder = 'Busque Producto';
+    }
+}
+function todo2(Form)
+{
+    if(Form.chk_todo2.checked){
+        
+        Form.idproducto2.value = '*';
+        Form.producto2.value = '(TODOS)';
+    } else{
+        Form.idproducto2.value = '';
+        Form.producto2.value = '';
+        Form.producto2.placeholder = 'Busque Producto';
+    }
+}
+</SCRIPT>
+</script>
+<h3>Reportes Disponibles</h3>
+
+<form method="post" action="<?php echo BASE_URL ?>reportes/estadistica_mensual" target="_blank">
+    <table border="1" width="40%" class="tablaok">
         <td>Estadística Mensual de Turismo 20120 <br>PARA ESTABLECIMIENTOS DE HOSPEDAJE<br>* Seleccione el mes: 
             <select name="estadistica_mes" class="">
                 <option value="1">Enero</option> 
@@ -49,8 +69,10 @@
         <td width="15%" align="center">
             <input type="submit" value="Generar" class="k-button"/>
         </td>
-    </form>
-</tr>
+    </table>
+</form>
+<!-- -->
+<table border="1" width="40%" class="">
 <tr>
     <td width="85%">Stock Actual</td>
     <td width="15%" align="center">
@@ -76,4 +98,114 @@
         <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
     </td>   
 </tr>
+<tr>
+    <td width="85%">Reporte de Ventas por Producto</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
+    </td>   
+</tr>
 </table>
+
+<form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
+    <table border="1" width="100%" class="tablaok2">
+        <tr>
+            <td>Reporte de Ventas por Producto<br>
+                Producto: 
+                
+                <span class="">
+                                <input type="hidden" id="idproducto" name="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                                <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
+                                   id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
+                            </span>
+                            <span  class="">
+                                <button type="button" class="k-button btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
+                            </span>
+                
+                <input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Incluir todos los Productos)
+                <br>
+                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+            </td>
+            <td width="15%" align="center">
+                <input type="submit" value="Generar" class="k-button"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<form method="post" action="<?php echo BASE_URL ?>reportes/compras" target="_blank" id="form_compras_x_fecha">
+    <table border="1" width="100%" class="tablaok2">
+        <tr>
+            <td>Reporte de Compras<br>
+                
+                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+            </td>
+            <td width="15%" align="center">
+                <input type="submit" value="Generar" class="k-button"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<form method="post" action="<?php echo BASE_URL ?>reportes/compras_x_producto" target="_blank" id="form_compras_x_producto">
+    <table border="1" width="100%" class="tablaok2">
+        <tr>
+            <td>Reporte de Compras por Producto<br>
+                Producto: 
+                
+                <span class="">
+                                <input type="hidden" id="idproducto2" name="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                                <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
+                                   id="producto2" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
+                            </span>
+                            <span  class="">
+                                <button type="button" class="k-button btn_vtna_productos2" hidden="true"><span class="k-icon k-i-search"></span></button>
+                            </span>
+                
+                <input type="checkbox" onclick="todo2(this.form)"  id="chk_todo2" />(Incluir todos los Productos)
+                <br>
+                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+            </td>
+            <td width="15%" align="center">
+                <input type="submit" value="Generar" class="k-button"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div id="vtna_busca_productos">
+    <h3>Lista de Productos</h3>
+    <p>
+        <select class="combo" id="filtro_productos">
+            <option value="0">Descripcion</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_productos">
+        <button type="button" class="k-button" id="btn_buscar_producto"><span class="k-icon k-i-search"></span></button>
+        <a class="k-button cancela_prod cancel">Cancelar</a>
+    </p>
+    <div id="grilla_productos">
+    <table border="1" class="tabgrilla" id="tbl_busca_productos">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Unidad Medida</th>
+            <th>Precio Venta</th>
+            <th>Selecciona</th>
+        </tr>
+        <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
+            <tr>
+                <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['descripcion'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['um'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['precio_unitario'] ?></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>',
+                    '<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>','<?php echo $this->datos_productos[0]['um']?>',
+                        <?php echo $this->datos_productos[$i]['precio_unitario'] ?>)" class="imgselect"></a></td>
+            </tr>
+        <?php } ?>
+    </table>
+    </div>
+</div>
+<div id="fondooscuro">
+</div>
