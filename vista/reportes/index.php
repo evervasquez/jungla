@@ -22,7 +22,18 @@ function todo(Form)
         Form.producto.value = '';
         Form.producto.placeholder = 'Busque Producto';
     }
-    
+}
+function todo2(Form)
+{
+    if(Form.chk_todo2.checked){
+        
+        Form.idproducto2.value = '*';
+        Form.producto2.value = '(TODOS)';
+    } else{
+        Form.idproducto2.value = '';
+        Form.producto2.value = '';
+        Form.producto2.placeholder = 'Busque Producto';
+    }
 }
 </SCRIPT>
 </script>
@@ -107,10 +118,51 @@ function todo(Form)
                                    id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
                             </span>
                             <span  class="">
-                                <button type="button" class="k-button" id="btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
+                                <button type="button" class="k-button btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
                             </span>
                 
                 <input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Incluir todos los Productos)
+                <br>
+                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+            </td>
+            <td width="15%" align="center">
+                <input type="submit" value="Generar" class="k-button"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<form method="post" action="<?php echo BASE_URL ?>reportes/compras" target="_blank" id="form_compras_x_fecha">
+    <table border="1" width="100%" class="tablaok2">
+        <tr>
+            <td>Reporte de Compras<br>
+                
+                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+            </td>
+            <td width="15%" align="center">
+                <input type="submit" value="Generar" class="k-button"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<form method="post" action="<?php echo BASE_URL ?>reportes/compras_x_producto" target="_blank" id="form_compras_x_producto">
+    <table border="1" width="100%" class="tablaok2">
+        <tr>
+            <td>Reporte de Compras por Producto<br>
+                Producto: 
+                
+                <span class="">
+                                <input type="hidden" id="idproducto2" name="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                                <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
+                                   id="producto2" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
+                            </span>
+                            <span  class="">
+                                <button type="button" class="k-button btn_vtna_productos2" hidden="true"><span class="k-icon k-i-search"></span></button>
+                            </span>
+                
+                <input type="checkbox" onclick="todo2(this.form)"  id="chk_todo2" />(Incluir todos los Productos)
                 <br>
                 Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
                 Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>

@@ -19,6 +19,12 @@ class interfaz_contable{
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
+    public function selecciona_datos_empresa(){
+        $datos = null;
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_empresa", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
+    }
     
     
 //    public function index() {
