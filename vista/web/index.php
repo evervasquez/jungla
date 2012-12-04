@@ -42,9 +42,9 @@
                 <?php if (isset($this->datos) && count($this->datos)) {?>
                 <h4 class="k-widget k-header">Nuestros Articulos</h4>
                 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
-                <div class="article" id="gallery">
+                <div class="article">
                     <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
-                        <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>" title="<?php echo $this->datos[$i]['titulo'] ?>">
+                        <a rel="sexylightbox[kmx]" href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>" title="<?php echo $this->datos[$i]['titulo'] ?>">
                             <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" class="fotoArt" />
                         </a>
                         <?php } ?>
@@ -58,27 +58,31 @@
         </td>
         <td align="center">
             <span id="position">
+                <?php if (isset($this->datos_jungla) && count($this->datos_jungla)) {?>
                 <ul id="panelbar">
                     <li class="k-state-active">
                         <span class="k-link k-state-selected">¿Qui&eacute;nes somos?</span>
                         <div style="padding: 10px;">
-                            <p>La Jungla</p>
+                            <p><?php echo $this->datos_jungla[0]['presentacion'] ?></p>
                         </div>
                     </li>
                     <li>
                         <span>Misi&oacute;n</span>
                         <div style="padding: 10px;">
-                            <p>Somos una empresa que pretende ser una alternativa en cuanto a servicio de hospedaje,
-con alto nivel de calidad de servicio, seguridad y tranquilidad.</p>
+                            <p><?php echo $this->datos_jungla[0]['mision'] ?></p>
+<!--                            <p>Somos una empresa que pretende ser una alternativa en cuanto a servicio de hospedaje,
+con alto nivel de calidad de servicio, seguridad y tranquilidad.</p>-->
                         </div>
                     </li>
                     <li>
                         <span>Visi&oacute;n</span>
                         <div style="padding: 10px;">
-                            <p>Ser una empresa líder a nivel de servicios turísticos de calidad, confort, reconocida dentro de la línea de albergue turístico</p>
+                            <p><?php echo $this->datos_jungla[0]['vision'] ?></p>
+<!--                            <p>Ser una empresa líder a nivel de servicios turísticos de calidad, confort, reconocida dentro de la línea de albergue turístico</p>-->
                         </div>
                     </li>
                 </ul>
+                <?php } ?>
             </span>
             <div class="iframe">
                 <h4 class="k-widget k-header">Nuestro video en YouTube</h4>

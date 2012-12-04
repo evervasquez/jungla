@@ -4,15 +4,27 @@
     <input type="hidden" name="codigo" id="codigo" value="1"/>
     <table align="center" class="tabFormComplejo">
         <tr valign="top">
-            <td><label>Razon Social:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['nombre_comercial']))echo $this->datos[0]['nombre_comercial']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
+            <td><label>Telefono:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese telefono" required name="telefono"
+                       id="telefono" value="<?php if(isset ($this->datos[0]['telefono']))echo $this->datos[0]['telefono']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="telefono"></div>
             </td>
-            <td><label>RUC:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="ruc"
-                       id="ruc" value="<?php if(isset ($this->datos[0]['ruc']))echo $this->datos[0]['ruc']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="ruc"></div>
+            <td><label>Movistar:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese nro.movistar" required name="movistar"
+                       id="movistar" value="<?php if(isset ($this->datos[0]['movistar']))echo $this->datos[0]['movistar']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="movistar"></div>
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><label>RPM:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese rpm" required name="rpm"
+                       id="rpm" value="<?php if(isset ($this->datos[0]['rpm']))echo $this->datos[0]['rpm']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="rpm"></div>
+            </td>
+            <td><label>RPC:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese rpc" required name="rpc"
+                       id="rpc" value="<?php if(isset ($this->datos[0]['rpc']))echo $this->datos[0]['rpc']?>"/>
+                <br><div class="k-invalid-msg msgerror" data-for="rpc"></div>
             </td>
         </tr>
         <tr valign="top">
@@ -22,21 +34,30 @@
                 <br><div class="k-invalid-msg msgerror" data-for="direccion"></div>
             </td>
             <td><label>Email:</label></td>
-            <td><input type="email" class="k-textbox" placeholder="Ingrese email" required name="e_mail"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese email" required name="e_mail"
                        id="e_mail" value="<?php if(isset ($this->datos[0]['e_mail']))echo $this->datos[0]['e_mail']?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="e_mail"></div>
             </td>
         </tr>
         <tr valign="top">
-            <td><label>Fecha y Hora:</label></td>
-            <td><input class="horayfecha" placeholder="Ingrese direccion" required name="direccion"
-                       id="direccion" value=""/>
-                <br><div class="k-invalid-msg msgerror" data-for="direccion"></div>
+            <td><label style="height: 65px">Presentacion:</label></td>
+            <td colspan="3"><textarea class="k-textbox textarea" style="height: 75px" placeholder="Ingrese presentacion" required name="presentacion"
+                       id="presentacion"><?php if(isset ($this->datos[0]['presentacion']))echo $this->datos[0]['presentacion']?></textarea>
+                <br><div class="k-invalid-msg msgerror" data-for="presentacion"></div>
             </td>
-            <td><label>Email:</label></td>
-            <td><input type="email" class="k-textbox" placeholder="Ingrese email" required name="e_mail"
-                       id="e_mail" value="<?php if(isset ($this->datos[0]['e_mail']))echo $this->datos[0]['e_mail']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="e_mail"></div>
+        </tr>
+        <tr valign="top">
+            <td><label style="height: 65px">Misión:</label></td>
+            <td colspan="3"><textarea class="k-textbox textarea" style="height: 75px" placeholder="Ingrese mision" required name="mision"
+                       id="mision"><?php if(isset ($this->datos[0]['mision']))echo $this->datos[0]['mision']?></textarea>
+                <br><div class="k-invalid-msg msgerror" data-for="mision"></div>
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><label style="height: 65px">Visión:</label></td>
+            <td colspan="3"><textarea class="k-textbox textarea" style="height: 75px" placeholder="Ingrese vision" required name="vision"
+                       id="vision"><?php if(isset ($this->datos[0]['vision']))echo $this->datos[0]['vision']?></textarea>
+                <br><div class="k-invalid-msg msgerror" data-for="vision"></div>
             </td>
         </tr>
         <tr>

@@ -17,25 +17,25 @@
                 <select class="list" placeholder="Seleccione..." name="tipo_comprobante" required>
                     <?php for($i=0;$i<count($this->datos_tipo_comprobante);$i++){ ?>
                         <?php if( $this->datos[0]['idtipo_comprobante'] == $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ){ ?>
-                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_comprobante[$i]['descripcion']) ?></option>
+                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ?>" selected="selected"><?php $this->datos_tipo_comprobante[$i]['descripcion'] ?></option>
                         <?php } else { ?>
-                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ?>"><?php echo utf8_encode($this->datos_tipo_comprobante[$i]['descripcion']) ?></option>
+                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ?>"><?php $this->datos_tipo_comprobante[$i]['descripcion'] ?></option>
                         <?php } ?>
                     <?php } ?>
                 </select>
             </td>
         </tr>
         <tr>
-            <td><label for="serie">Serie:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese serie" required name="serie" 
+            <td><label>Serie:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese serie" required name="serie" onKeyPress="return serieComprobante(event);"
                        id="serie" value="<?php if(isset ($this->datos[0]['serie']))echo $this->datos[0]['serie']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="serie"></div>
             </td>
         </tr>
         <tr>
-            <td><label for="correlativo">Correlativo:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese correlativo" required name="correlativo" 
+            <td><label>Correlativo:</label></td>
+            <td><input type="text" class="k-textbox" placeholder="Ingrese correlativo" required name="correlativo" onKeyPress="return soloNumeros(event);"
                        id="correlativo" value="<?php if(isset ($this->datos[0]['correlativo']))echo $this->datos[0]['correlativo']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="correlativo"></div>

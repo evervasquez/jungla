@@ -2,10 +2,13 @@
 
 class datos_empresa {
 
-    public $idarticulo;
-    public $titulo;
-    public $descripcion;
-    public $imagen;
+    public $telefono;
+    public $ruc;
+    public $direccion;
+    public $e_mail;
+    public $presentacion;
+    public $mision;
+    public $vision;
 
     public function selecciona() {
         $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_empresa", $datos);
@@ -19,25 +22,9 @@ class datos_empresa {
         return $stmt->fetchall();
     }
 
-    public function elimina() {
-        $datos = array($this->idarticulo);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_articulos", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function inserta() {
-        $datos = array(0, $this->titulo, $this->descripcion, $this->imagen);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_articulos", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
     public function actualiza() {
-        $datos = array($this->idarticulo, $this->titulo, $this->descripcion, $this->imagen);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_articulos", $datos);
+        $datos = array(1, $this->telefono, $this->movistar, $this->rpm, $this->rpc, $this->direccion, $this->e_mail, $this->presentacion, $this->mision, $this->vision);
+        $r = consulta::procedimientoAlmacenado("pa_actualiza_datos", $datos);
         $error = $r[1];
         $r = null;
         return $error;
