@@ -3,16 +3,20 @@
 class web_controlador extends controller {
     
     private $_web;
+    private $_datos_jungla;
 
     public function __construct() {
         parent::__construct();
         $this->_web = $this->cargar_modelo('articulos');
+        $this->_datos_jungla = $this->cargar_modelo('datos_empresa');
     }
     
     public function index() {
         $this->_vista->datos = $this->_web->selecciona();
-        $this->_vista->setJs(array('jquery.lightbox'));
-        $this->_vista->setCss(array('jquery.lightbox'));
+        $this->_vista->datos_jungla = $this->_datos_jungla->selecciona();
+        $this->_vista->setJs(array('sexylightbox'));
+        $this->_vista->setJs(array('jquery.easing'));
+        $this->_vista->setCss(array('sexylightbox'));
         $this->_vista->setJs(array('jflow.plus.min'));
         $this->_vista->setJs(array('funciones_index'));
         $this->_vista->setCss(array('estilos_index'));
@@ -26,14 +30,16 @@ class web_controlador extends controller {
     }
     
     public function fotos(){
-        $this->_vista->setJs(array('jquery.lightbox'));
-        $this->_vista->setCss(array('jquery.lightbox'));
+        $this->_vista->setJs(array('sexylightbox'));
+        $this->_vista->setJs(array('jquery.easing'));
+        $this->_vista->setCss(array('sexylightbox'));
         $this->_vista->setJs(array('funciones_fotos'));
         $this->_vista->setCss(array('estilos_fotos'));
         $this->_vista->renderiza_web('fotos');
     }
     
     public function contactenos(){
+        $this->_vista->datos_jungla = $this->_datos_jungla->selecciona();
         $this->_vista->setJs(array('funciones_contactenos'));
         $this->_vista->setCss(array('estilos_contactenos'));
         $this->_vista->renderiza_web('contacto');

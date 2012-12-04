@@ -46,6 +46,6 @@
                         </div>
                         <div id="servidorSesion">
                             <label><?php echo conexion::get_servidor() ?></label> | 
-                            <label>IP: <?php echo $_SERVER['SERVER_NAME'] ?></label>
+                            <label>Fecha: <?php echo date("d-m-Y") ?></label>
                         </div>
                 </div>

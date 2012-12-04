@@ -6,13 +6,12 @@
             pageable: true
         });
         $( "#buscar" ).focus();
-        
         function buscar(){
-            $.post('/sisjungla/entrada_productos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/sisjungla/entrada_productos/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Nro.Comprobante</th>'+
-                            '<th>Prvoeedor</th>'+
+                            '<th>Proveedor</th>'+
                             '<th>Fecha</th>'+
                             '<th>Accion</th>'+
                             '<th>Estado</th>'+
@@ -20,17 +19,25 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idempleado+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nombres+'</td>';
-                    HTML = HTML + '<td>'+datos[i].apellidos+'</td>';
-                    HTML = HTML + '<td>'+datos[i].telefono+'</td>';
-                    HTML = HTML + '<td>'+datos[i].direccion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].perfil+'</td>';
-                    var editar='/sisjungla/empleados/editar/'+datos[i].idempleado; 
-                    var eliminar='/sisjungla/empleados/eliminar/'+datos[i].idempleado;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].idempleado+'\')" class="imgview"></a>';
+                    HTML = HTML + '<td>'+datos[i].nro_comprobante+'</td>';
+                    HTML = HTML + '<td>'+datos[i].proveedor+'</td>';
+                    HTML = HTML + '<td>'+datos[i].fecha_compra+'</td>';
+                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="ver(\''+datos[i].idcompra+'\')" class="imgview"></a>'
+                    HTML = HTML + '<a href="/sisjungla/entrada_productos/confirmacion/'+datos[i].idcompra+'" class="imgconfirm"></a></td>';
+                    HTML = HTML + '<td><label class="pendiente">Pendiente</label></td>';
+                    HTML = HTML + '</td>';
+                    HTML = HTML + '</tr>';
+                }
+            },'json'),
+                
+            $.post('/sisjungla/entrada_productos/buscador_m','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+                for(var i=0;i<datos.length;i++){
+                    HTML = HTML + '<tr>';
+                    HTML = HTML + '<td>'+datos[i].compra+'</td>';
+                    HTML = HTML + '<td>'+datos[i].proveedor+'</td>';
+                    HTML = HTML + '<td>'+datos[i].fecha+'</td>';
+                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="ver(\''+datos[i].idcompra+'\')" class="imgview"></a></td>';
+                    HTML = HTML + '<td><label class="confirmado">Confirmado</label></td>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -44,6 +51,7 @@
                 });
             },'json');
         }
+        
         $("#buscar").keypress(function(event){
            if(event.which == 13){
                buscar();
@@ -149,3 +157,4 @@
                 $("#fondooscuro").fadeIn(300);
            },'json');
        }
+    

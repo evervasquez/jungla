@@ -34,7 +34,6 @@ class compras_controlador extends controller{
     public function ver(){
         $this->_compras->idcompra=$_POST['idcompra'];
         echo json_encode($this->_compras->selecciona());
-                
     }
     
     public function ver2(){

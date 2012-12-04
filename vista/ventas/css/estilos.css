@@ -6,12 +6,12 @@
         Purpose of the stylesheet follows.
 */
 
-#vtna_ver_compras{
+#vtna_ver_venta{
 	padding:20px;
 	color: black;
 	position: fixed;
-	left: 37.5%;
-	top: 20%;
+	left: 35%;
+	top: 10%;
 	z-index: 1000;
 	text-align: left;
 	background-color: white;

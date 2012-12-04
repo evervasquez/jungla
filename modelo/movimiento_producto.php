@@ -10,6 +10,10 @@ class movimiento_producto {
     public $idempleado;
     public $idmovimiento_producto;
     public $fecha;
+    public $nro_comprobante;
+    public $empleado;
+    public $producto;
+    public $proveedor;
     
 
     public function inserta() {
@@ -42,7 +46,22 @@ class movimiento_producto {
         if(is_null($this->idmovimiento_producto)){
             $this->idmovimiento_producto=0;
         }
-        $datos = array($this->idmovimiento_producto);
+        if(is_null($this->idtipo_movimiento)){
+            $this->idtipo_movimiento=0;
+        }
+        if(is_null($this->nro_comprobante)){
+            $this->nro_comprobante='';
+        }
+        if(is_null($this->empleado)){
+            $this->empleado='';
+        }
+        if(is_null($this->producto)){
+            $this->producto='';
+        }
+        if(is_null($this->proveedor)){
+            $this->proveedor='';
+        }
+        $datos = array($this->idmovimiento_producto, $this->idtipo_movimiento, $this->nro_comprobante, $this->empleado, $this->producto, $this->proveedor);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_movimiento_producto", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

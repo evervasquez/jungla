@@ -54,7 +54,7 @@
         border: none;
 }
 #cuerpo{
-        padding: 20px;
+        padding: 20px 0px 20px 0px;
         width: 90%;
         margin: 0 auto;
 }
@@ -63,9 +63,9 @@
 }
 .comboX{
 	width:150px;
-        border:4px solid #096;
         color: #000;
         margin-bottom: 0px;
+        border:4px #096 solid;
 }
 .comboX option{
         color: #FFF;
@@ -103,7 +103,7 @@
 }
 .textarea{
         width: 100%;
-        height: 75px;
+        height: 75zpx;
 }
 #logo{
         background-image: url("/sisjungla/lib/img/logo.png");

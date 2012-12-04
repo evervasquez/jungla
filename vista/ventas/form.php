@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm" onsubmit="return validarVenta();">
 <fieldset>
     <legend><?php echo $this->titulo ?></legend>
     <input type="hidden" name="guardar" id="guardar" value="1"/>

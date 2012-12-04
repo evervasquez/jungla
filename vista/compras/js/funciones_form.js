@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#tbl_detalle_compra").kendoGrid();
     $("#fecha_compra").kendoDatePicker({
        value:new Date(),
        format: "dd-MM-yyyy"
@@ -16,7 +17,6 @@ $(document).ready(function(){
         },
         pageable: true
     });
-    $("#tbl_detalle_compra").kendoGrid();
     //ventana de busqueda de proveedores
     $("#btn_vtna_proveedores").click(function(){
         buscar_proveedor();
@@ -173,56 +173,53 @@ $(document).ready(function(){
         x=0;
         if(pro == ""){
             alert("Seleccione un producto");
+            return 0;
         }
-        else{
-            if(c == "" || c == 0){
-                alert("Ingrese cantidad");
-                $(".cantidad").focus();
+        if(c == "" || c == 0){
+            alert("Ingrese cantidad");
+            $(".cantidad").focus();
+            return 0;
+        }
+        if(pre == ""){
+            alert("Ingrese precio");
+            $(".precio").focus();
+            return 0;
+        }
+        $("#tbl_detalle_compra tr").each(function(){
+            id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
+            if(id_p==idp){
+                error=true;
+                msg='este producto ya fue seleccionado';
             }
-            else{
-                if(pre == ""){
-                    alert("Ingrese precio");
-                    $(".precio").focus();
-                }
-                else{
-                    $("#tbl_detalle_compra tr").each(function(){
-                        id_p=$("#tbl_detalle_compra tr:eq("+x+") td:eq(1) :hidden").val();
-                        if(id_p==idp){
-                            error=true;
-                            msg='este producto ya fue seleccionado';
-                        }
-                        x++;
-                    });
+            x++;
+        });
 
-                    if(error){
-                        alert(msg);
-                    }else{
-                        item++;
-                        html = '<tr>';
-                        html +='<td width="40px">'+item+'</td>';
-                        html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
-                        html +='<td>'+um+'</td>';
-                        html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
-                        html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
-                        st=pre*c;
-                        html +='<td>'+st+'</td>';
-                        html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
-                        html +='</tr>';
+        if(error){
+            alert(msg);
+        }else{
+            item++;
+            html = '<tr>';
+            html +='<td>'+item+'</td>';
+            html +='<td><input type="hidden" value="'+idp+'" name="idprodutos[]"/>'+pro+'</td>';
+            html +='<td>'+um+'</td>';
+            html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
+            html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
+            st=pre*c;
+            html +='<td>'+st+'</td>';
+            html +='<td><a href="javascript:void(0)" class="imgdelete eliminar"></a></td>';
+            html +='</tr>';
 
-                        importe += st;
-                        t = importe + igv * (importe);
-                        $("#importe").val(importe);
-                        $("#total").val(t);
+            importe += st;
+            t = importe + igv * (importe);
+            $("#importe").val(importe);
+            $("#total").val(t);
 
-                        $("#tbl_detalle_compra").append(html);
-                        $("#unidad_medida").val('');
-                        $("#producto").val('');
-                        $(".cantidad").val('');
-                        $(".precio").val('');
-                        $("#txt_buscar_productos").val('');
-                    }
-                }
-            }
+            $("#tbl_detalle_compra").append(html);
+            $("#unidad_medida").val('');
+            $("#producto").val('');
+            $(".cantidad").val('');
+            $(".precio").val('');
+            $("#txt_buscar_productos").val('');
         }
     });
 
@@ -263,6 +260,7 @@ function seleccionar(id,proveedor){
     $("#proveedor").val(proveedor);
     $("#vtna_busca_proveedor").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
+    $("#proveedor").focus();
 }
 
 function seleccionar_productos(id,producto,um){

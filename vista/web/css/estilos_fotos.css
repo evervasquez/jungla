@@ -1,23 +1,17 @@
-/* jQuery lightBox plugin - Gallery style */
-#gallery {
-        padding: 10px;
-        width: 100%;
+
+ul{
+    list-style: none;
 }
-#gallery ul { 
-        list-style: none; 
+span{
+    margin-right: 5px;
 }
-#gallery ul li { 
-        display: inline; 
+.imgfb{
+    width: 100px;
+    height: 100px;
 }
-#gallery ul img {
-        border: 5px solid #3e3e3e;
-        border-width: 5px 5px 20px;
-}
-#gallery ul a:hover img {
-        border: 5px solid #999;
-        border-width: 5px 5px 20px;
-        color: #fff;
-}
-#gallery ul a:hover { 
-        color: #fff; 
+.titleContacto{
+	font-size:24px;
+	color:#F90;
+	text-align:left;
+        margin-left: 1%;
 }

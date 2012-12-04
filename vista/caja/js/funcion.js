@@ -24,7 +24,7 @@
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].empleado_n+' '+datos[i].empleado_a+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha+'</td>';
+                    HTML = HTML + '<td>'+datos[i].c_fecha+'</td>';
                     HTML = HTML + '<td>'+datos[i].saldo+'</td>';
                     if(datos[i].estado == 1){
                         HTML = HTML + '<td>Aperturado</td>';
