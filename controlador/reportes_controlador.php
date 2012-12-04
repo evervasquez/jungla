@@ -185,7 +185,7 @@ class reportes_controlador extends controller {
     
     public function obtener_compras_x_intervalo_fechas($datos){
         $datos = $this->_reportes->selecciona_compras_x_intervalo_fechas($datos);
-        $cabeceras = array('idcompra', 'fecha_compra','nro_comprobante','importe','igv','idproveedor','idtipo_transaccion','confirmacion','registro','c_fecha_compra','tipo','proveedor','fecha');
+        $cabeceras = array('idcompra', 'fecha_compra','nro_comprobante','importe','igv','idproveedor','idtipo_transaccion','confirmacion','registro','c_fecha_compra','tipo','proveedor','fecha', 'ruc');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -1848,15 +1848,19 @@ class reportes_controlador extends controller {
         for ($i = 0; $i < $datacount; $i++) {
             $contador[$contapag] = $contador[$contapag] . substr((($i+1)*$contapag),0,4)."\n";
             $c_fecha_compra[$contapag] = $c_fecha_compra[$contapag] . substr($datos[0]['fecha_compra'],8,2).'/'.substr($datos[0]['fecha_compra'],5,2).'/'.substr($datos[0]['fecha_compra'],0,4) . "\n";
-            $c_fecha_almacen[$contapag] = $c_fecha_almacen[$contapag] . substr($datos[0]['fecha'],8,2).'/'.substr($datos[0]['fecha'],5,2).'/'.substr($datos[0]['fecha'],0,4) . "\n";
+            if($datos[0]['fecha']){
+                $c_fecha_almacen[$contapag] = $c_fecha_almacen[$contapag] . substr($datos[0]['fecha'],8,2).'/'.substr($datos[0]['fecha'],5,2).'/'.substr($datos[0]['fecha'],0,4) . "\n";
+            } else {
+                $c_fecha_almacen[$contapag] = $c_fecha_almacen[$contapag] . "NO REGISTR" ."\n";
+            }
             $c_nro_comprobante[$contapag] = $c_nro_comprobante[$contapag] .'FC/' . substr($datos[$i]['nro_comprobante'], 0, 8) . "\n";
             $c_proveedor[$contapag] = $c_proveedor[$contapag] . substr(utf8_decode($datos[$i]['proveedor']), 0, 24) . "\n";
             $c_ruc[$contapag] = $c_ruc[$contapag] . substr($datos[$i]['ruc'], 0, 11) . "\n";
-            /*contar total cantidades*/$total_cantidad = $total_cantidad + $datos[$i]['cantidad'];
             $c_importe[$contapag] = $c_importe[$contapag] . substr(number_format($datos[$i]['importe'],3),0,9) . "\n";
+            /*contar total importe*/$total_importe = $total_importe + $datos[$i]['importe'];
             $c_igv[$contapag] = $c_igv[$contapag] . substr(number_format($datos[$i]['igv'],3),0,9) . "\n";
-            $c_total[$contapag] = $c_total[$contapag] . substr(number_format($datos[$i]['importe']+$datos[$i]['igv'],2),0,9) . "\n";
-            /*contar total sub totales*/$total_sub_total = $total_sub_total + $datos[$i]['sub_total'];
+            $c_total[$contapag] = $c_total[$contapag] . substr(number_format($datos[$i]['importe']+$datos[$i]['igv'],2),0,10) . "\n";
+            /*contar total total*/$total_total = $total_total + $c_total[$contapag];
             $contaobj = $contaobj + 1;
             if ($contaobj == $opp) {
                 $contaobj = 0;
@@ -1879,57 +1883,67 @@ class reportes_controlador extends controller {
                     $this->_fpdf->SetX(5);
                     $this->_fpdf->Cell(10,6,utf8_decode('Nro.'),'BT',0,'L',1);
                     $this->_fpdf->SetX(15);
-                    $this->_fpdf->Cell(22,6,utf8_decode('Fec.Fact.'),'BT',0,'C',1);
-                    $this->_fpdf->SetX(37);
-                    $this->_fpdf->Cell(28,6,utf8_decode('Factura'),'BT',0,'L',1);
-                    $this->_fpdf->SetX(65);
-                    $this->_fpdf->Cell(49,6,utf8_decode('Cliente Ref.'),'BT',0,'L',1);
-                    $this->_fpdf->SetX(114);
-                    $this->_fpdf->Cell(23,6,utf8_decode('DNI/RUC'),'BT',0,'C',1);
-                    $this->_fpdf->SetX(137);
-                    $this->_fpdf->Cell(10,6,utf8_decode('U.M.'),'BT',0,'C',1);
+                    $this->_fpdf->Cell(19,6,utf8_decode('Fec.Fact.'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(34);
+                    $this->_fpdf->Cell(19,6,utf8_decode('Fec.Almc.'),'BT',0,'L',1);
+                    $this->_fpdf->SetX(53);
+                    $this->_fpdf->Cell(24,6,utf8_decode('Comprobante'),'BT',0,'L',1);
+                    $this->_fpdf->SetX(77);
+                    $this->_fpdf->Cell(49,6,utf8_decode('Cliente Ref.'),'BT',0,'C',1);
+                    $this->_fpdf->SetX(126);
+                    $this->_fpdf->Cell(21,6,utf8_decode('U.M.'),'BT',0,'C',1);
                     $this->_fpdf->SetX(147);
-                    $this->_fpdf->Cell(20,6,utf8_decode('Cantidad'),'BT',0,'C',1);
+                    $this->_fpdf->Cell(20,6,utf8_decode('Importe'),'BT',0,'C',1);
                     $this->_fpdf->SetX(167);
-                    $this->_fpdf->Cell(20,6,utf8_decode('Precio'),'BT',0,'C',1);
+                    $this->_fpdf->Cell(20,6,utf8_decode('IGV'),'BT',0,'C',1);
                     $this->_fpdf->SetX(187);
-                    $this->_fpdf->Cell(18,6,utf8_decode('SubTotal'),'BT',0,'R',1);
+                    $this->_fpdf->Cell(18,6,utf8_decode('Total'),'BT',0,'R',1);
                     //MARGEN TOTAL: HASTA=195 (ULTIMO SETX + ANCHO DE ULTIMO CELL)
                     $this->_fpdf->SetFillColor(255, 255, 255);
-                    $this->_fpdf->SetFont('Courier', '', 9);
+                    $this->_fpdf->SetFont('Courier', '', 8);
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(5);
                     $this->_fpdf->MultiCell(10, 5, $contador[$i], 1);
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(15);
-                    $this->_fpdf->MultiCell(22, 5, $c_fecha_compra[$i], 1);
+                    $this->_fpdf->MultiCell(19, 5, $c_fecha_compra[$i], 1);
                     $this->_fpdf->SetY($Y_table_position);
-                    $this->_fpdf->SetX(37);
-                    $this->_fpdf->MultiCell(22, 5, $c_fecha_almacen[$i], 1);
+                    $this->_fpdf->SetX(34);
+                    $this->_fpdf->MultiCell(19, 5, $c_fecha_almacen[$i], 1);
                     $this->_fpdf->SetY($Y_table_position);
-                    $this->_fpdf->SetX(59);
-                    $this->_fpdf->MultiCell(28, 5, $c_nro_comprobante[$i], 1);
+                    $this->_fpdf->SetX(53);
+                    $this->_fpdf->MultiCell(24, 5, $c_nro_comprobante[$i], 1);
                     $this->_fpdf->SetY($Y_table_position);
-                    $this->_fpdf->SetX(65);
+                    $this->_fpdf->SetX(77);
                     $this->_fpdf->MultiCell(49, 5, $c_proveedor[$i], 1);
-                    /*$this->_fpdf->SetY($Y_table_position);
-                    $this->_fpdf->SetX(164);
-                    $this->_fpdf->MultiCell(23, 5, $c_documento[$i], 1, 'C');
-                     */
                     $this->_fpdf->SetY($Y_table_position);
-                    $this->_fpdf->SetX(114);
-                    $this->_fpdf->MultiCell(23, 5, $c_ruc[$i], 1, 'C');
+                    $this->_fpdf->SetX(126);
+                    $this->_fpdf->MultiCell(21, 5, $c_ruc[$i], 1, 'C');
+                    $this->_fpdf->SetFont('Courier', '', 7);
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(147);
-                    $this->_fpdf->MultiCell(20, 5, $c_cantidad[$i], 1, 'R');
+                    $this->_fpdf->MultiCell(20, 5, $c_importe[$i], 1, 'R');
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(167);
-                    $this->_fpdf->MultiCell(20, 5, $c_precio[$i], 1, 'R');
+                    $this->_fpdf->MultiCell(20, 5, $c_igv[$i], 1, 'R');
                     /*(---)*/
-                    $this->_fpdf->SetFont('Courier', '', 8);
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(187);
-                    $this->_fpdf->MultiCell(18, 5, $c_sub_total[$i], 1, 'R');
+                    $this->_fpdf->MultiCell(18, 5, $c_total[$i], 1, 'R');
+                    if($i==$contapag){
+                        $this->_fpdf->SetFont('Courier', 'B', 10);
+                        $this->_fpdf->SetY((5*$contaobj)+$Y_table_position+2);
+                        $this->_fpdf->SetX(105);
+                        $this->_fpdf->Cell(18,8,utf8_decode('TOTALES'),'BT',0,'L',1);
+                        $this->_fpdf->SetX(123);
+                        $this->_fpdf->Cell(44,8,substr(number_format($total_importe,3),0,15).' '.$datos[0]['abreviatura'],'BTR',0,'R',1);
+                        $this->_fpdf->SetFont('Courier', '', 9);
+                        $this->_fpdf->SetX(167);
+                        $this->_fpdf->Cell(9,8,utf8_decode('S/.'),'LBT',0,'R',1);
+                        $this->_fpdf->SetFont('Courier', 'B', 10);
+                        $this->_fpdf->SetX(176);
+                        $this->_fpdf->Cell(29,8,substr(number_format($total_total,2),0,13),'BT',0,'R',1);
+                    }
         }
         $this->_fpdf->Output();
     }
@@ -1994,7 +2008,7 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['nro_documento']),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
@@ -2029,7 +2043,7 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetX(50);
             $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
             //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
-            $prec = number_format($detalle[$i]['precio_venta'], 2);
+            $prec = number_format($detalle[$i]['precio_venta']*$detalle[$i]['cantidad'], 2);
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(55);
             $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
@@ -2181,7 +2195,7 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         //$this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'C',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($datos[0]['abreviatura'].'/'.$datos[0]['nro_documento']),0,0,'C',1);
         $espac = $espac + $ancho_celda_datos + 2;
         
         $this->_fpdf->SetY($espac);
@@ -2211,7 +2225,7 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetX(50);
             $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
             //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
-            $prec = number_format($detalle[$i]['precio_venta'], 2);
+            $prec = number_format($detalle[$i]['precio_venta']*$detalle[$i]['cantidad'], 2);
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(55);
             $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
