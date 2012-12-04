@@ -193,7 +193,7 @@ class reportes_controlador extends controller {
     public function stock_actual() {
         $datos = $this->obtener_stock_total();
         $datacount = count($datos);
-
+        
         $Y_fields_name_position = 35;
         $Y_table_position = 41;
         $opp = 47;

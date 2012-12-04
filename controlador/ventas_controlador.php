@@ -65,6 +65,7 @@ class ventas_controlador extends controller {
             $this->_ventas->igv = $_POST['igv'];
             $this->_ventas->fecha_venta = $_POST['fecha_venta'];
             $this->_ventas->estado_pago = 0;
+            $this->_ventas->descuento = $_POST['descuento'];
             $dato_venta=$this->_ventas->inserta();
             //inserta detalle venta
             $x=0;$y=0;
