@@ -79,6 +79,12 @@ function todo2(Form)
         <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual')"/>
     </td>   
 </tr>
+<tr>
+    <td width="85%">Detalle Estadía</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/detalle_estadia')"/>
+    </td>   
+</tr>
 
 <tr>
     <td width="85%">Stock Por Ubicación</td>
@@ -86,25 +92,21 @@ function todo2(Form)
         <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual_ubicac')"/>
     </td>   
 </tr>
-<tr>
-    <td width="85%">Comprobante de Venta Ticket Simple</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_boleta_venta')"/>
-    </td>   
-</tr>
-<tr>
-    <td width="85%">Comprobante de Venta Ticket Factura</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
-    </td>   
-</tr>
-<tr>
-    <td width="85%">Reporte de Ventas por Producto</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/ticket_factura_venta/2')"/>
-    </td>   
-</tr>
 </table>
+<form method="post" action="<?php echo BASE_URL ?>reportes/ventas" target="_blank" id="form_ventas_x_fecha">
+    <table border="1" width="100%" class="tablaok2">
+        <tr>
+            <td>Reporte de Ventas ||||ARREGLAR, NO FUNCIONA<br>
+                
+                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+            </td>
+            <td width="15%" align="center">
+                <input type="submit" value="Generar" class="k-button"/>
+            </td>
+        </tr>
+    </table>
+</form>
 
 <form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
     <table border="1" width="100%" class="tablaok2">

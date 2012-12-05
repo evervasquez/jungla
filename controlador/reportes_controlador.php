@@ -2332,6 +2332,239 @@ class reportes_controlador extends controller {
         $this->_fpdf->Output();
     }
     
+    public function detalle_estadia(){
+        // DATOS QUE DEBE RECIBIR ESTE REPORTE: IDVENTA 
+        $idventa = array($idventa);
+        
+        //PRIMERO SE OBTIENE LA CANTIDAD DE ITEMS EN EL DETALLE PARA DETERMINAR EL ALTO DE PAGINA DEL TICKET
+        //$detalle = $this->obtener_datos_detalle_comprobante_venta($idventa);
+        //$items = count($detalle);
+        // EL TAMAÑO INICIAL, ESDECIR, SIN ITEMS REGISTRADOS, ES DE VALOR: $alto=112;
+        
+        $ancho_celda_datos = 5;
+        $alto = 122;
+        $ancho = 182;
+        $espac = 8;
+        $this->_fpdf = new FPDF('L', 'mm', array($ancho, $alto));
+        $this->_fpdf->SetAutoPageBreak(false);
+        $this->_fpdf->AddPage();
+        
+        
+        //$this->_fpdf->Image(ROOT . 'vista' . DS . 'reportes' . DS . 'img' . DS . '7.png', 0, 0, 182, 120, 'PNG');
+        $this->_fpdf->SetFillColor(255, 255, 255);
+        
+        $this->_fpdf->SetY(0);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell(182, 120,"", 0, 0, "", 1);
+        
+        
+        $this->_fpdf->Image(ROOT . 'vista' . DS . 'reportes' . DS . 'img' . DS . 'log.png', 5, 5, 47.008, 11.196, 'PNG');
+        
+        $this->_fpdf->SetFont('Arial', '', 7);
+        $this->_fpdf->SetY(4);
+        $this->_fpdf->SetX(57);
+        $this->_fpdf->Cell(9,$ancho_celda_datos,utf8_decode('Fecha:'),'B',0,'L',0);
+        //LLEGADA ARRIVAL
+        $this->_fpdf->SetY(18);
+        $this->_fpdf->SetX(56);
+        $this->_fpdf->MultiCell(9,$ancho_celda_datos/2,"Fecha\nDate",'0',0,'L',0);
+        $this->_fpdf->SetY(18);
+        $this->_fpdf->SetX(93);
+        $this->_fpdf->MultiCell(17,$ancho_celda_datos/2,"Procedencia\nComing From",'0',0,'L',0);
+        $this->_fpdf->SetY(18);
+        $this->_fpdf->SetX(141.5);
+        $this->_fpdf->MultiCell(18,$ancho_celda_datos/2,"Hora llegada\nTime Arrival",'0',0,'L',0);
+        //TITULOS
+        $this->_fpdf->SetFont('Arial', 'B', 13);
+        $this->_fpdf->SetY(5.5);
+        $this->_fpdf->SetX(100);
+        $this->_fpdf->Cell(36,$ancho_celda_datos,  utf8_decode("INGRESO"),'0',0,'C',0);
+        $this->_fpdf->SetY(5.5);
+        $this->_fpdf->SetX(140);
+        $this->_fpdf->Cell(36,$ancho_celda_datos,  utf8_decode("N° 000000"),'0',0,'C',0);
+        $this->_fpdf->SetFont('Arial', 'BU', 9);
+        $this->_fpdf->SetY(13);
+        $this->_fpdf->SetX(100);
+        $this->_fpdf->Cell(36,$ancho_celda_datos,  utf8_decode("LLEGADA / ARRIVAL"),'0',0,'C',0);
+        $this->_fpdf->SetY(24.5);
+        $this->_fpdf->SetX(100);
+        $this->_fpdf->Cell(36,$ancho_celda_datos,  utf8_decode("SALIDA / DEPARTURE"),'0',0,'C',0);
+        $this->_fpdf->SetY(35.6);
+        $this->_fpdf->SetX(71.3);
+        $this->_fpdf->Cell(36,$ancho_celda_datos,  utf8_decode("HOSPEDAJE / LODGING"),'0',0,'C',0);
+        
+        //SALIDA DEPARTURE
+        $this->_fpdf->SetFont('Arial', '', 7);
+        
+        $this->_fpdf->SetY(29.3);
+        $this->_fpdf->SetX(56);
+        $this->_fpdf->MultiCell(9,$ancho_celda_datos/2,"Fecha\nDate",'0',0,'L',0);
+        $this->_fpdf->SetY(29.3);
+        $this->_fpdf->SetX(93);
+        $this->_fpdf->MultiCell(17,$ancho_celda_datos/2,"Destino\nDestination",'0',0,'L',0);
+        $this->_fpdf->SetY(29.3);
+        $this->_fpdf->SetX(139.5);
+        $this->_fpdf->MultiCell(20,$ancho_celda_datos/2,"Hora partida\nTime Departure",'0',0,'L',0);
+        //HOSPEDAJE LODGING
+        $this->_fpdf->SetY(40.6);
+        $this->_fpdf->SetX(37);
+        $this->_fpdf->MultiCell(18,$ancho_celda_datos/2, utf8_decode('Habitación(es)')."\n".utf8_decode('Room(s)'),'0',0,'L',0);
+        $this->_fpdf->SetY(40.6);
+        $this->_fpdf->SetX(88.8);
+        $this->_fpdf->MultiCell(18,$ancho_celda_datos/2, "Tarifa\nTariff",'0',0,'L',0);
+        $this->_fpdf->SetY(48);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
+        //DATOS
+        $this->_fpdf->SetY(51.6);
+        $this->_fpdf->SetX(2);
+        $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, "Nombre\nName",'0',0,'L',0);
+        $this->_fpdf->SetY(51.6);
+        $this->_fpdf->SetX(104);
+        $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, "Edad\nAge",'0',0,'L',0);
+        $this->_fpdf->SetY(51.6);
+        $this->_fpdf->SetX(134);
+        $this->_fpdf->MultiCell(17,$ancho_celda_datos/2, "FechaNacim.\nDateOfBirth",'0',0,'L',0);
+        $this->_fpdf->SetY(58.2);
+        $this->_fpdf->SetX(2);
+        $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, "Domicilio\nAddress",'0',0,'L',0);
+        $this->_fpdf->SetY(58.2);
+        $this->_fpdf->SetX(109.4);
+        $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, utf8_decode("Teléfonos")."\n".("Phones"),'0',0,'L',0);
+        $this->_fpdf->SetY(64.8);
+        $this->_fpdf->SetX(2);
+        $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, "Empresa\nCompany",'0',0,'L',0);
+        $this->_fpdf->SetY(64.8);
+        $this->_fpdf->SetX(132.1);
+        $this->_fpdf->MultiCell(14,$ancho_celda_datos, "R.U.C.",'0',0,'L',0);
+        $this->_fpdf->SetY(72.4);
+        $this->_fpdf->SetX(1.9);
+        $this->_fpdf->MultiCell(23,$ancho_celda_datos/2, utf8_decode("Correo Electrónico")."\n".utf8_decode("e-mail"),'0',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(1);
+        $this->_fpdf->MultiCell(15,$ancho_celda_datos/2, utf8_decode("Profesión")."\n".utf8_decode("Ocupación"),'0',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(56);
+        $this->_fpdf->MultiCell(20,$ancho_celda_datos/2, utf8_decode("Estado Civil")."\n".utf8_decode("Marital Status"),'0',0,'L',0);
+        $this->_fpdf->SetFont('Arial', '', 6);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(95);
+        $this->_fpdf->MultiCell(17,$ancho_celda_datos/2, utf8_decode("Nacionalidad")."\n".utf8_decode("Nacionality"),'0',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(132);
+        $this->_fpdf->MultiCell(18,$ancho_celda_datos/2, utf8_decode("Doc.Identidad")."\n".utf8_decode("Id.Card"),'0',0,'L',0);
+        $this->_fpdf->SetFont('Arial', '', 7);
+        $this->_fpdf->SetY(87);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
+        $this->_fpdf->SetY(98);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
+        $this->_fpdf->SetY(101);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->MultiCell($ancho,$ancho_celda_datos/2, utf8_decode("PARA SU CONVENIENCIA Y PROTECCIÓN, FAVOR DEPOSITAR SUS VALORES EN LAS CAJAS DE SEGURIDAD UBICADAS EN RECEPCIÓN")."\n". 
+        utf8_decode("EL ALBERGUE NO SE RESPONSABILIZA POR PÉRDIDAS EN LAS HABITACIONES U OTRAS DEPENDENCIAS")."\n"."\n".
+        utf8_decode("FOR YOUR CONVENIENCE AND PROTECTION, PLEASE DEPOSIT YOUR VALUES IN THE LOCATED BOXES OF SECURITY IN RECEPTION")."\n".
+                utf8_decode("THE HOTEL DOESN'T TAKE THE RESPONSABILITY HAD LOST IN THE ROOMS OR OTHER DEPENDENCES"),0,'C',0);
+        $this->_fpdf->SetFont('Arial', '', 7);
+        $this->_fpdf->SetY(114.5);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->MultiCell($ancho,$ancho_celda_datos/2, utf8_decode("Este documento constituye el contrado de hospedaje reglamentado por D.S. 006 73 IC/DS de 29-3-73")."\n".
+                utf8_decode("This document constitutes the Contract of Lodging regulation for D.S 006 79 IC/DS de 29-3-73"),0,'C',0);
+        
+        
+        
+        $this->_fpdf->SetFont('Arial', '', 9);
+        $this->_fpdf->SetY(4);
+        $this->_fpdf->SetX(66);
+        $this->_fpdf->Cell(7.5,$ancho_celda_datos,utf8_decode('01'),'BR',0,'R',0);
+        $this->_fpdf->SetY(4);
+        $this->_fpdf->SetX(73.5);
+        $this->_fpdf->Cell(9,$ancho_celda_datos,utf8_decode('01'),'BR',0,'R',0);
+        $this->_fpdf->SetY(4);
+        $this->_fpdf->SetX(82.5);
+        $this->_fpdf->Cell(12,$ancho_celda_datos,utf8_decode('2001'),'BR',0,'R',0);
+        //LLEGADA ARRIVAL
+        $this->_fpdf->SetY(18.2);
+        $this->_fpdf->SetX(65);
+        $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode('02/02/2002'),'1',0,'C',0);
+        $this->_fpdf->SetY(18.2);
+        $this->_fpdf->SetX(110.1);
+        $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode('NuevaProcedencia'),0,12),'1',0,'C',0);
+        $this->_fpdf->SetY(18.2);
+        $this->_fpdf->SetX(159.6);
+        $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode('10:16'),'1',0,'C',0);
+        //SALIDA DEPARTURE
+        $this->_fpdf->SetY(29.5);
+        $this->_fpdf->SetX(65);
+        $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode('10/02/2002'),'1',0,'C',0);
+        $this->_fpdf->SetY(29.5);
+        $this->_fpdf->SetX(110.1);
+        $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode('NuevoDestino'),0,12),'1',0,'C',0);
+        $this->_fpdf->SetY(29.5);
+        $this->_fpdf->SetX(159.6);
+        $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode('20:20'),'1',0,'C',0);
+        //HOSPEDAJE LODGING
+        $this->_fpdf->SetY(40.8);
+        $this->_fpdf->SetX(54.8);
+        $this->_fpdf->Cell(41,$ancho_celda_datos,utf8_decode('101, 102, 103, 104'),'1',0,'C',0);
+        $this->_fpdf->SetY(40.8);
+        $this->_fpdf->SetX(106.8);
+        $this->_fpdf->Cell(41,$ancho_celda_datos, substr(utf8_decode('Esta es una tarifa'),0,27),'1',0,'C',0);
+        //DATOS
+        $this->_fpdf->SetY(51.6);
+        $this->_fpdf->SetX(16.1);
+        $this->_fpdf->Cell(90,$ancho_celda_datos,substr(utf8_decode('Delfin Cucho Quispe'),0,60),'1',0,'L',0);
+        $this->_fpdf->SetY(51.6);
+        $this->_fpdf->SetX(118);
+        $this->_fpdf->Cell(14.4,$ancho_celda_datos,substr(utf8_decode('20'),0,60),'1',0,'C',0);
+        $this->_fpdf->SetY(51.6);
+        $this->_fpdf->SetX(151);
+        $this->_fpdf->Cell(24.3,$ancho_celda_datos,substr(utf8_decode('12/12/1980'),0,60),'1',0,'C',0);
+        $this->_fpdf->SetY(58.2);
+        $this->_fpdf->SetX(16.1);
+        $this->_fpdf->Cell(90,$ancho_celda_datos, substr(utf8_decode('Este es un domicilio'),0,60),'1',0,'L',0);
+        $this->_fpdf->SetY(58.2);
+        $this->_fpdf->SetX(123.4);
+        $this->_fpdf->Cell(51.9,$ancho_celda_datos, substr(utf8_decode('Este es un teléfono'),0,60),'1',0,'L',0);
+        $this->_fpdf->SetY(64.8);
+        $this->_fpdf->SetX(16.1);
+        $this->_fpdf->Cell(117,$ancho_celda_datos, substr(utf8_decode('Consorcio Chazuta'),0,75),'1',0,'L',0);
+        $this->_fpdf->SetY(64.8);
+        $this->_fpdf->SetX(146.1);
+        $this->_fpdf->Cell(29.2,$ancho_celda_datos, substr(utf8_decode('20123456780'),0,11),'1',0,'C',0);
+        $this->_fpdf->SetY(72.4);
+        $this->_fpdf->SetX(24.9);
+        $this->_fpdf->Cell(150.4,$ancho_celda_datos, substr(utf8_decode('esteesunemail@esteesundominio.com'),0,75),'1',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(16.1);
+        $this->_fpdf->Cell(43,$ancho_celda_datos, substr(utf8_decode('Esta es una profesion'),0,25),'1',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(76);
+        $this->_fpdf->Cell(21,$ancho_celda_datos, substr(utf8_decode('Estado Civil: Soltero'),0,14),'1',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(111.4);
+        $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode('Es una nacionalidad'),0,10),'1',0,'L',0);
+        $this->_fpdf->SetY(80.5);
+        $this->_fpdf->SetX(150.3);
+        $this->_fpdf->Cell(25,$ancho_celda_datos, substr(utf8_decode('10009427207'),0,11),'1',0,'C',0);
+        
+        $this->_fpdf->SetFont('Arial', '', 7);        
+        $this->_fpdf->SetY(19);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->MultiCell(60,$ancho_celda_datos-2.4,utf8_decode('Psje. Abelardo Ramírez 263')."\n".
+                utf8_decode('La Banda de Shilcayo - San Martín')."\n".utf8_decode('e-mail: lajungla_convenciones@hotmail.com')."\n".
+                utf8_decode('fb.com/lajungla.tarapoto'),0,'C',0);
+        $this->_fpdf->SetFont('Arial', '', 6);        
+        $this->_fpdf->SetY(31);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->MultiCell(60,$ancho_celda_datos-2.4,utf8_decode('Cómodas habitaciones con agua caliente,')."\n".
+                utf8_decode('circuito cerrado, frigobar, bebidas exóticas, piscina, restaurante, sauna, telefono y fax.'),0,'C',0);
+        
+        $this->_fpdf->Output();
+    
+        
+    }
 }
 
 ?>
