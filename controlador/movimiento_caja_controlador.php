@@ -6,7 +6,6 @@ class movimiento_caja_controlador extends controller{
     private $_ventas;
     private $_caja;
 
-
     public function __construct() {
         parent::__construct();
         $this->_movimiento_caja=  $this->cargar_modelo('movimiento_caja');
@@ -15,14 +14,13 @@ class movimiento_caja_controlador extends controller{
     }
 
     public function index() {
-        
         $this->_vista->datos_ventas=$this->_ventas->selecciona();
 //        echo '<pre>';
 //                print_r($this->_vista->datos_ventas);exit;
         $this->_vista->renderizar('index');
     }
     
-    public function cobrar($idventa, $monto){
+    public function cobrar($idventa, $monto, $idtipo_comprobante){
         $datos_caja=$this->_caja->selecciona();
         if($datos_caja[0]['estado']==0){
             echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
@@ -51,7 +49,21 @@ class movimiento_caja_controlador extends controller{
         $this->_caja->aumenta=1;
         $this->_caja->actualiza();
         
-        $this->redireccionar('movimiento_caja');
+        echo "<script>
+            if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
+            </script>";
+        $this->imprimir($idventa, $idtipo_comprobante);
+        //window.open('../../../reportes/ticket_boleta_venta/');
+    }
+    public function imprimir($idventa, $idtipo_comprobante){
+        switch ($idtipo_comprobante){
+            case 55:
+                $this->redireccionar('reportes/ticket_boleta_venta/'.$idventa);
+                break;
+            case 56:
+                $this->redireccionar('reportes/ticket_factura_venta/'.$idventa);
+        }
+        
     }
 }
 

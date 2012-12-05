@@ -34,9 +34,11 @@
                 <td><?php echo $this->datos_ventas[$i]['tipo'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos_ventas[$i]['idventa'] ?>')" class="imgview"></a>
+                    <a href="<?php echo BASE_URL.'movimiento_caja/imprimir/'.$this->datos_ventas[$i]['idventa'].'/'.$this->datos_ventas[$i]['tipo_comprobante']?>" target="_blank">[Imprimir]</a>
         <?php if($this->datos_ventas[$i]['estado_pago']==0){?>
-                    <a href="<?php echo BASE_URL.'movimiento_caja/cobrar/'.$this->datos_ventas[$i]['idventa'].'/'.($this->datos_ventas[$i]['importe'] * ($this->datos_ventas[$i]['igv'] + 1) - $this->datos_ventas[$i]['descuento']) ?>">[Cobrar]</a>
+                    <a href="<?php echo BASE_URL.'movimiento_caja/cobrar/'.$this->datos_ventas[$i]['idventa'].'/'.($this->datos_ventas[$i]['importe'] * ($this->datos_ventas[$i]['igv'] + 1) - $this->datos_ventas[$i]['descuento']).'/'.$this->datos_ventas[$i]['tipo_comprobante']?>" target="_blank">[Cobrar]</a>
         <?php } ?>
+                    
                 </td>
             </tr>
             <?php }  ?>
@@ -44,7 +46,7 @@
     </table>
     </div>
     <?php } else { ?>
-        <p>No hay compras</p>
+        <p>No hay movimiento de caja pendientes</p>
         <a href="<?php echo BASE_URL?>compras/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
 <div id="vtna_ver_compra"></div>
