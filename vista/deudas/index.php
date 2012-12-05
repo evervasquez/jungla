@@ -28,8 +28,8 @@
                 <td><?php echo $this->datos[$i]['monto_pagado'] ?></td>
                 <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_pagado'] ?></td>
                 <td class="tabtr" align="center">
-                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra']?>">[Cronograma]</a>
-                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra']?>">[Amortizar]</a>
+                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra'].'/'.(($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_pagado'])?>">[Cronograma]</a>
+                    <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['idcompra'].'/'.(($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_pagado'])?>">[Amortizar]</a>
                 </td>
             </tr>
         <?php } ?>

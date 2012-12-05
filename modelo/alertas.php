@@ -13,7 +13,7 @@ class alertas {
             $this->idalerta=0;
         }
         if(is_null($this->idperfil)){
-            $this->idperfil='';
+            $this->idperfil=0;
         }
         $datos = array($this->idalerta,$this->idperfil);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_alertas", $datos);

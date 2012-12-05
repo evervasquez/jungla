@@ -30,7 +30,7 @@ class amortizacion_cobro {
 
     public function inserta() {
         $datos = array($this->idmovimiento_caja, $this->idcuota_cobro, $this->fecha, $this->monto);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_amortizacion_cobro", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_amortizacion_cobro", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -38,7 +38,7 @@ class amortizacion_cobro {
 
     public function actualiza() {
         $datos = array($this->idmovimiento_caja, $this->idcuota_cobro, $this->fecha, $this->monto);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_amortizacion_cobro", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_amortizacion_cobro", $datos);
         $error = $r[1];
         $r = null;
         return $error;

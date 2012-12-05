@@ -9,17 +9,31 @@ class detalle_estadia {
     public $fecha_ingreso;
     public $fecha_salida;
     public $fecha_reserva;
-
+    
     public function selecciona() {
-        $datos = array($this->idhabitacion_especifica_especifica, $this->idcliente, $this->idventa);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_detalle_estadia", $datos);
+        if(!is_null($this->fecha_ingreso) && !is_null($this->fecha_salida)){
+            $datos = array($this->fecha_ingreso, $this->fecha_salida);
+            $r = consulta::procedimientoAlmacenado("pa_busca_habitaciones_disponibles", $datos);
+        }else{
+            if(is_null($this->idhabitacion_especifica)){
+                $this->idhabitacion_especifica=0;
+            }
+            if(is_null($this->idcliente)){
+                $this->idcliente=0;
+            }
+            if(is_null($this->idventa)){
+                $this->idventa=0;
+            }
+            $datos = array($this->idhabitacion_especifica, $this->idcliente, $this->idventa);
+            $r = consulta::procedimientoAlmacenado("pa_selecciona_detalle_estadia", $datos);
+        }
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
     
     public function elimina() {
@@ -40,9 +54,9 @@ class detalle_estadia {
     }
 
     public function actualiza() {
-        $datos = array($this->idhabitacion_especifica, $this->idcliente, $this->idventa, $this->estado, $this->fecha_ingreso,
-            $this->fecha_salida, $this->fecha_reserva);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_estadia", $datos);
+        $datos = array($this->idcliente, $this->idventa, $this->estado, $this->fecha_ingreso,
+            $this->fecha_salida);
+        $r = consulta::procedimientoAlmacenado("pa_actualiza_detalle_estadia", $datos);
         $error = $r[1];
         $r = null;
         return $error;

@@ -26,10 +26,10 @@
                 <td><?php echo $this->datos[$i]['fecha_venta'] ?></td>
                 <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] ?></td>
                 <td><?php echo $this->datos[$i]['monto_cobrado'] ?></td>
-                <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_pagado'] ?></td>
+                <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_cobrado'] ?></td>
                 <td class="tabtr" align="center">
                     <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['idventa']?>">[Cronograma]</a>
-                    <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['idventa']?>">[Amortizar]</a>
+                    <a href="<?php echo BASE_URL ?>cobros/amortizar/<?php echo $this->datos[$i]['idventa']?>">[Amortizar]</a>
                 </td>
             </tr>
         <?php } ?>

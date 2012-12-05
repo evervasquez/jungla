@@ -21,9 +21,11 @@ class modulos {
             $this->modulo_padre='';
         }
         if(is_null($this->idperfil)){
-            $this->idperfil='';
+            $this->idperfil=0;
         }
         $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre,$this->idperfil);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

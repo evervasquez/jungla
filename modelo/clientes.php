@@ -30,15 +30,22 @@ class clientes {
 //            echo '</pre>';
 //            exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_clientes", $datos);
-        $error = $r[1];
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
         $r = null;
-        return $error;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
     }
 
     public function actualiza() {
         $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
             $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo, 
             $this->idmembresia, $this->direccion, $this->tipo);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_clientes", $datos);
         $error = $r[1];
         $r = null;
