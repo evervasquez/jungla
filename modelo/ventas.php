@@ -34,7 +34,7 @@ class ventas {
 
     public function actualiza() {
         if(is_null($this->estado_pago)){
-            $datos = array(0, $this->observaciones, $this->idtipo_comprobante, $this->idcliente, 
+            $datos = array($this->idventa, $this->observaciones, $this->idtipo_comprobante, $this->idcliente, 
             $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv, $this->descuento);
             $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
         }  else {
@@ -58,7 +58,7 @@ class ventas {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function elimina() {

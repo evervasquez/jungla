@@ -12,7 +12,7 @@ $(document).ready(function(){
         i=$("#index_tr").val();
         idc=$("#ciudades").val();
         c=$("#ciudades option:selected").html();
-        html = '<input type="hidden" value="'+idc+'" name="ciudad"/>'+c;
+        html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
         $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
         $("#vtna_busca_ciudades").hide();
     });
@@ -63,9 +63,14 @@ $(document).ready(function(){
         x=0;
         $("#detalle_estadia tr").each(function(){
             b = $("#detalle_estadia tr:eq("+x+") td:eq(4) :button").length;
+            cabecera = $("#ciudad").html();
             if(b==1){
                 error= true;
-                msg = "Por favor seleccione la procedencia de todos los pasajeros";
+                if(cabecera=='Destino'){
+                    msg = "Por favor seleccione la ciudad destino de todos los pasajeros";
+                }else{
+                    msg = "Por favor seleccione la ciudad de procedencia de todos los pasajeros";
+                }
             }
             x++;
         });
