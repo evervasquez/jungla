@@ -7,10 +7,11 @@ class ruta_huesped {
     public $idtipo_ruta;
     public $idubigeo;
     public $idcliente;
+    public $idventa;
     
 
     public function inserta() {
-        $datos = array(0, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, $this->idcliente);
+        $datos = array(0, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, $this->idcliente, $this->idventa);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ruta_huesped", $datos);
         $error = $r[1];
         $r = null;
@@ -19,7 +20,7 @@ class ruta_huesped {
 
     public function actualiza() {
         $datos = array($this->idruta_huesped, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, 
-            $this->idcliente);
+            $this->idcliente, $this->idventa);
         $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ruta_huesped", $datos);
         $error = $r[1];
         $r = null;

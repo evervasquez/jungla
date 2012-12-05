@@ -54,9 +54,9 @@ class detalle_estadia {
     }
 
     public function actualiza() {
-        $datos = array($this->idhabitacion_especifica, $this->idcliente, $this->idventa, $this->estado, $this->fecha_ingreso,
-            $this->fecha_salida, $this->fecha_reserva);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_estadia", $datos);
+        $datos = array($this->idcliente, $this->idventa, $this->estado, $this->fecha_ingreso,
+            $this->fecha_salida);
+        $r = consulta::procedimientoAlmacenado("pa_actualiza_detalle_estadia", $datos);
         $error = $r[1];
         $r = null;
         return $error;

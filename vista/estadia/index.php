@@ -27,8 +27,14 @@
                 <?php if($this->datos[$i]['estado_estadia']==1)echo 'Estadia'?>
                 </td>
                 <td>
-                    <a href="<?php echo BASE_URL?>estadia/confirmar/<?php echo $this->datos[$i]['idventa']?>">[Confirmar]</a>
+                    <?php if($this->datos[$i]['estado_estadia']==0){?>
+                    <a href="<?php echo BASE_URL?>estadia/confirmar/<?php echo $this->datos[$i]['idventa']?>">[Chek-in]</a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>estadia/eliminar/<?php echo $this->datos[$i]['idventa'] ?>')" class="imgdelete"></a>
+                    <?php } ?>
+                    <?php if($this->datos[$i]['estado_estadia']==1){?>
+                    <a href="<?php echo BASE_URL?>estadia/consumo/<?php echo $this->datos[$i]['idventa']?>">[Consumo]</a>
+                    <a href="<?php echo BASE_URL?>estadia/check_out/<?php echo $this->datos[$i]['idventa']?>">[Check-out]</a>
+                    <?php } ?>
                     <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idempleado'] ?>')"></a>
                 </td>
             </tr>
@@ -37,8 +43,7 @@
 </div>
 
 <?php } else{ ?>
-            <p>No hay empleados</p>
-            <a href="<?php echo BASE_URL?>empleados/nuevo" class="k-button">Nuevo</a>
+            <p>No hay estadias</p>
     <?php } ?>
             
 <div id="vtna_ver_empleado"></div>

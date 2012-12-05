@@ -1,5 +1,6 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
+    <input type="hidden" name="codigo" id="codigo" value="<?php echo $this->datos[0]['idventa']?>"/>
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
         <table>
@@ -12,7 +13,6 @@
             <tr>
                 <td>Fecha reserva:</td>
                 <td>
-                    <input type="hidden" value="<?php echo date('d-m-Y H:i:s')?>"/>
                     <input type="text" class="k-textbox" readonly="readonly" 
                    value="<?php if(isset ($this->datos)){echo $this->datos[0]['fecha_reserva'];} else {echo date("d-m-Y");} ?>"/>
                 </td>
@@ -27,8 +27,8 @@
             <tr>
                 <td>Fecha salida:</td>
                 <td>
-                    <input type="text" class="k-textbox" readonly="readonly" 
-                   id="fecha_salida"  value="<?php echo $this->datos[0]['fecha_salida'] ?>"/>
+                    <input type="text" class="k-textbox" readonly="readonly" name="fecha_salida" 
+                   id="fecha_salida" value="<?php echo $this->datos[0]['fecha_salida'] ?>"/>
                 </td>
             </tr>
             <tr id="celda_detalle_estadia">
@@ -44,7 +44,7 @@
                                             <th>Tipo</th>
                                             <th>Pasajero</th>
                                             <th>Doc. Ident.</th>
-                                            <th>Procedencia</th>
+                                            <th id="ciudad">Procedencia</th>
                                             <th>Confirmar</th>
                                         </tr>
                                         <?php for($i=0;$i<count($this->datos_detalle_estadia);$i++){ ?>
@@ -52,7 +52,7 @@
                                             <td><?php echo $this->datos_detalle_estadia[$i]['habitacion']?></td>
                                             <td><?php echo $this->datos_detalle_estadia[$i]['tipo']?></td>
                                             <td>
-                                                <input type="hidden" value="<?php echo $this->datos_detalle_estadia[$i]['idcliente']?>" name="idcliente"/>
+                                                <input type="hidden" value="<?php echo $this->datos_detalle_estadia[$i]['idcliente']?>" name="idcliente[]"/>
                                                 <?php echo $this->datos_detalle_estadia[$i]['huesped']?>
                                             </td>
                                             <td><?php echo $this->datos_detalle_estadia[$i]['documento']?></td>

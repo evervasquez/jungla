@@ -15,6 +15,8 @@ class movimiento_caja_controlador extends controller{
 
     public function index() {
         $this->_vista->datos_ventas=$this->_ventas->selecciona();
+//        echo '<pre>';
+//                print_r($this->_vista->datos_ventas);exit;
         $this->_vista->renderizar('index');
     }
     
