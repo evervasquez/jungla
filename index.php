@@ -15,7 +15,7 @@ try {
     require_once APP_PATH . 'session.php';
     require_once BASE_DATOS . 'conexion.php';
     require_once BASE_DATOS . 'consulta.php';
-
+   
     session::init();
     
     FrontController::main(new request);
