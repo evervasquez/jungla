@@ -35,7 +35,7 @@ class configurarbd_controlador extends controller{
             fclose($fp);
 //            conexion::conexionSingleton();
             echo '<script>
-                        alert("conexion correcta");
+                        alert("Datos GRABADOS Correctamente");
                         window.location="'.BASE_URL.'";
                     </script>';
         }

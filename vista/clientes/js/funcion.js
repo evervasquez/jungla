@@ -21,9 +21,7 @@
                             '<th>Tipo</th>'+
                             '<th>Nombre / Razon Social</th>'+
                             '<th>DNI / RUC</th>'+
-                            '<th>Telefono</th>'+
-                            '<th>Email</th>'+
-                            '<th>Ubigeo</th>'+
+                            '<th>Direccion</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
@@ -31,12 +29,8 @@
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].idcliente+'</td>';
                     HTML = HTML + '<td>'+datos[i].tipo+'</td>';
-                    if(datos[i].apellidos != null){
                     HTML = HTML + '<td>'+datos[i].nombres+' '+datos[i].apellidos+'</td>';
-                    }
-                    else{
-                    HTML = HTML + '<td>'+datos[i].nombres+'</td>';
-                    }
+                    
                     HTML = HTML + '<td>'+datos[i].documento+'</td>';
                     HTML = HTML + '<td>'+datos[i].direccion+'</td>';
                     var editar='/sisjungla/clientes/editar/'+datos[i].idcliente; 
