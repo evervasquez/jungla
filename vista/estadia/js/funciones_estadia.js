@@ -96,6 +96,7 @@ $(document).ready(function(){
         h=$("#habitacion option:selected").html(); 
         idth=$("#tipo_habitacion").val(); 
         th=$("#tipo_habitacion option:selected").html(); 
+        doc=$("#document").val();
         error= false;
         msg='';
         if(p==''){
@@ -120,6 +121,8 @@ $(document).ready(function(){
             html=html+"<td><input type='hidden' name='idhabitacion[]' value='"+idh+"'/>"+h+"</td>";
             html=html+"<td><input type='hidden' name='idhabitacion_especifica[]' value='"+idhe+"'/>"+th+"</td>";
             html=html+"<td><input type='hidden' name='idpasajero[]' value='"+idp+"'/>"+p+"</td>";
+            html=html+"<td>"+doc+"</td>";
+            html=html+'<td><input type="button" value="Buscar" class="k-button btn_vtna_ciudades"/></td>';
             html=html+"<td><input type='hidden' name='representante[]' value='0'/> <input type='radio' name='estado'/></td>";
             html=html+'<td><a class="imgdelete eliminar" title="Eliminar item" href="javascript:"></a></td>';
             html=html+"</tr>";
@@ -187,12 +190,13 @@ $(document).ready(function(){
                 }else{
                     pasajero=datos[i].nombres;
                 }
+                doc=datos[i].documento;
                 HTML = HTML + '<tr>';
                 HTML = HTML + '<td>'+id+'</td>';
                 HTML = HTML + '<td>'+pasajero+'</td>';
-                HTML = HTML + '<td>'+datos[i].documento+'</td>';
+                HTML = HTML + '<td>'+doc+'</td>';
                 HTML = HTML + '<td>'+datos[i].direccion+'</td>';
-                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_pasajero(\''+id+'\',\''+pasajero+'\')" class="imgselect"></a></td>';
+                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_pasajero(\''+id+'\',\''+pasajero+'\',\''+doc+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            
             HTML = HTML + '</table>'
@@ -206,35 +210,110 @@ $(document).ready(function(){
         },'json');        
     }
     
-    $("#btn_guardar").click(function(){
-       tr=$("input :radio").length;
-       rc=$("input :radio").filter(":checked").length;
-       if(tr<2){
-           $("input :radio :eq(0)").attr('checked','checked');
-           $("#detalle_estadia tr:eq(0) td:eq(3) :hidden").val('1');
-           $("#frm").submit();
-       }else{
-           if(rc!=1){
-               alert('Debe seleccionar un representante');
-           }else{
-               $("#frm").submit();
-           }
-       }
+    $("#vtna_busca_ciudades").hide();
+    
+    $(".btn_vtna_ciudades").live('click',function(){
+        i = $(this).parent().parent().index();
+        $("#index_tr").val(i);
+        $("#vtna_busca_ciudades").show();
     });
-   
+    
+    $("#btn_selecciona_ciudad").click(function(){
+        i=$("#index_tr").val();
+        idc=$("#ciudades").val();
+        c=$("#ciudades option:selected").html();
+        html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
+        $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
+        $("#vtna_busca_ciudades").hide();
+    });
+    
+    $("#btn_cancelar_ciudad").click(function(){
+        $("#vtna_busca_ciudades").hide();
+    });
+    
+    $("#pais").change(function(){
+        $("#regiones").html('<option>Seleccione...</option>');
+        $("#provincias").html('<option>Seleccione...</option>');
+        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        if($(this).val()){
+            $.post('/sisjungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
+                for(var i=0;i<datos.length;i++){
+                    $("#regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }
+            },'json');
+        }
+    });
+    
+    $("#regiones").change(function(){
+        $("#provincias").html('<option>Seleccione...</option>');
+        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        if($(this).val()){
+            $.post('/sisjungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
+                for(var i=0;i<datos.length;i++){
+                    $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }
+            },'json');
+        }
+    });
+    
+    $("#provincias").change(function(){
+        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        if($(this).val()){
+            $.post('/sisjungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
+                for(var i=0;i<datos.length;i++){
+                    $("#ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                }
+            },'json');
+        }
+    });
+    
     $("input:radio").live('click',function(){
        i = $(this).parent().parent().index();
        x=0;
         $("#detalle_estadia tr").each(function(){
             if(x==i){
-                $("#detalle_estadia tr:eq("+x+") td:eq(3) :hidden").val('1');
+                $("#detalle_estadia tr:eq("+x+") td:eq(5) :hidden").val('1');
             }else{
-                $("#detalle_estadia tr:eq("+x+") td:eq(3) :hidden").val('0');
+                $("#detalle_estadia tr:eq("+x+") td:eq(5) :hidden").val('0');
             }
             x++;
         });
     });
     
+    $("#btn_guardar").click(function(){
+        error=false;
+        msg="";
+        x=0;
+        error_repre=true;
+       
+        $("#detalle_estadia tr").each(function(){
+            b = $("#detalle_estadia tr:eq("+x+") td:eq(4) :button").length;
+            cabecera = $("#ciudad").html();
+            if(b==1){
+                error= true;
+                if(cabecera=='Destino'){
+                    msg = "Por favor seleccione la ciudad destino de todos los pasajeros";
+                }else{
+                    msg = "Por favor seleccione la ciudad de procedencia de todos los pasajeros";
+                }
+            }
+            if($("#detalle_estadia tr:eq("+x+") td:eq(5) :radio").is(":checked")){
+                error_repre=false;
+            }
+            x++;
+        });
+        
+        if(error){
+            alert(msg);
+            return 0;
+        }
+        if(error_repre){
+            alert("Seleccione el representante de estadía");
+            return 0;
+        }
+        $("#frm").submit();
+    });
+   
     //insertar pasajero
     $("#btn_vtna_agrega_pasajeros").click(function(){
         $("#vtna_inserta_pasajero").show();
@@ -264,9 +343,10 @@ $(document).ready(function(){
     });
 });
 
-function seleccionar_pasajero(id,pasajero){
+function seleccionar_pasajero(id,pasajero,doc){
     $("#idcliente").val(id);
     $("#cliente").val(pasajero);
+    $("#document").val(doc);
     $("#txt_buscar_pasajeros").val('');
     $("#vtna_busca_pasajero").fadeOut(300);
     $("#fondooscuro").fadeOut(300);

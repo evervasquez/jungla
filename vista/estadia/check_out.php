@@ -5,8 +5,8 @@
         <tr>
             <td>Fecha entrada:</td>
             <td>
-                <input type="hidden" name="fecha_entrada" value="<?php echo $this->datos[0]['de_fecha_ingreso'] ?>" />
-                <input type="text" class="k-textbox" readonly="readonly" 
+                <input type="hidden" name="hora_entrada" value="<?php echo $this->datos[0]['de_hora_ingreso'] ?>" />
+                <input type="text" class="k-textbox" readonly="readonly" name="fecha_entrada"
                id="fecha_entrada" value="<?php echo $this->datos[0]['fecha_ingreso'] ?>"/>
             </td>
         </tr>
@@ -37,7 +37,7 @@
                         </td>
                         <td><?php echo $this->datos_detalle_estadia[$i]['documento']?></td>
                         <td align="center">
-                            <input type="button" value="Buscar" class="k-button" id="btn_vtna_ciudades"/>
+                            <input type="button" value="Buscar" class="k-button btn_vtna_ciudades"/>
                         </td>
                     </tr>
                     <?php }?>
@@ -222,6 +222,84 @@
                     <button type="button" class="k-button cancel" id="btn_cancelar_ciudad">Cancelar</button>
                 </p>
             </td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="vtna_busca_clientes">
+    <h3>Lista de Clientes</h3>
+    <p>
+        <select class="combo" id="filtro_clientes">
+            <option value="0">Nombre/Apellido</option>
+            <option value="1">Razon Social</option>
+            <option value="2">DNI</option>
+            <option value="3">RUC</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_clientes">
+        <button type="button" class="k-button" id="btn_buscar_cliente"><span class="k-icon k-i-search"></span></button>
+        <a class="k-button cancela_cli cancel">Cancelar</a>
+    </p>
+    <div id="grilla_clientes"></div>
+</div>
+
+<div id="vtna_busca_clientes_juridicos">
+    <h3>Lista de Clientes</h3>
+    <p>
+        <select class="combo" id="filtro_clientes_juridicos">
+            <option value="1">Razon Social</option>
+            <option value="3">RUC</option>
+        </select>
+        <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_clientes_juridicos">
+        <button type="button" class="k-button" id="btn_buscar_cliente_juridico"><span class="k-icon k-i-search"></span></button>
+        <a class="k-button cancela_cli cancel">Cancelar</a>
+    </p>
+    <div id="grilla_clientes_juridicos"></div>
+</div>
+
+<div id="agrega_cliente_juridico">
+    <p><h3>Registrar Cliente Juridico</h3></p>
+    <table>
+        <tr>
+            <td><label>Ruc:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
+                   maxlength="11" id="ruc" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="documento"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Razon Social:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
+                   id="razonsocial" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="nombres"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Direccion:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
+                   id="direccionrs" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="direccion"></div>
+            </td>
+            <tr>
+                <td colspan="2" align="center">
+                    <p>
+                        <button type="button" class="k-button" id="btn_inserta_cliente_juridico">Guardar</button>
+                        <button type="button" class="k-button cancel" id="btn_cancelar_cliente_juridico">Cancelar</button>
+                    </p>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
+            </tr>
         </tr>
     </table>
 </div>

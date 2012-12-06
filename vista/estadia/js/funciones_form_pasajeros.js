@@ -126,7 +126,7 @@ $(document).ready(function(){
     
     //valida existencia de pasajeros
     $("#nrodoc").blur(function(){
-        if($(this).val()!=''){
+        if($(this).val()!='' && $(this).val().length==8){
             $.post('/sisjungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
                 if(datos.length>0){
                     alert('Ya esta registrado un pasajero con este Nro de DNI...');

@@ -55,8 +55,8 @@
             <tr>
                 <td><label>Tipo Habitacion:</label></td>
                 <td>
-                    <select placeholder="Seleccione..." class="list" id="tipo_habitacion">
-                        <option value="0">Seleccione...</option>
+                    <select placeholder="Seleccione..." class="combo" id="tipo_habitacion">
+                        <option value="0"></option>
                         <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
                         <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
                         <?php }?>
