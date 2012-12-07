@@ -29,11 +29,11 @@ Class menu {
         if(isset($this->_datos) && count($this->_datos)){
             for($i=0; $i< count($this->_datos); $i++){
                 if($this->_c==0){
-                    $descripcion=  $this->_datos[$i]['MODULOS'];
+                    $descripcion=  $this->_datos[$i]['XMODULOS'];
                     echo "<li>$descripcion<ul>";
                     $this->_c = 1;
                 }
-                if ($descripcion == $this->_datos[$i]['MODULOS']){
+                if ($descripcion == $this->_datos[$i]['XMODULOS']){
                     $url = BASE_URL . $this->_datos[$i]['URL'];
                     echo "<li><a href='$url'>" . $this->_datos[$i]['MODULOS_HIJOS'] . "</a></li>";
                 } else {

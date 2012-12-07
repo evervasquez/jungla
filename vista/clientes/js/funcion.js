@@ -153,10 +153,10 @@
                     html+= '<td>'+datos[0]['UBIGEO']+'</td>';
                     html+= '</tr>';
                     }
-                    if(datos[0]['MEMBRESIA'] != "Desconocido"){
+                    if(datos[0]['XMEMBRESIA'] != "Desconocido"){
                     html+= '<tr>';
                     html+= '<td>Membresia:</td>';
-                    html+= '<td>'+datos[0]['MEMBRESIA']+'</td>';
+                    html+= '<td>'+datos[0]['XMEMBRESIA']+'</td>';
                     html+= '</tr>';
                     }
                }

@@ -188,10 +188,10 @@ $(function(){
                     html+= '</tr>';
                     html+= '<tr>';
                     html+= '<td>Membresia:</td>';
-                    if(datos[0]['MEMBRESIA']==null){
+                    if(datos[0]['XMEMBRESIA']==null){
                         html+= '<td></td>';
                     }else{
-                        html+= '<td>'+datos[0]['MEMBRESIA']+'</td>';
+                        html+= '<td>'+datos[0]['XMEMBRESIA']+'</td>';
                     }
                     html+= '</tr>';
                }
