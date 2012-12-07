@@ -1,6 +1,7 @@
-<?php
+<?php //
 $ns = 'http://localhost/jungla/webservice/';
 $ep= 'http://localhost/jungla/webservice/servidor.php';
+//echo BASE_URL.'lib/nusoap/nusoap.php';
 //se crea un objeto soap_server
 $server = new soap_server();
 //se configura el servidor
@@ -87,5 +88,5 @@ $server->service($HTTP_RAW_POST_DATA);
 //$r=get_habitaciones();
 //echo '<pre>';
 //print_r($r);
-?>
 
+?>
