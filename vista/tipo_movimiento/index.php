@@ -9,7 +9,7 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idtipo_movimiento'] ?></td>
+                <td class="tabtr"><?php echo $this->datos[$i]['IDTIPO_MOVIMIENTO'] ?></td>
                 <td><?php echo $this->datos[$i]['descripcion'] ?></td>
                 <td class="tabtr" align="center">
                 <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>tipo_movimiento/editar/<?php echo $this->datos[$i]['idtipo_movimiento'] ?>')">

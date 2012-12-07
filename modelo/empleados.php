@@ -1,6 +1,6 @@
 <?php
 
-class empleados {
+class empleados extends Main{
 
     public $idempleado;
     public $nombres;
@@ -31,7 +31,7 @@ class empleados {
 //            print_r($datos);
 //            echo '</pre>';
 //            exit;
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_empleados", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_empleados", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -42,7 +42,7 @@ class empleados {
             $this->telefono, $this->direccion, $this->fecha_nacimiento, $this->fecha_contratacion,  
             $this->idubigeo, $this->idperfil, $this->idprofesion, $this->usuario, $this->clave, $this->estado,
             $this->idactividad, $this->idtipo_empleado);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_empleados", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_empleados", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -62,20 +62,25 @@ class empleados {
             $this->perfil='';
         }
         $datos = array($this->idempleado, $this->nombres, $this->apellidos, $this->perfil);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_empleados", $datos);
+        $r = $this->get_consulta("pa_selecciona_empleados", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+       if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
     public function elimina() {
         $datos = array($this->idempleado);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_empleados", $datos);
+        $r = $this->get_consulta("pa_elimina_empleados", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -83,20 +88,28 @@ class empleados {
     
     public function seleccionar($usuario,$clave) {
         $datos = array($usuario,$clave);
-        $r = consulta::procedimientoAlmacenado("pa_valida_login", $datos);
+        $r = $this->get_consulta("pa_selecciona_login", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+//            echo '<pre>';
+//            print_r($stmt->fetchall());
+//            die();
+        }
     }
     
     public function seleccion($usuario,$clave){
          $datos = array($usuario,$clave);
-        $r = consulta::procedimientoAlmacenado("pa_login_android", $datos);
+        $r = $this->get_consulta("pa_login_android", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

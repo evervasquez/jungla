@@ -25,32 +25,32 @@ class reportes_controlador extends controller {
     
     public function obtener_stock_por_ubicacion($ubicacion) {
         $datos = $this->_reportes->selecciona_stock_total($ubicacion);
-        $cabeceras = array('idproducto', 'descripcion', 'precio_unitario', 'observaciones', 'servicio', 'tipo_producto', 'unidad_medida', 'idubicacion', 'ubicacion', 'almacen', 'promocion', 'stock', 'precio_compra');
+        $cabeceras = array('IDPRODUCTO', 'DESCRIPCION', 'PRECIO_UNITARIO', 'OBSERVACIONES', 'SERVICIO', 'TIPO_PRODUCTO', 'UNIDAD_MEDIDAD', 'IDUBICACION', 'UBICACION', 'ALMACEN', 'PROMOCION', 'STOCK', 'PRECIO_COMPRA');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_ubicaciones() {
         $datos = $this->_reportes->selecciona_ubicaciones();
-        $cabeceras = array('idubicacion', 'descripcion');
+        $cabeceras = array('IDUBICACION', 'DESCRIPCION');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
 
     public function obtener_datos_empresa() {
         $datos =$this->_reportes->selecciona_datos_empresa();
-        $cabeceras = array ('razon_social','ruc','nombre_comercial',
-            'clase','categoria','numero_certificado',
-            'direccion','telefono','fax','region',
-            'provincia','distrito','pagina_web',
-            'e_mail','rep_venta_1','rep_venta_2','rep_venta_3','rep_venta_4','rep_venta_5','rep_venta_6','rep_venta_7');
+        $cabeceras = array ('RAZON_SOCIAL','RUC','NOMBRE_COMERCIAL',
+            'CLASE','CATEGORIA','NUMERO_CERTIFICADO',
+            'DIRECCION','TELEFONO','FAX','REGION',
+            'PROVINCIA','DISTRITO','PAGINA_WEB',
+            'E_MAIL','REP_VENTA_1','REP_VENTA_2','REP_VENTA_3','REP_VENTA_4','REP_VENTA_5','REP_VENTA_6','REP_VENTA_7');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_numero_arribos_x_tipo_habitacion($mesano) {
         $datos =$this->_reportes->selecciona_numero_arribos_x_tipo_habitacion($mesano);
-        $cabeceras = array ('idtipo_habitacion', 'descripcion', 'cantidad');
+        $cabeceras = array ('IDTIPO_HABITACION', 'DESCRIPCION', 'CANTIDAD');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -58,7 +58,7 @@ class reportes_controlador extends controller {
     public function obtener_numero_arribos_huesped_ubigeo_internacional($mesano) {
         $datos =$this->_reportes->selecciona_numero_arribos_huesped_ubigeo_internacional($mesano);
         if($mesano[2]==1){
-            $cabeceras = array ('idcontinente', 'descripcion_continente','cantidad');
+            $cabeceras = array ('IDCONTINENTE', 'descripcion_continente','cantidad');
         } else {
             $cabeceras = array ('idpais', 'descripcion', 'cantidad');
         }

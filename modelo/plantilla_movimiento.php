@@ -1,6 +1,6 @@
 <?php
 
-class plantilla_movimiento {
+class plantilla_movimiento extends Main{
 
     public $idplantilla_movimiento;
     public $descripcion;
@@ -24,20 +24,25 @@ class plantilla_movimiento {
             $this->concepto_movimiento='';
         }
         $datos = array($this->idplantilla_movimiento, $this->descripcion, $this->cuenta, $this->concepto_movimiento);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_plantilla_movimiento", $datos);
+        $r = $this->get_consulta("pa_selecciona_plantilla_movimiento", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idplantilla_movimiento);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_plantilla_movimiento", $datos);
+        $r = $this->get_consulta("pa_elimina_plantilla_movimiento", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -48,7 +53,7 @@ class plantilla_movimiento {
             $this->idplantilla_movimiento=0;
         }
         $datos = array($this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber,$this->idplantilla_movimiento);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plantilla_movimiento", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_plantilla_movimiento", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -56,7 +61,7 @@ class plantilla_movimiento {
 
     public function actualiza() {
         $datos = array($this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber,$this->idplantilla_movimiento);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_plantilla_movimiento", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_plantilla_movimiento", $datos);
         $error = $r[1];
         $r = null;
         return $error;

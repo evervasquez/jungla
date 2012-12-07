@@ -1,6 +1,6 @@
 <?php
 
-class ventas {
+class ventas extends Main{
 
     public $idventa;
     public $estado;
@@ -21,7 +21,7 @@ class ventas {
             $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
 //        echo '<pre>';
 //                print_r($datos);exit;
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_ventas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -35,10 +35,10 @@ class ventas {
         if(is_null($this->estado_pago)){
             $datos = array(0, $this->observaciones, $this->idtipo_comprobante, $this->idcliente, 
             $this->idempleado, $this->idtipo_transaccion,  $this->importe, $this->igv);
-            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ventas", $datos);
+            $r = $this->get_consulta("pa_inserta_actualiza_ventas", $datos);
         }  else {
             $datos = array($this->idventa, $this->estado_pago);
-            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_estado_pago_ventas", $datos);
+            $r = $this->get_consulta("pa_inserta_actualiza_estado_pago_ventas", $datos);
         }
         $error = $r[1];
         $r = null;
@@ -50,19 +50,25 @@ class ventas {
             $this->idventa=0;
         }
         $datos = array($this->idventa);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_ventas", $datos);
+        $r = $this->get_consulta("pa_selecciona_ventas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idventa);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_ventas", $datos);
+        $r = $this->get_consulta("pa_elimina_ventas", $datos);
         $error = $r[1];
         $r = null;
         return $error;

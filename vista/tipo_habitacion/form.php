@@ -6,7 +6,7 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idtipo_habitacion']))echo $this->datos[0]['idtipo_habitacion']?>"/></td>
+                       value="<?php if(isset ($this->datos[0]['IDTIPO_HABITACION']))echo $this->datos[0]['IDTIPO_HABITACION']?>"/></td>
             <td>
                 <div class="msgerror"></div>
             </td>
@@ -14,7 +14,7 @@
         <tr>
             <td><label for="descripcion">Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese tipo de habitacion" required name="descripcion" onkeypress="return soloLetras(event)"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
             </td>
@@ -22,7 +22,7 @@
         <tr>
             <td><label for="costo">Costo:</label></td>
             <td><input type="text" class="precio" placeholder="Ingrese costo" required name="costo" 
-                       id="costo" value="<?php if(isset ($this->datos[0]['costo']))echo $this->datos[0]['costo']?>"/></td>
+                       id="costo" value="<?php if(isset ($this->datos[0]['COSTO']))echo $this->datos[0]['COSTO']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="costo"></div>
             </td>
@@ -30,7 +30,7 @@
         <tr>
             <td><label for="camas">Numero de camas:</label></td>
             <td><input type="text" class="cantidad" placeholder="Ingrese nro de camas" required name="camas" 
-                       id="camas" value="<?php if(isset ($this->datos[0]['camas']))echo $this->datos[0]['camas']?>"/></td>
+                       id="camas" value="<?php if(isset ($this->datos[0]['CAMAS']))echo $this->datos[0]['CAMAS']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="camas"></div>
             </td>

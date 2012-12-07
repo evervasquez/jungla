@@ -1,6 +1,6 @@
 <?php
 
-class provincias {
+class provincias extends Main{
     
     public $idubigeo;
     public $codigo_region;
@@ -13,15 +13,20 @@ class provincias {
             $this->codigo_provincia=0;
         }
         $datos = array($this->codigo_provincia,  $this->codigo_region);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_provincias", $datos);
+        $r = $this->get_consulta("pa_selecciona_provincias", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
     
 }

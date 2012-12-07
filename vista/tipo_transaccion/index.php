@@ -18,12 +18,12 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idtipo_transaccion'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td class="tabtr"><?php echo $this->datos[$i]['IDTIPO_TRANSACCION'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>tipo_transaccion/editar/<?php echo $this->datos[$i]['idtipo_transaccion'] ?>')">
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>tipo_transaccion/editar/<?php echo $this->datos[$i]['IDTIPO_TRANSACCION'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/edit.png" class="imgfrm" /></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>tipo_transaccion/eliminar/<?php echo $this->datos[$i]['idtipo_transaccion'] ?>')">
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>tipo_transaccion/eliminar/<?php echo $this->datos[$i]['IDTIPO_TRANSACCION'] ?>')">
                 <img src="<?php echo BASE_URL?>lib/img/delete.png" class="imgfrm" /></a></td>
             </tr>
         <?php } ?>

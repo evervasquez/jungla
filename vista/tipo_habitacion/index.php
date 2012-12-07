@@ -20,13 +20,13 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idtipo_habitacion'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos[$i]['costo'] ?></td>
-                <td><?php echo $this->datos[$i]['camas'] ?></td>
+                <td><?php echo $this->datos[$i]['IDTIPO_HABITACION'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos[$i]['COSTO'] ?></td>
+                <td><?php echo $this->datos[$i]['CAMAS'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>tipo_habitacion/editar/<?php echo $this->datos[$i]['idtipo_habitacion'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>tipo_habitacion/eliminar/<?php echo $this->datos[$i]['idtipo_habitacion'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>tipo_habitacion/editar/<?php echo $this->datos[$i]['IDTIPO_HABITACION'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>tipo_habitacion/eliminar/<?php echo $this->datos[$i]['IDTIPO_HABITACION'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

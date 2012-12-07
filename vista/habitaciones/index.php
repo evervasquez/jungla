@@ -19,22 +19,22 @@
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idhabitacion'] ?></td>
-                <td><?php echo $this->datos[$i]['nro_habitacion'] ?></td>
-                <?php if($this->datos[$i]['ventilacion']==1){ ?>
+                <td><?php echo $this->datos[$i]['IDHABITACION'] ?></td>
+                <td><?php echo $this->datos[$i]['NRO_HABITACION'] ?></td>
+                <?php if($this->datos[$i]['VENTILACION']==1){ ?>
                 <td>Ventilador</td>
                 <?php }else{ ?>
                 <td>Aire Acondicionado</td>
                 <?php } ?>
-                <?php if($this->datos[$i]['estado']==1){ ?>
+                <?php if($this->datos[$i]['ESTADO']==1){ ?>
                 <td>Habilitado</td>
                 <?php }else{ ?>
                 <td>En Mantenimiento</td>
                 <?php } ?>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgdelete"></a>
-                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idhabitacion'] ?>')" class="imgview"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>habitaciones/editar/<?php echo $this->datos[$i]['IDHABITACION'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>habitaciones/eliminar/<?php echo $this->datos[$i]['IDHABITACION'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['IDHABITACION'] ?>')" class="imgview"></a>
                 </td>
             </tr>
         <?php } ?>

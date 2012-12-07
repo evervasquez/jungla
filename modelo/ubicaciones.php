@@ -1,6 +1,6 @@
 <?php
 
-class ubicaciones {
+class ubicaciones extends Main{
 
     public $idubicacion;
     public $idalmacen;
@@ -18,20 +18,25 @@ class ubicaciones {
             $this->almacenes='';
         }
         $datos = array($this->idubicacion, $this->descripcion, $this->almacenes);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_ubicaciones", $datos);
+        $r = $this->get_consulta("pa_selecciona_ubicaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idubicacion);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_ubicaciones", $datos);
+        $r = $this->get_consulta("pa_elimina_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -39,7 +44,7 @@ class ubicaciones {
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->idalmacen);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ubicaciones", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -47,7 +52,7 @@ class ubicaciones {
 
     public function actualiza() {
         $datos = array($this->idubicacion, $this->descripcion, $this->idalmacen);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_ubicaciones", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;

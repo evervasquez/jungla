@@ -1,6 +1,6 @@
 <?php
 
-class comprobantes {
+class comprobantes extends Main{
 
     public $idcomprobante;
     public $serie;
@@ -19,19 +19,25 @@ class comprobantes {
             $this->tipo='';
         }
         $datos = array($this->idcomprobante, $this->descripcion, $this->tipo);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_comprobantes", $datos);
+        $r = $this->get_consulta("pa_selecciona_comprobantes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
     public function elimina() {
         $datos = array($this->idcomprobante);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_comprobantes", $datos);
+        $r = $this->get_consulta("pa_elimina_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -39,7 +45,7 @@ class comprobantes {
 
     public function inserta() {
         $datos = array(0, $this->serie, $this->correlativo, $this->idtipo_comprobante);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_comprobantes", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -47,7 +53,7 @@ class comprobantes {
 
     public function actualiza() {
         $datos = array($this->idcomprobante, $this->serie, $this->correlativo, $this->idtipo_comprobante);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_comprobantes", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;

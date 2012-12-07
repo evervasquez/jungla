@@ -21,15 +21,15 @@
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['nro_comprobante'] ?></td>
-                <td><?php echo $this->datos[$i]['proveedor'] ?></td>
-                <td><?php echo $this->datos[$i]['fecha_compra'] ?></td>
-                <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] ?></td>
-                <td><?php echo $this->datos[$i]['monto_pagado'] ?></td>
-                <td><?php echo ($this->datos[$i]['igv']+1)*$this->datos[$i]['importe'] - $this->datos[$i]['monto_pagado'] ?></td>
+                <td><?php echo $this->datos[$i]['NRO_COMPROBANTE'] ?></td>
+                <td><?php echo $this->datos[$i]['PROVEEDOR'] ?></td>
+                <td><?php echo $this->datos[$i]['FECHA_COMPRA'] ?></td>
+                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] ?></td>
+                <td><?php echo $this->datos[$i]['MONTO_PAGADO'] ?></td>
+                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'] ?></td>
                 <td class="tabtr" align="center">
-                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra']?>">[Cronograma]</a>
-                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['idcompra']?>">[Amortizar]</a>
+                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA']?>">[Cronograma]</a>
+                    <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA']?>">[Amortizar]</a>
                 </td>
             </tr>
         <?php } ?>

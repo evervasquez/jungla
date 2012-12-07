@@ -12,7 +12,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/articulos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/articulos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -24,18 +24,18 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idarticulo+'</td>';
-                    HTML = HTML + '<td>'+datos[i].titulo+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
+                    HTML = HTML + '<td>'+datos[i].IDARTICULO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].TITULO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
                     HTML = HTML + '<td>';
-                    if(datos[i].imagen != null){
-                    HTML = HTML + '<a href="/sisjungla/lib/img/articulos/'+datos[i].imagen+'">';
-                    HTML = HTML + '<img src="/sisjungla/lib/img/articulos/thumb/thumb_'+datos[i].imagen+'" />';
+                    if(datos[i].IMAGEN != null){
+                    HTML = HTML + '<a href="/jungla/lib/img/articulos/'+datos[i].IMAGEN+'">';
+                    HTML = HTML + '<img src="/jungla/lib/img/articulos/thumb/thumb_'+datos[i].IMAGEN+'" />';
                     HTML = HTML +'</a>';
                     }
                     HTML = HTML + '</td>';
-                    var editar='/sisjungla/articulos/editar/'+datos[i].idarticulo; 
-                    var eliminar='/sisjungla/articulos/eliminar/'+datos[i].idarticulo;   
+                    var editar='/jungla/articulos/editar/'+datos[i].IDARTICULO; 
+                    var eliminar='/jungla/articulos/eliminar/'+datos[i].IDARTICULO;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

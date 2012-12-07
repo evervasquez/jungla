@@ -15,7 +15,7 @@ class reserva_controlador extends controller{
 
     public function index() {
         if($_POST['guardar']==1){
-            echo '<pre>';print_r($_POST);exit;
+            //echo '<pre>';print_r($_POST);exit;
             //registrar estadia(venta)
             $this->_ventas->idtipo_comprobante=0;
             for($i=0;$i<count($_POST['idpasajero']);$i++){
@@ -25,7 +25,7 @@ class reserva_controlador extends controller{
             }
             $this->_ventas->idempleado=session::get('idempleado');
             $this->_ventas->idtipo_transaccion=2;
-            $dato_venta=$this->_ventas->insertar();
+            $dato_venta=$this->_ventas->inserta();
             
             //insertar detalle estadía
             for($i=0;$i<count($_POST['idpasajero']);$i++){

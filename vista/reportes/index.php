@@ -102,9 +102,9 @@ function todo(Form)
                 Producto: 
                 
                 <span class="">
-                                <input type="hidden" id="idproducto" name="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                                <input type="hidden" id="idproducto" name="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
                                 <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
-                                   id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
+                                   id="producto" value="<?php if(isset ($this->datos[0]['PRODUCTO']))echo $this->datos[0]['PRODUCTO']?>"/>
                             </span>
                             <span  class="">
                                 <button type="button" class="k-button" id="btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
@@ -143,13 +143,13 @@ function todo(Form)
         </tr>
         <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['um'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['precio_unitario'] ?></td>
-                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>',
-                    '<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>','<?php echo $this->datos_productos[0]['um']?>',
-                        <?php echo $this->datos_productos[$i]['precio_unitario'] ?>)" class="imgselect"></a></td>
+                <td><?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['UM'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['PRECIO_UNITARIO'] ?></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>',
+                    '<?php echo utf8_encode($this->datos_productos[$i]['DESCRIPCION']) ?>','<?php echo $this->datos_productos[0]['UM']?>',
+                        <?php echo $this->datos_productos[$i]['PRECIO_UNITARIO'] ?>)" class="imgselect"></a></td>
             </tr>
         <?php } ?>
     </table>

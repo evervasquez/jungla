@@ -48,7 +48,7 @@ $(document).ready(function(){
     });
     
     function buscar_producto(){
-        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+        $.post('/jungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -59,14 +59,14 @@ $(document).ready(function(){
                         '</tr>';
             for(var i=0;i<datos.length;i++){
                 HTML = HTML + '<tr>';
-                HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
-                HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                HTML = HTML + '<td>'+datos[i].um+'</td>';
-                HTML = HTML + '<td>'+datos[i].precio_unitario+'</td>';
-                id=datos[i].idproducto;
-                producto=datos[i].descripcion;
-                um=datos[i].um;
-                pu=datos[i].precio_unitario;
+                HTML = HTML + '<td>'+datos[i].IDPRODUCTO+'</td>';
+                HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                HTML = HTML + '<td>'+datos[i].UM+'</td>';
+                HTML = HTML + '<td>'+datos[i].PRECIO_UNITARIO+'</td>';
+                id=datos[i].IDPRODUCTO;
+                producto=datos[i].DESCRIPCION;
+                um=datos[i].UM;
+                pu=datos[i].PRECIO_UNITARIO;
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos(\''+id+'\',\''+producto+'\',\''+um+'\',\''+pu+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            

@@ -113,7 +113,7 @@ class empleados_controlador extends controller {
     
     public function ver(){
         $this->_empleados->idempleado=$_POST['idempleado'];
-        echo json_encode($this->_empleados->selecciona());
+       echo json_encode($this->_empleados->selecciona());
     }
 
     public function editar($id) {
@@ -155,7 +155,7 @@ class empleados_controlador extends controller {
         $this->_provincias->codigo_region = 1901;
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         //obtenemos todas las ciudades que pertenecen a la provincia del empleado
-        $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
+        $this->_ubigeos->codigo_provincia = $datos[0]['IDPROVINCIA'];
         $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
 
         $this->_vista->datos = $datos;

@@ -2,7 +2,7 @@
     <h3>Amortizar Deuda:</h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"
-            value="<?php if(isset ($this->datos[0]['idcompra']))echo $this->datos[0]['idcompra']?>"/>
+            value="<?php if(isset ($this->datos[0]['IDCOMPRA']))echo $this->datos[0]['IDCOMPRA']?>"/>
 <table align="center">
     <tr>
         <td><label>Fecha Pago:</label></td>

@@ -16,7 +16,7 @@ Class alerta {
                 echo '<div class="likeboxwrap">';
                 echo '<div class="msg_pendientes"><ul>';
                 for($i=0; $i< count($this->_datos); $i++){
-                    echo "<li><a href='".BASE_URL . $this->_datos[$i]['modulo']."'>".$this->_datos[$i]['descripcion']."</a></li><br>";
+                    echo "<li><a href='".BASE_URL . $this->_datos[$i]['MODULO']."'>".$this->_datos[$i]['DESCRIPCION']."</a></li><br>";
                 }
                 echo '</ul></div></div></div></div>';
         } 

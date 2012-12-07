@@ -22,7 +22,7 @@ class interfaz_contable_controlador extends controller {
     
     public function obtener_asientos_intervalo_fechas($datos){
         $datos = $this->_interfaz_contable->selecciona_asientos_intervalo_fechas($datos);
-        $cabeceras = array('idasiento', 'fecha','concepto_movimiento','registro','nro_correlativo','nro_documento','nro_cuenta','cuenta','debe','haber','nro_operacion');
+        $cabeceras =  array('idasiento', 'fecha','concepto_movimiento','registro','nro_correlativo','nro_documento','nro_cuenta','cuenta','debe','haber','nro_operacion');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }

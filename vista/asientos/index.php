@@ -15,16 +15,16 @@
     </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
         <tr>
-            <td><?php echo $this->datos[$i]['nro_operacion'] ?></td>
-            <td><?php echo $this->datos[$i]['fecha'] ?></td>
-            <td><?php echo $this->datos[$i]['concepto_movimiento'] ?></td>
-            <td><?php echo $this->datos[$i]['registro'] ?></td>
-            <td><?php echo $this->datos[$i]['nro_correlativo'] ?></td>
-            <td><?php echo $this->datos[$i]['nro_documento'] ?></td>
-            <td><?php echo $this->datos[$i]['nro_cuenta'] ?></td>
-            <td><?php echo $this->datos[$i]['cuenta'] ?></td>
-            <td><?php echo $this->datos[$i]['debe'] ?></td>
-            <td><?php echo $this->datos[$i]['haber'] ?></td>
+            <td><?php echo $this->datos[$i]['NRO_OPERACION'] ?></td>
+            <td><?php echo $this->datos[$i]['FECHA'] ?></td>
+            <td><?php echo $this->datos[$i]['CONCEPTO_MOVIMIENTO'] ?></td>
+            <td><?php echo $this->datos[$i]['REGISTRO'] ?></td>
+            <td><?php echo $this->datos[$i]['NRO_CORRELATIVO'] ?></td>
+            <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
+            <td><?php echo $this->datos[$i]['NRO_CUENTA'] ?></td>
+            <td><?php echo $this->datos[$i]['CUENTA'] ?></td>
+            <td><?php echo $this->datos[$i]['DEBE'] ?></td>
+            <td><?php echo $this->datos[$i]['HABER'] ?></td>
         </tr>
     <?php } ?>
     </table>

@@ -8,9 +8,9 @@ $(document).ready(function(){
             $("#div_modulos").hide("slow");
             $("#celda_aceptar").hide();
         }else{
-            $.post('/sisjungla/permisos/get_permisos','idperfil='+$(this).val(),function(datos){
+            $.post('/jungla/permisos/get_permisos','idperfil='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $("#"+datos[i].idmodulo).attr('checked','checked');
+                    $("#"+datos[i].IDMODULO).attr('checked','checked');
                 }
                 $("#celda_aceptar").show();
             },'json');
@@ -19,9 +19,9 @@ $(document).ready(function(){
     });
     $("input:checkbox").click(function(){
         if(this.checked){
-            $.post('/sisjungla/permisos/inserta_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
+            $.post('/jungla/permisos/inserta_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
         }else{
-            $.post('/sisjungla/permisos/elimina_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
+            $.post('/jungla/permisos/elimina_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
         }
         
     });

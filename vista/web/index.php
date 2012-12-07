@@ -43,14 +43,14 @@
                 <h4 class="k-widget k-header">Nuestros Articulos</h4>
                 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
                 <div class="article" id="gallery">
-                    <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
-                        <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>" title="<?php echo $this->datos[$i]['titulo'] ?>">
-                            <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" class="fotoArt" />
+                    <?php if (isset ($this->datos[$i]['IMAGEN']) && ($this->datos[$i]['IMAGEN'] != " ")){?>
+                        <a href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['IMAGEN'] ?>" title="<?php echo $this->datos[$i]['TITULO'] ?>">
+                            <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['IMAGEN'] ?>" class="fotoArt" />
                         </a>
                         <?php } ?>
                     <span class="contArt">
-                        <h3><?php echo $this->datos[$i]['titulo'] ?></h3>
-                        <p><?php echo $this->datos[$i]['descripcion'] ?></p>
+                        <h3><?php echo $this->datos[$i]['TITULO'] ?></h3>
+                        <p><?php echo $this->datos[$i]['DESCRIPCION'] ?></p>
                     </span>
                 </div>
                 <?php }} ?>

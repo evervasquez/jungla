@@ -23,14 +23,14 @@
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idventa'] ?></td>
-                <td><?php echo $this->datos[$i]['tipo'] ?></td>
-                <td><?php echo $this->datos[$i]['nro_documento'] ?></td>
-                <td><?php echo $this->datos[$i]['cliente'] ?></td>
-                <td><?php echo $this->datos[$i]['fecha_venta'] ?></td>
-                <td><?php echo $this->datos[$i]['empleado'] ?></td>
+                <td><?php echo $this->datos[$i]['IDVENTA'] ?></td>
+                <td><?php echo $this->datos[$i]['TIPO'] ?></td>
+                <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
+                <td><?php echo $this->datos[$i]['CLIENTE'] ?></td>
+                <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
+                <td><?php echo $this->datos[$i]['EMPLEADO'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idventa'] ?>')"></a>  
+                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
                 </td>
             </tr>
         <?php } ?>

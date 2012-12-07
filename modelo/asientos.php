@@ -1,6 +1,6 @@
 <?php
 
-class asientos {
+class asientos extends Main{
 
     public $idcompra;
     public $idasiento;
@@ -14,7 +14,7 @@ class asientos {
             $this->idasiento=0;
         }
         $datos = array($this->idasiento);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_asientos", $datos);
+        $r = $this->get_consulta("pa_selecciona_asientos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -27,7 +27,7 @@ class asientos {
 
     public function elimina() {
         $datos = array($this->idasiento);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_articulo", $datos);
+        $r = $this->get_consulta("pa_elimina_articulo", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -36,9 +36,9 @@ class asientos {
     public function inserta($idcompra,$idventa) {
         $datos = array($idcompra,$idventa);
         if($idventa == 0){
-            $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_compra", $datos);
+            $r = $this->get_consulta("pa_inserta_asientos_compra", $datos);
         }else{
-            $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_venta", $datos);
+            $r = $this->get_consulta("pa_inserta_asientos_venta", $datos);
         }
         $error = $r[1];
         $r = null;
@@ -47,7 +47,7 @@ class asientos {
 
     public function actualiza() {
         $datos = array($this->idasiento, $this->fecha, $this->glosa, $this->idplantilla_movimiento, $this->nro_asiento);
-        $r = consulta::procedimientoAlmacenado("pa_actualiza_articulo", $datos);
+        $r = $this->get_consulta("pa_actualiza_articulo", $datos);
         $error = $r[1];
         $r = null;
         return $error;

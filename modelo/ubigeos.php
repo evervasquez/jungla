@@ -1,6 +1,6 @@
 <?php
 
-class ubigeos {
+class ubigeos extends Main{
 
     public $idubigeo;
     public $codigo_region;
@@ -16,7 +16,7 @@ class ubigeos {
             $this->idpais=0;
         }
         $datos = array($this->idubigeo,  $this->codigo_provincia, $this->idpais);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_ubigeos", $datos);
+        $r = $this->get_consulta("pa_selecciona_ubigeos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

@@ -6,7 +6,7 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idubicacion']))echo $this->datos[0]['idubicacion']?>"/></td>
+                       value="<?php if(isset ($this->datos[0]['IDUBICACION']))echo $this->datos[0]['IDUBICACION']?>"/></td>
             <td>
                 <div class="msgerror"></div>
             </td>
@@ -14,7 +14,7 @@
         <tr>
             <td><label for="descripcion">Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese ubicacion" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
             </td>
@@ -25,10 +25,10 @@
                 <select class="combo" placeholder="Seleccione..." required name="almacen" id="almacen">
                     <option></option>
                     <?php for($i=0;$i<count($this->datosAlmacen);$i++){ ?>
-                        <?php if( $this->datos[0]['idalmacen'] == $this->datosAlmacen[$i]['idalmacen'] ){ ?>
-                    <option value="<?php echo $this->datosAlmacen[$i]['idalmacen'] ?>" selected="selected"><?php echo $this->datosAlmacen[$i]['descripcion'] ?></option>
+                        <?php if( $this->datos[0]['IDALMACEN'] == $this->datosAlmacen[$i]['IDALMACEN'] ){ ?>
+                    <option value="<?php echo $this->datosAlmacen[$i]['IDALMACEN'] ?>" selected="selected"><?php echo $this->datosAlmacen[$i]['DESCRIPCION'] ?></option>
                         <?php } else { ?>
-                    <option value="<?php echo $this->datosAlmacen[$i]['idalmacen'] ?>"><?php echo $this->datosAlmacen[$i]['descripcion'] ?></option>
+                    <option value="<?php echo $this->datosAlmacen[$i]['IDALMACEN'] ?>"><?php echo $this->datosAlmacen[$i]['DESCRIPCION'] ?></option>
                         <?php } ?>
                     <?php } ?>
                 </select>

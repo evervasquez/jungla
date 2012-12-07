@@ -20,13 +20,13 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idcomprobante'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos[$i]['serie'] ?></td>
-                <td><?php echo $this->datos[$i]['correlativo'] ?></td>
+                <td><?php echo $this->datos[$i]['IDCOMPROBANTE'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos[$i]['SERIE'] ?></td>
+                <td><?php echo $this->datos[$i]['CORRELATIVO'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>comprobantes/editar/<?php echo $this->datos[$i]['idcomprobante'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>comprobantes/eliminar/<?php echo $this->datos[$i]['idcomprobante'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>comprobantes/editar/<?php echo $this->datos[$i]['IDCOMPROBANTE'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>comprobantes/eliminar/<?php echo $this->datos[$i]['IDCOMPROBANTE'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

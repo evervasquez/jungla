@@ -14,7 +14,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/ventas/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/ventas/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -28,13 +28,13 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idventa+'</td>';
-                    HTML = HTML + '<td>'+datos[i].tipo+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nro_documento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].cliente+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha_venta+'</td>';
-                    HTML = HTML + '<td>'+datos[i].empleado+'</td>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].idventa+'\')" class="imgview"></a>';
+                    HTML = HTML + '<td>'+datos[i].IDVENTA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].TIPO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].NRO_DOCUMENTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].CLIENTE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].FECHA_VENTA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].EMPLEADO+'</td>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDVENTA+'\')" class="imgview"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -84,36 +84,36 @@
        
     });
     function ver(id){
-           $.post('/sisjungla/ventas/ver','idventa='+id,function(datos){
-                html= '<h3>Datos de la Venta N°: '+datos[0]['nro_documento']+'</h3>';
+           $.post('/jungla/ventas/ver','idventa='+id,function(datos){
+                html= '<h3>Datos de la Venta N°: '+datos[0]['NRO_DOCUMENTO']+'</h3>';
                 html+='<table>';
                 html+= '<tr>';
                 html+= '<td>Nro.Documento:</td>';
-                html+= '<td>'+datos[0]['nro_documento']+'</td>';
+                html+= '<td>'+datos[0]['NRO_DOCUMENTO']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Fecha de Venta:</td>';
-                html+= '<td>'+datos[0]['fecha_venta']+'</td>';
+                html+= '<td>'+datos[0]['FECHA_VENTA']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Tipo de Transacción:</td>';
-                html+= '<td>'+datos[0]['tipo']+'</td>';
+                html+= '<td>'+datos[0]['TIPO']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Importe:</td>';
-                html+= '<td>'+datos[0]['importe']+'</td>';
+                html+= '<td>'+datos[0]['IMPORTE']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>IGV:</td>';
-                html+= '<td>'+datos[0]['igv']+'</td>';
+                html+= '<td>'+datos[0]['IGV']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Total:</td>';
-                html+= '<td>'+(parseFloat(datos[0]['igv'])+1)*(datos[0]['importe'])+'</td>';
+                html+= '<td>'+(parseFloat(datos[0]['IGV'])+1)*(datos[0]['IMPORTE'])+'</td>';
                 html+= '</tr>';
                 html+= '</table>';
            },'json'),
-           $.post('/sisjungla/ventas/ver2','idventa='+id,function(datos){
+           $.post('/jungla/ventas/ver2','idventa='+id,function(datos){
                 html+= '<p>Detalle Venta</p>';
                 html+= '<table border="1">';
                 html+= '<tr>';
@@ -127,21 +127,21 @@
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
                     html+= '<td>'+(i+1)+'</td>';
-                    if(datos[0]['producto'] == 'vacio'){
-                        html+= '<td>'+datos[0]['paquete']+'</td>';
+                    if(datos[0]['PRODUCTO'] == 'vacio'){
+                        html+= '<td>'+datos[0]['PAQUETE']+'</td>';
                     }
                     else{
-                        html+= '<td>'+datos[0]['producto']+'</td>';
+                        html+= '<td>'+datos[0]['PRODUCTO']+'</td>';
                     }
-                    if(datos[0]['um'] == null){
+                    if(datos[0]['UM'] == null){
                         html+= '<td></td>';
                     }
                     else{
-                        html+= '<td>'+datos[0]['um']+'</td>';
+                        html+= '<td>'+datos[0]['UM']+'</td>';
                     }
-                    html+= '<td>'+datos[0]['cantidad']+'</td>';
-                    html+= '<td>'+datos[0]['precio_venta']+'</td>';
-                    html+= '<td>'+datos[0]['cantidad']*datos[0]['precio_venta']+'</td>';
+                    html+= '<td>'+datos[0]['CANTIDAD']+'</td>';
+                    html+= '<td>'+datos[0]['PRECIO_VENTA']+'</td>';
+                    html+= '<td>'+datos[0]['CANTIDAD']*datos[0]['PRECIO_VENTA']+'</td>';
                     html+= '</tr>';
                 }
                 html+= '</table>';

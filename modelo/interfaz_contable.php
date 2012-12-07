@@ -9,13 +9,13 @@
  *
  * @author doraliza santa cruz
  */
-class interfaz_contable{
+class interfaz_contable extends Main{
     
     public $datos;
     
     public function selecciona_asientos_intervalo_fechas($fecha_inicio_fecha_fin){
         $datos = $fecha_inicio_fecha_fin;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_asientos_intervalo_fechas", $datos);
+        $r = $this->get_consulta("pa_selecciona_asientos_intervalo_fechas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         return $stmt->fetchall(PDO::FETCH_ASSOC);
     }

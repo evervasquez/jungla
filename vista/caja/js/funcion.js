@@ -12,7 +12,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/caja/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/caja/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Empleado</th>'+
@@ -23,10 +23,10 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].empleado_n+' '+datos[i].empleado_a+'</td>';
-                    HTML = HTML + '<td>'+datos[i].c_fecha+'</td>';
-                    HTML = HTML + '<td>'+datos[i].saldo+'</td>';
-                    if(datos[i].estado == 1){
+                    HTML = HTML + '<td>'+datos[i].EMPLEADO_N+' '+datos[i].EMPLEADO_A+'</td>';
+                    HTML = HTML + '<td>'+datos[i].C_FECHA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].SALDO+'</td>';
+                    if(datos[i].ESTADO == 1){
                         HTML = HTML + '<td>Aperturado</td>';
                     }
                     else{

@@ -5,7 +5,7 @@
 });
  function cargar_php(pagina,capa){
         $('#'+capa).toggle();
-        $('#'+capa).load("/sisjungla/reportes_graficos/"+pagina,function(){
+        $('#'+capa).load("/jungla/reportes_graficos/"+pagina,function(){
             $('#'+capa).show("slow");
         });
     }

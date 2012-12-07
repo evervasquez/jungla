@@ -20,19 +20,19 @@
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idarticulo'] ?></td>
-                <td><?php echo $this->datos[$i]['titulo'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td><?php echo $this->datos[$i]['IDARTICULO'] ?></td>
+                <td><?php echo $this->datos[$i]['TITULO'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
                 <td>
-                    <?php if (isset ($this->datos[$i]['imagen']) && ($this->datos[$i]['imagen'] != " ")){?>
-                    <a href="javascript:void()" onclick="window.open('<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['imagen'] ?>')" title="Clic para ver la imagen">
-                        <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['imagen'] ?>" />
+                    <?php if (isset ($this->datos[$i]['IMAGEN']) && ($this->datos[$i]['IMAGEN'] != " ")){?>
+                    <a href="javascript:void()" onclick="window.open('<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['IMAGEN'] ?>')" title="Clic para ver la imagen">
+                        <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['IMAGEN'] ?>" />
                     </a>
                     <?php } ?>
                 </td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>articulos/editar/<?php echo $this->datos[$i]['idarticulo'] ?>')" class="imgedit" ></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>articulos/eliminar/<?php echo $this->datos[$i]['idarticulo'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>articulos/editar/<?php echo $this->datos[$i]['IDARTICULO'] ?>')" class="imgedit" ></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>articulos/eliminar/<?php echo $this->datos[$i]['IDARTICULO'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

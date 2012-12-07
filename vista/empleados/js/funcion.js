@@ -15,7 +15,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/empleados/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/empleados/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -29,17 +29,17 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idempleado+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nombres+'</td>';
-                    HTML = HTML + '<td>'+datos[i].apellidos+'</td>';
-                    HTML = HTML + '<td>'+datos[i].telefono+'</td>';
-                    HTML = HTML + '<td>'+datos[i].direccion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].perfil+'</td>';
-                    var editar='/sisjungla/empleados/editar/'+datos[i].idempleado; 
-                    var eliminar='/sisjungla/empleados/eliminar/'+datos[i].idempleado;   
+                    HTML = HTML + '<td>'+datos[i].IDEMPLEADO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].NOMBRES+'</td>';
+                    HTML = HTML + '<td>'+datos[i].APELLIDOS+'</td>';
+                    HTML = HTML + '<td>'+datos[i].TELEFONO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DIRECCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].PERFIL+'</td>';
+                    var editar='/jungla/empleados/editar/'+datos[i].IDEMPLEADO; 
+                    var eliminar='/jungla/empleados/eliminar/'+datos[i].IDEMPLEADO;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].idempleado+'\')" class="imgview"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDEMPLEADO+'\')" class="imgview"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -91,61 +91,61 @@
        
     });
     function ver(id){
-           $.post('/sisjungla/empleados/ver','idempleado='+id,function(datos){
-               html= '<h3>Datos del Empleado: '+datos[0]['nombres']+' '+datos[0]['apellidos']+'</h3>';
+           $.post('/jungla/empleados/ver','idempleado='+id,function(datos){
+               html= '<h3>Datos del Empleado: '+datos[0]['NOMBRES']+' '+datos[0]['APELLIDOS']+'</h3>';
                html+='<table>';
                html+= '<tr>';
                html+= '<td>Nombres:</td>';
-               html+= '<td>'+datos[0]['nombres']+'</td>';
+               html+= '<td>'+datos[0]['NOMBRES']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Apellidos:</td>';
-               html+= '<td>'+datos[0]['apellidos']+'</td>';
+               html+= '<td>'+datos[0]['APELLIDOS']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Dni:</td>';
-               html+= '<td>'+datos[0]['dni']+'</td>';
+               html+= '<td>'+datos[0]['DNI']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Telefono:</td>';
-               html+= '<td>'+datos[0]['telefono']+'</td>';
+               html+= '<td>'+datos[0]['TELEFONO']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<tr>';
                html+= '<td>Ciudad:</td>';
-               html+= '<td>'+datos[0]['ubigeo']+'</td>';
+               html+= '<td>'+datos[0]['UBIGEO']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Direccion:</td>';
-               html+= '<td>'+datos[0]['direccion']+'</td>';
+               html+= '<td>'+datos[0]['DIRECCION']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Fecha de Nacimiento:</td>';
-               html+= '<td>'+datos[0]['e_fecha_nacimiento']+'</td>';
+               html+= '<td>'+datos[0]['FECHA_NACIMIENTO']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Fecha de Contratacion:</td>';
-               html+= '<td>'+datos[0]['e_fecha_contratacion']+'</td>';
+               html+= '<td>'+datos[0]['FECHA_CONTRATACION']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Profesion:</td>';
-               html+= '<td>'+datos[0]['profesion']+'</td>';
+               html+= '<td>'+datos[0]['PROFESION']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Perfil:</td>';
-               html+= '<td>'+datos[0]['perfil']+'</td>';
+               html+= '<td>'+datos[0]['PERFIL']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Usuario:</td>';
-               html+= '<td>'+datos[0]['usuario']+'</td>';
+               html+= '<td>'+datos[0]['USUARIO']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Actividad:</td>';
-               html+= '<td>'+datos[0]['actividad']+'</td>';
+               html+= '<td>'+datos[0]['ACTIVIDAD']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Tipo de Empleado:</td>';
-               html+= '<td>'+datos[0]['tipo_empleado']+'</td>';
+               html+= '<td>'+datos[0]['TIPO_EMPLEADO']+'</td>';
                html+= '</tr>';
                html+= '</table>';
                html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';

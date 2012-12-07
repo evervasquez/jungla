@@ -12,7 +12,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/categorias/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/categorias/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -23,11 +23,11 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idcategoria+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nro_elemento+'</td>';
-                    var editar='/sisjungla/categorias/editar/'+datos[i].idcategoria; 
-                    var eliminar='/sisjungla/categorias/eliminar/'+datos[i].idcategoria;   
+                    HTML = HTML + '<td>'+datos[i].IDCATEGORIA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].NRO_ELEMENTO+'</td>';
+                    var editar='/jungla/categorias/editar/'+datos[i].IDCATEGORIA; 
+                    var eliminar='/jungla/categorias/eliminar/'+datos[i].IDCATEGORIA;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
@@ -38,6 +38,7 @@
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
                         pageSize: 7
+                       
                     },
                     pageable: true,
                     columns: [{field:"Codigo", width:8},

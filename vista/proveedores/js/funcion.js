@@ -14,7 +14,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/proveedores/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/proveedores/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -27,16 +27,16 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idproveedor+'</td>';
-                    HTML = HTML + '<td>'+datos[i].razon_social+'</td>';
-                    HTML = HTML + '<td>'+datos[i].representante+'</td>';
-                    HTML = HTML + '<td>'+datos[i].ruc+'</td>';
-                    HTML = HTML + '<td>'+datos[i].direccion+'</td>';
-                    var editar='/sisjungla/proveedores/editar/'+datos[i].idproveedor; 
-                    var eliminar='/sisjungla/proveedores/eliminar/'+datos[i].idproveedor;   
+                    HTML = HTML + '<td>'+datos[i].IDPROVEEDOR+'</td>';
+                    HTML = HTML + '<td>'+datos[i].RAZON_SOCIAL+'</td>';
+                    HTML = HTML + '<td>'+datos[i].REPRESENTANTE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].RUC+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DIRECCION+'</td>';
+                    var editar='/jungla/proveedores/editar/'+datos[i].IDPROVEEDOR; 
+                    var eliminar='/jungla/proveedores/eliminar/'+datos[i].IDPROVEEDOR;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].idproveedor+'\')"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].IDPROVEEDOR+'\')"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -85,39 +85,39 @@
         };
     });
        function ver(id){
-           $.post('/sisjungla/proveedores/ver','idproveedor='+id,function(datos){
-               html= '<h3>Datos del Proveedor "'+datos[0]['razon_social']+'"</h3>';
+           $.post('/jungla/proveedores/ver','idproveedor='+id,function(datos){
+               html= '<h3>Datos del Proveedor "'+datos[0]['RAZON_SOCIAL']+'"</h3>';
                html+='<table>';
                html+= '<tr>';
                html+= '<td>Razon Social:</td>';
-               html+= '<td>'+datos[0]['razon_social']+'</td>';
+               html+= '<td>'+datos[0]['RAZON_SOCIAL']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Representante:</td>';
-               html+= '<td>'+datos[0]['representante']+'</td>';
+               html+= '<td>'+datos[0]['REPRESENTANTE']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Ruc:</td>';
-               html+= '<td>'+datos[0]['ruc']+'</td>';
+               html+= '<td>'+datos[0]['RUC']+'</td>';
                html+= '</tr>';
-               if(datos[0]['telefono'] != null && datos[0]['telefono'] != ' '){
+               if(datos[0]['TELEFONO'] != null && datos[0]['TELEFONO'] != ' '){
                html+= '<tr>';
                html+= '<td>Telefono:</td>';
-               html+= '<td>'+datos[0]['telefono']+'</td>';
+               html+= '<td>'+datos[0]['TELEFONO']+'</td>';
                html+= '</tr>';
                }
                html+= '<tr>';
                html+= '<tr>';
                html+= '<td>Ciudad:</td>';
-               html+= '<td>'+datos[0]['ubigeo']+'</td>';
+               html+= '<td>'+datos[0]['UBIGEO']+'</td>';
                html+= '</tr>';
                html+= '<td>Direccion:</td>';
-               html+= '<td>'+datos[0]['direccion']+'</td>';
+               html+= '<td>'+datos[0]['DIRECCION']+'</td>';
                html+= '</tr>';
-               if(datos[0]['email'] != null && datos[0]['email'] != ' '){
+               if(datos[0]['EMAIL'] != null && datos[0]['EMAIL'] != ' '){
                html+= '<tr>';
                html+= '<td>Email:</td>';
-               html+= '<td>'+datos[0]['email']+'</td>';
+               html+= '<td>'+datos[0]['EMAIL']+'</td>';
                html+= '</tr>';
                }
                html+= '</table>';

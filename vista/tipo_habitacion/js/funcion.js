@@ -13,7 +13,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/tipo_habitacion/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/tipo_habitacion/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -25,12 +25,12 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idtipo_habitacion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].costo+'</td>';
-                    HTML = HTML + '<td>'+datos[i].camas+'</td>';
-                    var editar='/sisjungla/tipo_habitacion/editar/'+datos[i].idtipo_habitacion; 
-                    var eliminar='/sisjungla/tipo_habitacion/eliminar/'+datos[i].idtipo_habitacion;   
+                    HTML = HTML + '<td>'+datos[i].IDTIPO_HABITACION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].COSTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].CAMAS+'</td>';
+                    var editar='/jungla/tipo_habitacion/editar/'+datos[i].IDTIPO_HABITACION; 
+                    var eliminar='/jungla/tipo_habitacion/eliminar/'+datos[i].IDTIPO_HABITACION;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

@@ -1,6 +1,6 @@
 <?php
 
-class clientes {
+class clientes extends Main{
 
     public $idcliente;
     public $nombres;
@@ -29,7 +29,7 @@ class clientes {
 //            print_r($datos);
 //            echo '</pre>';
 //            exit;
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_clientes", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_clientes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -39,7 +39,7 @@ class clientes {
         $datos = array($this->idcliente, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento, 
             $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo, 
             $this->idmembresia, $this->direccion, $this->tipo);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_clientes", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_clientes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -62,15 +62,20 @@ class clientes {
             $this->ruc=null;
         }
         $datos = array($this->idcliente, $this->nombresyapellidos, $this->razonsocial, $this->dni, $this->ruc);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_clientes", $datos);
+        $r = $this->get_consulta("pa_selecciona_clientes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
 }

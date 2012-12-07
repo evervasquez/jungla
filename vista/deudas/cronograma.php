@@ -10,16 +10,16 @@
     </tr>
     <?php for($i=0;$i<count($this->datos);$i++){ ?>
     <tr>
-        <td><?php echo $this->datos[$i]['nro_cuota']?></td>
-        <td><?php echo $this->datos[$i]['fecha_pago']?></td>
-        <td><?php echo $this->datos[$i]['monto_cuota']?></td>
-        <td><?php echo $this->datos[$i]['monto_pagado']?></td>
+        <td><?php echo $this->datos[$i]['NRO_CUOTA']?></td>
+        <td><?php echo $this->datos[$i]['FECHA_PAGO']?></td>
+        <td><?php echo $this->datos[$i]['MONTO_CUOTA']?></td>
+        <td><?php echo $this->datos[$i]['MONTO_PAGADO']?></td>
         <td>
             <?php 
-            if($this->datos[$i]['monto_cuota'] ==$this->datos[$i]['monto_pagado']){
+            if($this->datos[$i]['MONTO_CUOTA'] ==$this->datos[$i]['MONTO_PAGADO']){
                 echo 'cancelado';
             }else{
-                if(new DateTime($this->datos[$i]['fecha_pago'])>new DateTime(date("M d Y")) && $this->datos[$i]['monto_cuota'] > $this->datos[$i]['monto_pagado']){
+                if(new DateTime($this->datos[$i]['FECHA_PAGO'])>new DateTime(date("M d Y")) && $this->datos[$i]['MONTO_CUOTA'] > $this->datos[$i]['MONTO_PAGADO']){
                     echo 'normal';
                 }else{
                     echo 'vencido';

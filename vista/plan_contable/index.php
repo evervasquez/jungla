@@ -22,14 +22,14 @@
         </tr>
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idcuenta'] ?></td>
-                <td><?php echo $this->datos[$i]['nro_cuenta'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos[$i]['cuenta_padre'] ?></td>
-                <td><?php echo $this->datos[$i]['idcategoria'] ?></td>
+                <td><?php echo $this->datos[$i]['IDCUENTA'] ?></td>
+                <td><?php echo $this->datos[$i]['NRO_CUENTA'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos[$i]['CUENTA_PADRE'] ?></td>
+                <td><?php echo $this->datos[$i]['IDCATEGORIA'] ?></td>
                 <td>
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>plan_contable/editar/<?php echo $this->datos[$i]['idcuenta'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>plan_contable/eliminar/<?php echo $this->datos[$i]['idcuenta'] ?>')" class="imgdelete"></a></td>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>plan_contable/editar/<?php echo $this->datos[$i]['IDCUENTA'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>plan_contable/eliminar/<?php echo $this->datos[$i]['IDCUENTA'] ?>')" class="imgdelete"></a></td>
             </tr>
         <?php } ?>
     </table>

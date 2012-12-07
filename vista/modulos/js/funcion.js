@@ -12,7 +12,7 @@
         });
         $("#buscar").focus();
         function buscar(){
-            $.post('/sisjungla/modulos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/modulos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -24,16 +24,16 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idmodulo+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].url+'</td>';
-                    if(datos[i].modulo_padre != null){
-                        HTML = HTML + '<td>'+datos[i].modulo_padre+'</td>';
+                    HTML = HTML + '<td>'+datos[i].IDMODDULO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].URL+'</td>';
+                    if(datos[i].MODULO_PADRE != null){
+                        HTML = HTML + '<td>'+datos[i].MODULO_PADRE+'</td>';
                     }else{
                         HTML = HTML + '<td>&nbsp;</td>';
                     }
-                    var editar='/sisjungla/modulos/editar/'+datos[i].idmodulo; 
-                    var eliminar='/sisjungla/modulos/eliminar/'+datos[i].idmodulo;   
+                    var editar='/jungla/modulos/editar/'+datos[i].IDMODULO; 
+                    var eliminar='/jungla/modulos/eliminar/'+datos[i].IDMODULO;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

@@ -1,6 +1,6 @@
 <?php
 
-class habitaciones {
+class habitaciones extends Main{
 
     public $idhabitacion;
     public $descripcion;
@@ -11,20 +11,25 @@ class habitaciones {
     
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado, $this->tipo_habitacion_predet);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_habitaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);  
-        return $stmt->fetch();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function actualiza() {
         $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado, $this->tipo_habitacion_predet);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_habitaciones", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_habitaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -38,7 +43,7 @@ class habitaciones {
             $this->nro_habitacion='';
         }
         $datos = array($this->idhabitacion, $this->nro_habitacion);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_habitaciones", $datos);
+        $r = $this->get_consulta("pa_selecciona_habitaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -51,7 +56,7 @@ class habitaciones {
 
     public function elimina() {
         $datos = array($this->idhabitacion);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_habitaciones", $datos);
+        $r = $this->get_consulta("pa_elimina_habitaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -59,15 +64,20 @@ class habitaciones {
     
      public function selecciona_android() {
         $datos = array();
-        $r = consulta::procedimientoAlmacenado("pa_habitacion_android", $datos);
+        $r = $this->get_consulta("pa_habitacion_android", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 }
 

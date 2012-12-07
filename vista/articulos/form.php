@@ -6,7 +6,7 @@
             <tr>
             	<td><label>Codigo</label></td>
                 <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idarticulo']))echo $this->datos[0]['idarticulo']?>"/>
+                       value="<?php if(isset ($this->datos[0]['IDARTICULO']))echo $this->datos[0]['IDARTICULO']?>"/>
                 <td>
                     <span class="msgerror"></span>
                 </td>
@@ -17,7 +17,7 @@
             <tr>
             	<td><label>Titulo</label></td>
                 <td colspan="2"><input type="text" class="k-textbox textarea" placeholder="Ingrese titulo" required name="titulo"
-                                       id="titulo" value="<?php if(isset ($this->datos[0]['titulo']))echo $this->datos[0]['titulo']?>"/></td>
+                                       id="titulo" value="<?php if(isset ($this->datos[0]['TITULO']))echo $this->datos[0]['TITULO']?>"/></td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="titulo"></div>
                 </td>
@@ -25,7 +25,7 @@
             <tr>
             	<td><label>Descripcion</label></td>
                 <td colspan="2"><textarea class="k-textbox textarea" style="height: 100px" placeholder="Escribe el contenido del articulo" required name="descripcion"
-                       id="descripcion"><?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?></textarea></td>
+                       id="descripcion"><?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?></textarea></td>
                 <td>
                     <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>

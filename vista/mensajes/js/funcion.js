@@ -13,7 +13,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/mensajes/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/mensajes/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -26,20 +26,20 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idmensaje+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nombre+'</td>';
-                    HTML = HTML + '<td>'+datos[i].email+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha+'</td>';
+                    HTML = HTML + '<td>'+datos[i].IDMENSAJE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].NOMBRE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].EMAIL+'</td>';
+                    HTML = HTML + '<td>'+datos[i].FECHA+'</td>';
                     HTML = HTML + '<td>';
-                    if(datos[i].estado == 0){
+                    if(datos[i].ESTADO == 0){
                         HTML = HTML + '<label class="noleido">Mensaje No Leido</label>';
                     }
                     else{
                         HTML = HTML + '<label class="leido">Mensaje Leido</label>';
                     }
                     HTML = HTML + '</td>';
-                    var eliminar='/sisjungla/mensajes/eliminar/'+datos[i].idmensaje;   
-                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="ver(\''+datos[i].idmensaje+'\')" class="imgview" ></a>';
+                    var eliminar='/jungla/mensajes/eliminar/'+datos[i].IDMENSAJE;   
+                    HTML = HTML + '<td> <a href="javascript:void(0)" onclick="ver(\''+datos[i].IDMENSAJE+'\')" class="imgview" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
@@ -91,24 +91,24 @@
         };
     });
        function ver(id){
-           $.post('/sisjungla/mensajes/ver','idmensaje='+id,function(datos){
-               html= '<h3>Mensaje Recibido N°'+datos[0]['idmensaje']+'</h3>';
+           $.post('/jungla/mensajes/ver','idmensaje='+id,function(datos){
+               html= '<h3>Mensaje Recibido N°'+datos[0]['IDMENSAJE']+'</h3>';
                html+='<table>';
                html+= '<tr>';
                html+= '<td>Nombre:</td>';
-               html+= '<td>'+datos[0]['nombre']+'</td>';
+               html+= '<td>'+datos[0]['NOMBRE']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Email:</td>';
-               html+= '<td>'+datos[0]['email']+'</td>';
+               html+= '<td>'+datos[0]['EMAIL']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Telefono:</td>';
-               html+= '<td>'+datos[0]['telefono']+'</td>';
+               html+= '<td>'+datos[0]['TELEFONO']+'</td>';
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Mensaje:</td>';
-               html+= '<td>'+datos[0]['mensaje']+'</td>';
+               html+= '<td>'+datos[0]['MENSAJE']+'</td>';
                html+= '</tr>';
                html+= '</table>';
                html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';
@@ -117,6 +117,6 @@
             $("#fondooscuro").fadeIn(300);
            }
            ,'json'),
-           $.post('/sisjungla/mensajes/elimina_alerta','idmensaje='+id,function(datos){
+           $.post('/jungla/mensajes/elimina_alerta','idmensaje='+id,function(datos){
            })
        }

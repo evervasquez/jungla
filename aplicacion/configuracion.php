@@ -5,5 +5,5 @@
  * and open the template in the editor.
  */
 define('DEFAULT_CONTROLLER', 'web');
-define('BASE_URL', '/sisjungla/');
+define('BASE_URL', '/jungla/');
 ?>

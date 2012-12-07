@@ -6,7 +6,7 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idservicio']))echo $this->datos[0]['idservicio']?>"/></td>
+                       value="<?php if(isset ($this->datos[0]['IDSERVICIO']))echo $this->datos[0]['IDSERVICIO']?>"/></td>
             <td>
                 <div class="msgerror"></div>
             </td>
@@ -14,7 +14,7 @@
         <tr>
             <td><label for="descripcion">Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese servicio" required name="descripcion" onkeypress="return soloLetras(event)"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
             </td>

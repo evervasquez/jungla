@@ -1,6 +1,6 @@
 <?php
 
-class membresia {
+class membresia extends Main{
 
     public $idmembresia;
     public $descripcion;
@@ -13,20 +13,25 @@ class membresia {
             $this->descripcion='';
         }
         $datos = array($this->idmembresia, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_membresia", $datos);
+        $r = $this->get_consulta("pa_selecciona_membresia", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idmembresia);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_membresia", $datos);
+        $r = $this->get_consulta("pa_elimina_membresia", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -34,7 +39,7 @@ class membresia {
 
     public function inserta() {
         $datos = array(0, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_membresia", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_membresia", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -42,7 +47,7 @@ class membresia {
 
     public function actualiza() {
         $datos = array($this->idmembresia, $this->descripcion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_membresia", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_membresia", $datos);
         $error = $r[1];
         $r = null;
         return $error;

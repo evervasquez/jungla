@@ -9,6 +9,9 @@ Class menu {
 
     public function __construct($datos) {
         $this->_datos = $datos;
+//        echo '<pre>';
+//        print_r($this->_datos);
+//        die();
         $this->unemenu();
     }
 
@@ -26,13 +29,13 @@ Class menu {
         if(isset($this->_datos) && count($this->_datos)){
             for($i=0; $i< count($this->_datos); $i++){
                 if($this->_c==0){
-                    $descripcion=  $this->_datos[$i]['modulos'];
+                    $descripcion=  $this->_datos[$i]['MODULOS'];
                     echo "<li>$descripcion<ul>";
                     $this->_c = 1;
                 }
-                if ($descripcion == $this->_datos[$i]['modulos']){
-                    $url = BASE_URL . $this->_datos[$i]['url'];
-                    echo "<li><a href='$url'>" . $this->_datos[$i]['modulos_hijos'] . "</a></li>";
+                if ($descripcion == $this->_datos[$i]['MODULOS']){
+                    $url = BASE_URL . $this->_datos[$i]['URL'];
+                    echo "<li><a href='$url'>" . $this->_datos[$i]['MODULOS_HIJOS'] . "</a></li>";
                 } else {
                     echo "</ul></li>";
                     $this->_c = 0;

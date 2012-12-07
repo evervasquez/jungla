@@ -4,7 +4,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/tipo_producto/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/tipo_producto/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -14,10 +14,10 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idtipo_producto+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    var editar='/sisjungla/tipo_producto/editar/'+datos[i].idtipo_producto; 
-                    var eliminar='/sisjungla/tipo_producto/eliminar/'+datos[i].idtipo_producto;   
+                    HTML = HTML + '<td>'+datos[i].IDTIPO_PRODUCTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    var editar='/jungla/tipo_producto/editar/'+datos[i].IDTIPO_PRODUCTO; 
+                    var eliminar='/jungla/tipo_producto/eliminar/'+datos[i].IDTIPO_PRODUCTO;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

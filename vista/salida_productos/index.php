@@ -18,12 +18,12 @@
             <th>Fecha</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
-        <?php if($this->datos[$i]['idtipo_movimiento'] != 1){ ?>
+        <?php if($this->datos[$i]['IDTIPO_MOVIMIENTO'] != 1){ ?>
         <tr>
-            <td><?php echo $this->datos[$i]['empleados_n'].' '.$this->datos[$i]['empleados_a'] ?></td>
-            <td><?php echo $this->datos[$i]['producto'] ?></td>
-            <td><?php echo $this->datos[$i]['cantidad'] ?></td>
-            <td><?php echo $this->datos[$i]['fecha'] ?></td>
+            <td><?php echo $this->datos[$i]['EMPLEADOS_N'].' '.$this->datos[$i]['EMPLEADOS_A'] ?></td>
+            <td><?php echo $this->datos[$i]['PRODUCTO'] ?></td>
+            <td><?php echo $this->datos[$i]['CANTIDAD'] ?></td>
+            <td><?php echo $this->datos[$i]['FECHA'] ?></td>
         </tr>
         <?php } ?>
     <?php } ?>

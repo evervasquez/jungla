@@ -27,11 +27,11 @@ class cobros_controlador extends controller{
     
     public function amortizar(){
         $datos_caja=$this->_caja->selecciona();
-        if($datos_caja[0]['estado']==0){
+        if($datos_caja[0]['ESTADO']==0){
             echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
             $this->redireccionar('caja');
         }
-        if(new DateTime($datos_caja[0]['fecha'])!=new DateTime(date('d-m-Y'))){
+        if(new DateTime($datos_caja[0]['FECHA'])!=new DateTime(date('d-m-Y'))){
             echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el dia de hoy")</script>';
             $this->redireccionar('caja');
         }

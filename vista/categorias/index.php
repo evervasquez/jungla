@@ -18,12 +18,12 @@
     </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
         <tr>
-            <td><?php echo $this->datos[$i]['idcategoria'] ?></td>
-            <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-            <td><?php echo $this->datos[$i]['nro_elemento'] ?></td>
+            <td><?php echo $this->datos[$i]['IDCATEGORIA'] ?></td>
+            <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
+            <td><?php echo $this->datos[$i]['NRO_ELEMENTO'] ?></td>
             <td>
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>categorias/editar/<?php echo $this->datos[$i]['idcategoria'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>categorias/eliminar/<?php echo $this->datos[$i]['idcategoria'] ?>')" class="imgdelete"></a>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>categorias/editar/<?php echo $this->datos[$i]['IDCATEGORIA'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>categorias/eliminar/<?php echo $this->datos[$i]['IDCATEGORIA'] ?>')" class="imgdelete"></a>
             </td>
         </tr>
     <?php } ?>

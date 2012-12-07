@@ -91,7 +91,7 @@ $(document).ready(function(){
                if(error){
                    alert(msg);
                }else{
-                   $.post('/sisjungla/habitaciones/insertar_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth+'&costo='+c+'&observaciones='+o);
+                   $.post('/jungla/habitaciones/insertar_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth+'&costo='+c+'&observaciones='+o);
                    html="<tr>";
                    html=html+"<td><input type='hidden' class='tipo_habitacion' value='"+idth+"'/>"+th+"</td>";
                    html=html+"<td><input type='hidden' />"+c+"</td>";
@@ -113,7 +113,7 @@ $(document).ready(function(){
        i = $(this).parent().parent().index();
        idh=$("#codigo").val();
        idth=$("#tbl_habitacion_especifica tr:eq("+i+") td:eq(0) .tipo_habitacion").val();
-       $.post('/sisjungla/habitaciones/eliminar_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth);
+       $.post('/jungla/habitaciones/eliminar_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth);
        $("#tbl_habitacion_especifica tr:eq("+i+")").remove();
    });
 });

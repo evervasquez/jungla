@@ -1,6 +1,6 @@
 <?php
 
-class deudas {
+class deudas extends Main{
 
     public $nro_comprobante;
     public $proveedor;
@@ -13,14 +13,20 @@ class deudas {
             $this->proveedor='';
         }
         $datos = array($this->nro_comprobante, $this->proveedor);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_deudas", $datos);
+        $r = $this->get_consulta("pa_selecciona_deudas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
 }

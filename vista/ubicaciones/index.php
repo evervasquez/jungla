@@ -20,12 +20,12 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idubicacion'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos[$i]['almacen'] ?></td>
+                <td><?php echo $this->datos[$i]['IDUBICACION'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos[$i]['ALMACEN'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>ubicaciones/editar/<?php echo $this->datos[$i]['idubicacion'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>ubicaciones/eliminar/<?php echo $this->datos[$i]['idubicacion'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>ubicaciones/editar/<?php echo $this->datos[$i]['IDUBICACION'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>ubicaciones/eliminar/<?php echo $this->datos[$i]['IDUBICACION'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

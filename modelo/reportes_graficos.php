@@ -10,7 +10,7 @@
  *
  * @author eveR
  */
-class reportes_graficos {
+class reportes_graficos extends Main{
 
     //put your code here
     public $anio;
@@ -21,15 +21,20 @@ class reportes_graficos {
         }
         $datos = array($this->anio);
         //pa_reporte_pasajeros->procedimiento de pasajeros nacionales e internacionales por mes
-        $r = consulta::procedimientoAlmacenado("pasajeros_porcentaje_nacionales_internacionales", $datos);
+        $r = $this->get_consulta("pasajeros_porcentaje_nacionales_internacionales", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function reporte_estadias() {
@@ -39,15 +44,20 @@ class reportes_graficos {
         $datos = array($this->anio);
         //pa_reporte_estadias->estadias x mes
         //en porcentaje
-        $r = consulta::procedimientoAlmacenado("pa_estadias_mes", $datos);
+        $r = $this->get_consulta("pa_estadias_mes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function reporte_ventas() {
@@ -56,15 +66,20 @@ class reportes_graficos {
         }
         $datos = array($this->anio);
         //pa_reporte_ventas->ventas x mes
-        $r = consulta::procedimientoAlmacenado("pa_reporte_ventasxestadia", $datos);
+        $r = $this->get_consulta("pa_reporte_ventasxestadia", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
    
 

@@ -1,6 +1,6 @@
 <?php
 
-class proveedores {
+class proveedores extends Main{
 
     public $idproveedor;
     public $razon_social;
@@ -15,7 +15,7 @@ class proveedores {
     public function inserta() {
         $datos = array(0, $this->razon_social, $this->representante, $this->ruc, 
             $this->telefono, $this->direccion, $this->email, $this->idubigeo);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_proveedores", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -24,7 +24,7 @@ class proveedores {
     public function actualiza() {
         $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, 
             $this->telefono, $this->direccion, $this->email, $this->idubigeo);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_proveedores", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -44,20 +44,25 @@ class proveedores {
             $this->ruc='';
         }
         $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_proveedores", $datos);
+        $r = $this->get_consulta("pa_selecciona_proveedores", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
     
     public function elimina() {
         $datos = array($this->idproveedor);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_proveedores", $datos);
+        $r = $this->get_consulta("pa_elimina_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -65,7 +70,7 @@ class proveedores {
     
     public function selecciona_ruc($ruc) {
         $datos = array($ruc);
-        $r = consulta::procedimientoAlmacenado("pa_valida_ruc", $datos);
+        $r = $this->get_consulta("pa_valida_ruc", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

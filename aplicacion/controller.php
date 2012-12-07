@@ -87,7 +87,7 @@ abstract class controller {
         $permisos->idmodulo= $idmodulo;
         $permiso = $permisos->selecciona();
 //        print_r($permiso);exit;
-        if ($permiso[0]['idperfil']!=session::get('idperfil') || $permiso[0]['estado'] ==0) {
+        if ($permiso[0]['IDPERFIL']!=session::get('idperfil') || $permiso[0]['ESTADO'] ==0) {
             return false;
         } else {
             return true;

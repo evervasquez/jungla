@@ -7,7 +7,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/entrada_productos/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/entrada_productos/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Nro.Comprobante</th>'+
@@ -19,24 +19,24 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].nro_comprobante+'</td>';
-                    HTML = HTML + '<td>'+datos[i].proveedor+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha_compra+'</td>';
-                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="ver(\''+datos[i].idcompra+'\')" class="imgview"></a>'
-                    HTML = HTML + '<a href="/sisjungla/entrada_productos/confirmacion/'+datos[i].idcompra+'" class="imgconfirm"></a></td>';
+                    HTML = HTML + '<td>'+datos[i].NRO_COMPROBANTE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].PROVEEDOR+'</td>';
+                    HTML = HTML + '<td>'+datos[i].FECHA_COMPRA+'</td>';
+                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="ver(\''+datos[i].IDCOMPRA+'\')" class="imgview"></a>'
+                    HTML = HTML + '<a href="/jungla/entrada_productos/confirmacion/'+datos[i].IDCOMPRA+'" class="imgconfirm"></a></td>';
                     HTML = HTML + '<td><label class="pendiente">Pendiente</label></td>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
             },'json'),
                 
-            $.post('/sisjungla/entrada_productos/buscador_m','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/entrada_productos/buscador_m','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].compra+'</td>';
-                    HTML = HTML + '<td>'+datos[i].proveedor+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha+'</td>';
-                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="ver(\''+datos[i].idcompra+'\')" class="imgview"></a></td>';
+                    HTML = HTML + '<td>'+datos[i].COMPRA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].PROVEEDOR+'</td>';
+                    HTML = HTML + '<td>'+datos[i].FECHA+'</td>';
+                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="ver(\''+datos[i].IDCOMPRA+'\')" class="imgview"></a></td>';
                     HTML = HTML + '<td><label class="confirmado">Confirmado</label></td>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
@@ -83,44 +83,44 @@
        
     });
     function ver(id){
-           $.post('/sisjungla/compras/ver','idcompra='+id,function(datos){
+           $.post('/jungla/compras/ver','idcompra='+id,function(datos){
                 html= '<h3>Datos de la Compra:</h3>';
                 html+='<table>';
                 html+= '<tr>';
                 html+= '<td>Nro.Documento:</td>';
-                html+= '<td>'+datos[0]['nro_comprobante']+'</td>';
+                html+= '<td>'+datos[0]['NRO_COMPROBANTE']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Proveedor:</td>';
-                html+= '<td>'+datos[0]['proveedor']+'</td>';
+                html+= '<td>'+datos[0]['PROVEEDOR']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Fecha de Compra:</td>';
-                html+= '<td>'+datos[0]['fecha_compra']+'</td>';
+                html+= '<td>'+datos[0]['FECHA_COMPRA']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Tipo de Transacción:</td>';
-                html+= '<td>'+datos[0]['tipo']+'</td>';
+                html+= '<td>'+datos[0]['TIPO']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Importe:</td>';
-                html+= '<td>'+datos[0]['importe']+'</td>';
+                html+= '<td>'+datos[0]['IMPORTE']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>IGV:</td>';
-                html+= '<td>'+datos[0]['igv']+'</td>';
+                html+= '<td>'+datos[0]['IGV']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Total:</td>';
-                html+= '<td>'+(parseFloat(datos[0]['igv'])+1)*(datos[0]['importe'])+'</td>';
+                html+= '<td>'+(parseFloat(datos[0]['IGV'])+1)*(datos[0]['IMPORTE'])+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Observaciones:</td>';
-                html+= '<td>'+datos[0]['observaciones']+'</td>';
+                html+= '<td>'+datos[0]['OBSERVACIONES']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Estado:</td>';
-                if(datos[0]['estado']==0){
+                if(datos[0]['ESTADO']==0){
                     html+= '<td>Inactivo</td>';
                 }else{
                     html+= '<td>Activo</td>';
@@ -128,7 +128,7 @@
                 html+= '</tr>';
                 html+= '</table>';
            },'json'),
-           $.post('/sisjungla/compras/ver2','idcompra='+id,function(datos){
+           $.post('/jungla/compras/ver2','idcompra='+id,function(datos){
                 html+= '<p>Detalle Compra</p>';
                 html+= '<table border="1">';
                 html+= '<tr>';
@@ -142,11 +142,11 @@
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
                     html+= '<td>'+(i+1)+'</td>';
-                    html+= '<td>'+datos[0]['producto']+'</td>';
-                    html+= '<td>'+datos[0]['um']+'</td>';
-                    html+= '<td>'+datos[0]['cantidad']+'</td>';
-                    html+= '<td>'+datos[0]['precio']+'</td>';
-                    html+= '<td>'+datos[0]['cantidad']*datos[0]['precio']+'</td>';
+                    html+= '<td>'+datos[0]['PRODUCTO']+'</td>';
+                    html+= '<td>'+datos[0]['UM']+'</td>';
+                    html+= '<td>'+datos[0]['CANTIDAD']+'</td>';
+                    html+= '<td>'+datos[0]['PRECIO']+'</td>';
+                    html+= '<td>'+datos[0]['CANTIDAD']*datos[0]['PRECIO']+'</td>';
                     html+= '</tr>';
                 }
                 html+= '</table>';

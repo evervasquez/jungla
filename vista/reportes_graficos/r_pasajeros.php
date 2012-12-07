@@ -22,8 +22,8 @@ $chart->plotOptions->pie->dataLabels->formatter = new HighchartJsExpr("function(
 
 $chart->series[] = array('type' => "pie",
                          'name' => "Browser share",
-                         'data' => array(array("Nacionales",(float)$this->datos[0]['nacionales']),
-                                         array("Internacionales",(float)$this->datos[0]['internacionales'])
+                         'data' => array(array("Nacionales",(float)$this->datos[0]['NACIONALES']),
+                                         array("Internacionales",(float)$this->datos[0]['INTERNACIONALES'])
                                          /*array('name' => 'Chrome',
                                                'y' => 12.8,
                                                'sliced' => true,

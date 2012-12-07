@@ -26,20 +26,20 @@ $chart->plotOptions->column->pointPadding = 0.2;
 $chart->plotOptions->column->borderWidth = 0;
 
 $chart->series[] = array('name' => "Dineron Por Estadia",
-                         'data' => array((float)$this->datos[0]['cantidad'],(float)$this->datos[1]['cantidad'], 
-                             (float)$this->datos[2]['cantidad'], (float)$this->datos[3]['cantidad'], 
-                             (float)$this->datos[4]['cantidad'], (float)$this->datos[5]['cantidad'],
-                             (float)$this->datos[6]['cantidad'], (float)$this->datos[7]['cantidad'], 
-                             (float)$this->datos[8]['cantidad'], (float)$this->datos[9]['cantidad'], 
-                             (float)$this->datos[10]['cantidad'], (float)$this->datos[11]['cantidad']));
+                         'data' => array((float)$this->datos[0]['CANTIDAD'],(float)$this->datos[1]['CANTIDAD'], 
+                             (float)$this->datos[2]['CANTIDAD'], (float)$this->datos[3]['CANTIDAD'], 
+                             (float)$this->datos[4]['CANTIDAD'], (float)$this->datos[5]['CANTIDAD'],
+                             (float)$this->datos[6]['CANTIDAD'], (float)$this->datos[7]['CANTIDAD'], 
+                             (float)$this->datos[8]['CANTIDAD'], (float)$this->datos[9]['CANTIDAD'], 
+                             (float)$this->datos[10]['CANTIDAD'], (float)$this->datos[11]['CANTIDAD']));
 
 $chart->series[] = array('name' => "Dinero Por Ventas de Productos",
-                         'data' => array((float)$this->datos[12]['cantidad'],(float)$this->datos[13]['cantidad'], 
-                             (float)$this->datos[14]['cantidad'], (float)$this->datos[15]['cantidad'], 
-                             (float)$this->datos[16]['cantidad'], (float)$this->datos[17]['cantidad'],
-                             (float)$this->datos[18]['cantidad'], (float)$this->datos[19]['cantidad'], 
-                             (float)$this->datos[20]['cantidad'], (float)$this->datos[21]['cantidad'], 
-                             (float)$this->datos[22]['cantidad'], (float)$this->datos[23]['cantidad']));
+                         'data' => array((float)$this->datos[12]['CANTIDAD'],(float)$this->datos[13]['CANTIDAD'], 
+                             (float)$this->datos[14]['CANTIDAD'], (float)$this->datos[15]['CANTIDAD'], 
+                             (float)$this->datos[16]['CANTIDAD'], (float)$this->datos[17]['CANTIDAD'],
+                             (float)$this->datos[18]['CANTIDAD'], (float)$this->datos[19]['CANTIDAD'], 
+                             (float)$this->datos[20]['CANTIDAD'], (float)$this->datos[21]['CANTIDAD'], 
+                             (float)$this->datos[22]['CANTIDAD'], (float)$this->datos[23]['CANTIDAD']));
 /*
 $chart->series[] = array('name' => "London",
                          'data' => array(48.9, 38.8, 39.3, 41.4, 47.0, 48.3,

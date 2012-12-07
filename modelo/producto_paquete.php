@@ -1,6 +1,6 @@
 <?php
 
-class producto_paquete {
+class producto_paquete extends Main{
     
     public $idpaquete;
     public $idproducto;
@@ -14,19 +14,25 @@ class producto_paquete {
             $this->idproducto=0;
         }
         $datos = array($this->idpaquete, $this->idproducto);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_selecciona_producto_paquete", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idpaquete, $this->idproducto);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_elimina_producto_paquete", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -34,7 +40,7 @@ class producto_paquete {
 
     public function inserta() {
         $datos = array($this->idpaquete, $this->idproducto, $this->cantidad);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_producto_paquete", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -42,7 +48,7 @@ class producto_paquete {
 
     public function actualiza() {
         $datos = array($this->idpaquete, $this->idproducto, $this->cantidad);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_producto_paquete", $datos);
         $error = $r[1];
         $r = null;
         return $error;

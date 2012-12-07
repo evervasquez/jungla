@@ -6,7 +6,7 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idunidad_medida']))echo $this->datos[0]['idunidad_medida']?>"/></td>
+                       value="<?php if(isset ($this->datos[0]['IDUNIDAD_MEDIDA']))echo $this->datos[0]['IDUNIDAD_MEDIDA']?>"/></td>
             <td>
                 <div class="msgerror"></div>
             </td>
@@ -14,7 +14,7 @@
         <tr>
             <td><label for="descripcion">Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese unidad de medida" required name="descripcion" onkeypress="return soloLetras(event)"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
             </td>
@@ -22,7 +22,7 @@
         <tr>
             <td><label for="abreviatura">Abreviatura:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese abreviatura" name="abreviatura" required
-                       id="abreviatura" value="<?php if(isset ($this->datos[0]['abreviatura']))echo $this->datos[0]['abreviatura']?>"/></td>
+                       id="abreviatura" value="<?php if(isset ($this->datos[0]['ABREVIATURA']))echo $this->datos[0]['ABREVIATURA']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="abreviatura"></div>
             </td>

@@ -19,12 +19,12 @@
         </tr>
     <?php for ($i = 0; $i < count($this->datos_compras); $i++) { ?>
         <tr>
-            <td><?php echo $this->datos_compras[$i]['nro_comprobante'] ?></td>
-            <td><?php echo $this->datos_compras[$i]['proveedor'] ?></td>
-            <td><?php echo $this->datos_compras[$i]['fecha_compra'] ?></td>
+            <td><?php echo $this->datos_compras[$i]['NRO_COMPROBANTE'] ?></td>
+            <td><?php echo $this->datos_compras[$i]['PROVEEDOR'] ?></td>
+            <td><?php echo $this->datos_compras[$i]['FECHA_COMPRA'] ?></td>
             <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos_compras[$i]['idcompra']?>')" class="imgview"></a>
-                <a href="<?php echo BASE_URL ?>entrada_productos/confirmacion/<?php echo $this->datos_compras[$i]['idcompra']?>" class="imgconfirm"></a>
+                <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos_compras[$i]['IDCOMPRA']?>')" class="imgview"></a>
+                <a href="<?php echo BASE_URL ?>entrada_productos/confirmacion/<?php echo $this->datos_compras[$i]['IDCOMPRA']?>" class="imgconfirm"></a>
             </td>
             <td><label class="pendiente">Pendiente</label></td>
         </tr>
@@ -32,11 +32,11 @@
         
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
         <tr>
-            <td><?php echo $this->datos[$i]['compra'] ?></td>
-            <td><?php echo $this->datos[$i]['proveedor'] ?></td>
-            <td><?php echo $this->datos[$i]['fecha'] ?></td>
+            <td><?php echo $this->datos[$i]['COMPRA'] ?></td>
+            <td><?php echo $this->datos[$i]['PROVEEDOR'] ?></td>
+            <td><?php echo $this->datos[$i]['FECHA'] ?></td>
             <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idcompra']?>')" class="imgview"></a>
+                <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['IDCOMPRA']?>')" class="imgview"></a>
             </td>
             <td><label class="confirmado">Confirmado</label></td>
         </tr>

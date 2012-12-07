@@ -1,6 +1,6 @@
 <?php
 
-class productos {
+class productos extends Main{
 
     public $idproducto;
     public $descripcion;
@@ -22,7 +22,7 @@ class productos {
         $datos = array(0, $this->descripcion, $this->precio_unitario, $this->observaciones, 
             $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
             $this->stock, $this->estado, $this->precio_compra, '');
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_productos", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -33,13 +33,13 @@ class productos {
             $datos = array($this->idproducto, $this->descripcion, $this->precio_unitario, $this->observaciones, 
             $this->idservicio, $this->idtipo_producto, $this->idunidad_medida, $this->idubicacion,  
             $this->stock, $this->estado, $this->precio_compra, '');
-            $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_productos", $datos);
+            $r = $this->get_consulta("pa_inserta_actualiza_productos", $datos);
         }else{
             if(is_null($this->aumenta)){
                 $this->aumenta = 0;
             }
             $datos = array ($this->idproducto, $this->stock, $this->aumenta);
-            $r = consulta::procedimientoAlmacenado("pa_actualizar_stock_producto", $datos);
+            $r = $this->get_consulta("pa_actualizar_stock_producto", $datos);
         }
         $error = $r[1];
         $r = null;
@@ -63,20 +63,25 @@ class productos {
             $this->ubicacion='';
         }
         $datos = array($this->idproducto, $this->descripcion, $this->tipo_producto, $this->unidad_medida, $this->ubicacion);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_productos", $datos);
+        $r = $this->get_consulta("pa_selecciona_productos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idproducto);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_productos", $datos);
+        $r = $this->get_consulta("pa_elimina_productos", $datos);
         $error = $r[1];
         $r = null;
         return $error;

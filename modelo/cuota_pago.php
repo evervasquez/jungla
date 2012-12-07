@@ -1,6 +1,6 @@
 <?php
 
-class cuota_pago {
+class cuota_pago extends Main{
 
     public $idcuota_pago;
     public $idcompra;
@@ -16,20 +16,25 @@ class cuota_pago {
             $this->idcompra=0;
         }
         $datos = array($this->idcompra);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_cuota_pago", $datos);
+        $r = $this->get_consulta("pa_selecciona_cuota_pago", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-//        $stmt = $r[0];
-        return $stmt->fetchall();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
     public function elimina() {
         $datos = array($this->idcompra);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_cuota_pago", $datos);
+        $r = $this->get_consulta("pa_elimina_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -44,7 +49,7 @@ class cuota_pago {
         }
         $datos = array(0, $this->idcompra, $this->fecha_pago, $this->fecha_vencimiento, $this->interes,
             $this->monto_cuota, $this->monto_pagado, $this->nro_cuota);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_cuota_pago", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -60,7 +65,7 @@ class cuota_pago {
             $this->monto_cuota,
             $this->monto_pagado,
             $this->nro_cuota);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_cuota_pago", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;

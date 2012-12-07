@@ -18,11 +18,11 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idmembresia'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td><?php echo $this->datos[$i]['IDMEMBRESIA'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['idmembresia'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['idmembresia'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>membresia/editar/<?php echo $this->datos[$i]['IDMEMBRESIA'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>membresia/eliminar/<?php echo $this->datos[$i]['IDMEMBRESIA'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 
-class compras {
+class compras extends Main{
 
     public $idcompra;
     public $fecha_compra;
@@ -20,7 +20,7 @@ class compras {
             $this->idtipo_transaccion, $this->confirmacion);
 //        echo '<pre>';
 //                print_r($datos);exit;
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_compras", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_compras", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -34,7 +34,7 @@ class compras {
         $datos = array($this->idcompra, $this->fecha_compra, $this->estado, $this->observaciones, 
             $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
             $this->idtipo_transaccion, $this->confirmacion);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_compras", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_compras", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -54,20 +54,25 @@ class compras {
             $this->confirmacion=null;
         }
         $datos = array($this->idcompra,$this->nro_comprobante,$this->proveedor, $this->confirmacion);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_compras", $datos);
+        $r = $this->get_consulta("pa_selecciona_compras", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
     public function elimina() {
         $datos = array($this->idcompra);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_compras", $datos);
+        $r = $this->get_consulta("pa_elimina_compras", $datos);
         $error = $r[1];
         $r = null;
         return $error;

@@ -24,18 +24,18 @@
         </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idcompra'] ?></td>
-                <td><?php echo $this->datos[$i]['nro_comprobante'] ?></td>
-                <td><?php echo $this->datos[$i]['proveedor'] ?></td>
-                <td><?php echo $this->datos[$i]['c_fecha_compra'] ?></td>
-                <td><?php echo $this->datos[$i]['importe'] ?></td>
-                <td><?php echo $this->datos[$i]['igv'] ?></td>
-                <td><?php echo $this->datos[$i]['importe'] * ($this->datos[$i]['igv'] + 1) ?></td>
-                <td><?php echo $this->datos[$i]['tipo'] ?></td>
+                <td><?php echo $this->datos[$i]['IDCOMPRA'] ?></td>
+                <td><?php echo $this->datos[$i]['NRO_COMPROBANTE'] ?></td>
+                <td><?php echo $this->datos[$i]['PROVEEDOR'] ?></td>
+                <td><?php echo $this->datos[$i]['C_FECHA_COMPRA'] ?></td>
+                <td><?php echo $this->datos[$i]['IMPORTE'] ?></td>
+                <td><?php echo $this->datos[$i]['IGV'] ?></td>
+                <td><?php echo $this->datos[$i]['IMPORTE'] * ($this->datos[$i]['IGV'] + 1) ?></td>
+                <td><?php echo $this->datos[$i]['TIPO'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgdelete"></a>
-                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['idcompra'] ?>')" class="imgview"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>compras/editar/<?php echo $this->datos[$i]['IDCOMPRA'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>compras/eliminar/<?php echo $this->datos[$i]['IDCOMPRA'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos[$i]['IDCOMPRA'] ?>')" class="imgview"></a>
                 </td>
             </tr>
         <?php } ?>

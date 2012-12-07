@@ -1,6 +1,6 @@
 <?php
 
-class modulos {
+class modulos extends Main{
 
     public $idmodulo;
     public $descripcion;
@@ -9,53 +9,61 @@ class modulos {
     public $idmodulo_padre;
     public $modulo_padre;
     public $idperfil;
-    
+
     public function selecciona() {
-        if(is_null($this->idmodulo)){
-            $this->idmodulo=0;
+        if (is_null($this->idmodulo)) {
+            $this->idmodulo = 0;
         }
-        if(is_null($this->descripcion)){
-            $this->descripcion='';
+        if (is_null($this->descripcion)) {
+            $this->descripcion = '';
         }
-        if(is_null($this->modulo_padre)){
-            $this->modulo_padre='';
+        if (is_null($this->modulo_padre)) {
+            $this->modulo_padre = '';
         }
-        if(is_null($this->idperfil)){
-            $this->idperfil='';
+        if (is_null($this->idperfil)) {
+            $this->idperfil = '';
         }
-        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre,$this->idperfil);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos", $datos);
+        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre, $this->idperfil);
+        $r = $this->get_consulta("pa_selecciona_modulos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+//            echo '<pre>';
+//            print_r($stmt->fetchall());
+//            die();
+            return $stmt->fetchall();
+        }
     }
-    
+
     public function inserta() {
-        $datos = array(0, $this->descripcion, $this->url, $this->estado, 
+        $datos = array(0, $this->descripcion, $this->url, $this->estado,
             $this->idmodulo_padre);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_modulos", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_modulos", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
     public function actualiza() {
-        $datos = array($this->idmodulo, $this->descripcion, $this->url, $this->estado, 
+        $datos = array($this->idmodulo, $this->descripcion, $this->url, $this->estado,
             $this->idmodulo_padre);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_modulos", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_modulos", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
-    public function seleccionar($idmodulo_padre){
+    public function seleccionar($idmodulo_padre) {
         $datos = array($idmodulo_padre);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_modulos_padre", $datos);
+        $r = $this->get_consulta("pa_selecciona_modulos_padre", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -67,7 +75,7 @@ class modulos {
 
     public function elimina() {
         $datos = array($this->idmodulo);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_modulos", $datos);
+        $r = $this->get_consulta("pa_elimina_modulos", $datos);
         $error = $r[1];
         $r = null;
         return $error;

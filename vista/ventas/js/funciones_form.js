@@ -59,7 +59,7 @@ $(document).ready(function(){
     
     function buscar_cliente(){
         if($("#tipo_comprobante").val()==55){
-            $.post('/sisjungla/clientes/buscador','cadena='+$("#txt_buscar_clientes").val()+'&filtro='+$("#filtro_clientes").val(),function(datos){
+            $.post('/jungla/clientes/buscador','cadena='+$("#txt_buscar_clientes").val()+'&filtro='+$("#filtro_clientes").val(),function(datos){
                     HTML = '<table border="1" class="tabgrilla" id="tbl_busca_clientes">'+
                             '<tr>'+
                                 '<th>Codigo</th>'+
@@ -69,17 +69,17 @@ $(document).ready(function(){
                                 '<th>Seleccionar</th>'+
                             '</tr>';
                 for(var i=0;i<datos.length;i++){
-                    id=datos[i].idcliente;
-                    if(datos[i].apellidos != null){
-                        cliente=datos[i].nombres+' '+datos[i].apellidos;
+                    id=datos[i].IDCLIENTE;
+                    if(datos[i].APELLIDOS != null){
+                        cliente=datos[i].NOMBRES+' '+datos[i].APELLIDOS;
                     }else{
-                        cliente=datos[i].nombres;
+                        cliente=datos[i].NOMBRES;
                     }
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+id+'</td>';
                     HTML = HTML + '<td>'+cliente+'</td>';
-                    HTML = HTML + '<td>'+datos[i].documento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].direccion+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DOCUMENTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DIRECCION+'</td>';
                     HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_cliente(\''+id+'\',\''+cliente+'\')" class="imgselect"></a></td>';
                     HTML = HTML + '</tr>';
                 }            
@@ -93,7 +93,7 @@ $(document).ready(function(){
                     });
             },'json');        
         }else{
-            $.post('/sisjungla/clientes/buscador','cadena='+$("#txt_buscar_clientes_juridicos").val()+'&filtro='+$("#filtro_clientes_juridicos").val(),function(datos){
+            $.post('/jungla/clientes/buscador','cadena='+$("#txt_buscar_clientes_juridicos").val()+'&filtro='+$("#filtro_clientes_juridicos").val(),function(datos){
                     HTML = '<table border="1" class="tabgrilla" id="tbl_busca_clientes_juridicos">'+
                             '<tr>'+
                                 '<th>Codigo</th>'+
@@ -103,13 +103,13 @@ $(document).ready(function(){
                                 '<th>Seleccionar</th>'+
                             '</tr>';
                 for(var i=0;i<datos.length;i++){
-                    id=datos[i].idcliente;
-                    cliente=datos[i].nombres;
+                    id=datos[i].IDCLIENTE;
+                    cliente=datos[i].NOMBRES;
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+id+'</td>';
                     HTML = HTML + '<td>'+cliente+'</td>';
-                    HTML = HTML + '<td>'+datos[i].documento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].direccion+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DOCUMENTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DIRECCION+'</td>';
                     HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_cliente(\''+id+'\',\''+cliente+'\')" class="imgselect"></a></td>';
                     HTML = HTML + '</tr>';
                 }            
@@ -149,7 +149,7 @@ $(document).ready(function(){
     });
     
     function buscar_paquetes(){
-        $.post('/sisjungla/paquetes/buscador','descripcion='+$("#txt_buscar_paquetes").val()+'&filtro='+$("#filtro_paquetes").val(),function(datos){
+        $.post('/jungla/paquetes/buscador','descripcion='+$("#txt_buscar_paquetes").val()+'&filtro='+$("#filtro_paquetes").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_paquetes">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -236,7 +236,7 @@ $(document).ready(function(){
     });
     
     function buscar_producto(){
-        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+        $.post('/jungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
                         '<tr>'+
                             '<th>Codigo</th>'+

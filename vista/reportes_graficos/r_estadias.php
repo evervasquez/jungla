@@ -22,12 +22,12 @@ $chart->tooltip->formatter = new HighchartJsExpr("function() {
     return '<b>'+ this.x +'</b><br/>'+
     'Pasajeros Totales: '+ Highcharts.numberFormat(this.y, 2) +
     ' ';}");
-$a=(int)$this->datos[0]['cantidad'];
+$a=(int)$this->datos[0]['CANTIDAD'];
 $chart->series[] = array('name' => 'Cantidad de Pasajeros',
     
-                         'data' => array((int)$this->datos[0]['cantidad'], (int)$this->datos[1]['cantidad'], (int)$this->datos[2]['cantidad'], (int)$this->datos[3]['cantidad'], (int)$this->datos[4]['cantidad'], 
-                                            (int)$this->datos[5]['cantidad'], (int)$this->datos[6]['cantidad'], (int)$this->datos[7]['cantidad'], (int)$this->datos[8]['cantidad'],
-                                         (int)$this->datos[9]['cantidad'], (int)$this->datos[10]['cantidad'], (int)$this->datos[11]['cantidad']),
+                         'data' => array((int)$this->datos[0]['CANTIDAD'], (int)$this->datos[1]['CANTIDAD'], (int)$this->datos[2]['CANTIDAD'], (int)$this->datos[3]['CANTIDAD'], (int)$this->datos[4]['CANTIDAD'], 
+                                            (int)$this->datos[5]['CANTIDAD'], (int)$this->datos[6]['CANTIDAD'], (int)$this->datos[7]['CANTIDAD'], (int)$this->datos[8]['CANTIDAD'],
+                                         (int)$this->datos[9]['CANTIDAD'], (int)$this->datos[10]['CANTIDAD'], (int)$this->datos[11]['CANTIDAD']),
     //letra
                          'dataLabels' => array('enabled' => true,
                                                'rotation' => -90,

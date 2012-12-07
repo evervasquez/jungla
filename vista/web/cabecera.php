@@ -64,7 +64,7 @@
                 <?php if(session::get('autenticado')){ ?>
                             <div id="userSesion"><label><?php echo session::get('empleado')?></label></div>
                             <div id="linkSesion"><label><?php echo session::get('perfil')?></label> | <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a></div>
-                            <div id="servidorSesion"><label><?php echo conexion::get_servidor() ?></label> | 
+                            <div id="servidorSesion"><label><?php echo Main::get_servidor() ?></label> | 
                                 <label>IP: <?php echo $_SERVER['SERVER_NAME'] ?></label>
                             </div>
                         <?php }else{ ?>

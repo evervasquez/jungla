@@ -14,6 +14,7 @@ class FrontController {
     //put your code here
     public static function main(request $peticion) {
         // Obtenemos el controlador y la accion
+        new Main();
         $controlador_ = $peticion->get_controlador() . '_controlador'; //recuperamos el nombre del controlador enviado por get
         $metodo = $peticion->get_metodo(); //recuperamos el metodo(accion)
         $argumentos = $peticion->get_argumentos(); //recuperamos los argumentos en un array

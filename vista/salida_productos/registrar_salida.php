@@ -82,10 +82,10 @@
         </tr>
         <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['um'] ?></td>
-                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>','<?php echo $this->datos_productos[0]['um']?>')" class="imgselect"></a></td>
+                <td><?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['UM'] ?></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['DESCRIPCION']) ?>','<?php echo $this->datos_productos[0]['UM']?>')" class="imgselect"></a></td>
             </tr>
         <?php } ?>
     </table>

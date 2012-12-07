@@ -12,7 +12,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/paquetes/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/paquetes/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -24,12 +24,12 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idpaquete+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descuento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].costo+'</td>';
-                    var editar='/sisjungla/paquetes/editar/'+datos[i].idpaquete; 
-                    var eliminar='/sisjungla/paquetes/eliminar/'+datos[i].idpaquete;   
+                    HTML = HTML + '<td>'+datos[i].IDPAQUETE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCUENTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].COSTO+'</td>';
+                    var editar='/jungla/paquetes/editar/'+datos[i].IDPAQUETE; 
+                    var eliminar='/jungla/paquetes/eliminar/'+datos[i].IDPAQUETE;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

@@ -52,7 +52,7 @@ $(document).ready(function(){
     });
     
     function buscar_proveedor(){
-        $.post('/sisjungla/proveedores/buscador','cadena='+$("#txt_buscar_proveedor").val()+'&filtro='+$("#filtro_proveedor").val(),function(datos){
+        $.post('/jungla/proveedores/buscador','cadena='+$("#txt_buscar_proveedor").val()+'&filtro='+$("#filtro_proveedor").val(),function(datos){
             HTML = '<table border="1" class="tabgrilla" id="tbl_busca_proveedor" width="500px">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -63,11 +63,11 @@ $(document).ready(function(){
             for(var i=0;i<datos.length;i++){
                 
                 HTML = HTML + '<tr>';
-                HTML = HTML + '<td>'+datos[i].idproveedor+'</td>';
-                HTML = HTML + '<td>'+datos[i].razon_social+'</td>';
-                HTML = HTML + '<td>'+datos[i].representante+'</td>';
-                id=datos[i].idproveedor;
-                proveedor=datos[i].razon_social;
+                HTML = HTML + '<td>'+datos[i].IDPROVEEDOR+'</td>';
+                HTML = HTML + '<td>'+datos[i].RAZON_SOCIAL+'</td>';
+                HTML = HTML + '<td>'+datos[i].REPRESENTANTE+'</td>';
+                id=datos[i].IDPROVEEDOR;
+                proveedor=datos[i].RAZON_SOCIAL;
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar(\''+id+'\',\''+proveedor+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }
@@ -127,7 +127,7 @@ $(document).ready(function(){
     });
     
     function buscar_producto(){
-        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+        $.post('/jungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -138,12 +138,12 @@ $(document).ready(function(){
             for(var i=0;i<datos.length;i++){
                 
                 HTML = HTML + '<tr>';
-                HTML = HTML + '<td>'+datos[i].idproducto+'</td>';
-                HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                HTML = HTML + '<td>'+datos[i].um+'</td>';
-                id=datos[i].idproducto;
-                producto=datos[i].descripcion;
-                um=datos[i].um;
+                HTML = HTML + '<td>'+datos[i].IDPRODUCTO+'</td>';
+                HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                HTML = HTML + '<td>'+datos[i].UM+'</td>';
+                id=datos[i].IDPRODUCTO;
+                producto=datos[i].DESCRIPCION;
+                um=datos[i].UM;
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos(\''+id+'\',\''+producto+'\',\''+um+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            

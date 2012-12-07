@@ -7,21 +7,21 @@
                 <td>Fecha reserva:</td>
                 <td>
                     <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_reserva" required
-                   value="<?php if(isset ($this->datos)){echo $this->datos[0]['fecha_reserva'];} else {echo date("d-m-Y");} ?>"/>
+                   value="<?php if(isset ($this->datos)){echo $this->datos[0]['FECHA_RESERVA'];} else {echo date("d-m-Y");} ?>"/>
                 </td>
             </tr>
             <tr>
                 <td>Fecha entrada:</td>
                 <td>
                     <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada" required
-                   value="<?php echo $this->datos[0]['fecha_entrada'] ?>"/>
+                   value="<?php echo $this->datos[0]['FECHA_ENTRADA'] ?>"/>
                 </td>
             </tr>
             <tr>
                 <td>Fecha salida:</td>
                 <td>
                     <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida" required
-                   value="<?php echo $this->datos[0]['fecha_salida'] ?>"/>
+                   value="<?php echo $this->datos[0]['FECHA_SALIDA'] ?>"/>
                 </td>
             </tr>
             <tr>
@@ -44,7 +44,7 @@
                                     <select placeholder="Seleccione..." class="combo" id="habitacion">
                                         <option></option>
                                         <?php for($i=0;$i<count($this->datos_habitaciones);$i++){ ?>
-                                        <option value="<?php echo $this->datos_habitaciones[$i]['idhabitacion'] ?>"><?php echo utf8_encode($this->datos_habitaciones[$i]['descripcion']) ?></option>
+                                        <option value="<?php echo $this->datos_habitaciones[$i]['IDHABITACION'] ?>"><?php echo utf8_encode($this->datos_habitaciones[$i]['NRO_HABITACION']) ?></option>
                                         <?php } ?>
                                     </select>
                                 </td>
@@ -102,4 +102,4 @@
 
 
 
-<div id="fondooscuro"></div>
+<div id="fondooscuro"></div

@@ -13,7 +13,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/habitaciones/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/habitaciones/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -25,24 +25,24 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idhabitacion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nro_habitacion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    if(datos[i].ventilacion==1){
+                    HTML = HTML + '<td>'+datos[i].IDHABITACION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].NRO_HABITACION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    if(datos[i].VENTILACION==1){
                         HTML = HTML + '<td>Ventilador</td>';
                     }else{
                         HTML = HTML + '<td>Aire Acondicionado</td>';
                     }
-                    if(datos[i].estado==1){
+                    if(datos[i].ESTADO==1){
                         HTML = HTML + '<td>Habilitado</td>';
                     }else{
                         HTML = HTML + '<td>En Mantenimiento</td>';
                     }
-                    var editar='/sisjungla/habitaciones/editar/'+datos[i].idhabitacion; 
-                    var eliminar='/sisjungla/habitaciones/eliminar/'+datos[i].idhabitacion;   
+                    var editar='/jungla/habitaciones/editar/'+datos[i].IDHABITACION; 
+                    var eliminar='/jungla/habitaciones/eliminar/'+datos[i].IDHABITACION;   
                     HTML = HTML + '<td><a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].idhabitacion+'\')" class="imgview"></a>';
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDHABITACION+'\')" class="imgview"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
                 }
@@ -91,16 +91,16 @@
        
     });
     function ver(id){
-           $.post('/sisjungla/habitaciones/ver','idhabitacion='+id,function(datos){
-                html= '<h3>Datos de la Habitacion N°: '+datos[0]['nro_habitacion']+'</h3>';
+           $.post('/jungla/habitaciones/ver','idhabitacion='+id,function(datos){
+                html= '<h3>Datos de la Habitacion N°: '+datos[0]['NRO_HABITACION']+'</h3>';
                 html+='<table>';
                 html+= '<tr>';
                 html+= '<td>Descripcion:</td>';
-                html+= '<td>'+datos[0]['descripcion']+'</td>';
+                html+= '<td>'+datos[0]['DESCRIPCION']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Ventilacion:</td>';
-                if(datos[0]['ventilacion']==1){
+                if(datos[0]['VENTILACION']==1){
                     html+= '<td>Ventilador</td>';
                 }
                 else{
@@ -109,7 +109,7 @@
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Estado:</td>';
-                if(datos[0]['estado']==1){
+                if(datos[0]['ESTADO']==1){
                     html+= '<td>Habilitado</td>';
                 }
                 else{
@@ -118,7 +118,7 @@
                 html+= '</tr>';
                 html+= '</table>';
            },'json'),
-           $.post('/sisjungla/habitaciones/ver2','idhabitacion='+id,function(datos){
+           $.post('/jungla/habitaciones/ver2','idhabitacion='+id,function(datos){
                 html+= '<p>Costos de Habitacion</p>';
                 html+= '<table border="1">';
                 html+= '<tr>';
@@ -128,9 +128,9 @@
                 html+= '</tr>';
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
-                    html+= '<td>'+datos[0]['tipo_habitacion']+'</td>';
-                    html+= '<td>'+datos[0]['costo']+'</td>';
-                    html+= '<td>'+datos[0]['observaciones']+'</td>';
+                    html+= '<td>'+datos[0]['TIPO_HABITACION']+'</td>';
+                    html+= '<td>'+datos[0]['COSTO']+'</td>';
+                    html+= '<td>'+datos[0]['OBSERVACIONES']+'</td>';
                     html+= '</tr>';
                 }
                 html+= '</table>';

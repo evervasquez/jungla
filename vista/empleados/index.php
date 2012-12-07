@@ -23,16 +23,16 @@
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idempleado'] ?></td>
-                <td><?php echo $this->datos[$i]['nombres'] ?></td>
-                <td><?php echo $this->datos[$i]['apellidos'] ?></td>
-                <td><?php echo $this->datos[$i]['telefono'] ?></td>
-                <td><?php echo $this->datos[$i]['direccion'] ?></td>
-                <td><?php echo $this->datos[$i]['perfil'] ?></td>
+                <td><?php echo $this->datos[$i]['IDEMPLEADO'] ?></td>
+                <td><?php echo $this->datos[$i]['NOMBRES'] ?></td>
+                <td><?php echo $this->datos[$i]['APELLIDOS'] ?></td>
+                <td><?php echo $this->datos[$i]['TELEFONO'] ?></td>
+                <td><?php echo $this->datos[$i]['DIRECCION'] ?></td>
+                <td><?php echo $this->datos[$i]['PERFIL'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['idempleado'] ?>')" class="imgdelete"></a>
-                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idempleado'] ?>')"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>empleados/editar/<?php echo $this->datos[$i]['IDEMPLEADO'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>empleados/eliminar/<?php echo $this->datos[$i]['IDEMPLEADO'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDEMPLEADO'] ?>')"></a>
                 </td>
             </tr>
         <?php } ?>

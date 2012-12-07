@@ -8,7 +8,7 @@ $(function(){
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/salida_productos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/salida_productos/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Empleado</th>'+
@@ -18,12 +18,12 @@ $(function(){
                         '</tr>';
 
                 for(var i=0;i<datos.length;i++){
-                    if(datos[i].idtipo_movimiento !=1){
+                    if(datos[i].IDTIPO_MOVIMIENTO !=1){
                         HTML = HTML + '<tr>';
-                        HTML = HTML + '<td>'+datos[i].empleados_n+' '+datos[i].empleados_a+'</td>';
-                        HTML = HTML + '<td>'+datos[i].producto+'</td>';
-                        HTML = HTML + '<td>'+datos[i].cantidad+'</td>';
-                        HTML = HTML + '<td>'+datos[i].fecha+'</td>';
+                        HTML = HTML + '<td>'+datos[i].EMPLEADOS_N+' '+datos[i].EMPLEADOS_A+'</td>';
+                        HTML = HTML + '<td>'+datos[i].PRODUCTO+'</td>';
+                        HTML = HTML + '<td>'+datos[i].CANTIDAD+'</td>';
+                        HTML = HTML + '<td>'+datos[i].FECHA+'</td>';
                         HTML = HTML + '</tr>';
                     }
                 }

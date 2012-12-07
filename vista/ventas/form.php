@@ -3,13 +3,13 @@
     <legend><?php echo $this->titulo ?></legend>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"
-            value="<?php if(isset ($this->datos[0]['idventa']))echo $this->datos[0]['idventa']?>"/>
+            value="<?php if(isset ($this->datos[0]['IDVENTA']))echo $this->datos[0]['IDVENTA']?>"/>
     <table align="center" class="tabFormComplejo">
             <tr valign="top">
                 <td>Fecha de Venta:</td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_venta" required class="datepicker"
-                       value="<?php if(isset ($this->datos[0]['fecha_venta'])){echo $this->datos[0]['fecha_venta'];} else {echo date("d-m-Y");} ?>"/>
+                    <input readonly="readonly" placeholder="Seleccione fecha" name="FECHA_VENTA" required class="datepicker"
+                       value="<?php if(isset ($this->datos[0]['FECHA_VENTA'])){echo $this->datos[0]['FECHA_VENTA'];} else {echo date("d-m-Y");} ?>"/>
                     <br><div class="msgerror"></div>
                 </td>
                 <td></td>
@@ -17,10 +17,10 @@
                 <td>
                     <select class="list" placeholder="Seleccione..." name="tipo_comprobante" id="tipo_comprobante" required>
                         <?php for($i=0;$i<count($this->datos_tipo_comprobante);$i++){ ?>
-                            <?php if( $this->datos[0]['idtipo_comprobante'] == $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ){ ?>
-                        <option value="<?php echo $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_comprobante[$i]['descripcion']) ?></option>
+                            <?php if( $this->datos[0]['IDTIPO_COMPROBANTE'] == $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ){ ?>
+                        <option value="<?php echo $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_comprobante[$i]['DESCRIPCION']) ?></option>
                             <?php } else { ?>
-                        <option value="<?php echo $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ?>"><?php echo utf8_encode($this->datos_tipo_comprobante[$i]['descripcion']) ?></option>
+                        <option value="<?php echo $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ?>"><?php echo utf8_encode($this->datos_tipo_comprobante[$i]['DESCRIPCION']) ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -30,9 +30,9 @@
                 <td><label>Cliente:</label></td>
                 <td>
                     <input type="hidden" name="idcliente" id="idcliente"
-                           value="<?php if(isset ($this->datos[0]['idcliente']))echo $this->datos[0]['idcliente']?>"/>
+                           value="<?php if(isset ($this->datos[0]['IDCLIENTE']))echo $this->datos[0]['IDCLIENTE']?>"/>
                     <input type="text" class="k-textbox" placeholder="Busque cliente" required  readonly="readonly" name="cliente"
-                           id="cliente" value="<?php if(isset ($this->datos[0]['cliente']))echo $this->datos[0]['cliente']?>"/>
+                           id="cliente" value="<?php if(isset ($this->datos[0]['CLIENTE']))echo $this->datos[0]['CLIENTE']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="cliente"></div>
                 </td>
                 <td>
@@ -42,10 +42,10 @@
                 <td>
                     <select class="list" placeholder="Seleccione..." name="tipo_transaccion" id="tipo_transaccion" required>
                         <?php for($i=0;$i<count($this->datos_tipo_transaccion);$i++){ ?>
-                            <?php if( $this->datos[0]['idtipo_transaccion'] == $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ){ ?>
-                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['descripcion']) ?></option>
+                            <?php if( $this->datos[0]['IDTIPO_TRANSACCION'] == $this->datos_tipo_transaccion[$i]['IDTIPO_TRANSACCION'] ){ ?>
+                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['IDTIPO_TRANSACCION'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['DESCRIPCION']) ?></option>
                             <?php } else { ?>
-                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['idtipo_transaccion'] ?>"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['descripcion']) ?></option>
+                        <option value="<?php echo $this->datos_tipo_transaccion[$i]['IDTIPO_TRANSACCION'] ?>"><?php echo utf8_encode($this->datos_tipo_transaccion[$i]['DESCRIPCION']) ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -84,18 +84,18 @@
                         <tr id="celda_producto">
                             <td class="celda_producto"><label>Producto:</label></td>
                             <td class="celda_producto">
-                                <input type="hidden" id="idproducto" value="<?php if(isset ($this->datos[0]['idproducto']))echo $this->datos[0]['idproducto']?>"/>
+                                <input type="hidden" id="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
                                 <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly"  
-                                   id="producto" value="<?php if(isset ($this->datos[0]['producto']))echo $this->datos[0]['producto']?>"/>
+                                   id="producto" value="<?php if(isset ($this->datos[0]['PRODUCTO']))echo $this->datos[0]['PRODUCTO']?>"/>
                             </td>
                             <td  class="celda_producto">
                                 <button type="button" class="k-button" id="btn_vtna_productos"><span class="k-icon k-i-search"></span></button>
                             </td>
                             <td class="celda_paquete"><label>Paquete:</label></td>
                             <td class="celda_paquete">
-                                <input type="hidden" id="idpaquete" value="<?php if(isset ($this->datos[0]['idpaquete']))echo $this->datos[0]['idpaquete']?>"/>
+                                <input type="hidden" id="idpaquete" value="<?php if(isset ($this->datos[0]['IDPAQUETE']))echo $this->datos[0]['IDPAQUETE']?>"/>
                                 <input type="text" class="k-textbox" placeholder="Busque paquete" readonly="readonly"  
-                                   id="paquete" value="<?php if(isset ($this->datos[0]['paquete']))echo $this->datos[0]['paquete']?>"/>
+                                   id="paquete" value="<?php if(isset ($this->datos[0]['PAQUETE']))echo $this->datos[0]['PAQUETE']?>"/>
                             </td>
                             <td class="celda_paquete">
                                 <button type="button" class="k-button" id="btn_vtna_paquetes"><span class="k-icon k-i-search"></span></button>
@@ -132,20 +132,20 @@
                                             <?php echo $i+1; ?>
                                         </td>
                                         <td>
-                                            <input type="hidden" class="producto" value="<?php echo $this->datos_detalle_venta[$i]['idproducto']?>" />
-                                            <?php echo $this->datos_detalle_venta[$i]['producto']?>
+                                            <input type="hidden" class="producto" value="<?php echo $this->datos_detalle_venta[$i]['IDPRODUCTO']?>" />
+                                            <?php echo $this->datos_detalle_venta[$i]['PRODUCTO']?>
                                         </td>
                                         <td>
-                                            <?php echo $this->datos_detalle_venta[$i]['um'] ?>
+                                            <?php echo $this->datos_detalle_venta[$i]['UM'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $this->datos_detalle_venta[$i]['cantidad'] ?>
+                                            <?php echo $this->datos_detalle_venta[$i]['CANTIDAD'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $this->datos_detalle_venta[$i]['precio'] ?>
+                                            <?php echo $this->datos_detalle_venta[$i]['PRECIO'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $this->datos_detalle_venta[$i]['cantidad'] * $this->datos_detalle_venta[$i]['precio'] ?>
+                                            <?php echo $this->datos_detalle_venta[$i]['CANTIDAD'] * $this->datos_detalle_venta[$i]['PRECIO'] ?>
                                         </td>
                                         <td>
                                             <a href="#" class="imgdelete eliminar"></a>
@@ -162,7 +162,7 @@
                             <td><label>Importe:</label></td>
                             <td>
                                 <input type="text" class="k-textbox" required name="importe" id="importe" readonly="readonly"
-                                   value="<?php if(isset ($this->datos[0]['importe'])){echo $this->datos[0]['importe'];}else{echo '0';}?>"/>
+                                   value="<?php if(isset ($this->datos[0]['IMPORTE'])){echo $this->datos[0]['IMPORTE'];}else{echo '0';}?>"/>
                             </td>
                         </tr>
                         <tr>
@@ -170,7 +170,7 @@
                             <td><label>IGV:</label></td>
                             <td>
                                 <input type="text" class="descuento" placeholder="0" name="igv" id="igv" 
-                                   value="<?php if(isset ($this->datos[0]['igv'])){echo $this->datos[0]['igv'];}else{echo '0';}?>" />
+                                   value="<?php if(isset ($this->datos[0]['IGV'])){echo $this->datos[0]['IGV'];}else{echo '0';}?>" />
                             </td>
                         </tr>
                         <tr>
@@ -251,12 +251,12 @@
             </tr>
             <?php for ($i = 0; $i < count($this->datos_paquetes); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos_paquetes[$i]['idpaquete'] ?></td>
-                <td><?php echo $this->datos_paquetes[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos_paquetes[$i]['costo'] ?></td>
-                <td><a href="javascript:void(0)" onclick="seleccionar_paquetes('<?php echo $this->datos_paquetes[$i]['idpaquete'] ?>',
-                    '<?php echo utf8_encode($this->datos_paquetes[$i]['descripcion']) ?>',
-                        <?php echo $this->datos_paquetes[$i]['costo'] ?>)" class="imgselect"></a></td>
+                <td><?php echo $this->datos_paquetes[$i]['IDPAQUETE'] ?></td>
+                <td><?php echo $this->datos_paquetes[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos_paquetes[$i]['COSTO'] ?></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_paquetes('<?php echo $this->datos_paquetes[$i]['IDPAQUETE'] ?>',
+                    '<?php echo utf8_encode($this->datos_paquetes[$i]['DESCRIPCION']) ?>',
+                        <?php echo $this->datos_paquetes[$i]['COSTO'] ?>)" class="imgselect"></a></td>
             </tr>
             <?php } ?>
         </table>
@@ -286,13 +286,13 @@
         </tr>
         <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos_productos[$i]['idproducto'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['descripcion'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['um'] ?></td>
-                <td><?php echo $this->datos_productos[$i]['precio_unitario'] ?></td>
-                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['idproducto'] ?>',
-                    '<?php echo utf8_encode($this->datos_productos[$i]['descripcion']) ?>','<?php echo $this->datos_productos[0]['um']?>',
-                        <?php echo $this->datos_productos[$i]['precio_unitario'] ?>)" class="imgselect"></a></td>
+                <td><?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['DESCRIPCION'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['UM'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['PRECIO_UNITARIO'] ?></td>
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>',
+                    '<?php echo utf8_encode($this->datos_productos[$i]['DESCRIPCION']) ?>','<?php echo $this->datos_productos[0]['UM']?>',
+                        <?php echo $this->datos_productos[$i]['PRECIO_UNITARIO'] ?>)" class="imgselect"></a></td>
             </tr>
         <?php } ?>
     </table>

@@ -1,6 +1,6 @@
 <?php
 
-class profesiones {
+class profesiones extends Main{
 
     public $idprofesion;
     public $descripcion;
@@ -10,15 +10,20 @@ class profesiones {
             $this->idprofesion=0;
         }
         $datos = array($this->idprofesion);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_profesiones", $datos);
+        $r = $this->get_consulta("pa_selecciona_profesiones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
 }

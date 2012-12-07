@@ -22,15 +22,15 @@
         </tr>
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idproveedor'] ?></td>
-                <td><?php echo $this->datos[$i]['razon_social'] ?></td>
-                <td><?php echo $this->datos[$i]['representante'] ?></td>
-                <td><?php echo $this->datos[$i]['ruc'] ?></td>
-                <td><?php echo $this->datos[$i]['direccion'] ?></td>
+                <td><?php echo $this->datos[$i]['IDPROVEEDOR'] ?></td>
+                <td><?php echo $this->datos[$i]['RAZON_SOCIAL'] ?></td>
+                <td><?php echo $this->datos[$i]['REPRESENTANTE'] ?></td>
+                <td><?php echo $this->datos[$i]['RUC'] ?></td>
+                <td><?php echo $this->datos[$i]['DIRECCION'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgedit"></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['idproveedor'] ?>')" class="imgdelete"></a>
-                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['idproveedor'] ?>')"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>proveedores/editar/<?php echo $this->datos[$i]['IDPROVEEDOR'] ?>')" class="imgedit"></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>proveedores/eliminar/<?php echo $this->datos[$i]['IDPROVEEDOR'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDPROVEEDOR'] ?>')"></a>
                 </td>
             </tr>
         <?php } ?>

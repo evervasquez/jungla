@@ -1,6 +1,6 @@
 <?php
 
-class detalle_venta {
+class detalle_venta extends Main{
 
     public $idventa;
     public $idpaquete;
@@ -12,7 +12,7 @@ class detalle_venta {
         $datos = array($this->idventa, $this->idpaquete, $this->idproducto, $this->cantidad, 0, $this->precio_venta);
 //        echo '<pre>';
 //                print_r($datos);exit;
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_venta", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_detalle_venta", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -20,7 +20,7 @@ class detalle_venta {
 
     public function actualiza() {
         $datos = array($this->idventa, $this->idpaquete, $this->idproducto, $this->cantidad, 0, $this->precio_venta);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_venta", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_detalle_venta", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -37,19 +37,25 @@ class detalle_venta {
             $this->idpaquete=0;
         }
         $datos = array($this->idventa, $this->idproducto, $this->idpaquete);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_detalle_venta", $datos);
+        $r = $this->get_consulta("pa_selecciona_detalle_venta", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
     public function elimina() {
         $datos = array($this->idventa, $this->idproducto, $this->idpaquete);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_detalle_venta", $datos);
+        $r = $this->get_consulta("pa_elimina_detalle_venta", $datos);
         $error = $r[1];
         $r = null;
         return $error;

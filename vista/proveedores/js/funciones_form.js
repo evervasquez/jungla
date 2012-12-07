@@ -8,9 +8,9 @@ $(document).ready(function(){
         }else{
             $("#provincias").html('<option></option>');
             $("#ciudades_proveedores").html('<option></option>');
-            $.post('/sisjungla/proveedores/get_provincias','idregion='+$("#regiones").val(),function(datos){
+            $.post('/jungla/proveedores/get_provincias','idregion='+$("#regiones").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $("#provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                    $("#provincias").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
             },'json');
         }
@@ -21,9 +21,9 @@ $(document).ready(function(){
             $("#ciudades_proveedores").html('<option>.</option>');
         }else{
             $("#ciudades_proveedores").html('<option></option>');
-            $.post('/sisjungla/proveedores/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
+            $.post('/jungla/proveedores/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $("#ciudades_proveedores").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                    $("#ciudades_proveedores").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }       
             },'json');
         }
@@ -33,7 +33,7 @@ $(document).ready(function(){
         if($("#ruc").val()!=''){
             $.ajax({
                 type:"POST",
-                url:'/sisjungla/proveedores/valida_ruc',
+                url:'/jungla/proveedores/valida_ruc',
                 data:"ruc="+$("#ruc").val(),
                 beforeSend:function(){
                     $("#valida_ruc").html("cargando...");    

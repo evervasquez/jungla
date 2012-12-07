@@ -13,7 +13,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/plan_contable/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/plan_contable/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -26,13 +26,13 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idcuenta+'</td>';
-                    HTML = HTML + '<td>'+datos[i].nro_cuenta+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].cuenta_padre+'</td>';
-                    HTML = HTML + '<td>'+datos[i].idcategoria+'</td>';
-                    var editar='/sisjungla/plan_contable/editar/'+datos[i].idpaquete; 
-                    var eliminar='/sisjungla/plan_contable/eliminar/'+datos[i].idpaquete;   
+                    HTML = HTML + '<td>'+datos[i].IDCUENTA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].NRO_CUENTA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].CUENTA_PADRE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].IDCATEGORIA+'</td>';
+                    var editar='/jungla/plan_contable/editar/'+datos[i].IDCUENTA; 
+                    var eliminar='/jungla/plan_contable/eliminar/'+datos[i].IDCUENTA;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

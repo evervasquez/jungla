@@ -2,13 +2,13 @@
     <fieldset>
         <legend><?php echo $this->titulo ?></legend><br>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
-        <input type="hidden" name="codigo" id="codigo" value="<?php if(isset ($this->datos[0]['idhabitacion']))echo $this->datos[0]['idhabitacion']?>"/>
+        <input type="hidden" name="codigo" id="codigo" value="<?php if(isset ($this->datos[0]['IDHABITACION']))echo $this->datos[0]['IDHABITACION']?>"/>
         <table align="center" class="tabFormComplejo">
             <tr valign="top">
                 <td><label for="nro_habitacion">Nro.de Habitacion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese Nro.de habitacion" required name="nro_habitacion" onKeyPress="return soloNumeros(event);"
-                           id="nro_habitacion" value="<?php if(isset ($this->datos[0]['nro_habitacion']))echo $this->datos[0]['nro_habitacion']?>"/>
+                           id="nro_habitacion" value="<?php if(isset ($this->datos[0]['NRO_HABITACION']))echo $this->datos[0]['NRO_HABITACION']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="nro_habitacion"></div>
                 </td>
                 <td><label>Tipo Habitacion Predet:</label></td>
@@ -16,10 +16,10 @@
                     <select class="list" name="tipo_habitacion_predet" id="tipo_habitacion_predet">
                         <option value="0">Seleccione...</option>
                         <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){ ?>
-                            <?php if( $this->datos[0]['tipo_habitacion_predet'] == $this->datos_tipo_habitacion[$i]['idtipo_habitacion'] ){ ?>
-                        <option value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_habitacion[$i]['descripcion']) ?></option>
+                            <?php if( $this->datos[0]['TIPO_HABITACION_PREDET'] == $this->datos_tipo_habitacion[$i]['IDTIPO_HABITACION'] ){ ?>
+                        <option value="<?php echo $this->datos_tipo_habitacion[$i]['IDTIPO_HABITACION'] ?>" selected="selected"><?php echo utf8_encode($this->datos_tipo_habitacion[$i]['DESCRIPCION']) ?></option>
                             <?php } else { ?>
-                        <option value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion'] ?>"><?php echo utf8_encode($this->datos_tipo_habitacion[$i]['descripcion']) ?></option>
+                        <option value="<?php echo $this->datos_tipo_habitacion[$i]['IDTIPO_HABITACION'] ?>"><?php echo utf8_encode($this->datos_tipo_habitacion[$i]['DESCRIPCION']) ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -28,7 +28,7 @@
             <tr valign="center">
                 <td><label>Ventilacion:</label></td>
                 <td>
-                    <?php if (isset ($this->datos[0]['ventilacion']) && $this->datos[0]['ventilacion']==0) {?>
+                    <?php if (isset ($this->datos[0]['VENTILACION']) && $this->datos[0]['VENTILACION']==0) {?>
                     <input type="radio" name="ventilacion" value ="1" />Ventilador<br/>
                     <input type="radio" name="ventilacion" value="0" checked="checked"/>Aire Acondicionado
                     <?php } else { ?>
@@ -38,7 +38,7 @@
                 </td>
                 <td><label>Estado:</label></td>
                 <td>
-                    <?php if (isset ($this->datos[0]['estado']) && $this->datos[0]['estado']==0) {?>
+                    <?php if (isset ($this->datos[0]['ESTADO']) && $this->datos[0]['ESTADO']==0) {?>
                     <input type="radio" name="estado" value ="1" />Habilitado<br/>
                     <input type="radio" name="estado" value="0" checked="checked"/>En Mantenimiento
                     <?php } else { ?>
@@ -58,7 +58,7 @@
                     <select placeholder="Seleccione..." class="list" id="tipo_habitacion">
                         <option value="0">Seleccione...</option>
                         <?php for($i=0;$i<count($this->datos_tipo_habitacion);$i++){?>
-                        <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['idtipo_habitacion']?>"><?php echo $this->datos_tipo_habitacion[$i]['descripcion']?></option>
+                        <option id="tipo_habitacion" value="<?php echo $this->datos_tipo_habitacion[$i]['IDTIPO_HABITACION']?>"><?php echo $this->datos_tipo_habitacion[$i]['DESCRIPCION']?></option>
                         <?php }?>
                     </select>
                 </td>
@@ -89,14 +89,14 @@
                             <?php for($i=0;$i<count($this->datos_habitacion_especifica);$i++){ ?>
                         <tr>
                             <td>
-                                <input type="hidden" class="tipo_habitacion" value="<?php echo $this->datos_habitacion_especifica[$i]['idtipo_habitacion']?>" />
-                                <?php echo $this->datos_habitacion_especifica[$i]['tipo_habitacion']?>
+                                <input type="hidden" class="tipo_habitacion" value="<?php echo $this->datos_habitacion_especifica[$i]['IDTIPO_HABITACION']?>" />
+                                <?php echo $this->datos_habitacion_especifica[$i]['TIPO_HABITACION']?>
                             </td>
                             <td>
-                                <?php echo $this->datos_habitacion_especifica[$i]['costo'] ?>
+                                <?php echo $this->datos_habitacion_especifica[$i]['COSTO'] ?>
                             </td>
                             <td>
-                                <?php echo $this->datos_habitacion_especifica[$i]['observaciones'] ?>
+                                <?php echo $this->datos_habitacion_especifica[$i]['OBSERVACIONES'] ?>
                             </td>
                             <td>
                                 <a href="#" class="eliminar imgdelete"></a>

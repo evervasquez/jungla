@@ -11,12 +11,13 @@ class login_controlador extends controller {
 
     public function index() {
         $datos=$this->_empleados->seleccionar($_POST['usuario'],$_POST['clave']);
-        if($datos['usuario']==$_POST['usuario'] && $datos['idempleado']!=''){
+        
+        if($datos[0]['USUARIO']==$_POST['usuario'] && $datos[0]['IDEMPLEADO']!=''){
             session::set('autenticado', true);
-            session::set('empleado', $datos['nombres'].' '.$datos['apellidos']);
-            session::set('idempleado', $datos['idempleado']);
-            session::set('perfil', $datos['perfil']);
-            session::set('idperfil', $datos['idperfil']);
+            session::set('empleado', $datos[0]['NOMBRES'].' '.$datos[0]['APELLIDOS']);
+            session::set('idempleado', $datos[0]['IDEMPLEADO']);
+            session::set('perfil', $datos[0]['PERFIL']);
+            session::set('idperfil', $datos[0]['IDPERFIL']);
             $this->redireccionar();
         }else{
             echo '<script>alert("usuario o clave incorrecta")</script>';

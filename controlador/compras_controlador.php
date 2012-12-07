@@ -205,7 +205,7 @@ class compras_controlador extends controller{
         $datos=$this->_compras->selecciona();
 //        echo '<pre>';
 //                print_r($datos);exit;
-        if($datos[0]['idtipo_transaccion']==2){
+        if($datos[0]['IDTIPO_TRANSACCION']==2){
             echo '<script>alert("No puede editar las compras al credito")</script>';
             $this->redireccionar('compras');
         }

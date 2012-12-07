@@ -13,9 +13,13 @@ try {
     require_once APP_PATH . 'controller.php';
     require_once APP_PATH . 'view.php';
     require_once APP_PATH . 'session.php';
-    require_once BASE_DATOS . 'conexion.php';
-    require_once BASE_DATOS . 'consulta.php';
-
+    
+    require_once BASE_DATOS . 'BaseDatos.php';
+    require_once BASE_DATOS . 'BaseDatosfactory.php';
+    require_once BASE_DATOS . 'ConfigReader.php';
+    require_once BASE_DATOS . 'DbFactory_Interface.php';
+    require_once BASE_DATOS . 'DatabaseFactory.php';
+    require_once BASE_DATOS . 'Main.php';
     session::init();
     
     FrontController::main(new request);

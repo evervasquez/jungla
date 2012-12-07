@@ -14,7 +14,7 @@
         $( "#buscar" ).focus();
         
         function buscar(){
-            $.post('/sisjungla/promociones/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/promociones/buscador','descripcion='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -32,8 +32,8 @@
                     HTML = HTML + '<td>'+datos[i].descuento+'</td>';
                     HTML = HTML + '<td>'+datos[i].fecha_inicio+'</td>';
                     HTML = HTML + '<td>'+datos[i].fecha_final+'</td>';
-                    var editar='/sisjungla/promociones/editar/'+datos[i].idpromocion; 
-                    var eliminar='/sisjungla/promociones/eliminar/'+datos[i].idpromocion;   
+                    var editar='/jungla/promociones/editar/'+datos[i].idpromocion; 
+                    var eliminar='/jungla/promociones/eliminar/'+datos[i].idpromocion;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

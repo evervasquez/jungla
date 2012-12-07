@@ -1,6 +1,6 @@
 <?php
 
-class unidad_medida {
+class unidad_medida extends Main{
 
     public $idunidad_medida;
     public $descripcion;
@@ -17,20 +17,25 @@ class unidad_medida {
             $this->abreviatura='';
         }
         $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_unidad_medida", $datos);
+        $r = $this->get_consulta("pa_selecciona_unidad_medida", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idunidad_medida);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_unidad_medida", $datos);
+        $r = $this->get_consulta("pa_elimina_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -38,7 +43,7 @@ class unidad_medida {
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_unidad_medida", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -46,7 +51,7 @@ class unidad_medida {
 
     public function actualiza() {
         $datos = array($this->idunidad_medida, $this->descripcion, $this->abreviatura);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_unidad_medida", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;

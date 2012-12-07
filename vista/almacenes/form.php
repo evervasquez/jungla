@@ -6,7 +6,7 @@
         <tr>
             <td><label>Codigo:</label></td>
             <td><input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                       value="<?php if(isset ($this->datos[0]['idalmacen']))echo $this->datos[0]['idalmacen']?>"/>
+                       value="<?php if(isset ($this->datos[0]['IDALMACEN']))echo $this->datos[0]['IDALMACEN']?>"/>
             </td>
             <td>
                 <div class="msgerror"></div>
@@ -15,7 +15,7 @@
         <tr>
             <td><label for="descripcion">Descripcion:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese almacen" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['descripcion']))echo $this->datos[0]['descripcion']?>"/></td>
+                       id="descripcion" value="<?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?>"/></td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="descripcion"></div>
             </td>

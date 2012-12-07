@@ -1,6 +1,6 @@
 <?php
 
-class detalle_compra {
+class detalle_compra extends Main{
 
     public $idcompra;
     public $idproducto;
@@ -15,19 +15,25 @@ class detalle_compra {
             $this->idproducto=0;
         }
         $datos = array($this->idcompra, $this->idproducto);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_detalle_compra", $datos);
+        $r = $this->get_consulta("pa_selecciona_detalle_compra", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
 
     public function elimina() {
         $datos = array($this->idcompra, $this->idproducto);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_detalle_compra", $datos);
+        $r = $this->get_consulta("pa_elimina_detalle_compra", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -35,7 +41,7 @@ class detalle_compra {
 
     public function inserta() {
         $datos = array($this->idcompra, $this->idproducto, $this->cantidad, $this->precio);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_compra", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_detalle_compra", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -43,7 +49,7 @@ class detalle_compra {
 
     public function actualiza() {
         $datos = array($this->idcompra, $this->idproducto, $this->cantidad, $this->precio);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_detalle_compra", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_detalle_compra", $datos);
         $error = $r[1];
         $r = null;
         return $error;

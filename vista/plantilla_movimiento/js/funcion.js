@@ -13,7 +13,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/plantilla_movimiento/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/plantilla_movimiento/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -26,13 +26,13 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idplantilla_movimiento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].idcuenta+'</td>';
-                    HTML = HTML + '<td>'+datos[i].concepto+'</td>';
-                    HTML = HTML + '<td>'+datos[i].debe_haber+'</td>';
-                    var editar='/sisjungla/plantilla_movimiento/editar/'+datos[i].idplantilla_movimiento; 
-                    var eliminar='/sisjungla/plantilla_movimiento/eliminar/'+datos[i].idplantilla_movimiento;   
+                    HTML = HTML + '<td>'+datos[i].IDPLANTILLA_MOVIMIENTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].IDCUENTA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].CONCEPTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DEBE_HABER+'</td>';
+                    var editar='/jungla/plantilla_movimiento/editar/'+datos[i].IDPLANTILLA_MOVIMIENTO; 
+                    var eliminar='/jungla/plantilla_movimiento/eliminar/'+datos[i].IDPLANTILLA_MOVIMIENTO;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

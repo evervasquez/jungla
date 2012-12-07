@@ -17,9 +17,9 @@ $(document).ready(function(){
             $("#ubigeo").html('<option>Seleccione...</option>');
         }else{
             $("#ubigeo").html('<option>Seleccione...</option>');
-            $.post('/sisjungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
+            $.post('/jungla/empleados/get_ciudades','idprovincia='+$("#provincias").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $("#ubigeo").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
+                    $("#ubigeo").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }       
             },'json');
         }
@@ -29,7 +29,7 @@ $(document).ready(function(){
         if($("#usuario").val()!=''){
             $.ajax({
                 type:"POST",
-                url:'/sisjungla/empleados/valida_usuario',
+                url:'/jungla/empleados/valida_usuario',
                 data:"usuarioz="+$("#usuario").val(),
                 beforeSend:function(){
                     $("#valida_usuario").html("cargando...");    

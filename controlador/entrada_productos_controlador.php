@@ -1,4 +1,4 @@
-<?php
+SEL<?php
 
 class entrada_productos_controlador extends controller{
     

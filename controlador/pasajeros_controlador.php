@@ -185,14 +185,14 @@ class pasajeros_controlador extends controller {
         //obtenemos todos los paises
         
         $this->_vista->datos_paises = $this->_paises->selecciona();
-        if($datos[0]['idpais']!=0){
-            $this->_regiones->idpais = $datos[0]['idpais'];
+        if($datos[0]['IDPAIS']!=0){
+            $this->_regiones->idpais = $datos[0]['IDPAIS'];
             $this->_vista->datos_regiones = $this->_regiones->selecciona();
             //obtenemos todas las provincias que pertenecen a la región del empleado
-            $this->_provincias->codigo_region = $datos[0]['idregion'];
+            $this->_provincias->codigo_region = $datos[0]['IDREGION'];
             $this->_vista->datos_provincias = $this->_provincias->selecciona();
             //obtenemos todas las ciudades que pertenecen a la provincia del empleado
-            $this->_ubigeos->codigo_provincia = $datos[0]['idprovincia'];
+            $this->_ubigeos->codigo_provincia = $datos[0]['IDPROVINCIA'];
             $this->_vista->datos_ubigeos = $this->_ubigeos->selecciona();
         }else{
             $this->_regiones->idpais = 193;

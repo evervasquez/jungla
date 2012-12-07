@@ -1,13 +1,13 @@
 $(document).ready(function(){
     $("#descripcion").focus(); 
     function get_um(unidad){
-        $.post('/sisjungla/productos/get_um','id=0',function(datos){
+        $.post('/jungla/productos/get_um','id=0',function(datos){
             $("#unidad_medida").html('<option></option>');
             for(var i=0;i<datos.length;i++){
-                if(datos[i].descripcion==unidad){
-                    $("#unidad_medida").append('<option selected="selected" value="'+ datos[i].idunidad_medida + '">' + datos[i].descripcion+ '</option>');
+                if(datos[i].DESCRIPCION==unidad){
+                    $("#unidad_medida").append('<option selected="selected" value="'+ datos[i].IDUNIDAD_MEDIDA + '">' + datos[i].DESCRIPCION+ '</option>');
                 }else{
-                    $("#unidad_medida").append('<option value="'+ datos[i].idunidad_medida + '">' + datos[i].descripcion+ '</option>');
+                    $("#unidad_medida").append('<option value="'+ datos[i].IDUNIDAD_MEDIDA + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
             }
             $("#unidad_medida").kendoComboBox();
@@ -31,7 +31,7 @@ $(document).ready(function(){
                 $("#abreviatura_um").focus();
             }
             else{
-                $.post('/sisjungla/productos/inserta_um','descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
+                $.post('/jungla/productos/inserta_um','descripcion='+$("#des_um").val()+"&abreviatura="+$("#abreviatura_um").val())
                 $("#ventana_unidad_medida").fadeOut(300);
                 $("#fondooscuro").fadeOut(300); 
                 get_um($("#des_um").val());

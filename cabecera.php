@@ -45,7 +45,7 @@
                             <a href="<?php echo BASE_URL?>login/cerrar">cerrar sesion</a>
                         </div>
                         <div id="servidorSesion">
-                            <label><?php echo conexion::get_servidor() ?></label> | 
+                            <label><?php echo Main::get_servidor() ?></label> | 
                             <label>Fecha: <?php echo date("d-m-Y") ?></label>
                         </div>
                 </div>

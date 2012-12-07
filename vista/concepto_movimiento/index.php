@@ -18,11 +18,11 @@
 
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td class="tabtr"><?php echo $this->datos[$i]['idconcepto_movimiento'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td class="tabtr"><?php echo $this->datos[$i]['IDCONCEPTO_MOVIMIENTO'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
                 <td class="tabtr" align="center">
-                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>concepto_movimiento/editar/<?php echo $this->datos[$i]['idconcepto_movimiento'] ?>')" class="imgedit"></a>
-                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>concepto_movimiento/eliminar/<?php echo $this->datos[$i]['idconcepto_movimiento'] ?>')" class="imgdelete"></a>
+                <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>concepto_movimiento/editar/<?php echo $this->datos[$i]['IDCONCEPTO_MOVIMIENTO'] ?>')" class="imgedit"></a>
+                <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>concepto_movimiento/eliminar/<?php echo $this->datos[$i]['IDCONCEPTO_MOVIMIENTO'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>

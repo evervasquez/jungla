@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
     
     function buscar_pasajeros(){
-        $.post('/sisjungla/pasajeros/buscador','cadena='+$("#txt_buscar_pasajeros").val()+'&filtro='+$("#filtro_pasajeros").val(),function(datos){
+        $.post('/jungla/pasajeros/buscador','cadena='+$("#txt_buscar_pasajeros").val()+'&filtro='+$("#filtro_pasajeros").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_pasajeros">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -42,17 +42,17 @@ $(document).ready(function(){
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
-                id=datos[i].idcliente;
-                if(datos[i].apellidos != null){
-                    pasajero=datos[i].nombres+' '+datos[i].apellidos;
+                id=datos[i].IDCLIENTE;
+                if(datos[i].APELLIDOS != null){
+                    pasajero=datos[i].NOMBRES+' '+datos[i].APELLIDOS;
                 }else{
-                    pasajero=datos[i].nombres;
+                    pasajero=datos[i].NOMBRES;
                 }
                 HTML = HTML + '<tr>';
                 HTML = HTML + '<td>'+id+'</td>';
                 HTML = HTML + '<td>'+pasajero+'</td>';
-                HTML = HTML + '<td>'+datos[i].documento+'</td>';
-                HTML = HTML + '<td>'+datos[i].direccion+'</td>';
+                HTML = HTML + '<td>'+datos[i].DOCUMENTO+'</td>';
+                HTML = HTML + '<td>'+datos[i].DIRECCION+'</td>';
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_pasajero(\''+id+'\',\''+pasajero+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            

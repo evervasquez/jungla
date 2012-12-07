@@ -1,6 +1,6 @@
 <?php
 
-class actividades {
+class actividades extends Main{
 
     public $idactividad;
     public $descripcion;
@@ -10,14 +10,20 @@ class actividades {
             $this->idactividad=0;
         }
         $datos = array($this->idactividad);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_actividades", $datos);
+        $r = $this->get_consulta("pa_selecciona_actividades", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetchall();
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        }
     }
 
 }

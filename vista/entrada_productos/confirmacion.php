@@ -12,13 +12,13 @@
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
     <tr>
         <td>
-            <input type="hidden" name="idproducto[]" value="<?php echo $this->datos[$i]['idproducto'] ?>" />
-            <?php echo $this->datos[$i]['producto'] ?>
+            <input type="hidden" name="idproducto[]" value="<?php echo $this->datos[$i]['IDPRODUCTO'] ?>" />
+            <?php echo $this->datos[$i]['PRODUCTO'] ?>
         </td>
-        <td><?php echo $this->datos[$i]['um'] ?></td>
+        <td><?php echo $this->datos[$i]['UM'] ?></td>
         <td>
-            <input type="hidden" name="cantidad[]" value="<?php echo $this->datos[$i]['cantidad'] ?>" />
-            <?php echo $this->datos[$i]['cantidad'] ?>
+            <input type="hidden" name="cantidad[]" value="<?php echo $this->datos[$i]['CANTIDAD'] ?>" />
+            <?php echo $this->datos[$i]['CANTIDAD'] ?>
         </td>
         <td><input type="checkbox" /></td>
     </tr>

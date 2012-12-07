@@ -17,11 +17,11 @@
         </tr>
         <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
             <tr>
-                <td><?php echo $this->datos[$i]['idalmacen'] ?></td>
-                <td><?php echo $this->datos[$i]['descripcion'] ?></td>
+                <td><?php echo $this->datos[$i]['IDALMACEN'] ?></td>
+                <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
                 <td>
-                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>almacenes/editar/<?php echo $this->datos[$i]['idalmacen'] ?>')" class="imgedit" ></a>
-                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>almacenes/eliminar/<?php echo $this->datos[$i]['idalmacen'] ?>')" class="imgdelete"></a>
+                    <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>almacenes/editar/<?php echo $this->datos[$i]['IDALMACEN'] ?>')" class="imgedit" ></a>
+                    <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>almacenes/eliminar/<?php echo $this->datos[$i]['IDALMACEN'] ?>')" class="imgdelete"></a>
                 </td>
             </tr>
         <?php } ?>
