@@ -2,7 +2,7 @@ $(document).ready(function(){
     $("#detalle_estadia").kendoGrid();
     $("#vtna_busca_ciudades").hide();
     
-    $("#btn_vtna_ciudades").click(function(){
+    $(".btn_vtna_ciudades").click(function(){
         i = $(this).parent().parent().index();
         $("#index_tr").val(i);
         $("#vtna_busca_ciudades").show();

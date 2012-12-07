@@ -8,6 +8,47 @@ $(document).ready(function(){
     $("#tbl_detalle_venta").kendoGrid();
     $("#vtna_busca_clientes").hide();
     $("#vtna_busca_clientes_juridicos").hide();
+    $("#agrega_cliente_juridico").hide();
+    
+    //ventana inserta pasajero juridico
+    $("#btn_vtna_agrega_pasajeros").click(function(){
+        if($("#tipo_comprobante").val()==56){
+            $("#agrega_cliente_juridico").show();
+            $("#ruc").focus();
+        }
+    });
+    
+    $("#btn_inserta_cliente_juridico").click(function(){
+        $.post('/sisjungla/estadia/inserta_cliente_juridico','nombres='+$("#razonsocial").val()+'&documento='+$("#ruc").val()+
+            '&direccion='+$("#direccionrs").val(),
+        function(datos){
+            $("#idcliente").val(datos[0].idcliente);
+            $("#cliente").val($("#razonsocial").val());
+        },'json');
+        $("#agrega_cliente_juridico").hide();
+        $("#ruc").val('');
+        $("#razonsocial").val('');
+        $("#direccionrs").val('');
+    });
+    
+    //verificar nro de ruc
+    $("#ruc").blur(function(){
+        if($(this).val()!='' && $(this).val().length==11){
+            $.post('/sisjungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+                if(datos.length>0){
+                    alert('Ya esta registrado un pasajero con este Nro de RUC...');
+                    $("#ruc").val('');
+                }   
+            },'json');
+        }
+    });
+    
+    $("#btn_cancelar_cliente_juridico").click(function(){
+        $("#ruc").val('');
+        $("#razonsocial").val('');
+        $("#direccionrs").val('');
+        $("#agrega_cliente_juridico").hide();
+    });
     
     //ventana de busqueda de clientes
     $("#btn_vtna_clientes").click(function(){
@@ -156,6 +197,8 @@ function seleccionar_cliente(id,cliente){
     $("#idcliente").val(id);
     $("#cliente").val(cliente);
     $("#vtna_busca_clientes").fadeOut(300);
+    $("#txt_buscar_clientes").val('');
+    $("#txt_buscar_clientes_juridicos").val('');
     $("#vtna_busca_clientes_juridicos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
     

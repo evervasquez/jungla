@@ -48,7 +48,7 @@ class reserva_controlador extends controller{
                 $this->_detalle_estadia->fecha_reserva=$_POST['fecha_reserva'];
                 $this->_detalle_estadia->inserta();
             }
-            $this->redireccionar('index');
+            $this->redireccionar('estadia');
         }
         $this->_vista->datos_paises = $this->_paises->selecciona();
         $this->_vista->datos_membresias= $this->_membresia->selecciona();

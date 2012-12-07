@@ -17,8 +17,14 @@ class configurarbd_controlador extends controller{
             $host = $_POST['host'];
             $port = $_POST['puerto'];
             $dbname = $_POST['basedatos'];
+            $archivo = '';
+            if($driver=='oci'){
+                $archivo = 'OCI';
+            }else{
+                $archivo = 'PDO';
+            }
 
-            $configuracion = array("driver" => $driver, "usuario" => $user, "password" => $password, "host" => $host,
+            $configuracion = array("archivo" => $archivo, "driver" => $driver, "usuario" => $user, "password" => $password, "host" => $host,
                 "puerto" => $port, "basedatos" => $dbname);
             $fp = fopen(ROOT.DS."basedatos".DS."config.ini", "w");
             fwrite($fp, "[database]");

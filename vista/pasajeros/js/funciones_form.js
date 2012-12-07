@@ -126,7 +126,7 @@ $(document).ready(function(){
     
     //valida existencia de pasajeros
     $("#nrodoc").blur(function(){
-        if($(this).val()!=''){
+        if($(this).val()!='' && $(this).val().length==8){
             $.post('/sisjungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
                 if(datos.length>0){
                     if(confirm('Ya existe un pasajero con este Nro de DNI...\nDesea editar sus datos?')){
@@ -140,7 +140,7 @@ $(document).ready(function(){
     });
     
     $("#ruc").blur(function(){
-        if($(this).val()!=''){
+        if($(this).val()!='' && $(this).val().length==11){
             $.post('/sisjungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
                 if(datos.length>0){
                     if(confirm('Ya existe un pasajero con este Nro de RUC...\nDesea editar sus datos?')){

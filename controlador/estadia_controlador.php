@@ -35,6 +35,51 @@ class estadia_controlador extends controller{
         $this->_vista->renderizar('index');
     }
     
+    public function nuevo(){
+        if($_POST['guardar']==1){
+//            echo '<pre>';
+//                        print_r($_POST);exit;
+            //registrar estadia(venta)
+            $this->_ventas->idtipo_comprobante=0;
+            for($i=0;$i<count($_POST['idpasajero']);$i++){
+                if($_POST['representante'][$i]==1){
+                    $this->_ventas->idcliente=$_POST['idpasajero'][$i];
+                }
+            }
+            $this->_ventas->idempleado=session::get('idempleado');
+            $this->_ventas->idtipo_transaccion=2;
+            $dato_venta=$this->_ventas->inserta();
+            
+            for($i=0;$i<count($_POST['idpasajero']);$i++){
+                //insertar detalle estadía
+                $this->_detalle_estadia->idhabitacion_especifica=$_POST['idhabitacion_especifica'][$i];
+                $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
+                $this->_detalle_estadia->idventa=$dato_venta['idventa'];
+                $this->_detalle_estadia->estado=1;
+                $this->_detalle_estadia->fecha_ingreso=date('d-m-Y H:i:s');
+                $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];
+                $this->_detalle_estadia->inserta();
+                
+                //insertamos ruta_huesped
+                $this->_ruta_huesped->idtipo_ruta=1;
+                $this->_ruta_huesped->idubigeo=$_POST['ciudad'][$i];
+                $this->_ruta_huesped->idcliente=$_POST['idpasajero'][$i];
+                $this->_ruta_huesped->idventa=$dato_venta['idventa'];
+                $this->_ruta_huesped->inserta();
+            }
+            $this->redireccionar('estadia');
+        }
+        
+        $this->_vista->datos_paises = $this->_paises->selecciona();
+        $this->_vista->datos_membresias= $this->_membresia->selecciona();
+        $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
+        $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
+        $this->_vista->titulo = 'Registrar Estadia';
+        $this->_vista->action = BASE_URL.'estadia/nuevo';
+        $this->_vista->setJs(array('funciones_estadia','funciones_form_pasajeros'));
+        $this->_vista->renderizar('form');
+    }
+    
     public function confirmar($idventa){
         if($_POST['guardar']==1){
 //            echo '<pre>';print_r($_POST);exit;
@@ -88,7 +133,7 @@ class estadia_controlador extends controller{
     public function check_out($idventa){
         if($_POST['guardar']==1){
 //            echo '<pre>';print_r($_POST);exit;
-            for($i=0;$i<count($_POST['idcliente']);$i++){
+            for($i=0;$i<count($_POST['idpasajero']);$i++){
                 //insertamos ruta_huesped
                 $this->_ruta_huesped->idtipo_ruta=2;
                 $this->_ruta_huesped->idubigeo=$_POST['ciudad'][$i];
@@ -97,24 +142,25 @@ class estadia_controlador extends controller{
                 $this->_ruta_huesped->inserta();
                 
                 //actualizamos detalle_estadia
-                $this->_detalle_estadia->idcliente=$_POST['idcliente'][$i];
+                $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
                 $this->_detalle_estadia->idventa=$_POST['codigo'];
                 $this->_detalle_estadia->estado=2;
-                $this->_detalle_estadia->fecha_ingreso=$_POST['fecha_entrada'];
+                $this->_detalle_estadia->fecha_ingreso=$_POST['fecha_entrada'].' '.$_POST['hora_entrada'];
                 $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];
                 $this->_detalle_estadia->actualiza();
                 
-                //actualizamos venta
-                $this->_ventas->idventa=$_POST['codigo'];
-                $this->_ventas->idtipo_comprobante=$_POST['tipo_comprobante'];
-                $this->_ventas->idcliente=$_POST['idcliente'];
-                $this->_ventas->idempleado=session::get('idempleado');
-                $this->_ventas->idtipo_transaccion=1;
-                $this->_ventas->importe=$_POST['importe'];
-                $this->_ventas->igv=$_POST['igv'];
-                $this->_ventas->descuento=$_POST['descuento'];
-                $this->_ventas->actualiza();
             }
+            //actualizamos venta
+            $this->_ventas->idventa=$_POST['codigo'];
+            $this->_ventas->idtipo_comprobante=$_POST['tipo_comprobante'];
+            $this->_ventas->idcliente=$_POST['idcliente'];
+            $this->_ventas->idempleado=session::get('idempleado');
+            $this->_ventas->idtipo_transaccion=1;
+            $this->_ventas->importe=$_POST['importe'];
+            $this->_ventas->igv=$_POST['igv'];
+            $this->_ventas->descuento=$_POST['descuento'];
+            $this->_ventas->actualiza();
+            
             $this->redireccionar('estadia');
         }
         $this->_estadia->idventa=$idventa;
@@ -129,6 +175,17 @@ class estadia_controlador extends controller{
         $this->_vista->datos_paises = $this->_paises->selecciona();
         $this->_vista->setJs(array('funciones_confirmar','funciones_check_out'));
         $this->_vista->renderizar('check_out');
+    }
+    
+    public function inserta_cliente_juridico(){
+        $this->_clientes->nombres = $_POST['nombres'];
+        $this->_clientes->documento = $_POST['documento'];
+        $this->_clientes->direccion = $_POST['direccion'];
+        $this->_clientes->idprofesion = 67;
+        $this->_clientes->idmembresia = 0;
+        $this->_clientes->tipo = 'juridico';
+        $this->_clientes->idubigeo = 0;
+        echo json_encode($this->_clientes->inserta());
     }
 }
 

@@ -57,7 +57,7 @@
                                             </td>
                                             <td><?php echo $this->datos_detalle_estadia[$i]['documento']?></td>
                                             <td>
-                                                <input type="button" value="Buscar" class="k-button" id="btn_vtna_ciudades"/>
+                                                <input type="button" value="Buscar" class="k-button btn_vtna_ciudades"/>
                                             </td>
                                             <td><input type="checkbox"/></td>
                                         </tr>

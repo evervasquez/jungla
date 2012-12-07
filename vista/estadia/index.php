@@ -43,8 +43,9 @@
 </div>
 
 <?php } else{ ?>
-            <p>No hay estadias</p>
-    <?php } ?>
+    <p>No hay estadias</p>
+    <a href="<?php echo BASE_URL?>estadia/nuevo" class="k-button">Nuevo</a>
+<?php } ?>
             
 <div id="vtna_ver_empleado"></div>
 <div id="fondooscuro"></div>
