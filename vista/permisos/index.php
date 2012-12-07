@@ -26,7 +26,7 @@
             $idmodulo_padre=$this->datos_modulos[$i]['IDMODULO_PADRE'];
             $modulo=$this->datos_modulos[$i]['DESCRIPCION'];
             if($idmodulo_padre==0){
-                echo "<li><input type='checkbox' value='$id' id='$id'/>".$modulo."<ul>";
+                echo "<li>".$modulo."<ul>";
                 for($j=0;$j<count($this->datos_modulos);$j++){
                     if($this->datos_modulos[$j]['IDMODULO_PADRE']==$idmodulo){
                         $id=$this->datos_modulos[$j]['IDMODULO'];

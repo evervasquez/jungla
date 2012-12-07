@@ -43,11 +43,12 @@ $(document).ready(function(){
     
     //valida existencia de cliente
     $("#nrodoc").blur(function(){
-        if($(this).val()!=''){
+        if($(this).val()!='' && $(this).val().length==8){
             $.post('/jungla/clientes/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
+
                 if(datos.length>0){
                     if(confirm('Ya existe un cliente con este Nro de DNI...\nDesea editar sus datos?')){
-                        window.location = '/jungla/clientes/editar/'+datos[0].idcliente
+                        window.location = '/jungla/clientes/editar/'+datos[0].IDCLIENTE
                     }else{
                         window.location = '/jungla/clientes/';
                     }
@@ -57,11 +58,12 @@ $(document).ready(function(){
     });
     
     $("#ruc").blur(function(){
-        if($(this).val()!=''){
+
+        if($(this).val()!='' && $(this).val().length==11){
             $.post('/jungla/clientes/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
                 if(datos.length>0){
                     if(confirm('Ya existe un cliente con este Nro de RUC...\nDesea editar sus datos?')){
-                        window.location = '/jungla/clientes/editar/'+datos[0].idcliente
+                        window.location = '/jungla/clientes/editar/'+datos[0].IDCLIENTE
                     }else{
                         window.location = '/jungla/clientes/';
                     }

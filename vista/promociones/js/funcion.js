@@ -27,13 +27,13 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idpromocion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descuento+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha_inicio+'</td>';
-                    HTML = HTML + '<td>'+datos[i].fecha_final+'</td>';
-                    var editar='/jungla/promociones/editar/'+datos[i].idpromocion; 
-                    var eliminar='/jungla/promociones/eliminar/'+datos[i].idpromocion;   
+                    HTML = HTML + '<td>'+datos[i].IDPROMOCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCUENTO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].FECHA_INICIO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].FECHA_FINAL+'</td>';
+                    var editar='/jungla/promociones/editar/'+datos[i].IDPROMOCION; 
+                    var eliminar='/jungla/promociones/eliminar/'+datos[i].IDPROMOCION;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

@@ -7,6 +7,22 @@ class amortizacion_pago extends Main{
     public $fecha;
     public $monto;
 
+    public function inserta() {
+        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
+        $r = $this->get_consulta("pa_inserta_actualiza_amortizacion_pago", $datos);
+        $error = $r[1];
+        $r = null;
+        return $error;
+    }
+
+    public function actualiza() {
+        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
+        $r = $this->get_consulta("pa_inserta_actualiza_amortizacion_pago", $datos);
+        $error = $r[1];
+        $r = null;
+        return $error;
+    }
+    
     public function selecciona() {
         $datos = array($this->idcuota_pago, $this->idmovimiento_caja);
         $r = $this->get_consulta("pa_selecciona_amortizacion_pago", $datos);
@@ -28,22 +44,6 @@ class amortizacion_pago extends Main{
     public function elimina() {
         $datos = array($this->idcuota_pago, $this->idmovimiento_caja);
         $r = $this->get_consulta("pa_elimina_amortizacion_pago", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function inserta() {
-        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
-        $r = $this->get_consulta("pa_inserta_amortizacion_pago", $datos);
-        $error = $r[1];
-        $r = null;
-        return $error;
-    }
-
-    public function actualiza() {
-        $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
-        $r = $this->get_consulta("pa_actualiza_amortizacion_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;

@@ -11,16 +11,20 @@ class movimiento_caja extends Main{
     
 
     public function inserta() {
-        $datos = array(0, $this->idconcepto_caja, $this->idcaja, $this->monto, 
+        $datos = array(0, $this->idconcepto_movimiento, $this->idcaja, $this->monto, 
             $this->idcompra, $this->idventa);
         $r = $this->get_consulta("pa_inserta_actualiza_movimiento_caja", $datos);
-        $error = $r[1];
+        if ($r[1] == '') {
+            $stmt = $r[0];
+        } else {
+            die($r[1]);
+        }
         $r = null;
-        return $error;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function actualiza() {
-        $datos = array($this->idmovimiento_caja, $this->idconcepto_caja, $this->idcaja, $this->monto, 
+        $datos = array($this->idmovimiento_caja, $this->idconcepto_movimiento, $this->idcaja, $this->monto, 
             $this->idcompra, $this->idventa);
         $r = $this->get_consulta("pa_inserta_actualiza_movimiento_caja", $datos);
         $error = $r[1];

@@ -20,10 +20,12 @@ class modulos extends Main{
         if (is_null($this->modulo_padre)) {
             $this->modulo_padre = '';
         }
-        if (is_null($this->idperfil)) {
-            $this->idperfil = '';
+        if(is_null($this->idperfil)){
+            $this->idperfil=0;
         }
-        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre, $this->idperfil);
+        $datos = array($this->idmodulo, $this->descripcion, $this->modulo_padre,$this->idperfil);
+//        echo '<pre>';
+//                print_r($datos);exit;
         $r = $this->get_consulta("pa_selecciona_modulos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

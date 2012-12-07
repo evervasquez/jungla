@@ -56,16 +56,15 @@ class cuota_pago extends Main{
     }
 
     public function actualiza() {
-        $datos = array(
-            $this->idcuota_pago,
-            $this->idcompra,
-            $this->fecha_pago,
-            $this->fecha_vencimiento,
-            $this->interes,
-            $this->monto_cuota,
-            $this->monto_pagado,
-            $this->nro_cuota);
-        $r = $this->get_consulta("pa_inserta_actualiza_cuota_pago", $datos);
+
+//        if(!is_null($this->idcompra)){
+//            $datos = array($this->idcuota_pago, $this->idcompra, $this->fecha_pago, $this->fecha_vencimiento, 
+//                $this->interes, $this->monto_cuota, $this->monto_pagado, $this->nro_cuota);
+//            $r = $this->get_consulta("pa_inserta_actualiza_cuota_pago", $datos);
+//        }else{
+            $datos = array($this->idcuota_pago, $this->monto_pagado);
+            $r = $this->get_consulta("pa_actualiza_monto_pagado", $datos);
+//        }
         $error = $r[1];
         $r = null;
         return $error;

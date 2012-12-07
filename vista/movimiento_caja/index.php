@@ -22,27 +22,32 @@
             <th>Acciones</th>
         </tr>
 <?php for ($i = 0; $i < count($this->datos_ventas); $i++) { ?>
+            <?php if($this->datos_ventas[$i]['IDTIPO_TRANSACCION']==1 && $this->datos_ventas[$i]['ESTADO_PAGO']==0){  ?>
             <tr>
+
                 <td><?php echo $this->datos_ventas[$i]['IDVENTA'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['NRO_DOCUMENTO'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['CLIENTE'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['FECHA_VENTA'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['IMPORTE'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['IGV'] ?></td>
-                <td><?php echo $this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) ?></td>
+                <td><?php echo $this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO'] ?></td>
                 <td><?php echo $this->datos_ventas[$i]['TIPO'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="ver('<?php echo $this->datos_ventas[$i]['IDVENTA'] ?>')" class="imgview"></a>
+                    <a href="<?php echo BASE_URL.'movimiento_caja/imprimir/'.$this->datos_ventas[$i]['IDVENTA'].'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>" target="_blank">[Imprimir]</a>
         <?php if($this->datos_ventas[$i]['ESTADO_PAGO']==0){?>
-                    <a href="<?php echo BASE_URL.'movimiento_caja/cobrar/'.$this->datos_ventas[$i]['IDVENTA'].'/'.$this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1)?>">[Cobrar]</a>
+                    <a href="<?php echo BASE_URL.'movimiento_caja/cobrar/'.$this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>" target="_blank">[Cobrar]</a>
         <?php } ?>
+                    
                 </td>
             </tr>
+            <?php }  ?>
 <?php } ?>
     </table>
     </div>
     <?php } else { ?>
-        <p>No hay compras</p>
+        <p>No hay movimiento de caja pendientes</p>
         <a href="<?php echo BASE_URL?>compras/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
 <div id="vtna_ver_compra"></div>

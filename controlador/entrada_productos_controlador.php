@@ -58,7 +58,7 @@ class entrada_productos_controlador extends controller{
         $this->_vista->setJs(array('funciones_confirmacion'));
         $this->_vista->renderizar('confirmacion');
     }
-//    
+    
 //    public function elimina_alerta(){
 //    }
     

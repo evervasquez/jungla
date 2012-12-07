@@ -85,7 +85,7 @@ $(document).ready(function(){
             $(".provincias").html('');
             $(".ciudades").html('');
             $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos_provincias){
-                $.post('/jungla/pasajeros/get_ciudades','idprovincia='+datos_provincias[0].idubigeo+'&idpais=0',function(datos){
+                $.post('/jungla/pasajeros/get_ciudades','idprovincia='+datos_provincias[0].IDUBIGEO+'&idpais=0',function(datos){
                     for(var i=0;i<datos.length;i++){
                         $(".ciudades").append('<option value="'+ datos[i].UBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                     }       
@@ -126,7 +126,8 @@ $(document).ready(function(){
     
     //valida existencia de pasajeros
     $("#nrodoc").blur(function(){
-        if($(this).val()!=''){
+
+        if($(this).val()!='' && $(this).val().length==8){
             $.post('/jungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
                 if(datos.length>0){
                     if(confirm('Ya existe un pasajero con este Nro de DNI...\nDesea editar sus datos?')){
@@ -140,7 +141,7 @@ $(document).ready(function(){
     });
     
     $("#ruc").blur(function(){
-        if($(this).val()!=''){
+        if($(this).val()!='' && $(this).val().length==11){
             $.post('/jungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
                 if(datos.length>0){
                     if(confirm('Ya existe un pasajero con este Nro de RUC...\nDesea editar sus datos?')){

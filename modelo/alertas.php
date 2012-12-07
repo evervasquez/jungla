@@ -13,7 +13,7 @@ class alertas extends Main{
             $this->idalerta=0;
         }
         if(is_null($this->idperfil)){
-            $this->idperfil='';
+            $this->idperfil=0;
         }
         $datos = array($this->idalerta,$this->idperfil);
         $r = $this->get_consulta("pa_selecciona_alertas", $datos);

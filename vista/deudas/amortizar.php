@@ -7,8 +7,8 @@
     <tr>
         <td><label>Fecha Pago:</label></td>
         <td>
-            <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_pagada" required
-                   id="fechapago" value=""/>
+            <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_pago" required
+                   id="fechapago" value="<?php echo date('d-m-Y')?>"/>
         </td>
     </tr>
     <tr>

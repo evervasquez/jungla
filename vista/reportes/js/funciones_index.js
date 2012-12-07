@@ -5,11 +5,6 @@ $(document).ready(function(){
         },
         pageable: true
     });
-  
-    
-
-    
-
     
     //ventana de busqueda de productos
     function salir(){
@@ -18,8 +13,15 @@ $(document).ready(function(){
         $("#fondooscuro").fadeOut(300);
     }
     
-    $("#btn_vtna_productos").click(function(){
+    $(".btn_vtna_productos").click(function(){
             buscar_producto();
+            
+            $("#vtna_busca_productos").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
+            $("#txt_buscar_productos").focus();
+    });
+    $(".btn_vtna_productos2").click(function(){
+            buscar_producto2();
             
             $("#vtna_busca_productos").fadeIn(300);
             $("#fondooscuro").fadeIn(300);
@@ -68,6 +70,39 @@ $(document).ready(function(){
                 um=datos[i].UM;
                 pu=datos[i].PRECIO_UNITARIO;
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos(\''+id+'\',\''+producto+'\',\''+um+'\',\''+pu+'\')" class="imgselect"></a></td>';
+                HTML = HTML + '</tr>';
+            }            
+            HTML = HTML + '</table>'
+                $("#grilla_productos").html(HTML);
+                $("#tbl_busca_productos").kendoGrid({
+                    dataSource: {
+                        pageSize: 7
+                    },
+                    pageable: true
+                });
+        },'json');        
+    }
+    function buscar_producto2(){
+        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+                HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
+                        '<tr>'+
+                            '<th>Codigo</th>'+
+                            '<th>Descripcion</th>'+
+                            '<th>Unidad Medida</th>'+
+                            '<th>Precio Venta</th>'+
+                            '<th>Seleccionar</th>'+
+                        '</tr>';
+            for(var i=0;i<datos.length;i++){
+                HTML = HTML + '<tr>';
+                HTML = HTML + '<td>'+datos[i].IDPRODUCTO+'</td>';
+                HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                HTML = HTML + '<td>'+datos[i].UM+'</td>';
+                HTML = HTML + '<td>'+datos[i].PRECIO_UNITARIO+'</td>';
+                id=datos[i].idproducto;
+                producto=datos[i].DESCRIPCION;
+                um=datos[i].UM;
+                pu=datos[i].PRECIO_UNITARIO;
+                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos2(\''+id+'\',\''+producto+'\',\''+um+'\',\''+pu+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            
             HTML = HTML + '</table>'
@@ -165,7 +200,7 @@ $(document).ready(function(){
         }
     });    
 });
-
+    
 function seleccionar_productos(id,producto,um,pu){
     $("#idproducto").val(id);
     $("#producto").val(producto);
@@ -173,4 +208,14 @@ function seleccionar_productos(id,producto,um,pu){
     $("#precio").val(pu);
     $("#vtna_busca_productos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
+    $("#chk_todo").attr("checked", false);
+}
+function seleccionar_productos2(id,producto,um,pu){
+    $("#idproducto2").val(id);
+    $("#producto2").val(producto);
+    $("#unidad_medida").val(um);
+    $("#precio").val(pu);
+    $("#vtna_busca_productos").fadeOut(300);
+    $("#fondooscuro").fadeOut(300);
+    $("#chk_todo2").attr("checked", false);
 }

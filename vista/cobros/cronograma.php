@@ -1,5 +1,5 @@
 <h3><?php echo $this->titulo?></h3>
-
+<p><a type="button" class="k-button" href="<?php echo $this->btn_action ?>">Amortizar</a></p>
 <table border="1">
     <tr>
         <th>Nro Cuota</th>
@@ -11,7 +11,7 @@
     <?php for($i=0;$i<count($this->datos);$i++){ ?>
     <tr>
         <td><?php echo $this->datos[$i]['NRO_CUOTA']?></td>
-        <td><?php echo $this->datos[$i]['FECHA_PAGO']?></td>
+        <td><?php echo $this->datos[$i]['FECHA_COBRO']?></td>
         <td><?php echo $this->datos[$i]['MONTO_CUOTA']?></td>
         <td><?php echo $this->datos[$i]['MONTO_COBRADO']?></td>
         <td>

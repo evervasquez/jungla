@@ -7,8 +7,8 @@
     <tr>
         <td><label>Fecha Pago:</label></td>
         <td>
-            <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_pagada" required
-                   id="fechapago" value=""/>
+            <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_pago" required
+                   id="fechapago" value="<?php echo date('d-m-Y')?>"/>
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
         <td colspan="2" align="center">
             <p>
                 <button type="submit" class="k-button" id="saveform">Guardar</button>
-                <a href="<?php echo BASE_URL ?>deudas" class="k-button cancel">Cancelar</a>
+                <a href="<?php echo BASE_URL ?>cobros" class="k-button cancel">Cancelar</a>
             </p>
         </td>
     </tr>

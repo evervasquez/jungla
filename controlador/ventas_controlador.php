@@ -65,11 +65,12 @@ class ventas_controlador extends controller {
             $this->_ventas->igv = $_POST['igv'];
             $this->_ventas->fecha_venta = $_POST['fecha_venta'];
             $this->_ventas->estado_pago = 0;
+            $this->_ventas->descuento = $_POST['descuento'];
             $dato_venta=$this->_ventas->inserta();
             //inserta detalle venta
             $x=0;$y=0;
             for($i=0;$i<count($_POST['um']);$i++){
-                $this->_detalle_venta->idventa=$dato_venta['idventa'];
+                $this->_detalle_venta->idventa=$dato_venta['IDVENTA'];
                 if($_POST['um'][$i]=='paquetes'){
                     $this->_detalle_venta->idpaquete= $_POST['idpaquete'][$x];
                     $this->_detalle_venta->idproducto= 0;

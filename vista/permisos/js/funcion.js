@@ -17,12 +17,28 @@ $(document).ready(function(){
             $("#div_modulos").slideDown("slow");
         }            
     });
-    $("input:checkbox").click(function(){
+    
+//    $(".padre").live('click',function(){
+//        if($(this).is(":checked")){
+//            x=$(this).children("input:checkbox").find(":eq(0)").val();
+//            alert(x);
+//            $(this).children("input:checkbox").each(function(x, y) {
+//                alert('x');
+//                if($(this).children("input:checkbox").is(":checked")){
+//                    alert('1');
+//                }else{
+//                    alert('0');
+//                }
+//            });
+//        }else{
+//        }
+//    });
+    
+    $("input:checkbox [class!=padre]").click(function(){
         if(this.checked){
             $.post('/jungla/permisos/inserta_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
         }else{
             $.post('/jungla/permisos/elimina_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
         }
-        
     });
 });

@@ -9,7 +9,7 @@ class detalle_venta extends Main{
     public $precio_venta;
 
     public function inserta() {
-        $datos = array($this->idventa, $this->idpaquete, $this->idproducto, $this->cantidad, 0, $this->precio_venta);
+        $datos = array($this->idventa, $this->idpaquete, $this->idproducto, $this->cantidad, $this->precio_venta);
 //        echo '<pre>';
 //                print_r($datos);exit;
         $r = $this->get_consulta("pa_inserta_actualiza_detalle_venta", $datos);
@@ -19,8 +19,10 @@ class detalle_venta extends Main{
     }
 
     public function actualiza() {
-        $datos = array($this->idventa, $this->idpaquete, $this->idproducto, $this->cantidad, 0, $this->precio_venta);
+
+        $datos = array($this->idventa, $this->idpaquete, $this->idproducto, $this->cantidad, $this->precio_venta);
         $r = $this->get_consulta("pa_inserta_actualiza_detalle_venta", $datos);
+
         $error = $r[1];
         $r = null;
         return $error;

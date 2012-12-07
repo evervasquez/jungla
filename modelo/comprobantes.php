@@ -12,13 +12,10 @@ class comprobantes extends Main{
         if(is_null($this->idcomprobante)){
             $this->idcomprobante=0;
         }
-        if(is_null($this->descripcion)){
-            $this->descripcion='';
-        }
         if(is_null($this->tipo)){
             $this->tipo='';
         }
-        $datos = array($this->idcomprobante, $this->descripcion, $this->tipo);
+        $datos = array($this->idcomprobante, $this->tipo);
         $r = $this->get_consulta("pa_selecciona_comprobantes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

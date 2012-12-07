@@ -3,7 +3,7 @@
     $divfotos = '';
     include("fb.php");
     $listafotos =  fb_albums('472148372819412');
-    echo "<h1>Galería</h1>";
+    echo "<h1 class='titleContacto'>Galería</h1>";
     foreach($listafotos as $index => $valor){
             $galeria = file_get_contents("https://graph.facebook.com/".$valor['ida']."/photos?limit=100");
             $galeria = json_decode($galeria);

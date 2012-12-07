@@ -46,8 +46,7 @@ class mensajes_controlador extends controller {
         $this->_mensajes->email = $_POST['emailContacto'];
         $this->_mensajes->telefono = $_POST['telefonoContacto'];
         $this->_mensajes->mensaje = $_POST['mensaje'];
-        $this->_mensajes->fecha = $_POST['hora'];
-//                date("d-m-Y H:i:s");
+        $this->_mensajes->fecha = date("d-m-Y H:i:s");
         $this->_mensajes->estado = 0;
         $this->_mensajes->inserta();
         $this->_alertas->idalerta = 1;

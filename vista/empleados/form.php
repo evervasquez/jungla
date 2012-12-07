@@ -156,7 +156,12 @@
             </td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese usuario" name="usuario" required
+<<<<<<< HEAD
                    id="usuario" value="<?php if(isset ($this->datos[0]['USUARIO']))echo $this->datos[0]['USUARIO']?>"/>
+=======
+                       <?php if(isset ($this->datos[0]['usuario'])) echo 'readonly="readonly"'?>
+                   id="usuario" value="<?php if(isset ($this->datos[0]['usuario']))echo $this->datos[0]['usuario']?>"/>
+>>>>>>> master
                 <span id="valida_usuario"></span>
                 <br><div class="k-invalid-msg msgerror" data-for="usuario"></div>
             </td>

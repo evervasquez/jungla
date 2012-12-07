@@ -21,22 +21,17 @@
                             '<th>Tipo</th>'+
                             '<th>Nombre / Razon Social</th>'+
                             '<th>DNI / RUC</th>'+
-                            '<th>Telefono</th>'+
-                            '<th>Email</th>'+
-                            '<th>Ubigeo</th>'+
+                            '<th>Direccion</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
+
                     HTML = HTML + '<td>'+datos[i].IDCLIENTE+'</td>';
                     HTML = HTML + '<td>'+datos[i].TIPO+'</td>';
-                    if(datos[i].APELLIDOS != null){
                     HTML = HTML + '<td>'+datos[i].NOMBRES+' '+datos[i].APELLIDOS+'</td>';
-                    }
-                    else{
-                    HTML = HTML + '<td>'+datos[i].NOMBRES+'</td>';
-                    }
+
                     HTML = HTML + '<td>'+datos[i].DOCUMENTO+'</td>';
                     HTML = HTML + '<td>'+datos[i].DIRECCION+'</td>';
                     var editar='/jungla/clientes/editar/'+datos[i].IDCLIENTE; 

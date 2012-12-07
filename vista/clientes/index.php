@@ -25,7 +25,7 @@
             <tr>
                 <td><?php echo $this->datos[$i]['IDCLIENTE'] ?></td>
                 <td><?php echo $this->datos[$i]['TIPO'] ?></td>
-                <td><?php echo utf8_encode($this->datos[$i]['NOMBRES'].' '.$this->datos[$i]['APELLIDOS']) ?></td>
+                <td><?php echo $this->datos[$i]['NOMBRES'].' '.$this->datos[$i]['APELLIDOS'] ?></td>
                 <td><?php echo $this->datos[$i]['DOCUMENTO'] ?></td>
                 <td><?php echo $this->datos[$i]['DIRECCION'] ?></td>
                 <td>

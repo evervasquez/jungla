@@ -1,5 +1,5 @@
 <h3><?php echo $this->titulo?></h3>
-
+<p><a type="button" class="k-button" href="<?php echo $this->btn_action ?>">Amortizar</a></p>
 <table border="1">
     <tr>
         <th>Nro Cuota</th>
