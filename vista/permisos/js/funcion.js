@@ -34,7 +34,7 @@ $(document).ready(function(){
 //        }
 //    });
     
-    $("input:checkbox [class!=padre]").click(function(){
+    $("input:checkbox").click(function(){
         if(this.checked){
             $.post('/jungla/permisos/inserta_permiso','idperfil='+$("#perfil").val()+'&idmodulo='+$(this).val())
         }else{

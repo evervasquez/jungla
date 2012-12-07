@@ -1,6 +1,6 @@
 <?php 
 
-class estadia extends Main{
+class estadia {
     
     public $idventa;
     public $representante;
@@ -13,7 +13,7 @@ class estadia extends Main{
             $this->representante='';
         }
         $datos = array($this->idventa, $this->representante);
-        $r = $this->get_consulta("pa_selecciona_estadia", $datos);
+        $r = consulta::procedimientoAlmacenado("pa_selecciona_estadia", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

@@ -47,7 +47,7 @@ $(document).ready(function(){
                 $(".ciudades").html('<option value="0">Seleccione...</option>')
                 $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                     for(var i=0;i<datos.length;i++){
-                        $(".regiones").append('<option value="'+ datos[i].UBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
+                        $(".regiones").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                     }
                 },'json');
             }
@@ -59,7 +59,7 @@ $(document).ready(function(){
             $(".celda_provincia").hide();
             $.post('/jungla/pasajeros/get_ciudades','idprovincia=0&idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $(".ciudades").append('<option value="'+ datos[i].UBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
+                    $(".ciudades").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }       
             },'json');
         }
@@ -72,7 +72,7 @@ $(document).ready(function(){
             $(".provincias").html('<option>Seleccione...</option>');
             $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $(".provincias").append('<option value="'+ datos[i].UBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
+                    $(".provincias").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
             },'json');
         }else{
@@ -87,7 +87,7 @@ $(document).ready(function(){
             $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos_provincias){
                 $.post('/jungla/pasajeros/get_ciudades','idprovincia='+datos_provincias[0].IDUBIGEO+'&idpais=0',function(datos){
                     for(var i=0;i<datos.length;i++){
-                        $(".ciudades").append('<option value="'+ datos[i].UBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
+                        $(".ciudades").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                     }       
                 },'json');
             },'json');
@@ -102,7 +102,7 @@ $(document).ready(function(){
             $(".ciudades").html('');
             $.post('/jungla/pasajeros/get_ciudades','idprovincia='+$(this).val()+'&idpais=0',function(datos){
                 for(var i=0;i<datos.length;i++){
-                    $(".ciudades").append('<option value="'+ datos[i].UBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
+                    $(".ciudades").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }       
             },'json');
         }

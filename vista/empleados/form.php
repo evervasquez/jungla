@@ -96,7 +96,7 @@
             <td><label for="fecha_nacimiento">Fecha de Nacimiento:</label></td>
             <td>
                 <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_nacimiento" required
-                   id="fechanac" value="<?php echo $this->datos[0]['FECHA_NACIMIENTO'] ?>"/>
+                   id="fechanac" value="<?php echo $this->datos[0]['E_FECHA_NACIMIENTO'] ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_nacimiento"></div>
             </td>
         </tr>
@@ -104,7 +104,7 @@
             <td><label for="fecha_contratacion">Fecha de Contratacion:</label></td>
             <td>
                 <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
-                   id="fechacon" value="<?php echo $this->datos[0]['FECHA_CONTRATACION'] ?>"/>
+                   id="fechacon" value="<?php echo $this->datos[0]['E_FECHA_CONTRATACION'] ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
             </td>
             <td><label>Actividad:</label></td>
@@ -156,7 +156,11 @@
             </td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese usuario" name="usuario" required
+<<<<<<< HEAD
                        <?php if(isset ($this->datos[0]['usuario'])) echo 'readonly="readonly"'?>
+=======
+                       <?php if(isset ($this->datos[0]['USUARIO'])) echo 'readonly="readonly"'?>
+>>>>>>> 1a95a614a41d787c798f40b44b74b9f5631ce5b8
                    id="usuario" value="<?php if(isset ($this->datos[0]['USUARIO']))echo $this->datos[0]['USUARIO']?>"/>
                 <span id="valida_usuario"></span>
                 <br><div class="k-invalid-msg msgerror" data-for="usuario"></div>

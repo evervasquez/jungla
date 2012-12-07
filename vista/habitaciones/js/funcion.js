@@ -27,7 +27,6 @@
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].IDHABITACION+'</td>';
                     HTML = HTML + '<td>'+datos[i].NRO_HABITACION+'</td>';
-                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
                     if(datos[i].VENTILACION==1){
                         HTML = HTML + '<td>Ventilador</td>';
                     }else{
@@ -128,9 +127,9 @@
                 html+= '</tr>';
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
-                    html+= '<td>'+datos[0]['TIPO_HABITACION']+'</td>';
-                    html+= '<td>'+datos[0]['COSTO']+'</td>';
-                    html+= '<td>'+datos[0]['OBSERVACIONES']+'</td>';
+                    html+= '<td>'+datos[i]['TIPO_HABITACION']+'</td>';
+                    html+= '<td>'+datos[i]['COSTO']+'</td>';
+                    html+= '<td>'+datos[i]['OBSERVACIONES']+'</td>';
                     html+= '</tr>';
                 }
                 html+= '</table>';

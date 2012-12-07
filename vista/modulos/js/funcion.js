@@ -24,7 +24,7 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].IDMODDULO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].IDMODULO+'</td>';
                     HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
                     HTML = HTML + '<td>'+datos[i].URL+'</td>';
                     if(datos[i].MODULO_PADRE != null){

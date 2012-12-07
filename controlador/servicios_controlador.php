@@ -23,11 +23,7 @@ class servicios_controlador extends controller {
             $this->_servicios->descripcion=$_POST['descripcion'];
         }
         echo json_encode($this->_servicios->selecciona());
-//        $dato=$this->_servicios->selecciona();
-//        echo '<pre>';
-//        print_r($dato);
-//        die();
-   }
+    }
     
     public function nuevo() {        
         if ($_POST['guardar'] == 1) {
