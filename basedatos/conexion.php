@@ -10,7 +10,7 @@ class conexion extends PDO {
             return self::$instancia;
         }
         $file = 'config.ini';
-        $settings = parse_ini_file($file, TRUE);
+        @$settings = parse_ini_file($file, TRUE);
         $dsn = $settings['database']['driver'] . ':dbname=' . $settings['database']['basedatos'] . '; host=' . $settings['database']['host'] . '; port=' . $settings['database']['puerto'];
         self::$_servidor = $settings['database']['driver'];
         $user = $settings['database']['usuario'];
@@ -45,12 +45,12 @@ class conexion extends PDO {
 
             <html xmlns="http://www.w3.org/1999/xhtml">
                 <head>
-                    <script type="text/javascript" src="<?php echo BASE_URL ?>lib<?php echo DS ?>js<?php echo DS ?>jquery.js"></script>
-                    <script type="text/javascript" src="<?php echo BASE_URL ?>lib<?php echo DS ?>js<?php echo DS ?>jquery.min.js"></script>
+                    <script type="text/javascript" src="<?php echo BASE_URL ?>lib/js/jquery.js"></script>
+                    <script type="text/javascript" src="<?php echo BASE_URL ?>lib/js/jquery.min.js"></script>
 
                     <script type="text/javascript">
                         alert("¡Conexion Fallida!. El sistema se inicializara, los datos que hayan sido guardados no se perderan.");
-                                               
+                        
                         $(document).ready(function(){
                             setTimeout("$('#bienvenido1').fadeIn(600)",0);
                             setTimeout("$('#bienvenido1').fadeOut(500)",1900);
@@ -84,7 +84,7 @@ class conexion extends PDO {
                     <div id="bienvenido3" style="display: none; width: 100%; height: 100%; position:absolute;top:50%;margin-top:-50px;">
                         <table align="center"><tr><td><text style="font-family: Arial; font-size: 26;">Necesitaremos datos t&eacute;cnicos del sistema.<br>Contacte con el administrador si es que los desconoce.</text></td></tr></table></div>
                     <div id="linealogo" style="display: none; width: 100%; height: 100%; position:absolute;top:20%;margin-top:-50px;" align="center">
-                        <img src="<?php echo BASE_URL ?>lib<?php echo DS ?>img<?php echo DS ?>logo.png" height="91" width="383" />
+                        <img src="<?php echo BASE_URL ?>lib/img/logo.png" height="91" width="383" />
                     </div>
                     <div id="formulario_bd" style="width: 100%; height: 100%; position:absolute;top:40%;margin-top:-50px;">
                         <form method="post" action="index" id="frm" >
@@ -117,7 +117,7 @@ class conexion extends PDO {
                                 </tr>
                                 <tr style="display: none" id="linea3">
                                     <td><label for="password"><text style="font-family: Arial">Clave: </text></label></td>
-                                    <td><input type="password" placeholder="Ingrese contraseña" class="k-textbox" name="contraseña" value="" /></td>
+                                    <td><input type="password" placeholder="Ingrese contrase&ntilde;a" class="k-textbox" name="contraseña" value="" /></td>
                                     <td>
                                         <div class="msgerror"></div>
                                     </td>
