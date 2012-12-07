@@ -33,6 +33,7 @@ class configurarbd_controlador extends controller{
                 fwrite($fp, "\n" . $key . " = " . $valor);
             }
             fclose($fp);
+            session::destroy();
 //            conexion::conexionSingleton();
             echo '<script>
                         alert("Datos GRABADOS Correctamente");

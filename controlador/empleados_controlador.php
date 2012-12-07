@@ -104,7 +104,7 @@ class empleados_controlador extends controller {
 
     public function valida_usuario() {
         $usuario = $this->_empleados->seleccionar($_POST['usuario'], '');
-        if ($usuario['usuario'] == '') {
+        if ($usuario['USUARIO'] == '') {
             echo '<a class="imgselect" title="Valido"></a><input type="hidden" id="val_usuario" value="1" />';
         } else {
             echo '<a class="imgdelete" title="En uso"></a><input type="hidden" id="val_usuario" value="0" />';
@@ -182,7 +182,8 @@ class empleados_controlador extends controller {
         }
         $this->_empleados->idempleado = $this->filtrarInt($id);
         $this->_empleados->elimina();
-        $this->redireccionar('empleados');
+        session::destroy();
+        $this->redireccionar();
     }
     
 }

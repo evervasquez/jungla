@@ -89,7 +89,7 @@
     });
     function ver(id){
            $.post('/jungla/clientes/ver','idcliente='+id,function(datos){
-               if(datos[0]['tipo']=="natural"){
+               if(datos[0]['TIPO']=="natural"){
                     html= '<h3>Datos del Cliente: '+datos[0]['NOMBRES']+' '+datos[0]['APELLIDOS']+'</h3>';
                     html+='<table>';
                     html+= '<tr>';
@@ -117,7 +117,7 @@
                         html+= '<td>Masculino</td>';
                     }
                     html+= '</tr>'
-                    if(datos[0]['TELEFONO'] != null && datos[0]['TELEFONO'] != ' '){
+                    if(datos[0]['TELEFONO'] != null && datos[0]['TELEFONO'] != ''){
                     html+= '<tr>';
                     html+= '<td>Telefono:</td>';
                     html+= '<td>'+datos[0]['TELEFONO']+'</td>';
@@ -147,10 +147,10 @@
                     html+= '<td>'+datos[0]['ESTADO_CIVIL']+'</td>';
                     html+= '</tr>';
                     }
-                    if(datos[0]['UBIGEO'] != null && datos[0]['UBIGEO'] != ' '){
+                    if(datos[0]['PAIS'] != null && datos[0]['PAIS'] != ' '){
                     html+= '<tr>';
-                    html+= '<td>Ciudad:</td>';
-                    html+= '<td>'+datos[0]['UBIGEO']+'</td>';
+                    html+= '<td>Pais:</td>';
+                    html+= '<td>'+datos[0]['PAIS']+'</td>';
                     html+= '</tr>';
                     }
                     if(datos[0]['MEMBRESIA'] != "Desconocido"){

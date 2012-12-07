@@ -5363,8 +5363,8 @@ class wsdl extends nusoap_base {
             $PHP_SELF = 'webservice/servidor.php';
             //$PHP_SELF = $_SERVER['PHP_SELF'];
         } elseif (isset($HTTP_SERVER_VARS)) {
-            //$PHP_SELF = $HTTP_SERVER_VARS['PHP_SELF'];
-            $PHP_SELF = 'webservice/servidor.php';
+            $PHP_SELF = $HTTP_SERVER_VARS['PHP_SELF'];
+            //$PHP_SELF = 'webservice/servidor.php';
         } else {
             $this->setError("Neither _SERVER nor HTTP_SERVER_VARS is available");
         }
