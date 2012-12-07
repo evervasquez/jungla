@@ -104,9 +104,6 @@
 </div>
 
 
-<div id="vtna_agrega_pasajero"></div>
-
-
 <div id="vtna_inserta_pasajero">
     <form method="post" action="" id="frm_natural">
         <table class="tabFormComplejo" align="center">

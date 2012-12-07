@@ -6,8 +6,7 @@
         <tr valign="top">
             <td><label>Motivo:</label></td>
             <td>
-                <select class="combo" placeholder="Selecciona" id="motivo" name="motivo" required>
-                    <option></option>
+                <select class="list" placeholder="Selecciona" id="motivo" name="motivo" required>
                     <option value="2">Pedido</option>
                     <option value="3">Perdida</option>
                 </select>

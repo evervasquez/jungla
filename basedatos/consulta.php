@@ -70,7 +70,7 @@ class consulta extends conexion {
                     return array($stmt, '');
                 } else {
                     $url=str_replace(' ', '_', $error[2]);
-                    die("<script> window.location='".BASE_URL."error/error_bd/".$url."' ; </script>");
+                    die("<script> window.location=\"".BASE_URL."error/error_bd/".$url."\" ; </script>");
                 }
             } else {
                 return array($stmt, $error[2]);

@@ -76,6 +76,7 @@ class estadia_controlador extends controller{
         $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
         $this->_vista->titulo = 'Registrar Estadia';
         $this->_vista->action = BASE_URL.'estadia/nuevo';
+        $this->_vista->setCss(array('estilos_form'));
         $this->_vista->setJs(array('funciones_estadia','funciones_form_pasajeros'));
         $this->_vista->renderizar('form');
     }

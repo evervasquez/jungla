@@ -33,8 +33,8 @@ class asientos {
         return $error;
     }
 
-    public function inserta($idcompra,$idventa) {
-        $datos = array($idcompra,$idventa);
+    public function inserta($idcompra) {
+        $datos = array($idcompra);
         if($idventa == 0){
             $r = consulta::procedimientoAlmacenado("pa_inserta_asientos_compra", $datos);
         }else{
