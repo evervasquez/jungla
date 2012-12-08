@@ -40,12 +40,15 @@ class ventas_controlador extends controller {
     
     public function buscador(){
         if($_POST['filtro']==0){
-            $this->_compras->nro_comprobante=$_POST['cadena'];
+            $this->_ventas->nro_documento=$_POST['cadena'];
         }
         if($_POST['filtro']==1){
-            $this->_compras->proveedor = $_POST['cadena'];
+            $this->_ventas->cliente = $_POST['cadena'];
         }
-        echo json_encode($this->_compras->selecciona());
+        if($_POST['filtro']==2){
+            $this->_ventas->empleado= $_POST['cadena'];
+        }
+        echo json_encode($this->_ventas->selecciona());
     }
     
     public function nuevo(){
@@ -119,7 +122,7 @@ class ventas_controlador extends controller {
                 $fecha_temp = date("d-m-Y", strtotime("$fecha_venta +$intervalo_dias day"));
 
                 for($i=1;$i<=$c;$i++){
-                    $this->_cuota_cobro->idventa=$dato_venta['idventa'];
+                    $this->_cuota_cobro->idventa=$dato_venta['IDVENTA'];
                     $this->_cuota_cobro->fecha_cobro=$fecha_temp;
                     $this->_cuota_cobro->nro_cobro=$i;
                     $this->_cuota_cobro->monto_cuota=$cuota[$i];
@@ -251,7 +254,7 @@ class ventas_controlador extends controller {
         }
         $this->_ventas->idventa=$this->filtrarInt($id);
         $this->_ventas->elimina();
-        $this->redireccionar('compras');
+        $this->redireccionar('ventas');
     }
 }
 

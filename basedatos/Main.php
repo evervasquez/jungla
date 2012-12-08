@@ -8,14 +8,19 @@ class Main {
     public function __construct() {
         $site_path = realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'config.ini';
         try {
-            self::$db = DatabaseFactory::create($site_path);
+            if (!file_exists($site_path)) {
+                throw new PDOException('No se encontro el archivo: '.$site_path);
+            } else {
+                self::$db = DatabaseFactory::create($site_path);
+                set_time_limit(20);
+            }
             // $this->exec = DatabaseFactory::getExecute($site_path);
         } catch (PDOException $e) {
             //$error = 'Conexion Fallada: ' . $e->getMessage();
             // header("Location:index.php?controller=BaseDatos&action=orror&str=" . $error);
             if($_POST['guardar']==1){
                 $host = $_POST['host'];
-                $comando = "ping ".$host; 
+                $comando = "ping ".$host." -n 5";
                 $salida=shell_exec($comando);
                 if(strstr($salida,'unreachable') || strstr($salida,'failed') || strstr($salida,'could not find host')){//0 = error, 1 = bien
                     $err = 0;
@@ -345,10 +350,17 @@ class Main {
                 if ($error[2] == '(null) [0] (severity 0) [(null)]') {
                     return array($stmt, '');
                 } else {
-                    die($error[2]);
+                    $url=str_replace(' ', '_', $error[2]);
+                    die("<script> window.location=\"".BASE_URL."error/error_bd/".$url."\" ; </script>");
                 }
             } else {
                 return array($stmt, $error[2]);
+//                if($error[2]!=''){
+//                    return array($stmt, $error[2]);
+//                }else{
+//                    $url=str_replace(' ', '_', $error[2]);
+//                    die("<script> window.location=\"".BASE_URL."error/error_bd/".$url."\" ; </script>");
+//                }
             }
 
 //            return array($stmt,$error[2]);

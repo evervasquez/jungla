@@ -25,7 +25,7 @@
 <?php } ?>
 </table>
 <p><button type="button" class="k-button" id="confirma_entrada" >Confirmar</button>
-    <a href="/sisjungla/entrada_productos/entradas_pendientes/" class="k-button cancel" >Cancelar</a></p>
+    <a href="<?php echo BASE_URL?>entrada_productos/entradas_pendientes/" class="k-button cancel" >Cancelar</a></p>
 </form>
 
 <?php } else{ ?>
