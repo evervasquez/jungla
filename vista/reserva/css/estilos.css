@@ -1,5 +1,12 @@
+/* 
+    Document   : estilos_index
+    Created on : 09/11/2012, 02:01:37 PM
+    Author     : Ja1R
+    Description:
+        Purpose of the stylesheet follows.
+*/
 
-#vtna_inserta_pasajero, #vtna_busca_pasajero,#vtna_busca_ciudades{
+#vtna_inserta_pasajero, #vtna_busca_pasajero{
         display: none;
 	padding:20px;
 	color: black;
@@ -18,9 +25,5 @@
 #vtna_busca_pasajero{
 	left: 25%;
         width: 50%;
-	top: 15%;
-}
-#vtna_busca_ciudades{
-	left: 40%;
 	top: 15%;
 }

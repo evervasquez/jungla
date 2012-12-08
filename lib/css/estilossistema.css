@@ -87,6 +87,10 @@
         width: 50%;
         margin-right: 10%;
 }
+#tbl_detallemax{
+        width: 100%;
+        margin-right: 10%;
+}
 #btn_buscar{
         height: 25px;
         width: 28px;

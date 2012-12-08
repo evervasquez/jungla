@@ -2,32 +2,30 @@
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
-        <table>
+        <table class="tabForm" align="center" width="80%">
             <tr>
-                <td>Fecha entrada:</td>
+                <td><label>Fecha entrada:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada" required 
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada"
                    id="fecha_entrada" value="<?php echo date('d-m-Y') ?>"/>
                 </td>
-            </tr>
-            <tr>
-                <td>Fecha salida:</td>
+                <td><label>Fecha salida:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida" required
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida" 
                    id="fecha_salida"  value="<?php //echo '02-12-2012' ?>"/>
                 </td>
-            </tr>
-            <tr>
                 <td colspan="2" align="center">
-                    <input type="button" class="k-button" value="Buscar Habitaciones" id="btn_busca_habitaciones" />
+                    &nbsp;&nbsp;&nbsp;<input type="button" class="k-button" value="Buscar Habitaciones" id="btn_busca_habitaciones" />
                 </td>
             </tr>
             <tr id="celda_detalle_estadia">
-                <td colspan="2">
+                <td colspan="7" align="center">
+                    <br>
                     <fieldset>
                         <legend>Asignar pasajero:</legend>
-                        <table>
+                        <table align="center" width="100%">
                             <tr>
+                                <td></td>
                                 <td><label>Habitacion:</label></td>
                                 <td>
                                     <select placeholder="Seleccione..." class="comboX" id="habitacion"></select>
@@ -36,30 +34,31 @@
                                 <td>
                                     <select placeholder="Seleccione..." class="comboX" id="tipo_habitacion"></select>
                                 </td>
+                                <td colspan="2"></td>
                             </tr>
                             <tr>
-                                <td colspan="4" align="center">
+                                <td colspan="7" align="center">
+                                    <br>
                                     <input type="button" class="k-button" value="Asignar Pasajero a Habitacion" id="btn_asignar_pasajeros_habitacion" />
                                     <input type="button" class="k-button cancel" value="Cancelar" id="btn_cancelar_asignacion_pasajeros" />
                                 </td>
                             </tr>
                             <tr class="celda_asignar_pasajero">
-                                <td><label>Pasajero:</label></td>
-                                <td>
+                                <td colspan="7"  align="center">
+                                    <br>Pasajero:
                                     <input type="hidden" id="idcliente"/>
                                     <input type="hidden" id="document"/>
                                     <input type="text" class="k-textbox" placeholder="Busque pasajero" readonly="readonly" id="cliente"/>
-                                </td>
-                                <td>
                                     <button type="button" class="k-button" id="btn_vtna_busca_pasajeros"><span class="k-icon k-i-search"></span></button>
                                     <button type="button" class="k-button" id="btn_vtna_agrega_pasajeros"><span class="k-icon k-i-plus"></span></button>
                                 </td>
                             </tr>
                             <tr align="center" class="celda_asignar_pasajero">
-                                <td colspan="5"><input type="button" class="k-button" value="Agregar" id="asignar_pasajero"/></td>
+                                <td colspan="7"><br><input type="button" class="k-button" value="Agregar" id="asignar_pasajero"/><br></td>
                             </tr>
                             <tr class="celda_asignar_pasajero">
-                                <td colspan="5">
+                                <td colspan="7">
+                                    <div id="tbl_detallemax">
                                     <table border="1" align="center" id="detalle_estadia">
                                         <tr>
                                             <th>Habitacion</th>
@@ -71,6 +70,7 @@
                                             <th>Accion</th>
                                         </tr>
                                     </table>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -80,7 +80,7 @@
         </table>
         <p>
             <button type="button" class="k-button" id="btn_guardar">Guardar</button>
-            <a href="<?php echo BASE_URL ?>index" class="k-button cancel">Cancelar</a>
+            <a href="<?php echo BASE_URL ?>estadia" class="k-button cancel">Cancelar</a>
         </p>
     </fieldset>
 </form>
@@ -105,6 +105,7 @@
 
 
 <div id="vtna_inserta_pasajero">
+    <h3>Registrar Pasajero</h3>
     <form method="post" action="" id="frm_natural">
         <table class="tabFormComplejo" align="center">
             <tr valign="top">
@@ -237,7 +238,7 @@
                 <td colspan="6" align="center">
                     <p>
                         <button type="button" class="k-button" id="btn_inserta_pasajero">Guardar</button>
-                        <button class="k-button cancel">Cancelar</button>
+                        <a href="javascript:void(0)" class="k-button cancelar cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
@@ -264,7 +265,7 @@
             <td><label>Region:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="regiones" required name="regiones">
-                    <option>Seleccione...</option>
+                    <option></option>
                 </select>
             </td>
         </tr>
@@ -272,7 +273,7 @@
             <td><label>Provincia:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="provincias" required name="provincias">
-                    <option>Seleccione...</option>
+                    <option></option>
                 </select>
             </td>
         </tr>
@@ -280,7 +281,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="ciudades" required name="ciudades">
-                    <option>Seleccione...</option>
+                    <option></option>
                 </select>
             </td>
         </tr>

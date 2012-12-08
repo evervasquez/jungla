@@ -33,6 +33,9 @@ class movimiento_caja extends Main{
     }
 
     public function selecciona() {
+        if(is_null($this->idmovimiento_caja)){
+            $this->idmovimiento_caja=0;
+        }
         $datos = array($this->idmovimiento_caja);
         $r = $this->get_consulta("pa_selecciona_movimiento_c", $datos);
         if ($r[1] == '') {
