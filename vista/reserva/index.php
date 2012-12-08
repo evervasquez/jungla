@@ -1,40 +1,36 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <fieldset>
-        <legend><?php echo $this->titulo ?></legend>
-        <table>
+        <legend><?php echo $this->titulo ?></legend><br>
+        <table class="tabForm" align="center">
             <tr>
-                <td>Fecha reserva:</td>
+                <td><label>Fecha reserva:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_reserva" required
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_reserva"
                    value="<?php if(isset ($this->datos)){echo $this->datos[0]['FECHA_RESERVA'];} else {echo date("d-m-Y");} ?>"/>
                 </td>
-            </tr>
-            <tr>
-                <td>Fecha entrada:</td>
+                <td><label>Fecha entrada:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada" required 
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada" 
                    id="fecha_entrada" value="<?php //echo '01-12-2012' ?>"/>
                 </td>
-            </tr>
-            <tr>
-                <td>Fecha salida:</td>
+                <td><label>Fecha salida:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida" required
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida"
                    id="fecha_salida"  value="<?php //echo '02-12-2012' ?>"/>
                 </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="button" class="k-button" value="Buscar Habitaciones" id="btn_busca_habitaciones" />
+                <td align="center">
+                    &nbsp;&nbsp;&nbsp;<input type="button" class="k-button" value="Buscar Habitaciones" id="btn_busca_habitaciones" />
                 </td>
             </tr>
             <tr id="celda_detalle_estadia">
-                <td colspan="2">
+                <td colspan="7" align="center">
+                    <br>
                     <fieldset>
                         <legend>Asignar pasajero:</legend>
-                        <table>
+                        <table align="center" width="80%">
                             <tr>
+                                <td></td>
                                 <td><label>Habitacion:</label></td>
                                 <td>
                                     <select placeholder="Seleccione..." class="comboX" id="habitacion"></select>
@@ -43,30 +39,30 @@
                                 <td>
                                     <select placeholder="Seleccione..." class="comboX" id="tipo_habitacion"></select>
                                 </td>
+                                <td colspan="2"></td>
                             </tr>
                             <tr>
-                                <td colspan="4" align="center">
+                                <td colspan="7" align="center">
+                                    <br>
                                     <input type="button" class="k-button" value="Asignar Pasajero a Habitacion" id="btn_asignar_pasajeros_habitacion" />
                                     <input type="button" class="k-button cancel" value="Cancelar" id="btn_cancelar_asignacion_pasajeros" />
                                 </td>
                             </tr>
                             <tr class="celda_asignar_pasajero">
-                                <td><label>Pasajero:</label></td>
-                                <td>
+                                <td colspan="7"  align="center">
+                                    <br>Pasajero:
                                     <input type="hidden" id="idcliente"/>
                                     <input type="text" class="k-textbox" placeholder="Busque pasajero" readonly="readonly" id="cliente"/>
-                                </td>
-                                <td>
                                     <button type="button" class="k-button" id="btn_vtna_busca_pasajeros"><span class="k-icon k-i-search"></span></button>
                                     <button type="button" class="k-button" id="btn_vtna_agrega_pasajeros"><span class="k-icon k-i-plus"></span></button>
                                 </td>
-
                             </tr>
                             <tr align="center" class="celda_asignar_pasajero">
-                                <td colspan="5"><input type="button" class="k-button" value="Agregar" id="asignar_pasajero"/></td>
+                                <td colspan="7"><br><input type="button" class="k-button" value="Agregar" id="asignar_pasajero"/><br></td>
                             </tr>
                             <tr class="celda_asignar_pasajero">
-                                <td colspan="5">
+                                <td colspan="7">
+                                    <div id="tbl_detallemax">
                                     <table border="1" align="center" id="detalle_estadia">
                                         <tr>
                                             <th>Habitacion</th>
@@ -76,6 +72,7 @@
                                             <th>Accion</th>
                                         </tr>
                                     </table>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -85,7 +82,7 @@
         </table>
         <p>
             <button type="button" class="k-button" id="btn_guardar">Guardar</button>
-            <a href="<?php echo BASE_URL ?>index" class="k-button cancel">Cancelar</a>
+            <a href="<?php echo BASE_URL ?>reserva" class="k-button cancel">Cancelar</a>
         </p>
     </fieldset>
 </form>
@@ -95,7 +92,7 @@
 <div id="vtna_busca_pasajero">
     <h3>Lista de Pasajeros</h3>
     <p>
-        <select class="combo" id="filtro_pasajeros">
+        <select class="list" id="filtro_pasajeros">
             <option value="0">Nombre/Apellido</option>
             <option value="1">Razon Social</option>
             <option value="2">DNI</option>
@@ -113,6 +110,7 @@
 
 
 <div id="vtna_inserta_pasajero">
+    <h3>Registrar Pasajero</h3>
     <form method="post" action="" id="frm_natural">
         <table class="tabFormComplejo" align="center">
             <tr valign="top">
@@ -245,7 +243,7 @@
                 <td colspan="6" align="center">
                     <p>
                         <button type="button" class="k-button" id="btn_inserta_pasajero">Guardar</button>
-                        <button class="k-button cancel">Cancelar</button>
+                        <a href="javascript:void(0)" class="k-button cancelar cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
@@ -254,4 +252,4 @@
 </div>
 
 
-<div id="fondooscuro"></div
+<div id="fondooscuro"></div>

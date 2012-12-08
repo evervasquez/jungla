@@ -24,7 +24,7 @@
             <div style="color: rgb(255, 255, 255); padding: 8px 5px 0pt 50px;"> 
                 <div class='likeboxwrap'> 
                     <span>
-                        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Flajungla.tarapoto&amp;width=238&amp;colorscheme=light&amp;connections=15&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:228px; height:320px;">
+                        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Flajungla.tarapoto&amp;width=238&amp;colorscheme=light&amp;connections=12&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:320px;">
                         </iframe>
                     </span>        
                 </div>    
