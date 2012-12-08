@@ -25,7 +25,8 @@ class reportes_controlador extends controller {
     
     public function obtener_stock_por_ubicacion($ubicacion) {
         $datos = $this->_reportes->selecciona_stock_total($ubicacion);
-        $cabeceras = array('IDPRODUCTO', 'DESCRIPCION', 'PRECIO_UNITARIO', 'OBSERVACIONES', 'SERVICIO', 'TIPO_PRODUCTO', 'UNIDAD_MEDIDAD', 'IDUBICACION', 'UBICACION', 'ALMACEN', 'PROMOCION', 'STOCK', 'PRECIO_COMPRA');
+        $cabeceras = array('IDPRODUCTO', 'DESCRIPCION', 'PRECIO_UNITARIO', 'OBSERVACIONES', 'SERVICIO', 'TIPO_PRODUCTO', 'UNIDAD_MEDIDAD',
+            'IDUBICACION', 'UBICACION', 'ALMACEN', 'PROMOCION', 'STOCK', 'PRECIO_COMPRA');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -58,9 +59,9 @@ class reportes_controlador extends controller {
     public function obtener_numero_arribos_huesped_ubigeo_internacional($mesano) {
         $datos =$this->_reportes->selecciona_numero_arribos_huesped_ubigeo_internacional($mesano);
         if($mesano[2]==1){
-            $cabeceras = array ('IDCONTINENTE', 'descripcion_continente','cantidad');
+            $cabeceras = array ('IDCONTINENTE', 'DESCRIPCION_CONTINENTE','CANTIDAD');
         } else {
-            $cabeceras = array ('idpais', 'descripcion', 'cantidad');
+            $cabeceras = array ('IDPAIS', 'DESCRIPCION', 'CANTIDAD');
         }
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
@@ -68,7 +69,7 @@ class reportes_controlador extends controller {
     
     public function obtener_numero_arribos_huesped_dia_mes($mesano) {
         $datos =$this->_reportes->selecciona_numero_arribos_huesped_dia_mes($mesano);
-        $cabeceras = array ('dia', 'cantidad');
+        $cabeceras = array ('DIA', 'CANTIDAD');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -76,9 +77,9 @@ class reportes_controlador extends controller {
     public function obtener_numero_arribos_huesped_ubigeo_nacional($mesano) {
         $datos =$this->_reportes->selecciona_numero_arribos_huesped_ubigeo_nacional($mesano);
         if($mesano[2]==1){
-            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','codigo_provincia','cantidad');
+            $cabeceras = array ('IDPAIS', 'DESCRIPCION', 'CODIGO_REGION','CODIGO_PROVINCIA','CANTIDAD');
         } else {
-            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','cantidad');
+            $cabeceras = array ('IDPAIS', 'DESCRIPCION', 'CODIGO_REGION','CANTIDAD');
         }
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
@@ -87,9 +88,9 @@ class reportes_controlador extends controller {
     public function obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano) {
         $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
         if($mesano[2]==1){
-            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','codigo_provincia','cantidad');
+            $cabeceras = array ('IDPAIS', 'DESCRIPCION', 'CODIGO_REGION','CODIGO_PROVINCIA','CANTIDAD');
         } else {
-            $cabeceras = array ('idpais', 'descripcion', 'codigo_region','cantidad');
+            $cabeceras = array ('IDPAIS', 'DESCRIPCION', 'CODIGO_REGION','CANTIDAD');
         }
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
@@ -97,35 +98,36 @@ class reportes_controlador extends controller {
     
     public function obtener_cantidad_empleados_x_tipo_x_actividad() {
         $datos =$this->_reportes->selecciona_cantidad_empleados_x_tipo_x_actividad();
-        $cabeceras = array ('idactividad', 'idtipo_empleado', 'cantidad');
+        $cabeceras = array ('IDACTIVIDAD', 'IDTIPO_EMPLEADO', 'CANTIDAD');
         $datos = controller::get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_habitaciones_x_tipo_habitacion() {
         $datos =$this->_reportes->selecciona_habitaciones_x_tipo_habitacion();
-        $cabeceras = array ('idtipo_habitacion', 'descripcion', 'cantidad');
+        $cabeceras = array ('IDTIPO_HABITACION', 'DESCRIPCION', 'CANTIDAD');
         $datos = controller::get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_numero_pernoctaciones_x_tipo_habitacion($mesano) {
         $datos =$this->_reportes->selecciona_numero_pernoctaciones_x_tipo_habitacion($mesano);
-        $cabeceras = array ('idtipo_habitacion', 'descripcion', 'pernoctaciones', 'habitaciones_noche');
+        $cabeceras = array ('IDTIPO_HABITACION', 'DESCRIPCION', 'PERNOCTACIONES', 'HABITACIONES_NOCHE');
         $datos = controller::get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_datos_comprobante_venta($idventa) {
         $datos =$this->_reportes->selecciona_datos_comprobante_venta($idventa);
-        $cabeceras = array ('idventa', 'fecha_venta', 'estado', 'observaciones', 'nro_documento', 'idtipo_comprobante','serie','abreviatura', 'idempleado', 'nombres_empleado', 'apellidos_empleado', 'idtipo_transaccion', 'registro_venta', 'idcliente', 'nombres_cliente', 'apellidos_cliente', 'documento', 'direccion_cliente');
+        $cabeceras = array ('IDVENTA', 'FECHA_VENTA', 'ESTADO', 'OBSERVACIONES', 'NRO_DOCUMENTO', 'IDTIPO_COMPROBANTE','SERIE','ABREVIATURA',
+            'IDEMPLEADO', 'NOMBRES_EMPLEADO', 'APELLIDOS_EMPLEADO', 'IDTIPO_TRANSACCION', 'REGISTRO_VENTA', 'IDCLIENTE', 'NOMBRES_CLIENTE', 'APELLIDOS_CLIENTE', 'DOCUMENTO', 'DIRECCION_CLIENTE');
         $datos = controller::get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_datos_detalle_comprobante_venta($idventa) {
         $datos =$this->_reportes->selecciona_datos_detalle_comprobante_venta($idventa);
-        $cabeceras = array ('idventa','idpaquete','cantidad','precio_venta','idproducto','descripcion','idunidad_medida','abreviatura');
+        $cabeceras = array ('IDVENTA','IDPAQUETE','CANTIDAD','PRECIO_VENTA','IDPRODUCTO','DESCRIPCION','IDUNIDAD_MEDIDA','ABREVIATURA');
         $datos = controller::get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -133,9 +135,9 @@ class reportes_controlador extends controller {
     public function obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano) {
         $datos =$this->_reportes->selecciona_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
         if($mesano[2]==1){
-            $cabeceras = array ('idcontinente', 'descripcion_continente','cantidad');
+            $cabeceras = array ('IDCONTINENTE', 'DESCRIPCION_CONTINENTE','CANTIDAD');
         } else {
-            $cabeceras = array ('idpais', 'descripcion', 'cantidad');
+            $cabeceras = array ('IDPAIS', 'DESCRIPCION', 'CANTIDAD');
         }
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
@@ -143,49 +145,51 @@ class reportes_controlador extends controller {
     
     public function obtener_stock_total() {
         $datos = $this->_reportes->selecciona_stock_total(0);
-        $cabeceras = array('idproducto', 'descripcion', 'precio_unitario', 'observaciones', 'servicio', 'tipo_producto', 'unidad_medida', 'idubicacion', 'ubicacion', 'almacen', 'promocion', 'stock', 'precio_compra');
+        $cabeceras = array('IDPRODUCTO', 'DESCRIPCION', 'PRECIO_UNITARIO', 'OBSERVACIONES', 'SERVICIO', 'TIPO_PRODUCTO', 'UNIDAD_MEDIDA', 'IDUBICACION', 'UBICACION', 'ALMACEN', 'PROMOCION', 'STOCK', 'PRECIO_COMPRA');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_tipo_habitacion_total(){
         $datos = $this->_reportes->selecciona_tipo_habitacion_total();
-        $cabeceras = array('idtipo_habitacion', 'descripcion', 'costo', 'camas');
+        $cabeceras = array('IDTIPO_HABITACION', 'DESCRIPCION', 'COSTO', 'CAMAS');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
    
     public function obtener_ventas_x_producto($datos){
         $datos = $this->_reportes->selecciona_ventas_x_producto($datos);
-        $cabeceras = array('idproducto', 'fecha_venta','tipo_comprobante', 'nro_documento', 'cliente', 'documento','abreviatura','cantidad','precio_venta','sub_total', 'confirmacion');
+        $cabeceras = array('IDPRODUCTO', 'FECHA_VENTA','TIPO_COMPROBANTE', 'NRO_DOCUMENTO', 'CLIENTE', 'DOCUMENTO','ABREVIATURA','CANTIDAD','PRECIO_VENTA',
+            'SUB_TOTAL', 'CONFIRMACION');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_productos_vendidos($datos){
         $datos = $this->_reportes->selecciona_productos_vendidos($datos);
-        $cabeceras = array('idproducto', 'descripcion');
+        $cabeceras = array('IDPRODUCTO', 'DESCRIPCION');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
    
     public function obtener_compras_x_producto($datos){
         $datos = $this->_reportes->selecciona_compras_x_producto($datos);
-        $cabeceras = array('idproducto', 'fecha_venta','nro_comprobante', 'proveedor', 'ruc','abreviatura','cantidad','precio','sub_total');
+        $cabeceras = array('IDPRODUCTO', 'FECHA_VENTA','NRO_COMPROBANTE', 'PROVEEDOR', 'RUC','ABREVIATURA','CANTIDAD','PRECIO','SUB_TOTAL');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_productos_comprados($datos){
         $datos = $this->_reportes->selecciona_productos_comprados($datos);
-        $cabeceras = array('idproducto', 'descripcion');
+        $cabeceras = array('IDPRODUCTO', 'DESCRIPCION');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     
     public function obtener_compras_x_intervalo_fechas($datos){
         $datos = $this->_reportes->selecciona_compras_x_intervalo_fechas($datos);
-        $cabeceras = array('idcompra', 'fecha_compra','nro_comprobante','importe','igv','idproveedor','idtipo_transaccion','confirmacion','registro','c_fecha_compra','tipo','proveedor','fecha', 'ruc');
+        $cabeceras = array('IDCOMPRA', 'FECHA_COMPRA','NRO_COMPROBANTE','IMPORTE','IGV','IDPROVEEDOR','IDTIPO_TRANSACCION','CONFIRMACION','REGISTRO',
+            'C_FECHA_COMPRA','TIPO','PROVEEDOR','FECHA', 'RUC');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -201,10 +205,10 @@ class reportes_controlador extends controller {
         $contaobj = 0;
 
         for ($i = 0; $i < $datacount; $i++) {
-            $c_codigo[$contapag] = $c_codigo[$contapag] . $datos[$i]['idproducto'] . "\n";
-            $c_descripcion[$contapag] = $c_descripcion[$contapag] . substr($datos[$i]['descripcion'], 0, 44) . "\n";
-            $c_unidad_medida[$contapag] = $c_unidad_medida[$contapag] . substr($datos[$i]['unidad_medida'], 0, 7) . "\n";
-            $c_stock[$contapag] = $c_stock[$contapag] . $datos[$i]['stock'] . "0" . "\n";
+            $c_codigo[$contapag] = $c_codigo[$contapag] . $datos[$i]['IDPRODUCTO'] . "\n";
+            $c_descripcion[$contapag] = $c_descripcion[$contapag] . substr($datos[$i]['DESCRIPCION'], 0, 44) . "\n";
+            $c_unidad_medida[$contapag] = $c_unidad_medida[$contapag] . substr($datos[$i]['UNIDAD_MEDIDA'], 0, 7) . "\n";
+            $c_stock[$contapag] = $c_stock[$contapag] . $datos[$i]['STOCK'] . "0" . "\n";
             $contaobj = $contaobj + 1;
             if ($contaobj == $opp) {
                 $contaobj = 0;
@@ -309,55 +313,55 @@ class reportes_controlador extends controller {
 //razon social de la empresa
         $this->_fpdf->SetY(41.7);
         $this->_fpdf->SetX(41.6);
-        $this->_fpdf->Cell(101.3, 5.8, utf8_decode($datos[0]['razon_social']), 0, 0, 'L');
+        $this->_fpdf->Cell(101.3, 5.8, utf8_decode($datos[0]['RAZON_SOCIAL']), 0, 0, 'L');
 //ruc
         $setx = 153.6;
         for ($i = 0; $i < 11; $i++) {
             $this->_fpdf->SetX($setx);
-            $this->_fpdf->Cell(4.63, 5.8, substr($datos[0]['ruc'], $i, 1), 0, 0, 'C');
+            $this->_fpdf->Cell(4.63, 5.8, substr($datos[0]['RUC'], $i, 1), 0, 0, 'C');
             $setx = $setx + 4.63;
         }
         $this->_fpdf->SetFont('Arial', '', 9);
 //nombre comercial
         $this->_fpdf->SetY(47.6);
         $this->_fpdf->SetX(22.43);
-        $this->_fpdf->Cell(54.56, 4.7, utf8_decode($datos[0]['nombre_comercial']), 0, 0, 'L');
+        $this->_fpdf->Cell(54.56, 4.7, utf8_decode($datos[0]['NOMBRE_COMERCIAL']), 0, 0, 'L');
 //clase
         $this->_fpdf->SetX(91.42);
-        $this->_fpdf->Cell(16.67, 4.7, utf8_decode($datos[0]['clase']), 0, 0, 'R');
+        $this->_fpdf->Cell(16.67, 4.7, utf8_decode($datos[0]['CLASE']), 0, 0, 'R');
 //categoria
         $this->_fpdf->SetX(122.19);
-        $this->_fpdf->Cell(15.49, 4.7, utf8_decode($datos[0]['categoria']), 0, 0, 'R');
+        $this->_fpdf->Cell(15.49, 4.7, utf8_decode($datos[0]['CATEGORIA']), 0, 0, 'R');
 //nro certificado
         $this->_fpdf->SetX(172.19);
-        $this->_fpdf->Cell(32.42, 4.7, utf8_decode($datos[0]['numero_certificado']), 0, 0, 'C');
+        $this->_fpdf->Cell(32.42, 4.7, utf8_decode($datos[0]['NUMERO_CERTIFICADO']), 0, 0, 'C');
 //direccion
         $this->_fpdf->SetY(52.27);
         $this->_fpdf->SetX(22.43);
-        $this->_fpdf->Cell(85.6, 4.13, utf8_decode($datos[0]['direccion']), 0, 0, 'L');
+        $this->_fpdf->Cell(85.6, 4.13, utf8_decode($datos[0]['DIRECCION']), 0, 0, 'L');
 //telefono
         $this->_fpdf->SetX(122.19);
-        $this->_fpdf->Cell(31.63, 4.13, utf8_decode($datos[0]['telefono']), 0, 0, 'L');
+        $this->_fpdf->Cell(31.63, 4.13, utf8_decode($datos[0]['TELEFONO']), 0, 0, 'L');
 //fax
         $this->_fpdf->SetX(172.19);
-        $this->_fpdf->Cell(32.53, 4.13, utf8_decode($datos[0]['fax']), 0, 0, 'L');
+        $this->_fpdf->Cell(32.53, 4.13, utf8_decode($datos[0]['FAX']), 0, 0, 'L');
 //region
         $this->_fpdf->SetY(56.52);
         $this->_fpdf->SetX(17.61);
-        $this->_fpdf->Cell(59.52, 4.13, utf8_decode($datos[0]['region']), 0, 0, 'L');
+        $this->_fpdf->Cell(59.52, 4.13, utf8_decode($datos[0]['REGION']), 0, 0, 'L');
 //provincia
         $this->_fpdf->SetX(91.45);
-        $this->_fpdf->Cell(51.79, 4.13, utf8_decode($datos[0]['provincia']), 0, 0, 'L');
+        $this->_fpdf->Cell(51.79, 4.13, utf8_decode($datos[0]['PROVINCIA']), 0, 0, 'L');
 //distrito
         $this->_fpdf->SetX(158.45);
-        $this->_fpdf->Cell(46.28, 4.13, utf8_decode($datos[0]['distrito']), 0, 0, 'L');
+        $this->_fpdf->Cell(46.28, 4.13, utf8_decode($datos[0]['DISTRITO']), 0, 0, 'L');
 //pagina web
         $this->_fpdf->SetY(60.88);
         $this->_fpdf->SetX(22.19);
-        $this->_fpdf->Cell(85.61, 4.13, utf8_decode($datos[0]['pagina_web']), 0, 0, 'L');
+        $this->_fpdf->Cell(85.61, 4.13, utf8_decode($datos[0]['PAGINA_WEB']), 0, 0, 'L');
 //email para reservas
         $this->_fpdf->SetX(143.06);
-        $this->_fpdf->Cell(61.69, 4.13, utf8_decode($datos[0]['e_mail']), 0, 0, 'L');
+        $this->_fpdf->Cell(61.69, 4.13, utf8_decode($datos[0]['E_MAIL']), 0, 0, 'L');
 
 //CAPITULO 2 CAPACIDAD DE ALOJAMIENTO OFERTADA / UTILIZADA
 //CON BAÑO
@@ -375,8 +379,8 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                $dato = $datos[$j]['cantidad'];
-                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                $dato = $datos[$j]['CANTIDAD'];
+                if ($datos[$j]['IDTIPO_HABITACION'] == $habitacioncuenta && $conteok == false) {
                     if($dato!=0){$this->_fpdf->Cell(21.05, 4.30, $dato, 0, 0, 'C');}
                     else{$this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');}
                     $total = $total + $dato;
@@ -430,8 +434,8 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                $dato = $datos[$j]['camas'];
-                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                $dato = $datos[$j]['CAMAS'];
+                if ($datos[$j]['IDTIPO_HABITACION'] == $habitacioncuenta && $conteok == false) {
                     if($dato!=0){$this->_fpdf->Cell(21.05, 4.30, $dato, 0, 0, 'C');}
                     else{$this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');}
                     //siguiente habitacion:
@@ -470,9 +474,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
-                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['cantidad'], 0, 0, 'C');
-                    $total = $total + $datos[$j]['cantidad'];
+                if ($datos[$j]['IDTIPO_HABITACION'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['CANTIDAD'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['CANTIDAD'];
                     //siguiente habitacion:
                     $conteok = true;
                     switch ($habitacioncuenta) {
@@ -499,6 +503,7 @@ class reportes_controlador extends controller {
         $setx = $setx + 21.05;
         $sety = 94.80;
         $mesano = array($mes, $ano);
+        //CORREGIDO DATEDIFF DATESUB EN MYSQL
         $datos= $this->obtener_numero_pernoctaciones_x_tipo_habitacion($mesano);
         $datacount = count($datos);
         $habitacioncuenta = 1;
@@ -508,9 +513,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
-                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['habitaciones_noche'], 0, 0, 'C');
-                    $total = $total + $datos[$j]['habitaciones_noche'];
+                if ($datos[$j]['IDTIPO_HABITACION'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['HABITACIONES_NOCHE'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['HABITACIONES_NOCHE'];
                     //siguiente habitacion:
                     $conteok = true;
                     switch ($habitacioncuenta) {
@@ -554,9 +559,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
-                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['pernoctaciones'], 0, 0, 'C');
-                    $total = $total + $datos[$j]['pernoctaciones'];
+                if ($datos[$j]['IDTIPO_HABITACION'] == $habitacioncuenta && $conteok == false) {
+                    $this->_fpdf->Cell(21.05, 4.30, $datos[$j]['PERNOCTACIONES'], 0, 0, 'C');
+                    $total = $total + $datos[$j]['PERNOCTACIONES'];
                     //siguiente habitacion:
                     $conteok = true;
                     switch ($habitacioncuenta) {
@@ -591,8 +596,8 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                $dato = $datos[$j]['costo'];
-                if ($datos[$j]['idtipo_habitacion'] == $habitacioncuenta && $conteok == false) {
+                $dato = $datos[$j]['COSTO'];
+                if ($datos[$j]['IDTIPO_HABITACION'] == $habitacioncuenta && $conteok == false) {
                     if($dato!=0){$this->_fpdf->Cell(21.05, 4.30, 'S/.  '.$dato, 0, 0, 'C');}
                     else {$this->_fpdf->Cell(21.05, 4.30, '-', 0, 0, 'C');}
                     //siguiente habitacion:
@@ -645,9 +650,9 @@ class reportes_controlador extends controller {
         for ($i = 1; $i <= 31; $i++) {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
-            if ($datos[$conforme]['dia'] == $i) {
-                $this->_fpdf->Cell(12.46, 4.65, $datos[$conforme]['cantidad'], 0, 0, 'C');
-                $contadorhuesped = $contadorhuesped + $datos[$conforme]['cantidad'];
+            if ($datos[$conforme]['DIA'] == $i) {
+                $this->_fpdf->Cell(12.46, 4.65, $datos[$conforme]['CANTIDAD'], 0, 0, 'C');
+                $contadorhuesped = $contadorhuesped + $datos[$conforme]['CANTIDAD'];
                 $conforme = $conforme + 1;
             } else {
                 $this->_fpdf->Cell(12.46, 4.65, '0', 0, 0, 'C');
@@ -686,9 +691,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idpais'] == $paiscuenta && $conteok == false) {
-                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
-                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                if ($datos[$j]['IDPAIS'] == $paiscuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['CANTIDAD'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['CANTIDAD'];
                     //Siguiente país:
                     $conteok = true;
                 }
@@ -762,9 +767,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idcontinente'] == $continentecuenta && $conteok == false) {
-                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
-                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                if ($datos[$j]['IDCONTINENTE'] == $continentecuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['CANTIDAD'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['CANTIDAD'];
                     //Siguiente CONTINENTE:
                     $conteok = true;
                 }
@@ -792,6 +797,7 @@ class reportes_controlador extends controller {
         $setx = 70.32;
         $sety = 173.2;
         $mesano = array($mes, $ano, 0);
+        //CORREGIDO DATEDIFF DATESUB EN MYSQL
         $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
         $datacount = count($datos);
         /* COMIENZA CON ARGENTINA, CODIGO 28 */
@@ -809,9 +815,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idpais'] == $paiscuenta && $conteok == false) {
-                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
-                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                if ($datos[$j]['IDPAIS'] == $paiscuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['CANTIDAD'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['CANTIDAD'];
                     //Siguiente país:
                     $conteok = true;
                 }
@@ -876,6 +882,7 @@ class reportes_controlador extends controller {
         
         //CONTINENTES
         $mesano = array($mes, $ano, 1);
+        //CORREGIDO DATEDIFF DATESUB EN MYSQL
         $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
         $datacount = count($datos);
         /* COMIENZA CON AFRICA, CODIGO 4 */
@@ -885,9 +892,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j < $datacount; $j++) {
-                if ($datos[$j]['idcontinente'] == $continentecuenta && $conteok == false) {
-                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['cantidad'], '', 0, 'C');
-                    $internacionaltotal = $internacionaltotal + $datos[$j]['cantidad'];
+                if ($datos[$j]['IDCONTINENTE'] == $continentecuenta && $conteok == false) {
+                    $this->_fpdf->Cell(26.33, 3.71, $datos[$j]['CANTIDAD'], '', 0, 'C');
+                    $internacionaltotal = $internacionaltotal + $datos[$j]['CANTIDAD'];
                     //Siguiente CONTINENTE:
                     $conteok = true;
                 }
@@ -923,13 +930,13 @@ class reportes_controlador extends controller {
         $datos = $this->obtener_numero_arribos_huesped_ubigeo_nacional($mesano);
         $datacount = count($datos);
         for ($i = 0; $i < $datacount; $i++) {
-            if ($datos[$i]['codigo_region'] == 7) {
-                $limametro = $limametro + $datos[$i]['cantidad'];
+            if ($datos[$i]['CODIGO_REGION'] == 7) {
+                $limametro = $limametro + $datos[$i]['CANTIDAD'];
             } else {
-                if ($datos[$i]['codigo_provincia'] == 0 || $datos[$i]['codigo_provincia'] == 1) {
-                    $limametro = $limametro + $datos[$i]['cantidad'];
+                if ($datos[$i]['CODIGO_PROVINCIA'] == 0 || $datos[$i]['CODIGO_PRPVINCIA'] == 1) {
+                    $limametro = $limametro + $datos[$i]['CANTIDAD'];
                 } else {
-                    $lima = lima + $datos[$i]['cantidad'];
+                    $lima = lima + $datos[$i]['CANTIDAD'];
                 }
             }
         }
@@ -955,9 +962,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j <= $datacount; $j++) {
-                if ($datos[$j]['codigo_region'] == $regioncount) {
-                    $this->_fpdf->Cell(25.90, 3.63, $datos[$j]['cantidad'], 1, 0, 'C');
-                    $nacionaltotal = $nacionaltotal + $datos[$j]['cantidad'];
+                if ($datos[$j]['CODIGO_REGION'] == $regioncount) {
+                    $this->_fpdf->Cell(25.90, 3.63, $datos[$j]['CANTIDAD'], 1, 0, 'C');
+                    $nacionaltotal = $nacionaltotal + $datos[$j]['CANTIDAD'];
                 }
             }
             $sety = $sety + 3.63;
@@ -983,13 +990,13 @@ class reportes_controlador extends controller {
         $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_nacional($mesano);
         $datacount = count($datos);
         for ($i = 0; $i < $datacount; $i++) {
-            if ($datos[$i]['codigo_region'] == 7) {
-                $limametro = $limametro + $datos[$i]['cantidad'];
+            if ($datos[$i]['CODIGO_REGION'] == 7) {
+                $limametro = $limametro + $datos[$i]['CANTIDAD'];
             } else {
-                if ($datos[$i]['codigo_provincia'] == 0 || $datos[$i]['codigo_provincia'] == 1) {
-                    $limametro = $limametro + $datos[$i]['cantidad'];
+                if ($datos[$i]['CODIGO_PROVINCIA'] == 0 || $datos[$i]['CODIGO_PROVINCIA'] == 1) {
+                    $limametro = $limametro + $datos[$i]['CANTIDAD'];
                 } else {
-                    $lima = lima + $datos[$i]['cantidad'];
+                    $lima = lima + $datos[$i]['CANTIDAD'];
                 }
             }
         }
@@ -1015,9 +1022,9 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($sety);
             $this->_fpdf->SetX($setx);
             for ($j = 0; $j <= $datacount; $j++) {
-                if ($datos[$j]['codigo_region'] == $regioncount) {
-                    $this->_fpdf->Cell(25.90, 3.63, $datos[$j]['cantidad'], 1, 0, 'C');
-                    $nacionaltotal = $nacionaltotal + $datos[$j]['cantidad'];
+                if ($datos[$j]['CODIGO_REGION'] == $regioncount) {
+                    $this->_fpdf->Cell(25.90, 3.63, $datos[$j]['CANTIDAD'], 1, 0, 'C');
+                    $nacionaltotal = $nacionaltotal + $datos[$j]['CANTIDAD'];
                 }
             }
             $sety = $sety + 3.63;
@@ -1072,9 +1079,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == 1) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == 1) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1119,9 +1126,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == /* CODIGO DE ACTIVIDAD */2) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == /* CODIGO DE ACTIVIDAD */2) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1166,9 +1173,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == /* CODIGO DE ACTIVIDAD */3) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == /* CODIGO DE ACTIVIDAD */3) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1213,9 +1220,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == /* CODIGO DE ACTIVIDAD */4) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == /* CODIGO DE ACTIVIDAD */4) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1260,9 +1267,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == /* CODIGO DE ACTIVIDAD */5) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == /* CODIGO DE ACTIVIDAD */5) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1307,9 +1314,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == /* CODIGO DE ACTIVIDAD */6) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == /* CODIGO DE ACTIVIDAD */6) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1354,9 +1361,9 @@ class reportes_controlador extends controller {
             }
             if ($i == 1 || $i == 2 || $i == 4 || $i == 5 || $i == 6 || $i == 7) {
                 for ($j = 0; $j < $datacount; $j++) {
-                    if ($datos[$j]['idtipo_empleado'] == $iconta) {
-                        if ($datos[$j]['idactividad'] == /* CODIGO DE ACTIVIDAD */7) {
-                            $cant = $datos[$j]['cantidad'];
+                    if ($datos[$j]['IDTIPO_EMPLEADO'] == $iconta) {
+                        if ($datos[$j]['IDACTIVIDAD'] == /* CODIGO DE ACTIVIDAD */7) {
+                            $cant = $datos[$j]['CANTIDAD'];
                             switch ($iconta) {
                                 case 1:$ttipo1 = $ttipo1 + $cant;
                                     break;
@@ -1435,7 +1442,7 @@ class reportes_controlador extends controller {
         $contapag = 1;
         $abs = 1;
         for ($x = 0; $x < $n_ubicaciones; $x++) {
-            $datos = $this->obtener_stock_por_ubicacion($ubicaciones[$x]['idubicacion']);
+            $datos = $this->obtener_stock_por_ubicacion($ubicaciones[$x]['IDUBICACION']);
             $datacount = count($datos);
             $contaobj = 0;
             $c_codigo[$contapag] = "";
@@ -1445,12 +1452,12 @@ class reportes_controlador extends controller {
             $c_unidad_medida[$contapag] = "";
             $c_stock[$contapag] = "";
             for ($i = 0; $i < $datacount; $i++) {
-                $c_codigo[$contapag] = $c_codigo[$contapag] . $datos[$i]['idproducto'] . "\n";
-                $c_descripcion[$contapag] = $c_descripcion[$contapag] . $datos[$i]['descripcion'] . "\n";
-                $c_tipo_producto[$contapag] = $c_tipo_producto[$contapag] . substr($datos[$i]['tipo_producto'], 0, 8) . "\n";
-                $c_almacen[$contapag] = $c_almacen[$contapag] . substr($datos[$i]['almacen'], 0, 10) . "\n";
-                $c_unidad_medida[$contapag] = $c_unidad_medida[$contapag] . substr($datos[$i]['unidad_medida'], 0, 6) . "\n";
-                $c_stock[$contapag] = $c_stock[$contapag] . $datos[$i]['stock'] . "0" . "\n";
+                $c_codigo[$contapag] = $c_codigo[$contapag] . $datos[$i]['IDPRODUCTO'] . "\n";
+                $c_descripcion[$contapag] = $c_descripcion[$contapag] . $datos[$i]['DESCRIPCION'] . "\n";
+                $c_tipo_producto[$contapag] = $c_tipo_producto[$contapag] . substr($datos[$i]['TIPO_PRODUCTO'], 0, 8) . "\n";
+                $c_almacen[$contapag] = $c_almacen[$contapag] . substr($datos[$i]['ALMACEN'], 0, 10) . "\n";
+                $c_unidad_medida[$contapag] = $c_unidad_medida[$contapag] . substr($datos[$i]['UNIDAD_MEDIDA'], 0, 6) . "\n";
+                $c_stock[$contapag] = $c_stock[$contapag] . $datos[$i]['STOCK'] . "0" . "\n";
                 $contaobj = $contaobj + 1;
                 if ($contaobj == $opp) {
                     $contaobj = 0;
@@ -1488,7 +1495,7 @@ class reportes_controlador extends controller {
                 $this->_fpdf->SetFillColor(255, 255, 255);
                 $this->_fpdf->SetY(29);
                 $this->_fpdf->SetX(15);
-                $this->_fpdf->Cell(30, 5, utf8_decode('Ubicación :   ' . $ubicaciones[$x]['descripcion'] . '     /   Código:  ' . $ubicaciones[$x]['idubicacion']), '', 0, 'L', 1);
+                $this->_fpdf->Cell(30, 5, utf8_decode('Ubicación :   ' . $ubicaciones[$x]['DESCRIPCION'] . '     /   Código:  ' . $ubicaciones[$x]['IDUBICACION']), '', 0, 'L', 1);
                 $this->_fpdf->SetFont('Courier', '', 9);
                 $this->_fpdf->SetY($Y_table_position);
                 $this->_fpdf->SetX(15);
@@ -1517,9 +1524,9 @@ class reportes_controlador extends controller {
     }
     
     public function ventas_x_producto(){
-        $producto=$_POST['idproducto'];
-        $fecha_inicio = $_POST['fecha_inicio'];
-        $fecha_fin = $_POST['fecha_fin'];
+        $producto=$_POST['IDPRODUCTO'];
+        $fecha_inicio = $_POST['FECHA_INICIO'];
+        $fecha_fin = $_POST['FECHA_FIN'];
         if($producto=="" || $fecha_inicio=="" || $fecha_fin==""){
             echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes')</script>";
             die();
@@ -1537,7 +1544,7 @@ class reportes_controlador extends controller {
         $contapag = 1;
         $abs = 1;
             for ($x = 0; $x < $n_productos; $x++) {
-                $datos = $this->obtener_ventas_x_producto(array($productos[$x]['idproducto'], $fecha_inicio, $fecha_fin));
+                $datos = $this->obtener_ventas_x_producto(array($productos[$x]['IDPRODUCTO'], $fecha_inicio, $fecha_fin));
                 $datacount = count($datos);
                 $contaobj = 0;
                 $contador[$contapag] = "";
@@ -1560,16 +1567,18 @@ class reportes_controlador extends controller {
             );*/
                 for ($i = 0; $i < $datacount; $i++) {
                     $contador[$contapag] = $contador[$contapag] . substr((($i+1)*$contapag),0,4)."\n";
-                    $c_fecha_venta[$contapag] = $c_fecha_venta[$contapag] . substr($datos[0]['fecha_venta'],8,2).'/'.substr($datos[0]['fecha_venta'],5,2).'/'.substr($datos[0]['fecha_venta'],0,4) . "\n";
-                    $c_nro_documento[$contapag] = $c_nro_documento[$contapag] .substr($datos[$i]['tipo_comprobante'],0,2).'/' . substr($datos[$i]['nro_documento'], 0, 8) . "\n";
-                    $c_cliente[$contapag] = $c_cliente[$contapag] . substr(utf8_decode($datos[$i]['cliente']), 0, 24) . "\n";
-                    $c_documento[$contapag] = $c_documento[$contapag] . substr($datos[$i]['documento'], 0, 11) . "\n";
-                    $c_abreviatura[$contapag] = $c_abreviatura[$contapag] . substr($datos[$i]['abreviatura'],0,4) . "\n";
-                    $c_cantidad[$contapag] = $c_cantidad[$contapag] . substr(number_format($datos[$i]['cantidad'],3),0,9) . "\n";
-                    /*contar total cantidades*/$total_cantidad = $total_cantidad + $datos[$i]['cantidad'];
-                    $c_precio_venta[$contapag] = $c_precio_venta[$contapag] . substr(number_format($datos[$i]['precio_venta'],3),0,9) . "\n";
-                    $c_sub_total[$contapag] = $c_sub_total[$contapag] . substr(number_format($datos[$i]['sub_total'],2),0,9) . "\n";
-                    /*contar total sub totales*/$total_sub_total = $total_sub_total + $datos[$i]['sub_total'];
+                    $c_fecha_venta[$contapag] = $c_fecha_venta[$contapag] . substr($datos[0]['FECHA_VENTA'],8,2).'/'.substr($datos[0]['FECHA_VENTA'],5,2).
+                            '/'.substr($datos[0]['FECHA_VENTA'],0,4) . "\n";
+                    $c_nro_documento[$contapag] = $c_nro_documento[$contapag] .substr($datos[$i]['TIPO_COMPROBANTE'],0,2).'/' . 
+                            substr($datos[$i]['NRO_DOCUMENTO'], 0, 8) . "\n";
+                    $c_cliente[$contapag] = $c_cliente[$contapag] . substr(utf8_decode($datos[$i]['CLIENTE']), 0, 24) . "\n";
+                    $c_documento[$contapag] = $c_documento[$contapag] . substr($datos[$i]['DOCUMENTO'], 0, 11) . "\n";
+                    $c_abreviatura[$contapag] = $c_abreviatura[$contapag] . substr($datos[$i]['ABREVIATURA'],0,4) . "\n";
+                    $c_cantidad[$contapag] = $c_cantidad[$contapag] . substr(number_format($datos[$i]['CANTIDAD'],3),0,9) . "\n";
+                    /*contar total cantidades*/$total_cantidad = $total_cantidad + $datos[$i]['CANTIDAD'];
+                    $c_precio_venta[$contapag] = $c_precio_venta[$contapag] . substr(number_format($datos[$i]['PRECIO_VENTA'],3),0,9) . "\n";
+                    $c_sub_total[$contapag] = $c_sub_total[$contapag] . substr(number_format($datos[$i]['SUB_TOTAL'],2),0,9) . "\n";
+                    /*contar total sub totales*/$total_sub_total = $total_sub_total + $datos[$i]['SUB_TOTAL'];
                     $contaobj = $contaobj + 1;
                     if ($contaobj == $opp) {
                         $contaobj = 0;
@@ -1613,7 +1622,8 @@ class reportes_controlador extends controller {
                     $this->_fpdf->SetFillColor(255, 255, 255);
                     $this->_fpdf->SetY(29);
                     $this->_fpdf->SetX(15);
-                    $this->_fpdf->Cell(30, 5, utf8_decode('Producto :   ' . $productos[$x]['descripcion'] . '     /   Código:  ' . $productos[$x]['idproducto']), '', 0, 'L', 1);
+                    $this->_fpdf->Cell(30, 5, utf8_decode('Producto :   ' . $productos[$x]['DESCRIPCION'] . '     /   Código:  ' .
+                            $productos[$x]['IDPRODUCTO']), '', 0, 'L', 1);
                     $this->_fpdf->SetFont('Courier', '', 9);
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(5);
@@ -1654,7 +1664,7 @@ class reportes_controlador extends controller {
                         $this->_fpdf->SetX(105);
                         $this->_fpdf->Cell(18,8,utf8_decode('TOTALES'),'BT',0,'L',1);
                         $this->_fpdf->SetX(123);
-                        $this->_fpdf->Cell(44,8,substr(number_format($total_cantidad,3),0,15).' '.$datos[0]['abreviatura'],'BTR',0,'R',1);
+                        $this->_fpdf->Cell(44,8,substr(number_format($total_cantidad,3),0,15).' '.$datos[0]['ABREVIATURA'],'BTR',0,'R',1);
                         $this->_fpdf->SetFont('Courier', '', 9);
                         $this->_fpdf->SetX(167);
                         $this->_fpdf->Cell(9,8,utf8_decode('S/.'),'LBT',0,'R',1);
@@ -1693,7 +1703,7 @@ class reportes_controlador extends controller {
         $contapag = 1;
         $abs = 1;
             for ($x = 0; $x < $n_productos; $x++) {
-                $datos = $this->obtener_compras_x_producto(array($productos[$x]['idproducto'], $fecha_inicio, $fecha_fin));
+                $datos = $this->obtener_compras_x_producto(array($productos[$x]['IDPRODUCTO'], $fecha_inicio, $fecha_fin));
                 $datacount = count($datos);
                 $contaobj = 0;
                 $contador[$contapag] = "";
@@ -1717,17 +1727,18 @@ class reportes_controlador extends controller {
             );*/
                 for ($i = 0; $i < $datacount; $i++) {
                     $contador[$contapag] = $contador[$contapag] . substr((($i+1)*$contapag),0,4)."\n";
-                    $c_fecha_venta[$contapag] = $c_fecha_venta[$contapag] . substr($datos[0]['fecha_venta'],8,2).'/'.substr($datos[0]['fecha_venta'],5,2).'/'.substr($datos[0]['fecha_venta'],0,4) . "\n";
-                    $c_nro_comprobante[$contapag] = $c_nro_comprobante[$contapag] .'FC/' . substr($datos[$i]['nro_comprobante'], 0, 8) . "\n";
-                    $c_proveedor[$contapag] = $c_proveedor[$contapag] . substr(utf8_decode($datos[$i]['proveedor']), 0, 24) . "\n";
-                    $c_ruc[$contapag] = $c_ruc[$contapag] . substr($datos[$i]['ruc'], 0, 11) . "\n";
-                    $c_abreviatura[$contapag] = $c_abreviatura[$contapag] . substr($datos[$i]['abreviatura'],0,4) . "\n";
-                    $c_cantidad[$contapag] = $c_cantidad[$contapag] . substr(number_format($datos[$i]['cantidad'],3),0,9) . "\n";
-                    /*contar total cantidades*/$total_cantidad = $total_cantidad + $datos[$i]['cantidad'];
-                    $c_precio[$contapag] = $c_precio[$contapag] . substr(number_format($datos[$i]['precio'],3),0,9) . "\n";
-                    $c_sub_total[$contapag] = $c_sub_total[$contapag] . substr(number_format($datos[$i]['sub_total'],2),0,9) . "\n";
-                    $c_confirmacion[$contapag] = $c_confirmacion[$contapag] . $datos[$i]['confirmacion'] . "\n";
-                    /*contar total sub totales*/$total_sub_total = $total_sub_total + $datos[$i]['sub_total'];
+                    $c_fecha_venta[$contapag] = $c_fecha_venta[$contapag] . substr($datos[0]['FECHA_VENTA'],8,2).'/'.substr($datos[0]['FECHA_VENTA'],5,2).
+                            '/'.substr($datos[0]['FECHA_VENTA'],0,4) . "\n";
+                    $c_nro_comprobante[$contapag] = $c_nro_comprobante[$contapag] .'FC/' . substr($datos[$i]['NRO_COMPROBANTE'], 0, 8) . "\n";
+                    $c_proveedor[$contapag] = $c_proveedor[$contapag] . substr(utf8_decode($datos[$i]['PROVEEDOR']), 0, 24) . "\n";
+                    $c_ruc[$contapag] = $c_ruc[$contapag] . substr($datos[$i]['RUC'], 0, 11) . "\n";
+                    $c_abreviatura[$contapag] = $c_abreviatura[$contapag] . substr($datos[$i]['ABREVIATURA'],0,4) . "\n";
+                    $c_cantidad[$contapag] = $c_cantidad[$contapag] . substr(number_format($datos[$i]['CANTIDAD'],3),0,9) . "\n";
+                    /*contar total cantidades*/$total_cantidad = $total_cantidad + $datos[$i]['CANTIDAD'];
+                    $c_precio[$contapag] = $c_precio[$contapag] . substr(number_format($datos[$i]['PRECIO'],3),0,9) . "\n";
+                    $c_sub_total[$contapag] = $c_sub_total[$contapag] . substr(number_format($datos[$i]['SUB_TOTAL'],2),0,9) . "\n";
+                    $c_confirmacion[$contapag] = $c_confirmacion[$contapag] . $datos[$i]['CONFIRMACION'] . "\n";
+                    /*contar total sub totales*/$total_sub_total = $total_sub_total + $datos[$i]['SUB_TOTAL'];
                     $contaobj = $contaobj + 1;
                     if ($contaobj == $opp) {
                         $contaobj = 0;
@@ -1771,7 +1782,8 @@ class reportes_controlador extends controller {
                     $this->_fpdf->SetFillColor(255, 255, 255);
                     $this->_fpdf->SetY(29);
                     $this->_fpdf->SetX(15);
-                    $this->_fpdf->Cell(30, 5, utf8_decode('Producto :   ' . $productos[$x]['descripcion'] . '     /   Código:  ' . $productos[$x]['idproducto']), '', 0, 'L', 1);
+                    $this->_fpdf->Cell(30, 5, utf8_decode('Producto :   ' . $productos[$x]['DESCRIPCION'] . '     /   Código:  ' .
+                            $productos[$x]['IDPRODUCTO']), '', 0, 'L', 1);
                     $this->_fpdf->SetFont('Courier', '', 9);
                     $this->_fpdf->SetY($Y_table_position);
                     $this->_fpdf->SetX(5);
@@ -1812,7 +1824,7 @@ class reportes_controlador extends controller {
                         $this->_fpdf->SetX(105);
                         $this->_fpdf->Cell(18,8,utf8_decode('TOTALES'),'BT',0,'L',1);
                         $this->_fpdf->SetX(123);
-                        $this->_fpdf->Cell(44,8,substr(number_format($total_cantidad,3),0,15).' '.$datos[0]['abreviatura'],'BTR',0,'R',1);
+                        $this->_fpdf->Cell(44,8,substr(number_format($total_cantidad,3),0,15).' '.$datos[0]['ABREVIATURA'],'BTR',0,'R',1);
                         $this->_fpdf->SetFont('Courier', '', 9);
                         $this->_fpdf->SetX(167);
                         $this->_fpdf->Cell(9,8,utf8_decode('S/.'),'LBT',0,'R',1);
@@ -1847,19 +1859,21 @@ class reportes_controlador extends controller {
 
         for ($i = 0; $i < $datacount; $i++) {
             $contador[$contapag] = $contador[$contapag] . substr((($i+1)*$contapag),0,4)."\n";
-            $c_fecha_compra[$contapag] = $c_fecha_compra[$contapag] . substr($datos[0]['fecha_compra'],8,2).'/'.substr($datos[0]['fecha_compra'],5,2).'/'.substr($datos[0]['fecha_compra'],0,4) . "\n";
-            if($datos[0]['fecha']){
-                $c_fecha_almacen[$contapag] = $c_fecha_almacen[$contapag] . substr($datos[0]['fecha'],8,2).'/'.substr($datos[0]['fecha'],5,2).'/'.substr($datos[0]['fecha'],0,4) . "\n";
+            $c_fecha_compra[$contapag] = $c_fecha_compra[$contapag] . substr($datos[0]['FECHA_COMPRA'],8,2).'/'.substr($datos[0]['FECHA_COMPRA'],5,2).
+                    '/'.substr($datos[0]['FECHA_COMPRA'],0,4) . "\n";
+            if($datos[0]['FECHA']){
+                $c_fecha_almacen[$contapag] = $c_fecha_almacen[$contapag] . substr($datos[0]['FECHA'],8,2).'/'.substr($datos[0]['FECHA'],5,2).
+                     '/'.substr($datos[0]['FECHA'],0,4) . "\n";
             } else {
                 $c_fecha_almacen[$contapag] = $c_fecha_almacen[$contapag] . "NO REGISTR" ."\n";
             }
-            $c_nro_comprobante[$contapag] = $c_nro_comprobante[$contapag] .'FC/' . substr($datos[$i]['nro_comprobante'], 0, 8) . "\n";
-            $c_proveedor[$contapag] = $c_proveedor[$contapag] . substr(utf8_decode($datos[$i]['proveedor']), 0, 24) . "\n";
+            $c_nro_comprobante[$contapag] = $c_nro_comprobante[$contapag] .'FC/' . substr($datos[$i]['NRO_COMPROBANTE'], 0, 8) . "\n";
+            $c_proveedor[$contapag] = $c_proveedor[$contapag] . substr(utf8_decode($datos[$i]['PROVEEDOR']), 0, 24) . "\n";
             $c_ruc[$contapag] = $c_ruc[$contapag] . substr($datos[$i]['ruc'], 0, 11) . "\n";
-            $c_importe[$contapag] = $c_importe[$contapag] . substr(number_format($datos[$i]['importe'],3),0,9) . "\n";
-            /*contar total importe*/$total_importe = $total_importe + $datos[$i]['importe'];
-            $c_igv[$contapag] = $c_igv[$contapag] . substr(number_format($datos[$i]['igv'],3),0,9) . "\n";
-            $c_total[$contapag] = $c_total[$contapag] . substr(number_format($datos[$i]['importe']+$datos[$i]['igv'],2),0,10) . "\n";
+            $c_importe[$contapag] = $c_importe[$contapag] . substr(number_format($datos[$i]['IMPORTE'],3),0,9) . "\n";
+            /*contar total importe*/$total_importe = $total_importe + $datos[$i]['IMPORTE'];
+            $c_igv[$contapag] = $c_igv[$contapag] . substr(number_format($datos[$i]['IGV'],3),0,9) . "\n";
+            $c_total[$contapag] = $c_total[$contapag] . substr(number_format($datos[$i]['IMPORTE']+$datos[$i]['IGV'],2),0,10) . "\n";
             /*contar total total*/$total_total = $total_total + $c_total[$contapag];
             $contaobj = $contaobj + 1;
             if ($contaobj == $opp) {
@@ -1936,7 +1950,7 @@ class reportes_controlador extends controller {
                         $this->_fpdf->SetX(105);
                         $this->_fpdf->Cell(18,8,utf8_decode('TOTALES'),'BT',0,'L',1);
                         $this->_fpdf->SetX(123);
-                        $this->_fpdf->Cell(44,8,substr(number_format($total_importe,3),0,15).' '.$datos[0]['abreviatura'],'BTR',0,'R',1);
+                        $this->_fpdf->Cell(44,8,substr(number_format($total_importe,3),0,15).' '.$datos[0]['ABREVIATURA'],'BTR',0,'R',1);
                         $this->_fpdf->SetFont('Courier', '', 9);
                         $this->_fpdf->SetX(167);
                         $this->_fpdf->Cell(9,8,utf8_decode('S/.'),'LBT',0,'R',1);
@@ -1967,10 +1981,10 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetFont('Courier', '', 9);
         $this->_fpdf->SetFillColor(255, 255, 255);
         $datos = $this->obtener_datos_empresa();
-        $rep_venta = array('',$datos[0]['rep_venta_1'], $datos[0]['rep_venta_2'],
-            $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
-            $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
-            $datos[0]['rep_venta_7']);
+        $rep_venta = array('',$datos[0]['REP_VENTA_1'], $datos[0]['REP_VENTA_2'],
+            $datos[0]['REP_VENTA_3'],$datos[0]['REP_VENTA_4'],
+            $datos[0]['REP_VENTA_5'],$datos[0]['REP_VENTA_6'],
+            $datos[0]['REP_VENTA_7']);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
@@ -1994,25 +2008,28 @@ class reportes_controlador extends controller {
         
         $datos = $this->obtener_datos_comprobante_venta($idventa);
         $horafecha = array(
-            substr($datos[0]['fecha_venta'],8,2),
-            substr($datos[0]['fecha_venta'],5,2),
-            substr($datos[0]['fecha_venta'],0,4),
-            substr($datos[0]['fecha_venta'],11,2),
-            substr($datos[0]['fecha_venta'],14,2),
-            substr($datos[0]['fecha_venta'],17,2)
+            substr($datos[0]['FECHA_VENTA'],8,2),
+            substr($datos[0]['FECHA_VENTA'],5,2),
+            substr($datos[0]['FECHA_VENTA'],0,4),
+            substr($datos[0]['FECHA_VENTA'],11,2),
+            substr($datos[0]['FECHA_VENTA'],14,2),
+            substr($datos[0]['FECHA_VENTA'],17,2)
             );
         
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.
+                'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['nro_documento']),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['ABREVIATURA'].'/'.
+                $datos[0]['NRO_DOCUMENTO']),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('  '.$datos[0]['nombres_cliente'].' '.$datos[0]['apellidos_cliente']),0,36),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('  '.$datos[0]['NOMBRES_CLIENTE'].' '.
+                $datos[0]['APELLIDOS_CLIENTE']),0,36),0,0,'L',1);
         
         $espac = $espac + $ancho_celda_datos+2;
         
@@ -2033,17 +2050,18 @@ class reportes_controlador extends controller {
         for($i=0;$i<$items;$i++){
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(0);
-            if($detalle[$i]['idpaquete']==0){//NO ES UN PAQUETE
-                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].$detalle[$i]['abreviatura'].' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            if($detalle[$i]['IDPAQUETE']==0){//NO ES UN PAQUETE
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['CANTIDAD'].$detalle[$i]['ABREVIATURA'].' '.
+                        $detalle[$i]['DESCRIPCION']),0,0,'L',1);
             }
-            if($detalle[$i]['idproducto']==0){
-                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].'PQT'.' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            if($detalle[$i]['IDPRODUCTO']==0){
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['CANTIDAD'].'PQT'.' '.$detalle[$i]['DESCRIPCION']),0,0,'L',1);
             }
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(50);
             $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
             //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
-            $prec = number_format($detalle[$i]['precio_venta']*$detalle[$i]['cantidad'], 2);
+            $prec = number_format($detalle[$i]['PRECIO_VENTA']*$detalle[$i]['CANTIDAD'], 2);
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(55);
             $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
@@ -2100,15 +2118,17 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['idempleado'].'/'.$datos[0]['nombres_empleado'].' '.$datos[0]['apellidos_empleado']),0,36),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['IDEMPLEADO'].'/'.$datos[0]['NOMBRES_EMPLEADO'].' '.
+                $datos[0]['APELLIDOS_EMPLEADO']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['idtipo_transaccion']==1){$datos[0]['idtipo_transaccion']='CONTADO';}else{$datos[0]['idtipo_transaccion']='CREDITO';}
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['idtipo_transaccion']),0,36),0,0,'L',1);
+        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['IDTIPO_TRANSACCION']==1){$datos[0]['IDTIPO_TRANSACCION']='CONTADO';}else{
+            $datos[0]['IDTIPO_TRANSACCION']='CREDITO';}
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['IDTIPO_TRANSACCION']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
-        if($datos[0]['estado']==0){
+        if($datos[0]['ESTADO']==0){
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(0);
             $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('*** ANULADO ***'),0,36),0,0,'L',1);
@@ -2149,10 +2169,10 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetFont('Courier', '', 9);
         $this->_fpdf->SetFillColor(255, 255, 255);
         $datos = $this->obtener_datos_empresa();
-        $rep_venta = array('',$datos[0]['rep_venta_1'], $datos[0]['rep_venta_2'],
-            $datos[0]['rep_venta_3'],$datos[0]['rep_venta_4'],
-            $datos[0]['rep_venta_5'],$datos[0]['rep_venta_6'],
-            $datos[0]['rep_venta_7']);
+        $rep_venta = array('',$datos[0]['REP_VENTA_1'], $datos[0]['REP_VENTA_2'],
+            $datos[0]['REP_VENTA_3'],$datos[0]['REP_VENTA_4'],
+            $datos[0]['REP_VENTA_5'],$datos[0]['REP_VENTA_6'],
+            $datos[0]['REP_VENTA_7']);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($rep_venta[1]),0,0,'C',1);
@@ -2176,17 +2196,18 @@ class reportes_controlador extends controller {
         
         $datos = $this->obtener_datos_comprobante_venta($idventa);
         $horafecha = array(
-            substr($datos[0]['fecha_venta'],8,2),
-            substr($datos[0]['fecha_venta'],5,2),
-            substr($datos[0]['fecha_venta'],0,4),
-            substr($datos[0]['fecha_venta'],11,2),
-            substr($datos[0]['fecha_venta'],14,2),
-            substr($datos[0]['fecha_venta'],17,2)
+            substr($datos[0]['FECHA_VENTA'],8,2),
+            substr($datos[0]['FECHA_VENTA'],5,2),
+            substr($datos[0]['FECHA_VENTA'],0,4),
+            substr($datos[0]['FECHA_VENTA'],11,2),
+            substr($datos[0]['FECHA_VENTA'],14,2),
+            substr($datos[0]['FECHA_VENTA'],17,2)
             );
         
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.$horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  FECHA:'.$horafecha[0].'/'.$horafecha[1].'/'.$horafecha[2].'    '.'HORA:'.
+                $horafecha[3].':'.$horafecha[4].':'.$horafecha[5]),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
@@ -2195,7 +2216,7 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         //$this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  CLIENTE:           '.$datos[0]['abreviatura'].'/'.$datos[0]['serie'].'-'.$datos[0]['nro_documento']),0,0,'L',1);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($datos[0]['abreviatura'].'/'.$datos[0]['nro_documento']),0,0,'C',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode($datos[0]['ABREVIATURA'].'/'.$datos[0]['NRO_DOCUMENTO']),0,0,'C',1);
         $espac = $espac + $ancho_celda_datos + 2;
         
         $this->_fpdf->SetY($espac);
@@ -2215,17 +2236,18 @@ class reportes_controlador extends controller {
         for($i=0;$i<$items;$i++){
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(0);
-            if($detalle[$i]['idpaquete']==0){//NO ES UN PAQUETE
-                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].$detalle[$i]['abreviatura'].' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            if($detalle[$i]['IDPAQUETE']==0){//NO ES UN PAQUETE
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['CANTIDAD'].$detalle[$i]['ABREVIATURA'].' '.
+                        $detalle[$i]['DESCRIPCION']),0,0,'L',1);
             }
-            if($detalle[$i]['idproducto']==0){
-                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['cantidad'].'PQT'.' '.$detalle[$i]['descripcion']),0,0,'L',1);
+            if($detalle[$i]['IDPRODUCTO']==0){
+                $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('  '.$detalle[$i]['CANTIDAD'].'PQT'.' '.$detalle[$i]['DESCRIPCION']),0,0,'L',1);
             }
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(50);
             $this->_fpdf->Cell(10,$ancho_celda_datos,utf8_decode('S/.'),0,0,'L',1);
             //PARSEAR OBJETO NUMERIC HACIA DOUBLE CON 2 DECIMALES
-            $prec = number_format($detalle[$i]['precio_venta']*$detalle[$i]['cantidad'], 2);
+            $prec = number_format($detalle[$i]['PRECIO_VENTA']*$detalle[$i]['CANTIDAD'], 2);
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(55);
             $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.$prec),0,0,'R',1);
@@ -2286,7 +2308,7 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['nombres_cliente']),0,36),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['NOMBRES_CLIENTE']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
@@ -2294,23 +2316,26 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['direccion_cliente']),0,36),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' '.$datos[0]['DIRECCION_CLIENTE']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' RUC: '.$datos[0]['documento']),0,36),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' RUC: '.$datos[0]['DOCUMENTO']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['idempleado'].'/'.$datos[0]['nombres_empleado'].' '.$datos[0]['apellidos_empleado']),0,36),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' VENDEDOR: '.$datos[0]['IDEMPLEADO'].'/'.$datos[0]['NOMBRES_EMPLEADO'].' '.
+                $datos[0]['APELLIDOS_EMPLEADO']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['idtipo_transaccion']==1){$datos[0]['idtipo_transaccion']='CONTADO';}else{$datos[0]['idtipo_transaccion']='CREDITO';}
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['idtipo_transaccion']),0,36),0,0,'L',1);
+        /*DETERMINAR EL TIPO DE TRANSACCION*/
+        if($datos[0]['IDTIPO_TRANSACCION']==1){$datos[0]['IDTIPO_TRANSACCION']='CONTADO';}
+        else{$datos[0]['IDTIPO_TRANSACCION']='CREDITO';}
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['IDTIPO_TRANSACCION']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
-        if($datos[0]['estado'] == 0){
+        if($datos[0]['ESTADO'] == 0){
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(0);
             $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode('*** ANULADO ***'),0,36),0,0,'C',1);
@@ -2414,7 +2439,8 @@ class reportes_controlador extends controller {
         $this->_fpdf->MultiCell(18,$ancho_celda_datos/2, "Tarifa\nTariff",'0',0,'L',0);
         $this->_fpdf->SetY(48);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "--------------------------------------------------------------------------------------------".
+                "--------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
         //DATOS
         $this->_fpdf->SetY(51.6);
         $this->_fpdf->SetX(2);
@@ -2456,10 +2482,12 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetFont('Arial', '', 7);
         $this->_fpdf->SetY(87);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "--------------------------------------------------------------------------------------------".
+                "--------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
         $this->_fpdf->SetY(98);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos/2, "--------------------------------------------------------------------------------------------".
+                "--------------------------------------------------------------------------------------------------------------------",'0',0,'C',0);
         $this->_fpdf->SetY(101);
         $this->_fpdf->SetX(0);
         $this->_fpdf->MultiCell($ancho,$ancho_celda_datos/2, utf8_decode("PARA SU CONVENIENCIA Y PROTECCIÓN, FAVOR DEPOSITAR SUS VALORES EN LAS CAJAS DE SEGURIDAD UBICADAS EN RECEPCIÓN")."\n". 
@@ -2471,8 +2499,6 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetX(0);
         $this->_fpdf->MultiCell($ancho,$ancho_celda_datos/2, utf8_decode("Este documento constituye el contrado de hospedaje reglamentado por D.S. 006 73 IC/DS de 29-3-73")."\n".
                 utf8_decode("This document constitutes the Contract of Lodging regulation for D.S 006 79 IC/DS de 29-3-73"),0,'C',0);
-        
-        
         
         $this->_fpdf->SetFont('Arial', '', 9);
         $this->_fpdf->SetY(4);
@@ -2550,6 +2576,9 @@ class reportes_controlador extends controller {
         $this->_fpdf->Cell(25,$ancho_celda_datos, substr(utf8_decode('10009427207'),0,11),'1',0,'C',0);
         
         $this->_fpdf->SetFont('Arial', '', 7);        
+        $this->_fpdf->SetY(95);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos, substr(utf8_decode('FIRMA'),0,11),'0',0,'C',0);
         $this->_fpdf->SetY(19);
         $this->_fpdf->SetX(0);
         $this->_fpdf->MultiCell(60,$ancho_celda_datos-2.4,utf8_decode('Psje. Abelardo Ramírez 263')."\n".
@@ -2562,7 +2591,6 @@ class reportes_controlador extends controller {
                 utf8_decode('circuito cerrado, frigobar, bebidas exóticas, piscina, restaurante, sauna, telefono y fax.'),0,'C',0);
         
         $this->_fpdf->Output();
-    
         
     }
 }

@@ -22,13 +22,13 @@ class interfaz_contable_controlador extends controller {
     
     public function obtener_asientos_intervalo_fechas($datos){
         $datos = $this->_interfaz_contable->selecciona_asientos_intervalo_fechas($datos);
-        $cabeceras =  array('idasiento', 'fecha','concepto_movimiento','registro','nro_correlativo','nro_documento','nro_cuenta','cuenta','debe','haber','nro_operacion');
+        $cabeceras =  array('IDASIENTO', 'FECHA','CONCEPTO_MOVIMIENTO','REGISTRO','NRO_CORRELATIVO','NRO_DOCUMENTO','NRO_CUENTA','CUENTA','DEBE','HABER','NRO_OPERACION');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
     public function obtener_datos_empresa(){
         $datos = $this->_interfaz_contable->selecciona_datos_empresa();
-        $cabeceras = array('ruc', 'razon_social');
+        $cabeceras = array('RUC', 'RAZON_SOCIAL');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -79,10 +79,10 @@ class interfaz_contable_controlador extends controller {
         $this->_phpexcel->getActiveSheet()->SetCellValue("B".($table_position-5), str_replace('-', '/', $fecha_inicio));
         
         $this->_phpexcel->getActiveSheet()->getColumnDimension('B')->setWidth(13);
-        $this->_phpexcel->getActiveSheet()->SetCellValue("B".($table_position-4), $datos_empresa[0]['ruc'], PHPExcel_Cell_DataType::TYPE_STRING);
+        $this->_phpexcel->getActiveSheet()->SetCellValue("B".($table_position-4), $datos_empresa[0]['RUC'], PHPExcel_Cell_DataType::TYPE_STRING);
         
         $this->_phpexcel->getActiveSheet()->getColumnDimension('B')->setWidth(13);
-        $this->_phpexcel->getActiveSheet()->SetCellValue("B".($table_position-3), $datos_empresa[0]['razon_social']);
+        $this->_phpexcel->getActiveSheet()->SetCellValue("B".($table_position-3), $datos_empresa[0]['RAZON_SOCIAL']);
         
         $this->_phpexcel->getActiveSheet()->getColumnDimension('C')->setWidth(34.3);
         $this->_phpexcel->getActiveSheet()->SetCellValue("C".($table_position-2), 'Glosa');
@@ -120,24 +120,24 @@ class interfaz_contable_controlador extends controller {
         $total_haber = 0;
         for($i = 0; $i<$datacount; $i++){
             //$this->_phpexcel->getActiveSheet()->getStyle('A'.$i)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_NUMBER);
-            $this->_phpexcel->getActiveSheet()->SetCellValue("A".($i+$table_position), $datos[$i]['nro_operacion']);
-            $this->_phpexcel->getActiveSheet()->SetCellValue("B".($i+$table_position), substr($datos[$i]['fecha'], 8, 2).'/'. substr($datos[$i]['fecha'], 5, 2).'/'. substr($datos[$i]['fecha'],0,4));
-            $this->_phpexcel->getActiveSheet()->SetCellValue("C".($i+$table_position), $datos[$i]['concepto_movimiento']);
-            $this->_phpexcel->getActiveSheet()->SetCellValue("D".($i+$table_position), $datos[$i]['registro']);
+            $this->_phpexcel->getActiveSheet()->SetCellValue("A".($i+$table_position), $datos[$i]['NRO_OPERACION']);
+            $this->_phpexcel->getActiveSheet()->SetCellValue("B".($i+$table_position), substr($datos[$i]['FECHA'], 8, 2).'/'. substr($datos[$i]['FECHA'], 5, 2).'/'. substr($datos[$i]['FECHA'],0,4));
+            $this->_phpexcel->getActiveSheet()->SetCellValue("C".($i+$table_position), $datos[$i]['CONCEPTO_MOVIMIENTO']);
+            $this->_phpexcel->getActiveSheet()->SetCellValue("D".($i+$table_position), $datos[$i]['REGISTRO']);
             //PARSEAR NUMERO CORRELATIVO HASTA LOS CARACTERES MENCIONADOS EN EL OBJETO $cantidad_caracteres DE LA SIGUIENTE LINEA
             $cantidad_caracteres = 6;
-            $correlativo = '00000000'.$datos[$i]['idasiento'];
+            $correlativo = '00000000'.$datos[$i]['IDASIENTO'];
             $correlativo = substr($correlativo, (strlen($correlativo) - $cantidad_caracteres), $cantidad_caracteres);
             //
             $this->_phpexcel->getActiveSheet()->setCellValueExplicitByColumnAndRow("4"/*<=SE REFIERE A LA COLUMNA 'E'*/,($i+$table_position),$correlativo, PHPExcel_Cell_DataType::TYPE_STRING);
-            $this->_phpexcel->getActiveSheet()->SetCellValue("F".($i+$table_position), $datos[$i]['nro_documento']);            
-            $this->_phpexcel->getActiveSheet()->setCellValueExplicitByColumnAndRow("6"/*<=SE REFIERE A LA COLUMNA 'G'*/,($i+$table_position),$datos[$i]['nro_cuenta'], PHPExcel_Cell_DataType::TYPE_STRING);
-            $this->_phpexcel->getActiveSheet()->SetCellValue("H".($i+$table_position), $datos[$i]['cuenta']);
-            $this->_phpexcel->getActiveSheet()->SetCellValue("I".($i+$table_position), $datos[$i]['debe']);          
-            $this->_phpexcel->getActiveSheet()->SetCellValue("J".($i+$table_position), $datos[$i]['haber']);
+            $this->_phpexcel->getActiveSheet()->SetCellValue("F".($i+$table_position), $datos[$i]['NRO_DOCUMENTO']);            
+            $this->_phpexcel->getActiveSheet()->setCellValueExplicitByColumnAndRow("6"/*<=SE REFIERE A LA COLUMNA 'G'*/,($i+$table_position),$datos[$i]['NRO_CUENTA'], PHPExcel_Cell_DataType::TYPE_STRING);
+            $this->_phpexcel->getActiveSheet()->SetCellValue("H".($i+$table_position), $datos[$i]['CUENTA']);
+            $this->_phpexcel->getActiveSheet()->SetCellValue("I".($i+$table_position), $datos[$i]['DEBE']);          
+            $this->_phpexcel->getActiveSheet()->SetCellValue("J".($i+$table_position), $datos[$i]['HABER']);
             
-            $total_debe = $total_debe + $datos[$i]['debe'];
-            $total_haber = $total_haber + $datos[$i]['haber'];
+            $total_debe = $total_debe + $datos[$i]['DEBE'];
+            $total_haber = $total_haber + $datos[$i]['HABER'];
         }
         $this->_phpexcel->getActiveSheet()->SetCellValue("H".($table_position+$datacount), 'TOTALES');        
         $this->_phpexcel->getActiveSheet()->SetCellValue("I".($table_position+$datacount), $total_haber);        
@@ -174,8 +174,7 @@ class interfaz_contable_controlador extends controller {
         $this->_phpexcel->getActiveSheet()->getStyle('I'.($table_position+$datacount))->getFill()->getStartColor()->setARGB('FFFF0000');
         $this->_phpexcel->getActiveSheet()->duplicateStyle( $this->_phpexcel->getActiveSheet()->getStyle('I'.($table_position+$datacount)), 'A'.($table_position+$datacount).':J'.($table_position+$datacount));
         
-        
-        
+
 //            $this->_phpexcel->getActiveSheet()->SetCellValue("A1", 'Escribir en A1');
             /*ANCHO DE COLUMNA
             $this->_phpexcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);  */
