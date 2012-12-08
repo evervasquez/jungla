@@ -188,8 +188,8 @@ class reportes_controlador extends controller {
     
     public function obtener_compras_x_intervalo_fechas($datos){
         $datos = $this->_reportes->selecciona_compras_x_intervalo_fechas($datos);
-        $cabeceras = array('IDCOMPRA', 'FECHA_COMPRA','NRO_COMPROBANTE','IMPORTE','IGV','IDPROVEEDOR','IDTIPO_TRANSACCION','CONFIRMACION','REGISTRO',
-            'C_FECHA_COMPRA','TIPO','PROVEEDOR','FECHA', 'RUC');
+        $cabeceras = array('IDCOMPRA', 'FECHA_COMPRA','NRO_COMPROBANTE','IMPORTE','IGV','IDPROVEEDOR','IDTIPO_TRANSACCION','CONFIRMACION','REGISTRO'
+            ,'TIPO','PROVEEDOR','FECHA', 'RUC');
         $datos = $this->get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -1524,9 +1524,10 @@ class reportes_controlador extends controller {
     }
     
     public function ventas_x_producto(){
-        $producto=$_POST['IDPRODUCTO'];
-        $fecha_inicio = $_POST['FECHA_INICIO'];
-        $fecha_fin = $_POST['FECHA_FIN'];
+        $producto=$_POST['idproducto'];
+        $fecha_inicio = $_POST['fecha_inicio'];
+        $fecha_fin = $_POST['fecha_fin'];
+        die();
         if($producto=="" || $fecha_inicio=="" || $fecha_fin==""){
             echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes')</script>";
             die();
