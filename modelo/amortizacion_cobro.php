@@ -9,7 +9,7 @@ class amortizacion_cobro extends Main{
 
     public function selecciona() {
         $datos = array($this->idmovimiento_caja, $this->idcuota_cobro);
-        $r = $this->get_consulta("pa_selecciona_amortizacion_cobro", $datos);
+        $r = $this->get_consulta("pa_selecciona_amort_c", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

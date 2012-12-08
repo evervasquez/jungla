@@ -51,7 +51,7 @@ class salida_productos_controlador extends controller{
             $this->_movimiento_producto->idtipo_movimiento=2;
             $this->_movimiento_producto->cantidad=$_POST['cantidad'][$i];
             $this->_movimiento_producto->idempleado=session::get('idempleado');
-            $this->_movimiento_producto->fecha=date("d-m-Y");
+            $this->_movimiento_producto->fecha=date('d-m-Y H:i:s');
             $this->_movimiento_producto->inserta();
         }
         $this->redireccionar('salida_productos');

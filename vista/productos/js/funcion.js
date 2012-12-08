@@ -105,10 +105,6 @@
                html+= '<td>Precio Unitario:</td>';
                html+= '<td>'+datos[0]['PRECIO_UNITARIO']+'</td>';
                html+= '</tr>';
-               html+= '<tr>';
-               html+= '<td>Observaciones:</td>';
-               html+= '<td>'+datos[0]['OBSERVACIONES']+'</td>';
-               html+= '</tr>';
                if(datos[0]['SERVICIO'] != null){
                html+= '<tr>';
                html+= '<td>Servicio:</td>';

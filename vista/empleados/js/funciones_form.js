@@ -30,7 +30,7 @@ $(document).ready(function(){
             $.ajax({
                 type:"POST",
                 url:'/jungla/empleados/valida_usuario',
-                data:"usuarioz="+$("#usuario").val(),
+                data:"usuario="+$("#usuario").val(),
                 beforeSend:function(){
                     $("#valida_usuario").html("cargando...");    
                 },
@@ -38,6 +38,8 @@ $(document).ready(function(){
                     $("#valida_usuario").html(respuesta);
                 }
             });
+        }else{
+            $("#valida_usuario").html('');
         }
     });
 }); 

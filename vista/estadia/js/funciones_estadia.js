@@ -8,7 +8,7 @@ $(document).ready(function(){
     $("#btn_busca_habitaciones").click(function(){
         if($("#fecha_entrada").val()==''){alert('Ingrese fecha de entrada');return 0;}
         if($("#fecha_salida").val()==''){alert('Ingrese fecha de salida');return 0;}
-        $.post('/sisjungla/reserva/buscar_habitaciones_disponibles','fecha_entrada='+$("#fecha_entrada").val()+
+        $.post('/jungla/reserva/buscar_habitaciones_disponibles','fecha_entrada='+$("#fecha_entrada").val()+
             '&fecha_salida='+$("#fecha_salida").val(),function(datos){
             $("#habitacion").html('<option value="">Seleccione...</option>');
             for(var i=0;i<datos.length;i++){
@@ -23,7 +23,7 @@ $(document).ready(function(){
     
     $("#habitacion").change(function(){
         if($(this).val()!=''){
-            $.post('/sisjungla/reserva/busca_tipo_habitacionxhabitacion','idhabitacion='+$(this).val(),function(datos){
+            $.post('/jungla/reserva/busca_tipo_habitacionxhabitacion','idhabitacion='+$(this).val(),function(datos){
                 $("#tipo_habitacion").html('<option value="">Seleccione...</option>');
                 for(var i=0;i<datos.length;i++){
                     $("#tipo_habitacion").append('<option value="'+ datos[i].IDTIPO_HABITACION + '">' + datos[i].TIPO_HABITACION+ '</option>');
@@ -57,7 +57,7 @@ $(document).ready(function(){
         
         if(error){alert(msg);nueva_asignacion();return 0;}
         
-        $.post('/sisjungla/reserva/get_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth,function(datos){
+        $.post('/jungla/reserva/get_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth,function(datos){
             idhe=datos[0].IDHABITACION_ESPECIFICA;
         },'json');
         
@@ -174,7 +174,7 @@ $(document).ready(function(){
     });
     
     function buscar_pasajeros(){
-        $.post('/sisjungla/pasajeros/buscador','cadena='+$("#txt_buscar_pasajeros").val()+'&filtro='+$("#filtro_pasajeros").val(),function(datos){
+        $.post('/jungla/pasajeros/buscador','cadena='+$("#txt_buscar_pasajeros").val()+'&filtro='+$("#filtro_pasajeros").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_pasajeros">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -236,7 +236,7 @@ $(document).ready(function(){
         $("#provincias").html('<option>Seleccione...</option>');
         $("#ciudades").html('<option value="0">Seleccione...</option>')
         if($(this).val()){
-            $.post('/sisjungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#regiones").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
@@ -248,7 +248,7 @@ $(document).ready(function(){
         $("#provincias").html('<option>Seleccione...</option>');
         $("#ciudades").html('<option value="0">Seleccione...</option>')
         if($(this).val()){
-            $.post('/sisjungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
@@ -259,7 +259,7 @@ $(document).ready(function(){
     $("#provincias").change(function(){
         $("#ciudades").html('<option value="0">Seleccione...</option>')
         if($(this).val()){
-            $.post('/sisjungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#ciudades").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
@@ -330,7 +330,7 @@ $(document).ready(function(){
         }else{
             membresia=$("#membresia").val();
         }
-        $.post('/sisjungla/reserva/inserta_pasajero','nombres='+$("#nombres").val()+'&apellidos='+$("#apellidos").val()+
+        $.post('/jungla/reserva/inserta_pasajero','nombres='+$("#nombres").val()+'&apellidos='+$("#apellidos").val()+
             '&documento='+$("#nrodoc").val()+'&fecha_nacimiento='+$("#fecha_nacimiento").val()+'&sexo='+sexo+
             '&telefono='+$("#telefono").val()+'&email='+$("#email").val()+'&estado_civil='+$("#estado_civil :selected").val()+
             '&profesion='+$("#profesion").val()+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+

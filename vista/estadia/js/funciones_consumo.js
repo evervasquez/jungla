@@ -44,7 +44,7 @@ $(document).ready(function(){
     });
     
     function buscar_producto(){
-        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+        $.post('/jungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
                         '<tr>'+
                             '<th>Codigo</th>'+

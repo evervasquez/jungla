@@ -26,7 +26,7 @@ $(document).ready(function(){
         $("#provincias").html('<option>Seleccione...</option>');
         $("#ciudades").html('<option value="0">Seleccione...</option>')
         if($(this).val()){
-            $.post('/sisjungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#regiones").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
@@ -38,7 +38,7 @@ $(document).ready(function(){
         $("#provincias").html('<option>Seleccione...</option>');
         $("#ciudades").html('<option value="0">Seleccione...</option>')
         if($(this).val()){
-            $.post('/sisjungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#provincias").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }
@@ -49,7 +49,7 @@ $(document).ready(function(){
     $("#provincias").change(function(){
         $("#ciudades").html('<option value="0">Seleccione...</option>')
         if($(this).val()){
-            $.post('/sisjungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $("#ciudades").append('<option value="'+ datos[i].IDUBIGEO + '">' + datos[i].DESCRIPCION+ '</option>');
                 }

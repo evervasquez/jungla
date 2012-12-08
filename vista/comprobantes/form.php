@@ -16,11 +16,10 @@
             <td>
                 <select class="list" placeholder="Seleccione..." name="tipo_comprobante" required>
                     <?php for($i=0;$i<count($this->datos_tipo_comprobante);$i++){ ?>
-
                         <?php if( $this->datos[0]['IDTIPO_COMPROBANTE'] == $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ){ ?>
-                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ?>" selected="selected"><?php $this->datos_tipo_comprobante[$i]['DESCRIPCION'] ?></option>
+                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ?>" selected="selected"><?php echo $this->datos_tipo_comprobante[$i]['DESCRIPCION'] ?></option>
                         <?php } else { ?>
-                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ?>"><?php $this->datos_tipo_comprobante[$i]['DESCRIPCION'] ?></option>
+                    <option value="<?php echo $this->datos_tipo_comprobante[$i]['IDTIPO_COMPROBANTE'] ?>"><?php echo $this->datos_tipo_comprobante[$i]['DESCRIPCION'] ?></option>
                         <?php } ?>
                     <?php } ?>
                 </select>

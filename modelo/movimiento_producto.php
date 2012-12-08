@@ -62,7 +62,7 @@ class movimiento_producto extends Main{
             $this->proveedor='';
         }
         $datos = array($this->idmovimiento_producto, $this->idtipo_movimiento, $this->nro_comprobante, $this->empleado, $this->producto, $this->proveedor);
-        $r = $this->get_consulta("pa_selecciona_movimiento_producto", $datos);
+        $r = $this->get_consulta("pa_selecciona_movimiento_p", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

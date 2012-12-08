@@ -88,7 +88,7 @@ class empleados extends Main{
     
     public function seleccionar($usuario,$clave) {
         $datos = array($usuario,$clave);
-        $r = $this->get_consulta("pa_selecciona_login", $datos);
+        $r = $this->get_consulta("pa_valida_login", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

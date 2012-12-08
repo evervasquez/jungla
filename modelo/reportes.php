@@ -141,7 +141,7 @@ class reportes extends Main{
     }
     public function selecciona_habitaciones_x_tipo_habitacion(){
         $datos = null;
-        $r = $this->get_consulta("pa_selecciona_habitaciones_x_tipo_habitacion", $datos);
+        $r = $this->get_consulta("pa_selecciona_hab_tip_hab", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
          if (BaseDatos::$_archivo == 'OCI') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -189,7 +189,7 @@ class reportes extends Main{
     }
     public function selecciona_datos_comprobante_venta($idventa){
         $datos = $idventa;
-        $r = $this->get_consulta("pa_selecciona_datos_comprobante_venta", $idventa);
+        $r = $this->get_consulta("pa_selecciona_dat_comp_v", $idventa);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
          if (BaseDatos::$_archivo == 'OCI') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -201,7 +201,7 @@ class reportes extends Main{
     }
     public function selecciona_datos_detalle_comprobante_venta($idventa){
         $datos = $idventa;
-        $r = $this->get_consulta("pa_selecciona_datos_detalle_comprobante_venta", $idventa);
+        $r = $this->get_consulta("pa_selecciona_dat_de_comp_v", $idventa);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
          if (BaseDatos::$_archivo == 'OCI') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);

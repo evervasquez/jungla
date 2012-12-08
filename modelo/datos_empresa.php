@@ -12,7 +12,7 @@ class datos_empresa extends Main{
     public $id;
 
     public function selecciona() {
-          if(is_null($this->id)){
+        if(is_null($this->id)){
             $this->id=1;
         }
         $datos = array($this->id);

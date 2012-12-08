@@ -100,7 +100,7 @@ class empleados extends Main{
             return $data;
         } else {
             $stmt->setFetchMode(PDO::FETCH_ASSOC);       
-            return $stmt->fetchall();
+            return $stmt->fetch();
 //            echo '<pre>';
 //            print_r($stmt->fetchall());
 //            die();

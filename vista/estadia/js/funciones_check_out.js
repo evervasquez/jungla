@@ -19,7 +19,7 @@ $(document).ready(function(){
     });
     
     $("#btn_inserta_cliente_juridico").click(function(){
-        $.post('/sisjungla/estadia/inserta_cliente_juridico','nombres='+$("#razonsocial").val()+'&documento='+$("#ruc").val()+
+        $.post('/jungla/estadia/inserta_cliente_juridico','nombres='+$("#razonsocial").val()+'&documento='+$("#ruc").val()+
             '&direccion='+$("#direccionrs").val(),
         function(datos){
             $("#idcliente").val(datos[0].IDCLIENTE);
@@ -34,7 +34,7 @@ $(document).ready(function(){
     //verificar nro de ruc
     $("#ruc").blur(function(){
         if($(this).val()!='' && $(this).val().length==11){
-            $.post('/sisjungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
                 if(datos.length>0){
                     alert('Ya esta registrado un pasajero con este Nro de RUC...');
                     $("#ruc").val('');
@@ -80,7 +80,7 @@ $(document).ready(function(){
     
     function buscar_cliente(){
         if($("#tipo_comprobante").val()==55){
-            $.post('/sisjungla/clientes/buscador','cadena='+$("#txt_buscar_clientes").val()+'&filtro='+$("#filtro_clientes").val(),function(datos){
+            $.post('/jungla/clientes/buscador','cadena='+$("#txt_buscar_clientes").val()+'&filtro='+$("#filtro_clientes").val(),function(datos){
                     HTML = '<table border="1" class="tabgrilla" id="tbl_busca_clientes">'+
                             '<tr>'+
                                 '<th>Codigo</th>'+
@@ -114,7 +114,7 @@ $(document).ready(function(){
                     });
             },'json');        
         }else{
-            $.post('/sisjungla/clientes/buscador','cadena='+$("#txt_buscar_clientes_juridicos").val()+'&filtro='+$("#filtro_clientes_juridicos").val(),function(datos){
+            $.post('/jungla/clientes/buscador','cadena='+$("#txt_buscar_clientes_juridicos").val()+'&filtro='+$("#filtro_clientes_juridicos").val(),function(datos){
                     HTML = '<table border="1" class="tabgrilla" id="tbl_busca_clientes_juridicos">'+
                             '<tr>'+
                                 '<th>Codigo</th>'+
