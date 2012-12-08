@@ -1,6 +1,6 @@
 <?php
 
-class asientos extends Main{
+class asientos extends Main {
 
     public $idcompra;
     public $idasiento;
@@ -8,10 +8,11 @@ class asientos extends Main{
     public $glosa;
     public $idplantilla_movimiento;
     public $nro_asiento;
+    public $idventa;
 
     public function selecciona() {
-         if(is_null($this->idasiento)){
-            $this->idasiento=0;
+        if (is_null($this->idasiento)) {
+            $this->idasiento = 0;
         }
         $datos = array($this->idasiento);
         $r = $this->get_consulta("pa_selecciona_asientos", $datos);
@@ -33,9 +34,14 @@ class asientos extends Main{
         return $error;
     }
 
-    public function inserta($idcompra) {
-        $datos = array($idcompra);
+    public function inserta() {
+        if (is_null($this->idcompra)) {
+            $datos = array($this->idventa);
+            $r = $this->get_consulta("pa_inserta_asientos_venta", $datos);
+        } else {
+            $datos = array($this->idcompra);
             $r = $this->get_consulta("pa_inserta_asientos_compra", $datos);
+        }
         $error = $r[1];
         $r = null;
         return $error;

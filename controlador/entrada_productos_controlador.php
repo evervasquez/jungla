@@ -72,7 +72,8 @@ class entrada_productos_controlador extends controller{
             $this->_productos->aumenta=1;
             $this->_productos->actualiza();
         }
-        $this->_asientos->inserta($_POST['idcompra']);
+        $this->_asientos->idcompra=$_POST['idcompra'];
+        $this->_asientos->inserta();
         //inserta movimiento_producto
         $this->_movimiento_producto->idcompra=$_POST['idcompra'];
         $this->_movimiento_producto->idtipo_movimiento=1;
