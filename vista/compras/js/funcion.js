@@ -158,11 +158,11 @@
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
                     html+= '<td>'+(i+1)+'</td>';
-                    html+= '<td>'+datos[0]['PRODUCTO']+'</td>';
-                    html+= '<td>'+datos[0]['UM']+'</td>';
-                    html+= '<td>'+datos[0]['CANTIDAD']+'</td>';
-                    html+= '<td>'+datos[0]['PRECIO']+'</td>';
-                    html+= '<td>'+datos[0]['CANTIDAD']*datos[0]['PRECIO']+'</td>';
+                    html+= '<td>'+datos[i]['PRODUCTO']+'</td>';
+                    html+= '<td>'+datos[i]['UM']+'</td>';
+                    html+= '<td>'+datos[i]['CANTIDAD']+'</td>';
+                    html+= '<td>'+datos[i]['PRECIO']+'</td>';
+                    html+= '<td>'+datos[i]['CANTIDAD']*datos[i]['PRECIO']+'</td>';
                     html+= '</tr>';
                 }
                 html+= '</table>';
