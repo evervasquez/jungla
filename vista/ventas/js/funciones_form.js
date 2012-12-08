@@ -158,7 +158,7 @@ $(document).ready(function(){
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
-                            '<th>Costo</th>'+
+                            '<th>Costo Unitario</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -337,7 +337,7 @@ $(document).ready(function(){
             if($("#cambia_form").val()==0){
                 html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
             }else{
-                html +='<td><input type="hidden" value="1" name="cantidad[]"/>1</td>';
+                html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>1</td>';
             }
             html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
             st=pre*c;

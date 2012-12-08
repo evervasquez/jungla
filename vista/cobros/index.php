@@ -1,4 +1,4 @@
-<?php if (isset($this->datos) && count($this->datos)) { ?>
+<?php if (isset($this->datos) && count($this->datos) || isset($this->datos_ventas) && count($this->datos_ventas)) { ?>
 <p><h3>Lista de Cobros</h3></p>
     <p>
         <select class="combo" id="filtro">
@@ -19,20 +19,35 @@
             <th>Monto Restante</th>
             <th>Accion</th>
         </tr>
-    <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
-            <tr>
-                <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
-                <td><?php echo $this->datos[$i]['CLIENTE'] ?></td>
-                <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
-                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE']-$this->datos[$i]['DESCUENTO'] ?></td>
-                <td><?php echo $this->datos[$i]['MONTO_COBRADO'] ?></td>
-                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO']-$this->datos[$i]['DESCUENTO'] ?></td>
-                <td class="tabtr" align="center">
-                    <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>">[Cronograma]</a>
-                    <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>">[Amortizar]</a>
-                </td>
-            </tr>
+    <?php for ($i = 0; $i < count($this->datos_ventas); $i++) { ?>
+        <?php if($this->datos_ventas[$i]['IDTIPO_TRANSACCION']==1 && $this->datos_ventas[$i]['ESTADO_PAGO']==0) {?>
+        <tr>
+            <td><?php echo $this->datos_ventas[$i]['NRO_DOCUMENTO'] ?></td>
+            <td><?php echo $this->datos_ventas[$i]['CLIENTE'] ?></td>
+            <td><?php echo $this->datos_ventas[$i]['FECHA_VENTA'] ?></td>
+            <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
+            <td><?php echo 0 ?></td>
+            <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE'] - $this->datos_ventas[$i]['MONTO_COBRADO']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
+            <td class="tabtr" align="center">
+                <a href="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>">[Cobrar]</a>
+            </td>
+        </tr>
         <?php } ?>
+    <?php } ?>
+    <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+        <tr>
+            <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
+            <td><?php echo $this->datos[$i]['CLIENTE'] ?></td>
+            <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
+            <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE']-$this->datos[$i]['DESCUENTO'] ?></td>
+            <td><?php echo $this->datos[$i]['MONTO_COBRADO'] ?></td>
+            <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO']-$this->datos[$i]['DESCUENTO'] ?></td>
+            <td class="tabtr" align="center">
+                <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>">[Cronograma]</a>
+                <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>">[Amortizar]</a>
+            </td>
+        </tr>
+    <?php } ?>
 </table>
 </div>
 

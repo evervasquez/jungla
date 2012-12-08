@@ -140,14 +140,20 @@
                         html+= '<td>'+datos[i]['PRODUCTO']+'</td>';
                     }
                     if(datos[i]['UM'] == null){
-                        html+= '<td>paquetes</td>';
+                        html+= '<td>paquete</td>';
                     }
                     else{
                         html+= '<td>'+datos[i]['UM']+'</td>';
                     }
-                    html+= '<td>'+datos[i]['CANTIDAD']+'</td>';
-                    html+= '<td>'+datos[i]['PRECIO_VENTA']+'</td>';
-                    html+= '<td>'+datos[i]['CANTIDAD']*datos[i]['PRECIO_VENTA']+'</td>';
+                    if(datos[i]['PRODUCTO'] == 'vacio'){
+                        html+= '<td>1</td>';
+                        html+= '<td>'+datos[i]['CANTIDAD']*datos[i]['PRECIO_VENTA']+'</td>';
+                        html+= '<td>'+datos[i]['CANTIDAD']*datos[i]['PRECIO_VENTA']+'</td>';
+                    }else{
+                        html+= '<td>'+datos[i]['CANTIDAD']+'</td>';
+                        html+= '<td>'+datos[i]['PRECIO_VENTA']+'</td>';
+                        html+= '<td>'+datos[i]['CANTIDAD']*datos[i]['PRECIO_VENTA']+'</td>';
+                    }
                     html+= '</tr>';
                 }
                 html+= '</table>';
