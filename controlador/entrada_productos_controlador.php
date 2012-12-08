@@ -79,7 +79,7 @@ class entrada_productos_controlador extends controller{
         $this->_movimiento_producto->idempleado=session::get('idempleado');
         $this->_movimiento_producto->fecha=date('d-m-Y H:i:s');
         $this->_movimiento_producto->inserta();
-        $this->_alertas->desactiva_alerta();
+        @$this->_alertas->desactiva_alerta();
         $this->redireccionar('entrada_productos');
     }
     

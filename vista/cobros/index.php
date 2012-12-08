@@ -24,9 +24,9 @@
                 <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
                 <td><?php echo $this->datos[$i]['CLIENTE'] ?></td>
                 <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
-                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] ?></td>
+                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE']-$this->datos[$i]['DESCUENTO'] ?></td>
                 <td><?php echo $this->datos[$i]['MONTO_COBRADO'] ?></td>
-                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO'] ?></td>
+                <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO']-$this->datos[$i]['DESCUENTO'] ?></td>
                 <td class="tabtr" align="center">
                     <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>">[Cronograma]</a>
                     <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>">[Amortizar]</a>

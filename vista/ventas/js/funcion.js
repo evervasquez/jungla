@@ -134,7 +134,7 @@
                         html+= '<td>'+datos[i]['PRODUCTO']+'</td>';
                     }
                     if(datos[i]['UM'] == null){
-                        html+= '<td></td>';
+                        html+= '<td>paquetes</td>';
                     }
                     else{
                         html+= '<td>'+datos[i]['UM']+'</td>';
