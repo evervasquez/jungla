@@ -15,6 +15,8 @@ class ventas extends Main{
     public $nro_documento;
     public $estado_pago;
     public $descuento;
+    public $cliente;
+    public $empleado;
     
 
     public function inserta() {
@@ -50,7 +52,16 @@ class ventas extends Main{
         if(is_null($this->idventa)){
             $this->idventa=0;
         }
-        $datos = array($this->idventa);
+        if(is_null($this->nro_documento)){
+            $this->nro_documento='';
+        }
+        if(is_null($this->cliente)){
+            $this->cliente=null;
+        }
+        if(is_null($this->empleado)){
+            $this->empleado='';
+        }        
+        $datos = array($this->idventa, $this->nro_documento, $this->cliente, $this->empleado);
         $r = $this->get_consulta("pa_selecciona_ventas", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];

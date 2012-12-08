@@ -30,6 +30,7 @@
                 <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
                 <td><?php echo $this->datos[$i]['EMPLEADO'] ?></td>
                 <td>
+                    <a href="javascript:void(0)" class="imgdelete" onclick="eliminar('<?php echo BASE_URL?>ventas/eliminar/<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
                     <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
                 </td>
             </tr>

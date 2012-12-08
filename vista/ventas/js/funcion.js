@@ -34,6 +34,8 @@
                     HTML = HTML + '<td>'+datos[i].CLIENTE+'</td>';
                     HTML = HTML + '<td>'+datos[i].FECHA_VENTA+'</td>';
                     HTML = HTML + '<td>'+datos[i].EMPLEADO+'</td>';
+                    var eliminar='/jungla/ventas/eliminar/'+datos[i].IDVENTA;  
+                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDVENTA+'\')" class="imgview"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
@@ -101,15 +103,19 @@
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Importe:</td>';
-                html+= '<td>'+datos[0]['IMPORTE']+'</td>';
+                html+= '<td>S/. '+datos[0]['IMPORTE']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>IGV:</td>';
-                html+= '<td>'+datos[0]['IGV']+'</td>';
+                html+= '<td>S/. '+datos[0]['IGV']+'</td>';
+                html+= '</tr>';
+                html+= '<tr>';
+                html+= '<td>Descuento:</td>';
+                html+= '<td>S/. '+datos[0]['DESCUENTO']+'</td>';
                 html+= '</tr>';
                 html+= '<tr>';
                 html+= '<td>Total:</td>';
-                html+= '<td>'+(parseFloat(datos[0]['IGV'])+1)*(datos[0]['IMPORTE'])+'</td>';
+                html+= '<td>S/. '+(parseFloat(datos[0]['IGV'])+1)*(datos[0]['IMPORTE']-datos[0]['DESCUENTO'])+'</td>';
                 html+= '</tr>';
                 html+= '</table>';
            },'json'),
@@ -134,7 +140,7 @@
                         html+= '<td>'+datos[i]['PRODUCTO']+'</td>';
                     }
                     if(datos[i]['UM'] == null){
-                        html+= '<td></td>';
+                        html+= '<td>Paquete</td>';
                     }
                     else{
                         html+= '<td>'+datos[i]['UM']+'</td>';
