@@ -15,7 +15,7 @@
     </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
         <tr>
-            <td><?php echo $this->datos[$i]['FECHA'] ?></td>
+            <td><?php echo $this->datos[$i]['A_FECHA'] ?></td>
             <td><?php echo $this->datos[$i]['CONCEPTO_MOVIMIENTO'] ?></td>
             <td><?php echo $this->datos[$i]['REGISTRO'] ?></td>
             <td><?php echo $this->datos[$i]['NRO_CORRELATIVO'] ?></td>
