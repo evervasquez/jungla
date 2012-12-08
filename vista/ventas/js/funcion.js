@@ -127,21 +127,21 @@
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
                     html+= '<td>'+(i+1)+'</td>';
-                    if(datos[0]['PRODUCTO'] == 'vacio'){
-                        html+= '<td>'+datos[0]['PAQUETE']+'</td>';
+                    if(datos[i]['PRODUCTO'] == 'vacio'){
+                        html+= '<td>'+datos[i]['PAQUETE']+'</td>';
                     }
                     else{
-                        html+= '<td>'+datos[0]['PRODUCTO']+'</td>';
+                        html+= '<td>'+datos[i]['PRODUCTO']+'</td>';
                     }
-                    if(datos[0]['UM'] == null){
+                    if(datos[i]['UM'] == null){
                         html+= '<td></td>';
                     }
                     else{
-                        html+= '<td>'+datos[0]['UM']+'</td>';
+                        html+= '<td>'+datos[i]['UM']+'</td>';
                     }
-                    html+= '<td>'+datos[0]['CANTIDAD']+'</td>';
-                    html+= '<td>'+datos[0]['PRECIO_VENTA']+'</td>';
-                    html+= '<td>'+datos[0]['CANTIDAD']*datos[0]['PRECIO_VENTA']+'</td>';
+                    html+= '<td>'+datos[i]['CANTIDAD']+'</td>';
+                    html+= '<td>'+datos[i]['PRECIO_VENTA']+'</td>';
+                    html+= '<td>'+datos[i]['CANTIDAD']*datos[i]['PRECIO_VENTA']+'</td>';
                     html+= '</tr>';
                 }
                 html+= '</table>';

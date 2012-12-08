@@ -269,16 +269,13 @@ class Main {
                 return array($cursor, $error);
                 $error = 'error';
             } else {
-                for ($i = 1; $i < count($datos); $i++) {
+                for ($i = 0; $i < count($datos); $i++) {
                     $numero = $i + 1;
                     oci_bind_by_name(self::$stmt, ":p" . $numero, $datos[$i]/* , OCI_B_INT */);
                 }
                 OCI_conexion::execute();
-                //$error = $stmt->errorInfo();
-                //return array($cursor,$error); 
-//                oci_fetch_all($cursor,$data,null,null,OCI_FETCHSTATEMENT_BY_ROW);
-//                return $data;
             }
+            OCI_conexion::cerrar();
         }
         //oci_free_statement($stmt);
         //oci_close(self::$db);
@@ -353,10 +350,17 @@ class Main {
                 if ($error[2] == '(null) [0] (severity 0) [(null)]') {
                     return array($stmt, '');
                 } else {
-                    die($error[2]);
+                    $url=str_replace(' ', '_', $error[2]);
+                    die("<script> window.location=\"".BASE_URL."error/error_bd/".$url."\" ; </script>");
                 }
             } else {
                 return array($stmt, $error[2]);
+//                if($error[2]!=''){
+//                    return array($stmt, $error[2]);
+//                }else{
+//                    $url=str_replace(' ', '_', $error[2]);
+//                    die("<script> window.location=\"".BASE_URL."error/error_bd/".$url."\" ; </script>");
+//                }
             }
 
 //            return array($stmt,$error[2]);

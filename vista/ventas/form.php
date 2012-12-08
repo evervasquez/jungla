@@ -8,7 +8,7 @@
             <tr valign="top">
                 <td>Fecha de Venta:</td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" name="FECHA_VENTA" required class="datepicker"
+                    <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_venta" required class="datepicker"
                        value="<?php if(isset ($this->datos[0]['FECHA_VENTA'])){echo $this->datos[0]['FECHA_VENTA'];} else {echo date("d-m-Y");} ?>"/>
                     <br><div class="msgerror"></div>
                 </td>
@@ -61,7 +61,6 @@
                 <td><label>Intervalo de dias:</label></td>
                 <td>
                     <select class="list" placeholder="Seleccione..." name="intervalo_dias" id="intervalo_dias">
-                        <option></option>
                         <option value="7">7</option>
                         <option value="14">14</option>
                     </select>

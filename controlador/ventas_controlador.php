@@ -119,7 +119,7 @@ class ventas_controlador extends controller {
                 $fecha_temp = date("d-m-Y", strtotime("$fecha_venta +$intervalo_dias day"));
 
                 for($i=1;$i<=$c;$i++){
-                    $this->_cuota_cobro->idventa=$dato_venta['idventa'];
+                    $this->_cuota_cobro->idventa=$dato_venta['IDVENTA'];
                     $this->_cuota_cobro->fecha_cobro=$fecha_temp;
                     $this->_cuota_cobro->nro_cobro=$i;
                     $this->_cuota_cobro->monto_cuota=$cuota[$i];

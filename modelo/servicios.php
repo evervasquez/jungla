@@ -41,8 +41,8 @@ class servicios extends Main{
         $datos = array(0, $this->descripcion);
         $r = $this->get_consulta("pa_inserta_actualiza_servicios", $datos);
         $error = $r[1];
-        $r = null;
-        return $error;
+        //$r = null;
+      // return $error;
     }
 
     public function actualiza() {
