@@ -54,9 +54,10 @@ class reserva_controlador extends controller{
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         
         $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
-        $this->_vista->titulo = 'Registrar reserva';
+        $this->_vista->titulo = 'Registrar Reserva';
         $this->_vista->action = BASE_URL.'reserva';
         $this->_vista->setJs(array('funciones','funciones_form_pasajeros'));
+        $this->_vista->setCss(array('estilos'));
         $this->_vista->renderizar('index');
     }
     
