@@ -41,10 +41,10 @@ class OCI_conexion extends BaseDatos {
         return $cursor;
     }
 
-   /* public function cerrar() {
+    public static function cerrar() {
         oci_free_statement(self::$stmt);
         oci_close(self::$link);
-    }*/
+    }
     public static function execute(){
         oci_execute(self::$stmt ,OCI_DEFAULT);
     }
