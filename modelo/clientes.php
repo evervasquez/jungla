@@ -25,10 +25,10 @@ class clientes extends Main {
         $datos = array(0, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento,
             $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo,
             $this->idmembresia, $this->direccion, $this->tipo);
-//            echo '<pre>';
-//            print_r($datos);
-//            echo '</pre>';
-//            exit;
+            echo '<pre>';
+            print_r($datos);
+            echo '</pre>';
+            exit;
         $r = $this->get_consulta("pa_inserta_actualiza_clientes", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
