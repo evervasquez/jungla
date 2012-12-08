@@ -14,7 +14,7 @@ class producto_paquete extends Main{
             $this->idproducto=0;
         }
         $datos = array($this->idpaquete, $this->idproducto);
-        $r = $this->get_consulta("pa_selecciona_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_selecciona_prod_paq", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

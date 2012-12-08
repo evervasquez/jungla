@@ -65,7 +65,7 @@ class modulos extends Main{
 
     public function seleccionar($idmodulo_padre) {
         $datos = array($idmodulo_padre);
-        $r = $this->get_consulta("pa_selecciona_modulos_padre", $datos);
+        $r = $this->get_consulta("pa_selecciona_modulos_p", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

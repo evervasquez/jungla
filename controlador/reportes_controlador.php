@@ -499,6 +499,7 @@ class reportes_controlador extends controller {
         $setx = $setx + 21.05;
         $sety = 94.80;
         $mesano = array($mes, $ano);
+        //CORREGIDO DATEDIFF DATESUB EN MYSQL
         $datos= $this->obtener_numero_pernoctaciones_x_tipo_habitacion($mesano);
         $datacount = count($datos);
         $habitacioncuenta = 1;
@@ -792,6 +793,7 @@ class reportes_controlador extends controller {
         $setx = 70.32;
         $sety = 173.2;
         $mesano = array($mes, $ano, 0);
+        //CORREGIDO DATEDIFF DATESUB EN MYSQL
         $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
         $datacount = count($datos);
         /* COMIENZA CON ARGENTINA, CODIGO 28 */
@@ -876,6 +878,7 @@ class reportes_controlador extends controller {
         
         //CONTINENTES
         $mesano = array($mes, $ano, 1);
+        //CORREGIDO DATEDIFF DATESUB EN MYSQL
         $datos = $this->obtener_numero_pernoctaciones_huesped_ubigeo_internacional($mesano);
         $datacount = count($datos);
         /* COMIENZA CON AFRICA, CODIGO 4 */
@@ -2472,8 +2475,6 @@ class reportes_controlador extends controller {
         $this->_fpdf->MultiCell($ancho,$ancho_celda_datos/2, utf8_decode("Este documento constituye el contrado de hospedaje reglamentado por D.S. 006 73 IC/DS de 29-3-73")."\n".
                 utf8_decode("This document constitutes the Contract of Lodging regulation for D.S 006 79 IC/DS de 29-3-73"),0,'C',0);
         
-        
-        
         $this->_fpdf->SetFont('Arial', '', 9);
         $this->_fpdf->SetY(4);
         $this->_fpdf->SetX(66);
@@ -2550,6 +2551,9 @@ class reportes_controlador extends controller {
         $this->_fpdf->Cell(25,$ancho_celda_datos, substr(utf8_decode('10009427207'),0,11),'1',0,'C',0);
         
         $this->_fpdf->SetFont('Arial', '', 7);        
+        $this->_fpdf->SetY(95);
+        $this->_fpdf->SetX(0);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos, substr(utf8_decode('FIRMA'),0,11),'0',0,'C',0);
         $this->_fpdf->SetY(19);
         $this->_fpdf->SetX(0);
         $this->_fpdf->MultiCell(60,$ancho_celda_datos-2.4,utf8_decode('Psje. Abelardo Ramírez 263')."\n".

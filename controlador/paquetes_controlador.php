@@ -37,12 +37,12 @@ class paquetes_controlador extends controller{
 //            exit;
             //inserta paquete
             $this->_paquetes->descripcion=$_POST['descripcion'];
-            $this->_paquetes->descuento=$_POST['descuento'];
+            $this->_paquetes->descuento=0;
             $this->_paquetes->costo=$_POST['costo'];
             $dato_paquete=$this->_paquetes->inserta();
             //inserta productos x paquete
             for($i=0;$i<count($_POST['idproducto']);$i++){
-                $this->_producto_paquete->idpaquete=$dato_paquete['idpaquete'];
+                $this->_producto_paquete->idpaquete=$dato_paquete['IDPAQUETE'];
                 $this->_producto_paquete->idproducto= $_POST['idproducto'][$i];
                 $this->_producto_paquete->cantidad= $_POST['cantidad'][$i];
                 $this->_producto_paquete->inserta();
@@ -70,7 +70,7 @@ class paquetes_controlador extends controller{
             //inserta habitacion
             $this->_paquetes->idpaquete=$_POST['codigo'];
             $this->_paquetes->descripcion=$_POST['descripcion'];
-            $this->_paquetes->descuento=$_POST['descuento'];
+            $this->_paquetes->descuento=0;
             $this->_paquetes->costo=$_POST['costo'];
             $this->_paquetes->actualiza();
             $this->redireccionar('paquetes');

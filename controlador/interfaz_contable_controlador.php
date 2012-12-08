@@ -174,8 +174,7 @@ class interfaz_contable_controlador extends controller {
         $this->_phpexcel->getActiveSheet()->getStyle('I'.($table_position+$datacount))->getFill()->getStartColor()->setARGB('FFFF0000');
         $this->_phpexcel->getActiveSheet()->duplicateStyle( $this->_phpexcel->getActiveSheet()->getStyle('I'.($table_position+$datacount)), 'A'.($table_position+$datacount).':J'.($table_position+$datacount));
         
-        
-        
+
 //            $this->_phpexcel->getActiveSheet()->SetCellValue("A1", 'Escribir en A1');
             /*ANCHO DE COLUMNA
             $this->_phpexcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);  */

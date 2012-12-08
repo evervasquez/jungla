@@ -9,7 +9,7 @@ $(document).ready(function(){
     $("#btn_busca_habitaciones").click(function(){
         if($("#fecha_entrada").val()==''){alert('Ingrese fecha de entrada');return 0;}
         if($("#fecha_salida").val()==''){alert('Ingrese fecha de salida');return 0;}
-        $.post('/sisjungla/reserva/buscar_habitaciones_disponibles','fecha_entrada='+$("#fecha_entrada").val()+
+        $.post('/jungla/reserva/buscar_habitaciones_disponibles','fecha_entrada='+$("#fecha_entrada").val()+
             '&fecha_salida='+$("#fecha_salida").val(),function(datos){
             $("#habitacion").html('<option value="">Seleccione...</option>');
             for(var i=0;i<datos.length;i++){
@@ -24,7 +24,7 @@ $(document).ready(function(){
     
     $("#habitacion").change(function(){
         if($(this).val()!=''){
-            $.post('/sisjungla/reserva/busca_tipo_habitacionxhabitacion','idhabitacion='+$(this).val(),function(datos){
+            $.post('/jungla/reserva/busca_tipo_habitacionxhabitacion','idhabitacion='+$(this).val(),function(datos){
                 $("#tipo_habitacion").html('<option value="">Seleccione...</option>');
                 for(var i=0;i<datos.length;i++){
                     $("#tipo_habitacion").append('<option value="'+ datos[i].IDTIPO_HABITACION + '">' + datos[i].TIPO_HABITACION+ '</option>');
@@ -58,7 +58,7 @@ $(document).ready(function(){
         
         if(error){alert(msg);nueva_asignacion();return 0;}
         
-        $.post('/sisjungla/reserva/get_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth,function(datos){
+        $.post('/jungla/reserva/get_habitacion_especifica','idhabitacion='+idh+'&idtipo_habitacion='+idth,function(datos){
             idhe=datos[0].IDHABITACION_ESPECIFICA;
         },'json');
         
@@ -208,19 +208,20 @@ $(document).ready(function(){
     }
     
     $("#btn_guardar").click(function(){
-       tr=$("input :radio").length;
-       rc=$("input :radio").filter(":checked").length;
-       if(tr<2){
-           $("input :radio :eq(0)").attr('checked','checked');
-           $("#detalle_estadia tr:eq(0) td:eq(3) :hidden").val('1');
-           $("#frm").submit();
-       }else{
-           if(rc!=1){
-               alert('Debe seleccionar un representante');
-           }else{
-               $("#frm").submit();
-           }
-       }
+        x=0;
+        error_repre=true;
+        $("#detalle_estadia tr").each(function(){
+            if($("#detalle_estadia tr:eq("+x+") td:eq(3) :radio").is(":checked")){
+                error_repre=false;
+            }
+            x++;
+        });
+        
+        if(error_repre){
+            alert("Seleccione el representante de reserva");
+            return 0;
+        }
+        $("#frm").submit();
     });
    
     $("input:radio").live('click',function(){
@@ -252,7 +253,7 @@ $(document).ready(function(){
         }else{
             membresia=$("#membresia").val();
         }
-        $.post('/sisjungla/reserva/inserta_pasajero','nombres='+$("#nombres").val()+'&apellidos='+$("#apellidos").val()+
+        $.post('/jungla/reserva/inserta_pasajero','nombres='+$("#nombres").val()+'&apellidos='+$("#apellidos").val()+
             '&documento='+$("#nrodoc").val()+'&fecha_nacimiento='+$("#fecha_nacimiento").val()+'&sexo='+sexo+
             '&telefono='+$("#telefono").val()+'&email='+$("#email").val()+'&estado_civil='+$("#estado_civil :selected").val()+
             '&profesion='+$("#profesion").val()+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+

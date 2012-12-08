@@ -13,7 +13,7 @@ $(document).ready(function(){
                 $(".regiones").html('<option>Seleccione...</option>');
                 $(".provincias").html('<option>Seleccione...</option>');
                 $(".ciudades").html('<option value="0">Seleccione...</option>')
-                $.post('/sisjungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
+                $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                     for(var i=0;i<datos.length;i++){
                         $(".regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                     }
@@ -25,7 +25,7 @@ $(document).ready(function(){
             $(".ciudades").html('');
             $(".celda_region").hide();
             $(".celda_provincia").hide();
-            $.post('/sisjungla/pasajeros/get_ciudades','idprovincia=0&idpais='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_ciudades','idprovincia=0&idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
@@ -45,7 +45,7 @@ $(document).ready(function(){
                 $(".regiones").html('<option>Seleccione...</option>');
                 $(".provincias").html('<option>Seleccione...</option>');
                 $(".ciudades").html('<option value="0">Seleccione...</option>')
-                $.post('/sisjungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
+                $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                     for(var i=0;i<datos.length;i++){
                         $(".regiones").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                     }
@@ -57,7 +57,7 @@ $(document).ready(function(){
             $(".ciudades").html('');
             $(".celda_region").hide();
             $(".celda_provincia").hide();
-            $.post('/sisjungla/pasajeros/get_ciudades','idprovincia=0&idpais='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_ciudades','idprovincia=0&idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
@@ -70,7 +70,7 @@ $(document).ready(function(){
         if($(this).val()==1392){
             $(".celda_provincia").show();
             $(".provincias").html('<option>Seleccione...</option>');
-            $.post('/sisjungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
+            $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     $(".provincias").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }
@@ -84,8 +84,8 @@ $(document).ready(function(){
         }else{
             $(".provincias").html('');
             $(".ciudades").html('');
-            $.post('/sisjungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos_provincias){
-                $.post('/sisjungla/pasajeros/get_ciudades','idprovincia='+datos_provincias[0].idubigeo+'&idpais=0',function(datos){
+            $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos_provincias){
+                $.post('/jungla/pasajeros/get_ciudades','idprovincia='+datos_provincias[0].idubigeo+'&idpais=0',function(datos){
                     for(var i=0;i<datos.length;i++){
                         $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                     }       
@@ -100,7 +100,7 @@ $(document).ready(function(){
             $(".ciudades").html('<option value="0">Seleccione...</option>');
         }else{
             $(".ciudades").html('');
-            $.post('/sisjungla/pasajeros/get_ciudades','idprovincia='+$(this).val()+'&idpais=0',function(datos){
+            $.post('/jungla/pasajeros/get_ciudades','idprovincia='+$(this).val()+'&idpais=0',function(datos){
                 for(var i=0;i<datos.length;i++){
                     $(".ciudades").append('<option value="'+ datos[i].idubigeo + '">' + datos[i].descripcion+ '</option>');
                 }       
@@ -127,7 +127,7 @@ $(document).ready(function(){
     //valida existencia de pasajeros
     $("#nrodoc").blur(function(){
         if($(this).val()!=''){
-            $.post('/sisjungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
                 if(datos.length>0){
                     alert('Ya esta registrado un pasajero con este Nro de DNI...');
                     $("#nrodoc").val('');
@@ -138,12 +138,12 @@ $(document).ready(function(){
     
     $("#ruc").blur(function(){
         if($(this).val()!=''){
-            $.post('/sisjungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
                 if(datos.length>0){
                     if(confirm('Ya existe un pasajero con este Nro de RUC...\nDesea editar sus datos?')){
-                        window.location = '/sisjungla/pasajeros/editar/'+datos[0].idcliente
+                        window.location = '/jungla/pasajeros/editar/'+datos[0].idcliente
                     }else{
-                        window.location = '/sisjungla/pasajeros/';
+                        window.location = '/jungla/pasajeros/';
                     }
                 }   
             },'json');

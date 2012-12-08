@@ -1,0 +1,16 @@
+#vtna_busca_pasajero, #vtna_inserta_pasajero, #vtna_busca_ciudades{
+	padding:20px;
+	display:none;
+	color: black;
+	position: fixed;
+        width: 35%;
+	left: 30%;
+	top: 20%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border: 10px solid grey;
+}

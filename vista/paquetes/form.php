@@ -2,32 +2,21 @@
     <fieldset>
         <legend><?php echo $this->titulo ?></legend><br>
         <input type="hidden" name="guardar" id="guardar" value="1"/>
+        <input type="hidden" name="codigo" id="codigo"
+               value="<?php if(isset ($this->datos[0]['IDAQUETE']))echo $this->datos[0]['IDPAQUETE']?>"/>
         <table align="center" class="tabFormComplejo">
             <tr valign="top">
-                <td><label>Codigo:</label></td>
-                <td>
-                    <input type="text" class="k-textbox" readonly="readonly" name="codigo" id="codigo"
-                           value="<?php if(isset ($this->datos[0]['IDAQUETE']))echo $this->datos[0]['IDPAQUETE']?>"/>
-                </td>
                 <td><label for="descripcion">Descripcion:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese descripcion" required name="descripcion" id="descripcion"
                            value="<?php if(isset ($this->datos[0]['DESCRIPCION']))echo $this->datos[0]['DESCRIPCION']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
                 </td>
-            </tr>
-            <tr valign="top">
                 <td><label for="costo">Costo:</label></td>
                 <td>
                     <input type="numeric" class="precio" placeholder="Ingrese costo" required name="costo" 
                            value="<?php if(isset ($this->datos[0]['COSTO']))echo $this->datos[0]['COSTO']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="costo"></div>
-                </td>
-                <td><label for="descuento">Descuento:</label></td>
-                <td>
-                    <input type="text" class="descuento" placeholder="Ingrese descuento" required name="descuento" 
-                           value="<?php if(isset ($this->datos[0]['DESCUENTO']))echo $this->datos[0]['DESCUENTO']?>"/>
-                    <br><div class="k-invalid-msg msgerror" data-for="descuento"></div>
                 </td>
             </tr>
         </table>

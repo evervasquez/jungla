@@ -72,13 +72,12 @@ class entrada_productos_controlador extends controller{
             $this->_productos->aumenta=1;
             $this->_productos->actualiza();
         }
-        $this->_asientos->inserta($_POST['idcompra'],0);
-        
+        $this->_asientos->inserta($_POST['idcompra']);
         //inserta movimiento_producto
         $this->_movimiento_producto->idcompra=$_POST['idcompra'];
         $this->_movimiento_producto->idtipo_movimiento=1;
         $this->_movimiento_producto->idempleado=session::get('idempleado');
-        $this->_movimiento_producto->fecha=date("d-m-Y");
+        $this->_movimiento_producto->fecha=date('d-m-Y H:i:s');
         $this->_movimiento_producto->inserta();
         $this->_alertas->desactiva_alerta();
         $this->redireccionar('entrada_productos');
