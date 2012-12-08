@@ -12,7 +12,7 @@ class configurarbd_controlador extends controller{
     public function index(){
         if($_POST['guardar']==1){
                 $host = $_POST['host'];
-                $comando = "ping ".$host; 
+                $comando = "ping ".$host." -n 5"; 
                 $salida=shell_exec($comando);
                 if(strstr($salida,'unreachable') || strstr($salida,'failed') || strstr($salida,'could not find host')){//0 = error, 1 = bien
                     $err = 0;
