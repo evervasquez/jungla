@@ -39,7 +39,7 @@
                     HTML = HTML + '<td>'+datos[i].IMPORTE+'</td>';
                     HTML = HTML + '<td>'+datos[i].IGV+'</td>';
                     HTML = HTML + '<td>'+(parseFloat(datos[i].IGV)+1)*(datos[i].IMPORTE)+'</td>';
-                    HTML = HTML + '<td>'+datos[i].tipo+'</td>';
+                    HTML = HTML + '<td>'+datos[i].TIPO+'</td>';
                     var editar='/jungla/compras/editar/'+datos[i].IDCOMPRA; 
                     var eliminar='/jungla/compras/eliminar/'+datos[i].IDCOMPRA;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';

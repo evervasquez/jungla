@@ -1,18 +1,18 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
             dataSource: {
-                pageSize: 6
+                pageSize: 15
             },
             pageable: true,
-            columns: [{field:"NroOperacion", width:8},
+            columns: [
                 {field:"FechaOperacion", width:9},
-                {field:"Glosa", width:15},
+                {field:"Glosa", width:14},
                 {field:"CodigoLibro", width:7},
-                {field:"NroCorrelativo", width:8},
-                {field:"NroDelDocumento", width:10},
-                {field:"NroCuenta", width:7},
-                {field:"Denominacion", width:15},
-                {field:"Debe", width:6},
-                {field:"Haber", width:6}]
+                {field:"NroCorrelativo", width:6},
+                {field:"NroDelDocumento", width:8},
+                {field:"NroCuenta", width:6},
+                {field:"Denominacion", width:21},
+                {field:"Debe", width:5},
+                {field:"Haber", width:5}]
         });
     });

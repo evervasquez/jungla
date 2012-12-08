@@ -74,7 +74,7 @@ class ventas_controlador extends controller {
             $x=0;$y=0;
             for($i=0;$i<count($_POST['um']);$i++){
                 $this->_detalle_venta->idventa=$dato_venta['IDVENTA'];
-                if($_POST['um'][$i]=='paquetes'){
+                if($_POST['um'][$i]=='paquete'){
                     $this->_detalle_venta->idpaquete= $_POST['idpaquete'][$x];
                     $this->_detalle_venta->idproducto= 0;
                     $x++;
