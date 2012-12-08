@@ -7,6 +7,7 @@
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
+        <a href="<?php echo BASE_URL?>movimiento_caja/nuevo" class="k-button">Nuevo</a>
     </p>
     <div id="grilla">
     <table border="1" class="tabgrilla">
@@ -48,7 +49,7 @@
     </div>
     <?php } else { ?>
         <p>No hay movimiento de caja pendientes</p>
-        <a href="<?php echo BASE_URL?>compras/nuevo" class="k-button">Nuevo</a>
+        <a href="<?php echo BASE_URL?>movimiento_caja/nuevo" class="k-button">Nuevo</a>
     <?php } ?>
 <div id="vtna_ver_compra"></div>
 <div id="fondooscuro"></div>
