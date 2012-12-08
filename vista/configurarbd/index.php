@@ -28,7 +28,7 @@
         </tr>
         <tr>
             <td><label>Clave: </label></td>
-            <td><input type="password" placeholder="Ingrese contraseña" class="k-textbox" name="contraseña" value="" /></td>
+            <td><input type="password" placeholder="Ingrese contraseña" class="k-textbox" name="clave" value="" /></td>
             <td>
                 <div class="msgerror"></div>
             </td>

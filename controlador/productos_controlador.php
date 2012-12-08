@@ -55,6 +55,7 @@ class productos_controlador extends controller {
 //            echo '</pre>';
 //            exit;
             $this->_productos->descripcion = $_POST['descripcion'];
+            $this->_productos->stock = 0;
             if($_POST['precio_unitario']==''){
                 $this->_productos->precio_unitario=null;
             }else{

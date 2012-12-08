@@ -17,13 +17,25 @@ class interfaz_contable extends Main{
         $datos = $fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_asientos_intervalo_fechas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
     public function selecciona_datos_empresa(){
-        $datos = null;
+        $datos = array(1);
         $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_empresa", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
     
     

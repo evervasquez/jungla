@@ -19,7 +19,7 @@ class habitacion_especifica extends Main{
             $this->idtipo_habitacion=0;
         }
         $datos = array($this->idhabitacion_especifica, $this->idhabitacion, $this->idtipo_habitacion);
-        $r = $this->get_consulta("pa_selecciona_habitacion_especifica", $datos);
+        $r = $this->get_consulta("pa_selecciona_habitacion_e", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

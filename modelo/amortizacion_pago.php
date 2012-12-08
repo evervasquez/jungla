@@ -25,7 +25,7 @@ class amortizacion_pago extends Main{
     
     public function selecciona() {
         $datos = array($this->idcuota_pago, $this->idmovimiento_caja);
-        $r = $this->get_consulta("pa_selecciona_amortizacion_pago", $datos);
+        $r = $this->get_consulta("pa_selecciona_amort_p", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {

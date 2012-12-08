@@ -93,20 +93,6 @@ function todo2(Form)
     </td>   
 </tr>
 </table>
-<form method="post" action="<?php echo BASE_URL ?>reportes/ventas" target="_blank" id="form_ventas_x_fecha">
-    <table border="1" width="100%" class="tablaok2">
-        <tr>
-            <td>Reporte de Ventas ||||ARREGLAR, NO FUNCIONA<br>
-                
-                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
-                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
-            </td>
-            <td width="15%" align="center">
-                <input type="submit" value="Generar" class="k-button"/>
-            </td>
-        </tr>
-    </table>
-</form>
 
 <form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
     <table border="1" width="100%" class="tablaok2">
