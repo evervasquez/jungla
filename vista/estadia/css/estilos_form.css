@@ -1,16 +1,26 @@
-#vtna_busca_pasajero, #vtna_inserta_pasajero, #vtna_busca_ciudades{
+
+#vtna_inserta_pasajero, #vtna_busca_pasajero,#vtna_busca_ciudades{
+        display: none;
 	padding:20px;
-	display:none;
 	color: black;
 	position: fixed;
-        width: 35%;
-	left: 30%;
-	top: 20%;
+	left: 20%;
+	top: 18%;
 	z-index: 1000;
 	text-align: center;
 	background-color: white;
+        border-radius: 10px;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         -o-border-radius: 10px;
-        border: 10px solid grey;
+        border:10px solid grey;
+}
+#vtna_busca_pasajero{
+	left: 25%;
+        width: 50%;
+	top: 15%;
+}
+#vtna_busca_ciudades{
+	left: 40%;
+	top: 15%;
 }
