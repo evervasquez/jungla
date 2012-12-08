@@ -1,9 +1,7 @@
 $(document).ready(function(){
-    $("#vtna_busca_pasajero").hide();
     $("#detalle_estadia").kendoGrid();
     $("#celda_detalle_estadia").hide();
     $(".celda_asignar_pasajero").hide();
-    $("#vtna_inserta_pasajero").hide();
     
     $("#btn_busca_habitaciones").click(function(){
         if($("#fecha_entrada").val()==''){alert('Ingrese fecha de entrada');return 0;}
@@ -20,6 +18,14 @@ $(document).ready(function(){
         $("#habitacion").focus();
         $("#celda_detalle_estadia").show();
     });
+    
+    document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+                $("#buscar").focus();
+            }
+        };
     
     $("#habitacion").change(function(){
         if($(this).val()!=''){
@@ -152,6 +158,8 @@ $(document).ready(function(){
     function salir(){
         $("#txt_buscar_pasajeros").val('');
         $("#vtna_busca_pasajero").fadeOut(300);
+        $("#vtna_inserta_pasajero").fadeOut(300);
+        $("#vtna_busca_ciudades").fadeOut(300);
         $("#fondooscuro").fadeOut(300);
     }
     
@@ -159,6 +167,7 @@ $(document).ready(function(){
     $("#btn_vtna_busca_pasajeros").click(function(){
         buscar_pasajeros();
         $("#vtna_busca_pasajero").fadeIn(300);
+        $("#fondooscuro").fadeIn(300);
         $("#txt_buscar_pasajeros").focus();
     });
     
@@ -210,12 +219,11 @@ $(document).ready(function(){
         },'json');        
     }
     
-    $("#vtna_busca_ciudades").hide();
-    
     $(".btn_vtna_ciudades").live('click',function(){
         i = $(this).parent().parent().index();
         $("#index_tr").val(i);
-        $("#vtna_busca_ciudades").show();
+        $("#vtna_busca_ciudades").fadeIn(300);
+        $("#fondooscuro").fadeIn(300);
     });
     
     $("#btn_selecciona_ciudad").click(function(){
@@ -224,11 +232,13 @@ $(document).ready(function(){
         c=$("#ciudades option:selected").html();
         html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
         $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
-        $("#vtna_busca_ciudades").hide();
+        $("#vtna_busca_ciudades").fadeOut();
+        $("#fondooscuro").fadeOut(300);
     });
     
     $("#btn_cancelar_ciudad").click(function(){
-        $("#vtna_busca_ciudades").hide();
+        $("#vtna_busca_ciudades").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
     });
     
     $("#pais").change(function(){
@@ -316,7 +326,8 @@ $(document).ready(function(){
    
     //insertar pasajero
     $("#btn_vtna_agrega_pasajeros").click(function(){
-        $("#vtna_inserta_pasajero").show();
+        $("#vtna_inserta_pasajero").fadeIn();
+        $("#fondooscuro").fadeIn();
     });
     
     $("#btn_inserta_pasajero").click(function(){
@@ -339,7 +350,8 @@ $(document).ready(function(){
             $("#idcliente").val(datos[0].IDCLIENTE);
             $("#cliente").val($("#nombres").val()+' '+$("#apellidos").val());
         },'json');
-        $("#vtna_inserta_pasajero").hide();
+        $("#vtna_inserta_pasajero").fadeOut();
+        $("#fondooscuro").fadeOut();
     });
 });
 

@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
@@ -6,12 +6,12 @@
             <tr>
                 <td><label>Fecha entrada:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada" required 
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_entrada"
                    id="fecha_entrada" value="<?php echo date('d-m-Y') ?>"/>
                 </td>
                 <td><label>Fecha salida:</label></td>
                 <td>
-                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida" required
+                    <input readonly="readonly" placeholder="Seleccione fecha" class="datepicker" name="fecha_salida" 
                    id="fecha_salida"  value="<?php //echo '02-12-2012' ?>"/>
                 </td>
                 <td colspan="2" align="center">
@@ -105,6 +105,7 @@
 
 
 <div id="vtna_inserta_pasajero">
+    <h3>Registrar Pasajero</h3>
     <form method="post" action="" id="frm_natural">
         <table class="tabFormComplejo" align="center">
             <tr valign="top">
@@ -237,7 +238,7 @@
                 <td colspan="6" align="center">
                     <p>
                         <button type="button" class="k-button" id="btn_inserta_pasajero">Guardar</button>
-                        <button class="k-button cancel">Cancelar</button>
+                        <a href="javascript:void(0)" class="k-button cancelar cancel">Cancelar</a>
                     </p>
                 </td>
             </tr>
@@ -264,7 +265,7 @@
             <td><label>Region:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="regiones" required name="regiones">
-                    <option>Seleccione...</option>
+                    <option></option>
                 </select>
             </td>
         </tr>
@@ -272,7 +273,7 @@
             <td><label>Provincia:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="provincias" required name="provincias">
-                    <option>Seleccione...</option>
+                    <option></option>
                 </select>
             </td>
         </tr>
@@ -280,7 +281,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="ciudades" required name="ciudades">
-                    <option>Seleccione...</option>
+                    <option></option>
                 </select>
             </td>
         </tr>
