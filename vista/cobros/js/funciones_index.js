@@ -7,6 +7,8 @@
             pageable: true
         });
         $( "#buscar" ).focus();
+        
+        
         function buscar(){
             $.post('/jungla/cobros/buscador_v','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
@@ -57,6 +59,8 @@
                 });
             },'json');
         }
+       
+        
         $("#buscar").keypress(function(event){
            if(event.which == 13){
                buscar();
@@ -69,3 +73,9 @@
         });
         
     });
+    
+     function botcobrar(i){
+            setTimeout("window.location='/jungla/cobros'",500);
+            
+            window.location = $("#bot"+i).val();
+        }
