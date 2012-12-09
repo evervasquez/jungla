@@ -1,9 +1,8 @@
 <?php if (isset($this->datos) && count($this->datos) || isset($this->datos_ventas) && count($this->datos_ventas)) { ?>
 <p><h3>Lista de Cobros</h3></p>
     <p>
-        <select class="combo" id="filtro">
-            <option value="0">Nro Documento</option>
-            <option value="1">Cliente</option>
+        <select class="list" id="filtro">
+            <option value="0">Cliente</option>
         </select>
         <input type="text" class="k-textbox" style="width: 50%" id="buscar">
         <button type="button" class="k-button" id="btn_buscar"><span class="k-icon k-i-search"></span></button>
@@ -29,7 +28,7 @@
             <td><?php echo 0 ?></td>
             <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE'] - $this->datos_ventas[$i]['MONTO_COBRADO']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
             <td class="tabtr" align="center">
-                <a href="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>">[Cobrar]</a>
+                <a href="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>" class="imgcobrar"></a>
             </td>
         </tr>
         <?php } ?>

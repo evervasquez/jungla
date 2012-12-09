@@ -24,8 +24,23 @@ class cobros_controlador extends controller{
         $this->_vista->datos_ventas= $this->_ventas->selecciona();
 //        echo '<pre>';
 //                print_r($this->_vista->datos_ventas);exit;
+        $this->_vista->setJs(array('funciones_index'));
         $this->_vista->renderizar('index');
     }    
+    
+    public function buscador_v(){
+        if($_POST['filtro']==0){
+            $this->_ventas->cliente=$_POST['cadena'];
+        }
+        echo json_encode($this->_ventas->selecciona());
+    }
+    
+    public function buscador_c(){
+        if($_POST['filtro']==0){
+            $this->_cobros->cliente=$_POST['cadena'];
+        }
+        echo json_encode($this->_cobros->selecciona());
+    }
     
     public function cronograma($idventa){
         $this->_cuota_cobro->idventa=$idventa;
