@@ -13,7 +13,7 @@ class estadia_controlador extends controller{
     private $_tipo_comprobante;
     private $_habitaciones;
     private $_ventas;
-    
+    private $_asiento;
 
     public function __construct() {
         parent::__construct();
@@ -24,6 +24,7 @@ class estadia_controlador extends controller{
         $this->_profesiones = $this->cargar_modelo('profesiones');
         $this->_clientes = $this->cargar_modelo('clientes');
         $this->_ruta_huesped = $this->cargar_modelo('ruta_huesped');
+        $this->_asiento = $this->cargar_modelo('asientos');
         $this->_detalle_venta = $this->cargar_modelo('detalle_venta');
         $this->_tipo_comprobante= $this->cargar_modelo('tipo_comprobante');
         $this->_habitaciones= $this->cargar_modelo('habitaciones');
@@ -124,6 +125,7 @@ class estadia_controlador extends controller{
         $this->_vista->datos_membresias= $this->_membresia->selecciona();
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->setJs(array('funciones_confirmar'));
+        $this->_vista->setCss(array('estilos_confirmar'));
         $this->_vista->renderizar('confirmar');
     }
     
@@ -142,6 +144,7 @@ class estadia_controlador extends controller{
             $this->redireccionar('estadia');
         }
         $this->_vista->setJs(array('funciones_consumo'));
+        $this->_vista->setCss(array('estilos_consumo'));
         $this->_vista->renderizar('consumo');
     }
     
@@ -154,7 +157,7 @@ class estadia_controlador extends controller{
                 $this->_ruta_huesped->idubigeo=$_POST['ciudad'][$i];
                 $this->_ruta_huesped->idcliente=$_POST['idpasajero'][$i];
                 $this->_ruta_huesped->idventa=$_POST['codigo'];
-                $this->_ruta_huesped->inserta();
+                /*$this->_ruta_huesped->inserta();*/
                 
                 //actualizamos detalle_estadia
                 $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
@@ -162,7 +165,7 @@ class estadia_controlador extends controller{
                 $this->_detalle_estadia->estado=2;
                 $this->_detalle_estadia->fecha_ingreso=$_POST['fecha_entrada'].' '.$_POST['hora_entrada'];
                 $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];
-                $this->_detalle_estadia->actualiza();
+               /* $this->_detalle_estadia->actualiza();*/
                 
             }
             //actualizamos venta
@@ -174,9 +177,17 @@ class estadia_controlador extends controller{
             $this->_ventas->importe=$_POST['importe'];
             $this->_ventas->igv=$_POST['igv'];
             $this->_ventas->descuento=$_POST['descuento'];
-            $this->_ventas->actualiza();
+            /*$this->_ventas->actualiza();*/
+            echo "<script>
+                if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
+                </script>";
+            //aqui hacer
+            $this->_asiento->idventa=$idventa;
+            $this->_asiento->insertar();
             
+            $this->imprimir($idventa, $this->_ventas->idtipo_comprobante);
             $this->redireccionar('estadia');
+            
         }
         $this->_estadia->idventa=$idventa;
         $this->_vista->datos = $this->_estadia->selecciona();
@@ -189,6 +200,7 @@ class estadia_controlador extends controller{
         $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
         $this->_vista->datos_paises = $this->_paises->selecciona();
         $this->_vista->setJs(array('funciones_confirmar','funciones_check_out'));
+        $this->_vista->setCss(array('estilos_check_out'));
         $this->_vista->renderizar('check_out');
     }
     
@@ -201,6 +213,17 @@ class estadia_controlador extends controller{
         $this->_clientes->tipo = 'juridico';
         $this->_clientes->idubigeo = 0;
         echo json_encode($this->_clientes->inserta());
+    }
+    
+    public function imprimir($idventa, $idtipo_comprobante){
+        switch ($idtipo_comprobante){
+            case 55:
+                $this->redireccionar('reportes/ticket_boleta_venta/'.$idventa);
+                break;
+            case 56:
+                $this->redireccionar('reportes/ticket_factura_venta/'.$idventa);
+        }
+        
     }
     
     public function eliminar($id){

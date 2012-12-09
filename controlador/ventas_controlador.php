@@ -9,6 +9,7 @@ class ventas_controlador extends controller {
     private $_productos;
     private $_detalle_venta;
     private $_cuota_cobro;
+    private $_asientos;
 
     public function __construct() {
         parent::__construct();
@@ -18,6 +19,7 @@ class ventas_controlador extends controller {
         $this->_paquetes = $this->cargar_modelo('paquetes');
         $this->_productos = $this->cargar_modelo('productos');
         $this->_detalle_venta= $this->cargar_modelo('detalle_venta');
+        $this->_asientos= $this->cargar_modelo('asientos');
         $this->_cuota_cobro= $this->cargar_modelo('cuota_cobro');
     }
     
@@ -130,6 +132,8 @@ class ventas_controlador extends controller {
                     $fecha_temp = date("d-m-Y", strtotime("$fecha_temp +$intervalo_dias day"));
                 }
             }
+            $this->_asientos->idventa=$dato_venta['IDVENTA'];
+            $this->_asientos->inserta();
             $this->redireccionar('ventas');
         }
         $this->_vista->datos_tipo_comprobante=$this->_tipo_comprobante->selecciona();

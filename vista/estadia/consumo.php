@@ -3,8 +3,9 @@
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo" value="<?php if(isset ($this->datos[0]['IDVENTA']))echo $this->datos[0]['IDVENTA']?>"/>
         <div id="tbl_detalle">
-        <table class="tabForm" align="center">
+        <table class="tabForm" align="center>
             <tr id="celda_producto">
+                <td class="block"></td>
                 <td class="celda_producto"><label>Producto:</label></td>
                 <td class="celda_producto">
                     <input type="hidden" id="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
@@ -18,8 +19,10 @@
                 <td>
                     <input type="text" class="k-textbox" id="unidad_medida" placeholder="Unidad Medida" readonly="readonly"/>
                 </td>
+                <td class="block"></td>
             </tr>
             <tr>
+                <td></td>
                 <td><label>Precio de Venta:</label></td>
                 <td colspan="2">
                     <input type="input" class="k-textbox" placeholder="Precio Venta" id="precio" readonly="readonly"/>
@@ -28,12 +31,13 @@
                 <td>
                     <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                 </td>
+                <td></td>
             </tr>
             <tr align="center">
-                <td colspan="5"><input type="button" class="k-button" value="Agregar" id="asignar_producto"/></td>
+                <td colspan="7"><input type="button" class="k-button" value="Agregar" id="asignar_producto"/></td>
             </tr>
             <tr>
-                <td colspan="5">
+                <td colspan="7">
                     <div id="detalle_venta">
                     <table border="1" id="tbl_detalle_venta">
                         <tr>
@@ -65,7 +69,7 @@
 <div id="vtna_busca_productos">
     <h3>Lista de Productos</h3>
     <p>
-        <select class="combo" id="filtro_productos">
+        <select class="list" id="filtro_productos">
             <option value="0">Descripcion</option>
         </select>
         <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_productos">

@@ -6,14 +6,14 @@ $(document).ready(function(){
         pageable: true
     });
     $("#tbl_detalle_venta").kendoGrid();
-    $("#vtna_busca_clientes").hide();
     $("#vtna_busca_clientes_juridicos").hide();
     $("#agrega_cliente_juridico").hide();
     
     //ventana inserta pasajero juridico
     $("#btn_vtna_agrega_pasajeros").click(function(){
         if($("#tipo_comprobante").val()==56){
-            $("#agrega_cliente_juridico").show();
+            $("#fondooscuro").fadeIn(300);
+            $("#agrega_cliente_juridico").fadeIn(300);
             $("#ruc").focus();
         }
     });
@@ -25,7 +25,7 @@ $(document).ready(function(){
             $("#idcliente").val(datos[0].IDCLIENTE);
             $("#cliente").val($("#razonsocial").val());
         },'json');
-        $("#agrega_cliente_juridico").hide();
+        salir();
         $("#ruc").val('');
         $("#razonsocial").val('');
         $("#direccionrs").val('');
@@ -42,14 +42,14 @@ $(document).ready(function(){
             },'json');
         }
     });
-    
+
     $("#btn_cancelar_cliente_juridico").click(function(){
         $("#ruc").val('');
         $("#razonsocial").val('');
         $("#direccionrs").val('');
-        $("#agrega_cliente_juridico").hide();
+        salir();
     });
-    
+
     //ventana de busqueda de clientes
     $("#btn_vtna_clientes").click(function(){
         buscar_cliente();
@@ -145,7 +145,12 @@ $(document).ready(function(){
             },'json');
         }
     }
-    
+    document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+            }
+        };
     //ventana de busqueda de productos
     function salir(){
         $("#txt_buscar_productos").val('');
@@ -156,6 +161,8 @@ $(document).ready(function(){
         $("#vtna_busca_clientes").fadeOut(300);
         $("#txt_buscar_clientes_juridicos").val('');
         $("#vtna_busca_clientes_juridicos").fadeOut(300);
+        $("#agrega_cliente_juridico").fadeOut(300);
+        $("#vtna_busca_ciudades").fadeOut(300);
         $("#fondooscuro").fadeOut(300);
     }
     importe = parseFloat($("#importe").val());
