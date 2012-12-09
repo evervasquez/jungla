@@ -8,6 +8,7 @@ class cobros_controlador extends controller{
     private $_movimiento_caja;
     private $_amortizacion_cobro;
     private $_ventas;
+    private $_asiento;
     
     public function __construct() {
         parent::__construct();
@@ -17,6 +18,7 @@ class cobros_controlador extends controller{
         $this->_movimiento_caja = $this->cargar_modelo('movimiento_caja');
         $this->_amortizacion_cobro = $this->cargar_modelo('amortizacion_cobro');
         $this->_ventas = $this->cargar_modelo('ventas');
+        $this->_asiento = $this->cargar_modelo('asientos');
     }
     
     public function index(){
@@ -119,6 +121,11 @@ class cobros_controlador extends controller{
             $this->_caja->aumenta=1;
             $this->_caja->actualiza();
             
+            //inserta asiento
+            $this->_asiento->idventa_cobro=$idventa;
+            $this->_asiento->monto_amortizado=$_POST['monto'];
+            $this->_asiento->amortiza();
+            
             $this->redireccionar('cobros');
         }
         $this->_vista->action= BASE_URL.'cobros/amortizar/'.$idventa;
@@ -148,7 +155,11 @@ class cobros_controlador extends controller{
         $this->_ventas->idventa=$idventa;
         $this->_ventas->estado_pago=1;
         $this->_ventas->actualiza();
-
+        
+        //asiento cobrar
+        $this->_asiento->idventa_cobro=$idventa;
+        $this->_asiento->inserta();
+        
         //actualiza saldo caja
         $this->_caja->idcaja=$datos_caja[0]['IDCAJA'];
         $this->_caja->saldo=$monto;

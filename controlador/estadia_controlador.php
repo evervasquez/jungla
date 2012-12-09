@@ -182,8 +182,8 @@ class estadia_controlador extends controller{
                 if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
                 </script>";
             //aqui hacer
-            $this->_asiento->idventa=$idventa;
-            $this->_asiento->insertar();
+            $this->_asiento->idventa_servicio=$idventa;
+            $this->_asiento->inserta();
             
             $this->imprimir($idventa, $this->_ventas->idtipo_comprobante);
             $this->redireccionar('estadia');
