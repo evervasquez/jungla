@@ -39,5 +39,22 @@ function fb_albums($idfanpage = 'ninguno'){
 				'total'=>$valor['count']);
 	}
 	return $fotoret;
+
+function fotosJungla($id){
+    foreach($listafotos as $index => $valor){
+            $galeria = file_get_contents("https://graph.facebook.com/".$id."/photos?limit=100");
+            $galeria = json_decode($galeria);
+            $fotos = $galeria->data;
+            $divfotos .=
+                '<ul class="scroll-pane">
+                <p>'. $valor['total'].' fotos publicadas</p>';
+                    foreach($fotos as $idfoto => $foto){
+                        $divfotos .= '<span><a rel="sexylightbox[kmx]" title="Foto '.($idfoto+1).' de la galería" href="'.$foto->source.'"><img class="imgfb" title="Foto '.($idfoto+1).' de la galería" src="'.$foto->picture.'" /></a></span>';
+                    }
+            $divfotos .='<br>
+                </ul>';
+    }
+    return $divfotos;
+}
 }
 ?>

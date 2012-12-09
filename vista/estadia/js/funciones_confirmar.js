@@ -1,24 +1,34 @@
 $(document).ready(function(){
     $("#detalle_estadia").kendoGrid();
-    $("#vtna_busca_ciudades").hide();
     
     $(".btn_vtna_ciudades").click(function(){
         i = $(this).parent().parent().index();
         $("#index_tr").val(i);
-        $("#vtna_busca_ciudades").show();
+        $("#vtna_busca_ciudades").fadeIn(300);
+        $("#fondooscuro").fadeIn(300);
     });
     
+    function salir(){
+        $("#vtna_busca_ciudades").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+    }
+    document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                salir();
+            }
+        };
     $("#btn_selecciona_ciudad").click(function(){
         i=$("#index_tr").val();
         idc=$("#ciudades").val();
         c=$("#ciudades option:selected").html();
         html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
         $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
-        $("#vtna_busca_ciudades").hide();
+        salir();
     });
     
     $("#btn_cancelar_ciudad").click(function(){
-        $("#vtna_busca_ciudades").hide();
+        salir();
     });
     
     $("#paises").change(function(){
@@ -89,3 +99,4 @@ $(document).ready(function(){
         }
     });
 });
+    

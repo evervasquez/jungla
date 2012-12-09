@@ -125,6 +125,7 @@ class estadia_controlador extends controller{
         $this->_vista->datos_membresias= $this->_membresia->selecciona();
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->setJs(array('funciones_confirmar'));
+        $this->_vista->setCss(array('estilos_confirmar'));
         $this->_vista->renderizar('confirmar');
     }
     
@@ -143,6 +144,7 @@ class estadia_controlador extends controller{
             $this->redireccionar('estadia');
         }
         $this->_vista->setJs(array('funciones_consumo'));
+        $this->_vista->setCss(array('estilos_consumo'));
         $this->_vista->renderizar('consumo');
     }
     
@@ -198,6 +200,7 @@ class estadia_controlador extends controller{
         $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
         $this->_vista->datos_paises = $this->_paises->selecciona();
         $this->_vista->setJs(array('funciones_confirmar','funciones_check_out'));
+        $this->_vista->setCss(array('estilos_check_out'));
         $this->_vista->renderizar('check_out');
     }
     

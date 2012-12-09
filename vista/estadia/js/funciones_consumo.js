@@ -6,7 +6,6 @@ $(document).ready(function(){
         pageable: true
     });
     $("#tbl_detalle_venta").kendoGrid();
-    $("#vtna_busca_productos").hide();
 
     //ventana de busqueda de productos
     function salir(){
@@ -18,7 +17,7 @@ $(document).ready(function(){
     $("#btn_vtna_productos").click(function(){
             buscar_producto();
             $("#vtna_busca_productos").fadeIn(300);
-//            $("#fondooscuro").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
             $("#txt_buscar_productos").focus();
     });
     
@@ -153,6 +152,7 @@ function seleccionar_productos(id,producto,um,pu){
     $("#precio").val(pu);
     $("#vtna_busca_productos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
+    $(".cantidad").focus();
 }
 
 function validarVenta(){

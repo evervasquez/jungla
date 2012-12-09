@@ -1,0 +1,31 @@
+
+.tabForm label{
+        text-align: right;
+        margin-left: 60%;
+}
+#vtna_busca_ciudades, #vtna_busca_clientes, #vtna_busca_clientes_juridicos, #agrega_cliente_juridico{
+        display: none;
+	padding:20px;
+	color: black;
+	position: fixed;
+	left: 40%;
+	top: 20%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border:10px solid grey;
+}
+ #vtna_busca_clientes, #vtna_busca_clientes_juridicos{
+        top: 15%;
+        width: 50%;
+        left:25%;
+}
+#agrega_cliente_juridico{
+        top: 15%;
+        width: 18%;
+        left:40%;
+}
