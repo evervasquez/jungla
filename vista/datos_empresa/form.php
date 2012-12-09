@@ -4,26 +4,26 @@
     <table align="center" class="tabFormComplejo">
         <tr valign="top">
             <td><label>Telefono:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese telefono" required name="telefono"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese telefono" name="telefono"
                        id="telefono" value="<?php if(isset ($this->datos[0]['TELEFONO']))echo $this->datos[0]['TELEFONO']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="telefono"></div>
+                <br><div class="msgerror"></div>
             </td>
             <td><label>Movistar:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese nro.movistar" required name="movistar"
                        id="movistar" value="<?php if(isset ($this->datos[0]['MOVISTAR']))echo $this->datos[0]['MOVISTAR']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="movistar"></div>
+                <br><div class="msgerror"></div>
             </td>
         </tr>
         <tr valign="top">
             <td><label>RPM:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese rpm" required name="rpm"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese rpm" name="rpm"
                        id="rpm" value="<?php if(isset ($this->datos[0]['RPM']))echo $this->datos[0]['RPM']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="rpm"></div>
+                <br><div class="msgerror"></div>
             </td>
             <td><label>RPC:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese rpc" required name="rpc"
+            <td><input type="text" class="k-textbox" placeholder="Ingrese rpc" name="rpc"
                        id="rpc" value="<?php if(isset ($this->datos[0]['RPC']))echo $this->datos[0]['RPC']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="rpc"></div>
+                <br><div class="msgerror"></div>
             </td>
         </tr>
         <tr valign="top">

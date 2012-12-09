@@ -35,12 +35,19 @@
                 <p>Si deseas visitar la ciudad de Tarapoto y disfrutar de los mejores lugares turisticos somos tu mejor opcion.</p>
                 <h3>Informate</h3>
                 <?php if (isset($this->datos_jungla) && count($this->datos_jungla)) {?>
-                <div><?php echo $this->datos_jungla[0]['direccion'] ?><br><?php echo $this->datos_jungla[0]['distrito'] ?> - <?php echo $this->datos_jungla[0]['provincia'] ?> - <?php echo $this->datos_jungla[0]['region'] ?> - Per&uacute;</div>
-                <div>Teléfono: <?php echo $this->datos_jungla[0]['telefono'] ?></div>
-                <div>RPM: <?php echo $this->datos_jungla[0]['rpm'] ?></div>
-                <div>Movistar: <?php echo $this->datos_jungla[0]['movistar'] ?></div>
-                <div>RPC: <?php echo $this->datos_jungla[0]['rpc'] ?></div>
-                <div>E-mail: <?php echo $this->datos_jungla[0]['e_mail'] ?></div>
+                <?php if ($this->datos_jungla[0]['DIRECCION']!='') {?>
+                <div><?php echo $this->datos_jungla[0]['DIRECCION'] ?></div><?php }?>
+                <div>La Banda de Shilcayo - San Martin - San Martin - Per&uacute;</div>
+                <?php if ($this->datos_jungla[0]['TELEFONO']!='') {?>
+                <div>Telefono: <?php echo $this->datos_jungla[0]['TELEFONO'] ?></div><?php }?>
+                <?php if ($this->datos_jungla[0]['RPM']!='') {?>
+                <div>RPM: <?php echo $this->datos_jungla[0]['RPM'] ?></div><?php }?>
+                <?php if ($this->datos_jungla[0]['MOVISTAR']!='') {?>
+                <div>Movistar: <?php echo $this->datos_jungla[0]['MOVISTAR'] ?></div><?php }?>
+                <?php if ($this->datos_jungla[0]['RPC']!='') {?>
+                <div>RPC: <?php echo $this->datos_jungla[0]['RPC'] ?></div><?php }?>
+                <?php if ($this->datos_jungla[0]['E_MAIL']!='') {?>
+                <div>Email: <?php echo $this->datos_jungla[0]['E_MAIL'] ?></div><?php }?>
                 <?php } ?>
             </div>
         </div>
