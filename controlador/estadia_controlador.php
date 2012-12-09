@@ -69,7 +69,7 @@ class estadia_controlador extends controller{
                 //insertar detalle estadía
                 $this->_detalle_estadia->idhabitacion_especifica=$_POST['idhabitacion_especifica'][$i];
                 $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
-                $this->_detalle_estadia->idventa=$dato_venta['IDVENTA'];
+                $this->_detalle_estadia->idventa=$dato_venta[0]['IDVENTA'];
                 $this->_detalle_estadia->estado=1;
                 $this->_detalle_estadia->fecha_ingreso=date('d-m-Y H:i:s');
                 $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];
@@ -79,7 +79,7 @@ class estadia_controlador extends controller{
                 $this->_ruta_huesped->idtipo_ruta=1;
                 $this->_ruta_huesped->idubigeo=$_POST['ciudad'][$i];
                 $this->_ruta_huesped->idcliente=$_POST['idpasajero'][$i];
-                $this->_ruta_huesped->idventa=$dato_venta['IDVENTA'];
+                $this->_ruta_huesped->idventa=$dato_venta[0]['IDVENTA'];
                 $this->_ruta_huesped->inserta();
             }
             $this->redireccionar('estadia');

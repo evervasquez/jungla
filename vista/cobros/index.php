@@ -26,7 +26,7 @@
             <td><?php echo $this->datos_ventas[$i]['FECHA_VENTA'] ?></td>
             <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
             <td><?php echo 0 ?></td>
-            <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE'] - $this->datos_ventas[$i]['MONTO_COBRADO']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
+            <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
             <td class="tabtr" align="center">
                 <a href="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>" class="imgcobrar"></a>
             </td>
