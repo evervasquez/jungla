@@ -164,3 +164,30 @@
                 $("#fondooscuro").fadeIn(300);
            },'json');
        }
+       
+       function imprimir(idventa, nrodocumento){
+           var tipo = nrodocumento.toString().substr(0, 2);
+           var cobrado = nrodocumento.toString().substr(3, 7);
+           setTimeout("window.location = '/jungla/ventas'", 500);
+           if(cobrado!=""){
+               switch (tipo){
+                    case 'TF':
+                        //setTimeout("window.location = '/jungla/reportes/ticket_factura_venta/"+idventa+"'", 0);
+                        
+                        window.location = "/jungla/reportes/ticket_factura_venta/"+idventa;
+                        break;
+                    case 'TS':
+                        window.location = "/jungla/reportes/ticket_boleta_venta/"+idventa;
+                        break;
+                    default:
+                        alert("El tipo de documento no es correcto.");
+                        setTimeout("window.close()", 0);
+                        break;
+                }
+           } else {
+               alert("Esta venta aún no se ha cobrado. NO SE PUEDE IMPRIMIR.");
+               setTimeout("window.close()", 0);
+           }
+           
+           
+       }
