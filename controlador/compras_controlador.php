@@ -68,7 +68,7 @@ class compras_controlador extends controller{
             $dato_compra=$this->_compras->inserta();
             //inserta detalle compra
                 for($i=0;$i<count($_POST['idprodutos']);$i++){
-                $this->_detalle_compra->idcompra=$dato_compra['IDCOMPRA'];
+                $this->_detalle_compra->idcompra=$dato_compra[0]['IDCOMPRA'];
                 $this->_detalle_compra->idproducto= $_POST['idprodutos'][$i];
                 $this->_detalle_compra->cantidad= $_POST['cantidad'][$i];
                 $this->_detalle_compra->precio= $_POST['precio'][$i];
@@ -109,7 +109,7 @@ class compras_controlador extends controller{
                 $fecha_temp = date("d-m-Y", strtotime("$fecha_compra +$intervalo_dias day"));
 
                 for($i=1;$i<=$c;$i++){
-                    $this->_cuota_pago->idcompra=$dato_compra['IDCOMPRA'];
+                    $this->_cuota_pago->idcompra=$dato_compra[0]['IDCOMPRA'];
                     $this->_cuota_pago->fecha_pago=$fecha_temp;
                     $this->_cuota_pago->monto_cuota=$cuota[$i];
                     $this->_cuota_pago->nro_cuota=$i;

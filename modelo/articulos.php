@@ -6,6 +6,7 @@ class articulos extends Main{
     public $titulo;
     public $descripcion;
     public $imagen;
+    public $tipo;
 
     public function selecciona() {
         if(is_null($this->idarticulo)){
@@ -17,7 +18,10 @@ class articulos extends Main{
         if(is_null($this->descripcion)){
             $this->descripcion="";
         }
-        $datos = array($this->idarticulo,$this->titulo,$this->descripcion);
+        if(is_null($this->tipo)){
+            $this->tipo="";
+        }
+        $datos = array($this->idarticulo,$this->titulo,$this->descripcion,$this->tipo);
         $r = $this->get_consulta("pa_selecciona_articulos", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
@@ -36,23 +40,23 @@ class articulos extends Main{
 
     public function elimina() {
         $datos = array($this->idarticulo);
-        $r = consulta::procedimientoAlmacenado("pa_elimina_articulos", $datos);
+        $r = $this->get_consulta("pa_elimina_articulos", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
     public function inserta() {
-        $datos = array(0, $this->titulo, $this->descripcion, $this->imagen);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_articulos", $datos);
+        $datos = array(0, $this->titulo, $this->descripcion, $this->imagen, $this->tipo);
+        $r = $this->get_consulta("pa_inserta_actualiza_articulos", $datos);
         $error = $r[1];
         $r = null;
         return $error;
     }
 
     public function actualiza() {
-        $datos = array($this->idarticulo, $this->titulo, $this->descripcion, $this->imagen);
-        $r = consulta::procedimientoAlmacenado("pa_inserta_actualiza_articulos", $datos);
+        $datos = array($this->idarticulo, $this->titulo, $this->descripcion, $this->imagen, $this->tipo);
+        $r = $this->get_consulta("pa_inserta_actualiza_articulos", $datos);
         $error = $r[1];
         $r = null;
         return $error;

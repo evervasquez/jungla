@@ -12,8 +12,8 @@ class web_controlador extends controller {
     }
     
     public function index() {
+        $this->_web->tipo = "Principal";
         $this->_vista->datos = $this->_web->selecciona();
-
         $this->_vista->datos_jungla = $this->_datos_jungla->selecciona();
         $this->_vista->setJs(array('sexylightbox'));
         $this->_vista->setJs(array('jquery.easing'));
@@ -26,6 +26,12 @@ class web_controlador extends controller {
     }
     
     public function servicios(){
+        $this->_web->tipo = "Servicios";
+        $this->_vista->datos = $this->_web->selecciona();
+        $this->_vista->setJs(array('sexylightbox'));
+        $this->_vista->setJs(array('jquery.easing'));
+        $this->_vista->setCss(array('sexylightbox'));
+        $this->_vista->setJs(array('funciones_servicios'));
         $this->_vista->setCss(array('estilos_servicios'));
         $this->_vista->renderiza_web('servicios');
     }

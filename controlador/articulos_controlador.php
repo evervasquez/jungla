@@ -57,6 +57,7 @@ class articulos_controlador extends controller {
             $this->_articulos->titulo = $_POST['titulo'];
             $this->_articulos->descripcion = $_POST['descripcion'];
             $this->_articulos->imagen = $imagen;
+            $this->_articulos->tipo = $_POST['tipo'];
             $this->_articulos->inserta();
             $this->redireccionar('articulos');
         }
@@ -104,6 +105,7 @@ class articulos_controlador extends controller {
             $this->_articulos->titulo = $_POST['titulo'];
             $this->_articulos->descripcion = $_POST['descripcion'];
             $this->_articulos->imagen = $imagen;
+            $this->_articulos->tipo = $_POST['tipo'];
             $this->_articulos->actualiza();
             $this->redireccionar('articulos');
         }

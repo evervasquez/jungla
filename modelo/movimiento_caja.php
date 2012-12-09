@@ -20,7 +20,7 @@ class movimiento_caja extends Main{
             die($r[1]);
         }
         $r = null;
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function actualiza() {

@@ -40,7 +40,7 @@ class reserva_controlador extends controller{
             for($i=0;$i<count($_POST['idpasajero']);$i++){
                 $this->_detalle_estadia->idhabitacion_especifica=$_POST['idhabitacion_especifica'][$i];
                 $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
-                $this->_detalle_estadia->idventa=$dato_venta['IDVENTA'];
+                $this->_detalle_estadia->idventa=$dato_venta[0]['IDVENTA'];
                 $this->_detalle_estadia->estado=0;
                 $this->_detalle_estadia->fecha_ingreso=$_POST['fecha_entrada'];
                 $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];

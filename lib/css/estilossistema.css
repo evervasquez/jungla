@@ -53,6 +53,13 @@
 	display:inline-block;
         border: none;
 }
+.imgcobrar{
+	background-image:url(../img/dolar.png);
+        width: 13px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
 #cuerpo{
         padding: 20px 0px 20px 0px;
         width: 90%;

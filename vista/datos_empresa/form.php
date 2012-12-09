@@ -1,18 +1,8 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <h3><?php echo $this->titulo ?></h3>
-    <input type="hidden" name="codigo" id="codigo" value="1"/>
     <table align="center" class="tabFormComplejo">
         <tr valign="top">
-            <td><label>Razon Social:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="descripcion"
-                       id="descripcion" value="<?php if(isset ($this->datos[0]['NOMBRE_COMERCIAL']))echo $this->datos[0]['NOMBRE_COMERCIAL']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="descripcion"></div>
-            </td>
-            <td><label>RUC:</label></td>
-            <td><input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="ruc"
-                       id="ruc" value="<?php if(isset ($this->datos[0]['RUC']))echo $this->datos[0]['RUC']?>"/>
-                <br><div class="k-invalid-msg msgerror" data-for="ruc"></div>
             <td><label>Telefono:</label></td>
             <td><input type="text" class="k-textbox" placeholder="Ingrese telefono" required name="telefono"
                        id="telefono" value="<?php if(isset ($this->datos[0]['TELEFONO']))echo $this->datos[0]['TELEFONO']?>"/>

@@ -8,6 +8,7 @@ class cobros_controlador extends controller{
     private $_movimiento_caja;
     private $_amortizacion_cobro;
     private $_ventas;
+    private $_asiento;
     
     public function __construct() {
         parent::__construct();
@@ -17,6 +18,7 @@ class cobros_controlador extends controller{
         $this->_movimiento_caja = $this->cargar_modelo('movimiento_caja');
         $this->_amortizacion_cobro = $this->cargar_modelo('amortizacion_cobro');
         $this->_ventas = $this->cargar_modelo('ventas');
+        $this->_asiento = $this->cargar_modelo('asientos');
     }
     
     public function index(){
@@ -24,8 +26,23 @@ class cobros_controlador extends controller{
         $this->_vista->datos_ventas= $this->_ventas->selecciona();
 //        echo '<pre>';
 //                print_r($this->_vista->datos_ventas);exit;
+        $this->_vista->setJs(array('funciones_index'));
         $this->_vista->renderizar('index');
     }    
+    
+    public function buscador_v(){
+        if($_POST['filtro']==0){
+            $this->_ventas->cliente=$_POST['cadena'];
+        }
+        echo json_encode($this->_ventas->selecciona());
+    }
+    
+    public function buscador_c(){
+        if($_POST['filtro']==0){
+            $this->_cobros->cliente=$_POST['cadena'];
+        }
+        echo json_encode($this->_cobros->selecciona());
+    }
     
     public function cronograma($idventa){
         $this->_cuota_cobro->idventa=$idventa;
@@ -73,7 +90,7 @@ class cobros_controlador extends controller{
 
                             //inserta amortizacion_pago
                             $this->_amortizacion_cobro->idcuota_cobro=$datos_cuota_cobro[$i]['IDCUOTA_COBRO'];
-                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
+                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja[0]['IDMOVIMIENTO_CAJA'];
                             $this->_amortizacion_cobro->fecha=$_POST['FECHA_PAGO'];
                             $this->_amortizacion_cobro->monto=$monto_amortizado;
                             $this->_amortizacion_cobro->inserta();
@@ -87,7 +104,7 @@ class cobros_controlador extends controller{
 
                             //inserta amortizacion_pago
                             $this->_amortizacion_cobro->idcuota_cobro=$datos_cuota_cobro[$i]['IDCUOTA_COBRO'];
-                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
+                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja[0]['IDMOVIMIENTO_CAJA'];
                             $this->_amortizacion_cobro->fecha=$_POST['fecha_pago'];
                             $this->_amortizacion_cobro->monto=$monto_restantexcuota;
                             $this->_amortizacion_cobro->inserta();
@@ -103,6 +120,11 @@ class cobros_controlador extends controller{
             $this->_caja->saldo=$_POST['monto'];
             $this->_caja->aumenta=1;
             $this->_caja->actualiza();
+            
+            //inserta asiento
+            $this->_asiento->idventa_cobro=$idventa;
+            $this->_asiento->monto_amortizado=$_POST['monto'];
+            $this->_asiento->amortiza();
             
             $this->redireccionar('cobros');
         }
@@ -133,7 +155,11 @@ class cobros_controlador extends controller{
         $this->_ventas->idventa=$idventa;
         $this->_ventas->estado_pago=1;
         $this->_ventas->actualiza();
-
+        
+        //asiento cobrar
+        $this->_asiento->idventa_cobro=$idventa;
+        $this->_asiento->inserta();
+        
         //actualiza saldo caja
         $this->_caja->idcaja=$datos_caja[0]['IDCAJA'];
         $this->_caja->saldo=$monto;

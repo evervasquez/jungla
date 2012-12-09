@@ -31,6 +31,26 @@
                 </td>
             </tr>
             <tr>
+            	<td><label>Tipo</label></td>
+                <td colspan="2">
+                    <select class="list" id="tipo" name="tipo">
+                        <?php if($this->datos[0]['TIPO']=='Principal'){?>
+                        <option value="Principal" selected="selected">Principal</option>
+                        <?php }else{ ?>
+                        <option value="Principal">Principal</option>
+                        <?php } ?>
+                        <?php if($this->datos[0]['TIPO']=='Servicios'){?>
+                        <option value="Servicios" selected="selected">Servicios</option>
+                        <?php }else{ ?>
+                        <option value="Servicios">Servicios</option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <div class="msgerror"></div>
+                </td>
+            </tr>
+            <tr>
             	<td><label>Adjuntar Imagen</label></td>
                 <td colspan="2"><input type="file" name="imagen" id="imagen" /></td>
                 <td>
