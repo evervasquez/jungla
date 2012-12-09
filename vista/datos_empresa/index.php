@@ -22,15 +22,15 @@
         </tr>
         <tr>
             <td><label><strong>Presentación:</strong></label></td>
-            <td colspan="3"><?php echo $this->datos[0]['PRESENTACION'] ?></td>
+            <td colspan="5"><?php echo $this->datos[0]['PRESENTACION'] ?></td>
         </tr>
         <tr>
             <td><label><strong>Misión:</strong></label></td>
-            <td colspan="3"><?php echo $this->datos[0]['MISION'] ?></td>
+            <td colspan="5"><?php echo $this->datos[0]['MISION'] ?></td>
         </tr>
         <tr>
             <td><label><strong>Visión:</strong></label></td>
-            <td colspan="3"><?php echo $this->datos[0]['VISION'] ?></td>
+            <td colspan="5"><?php echo $this->datos[0]['VISION'] ?></td>
         </tr>
     </table>
     <?php } else { ?>

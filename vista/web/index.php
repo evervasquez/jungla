@@ -71,15 +71,12 @@
                         <span>Misi&oacute;n</span>
                         <div style="padding: 10px;">
                             <p><?php echo $this->datos_jungla[0]['MISION'] ?></p>
-<!--                            <p>Somos una empresa que pretende ser una alternativa en cuanto a servicio de hospedaje,
-con alto nivel de calidad de servicio, seguridad y tranquilidad.</p>-->
                         </div>
                     </li>
                     <li>
                         <span>Visi&oacute;n</span>
                         <div style="padding: 10px;">
                             <p><?php echo $this->datos_jungla[0]['VISION'] ?></p>
-<!--                            <p>Ser una empresa líder a nivel de servicios turísticos de calidad, confort, reconocida dentro de la línea de albergue turístico</p>-->
                         </div>
                     </li>
                 </ul>
