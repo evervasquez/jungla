@@ -90,7 +90,7 @@ class cobros_controlador extends controller{
 
                             //inserta amortizacion_pago
                             $this->_amortizacion_cobro->idcuota_cobro=$datos_cuota_cobro[$i]['IDCUOTA_COBRO'];
-                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
+                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja[0]['IDMOVIMIENTO_CAJA'];
                             $this->_amortizacion_cobro->fecha=$_POST['FECHA_PAGO'];
                             $this->_amortizacion_cobro->monto=$monto_amortizado;
                             $this->_amortizacion_cobro->inserta();
@@ -104,7 +104,7 @@ class cobros_controlador extends controller{
 
                             //inserta amortizacion_pago
                             $this->_amortizacion_cobro->idcuota_cobro=$datos_cuota_cobro[$i]['IDCUOTA_COBRO'];
-                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
+                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja[0]['IDMOVIMIENTO_CAJA'];
                             $this->_amortizacion_cobro->fecha=$_POST['fecha_pago'];
                             $this->_amortizacion_cobro->monto=$monto_restantexcuota;
                             $this->_amortizacion_cobro->inserta();

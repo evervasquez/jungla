@@ -75,7 +75,7 @@ class ventas_controlador extends controller {
             //inserta detalle venta
             $x=0;$y=0;
             for($i=0;$i<count($_POST['um']);$i++){
-                $this->_detalle_venta->idventa=$dato_venta['IDVENTA'];
+                $this->_detalle_venta->idventa=$dato_venta[0]['IDVENTA'];
                 if($_POST['um'][$i]=='paquete'){
                     $this->_detalle_venta->idpaquete= $_POST['idpaquete'][$x];
                     $this->_detalle_venta->idproducto= 0;
@@ -124,7 +124,7 @@ class ventas_controlador extends controller {
                 $fecha_temp = date("d-m-Y", strtotime("$fecha_venta +$intervalo_dias day"));
 
                 for($i=1;$i<=$c;$i++){
-                    $this->_cuota_cobro->idventa=$dato_venta['IDVENTA'];
+                    $this->_cuota_cobro->idventa=$dato_venta[0]['IDVENTA'];
                     $this->_cuota_cobro->fecha_cobro=$fecha_temp;
                     $this->_cuota_cobro->nro_cobro=$i;
                     $this->_cuota_cobro->monto_cuota=$cuota[$i];
@@ -132,7 +132,7 @@ class ventas_controlador extends controller {
                     $fecha_temp = date("d-m-Y", strtotime("$fecha_temp +$intervalo_dias day"));
                 }
             }
-            $this->_asientos->idventa=$dato_venta['IDVENTA'];
+            $this->_asientos->idventa=$dato_venta[0]['IDVENTA'];
             $this->_asientos->inserta();
             $this->redireccionar('ventas');
         }
