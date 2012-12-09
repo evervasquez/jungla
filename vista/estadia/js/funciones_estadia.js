@@ -229,10 +229,14 @@ $(document).ready(function(){
     $("#btn_selecciona_ciudad").click(function(){
         i=$("#index_tr").val();
         idc=$("#ciudades").val();
+        if(idc==''){
+            alert("Seleccione ciudad");
+            return 0;
+        }
         c=$("#ciudades option:selected").html();
         html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
         $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
-        $("#vtna_busca_ciudades").fadeOut();
+        $("#vtna_busca_ciudades").fadeOut(300);
         $("#fondooscuro").fadeOut(300);
     });
     
@@ -242,9 +246,9 @@ $(document).ready(function(){
     });
     
     $("#pais").change(function(){
-        $("#regiones").html('<option>Seleccione...</option>');
-        $("#provincias").html('<option>Seleccione...</option>');
-        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        $("#regiones").html('<option></option>');
+        $("#provincias").html('<option></option>');
+        $("#ciudades").html('<option></option>')
         if($(this).val()){
             $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
@@ -255,8 +259,8 @@ $(document).ready(function(){
     });
     
     $("#regiones").change(function(){
-        $("#provincias").html('<option>Seleccione...</option>');
-        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        $("#provincias").html('<option></option>');
+        $("#ciudades").html('<option></option>')
         if($(this).val()){
             $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
@@ -267,7 +271,7 @@ $(document).ready(function(){
     });
     
     $("#provincias").change(function(){
-        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        $("#ciudades").html('<option></option>')
         if($(this).val()){
             $.post('/jungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
@@ -331,6 +335,13 @@ $(document).ready(function(){
     });
     
     $("#btn_inserta_pasajero").click(function(){
+        n=$("#nombres").val();a=$("#apellidos").val();d=$("#nrodoc").val();f=$("#fecha_nacimiento").val();
+        t=$("#telefono").val();e=$("#email").val();ec=$("#estado_civil :selected").val();p=$("#profesion").val();
+        dir=$("#direccion").val();pa=$("#paises").val();
+        if(n=='' || a=='' || d=='' || f=='' || t=='' || e=='' || ec=='' || p=='' || dir=='' || pa==''){
+            alert("Debe llenar todos los datos");
+            return 0;
+        }
         if($("#sexo_m").is(":checked")){
             sexo=1;
         }else{
@@ -341,11 +352,11 @@ $(document).ready(function(){
         }else{
             membresia=$("#membresia").val();
         }
-        $.post('/jungla/reserva/inserta_pasajero','nombres='+$("#nombres").val()+'&apellidos='+$("#apellidos").val()+
-            '&documento='+$("#nrodoc").val()+'&fecha_nacimiento='+$("#fecha_nacimiento").val()+'&sexo='+sexo+
-            '&telefono='+$("#telefono").val()+'&email='+$("#email").val()+'&estado_civil='+$("#estado_civil :selected").val()+
-            '&profesion='+$("#profesion").val()+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+
-            '&direccion='+$("#direccion").val()+'&tipo_cliente=natural',
+        $.post('/jungla/reserva/inserta_pasajero','nombres='+n+'&apellidos='+a+
+            '&documento='+d+'&fecha_nacimiento='+f+'&sexo='+sexo+
+            '&telefono='+t+'&email='+e+'&estado_civil='+ec+
+            '&profesion='+p+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+
+            '&direccion='+dir+'&tipo_cliente=natural',
         function(datos){
             $("#idcliente").val(datos[0].IDCLIENTE);
             $("#cliente").val($("#nombres").val()+' '+$("#apellidos").val());
@@ -358,9 +369,10 @@ $(document).ready(function(){
             $("#email").val('');
             $("#direccion").val('');
             $("#sexo_m").attr("checked",true);
+            $(".combo").val('');
         },'json');
-        $("#vtna_inserta_pasajero").fadeOut();
-        $("#fondooscuro").fadeOut();
+        $("#vtna_inserta_pasajero").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
     });
 });
 
