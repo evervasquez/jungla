@@ -46,6 +46,14 @@ class asientos extends Main {
         $r = null;
         return $error;
     }
+    
+    public function insertar(){
+            $datos = array($this->idventa);
+        $r = $this->get_consulta("pa_inserta_asientos_servicio", $datos);
+        $error = $r[1];
+        $r = null;
+        return $error;
+    }
 
     public function actualiza() {
         $datos = array($this->idasiento, $this->fecha, $this->glosa, $this->idplantilla_movimiento, $this->nro_asiento);

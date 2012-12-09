@@ -13,7 +13,7 @@ class estadia_controlador extends controller{
     private $_tipo_comprobante;
     private $_habitaciones;
     private $_ventas;
-    
+    private $_asiento;
 
     public function __construct() {
         parent::__construct();
@@ -24,6 +24,7 @@ class estadia_controlador extends controller{
         $this->_profesiones = $this->cargar_modelo('profesiones');
         $this->_clientes = $this->cargar_modelo('clientes');
         $this->_ruta_huesped = $this->cargar_modelo('ruta_huesped');
+        $this->_asiento = $this->cargar_modelo('asientos');
         $this->_detalle_venta = $this->cargar_modelo('detalle_venta');
         $this->_tipo_comprobante= $this->cargar_modelo('tipo_comprobante');
         $this->_habitaciones= $this->cargar_modelo('habitaciones');
@@ -178,6 +179,9 @@ class estadia_controlador extends controller{
             echo "<script>
                 if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
                 </script>";
+            //aqui hacer
+            $this->_asiento->idventa=$idventa;
+            $this->_asiento->insertar();
             
             $this->imprimir($idventa, $this->_ventas->idtipo_comprobante);
             $this->redireccionar('estadia');
