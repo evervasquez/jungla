@@ -8,7 +8,8 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            HTML = '<table border="1" class="tabgrilla">'+
+            $.post('/jungla/cobros/buscador_v','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+                HTML = '<table border="1" class="tabgrilla">'+
                     '<tr>'+
                         '<th>Nro Documento</th>'+
                         '<th>Cliente</th>'+
@@ -18,7 +19,6 @@
                         '<th>Monto Restante</th>'+
                         '<th>Accion</th>'+
                     '</tr>';
-            $.post('/jungla/cobros/buscador_v','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     if(datos[i].IDTIPO_TRANSACCION==1 && datos[i].ESTADO_PAGO==0){
                         HTML = HTML + '<tr>';
