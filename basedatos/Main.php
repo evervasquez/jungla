@@ -217,11 +217,11 @@ class Main {
         $identificador = array_filter($identificador);
         $selec = $identificador[1];
         //die($selec);
-//        exit;
+//        exit; pa_selecciona || pa_s_elimina_servicio
         $sql = 'BEGIN ' . $pa;
         if ($datos != null) {
             $sql = $sql . "(";
-            if ($selec == 'selecciona') {
+            if ($selec == 'selecciona' || $selec=='s') {
                 $num_datos = count($datos) + 1;
             } else {
                 $num_datos = count($datos);
@@ -238,12 +238,12 @@ class Main {
         $sql = $sql . '; END;';
         //die($sql);
         //poner if en el cursor
-        if ($selec == 'selecciona') {
+        if ($selec == 'selecciona' || $selec == 's') {
             $cursor = OCI_conexion::crea_cursor();
         }
         self::$stmt = OCI_conexion::ejecutar($sql);
         if ($datos != null) {
-            if ($selec == 'selecciona') {
+            if ($selec == 'selecciona' || $selec == 's') {
                 //die('jaja');
 //                print_r($datos);
 //                die();
