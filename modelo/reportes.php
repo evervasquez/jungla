@@ -126,7 +126,6 @@ class reportes extends Main{
             return $stmt->fetchall();
         };
     }
-   
     public function selecciona_tipo_habitacion_total(){
         $datos = array(0,"");
         $r = $this->get_consulta("pa_selecciona_tipo_habitacion", $datos);
@@ -284,7 +283,7 @@ class reportes extends Main{
         };
     }
     public function selecciona_ventas($idventa){
-        $datos = array($idventa);
+        $datos = array($idventa, '', '', '');
         $r = $this->get_consulta("pa_selecciona_ventas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
         if (BaseDatos::$_archivo == 'OCI') {

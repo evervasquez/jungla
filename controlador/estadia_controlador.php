@@ -4,7 +4,7 @@ class estadia_controlador extends controller{
     
     private $_estadia;
     private $_detalle_estadia;
-    private $_paises;
+//    private $_paises;
     private $_membresia;
     private $_profesiones;
     private $_clientes;
@@ -14,12 +14,13 @@ class estadia_controlador extends controller{
     private $_habitaciones;
     private $_ventas;
     private $_asiento;
+    private $_regiones;
 
     public function __construct() {
         parent::__construct();
         $this->_estadia = $this->cargar_modelo('estadia');
         $this->_detalle_estadia = $this->cargar_modelo('detalle_estadia');
-        $this->_paises = $this->cargar_modelo('paises');
+//        $this->_paises = $this->cargar_modelo('paises');
         $this->_membresia = $this->cargar_modelo('membresia');
         $this->_profesiones = $this->cargar_modelo('profesiones');
         $this->_clientes = $this->cargar_modelo('clientes');
@@ -29,6 +30,7 @@ class estadia_controlador extends controller{
         $this->_tipo_comprobante= $this->cargar_modelo('tipo_comprobante');
         $this->_habitaciones= $this->cargar_modelo('habitaciones');
         $this->_ventas = $this->cargar_modelo('ventas');
+        $this->_regiones = $this->cargar_modelo('regiones');
     }
 
     public function index() {
@@ -85,7 +87,9 @@ class estadia_controlador extends controller{
             $this->redireccionar('estadia');
         }
         
-        $this->_vista->datos_paises = $this->_paises->selecciona();
+//        $this->_vista->datos_paises = $this->_paises->selecciona();
+        $this->_regiones->idpais = 193;
+        $this->_vista->datos_regiones = $this->_regiones->selecciona();
         $this->_vista->datos_membresias= $this->_membresia->selecciona();
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
@@ -121,7 +125,9 @@ class estadia_controlador extends controller{
         $this->_vista->datos = $this->_estadia->selecciona();
         $this->_detalle_estadia->idventa=$idventa;
         $this->_vista->datos_detalle_estadia =  $this->_detalle_estadia->selecciona();
-        $this->_vista->datos_paises = $this->_paises->selecciona();
+//        $this->_vista->datos_paises = $this->_paises->selecciona();
+        $this->_regiones->idpais = 193;
+        $this->_vista->datos_regiones = $this->_regiones->selecciona();
         $this->_vista->datos_membresias= $this->_membresia->selecciona();
         $this->_vista->datos_profesiones = $this->_profesiones->selecciona();
         $this->_vista->setJs(array('funciones_confirmar'));
@@ -198,7 +204,9 @@ class estadia_controlador extends controller{
         $this->_vista->datos_detalle_estadia =  $this->_detalle_estadia->selecciona();
         $this->_habitaciones->idventa=$idventa;
         $this->_vista->datos_habitaciones=  $this->_habitaciones->selecciona();
-        $this->_vista->datos_paises = $this->_paises->selecciona();
+//        $this->_vista->datos_paises = $this->_paises->selecciona();
+        $this->_regiones->idpais = 193;
+        $this->_vista->datos_regiones = $this->_regiones->selecciona();
         $this->_vista->setJs(array('funciones_confirmar','funciones_check_out'));
         $this->_vista->setCss(array('estilos_check_out'));
         $this->_vista->renderizar('check_out');

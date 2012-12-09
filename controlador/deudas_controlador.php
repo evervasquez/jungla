@@ -24,7 +24,22 @@ class deudas_controlador extends controller {
     public function index() {
         $this->_vista->datos = $this->_deudas->selecciona();
         $this->_vista->datos_compras = $this->_compras->selecciona();
+        $this->_vista->setJs(array('funciones_index'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador_c(){
+        if($_POST['filtro']==0){
+            $this->_compras->proveedor=$_POST['cadena'];
+        }
+        echo json_encode($this->_compras->selecciona());
+    }
+    
+    public function buscador_d(){
+        if($_POST['filtro']==0){
+            $this->_deudas->proveedor=$_POST['cadena'];
+        }
+        echo json_encode($this->_deudas->selecciona());
     }
 
     public function cronograma($idcompra, $monto_restante) {

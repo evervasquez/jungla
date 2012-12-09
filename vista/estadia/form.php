@@ -251,21 +251,13 @@
     <input type="hidden" id="index_tr" />
     <table>
         <tr>
-            <td><label>Pais:</label></td>
-            <td>
-                <select placeholder="Seleccione..." class="combo" id="pais" required name="paises">
-                    <option></option>
-                    <?php for($i=0;$i<count($this->datos_paises);$i++){ ?>
-                    <option value="<?php echo $this->datos_paises[$i]['IDPAIS'] ?>"><?php echo $this->datos_paises[$i]['DESCRIPCION'] ?></option>
-                    <?php } ?>
-                </select>
-            </td>
-        </tr>
-        <tr>
             <td><label>Region:</label></td>
             <td>
-                <select placeholder="Seleccione..." class="comboX" id="regiones" required name="regiones">
+                <select placeholder="Seleccione..." class="combo" id="regiones" required name="regiones">
                     <option></option>
+                    <?php for($i=0;$i<count($this->datos_regiones);$i++){ ?>
+                    <option value="<?php echo $this->datos_regiones[$i]['IDUBIGEO'] ?>"><?php echo $this->datos_regiones[$i]['DESCRIPCION'] ?></option>
+                    <?php } ?>
                 </select>
             </td>
         </tr>
@@ -273,7 +265,7 @@
             <td><label>Provincia:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="provincias" required name="provincias">
-                    <option></option>
+                    <option>Seleccione...</option>
                 </select>
             </td>
         </tr>
@@ -281,7 +273,7 @@
             <td><label>Ciudad:</label></td>
             <td>
                 <select placeholder="Seleccione..." class="comboX" id="ciudades" required name="ciudades">
-                    <option></option>
+                    <option value="0">Seleccione...</option>
                 </select>
             </td>
         </tr>

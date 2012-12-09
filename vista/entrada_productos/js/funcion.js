@@ -16,7 +16,6 @@
                             '<th>Accion</th>'+
                             '<th>Estado</th>'+
                         '</tr>';
-
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].NRO_COMPROBANTE+'</td>';
