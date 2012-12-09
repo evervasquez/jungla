@@ -10,7 +10,7 @@ class cobros extends Main{
             $this->nro_documento='';
         }
         if(is_null($this->cliente)){
-            $this->cliente='';
+            $this->cliente=null;
         }
         $datos = array($this->nro_documento, $this->cliente);
         $r = $this->get_consulta("pa_selecciona_cobros", $datos);

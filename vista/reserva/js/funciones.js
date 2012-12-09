@@ -252,6 +252,13 @@ $(document).ready(function(){
     });
     
     $("#btn_inserta_pasajero").click(function(){
+        n=$("#nombres").val();a=$("#apellidos").val();d=$("#nrodoc").val();f=$("#fecha_nacimiento").val();
+        t=$("#telefono").val();e=$("#email").val();ec=$("#estado_civil :selected").val();p=$("#profesion").val();
+        dir=$("#direccion").val();pa=$("#paises").val();
+        if(n=='' || a=='' || d=='' || f=='' || t=='' || e=='' || ec=='' || p=='' || dir=='' || pa==''){
+            alert("Debe llenar todos los datos");
+            return 0;
+        }
         if($("#sexo_m").is(":checked")){
             sexo=1;
         }else{
@@ -262,11 +269,11 @@ $(document).ready(function(){
         }else{
             membresia=$("#membresia").val();
         }
-        $.post('/jungla/reserva/inserta_pasajero','nombres='+$("#nombres").val()+'&apellidos='+$("#apellidos").val()+
-            '&documento='+$("#nrodoc").val()+'&fecha_nacimiento='+$("#fecha_nacimiento").val()+'&sexo='+sexo+
-            '&telefono='+$("#telefono").val()+'&email='+$("#email").val()+'&estado_civil='+$("#estado_civil :selected").val()+
-            '&profesion='+$("#profesion").val()+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+
-            '&direccion='+$("#direccion").val()+'&tipo_cliente=natural',
+        $.post('/jungla/reserva/inserta_pasajero','nombres='+n+'&apellidos='+a+
+            '&documento='+d+'&fecha_nacimiento='+f+'&sexo='+sexo+
+            '&telefono='+t+'&email='+e+'&estado_civil='+ec+
+            '&profesion='+p+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+
+            '&direccion='+dir+'&tipo_cliente=natural',
         function(datos){
             $("#idcliente").val(datos[0].IDCLIENTE);
             $("#cliente").val($("#nombres").val()+' '+$("#apellidos").val());
@@ -278,6 +285,7 @@ $(document).ready(function(){
             $("#email").val('');
             $("#direccion").val('');
             $("#sexo_m").attr("checked",true);
+            $(".combo").val('');
         },'json');
         $("#vtna_inserta_pasajero").fadeOut(300);
         $("#fondooscuro").fadeOut(300);

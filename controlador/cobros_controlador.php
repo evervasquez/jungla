@@ -26,8 +26,23 @@ class cobros_controlador extends controller{
         $this->_vista->datos_ventas= $this->_ventas->selecciona();
 //        echo '<pre>';
 //                print_r($this->_vista->datos_ventas);exit;
+        $this->_vista->setJs(array('funciones_index'));
         $this->_vista->renderizar('index');
     }    
+    
+    public function buscador_v(){
+        if($_POST['filtro']==0){
+            $this->_ventas->cliente=$_POST['cadena'];
+        }
+        echo json_encode($this->_ventas->selecciona());
+    }
+    
+    public function buscador_c(){
+        if($_POST['filtro']==0){
+            $this->_cobros->cliente=$_POST['cadena'];
+        }
+        echo json_encode($this->_cobros->selecciona());
+    }
     
     public function cronograma($idventa){
         $this->_cuota_cobro->idventa=$idventa;
@@ -75,7 +90,7 @@ class cobros_controlador extends controller{
 
                             //inserta amortizacion_pago
                             $this->_amortizacion_cobro->idcuota_cobro=$datos_cuota_cobro[$i]['IDCUOTA_COBRO'];
-                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
+                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja[0]['IDMOVIMIENTO_CAJA'];
                             $this->_amortizacion_cobro->fecha=$_POST['FECHA_PAGO'];
                             $this->_amortizacion_cobro->monto=$monto_amortizado;
                             $this->_amortizacion_cobro->inserta();
@@ -89,7 +104,7 @@ class cobros_controlador extends controller{
 
                             //inserta amortizacion_pago
                             $this->_amortizacion_cobro->idcuota_cobro=$datos_cuota_cobro[$i]['IDCUOTA_COBRO'];
-                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
+                            $this->_amortizacion_cobro->idmovimiento_caja=$dato_movimiento_caja[0]['IDMOVIMIENTO_CAJA'];
                             $this->_amortizacion_cobro->fecha=$_POST['fecha_pago'];
                             $this->_amortizacion_cobro->monto=$monto_restantexcuota;
                             $this->_amortizacion_cobro->inserta();
