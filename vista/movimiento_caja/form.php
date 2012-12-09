@@ -16,16 +16,16 @@
                 </select>
             </td>
             <td>
-                <div class="msgerror"></div>
+                <div class="k-invalid-msg msgerror" data-for="concepto">
             </td>
         </tr>
         <tr>
             <td><label>Monto:</label></td>
             <td><input type="text" class="k-textbox" name="monto" id="monto" placeholder="Ingrese Monto"
-                       value=""/>
+                       value="" required/>
             </td>
             <td>
-                <div class="msgerror"></div>
+                <div class="k-invalid-msg msgerror" data-for="monto">
             </td>
         </tr>
         <tr>

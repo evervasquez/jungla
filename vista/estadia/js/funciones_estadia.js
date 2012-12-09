@@ -228,9 +228,11 @@ $(document).ready(function(){
     
     $("#btn_selecciona_ciudad").click(function(){
         i=$("#index_tr").val();
+        r=$("#regiones").val();
         idc=$("#ciudades").val();
-        if(idc==''){
-            alert("Seleccione ciudad");
+        p=$("#provincias").val();
+        if(idc=='' || r=='' || p==''){
+            alert("Seleccione la procedencia");
             return 0;
         }
         c=$("#ciudades option:selected").html();

@@ -1550,7 +1550,7 @@ class reportes_controlador extends controller {
         $fecha_inicio = $_POST['fecha_inicio'];
         $fecha_fin = $_POST['fecha_fin'];
         if($producto=="" || $fecha_inicio=="" || $fecha_fin==""){
-            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes')</script>";
+            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes'); window.close();</script>";
             die();
         }
         $Y_table_position = 41;
@@ -1709,7 +1709,7 @@ class reportes_controlador extends controller {
         $fecha_inicio = $_POST['fecha_inicio'];
         $fecha_fin = $_POST['fecha_fin'];
         if($producto=="" || $fecha_inicio=="" || $fecha_fin==""){
-            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes')</script>";
+            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes'); window.close();</script>";
             die();
         }
         $Y_table_position = 41;
@@ -1868,7 +1868,7 @@ class reportes_controlador extends controller {
         $fecha_inicio = $_POST['fecha_inicio'];
         $fecha_fin = $_POST['fecha_fin'];
         if( $fecha_inicio=="" || $fecha_fin==""){
-            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes')</script>";
+            echo "<script>alert('No se puede generar el reporte debido a datos erroneos o faltantes'); window.close();</script>";
             die();
         }
         $datos = $this->obtener_compras_x_intervalo_fechas(array($fecha_inicio, $fecha_fin));
@@ -2160,11 +2160,11 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(55);
         //CALCULAR TOTAL SUMADO EL IGV:
-        $sbtotal = $sbtotal + $igvdescuento[0]['IGV'];
+        
         
         $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($igvdescuento[0]['IGV']*$sbtotal), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
-        $sbtotal = $sbtotal - ($igvdescuento[0]['IGV']*$sbtotal);
+        $sbtotal = $sbtotal + ($igvdescuento[0]['IGV']*$sbtotal);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          ***  DSCTO.   S/.'),0,0,'L',1);
@@ -2186,7 +2186,7 @@ class reportes_controlador extends controller {
         //necesito: vendedor, items, condicion (contado, credito), campo obsrevaciones (si estado = 0: observacion = anulado)
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.$items),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.($items+$itemsestadia)),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
@@ -2386,11 +2386,11 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(55);
         //CALCULAR TOTAL SUMADO EL IGV:
-        $sbtotal = $sbtotal + $igvdescuento[0]['IGV'];
+        
         
         $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($igvdescuento[0]['IGV']*$sbtotal), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
-        $sbtotal = $sbtotal - ($igvdescuento[0]['IGV']*$sbtotal);
+        $sbtotal = $sbtotal + ($igvdescuento[0]['IGV']*$sbtotal);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          ***  DSCTO.   S/.'),0,0,'L',1);
@@ -2412,7 +2412,7 @@ class reportes_controlador extends controller {
         //necesito: vendedor, items, condicion (contado, credito), campo obsrevaciones (si estado = 0: observacion = anulado)
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.$items),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode(' ITEMS: '.($items+$itemsestadia)),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
