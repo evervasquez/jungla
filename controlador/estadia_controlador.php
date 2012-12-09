@@ -165,7 +165,7 @@ class estadia_controlador extends controller{
                 $this->_detalle_estadia->estado=2;
                 $this->_detalle_estadia->fecha_ingreso=$_POST['fecha_entrada'].' '.$_POST['hora_entrada'];
                 $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];
-               /* $this->_detalle_estadia->actualiza();*/
+                $this->_detalle_estadia->actualiza();
                 
             }
             //actualizamos venta
@@ -177,7 +177,7 @@ class estadia_controlador extends controller{
             $this->_ventas->importe=$_POST['importe'];
             $this->_ventas->igv=$_POST['igv'];
             $this->_ventas->descuento=$_POST['descuento'];
-            /*$this->_ventas->actualiza();*/
+            $this->_ventas->actualiza();
             echo "<script>
                 if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
                 </script>";

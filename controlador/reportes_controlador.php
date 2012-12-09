@@ -2145,8 +2145,8 @@ class reportes_controlador extends controller {
         
         $espac = $espac - 3;
         //IGV (CERO POR DEFECTO Y SIEMPRE)
-        $igv = number_format('0', 2);
         
+         $igv = $igvdescuento[0]['IGV'];
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *    V.VENTA  S/.'),0,0,'L',1);
@@ -2156,15 +2156,15 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          **   IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode("          **   IGV(".  number_format($igv*100, 0)."%) S/."),0,0,'L',1);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(55);
         //CALCULAR TOTAL SUMADO EL IGV:
         $sbtotal = $sbtotal + $igvdescuento[0]['IGV'];
         
-        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($igvdescuento[0]['IGV']), 2)),0,0,'R',1);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($igvdescuento[0]['IGV']*$sbtotal), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
-        
+        $sbtotal = $sbtotal - ($igvdescuento[0]['IGV']*$sbtotal);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          ***  DSCTO.   S/.'),0,0,'L',1);
@@ -2225,6 +2225,8 @@ class reportes_controlador extends controller {
     public function ticket_factura_venta($idventa){
         $estadias = $this->obtener_habitaciones_detalle_estadia($idventa);
         $itemsestadia = count($estadias);
+        
+        $igvdescuento = $this->obtener_descuento_venta($idventa);
         // DATOS QUE DEBE RECIBIR ESTE REPORTE: IDVENTA 
         $idventa = array($idventa);
         
@@ -2370,8 +2372,7 @@ class reportes_controlador extends controller {
         
         $espac = $espac - 3;
         //IGV (CERO POR DEFECTO Y SIEMPRE)
-        $igv = number_format('0', 2);
-      
+        $igv = $igvdescuento[0]['IGV'];
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          *    V.VENTA  S/.'),0,0,'L',1);
@@ -2381,15 +2382,15 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          **   IGV(18%) S/.'),0,0,'L',1);
+        $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode("          **   IGV(".  number_format($igv*100, 0)."%) S/."),0,0,'L',1);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(55);
         //CALCULAR TOTAL SUMADO EL IGV:
         $sbtotal = $sbtotal + $igvdescuento[0]['IGV'];
         
-        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($igvdescuento[0]['IGV']), 2)),0,0,'R',1);
+        $this->_fpdf->Cell(15.5,$ancho_celda_datos,utf8_decode(''.  number_format(($igvdescuento[0]['IGV']*$sbtotal), 2)),0,0,'R',1);
         $espac = $espac + $ancho_celda_datos;
-        
+        $sbtotal = $sbtotal - ($igvdescuento[0]['IGV']*$sbtotal);
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,utf8_decode('          ***  DSCTO.   S/.'),0,0,'L',1);

@@ -160,7 +160,7 @@
         </tr>
     </table>
     <p>
-        <a type="button"  class="k-button" id="btn_confirmar" target="_blank">Confirmar</a>
+        <a type="button" class="k-button" id="btn_confirmar" target="_blank">Confirmar</a>
         <a href="<?php echo BASE_URL ?>estadia" class="k-button cancel">Cancelar</a>
     </p>
 </form>
