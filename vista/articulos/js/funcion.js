@@ -8,6 +8,7 @@
                 {field:"Titulo", width:20},
                 {field:"Descripion", width:60},
                 {field:"Imagen", width:15},
+                {field:"Tipo", width:15},
                 {field:"Acciones", width:10,attributes:{class:"acciones"}}]
         });
         $( "#buscar" ).focus();

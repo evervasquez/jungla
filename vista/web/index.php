@@ -1,27 +1,27 @@
 <div id="sliderContainer">
     <div id="mySlides">
-      <div id="slide1" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jflow-sample-slide1.jpg" alt="Slide 1 jFlow Plus" />
+      <div id="slide1" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jungla1.jpg" alt="Slide 1 jFlow Plus" />
         <div class="slideContent">
-          <h3>You Asked, jFlow Delivered</h3>
-          <p>It's all about the Community and giving back.  To keep with this tradition, jFlow Plus now has more of the features you want.</p>
+          <h3>Bienvenidos a la Jungla</h3>
+          <p>Somos tu mejor alternativa en alojamiento turistico.</p>
         </div>
       </div>
-      <div id="slide2" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jflow-sample-slide2.jpg" alt="Slide 2 jFlow Plus" />
+      <div id="slide2" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jungla2.jpg" alt="Slide 2 jFlow Plus" />
         <div class="slideContent">
-          <h3>W3C Valid</h3>
-          <p>Are you a stickler for writing valid code?  So is jFlow.  Run this puppy through W3C's validator to see it pass the test!</p>
+          <h3>Alojamiento y Areas Verdes</h3>
+          <p>Disfruta de la naturaleza de una forma libre y comoda con nosotros.</p>
         </div>
       </div>
-      <div id="slide3" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jflow-sample-slide3.jpg" alt="Slide 3 jFlow Plus" />
+      <div id="slide3" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jungla3.jpg" alt="Slide 3 jFlow Plus" />
         <div class="slideContent">
-          <h3>Frequent Code Updates</h3>
-          <p>This slider is actively developed and used by thousands of websites.  More features coming soon including more effects and options.</p>
+          <h3>Restaurante</h3>
+          <p>Disfruta de la mejores platos regionales e internacionales.</p>
         </div>
       </div>
-      <div id="slide4" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jflow-sample-slide4.jpg" alt="Slide 3 jFlow Plus" />
+      <div id="slide4" class="slide"> <img src="<?php echo $_params['ruta_img']; ?>jungla4.jpg" alt="Slide 3 jFlow Plus" />
         <div class="slideContent">
-          <h3>Notice the Slide Navigation?</h3>
-          <p>That's a new feature.  Click on the paging buttons in the top-right to quickly jump to any jFlow slide number.</p>
+          <h3>Piscina</h3>
+          <p>Disfruta de la piscina con la familia y amigos en una ambiente tranquilo.</p>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
                         <p><?php echo $this->datos[$i]['DESCRIPCION'] ?></p>
                     </span>
                 </div>
-                <?php }} ?>
+                <?php }} else echo "<h1>No hay articulos</h1>"; ?>
             </div>
         </td>
         <td align="center">

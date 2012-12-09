@@ -11,10 +11,10 @@
             <td><?php echo $this->datos[0]['RUC'] ?></td>
             <td><label><strong>Telefono:</strong></label></td>
             <td><?php echo $this->datos[0]['TELEFONO'] ?></td>
-            <td><label><strong>Movistar:</strong></label></td>
-            <td><?php echo $this->datos[0]['MOVISTAR'] ?></td>
         </tr>
         <tr>
+            <td><label><strong>Movistar:</strong></label></td>
+            <td><?php echo $this->datos[0]['MOVISTAR'] ?></td>
             <td><label><strong>RPM:</strong></label></td>
             <td><?php echo $this->datos[0]['RPM'] ?></td>
             <td><label><strong>RPC:</strong></label></td>
