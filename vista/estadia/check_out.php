@@ -256,7 +256,7 @@
             <td><label>Razon Social:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
-                   id="razonsocial" value=""/>
+                   id="razonsocial" maxlenght="11" value=""/>
             </td>
             <td>
                 <div class="k-invalid-msg msgerror" data-for="nombres"></div>

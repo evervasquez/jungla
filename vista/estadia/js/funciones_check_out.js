@@ -19,6 +19,11 @@ $(document).ready(function(){
     });
     
     $("#btn_inserta_cliente_juridico").click(function(){
+        r=$("#ruc").val();rs=$("#razonsocial").val();d=$("#direccionrs").val();
+        if(r=='' || rs=='' || d==''){
+            alert("Debe llenar todos los datos");
+            return 0;
+        }
         $.post('/jungla/estadia/inserta_cliente_juridico','nombres='+$("#razonsocial").val()+'&documento='+$("#ruc").val()+
             '&direccion='+$("#direccionrs").val(),
         function(datos){
