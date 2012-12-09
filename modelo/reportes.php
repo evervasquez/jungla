@@ -126,7 +126,6 @@ class reportes extends Main{
             return $stmt->fetchall();
         };
     }
-   
     public function selecciona_tipo_habitacion_total(){
         $datos = array(0,"");
         $r = $this->get_consulta("pa_selecciona_tipo_habitacion", $datos);
