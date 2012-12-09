@@ -5,22 +5,16 @@
     </p>
     <table class="tabForm" width="60%">
         <tr>
-            <td><label><strong>Razon Social:</strong></label></td>
-            <td><?php echo $this->datos[0]['NOMBRE_COMERCIAL'] ?></td>
-            <td><label><strong>RUC:</strong></label></td>
-            <td><?php echo $this->datos[0]['RUC'] ?></td>
             <td><label><strong>Telefono:</strong></label></td>
             <td><?php echo $this->datos[0]['TELEFONO'] ?></td>
-        </tr>
-        <tr>
             <td><label><strong>Movistar:</strong></label></td>
             <td><?php echo $this->datos[0]['MOVISTAR'] ?></td>
             <td><label><strong>RPM:</strong></label></td>
             <td><?php echo $this->datos[0]['RPM'] ?></td>
-            <td><label><strong>RPC:</strong></label></td>
-            <td><?php echo $this->datos[0]['RPC'] ?></td>
         </tr>
         <tr>
+            <td><label><strong>RPC:</strong></label></td>
+            <td><?php echo $this->datos[0]['RPC'] ?></td>
             <td><label><strong>Dirección:</strong></label></td>
             <td><?php echo $this->datos[0]['DIRECCION'] ?></td>
             <td><label><strong>Email:</strong></label></td>
