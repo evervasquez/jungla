@@ -37,6 +37,7 @@
                 </td>
                 <td>
                     <button type="button" class="k-button" id="btn_vtna_clientes"><span class="k-icon k-i-search"></span></button>
+                    <button type="button" class="k-button" id="btn_vtna_agrega_cliente"><span class="k-icon k-i-plus"></span></button>
                 </td>
                 <td><label for="tipo_transaccion">Tipo de Transaccion:</label></td>
                 <td>
@@ -305,4 +306,119 @@
     </table>
     </div>
 </div>
+
+
+<div id="vtna_agrega_cliente_juridico">
+    <p><h3>Registrar Cliente Juridico</h3></p>
+    <table>
+        <tr>
+            <td><label>Ruc:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese ruc" required name="documento" onKeyPress="return soloNumeros(event);"
+                   maxlength="11" id="ruc" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="documento"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Razon Social:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese razon social" required name="nombres"
+                   id="razonsocial" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="nombres"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Direccion:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
+                   id="direccionrs" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="direccion"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <p>
+                    <button type="button" class="k-button" id="btn_inserta_cliente_juridico">Guardar</button>
+                    <button type="button" class="k-button cancel" id="btn_cancelar_cliente_juridico">Cancelar</button>
+                </p>
+            </td>
+            <td>
+                <div class="msgerror"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="vtna_agrega_cliente_natural">
+    <p><h3>Registrar Cliente Natural</h3></p>
+    <table>
+        <tr>
+            <td><label>DNI:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese dni" required name="documento" onKeyPress="return soloNumeros(event);"
+                   maxlength="8" id="dni" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="documento"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Nombre:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese nombre" required name="nombres"
+                   id="nombre" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="nombres"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Apellidos:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese apellidos" required name="apellidos"
+                   id="apellidos" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="apellidos"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Direccion:</label></td>
+            <td>
+                <input type="text" class="k-textbox" placeholder="Ingrese direccion" required name="direccion"
+                   id="direccion" value=""/>
+            </td>
+            <td>
+                <div class="k-invalid-msg msgerror" data-for="direccion"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Sexo:</label></td>
+            <td>
+                <input type="radio" name="sexo" value="1" checked="checked" id="sexo_mn"/>M
+                <input type="radio" name="sexo" value="0" />F
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <p>
+                    <button type="button" class="k-button" id="btn_inserta_cliente_natural">Guardar</button>
+                    <button type="button" class="k-button cancel" id="btn_cancelar_cliente_natural">Cancelar</button>
+                </p>
+            </td>
+            <td>
+                <div class="msgerror"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
 <div id="fondooscuro"></div>
