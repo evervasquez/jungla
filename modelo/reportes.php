@@ -237,22 +237,77 @@ class reportes extends Main{
     }
     public function selecciona_compras_x_producto($idprod_fecha_inicio_fecha_fin){
         $datos = $idprod_fecha_inicio_fecha_fin;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_compras_x_producto", $datos);
+        $r = $this->get_consulta("pa_selecciona_compras_x_producto", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
     public function selecciona_productos_comprados($fecha_inicio_fecha_fin){
         $datos = $fecha_inicio_fecha_fin;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_productos_comprados", $datos);
+        $r = $this->get_consulta("pa_selecciona_productos_comprados", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
     public function selecciona_compras_x_intervalo_fechas($fecha_inicio_fecha_fin){
         $datos = $fecha_inicio_fecha_fin;
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_compras_x_intervalo_fechas", $datos);
+        $r = $this->get_consulta("pa_selecciona_compras_x_intervalo_fechas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        return $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
     }
+    public function selecciona_habitaciones_detalle_estadia($idventa){
+        $datos = array($idventa);
+        $r = $this->get_consulta("pa_selecciona_habitaciones_detalle_estadia", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
+    }
+    public function selecciona_ventas($idventa){
+        $datos = array($idventa);
+        $r = $this->get_consulta("pa_selecciona_ventas", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
+    }
+    public function selecciona_detalle_estadia_x_huesped($idventa){
+        $datos = array($idventa);
+        $r = $this->get_consulta("pa_selecciona_de_x_h", $datos);
+        if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
+        if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);       
+            return $stmt->fetchall();
+        };
+    }
+    
     
     
 //    public function index() {

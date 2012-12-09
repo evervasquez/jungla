@@ -1,4 +1,4 @@
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm" target="_blank">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo" value="<?php echo $this->datos[0]['IDVENTA']?>"/>
     <table>
@@ -168,10 +168,8 @@
         </tr>
     </table>
     <p>
-        <td colspan="2" align="center">
-            <button type="button" class="k-button" id="btn_confirmar">Confirmar</button>
-            <a href="<?php echo BASE_URL ?>estadia" class="k-button cancel">Cancelar</a>
-        </td>
+        <a type="button"  class="k-button" id="btn_confirmar" target="_blank">Confirmar</a>
+        <a href="<?php echo BASE_URL ?>estadia" class="k-button cancel">Cancelar</a>
     </p>
 </form>
 
