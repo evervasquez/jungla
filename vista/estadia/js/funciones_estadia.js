@@ -228,8 +228,8 @@ $(document).ready(function(){
     
     $("#btn_selecciona_ciudad").click(function(){
         i=$("#index_tr").val();
-        idc=$("#ubigeo").val();
-        c=$("#ubigeo option:selected").html();
+        idc=$("#ciudades").val();
+        c=$("#ciudades option:selected").html();
         html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
         $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
         $("#vtna_busca_ciudades").fadeOut(300);
