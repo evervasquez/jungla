@@ -1,90 +1,92 @@
-    $(function(){
-        $(".tabgrilla").kendoGrid({
-            dataSource: {
-                pageSize: 7
-            },
-            pageable: true,
-            columns: [{field:"Codigo", width:8},
-                {field:"TipoTransaccion", width:15},
-                {field:"NroComprobante", width:15},
-                {field:"Cliente", width:25},
-                {field:"FechaVenta", width:10},
-                {field:"Empleado", width:10},
-                {field:"Acciones", width:8,attributes:{class:"acciones"}}]
-        });
-        $( "#buscar" ).focus();
-        function buscar(){
-            $.post('/jungla/ventas/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
-                HTML = '<table border="1" class="tabgrilla">'+
-                        '<tr>'+
-                            '<th>Codigo</th>'+
-                            '<th>Tipo de Transaccion</th>'+
-                            '<th>Nro.Comprobante</th>'+
-                            '<th>Cliente</th>'+
-                            '<th>Fecha de Venta</th>'+
-                            '<th>Empleado</th>'+
-                            '<th>Acciones</th>'+
-                        '</tr>';
-
-                for(var i=0;i<datos.length;i++){
-                    HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].IDVENTA+'</td>';
-                    HTML = HTML + '<td>'+datos[i].TIPO+'</td>';
-                    HTML = HTML + '<td>'+datos[i].NRO_DOCUMENTO+'</td>';
-                    HTML = HTML + '<td>'+datos[i].CLIENTE+'</td>';
-                    HTML = HTML + '<td>'+datos[i].FECHA_VENTA+'</td>';
-                    HTML = HTML + '<td>'+datos[i].EMPLEADO+'</td>';
-                    var eliminar='/jungla/ventas/eliminar/'+datos[i].IDVENTA;  
-                    HTML = HTML + '<td><a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDVENTA+'\')" class="imgview"></a>';
-                    HTML = HTML + '</td>';
-                    HTML = HTML + '</tr>';
-                }
-                HTML = HTML + '</table>'
-                $("#grilla").html(HTML);
-                $(".tabgrilla").kendoGrid({
-                    dataSource: {
-                        pageSize: 7
-                    },
-                    pageable: true,
-                    columns: [{field:"Codigo", width:8},
-                        {field:"TipoTransaccion", width:15},
-                        {field:"NroComprobante", width:15},
-                        {field:"Cliente", width:25},
-                        {field:"FechaVenta", width:10},
-                        {field:"Empleado", width:10},
-                        {field:"Acciones", width:8,attributes:{class:"acciones"}}]
-                });
-            },'json');
-        }
-        $("#buscar").keypress(function(event){
-           if(event.which == 13){
-               buscar();
-           } 
-        });
-        
-        $("#btn_buscar").click(function(){
-            buscar();
-            $("#buscar").focus();
-        });
-        
-    function salir(){
-            $("#vtna_ver_venta").fadeOut(300);
-            $("#fondooscuro").fadeOut(300);
-            $("#buscar").focus();
-        }
-       $("#vtna_ver_venta").hide();
-       $("#aceptar").live('click',function(){
-           salir();
-       });
-        document.onkeydown = function(evt) {
-            evt = evt || window.event;
-            if (evt.keyCode == 27) {
-                salir();
-            }
-        };
-       
+$(function(){
+    $(".tabgrilla").kendoGrid({
+        dataSource: {
+            pageSize: 7
+        },
+        pageable: true,
+        columns: [{field:"Codigo", width:8},
+            {field:"TipoTransaccion", width:15},
+            {field:"NroComprobante", width:15},
+            {field:"Cliente", width:25},
+            {field:"FechaVenta", width:10},
+            {field:"Empleado", width:10},
+            {field:"Acciones", width:8,attributes:{class:"acciones"}}]
     });
+    $( "#buscar" ).focus();
+    function buscar(){
+        $.post('/jungla/ventas/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            HTML = '<table border="1" class="tabgrilla">'+
+                    '<tr>'+
+                        '<th>Codigo</th>'+
+                        '<th>Tipo de Transaccion</th>'+
+                        '<th>Nro.Comprobante</th>'+
+                        '<th>Cliente</th>'+
+                        '<th>Fecha de Venta</th>'+
+                        '<th>Empleado</th>'+
+                        '<th>Acciones</th>'+
+                    '</tr>';
+
+            for(var i=0;i<datos.length;i++){
+                HTML = HTML + '<tr>';
+                HTML = HTML + '<td>'+datos[i].IDVENTA+'</td>';
+                HTML = HTML + '<td>'+datos[i].TIPO+'</td>';
+                HTML = HTML + '<td>'+datos[i].NRO_DOCUMENTO+'</td>';
+                HTML = HTML + '<td>'+datos[i].CLIENTE+'</td>';
+                HTML = HTML + '<td>'+datos[i].FECHA_VENTA+'</td>';
+                HTML = HTML + '<td>'+datos[i].EMPLEADO+'</td>';
+                var eliminar='/jungla/ventas/eliminar/'+datos[i].IDVENTA;  
+                HTML = HTML + '<td><a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
+                HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDVENTA+'\')" class="imgview"></a>';
+                HTML = HTML + '</td>';
+                HTML = HTML + '</tr>';
+            }
+            HTML = HTML + '</table>'
+            $("#grilla").html(HTML);
+            $(".tabgrilla").kendoGrid({
+                dataSource: {
+                    pageSize: 7
+                },
+                pageable: true,
+                columns: [{field:"Codigo", width:8},
+                    {field:"TipoTransaccion", width:15},
+                    {field:"NroComprobante", width:15},
+                    {field:"Cliente", width:25},
+                    {field:"FechaVenta", width:10},
+                    {field:"Empleado", width:10},
+                    {field:"Acciones", width:8,attributes:{class:"acciones"}}]
+            });
+        },'json');
+    }
+    $("#buscar").keypress(function(event){
+       if(event.which == 13){
+           buscar();
+       } 
+    });
+
+    $("#btn_buscar").click(function(){
+        buscar();
+        $("#buscar").focus();
+    });
+
+    function salir(){
+        $("#vtna_ver_venta").fadeOut(300);
+        $("#fondooscuro").fadeOut(300);
+        $("#buscar").focus();
+    }
+    $("#vtna_ver_venta").hide();
+    $("#aceptar").live('click',function(){
+       salir();
+    });
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            salir();
+        }
+    };
+
+});
+    
+    
     function ver(id){
            $.post('/jungla/ventas/ver','idventa='+id,function(datos){
                 html= '<h3>Datos de la Venta N°: '+datos[0]['NRO_DOCUMENTO']+'</h3>';

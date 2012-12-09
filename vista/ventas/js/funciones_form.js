@@ -409,6 +409,87 @@ $(document).ready(function(){
        $("#importe").val(importe);
        $("#igv").blur();
    });
+    
+    $("#vtna_agrega_cliente_juridico").hide();
+    $("#vtna_agrega_cliente_natural").hide();
+    //insertar cliente
+    $("#btn_vtna_agrega_cliente").click(function(){
+        if($("#tipo_comprobante").val()==55){
+            $("#vtna_agrega_cliente_juridico").hide();
+            $("#vtna_agrega_cliente_natural").show();
+        }else{
+            $("#vtna_agrega_cliente_juridico").show();
+            $("#vtna_agrega_cliente_natural").hide();
+        }
+    });
+    
+    //inserta cliente natural
+    $("#btn_inserta_cliente_natural").click(function(){
+        if($("#sexo_mn").is(":checked")){
+            sexo=1;
+        }else{
+            sexo=0;
+        }
+        $.post('/jungla/ventas/insertar_cliente_natural','nombres='+$("#nombre").val()+'&apellidos='+$("#apellidos").val()
+            +'&documento='+$("#dni").val()+'&direccion='+$("#direccion").val()+'&sexo='+sexo,
+        function(datos){
+            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#cliente").val($("#nombre").val()+' '+$("#apellidos").val());
+            $("#vtna_agrega_cliente_natural").hide();
+            $("#nombre").val('');
+            $("#apellidos").val('');
+            $("#dni").val('');
+            $("#direccion").val('');
+            $("#sexo_mn").attr("checked",true);
+        },'json');
+    });
+    
+    $("#btn_cancelar_cliente_juridico").click(function(){
+        $("#vtna_agrega_cliente_natural").hide();
+    });
+    
+    //verficar si existe dni
+    $("#dni").blur(function(){
+        if($(this).val()!='' && $(this).val().length==8){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#dni").val()+'&filtro=2',function(datos){
+                if(datos.length>0){
+                    alert('Ya esta registrado un cliente con este Nro de DNI...');
+                    $("#dni").val('');
+                }   
+            },'json');
+        }
+    });
+    
+    //inserta cliente juridico
+    $("#btn_inserta_cliente_juridico").click(function(){
+        $.post('/jungla/estadia/inserta_cliente_juridico','nombres='+$("#razonsocial").val()+'&documento='+$("#ruc").val()+
+            '&direccion='+$("#direccionrs").val(),
+        function(datos){
+            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#cliente").val($("#razonsocial").val());
+            $("#vtna_agrega_cliente_juridico").hide();
+            $("#ruc").val('');
+            $("#razonsocial").val('');
+            $("#direccionrs").val('');
+        },'json');
+    });
+    
+    $("#btn_cancelar_cliente_juridico").click(function(){
+        $("#vtna_agrega_cliente_juridico").hide();
+    }); 
+    
+    //verificar nro de ruc
+    $("#ruc").blur(function(){
+        if($(this).val()!='' && $(this).val().length==11){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+                if(datos.length>0){
+                    alert('Ya esta registrado un cliente con este Nro de RUC...');
+                    $("#ruc").val('');
+                }   
+            },'json');
+        }
+    });
+    
 });
 
 function seleccionar_productos(id,producto,um,pu){
