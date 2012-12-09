@@ -92,6 +92,8 @@ $(document).ready(function(){
         tc=$('input:checkbox').length;
         cs=$('input:checkbox').filter(":checked").length;
         if(tc==cs){
+            setTimeout("window.location='/jungla/estadia'",1000);
+            
             $("#frm").submit();
         }else{
             alert("Asegurese de confirmar los Doc. de Ident. de todos los pasajeros.\n"+

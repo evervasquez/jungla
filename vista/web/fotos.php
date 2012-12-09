@@ -1,3 +1,4 @@
+<div class='titleContacto'>GALERIA</div>
 <?php
     $divfotos;
     include("fb.php");

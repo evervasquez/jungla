@@ -1,34 +1,19 @@
     <div id="servicios">
     	<div id="titServicios">
-            <label>La Jungla ofrece los siguientes servicios</label>
+            <h3>La Jungla ofrece los siguientes servicios</h3>
         </div>
-        <div class="textServicios">HOSPEDAJE, RESTAURANTE EL PANDISHO, AUDITORIUM, PISCINA CON HIDROMASAJES, SAUNA, TOURS Y ORGANIZAMOS EVENTOS.</div>
-        <div class="titcuServicios">
-            Habitaciones
-        </div>
-        <div class="textServicios">CON AIRE ACONDICIONADO Y CON VENTILADOR, CON BAÑO PRIVADO (AGUA FRIA Y CALIENTE),  TV CON CABLE Y WIFFI.</div>
-        <div>
-            <img src="<?php echo BASE_URL ?>lib/img/fotos/habitaciones.jpg" class="imgServicios" />
-        </div>
-        <div class="titcuServicios">
-            Auditorium
-        </div>
-        <div class="textServicios">CUENTAN CON BAÑO PROPIO, MESAS, SILLAS, PANELES, PIZARRA ACRILICA, ECRAM, VENTILACION Y AREAS VERDES.<br>EL OJE, CAP. PARA 500 PAX./EL ISHPINGO, CAP. PARA 200 PAX. Y LA SHAPAJA Y EL SOTANO CAP. PARA 100 PAX.</div>
-        <div>
-            <img src="<?php echo BASE_URL ?>lib/img/fotos/eloje.jpg" class="imgServicios" />
-        </div>
-        <div class="titcuServicios">
-            Restaurante
-        </div>
-        <div class="textServicios">RESTAURANTE CON COMIDA REGIONAL, NACIONAL Y ATENCIÓN PARA EVENTOS.</div>
-        <div>
-            <img src="<?php echo BASE_URL ?>lib/img/fotos/restaurante.jpg" class="imgServicios" />
-        </div>
-        <div class="titcuServicios">
-            Piscina
-        </div>
-        <div class="textServicios">PISCINA CON  HIDROMASAJE, JACUZZI, ADEMÁS, CON PATERA PARA NIÑOS.</div>
-        <div>
-            <img src="<?php echo BASE_URL ?>lib/img/fotos/piscina.jpg" class="imgServicios" />
-        </div>
+        <?php if (isset($this->datos) && count($this->datos)) {?>
+                <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+                <div class="titcuServicios">
+                    <?php echo $this->datos[$i]['TITULO'] ?>
+                </div>
+                <div class="textServicios"><?php echo $this->datos[$i]['DESCRIPCION'] ?></div>
+                    <?php if (isset ($this->datos[$i]['IMAGEN']) && ($this->datos[$i]['IMAGEN'] != " ")){?>
+                <div>
+                       <a rel="sexylightbox[kmx]" href="<?php echo $_params['ruta_img']?>articulos/<?php echo $this->datos[$i]['IMAGEN'] ?>" title="<?php echo $this->datos[$i]['TITULO'] ?>">
+                            <img src="<?php echo $_params['ruta_img']?>articulos/thumb/thumb_<?php echo $this->datos[$i]['IMAGEN'] ?>" class="imgServicios" />
+                        </a>
+                </div>
+                        <?php } ?>
+                <?php }} else echo "<h1>No hay articulos</h1>"; ?>
     </div>

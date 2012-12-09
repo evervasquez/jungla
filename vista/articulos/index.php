@@ -16,6 +16,7 @@
             <th>Titulo</th>
             <th>Descripcion</th>
             <th>Imagen</th>
+            <th>Tipo</th>
             <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -30,6 +31,7 @@
                     </a>
                     <?php } ?>
                 </td>
+                <td><?php echo $this->datos[$i]['TIPO'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>articulos/editar/<?php echo $this->datos[$i]['IDARTICULO'] ?>')" class="imgedit" ></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>articulos/eliminar/<?php echo $this->datos[$i]['IDARTICULO'] ?>')" class="imgdelete"></a>
