@@ -49,7 +49,7 @@
                 <select class="combo" placeholder="Seleccione..." name="categoria">
                     <option></option>
                     <?php for($i=0;$i<count($this->datos_categorias);$i++){ ?>
-                        <?php if( $this->datos[0]['idcategoria'] == $this->datos_categorias[$i]['IDCATEGORIA'] ){ ?>
+                        <?php if( $this->datos[0]['IDCATEGORIA'] == $this->datos_categorias[$i]['IDCATEGORIA'] ){ ?>
                     <option value="<?php echo $this->datos_categorias[$i]['IDCATEGORIA'] ?>" selected="selected"><?php echo $this->datos_categorias[$i]['DESCRIPCION'] ?></option>
                         <?php } else { ?>
                     <option value="<?php echo $this->datos_categorias[$i]['IDCATEGORIA'] ?>"><?php echo $this->datos_categorias[$i]['DESCRIPCION'] ?></option>

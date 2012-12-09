@@ -27,7 +27,7 @@ class interfaz_contable extends Main{
     }
     public function selecciona_datos_empresa(){
         $datos = array(1);
-        $r = consulta::procedimientoAlmacenado("pa_selecciona_datos_empresa", $datos);
+        $r = $this->get_consulta("pa_selecciona_datos_empresa", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
          if (BaseDatos::$_archivo == 'OCI') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
