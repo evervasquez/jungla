@@ -52,6 +52,7 @@ class cobros_controlador extends controller{
         $this->_vista->datos=$this->_cuota_cobro->selecciona();
         $this->_vista->titulo = 'Cronograma de Cobros';
         $this->_vista->btn_action = BASE_URL.'cobros/amortizar/'.$idventa;
+        $this->_vista->setJs(array('funciones_cronograma'));
         $this->_vista->renderizar('cronograma');
     }
     

@@ -50,6 +50,7 @@ class deudas_controlador extends controller {
         $this->_vista->datos = $this->_cuota_pago->selecciona();
         $this->_vista->titulo = 'Cronograma de Pagos';
         $this->_vista->btn_action = BASE_URL . 'deudas/amortizar/' . $idcompra . '/' . $monto_restante;
+        $this->_vista->setJs(array('funciones_cronograma'));
         $this->_vista->renderizar('cronograma');
     }
 
