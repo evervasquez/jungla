@@ -83,7 +83,7 @@ $(document).ready(function(){
         },'json');        
     }
     function buscar_producto2(){
-        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+        $.post('/jungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -98,7 +98,7 @@ $(document).ready(function(){
                 HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
                 HTML = HTML + '<td>'+datos[i].UM+'</td>';
                 HTML = HTML + '<td>'+datos[i].PRECIO_UNITARIO+'</td>';
-                id=datos[i].idproducto;
+                id=datos[i].IDPRODUCTO;
                 producto=datos[i].DESCRIPCION;
                 um=datos[i].UM;
                 pu=datos[i].PRECIO_UNITARIO;
@@ -113,7 +113,7 @@ $(document).ready(function(){
                     },
                     pageable: true
                 });
-        },'json');        
+        },'json');      
     }
     
     //asignacion de productos o paquetes al detalle
