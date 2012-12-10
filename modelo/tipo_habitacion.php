@@ -41,7 +41,7 @@ class tipo_habitacion extends Main{
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->costo, $this->camas);
-        $r = $this->get_consulta("pa_inserta_actualiza_tipo_habitacion", $datos);
+        $r = $this->get_consulta("pa_inserta_act_tipo_habitacion", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -49,7 +49,7 @@ class tipo_habitacion extends Main{
 
     public function actualiza() {
         $datos = array($this->idtipo_habitacion, $this->descripcion, $this->costo, $this->camas);
-        $r = $this->get_consulta("pa_inserta_actualiza_tipo_habitacion", $datos);
+        $r = $this->get_consulta("pa_inserta_act_tipo_habitacion", $datos);
         $error = $r[1];
         $r = null;
         return $error;

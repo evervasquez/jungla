@@ -12,7 +12,7 @@ class ruta_huesped extends Main{
 
     public function inserta() {
         $datos = array(0, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, $this->idcliente, $this->idventa);
-        $r = $this->get_consulta("pa_inserta_actualiza_ruta_huesped", $datos);
+        $r = $this->get_consulta("pa_inserta_act_ruta_huesped", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -21,7 +21,7 @@ class ruta_huesped extends Main{
     public function actualiza() {
         $datos = array($this->idruta_huesped, $this->observaciones, $this->idtipo_ruta, $this->idubigeo, 
             $this->idcliente, $this->idventa);
-        $r = $this->get_consulta("pa_inserta_actualiza_ruta_huesped", $datos);
+        $r = $this->get_consulta("pa_inserta_act_ruta_huesped", $datos);
         $error = $r[1];
         $r = null;
         return $error;

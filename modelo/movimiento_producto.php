@@ -27,7 +27,7 @@ class movimiento_producto extends Main{
                 $this->idempleado, 0, $this->fecha);
 //        echo '<pre>';
 //                print_r($datos);exit;
-        $r = $this->get_consulta("pa_inserta_actualiza_movimiento_producto", $datos);
+        $r = $this->get_consulta("pa_inserta_act_movimiento_p", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -36,7 +36,7 @@ class movimiento_producto extends Main{
     public function actualiza() {
         $datos = array($this->idcompra, $this->idproducto, $this->idtipo_movimiento, $this->cantidad,
                 $this->idempleado, $this->idmovimiento_producto, $this->fecha);
-        $r = $this->get_consulta("pa_inserta_actualiza_movimiento_producto", $datos);
+        $r = $this->get_consulta("pa_inserta_act_movimiento_p", $datos);
         $error = $r[1];
         $r = null;
         return $error;

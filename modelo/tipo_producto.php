@@ -39,7 +39,7 @@ class tipo_producto extends Main{
 
     public function inserta() {
         $datos = array(0, $this->descripcion);
-        $r = $this->get_consulta("pa_inserta_actualiza_tipo_producto", $datos);
+        $r = $this->get_consulta("pa_inserta_act_tipo_producto", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -47,7 +47,7 @@ class tipo_producto extends Main{
 
     public function actualiza() {
         $datos = array($this->idtipo_producto, $this->descripcion);
-        $r = $this->get_consulta("pa_inserta_actualiza_tipo_producto", $datos);
+        $r = $this->get_consulta("pa_inserta_act_tipo_producto", $datos);
         $error = $r[1];
         $r = null;
         return $error;

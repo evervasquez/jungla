@@ -15,7 +15,7 @@ class proveedores extends Main{
     public function inserta() {
         $datos = array(0, $this->razon_social, $this->representante, $this->ruc, 
             $this->telefono, $this->direccion, $this->email, $this->idubigeo);
-        $r = $this->get_consulta("pa_inserta_actualiza_proveedores", $datos);
+        $r = $this->get_consulta("pa_inserta_act_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -24,7 +24,7 @@ class proveedores extends Main{
     public function actualiza() {
         $datos = array($this->idproveedor, $this->razon_social, $this->representante, $this->ruc, 
             $this->telefono, $this->direccion, $this->email, $this->idubigeo);
-        $r = $this->get_consulta("pa_inserta_actualiza_proveedores", $datos);
+        $r = $this->get_consulta("pa_inserta_act_proveedores", $datos);
         $error = $r[1];
         $r = null;
         return $error;
