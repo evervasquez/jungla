@@ -176,12 +176,14 @@
                 <td><?php echo $this->datos_productos[$i]['DESCRIPCION'] ?></td>
                 <td><?php echo $this->datos_productos[$i]['UM'] ?></td>
                 <td><?php echo $this->datos_productos[$i]['PRECIO_UNITARIO'] ?></td>
-                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>',
+                <td><a href="javascript:void(0)" onclick="seleccionar_productos2('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>',
                     '<?php echo utf8_encode($this->datos_productos[$i]['DESCRIPCION']) ?>','<?php echo $this->datos_productos[0]['UM']?>',
                         <?php echo $this->datos_productos[$i]['PRECIO_UNITARIO'] ?>)" class="imgselect"></a></td>
             </tr>
         <?php } ?>
     </table>
     </div>
+</div>
+
 </div>
 <div id="fondooscuro"></div>

@@ -32,7 +32,7 @@
             <td>
                 <a href="javascript:void(0)" class="imgdelete" onclick="eliminar('<?php echo BASE_URL?>ventas/eliminar/<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
                 <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
-                <a href="javascript:void(0)" class="print" onclick="imprimir('<?php echo $this->datos[$i]['IDVENTA'] ?>', '<?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?>' )" target="_blank"></a>  
+                <a href="javascript:void()" class="print" onclick="imprimir('<?php echo $this->datos[$i]['IDVENTA'] ?>', '<?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?>' )" target="_blank"></a>  
             </td>
         </tr>
     <?php } ?>

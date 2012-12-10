@@ -172,16 +172,16 @@ $(function(){
        function imprimir(idventa, nrodocumento){
            var tipo = nrodocumento.toString().substr(0, 2);
            var cobrado = nrodocumento.toString().substr(3, 7);
-           setTimeout("window.location = '/jungla/ventas'", 500);
+           
            if(cobrado!=""){
                switch (tipo){
                     case 'TF':
-                        //setTimeout("window.location = '/jungla/reportes/ticket_factura_venta/"+idventa+"'", 0);
-                        
-                        window.location = "/jungla/reportes/ticket_factura_venta/"+idventa;
+                        setTimeout("window.location = '/jungla/ventas'", 1000);
+                        setTimeout("window.open('/jungla/reportes/ticket_factura_venta/"+idventa+"')", 500);
                         break;
                     case 'TS':
-                        window.location = "/jungla/reportes/ticket_boleta_venta/"+idventa;
+                        setTimeout("window.location = '/jungla/ventas'", 1000);
+                        setTimeout("window.open('/jungla/reportes/ticket_boleta_venta/"+idventa+"')", 500);
                         break;
                     default:
                         alert("El tipo de documento no es correcto.");
