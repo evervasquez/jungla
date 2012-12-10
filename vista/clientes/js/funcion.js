@@ -187,10 +187,10 @@
                     html+= '<td>'+datos[0]['EMAIL']+'</td>';
                     html+= '</tr>';
                     }
-                    if(datos[0]['UBIGEO'] != null && datos[0]['UBIGEO'] != ' '){
+                    if(datos[0]['XPAIS'] != null && datos[0]['XPAIS'] != ' '){
                     html+= '<tr>';
-                    html+= '<td>Ciudad:</td>';
-                    html+= '<td>'+datos[0]['UBIGEO']+'</td>';
+                    html+= '<td>Pais:</td>';
+                    html+= '<td>'+datos[0]['XPAIS']+'</td>';
                     html+= '</tr>';
                     }
                }

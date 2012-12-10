@@ -349,6 +349,15 @@ $(document).ready(function(){
         function(datos){
             $("#idcliente").val(datos[0].IDCLIENTE);
             $("#cliente").val($("#nombres").val()+' '+$("#apellidos").val());
+            $("#document").val($("#nrodoc").val());
+            $("#nombres").val('');
+            $("#apellidos").val('');
+            $("#nrodoc").val('');
+            $("#fecha_nacimiento").val('');
+            $("#telefono").val('');
+            $("#email").val('');
+            $("#direccion").val('');
+            $("#sexo_m").attr("checked",true);
         },'json');
         $("#vtna_inserta_pasajero").fadeOut();
         $("#fondooscuro").fadeOut();
