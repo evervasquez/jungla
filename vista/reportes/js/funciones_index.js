@@ -219,3 +219,27 @@ function seleccionar_productos2(id,producto,um,pu){
     $("#fondooscuro").fadeOut(300);
     $("#chk_todo2").attr("checked", false);
 }
+function todo(Form)
+{
+    if(Form.chk_todo.checked){
+        
+        Form.idproducto.value = '*';
+        Form.producto.value = '(TODOS)';
+    } else{
+        Form.idproducto.value = '';
+        Form.producto.value = '';
+        Form.producto.placeholder = 'Busque Producto';
+    }
+}
+function todo2(Form)
+{
+    if(Form.chk_todo2.checked){
+        
+        Form.idproducto2.value = '*';
+        Form.producto2.value = '(TODOS)';
+    } else{
+        Form.idproducto2.value = '';
+        Form.producto2.value = '';
+        Form.producto2.placeholder = 'Busque Producto';
+    }
+}

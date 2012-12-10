@@ -1,48 +1,10 @@
-<script type="text/javascript">
-    $(document).ready(function(){
-        
-        $(".tablaok").kendoGrid({
-            columns: [{field:"Reportes", width:80},
-                {field:"Generar", width:20,attributes:{class:"acciones"}}]
-        });
-        $(".tablaok2").kendoGrid({
-            columns: [{field:"", width:80},
-                {field:"", width:20,attributes:{}}]
-        });
-    });
-
-function todo(Form)
-{
-    if(Form.chk_todo.checked){
-        
-        Form.idproducto.value = '*';
-        Form.producto.value = '(TODOS)';
-    } else{
-        Form.idproducto.value = '';
-        Form.producto.value = '';
-        Form.producto.placeholder = 'Busque Producto';
-    }
-}
-function todo2(Form)
-{
-    if(Form.chk_todo2.checked){
-        
-        Form.idproducto2.value = '*';
-        Form.producto2.value = '(TODOS)';
-    } else{
-        Form.idproducto2.value = '';
-        Form.producto2.value = '';
-        Form.producto2.placeholder = 'Busque Producto';
-    }
-}
-</SCRIPT>
-</script>
 <h3>Reportes Disponibles</h3>
 
 <form method="post" action="<?php echo BASE_URL ?>reportes/estadistica_mensual" target="_blank">
-    <table border="1" width="40%" class="tablaok">
-        <td>Estadística Mensual de Turismo 20120 <br>PARA ESTABLECIMIENTOS DE HOSPEDAJE<br>* Seleccione el mes: 
-            <select name="estadistica_mes" class="">
+    <table width="70%"  class="tablaok">
+        <caption>Estadística Mensual de Turismo 2012</caption>
+        <td>PARA ESTABLECIMIENTOS DE HOSPEDAJE<br>* Seleccione el mes: 
+            <select name="estadistica_mes" class="list">
                 <option value="1">Enero</option> 
                 <option value="2">Febrero</option> 
                 <option value="3">Marzo</option> 
@@ -56,7 +18,7 @@ function todo2(Form)
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option> 
             </select>
-            <select name="estadistica_ano" class="">
+            <select name="estadistica_ano" class="list">
                 <option value="2012">2012</option> 
                 <option value="2013">2013</option> 
                 <option value="2014">2014</option> 
@@ -71,48 +33,43 @@ function todo2(Form)
         </td>
     </table>
 </form>
-<!-- -->
-<table border="1" width="40%" class="">
-<tr>
-    <td width="85%">Stock Actual</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual')"/>
-    </td>   
-</tr>
-<tr>
-    <td width="85%">Detalle Estadía</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/detalle_estadia')"/>
-    </td>   
-</tr>
-
-<tr>
-    <td width="85%">Stock Por Ubicación</td>
-    <td width="15%" align="center">
-        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual_ubicac')"/>
-    </td>   
-</tr>
-</table>
 
 <form method="post" action="<?php echo BASE_URL ?>reportes/ventas_x_producto" target="_blank" id="form_ventas_x_producto">
-    <table border="1" width="100%" class="tablaok2">
+    <table width="70%" class="tablaok">
+        <caption>Reporte de Ventas por Producto</caption>
         <tr>
-            <td>Reporte de Ventas por Producto<br>
-                Producto: 
-                
-                <span class="">
-                                <input type="hidden" id="idproducto" name="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            Producto: 
+                        </td>
+                        <td>
+                            <input type="hidden" id="idproducto" name="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
                                 <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
                                    id="producto" value="<?php if(isset ($this->datos[0]['PRODUCTO']))echo $this->datos[0]['PRODUCTO']?>"/>
-                            </span>
-                            <span  class="">
-                                <button type="button" class="k-button btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
-                            </span>
-                
-                <input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Incluir todos los Productos)
-                <br>
-                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
-                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+                        </td>
+                        <td>
+                             <button type="button" class="k-button btn_vtna_productos" hidden="true"><span class="k-icon k-i-search"></span></button>
+                        </td>
+                        <td colspan="2"><input type="checkbox" onclick="todo(this.form)"  id="chk_todo" />(Incluir todos los Productos)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Fecha Inicial:
+                        </td>
+                        <td>
+                            <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                        </td>
+                        <td></td>
+                        <td>
+                            Fecha Final:
+                        </td>
+                        <td>
+                            <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td width="15%" align="center">
                 <input type="submit" value="Generar" class="k-button"/>
@@ -122,10 +79,10 @@ function todo2(Form)
 </form>
 
 <form method="post" action="<?php echo BASE_URL ?>reportes/compras" target="_blank" id="form_compras_x_fecha">
-    <table border="1" width="100%" class="tablaok2">
+    <table width="70%" class="tablaok">
+        <caption>Reporte de Compras</caption>
         <tr>
-            <td>Reporte de Compras<br>
-                
+            <td>
                 Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
                 Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
             </td>
@@ -136,24 +93,41 @@ function todo2(Form)
     </table>
 </form>
 <form method="post" action="<?php echo BASE_URL ?>reportes/compras_x_producto" target="_blank" id="form_compras_x_producto">
-    <table border="1" width="100%" class="tablaok2">
+    <table width="70%" class="tablaok">
+        <caption>Reporte de Compras por Producto</caption>
         <tr>
-            <td>Reporte de Compras por Producto<br>
-                Producto: 
-                
-                <span class="">
-                                <input type="hidden" id="idproducto2" name="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            Producto: 
+                        </td>
+                        <td>
+                            <input type="hidden" id="idproducto2" name="idproducto" value="<?php if(isset ($this->datos[0]['IDPRODUCTO']))echo $this->datos[0]['IDPRODUCTO']?>"/>
                                 <input type="text" class="k-textbox" placeholder="Busque producto" readonly="readonly" 
                                    id="producto2" value="<?php if(isset ($this->datos[0]['PRODUCTO']))echo $this->datos[0]['PRODUCTO']?>"/>
-                            </span>
-                            <span  class="">
-                                <button type="button" class="k-button btn_vtna_productos2" hidden="true"><span class="k-icon k-i-search"></span></button>
-                            </span>
-                
-                <input type="checkbox" onclick="todo2(this.form)"  id="chk_todo2" />(Incluir todos los Productos)
-                <br>
-                Fecha Inicial: <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
-                Fecha Final: <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+                        </td>
+                        <td>
+                             <button type="button" class="k-button btn_vtna_productos2" hidden="true"><span class="k-icon k-i-search"></span></button>
+                        </td>
+                        <td colspan="2"><input type="checkbox" onclick="todo2(this.form)"  id="chk_todo2" />(Incluir todos los Productos)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Fecha Inicial:
+                        </td>
+                        <td>
+                            <input class="datepicker" placeholder="Seleccione..." name="fecha_inicio"/>
+                        </td>
+                        <td></td>
+                        <td>
+                            Fecha Final:
+                        </td>
+                        <td>
+                            <input class="datepicker" placeholder="Seleccione..." name="fecha_fin"/>
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td width="15%" align="center">
                 <input type="submit" value="Generar" class="k-button"/>
@@ -161,6 +135,21 @@ function todo2(Form)
         </tr>
     </table>
 </form>
+<table width="70%"  class="tablaok">
+    <caption>Otros Reportes</caption>
+<tr>
+    <td width="85%">Stock Actual</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual')"/>
+    </td>   
+</tr>
+<tr>
+    <td width="85%">Stock Por Ubicación</td>
+    <td width="15%" align="center">
+        <input type="button" value="Generar" class="k-button" onclick="window.open('<?php echo BASE_URL ?>reportes/stock_actual_ubicac')"/>
+    </td>   
+</tr>
+</table>
 
 <div id="vtna_busca_productos">
     <h3>Lista de Productos</h3>
@@ -195,5 +184,4 @@ function todo2(Form)
     </table>
     </div>
 </div>
-<div id="fondooscuro">
-</div>
+<div id="fondooscuro"></div>
