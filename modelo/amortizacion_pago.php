@@ -9,7 +9,7 @@ class amortizacion_pago extends Main{
 
     public function inserta() {
         $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
-        $r = $this->get_consulta("pa_inserta_actualiza_amortizacion_pago", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_amort_p", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -17,7 +17,7 @@ class amortizacion_pago extends Main{
 
     public function actualiza() {
         $datos = array($this->idcuota_pago, $this->idmovimiento_caja, $this->fecha, $this->monto);
-        $r = $this->get_consulta("pa_inserta_actualiza_amortizacion_pago", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_amort_p", $datos);
         $error = $r[1];
         $r = null;
         return $error;

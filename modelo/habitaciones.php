@@ -12,7 +12,7 @@ class habitaciones extends Main {
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado, $this->tipo_habitacion_predet);
-        $r = $this->get_consulta("pa_inserta_actualiza_habitaciones", $datos);
+        $r = $this->get_consulta("pa_s_inserta_act_habitaciones", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
@@ -30,7 +30,7 @@ class habitaciones extends Main {
 
     public function actualiza() {
         $datos = array($this->idhabitacion, $this->descripcion, $this->nro_habitacion, $this->ventilacion, $this->estado, $this->tipo_habitacion_predet);
-        $r = $this->get_consulta("pa_inserta_actualiza_habitaciones", $datos);
+        $r = $this->get_consulta("pa_s_inserta_act_habitaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
