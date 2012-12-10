@@ -43,7 +43,7 @@ class unidad_medida extends Main{
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->abreviatura);
-        $r = $this->get_consulta("pa_inserta_actualiza_unidad_medida", $datos);
+        $r = $this->get_consulta("pa_inserta_act_unidad_medida", $datos);
         $error = $r[1];
         $r = null;
         return $error;
