@@ -1,6 +1,6 @@
 <h3><?php echo $this->titulo?></h3>
 <p><a type="button" class="k-button" href="<?php echo $this->btn_action ?>">Amortizar</a></p>
-<table border="1">
+<table border="1" class="tabgrilla" widht="50%">
     <tr>
         <th>Nro Cuota</th>
         <th>Fecha de Pago</th>

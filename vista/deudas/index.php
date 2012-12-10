@@ -44,8 +44,8 @@
             <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'] ?></td>
             <td class="tabtr" align="center">
 
-                <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>">[Cronograma]</a>
-                <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>">[Amortizar]</a>
+                <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgcronog"></a>
+                <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgamort"></a>
 
             </td>
         </tr>

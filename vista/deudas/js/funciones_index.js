@@ -38,14 +38,14 @@
                 for(var i=0;i<datos.length;i++){
                     if(datos[i].CONFIRMACION==1){
                         HTML = HTML + '<tr>';
-                        HTML = HTML + '<td>'+datos[i].NRO_DOCUMENTO+'</td>';
+                        HTML = HTML + '<td>'+datos[i].NRO_COMPROBANTE+'</td>';
                         HTML = HTML + '<td>'+datos[i].PROVEEDOR+'</td>';
                         HTML = HTML + '<td>'+datos[i].FECHA_COMPRA+'</td>';
                         HTML = HTML + '<td>'+((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE))+'</td>';
                         HTML = HTML + '<td>'+datos[i].MONTO_PAGADO+'</td>';
                         HTML = HTML + '<td>'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_PAGADO))+'</td>';
-                        HTML = HTML + '<td><a href="/jungla/deudas/cronograma/'+datos[i].IDCOMPRA+'/'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_PAGADO))+'" class="">Cronograma</a>';
-                        HTML = HTML + '<a href="/jungla/deudas/amortizar/'+datos[i].IDCOMPRA+'/'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_PAGADO))+'" class="">Amortizar</a></td>';
+                        HTML = HTML + '<td><a href="/jungla/deudas/cronograma/'+datos[i].IDCOMPRA+'/'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_PAGADO))+'" class="imgcronog"></a>';
+                        HTML = HTML + '<a href="/jungla/deudas/amortizar/'+datos[i].IDCOMPRA+'/'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_PAGADO))+'" class="imgamort"></a></td>';
                         HTML = HTML + '</tr>';
                     }
                 }
@@ -57,6 +57,9 @@
                     },
                     pageable: true
                 });
+                $(".imgcronog").attr("title","Cronograma");
+                $(".imgamort").attr("title","Amortizar");
+                $(".imgcobrar").attr("title","Cobrar");
             },'json');
         }
         $("#buscar").keypress(function(event){

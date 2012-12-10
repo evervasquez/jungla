@@ -1,8 +1,14 @@
+<script>
+    $(document).ready(function(){
+        $(".precio").focus();
+    });
+</script>
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm" onsubmit="return validarEmpleado();">
-    <h3>Amortizar Deuda:</h3>
+    <h3>Amortizar Cobro:</h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo"
             value="<?php if(isset ($this->datos[0]['IDCOMPRA']))echo $this->datos[0]['IDCOMPRA']?>"/>
+<div id="tabla">
 <table align="center">
     <tr>
         <td><label>Fecha Pago:</label></td>
@@ -10,12 +16,14 @@
             <input class="datepicker" readonly="readonly" placeholder="Seleccione fecha" name="fecha_pago" required
                    id="fechapago" value="<?php echo date('d-m-Y')?>"/>
         </td>
+        <td><div class="k-invalid-msg msgerror" data-for="fecha_pago"></div></td>
     </tr>
     <tr>
         <td><label>Monto Amortizado:</label></td>
         <td>
-            <input type="text" class="k-textbox" placeholder="Ingrese motno" required name="monto" />
+            <input class="precio" placeholder="Ingrese monto" required name="monto" id="monto" />
         </td>
+        <td><div class="k-invalid-msg msgerror" data-for="monto"></div></td>
     </tr>
     <tr>
         <td colspan="2" align="center">
@@ -24,5 +32,7 @@
                 <a href="<?php echo BASE_URL ?>cobros" class="k-button cancel">Cancelar</a>
             </p>
         </td>
+        <td><div class="msgerror"></div></td>
     </tr>
 </table>
+</div>
