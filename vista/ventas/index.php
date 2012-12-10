@@ -22,20 +22,20 @@
             <th>Acciones</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
-            <tr>
-                <td><?php echo $this->datos[$i]['IDVENTA'] ?></td>
-                <td><?php echo $this->datos[$i]['TIPO'] ?></td>
-                <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
-                <td><?php echo $this->datos[$i]['CLIENTE'] ?></td>
-                <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
-                <td><?php echo $this->datos[$i]['EMPLEADO'] ?></td>
-                <td>
-                    <a href="javascript:void(0)" class="imgdelete" onclick="eliminar('<?php echo BASE_URL?>ventas/eliminar/<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
-                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
-                    <a href="javascript:void(0)" class="print" onclick="imprimir('<?php echo $this->datos[$i]['IDVENTA'] ?>', '<?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?>' )" target="_blank"></a>  
-                </td>
-            </tr>
-        <?php } ?>
+        <tr>
+            <td><?php echo $this->datos[$i]['IDVENTA'] ?></td>
+            <td><?php echo $this->datos[$i]['TIPO'] ?></td>
+            <td><?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?></td>
+            <td><?php echo $this->datos[$i]['CLIENTE'] ?></td>
+            <td><?php echo $this->datos[$i]['FECHA_VENTA'] ?></td>
+            <td><?php echo $this->datos[$i]['EMPLEADO'] ?></td>
+            <td>
+                <a href="javascript:void(0)" class="imgdelete" onclick="eliminar('<?php echo BASE_URL?>ventas/eliminar/<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
+                <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
+                <a href="javascript:void(0)" class="print" onclick="imprimir('<?php echo $this->datos[$i]['IDVENTA'] ?>', '<?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?>' )" target="_blank"></a>  
+            </td>
+        </tr>
+    <?php } ?>
 </table>
     </div>
     <?php } else { ?>
