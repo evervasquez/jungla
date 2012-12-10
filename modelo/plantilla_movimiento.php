@@ -53,7 +53,7 @@ class plantilla_movimiento extends Main{
             $this->idplantilla_movimiento=0;
         }
         $datos = array($this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber,$this->idplantilla_movimiento);
-        $r = $this->get_consulta("pa_inserta_actualiza_plantilla_movimiento", $datos);
+        $r = $this->get_consulta("pa_inserta_act_plantilla_mov", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -61,7 +61,7 @@ class plantilla_movimiento extends Main{
 
     public function actualiza() {
         $datos = array($this->descripcion, $this->idcuenta,  $this->idconcepto_movimiento,  $this->debe_haber,$this->idplantilla_movimiento);
-        $r = $this->get_consulta("pa_inserta_actualiza_plantilla_movimiento", $datos);
+        $r = $this->get_consulta("pa_inserta_act_plantilla_mov", $datos);
         $error = $r[1];
         $r = null;
         return $error;

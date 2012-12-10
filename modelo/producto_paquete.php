@@ -40,7 +40,7 @@ class producto_paquete extends Main{
 
     public function inserta() {
         $datos = array($this->idpaquete, $this->idproducto, $this->cantidad);
-        $r = $this->get_consulta("pa_inserta_actualiza_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_inserta_act_prod_paq", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -48,7 +48,7 @@ class producto_paquete extends Main{
 
     public function actualiza() {
         $datos = array($this->idpaquete, $this->idproducto, $this->cantidad);
-        $r = $this->get_consulta("pa_inserta_actualiza_producto_paquete", $datos);
+        $r = $this->get_consulta("pa_inserta_act_prod_paq", $datos);
         $error = $r[1];
         $r = null;
         return $error;
