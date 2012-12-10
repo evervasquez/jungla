@@ -211,7 +211,7 @@ class reportes extends Main{
     }
     public function selecciona_ventas_x_producto($idprod_fecha_inicio_fecha_fin){
         $datos = $idprod_fecha_inicio_fecha_fin;
-        $r = $this->get_consulta("pa_selecciona_ventas_x_producto", $datos);
+        $r = $this->get_consulta("pa_selecciona_vent_prod", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
          if (BaseDatos::$_archivo == 'OCI') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);

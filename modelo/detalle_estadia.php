@@ -53,7 +53,7 @@ class detalle_estadia extends Main{
     public function inserta() {
         $datos = array($this->idhabitacion_especifica, $this->idcliente, $this->idventa, $this->estado, 
             $this->fecha_ingreso, $this->fecha_salida, $this->fecha_reserva);
-        $r = $this->get_consulta("pa_inserta_actualiza_detalle_estadia", $datos);
+        $r = $this->get_consulta("pa_inserta_act_detalle_estadia", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -63,7 +63,7 @@ class detalle_estadia extends Main{
 
         $datos = array($this->idcliente, $this->idventa, $this->estado, $this->fecha_ingreso,
             $this->fecha_salida);
-        $r = $this->get_consulta("pa_actualiza_detalle_estadia", $datos);
+        $r = $this->get_consulta("pa_inserta_act_detalle_estadia", $datos);
         $error = $r[1];
         $r = null;
         return $error;

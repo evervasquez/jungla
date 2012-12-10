@@ -39,7 +39,7 @@ class concepto_movimiento extends Main{
 
     public function inserta() {
         $datos = array(0, $this->descripcion);
-        $r = $this->get_consulta("pa_inserta_actualiza_concepto_movimiento", $datos);
+        $r = $this->get_consulta("pa_inserta_act_concepto_mov", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -47,7 +47,7 @@ class concepto_movimiento extends Main{
 
     public function actualiza() {
         $datos = array($this->idconcepto_movimiento, $this->descripcion);
-        $r = $this->get_consulta("pa_inserta_actualiza_concepto_movimiento", $datos);
+        $r = $this->get_consulta("pa_inserta_act_concepto_mov", $datos);
         $error = $r[1];
         $r = null;
         return $error;

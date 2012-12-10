@@ -46,7 +46,7 @@ class habitacion_especifica extends Main{
     public function inserta() {
         $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones
                 , 0);
-        $r = $this->get_consulta("pa_inserta_actualiza_habitacion_especifica", $datos);
+        $r = $this->get_consulta("pa_inserta_act_habitacion_e", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -55,7 +55,7 @@ class habitacion_especifica extends Main{
     public function actualiza() {
         $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones
                 , $this->idhabitacion_especifica);
-        $r = $this->get_consulta("pa_inserta_actualiza_habitacion_especifica", $datos);
+        $r = $this->get_consulta("pa_inserta_act_habitacion_e", $datos);
         $error = $r[1];
         $r = null;
         return $error;
