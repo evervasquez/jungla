@@ -38,9 +38,6 @@ class modulos extends Main{
             return $data;
         } else {
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//            echo '<pre>';
-//            print_r($stmt->fetchall());
-//            die();
             return $stmt->fetchall();
         }
     }
@@ -71,8 +68,13 @@ class modulos extends Main{
         } else {
             die($r[1]);
         }
-        $r = null;
-        return $stmt->fetchall();
+         if (BaseDatos::$_archivo == 'OCI') {
+            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+            return $data;
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $stmt->fetchall();
+        }
     }
 
     public function elimina() {
