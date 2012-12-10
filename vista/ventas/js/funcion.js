@@ -10,7 +10,7 @@ $(function(){
             {field:"Cliente", width:25},
             {field:"FechaVenta", width:10},
             {field:"Empleado", width:10},
-            {field:"Acciones", width:8,attributes:{class:"acciones"}}]
+            {field:"Acciones", width:10,attributes:{class:"acciones"}}]
     });
     $( "#buscar" ).focus();
     function buscar(){
@@ -37,6 +37,7 @@ $(function(){
                 var eliminar='/jungla/ventas/eliminar/'+datos[i].IDVENTA;  
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                 HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDVENTA+'\')" class="imgview"></a>';
+                HTML = HTML + '<a href="javascript:void(0)" onclick="imprimir(\''+datos[i].IDVENTA+'\',\''+datos[i].NRO_DOCUMENTO+'\')" class="print" target="_blank"></a>';
                 HTML = HTML + '</td>';
                 HTML = HTML + '</tr>';
             }
@@ -53,7 +54,7 @@ $(function(){
                     {field:"Cliente", width:25},
                     {field:"FechaVenta", width:10},
                     {field:"Empleado", width:10},
-                    {field:"Acciones", width:8,attributes:{class:"acciones"}}]
+                    {field:"Acciones", width:10,attributes:{class:"acciones"}}]
             });
         },'json');
     }
