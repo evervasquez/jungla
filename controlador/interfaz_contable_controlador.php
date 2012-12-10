@@ -6,7 +6,7 @@ class interfaz_contable_controlador extends controller {
     private $_phpexcel;
 
     public function __construct() {
-        if (!$this->acceso(47)) {
+        if (!$this->acceso(51)) {
             $this->redireccionar('error/access/5050');
         }
         parent::__construct();

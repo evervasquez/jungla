@@ -10,6 +10,9 @@ class entrada_productos_controlador extends controller{
     private $_asientos;
     
     public function __construct() {
+        if (!$this->acceso(9)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_movimiento_producto = $this->cargar_modelo('movimiento_producto');
         $this->_compras= $this->cargar_modelo('compras');

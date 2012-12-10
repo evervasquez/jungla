@@ -7,6 +7,9 @@ class movimiento_caja_controlador extends controller{
     private $_concepto_movimiento;
 
     public function __construct() {
+        if (!$this->acceso(52)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_movimiento_caja=  $this->cargar_modelo('movimiento_caja');
         $this->_caja=  $this->cargar_modelo('caja');

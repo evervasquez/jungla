@@ -29,7 +29,7 @@
             <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
             <td class="tabtr" align="center">
                 <input type="hidden" id="bot<?php echo $i ?>" value="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>" />
-                <a href="" class="imgcobrar" onclick="botcobrar(<?php echo $i; ?>)" target="_blank"></a>
+                <a href="javascript:void(0)" class="imgcobrar" onclick="botcobrar(<?php echo $i; ?>)" target="_blank"></a>
             </td>
         </tr>
         <?php } ?>

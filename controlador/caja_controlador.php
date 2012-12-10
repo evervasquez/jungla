@@ -5,6 +5,9 @@ class caja_controlador extends controller{
     private $_caja;
 
     public function __construct() {
+        if (!$this->acceso(6)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_caja = $this->cargar_modelo('caja');
     }

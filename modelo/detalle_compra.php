@@ -41,7 +41,7 @@ class detalle_compra extends Main{
 
     public function inserta() {
         $datos = array($this->idcompra, $this->idproducto, $this->cantidad, $this->precio);
-        $r = $this->get_consulta("pa_inserta_actualiza_detalle_compra", $datos);
+        $r = $this->get_consulta("pa_inserta_act_detalle_compra", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -49,7 +49,7 @@ class detalle_compra extends Main{
 
     public function actualiza() {
         $datos = array($this->idcompra, $this->idproducto, $this->cantidad, $this->precio);
-        $r = $this->get_consulta("pa_inserta_actualiza_detalle_compra", $datos);
+        $r = $this->get_consulta("pa_inserta_act_detalle_compra", $datos);
         $error = $r[1];
         $r = null;
         return $error;

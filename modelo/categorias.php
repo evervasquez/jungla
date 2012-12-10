@@ -40,7 +40,7 @@ class categorias extends Main{
 
     public function inserta() {
         $datos = array($this->idcategoria, $this->descripcion, $this->nro_elemento);
-        $r = $this->get_consulta("pa_inserta_actualiza_categorias", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_cat", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -48,7 +48,7 @@ class categorias extends Main{
 
     public function actualiza() {
         $datos = array($this->idcategoria, $this->descripcion, $this->nro_elemento);
-        $r = $this->get_consulta("pa_inserta_actualiza_categorias", $datos);
+        $r = $this->get_consulta("pa_inserta_actualiza_cat", $datos);
         $error = $r[1];
         $r = null;
         return $error;

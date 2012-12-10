@@ -11,6 +11,9 @@ class cobros_controlador extends controller{
     private $_asiento;
     
     public function __construct() {
+        if (!$this->acceso(23)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_cobros = $this->cargar_modelo('cobros');
         $this->_cuota_cobro = $this->cargar_modelo('cuota_cobro');

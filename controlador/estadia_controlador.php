@@ -4,7 +4,7 @@ class estadia_controlador extends controller{
     
     private $_estadia;
     private $_detalle_estadia;
-//    private $_paises;
+    private $_paises;
     private $_membresia;
     private $_profesiones;
     private $_clientes;
@@ -17,10 +17,13 @@ class estadia_controlador extends controller{
     private $_regiones;
 
     public function __construct() {
+        if (!$this->acceso(53)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_estadia = $this->cargar_modelo('estadia');
         $this->_detalle_estadia = $this->cargar_modelo('detalle_estadia');
-//        $this->_paises = $this->cargar_modelo('paises');
+        $this->_paises = $this->cargar_modelo('paises');
         $this->_membresia = $this->cargar_modelo('membresia');
         $this->_profesiones = $this->cargar_modelo('profesiones');
         $this->_clientes = $this->cargar_modelo('clientes');
@@ -87,7 +90,7 @@ class estadia_controlador extends controller{
             $this->redireccionar('estadia');
         }
         
-//        $this->_vista->datos_paises = $this->_paises->selecciona();
+        $this->_vista->datos_paises = $this->_paises->selecciona();
         $this->_regiones->idpais = 193;
         $this->_vista->datos_regiones = $this->_regiones->selecciona();
         $this->_vista->datos_membresias= $this->_membresia->selecciona();
