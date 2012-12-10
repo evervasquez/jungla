@@ -60,6 +60,13 @@
 	display:inline-block;
         border: none;
 }
+.print{
+	background-image:url(../img/print.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
 #cuerpo{
         padding: 20px 0px 20px 0px;
         width: 90%;

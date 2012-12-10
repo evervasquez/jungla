@@ -206,6 +206,8 @@ $(document).ready(function(){
         $("#vtna_busca_paquetes").fadeOut(300);
         $("#txt_buscar_clientes").val('');
         $("#vtna_busca_clientes").fadeOut(300);
+        $("#vtna_agrega_cliente_juridico").fadeOut(300);
+        $("#vtna_agrega_cliente_natural").fadeOut(300);
         $("#txt_buscar_clientes_juridicos").val('');
         $("#vtna_busca_clientes_juridicos").fadeOut(300);
         $("#fondooscuro").fadeOut(300);
@@ -409,6 +411,98 @@ $(document).ready(function(){
        $("#importe").val(importe);
        $("#igv").blur();
    });
+    
+    //insertar cliente
+    $("#btn_vtna_agrega_cliente").click(function(){
+        if($("#tipo_comprobante").val()==55){
+            $("#vtna_agrega_cliente_natural").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
+        }else{
+            $("#vtna_agrega_cliente_juridico").fadeIn(300);
+            $("#fondooscuro").fadeIn(300);
+        }
+    });
+    
+    //inserta cliente natural
+    $("#btn_inserta_cliente_natural").click(function(){
+        d=$("#dni").val();n=$("#nombre").val();a=$("#apellidos").val();dir=$("#direccion").val();
+        if(d=='' || n=='' || a=='' || dir==''){
+            alert("Debe ingresar todos los datos");
+            return 0;
+        }
+        if($("#sexo_mn").is(":checked")){
+            sexo=1;
+        }else{
+            sexo=0;
+        }
+        $.post('/jungla/ventas/insertar_cliente_natural','nombres='+n+'&apellidos='+a
+            +'&documento='+d+'&direccion='+dir+'&sexo='+sexo,
+        function(datos){
+            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#cliente").val($("#nombre").val()+' '+$("#apellidos").val());
+            $("#nombre").val('');
+            $("#apellidos").val('');
+            $("#dni").val('');
+            $("#direccion").val('');
+            $("#sexo_mn").attr("checked",true);
+            salir();
+        },'json');
+    });
+    
+    $("#btn_cancelar_cliente_juridico").click(function(){
+        salir();
+    });
+    $("#btn_cancelar_cliente_natural").click(function(){
+        salir();
+    });
+    
+    //verficar si existe dni
+    $("#dni").blur(function(){
+        if($(this).val()!='' && $(this).val().length==8){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#dni").val()+'&filtro=2',function(datos){
+                if(datos.length>0){
+                    alert('Ya esta registrado un cliente con este Nro de DNI...');
+                    $("#dni").val('');
+                }   
+            },'json');
+        }
+    });
+    
+    //inserta cliente juridico
+    $("#btn_inserta_cliente_juridico").click(function(){
+        r=$("#ruc").val();rs=$("#razonsocial").val();d=$("#direccionrs").val();
+        if(r=='' || rs=='' || d==''){
+            alert("Debe ingresar todos los datos");
+            return 0;
+        }
+        $.post('/jungla/estadia/inserta_cliente_juridico','nombres='+rs+'&documento='+r+
+            '&direccion='+d,
+        function(datos){
+            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#cliente").val($("#razonsocial").val());
+            $("#ruc").val('');
+            $("#razonsocial").val('');
+            $("#direccionrs").val('');
+            salir();
+        },'json');
+    });
+    
+    $("#btn_cancelar_cliente_juridico").click(function(){
+        $("#vtna_agrega_cliente_juridico").hide();
+    }); 
+    
+    //verificar nro de ruc
+    $("#ruc").blur(function(){
+        if($(this).val()!='' && $(this).val().length==11){
+            $.post('/jungla/pasajeros/buscador','cadena='+$("#ruc").val()+'&filtro=3',function(datos){
+                if(datos.length>0){
+                    alert('Ya esta registrado un cliente con este Nro de RUC...');
+                    $("#ruc").val('');
+                }   
+            },'json');
+        }
+    });
+    
 });
 
 function seleccionar_productos(id,producto,um,pu){

@@ -29,11 +29,11 @@ $(document).ready(function(){
         function(datos){
             $("#idcliente").val(datos[0].IDCLIENTE);
             $("#cliente").val($("#razonsocial").val());
+            salir();
+            $("#ruc").val('');
+            $("#razonsocial").val('');
+            $("#direccionrs").val('');
         },'json');
-        salir();
-        $("#ruc").val('');
-        $("#razonsocial").val('');
-        $("#direccionrs").val('');
     });
     
     //verificar nro de ruc
