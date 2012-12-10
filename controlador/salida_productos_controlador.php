@@ -6,6 +6,9 @@ class salida_productos_controlador extends controller{
     private $_productos;
     
     public function __construct() {
+        if (!$this->acceso(48)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_movimiento_producto = $this->cargar_modelo('movimiento_producto');
         $this->_productos = $this->cargar_modelo('productos');

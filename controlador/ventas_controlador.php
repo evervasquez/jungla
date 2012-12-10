@@ -13,6 +13,9 @@ class ventas_controlador extends controller {
     private $_clientes;
 
     public function __construct() {
+        if (!$this->acceso(21)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_ventas = $this->cargar_modelo('ventas');
         $this->_tipo_transaccion = $this->cargar_modelo('tipo_transaccion');

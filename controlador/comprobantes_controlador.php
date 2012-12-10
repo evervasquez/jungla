@@ -6,6 +6,9 @@ class comprobantes_controlador extends controller{
     private $_tipo_comprobante;
     
     public function __construct() {
+        if (!$this->acceso(49)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_comprobantes=  $this->cargar_modelo('comprobantes');
         $this->_tipo_comprobante=  $this->cargar_modelo('tipo_comprobante');
