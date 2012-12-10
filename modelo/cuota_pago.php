@@ -63,7 +63,7 @@ class cuota_pago extends Main{
 //            $r = $this->get_consulta("pa_inserta_actualiza_cuota_pago", $datos);
 //        }else{
             $datos = array($this->idcuota_pago, $this->monto_pagado);
-            $r = $this->get_consulta("pa_inserta_act_cuota_pago", $datos);
+            $r = $this->get_consulta("pa_actualiza_monto_pagado", $datos);
 //        }
         $error = $r[1];
         $r = null;

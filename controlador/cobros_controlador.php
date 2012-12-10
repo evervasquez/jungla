@@ -67,8 +67,8 @@ class cobros_controlador extends controller{
         }
         
         if($_POST['guardar']==1){
-//            echo '<pre>';
-//            print_r($_POST);exit;
+            echo '<pre>';
+            print_r($_POST);exit;
             //insertar movimiento caja
             $this->_movimiento_caja->idconcepto_movimiento=1;
             $this->_movimiento_caja->idcaja=$datos_caja[0]['IDCAJA'];
