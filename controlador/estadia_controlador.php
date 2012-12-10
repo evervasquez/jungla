@@ -17,6 +17,9 @@ class estadia_controlador extends controller{
     private $_regiones;
 
     public function __construct() {
+        if (!$this->acceso(53)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_estadia = $this->cargar_modelo('estadia');
         $this->_detalle_estadia = $this->cargar_modelo('detalle_estadia');

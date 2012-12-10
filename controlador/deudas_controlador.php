@@ -11,6 +11,9 @@ class deudas_controlador extends controller {
     private $_asientos;
 
     public function __construct() {
+        if (!$this->acceso(19)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_deudas = $this->cargar_modelo('deudas');
         $this->_cuota_pago = $this->cargar_modelo('cuota_pago');

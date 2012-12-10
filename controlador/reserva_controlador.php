@@ -12,6 +12,9 @@ class reserva_controlador extends controller{
     private $_clientes;
     
     public function __construct() {
+        if (!$this->acceso(50)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_habitaciones = $this->cargar_modelo('habitaciones');
         $this->_ventas = $this->cargar_modelo('ventas');
