@@ -44,7 +44,7 @@ class ubicaciones extends Main{
 
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->idalmacen);
-        $r = $this->get_consulta("pa_inserta_actualiza_ubicaciones", $datos);
+        $r = $this->get_consulta("pa_inserta_act_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -52,7 +52,7 @@ class ubicaciones extends Main{
 
     public function actualiza() {
         $datos = array($this->idubicacion, $this->descripcion, $this->idalmacen);
-        $r = $this->get_consulta("pa_inserta_actualiza_ubicaciones", $datos);
+        $r = $this->get_consulta("pa_inserta_act_ubicaciones", $datos);
         $error = $r[1];
         $r = null;
         return $error;
