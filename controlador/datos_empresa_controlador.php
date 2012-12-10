@@ -5,7 +5,7 @@ class datos_empresa_controlador extends controller {
     private $_datos_empresa;
 
     public function __construct() {
-        if (!$this->acceso(50)) {
+        if (!$this->acceso(55)) {
             $this->redireccionar('error/access/5050');
         }
         parent::__construct();

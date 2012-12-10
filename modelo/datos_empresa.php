@@ -13,7 +13,7 @@ class datos_empresa extends Main{
 
     public function selecciona() {
         if(is_null($this->id)){
-            $this->id=0;
+            $this->id=1;
         }
         $datos = array($this->id);
         $r = $this->get_consulta("pa_selecciona_datos_empresa", $datos);

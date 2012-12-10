@@ -3,6 +3,9 @@
 class asientos_controlador extends controller{
     private $_asientos;
     public function __construct() {
+        if (!$this->acceso(35)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_asientos=  $this->cargar_modelo('asientos');
     }

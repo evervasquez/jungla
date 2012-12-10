@@ -20,7 +20,13 @@ $(document).ready(function(){
         };
     $("#btn_selecciona_ciudad").click(function(){
         i=$("#index_tr").val();
+        r=$("#regiones").val();
         idc=$("#ciudades").val();
+        p=$("#provincias").val();
+        if(idc=='' || r=='' || p==''){
+            alert("Seleccione la procedencia");
+            return 0;
+        }
         c=$("#ciudades option:selected").html();
         html = '<input type="hidden" value="'+idc+'" name="ciudad[]"/>'+c;
         $("#detalle_estadia tr:eq("+i+") td:eq(4)").html(html);
@@ -32,9 +38,9 @@ $(document).ready(function(){
     });
     
     $("#paises").change(function(){
-        $("#regiones").html('<option>Seleccione...</option>');
-        $("#provincias").html('<option>Seleccione...</option>');
-        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        $("#regiones").html('<option></option>');
+        $("#provincias").html('<option></option>');
+        $("#ciudades").html('<option></option>')
         if($(this).val()){
             $.post('/jungla/pasajeros/get_regiones','idpais='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
@@ -45,8 +51,8 @@ $(document).ready(function(){
     });
     
     $("#regiones").change(function(){
-        $("#provincias").html('<option>Seleccione...</option>');
-        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        $("#provincias").html('<option></option>');
+        $("#ciudades").html('<option></option>')
         if($(this).val()){
             $.post('/jungla/pasajeros/get_provincias','idregion='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){
@@ -57,7 +63,7 @@ $(document).ready(function(){
     });
     
     $("#provincias").change(function(){
-        $("#ciudades").html('<option value="0">Seleccione...</option>')
+        $("#ciudades").html('<option></option>')
         if($(this).val()){
             $.post('/jungla/pasajeros/get_ciudades','idprovincia='+$(this).val(),function(datos){
                 for(var i=0;i<datos.length;i++){

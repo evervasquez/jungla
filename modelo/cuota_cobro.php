@@ -43,7 +43,7 @@ class cuota_cobro extends Main{
     public function inserta() {
         $datos = array(0, $this->idventa, $this->fecha_cobro, $this->nro_cobro,
             $this->monto_cuota, $this->interes, $this->fecha_vencimiento, 0);
-        $r = $this->get_consulta("pa_inserta_actualiza_cuota_cobro", $datos);
+        $r = $this->get_consulta("pa_inserta_act_cuota_cobro", $datos);
         $error = $r[1];
         $r = null;
         return $error;

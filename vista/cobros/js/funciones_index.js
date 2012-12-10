@@ -45,8 +45,8 @@
                         HTML = HTML + '<td>'+(((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE))-parseFloat(datos[i].DESCUENTO))+'</td>';
                         HTML = HTML + '<td>'+datos[i].MONTO_COBRADO+'</td>';
                         HTML = HTML + '<td>'+((parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_COBRADO)-parseFloat(datos[i].DESCUENTO)))+'</td>';
-                        HTML = HTML + '<td><a href="/jungla/cobros/cronograma/'+datos[i].IDVENTA+'" class="">Cronograma</a>';
-                        HTML = HTML + '<a href="/jungla/cobros/cronograma/'+datos[i].IDVENTA+'" class="">Amortizar</a></td>';
+                        HTML = HTML + '<td><a href="/jungla/cobros/cronograma/'+datos[i].IDVENTA+'" class="imgcronog"></a>';
+                        HTML = HTML + '<a href="/jungla/cobros/amortizar/'+datos[i].IDVENTA+'" class="imgamort"></a></td>';
                         HTML = HTML + '</tr>';
                 }
                 HTML = HTML + '</table>'
@@ -57,6 +57,9 @@
                     },
                     pageable: true
                 });
+                $(".imgcronog").attr("title","Cronograma");
+                $(".imgamort").attr("title","Amortizar");
+                $(".imgcobrar").attr("title","Cobrar");
             },'json');
         }
        

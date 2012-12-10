@@ -7,6 +7,9 @@ class movimiento_caja_controlador extends controller{
     private $_concepto_movimiento;
 
     public function __construct() {
+        if (!$this->acceso(52)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_movimiento_caja=  $this->cargar_modelo('movimiento_caja');
         $this->_caja=  $this->cargar_modelo('caja');
@@ -15,7 +18,15 @@ class movimiento_caja_controlador extends controller{
 
     public function index() {
         $this->_vista->datos= $this->_movimiento_caja->selecciona();
+        $this->_vista->setJs(array('funcion'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_movimiento_caja->descripcion=$_POST['descripcion'];
+        }
+        echo json_encode($this->_movimiento_caja->selecciona());
     }
     
     public function nuevo(){

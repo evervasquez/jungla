@@ -49,7 +49,7 @@ class cuota_pago extends Main{
         }
         $datos = array(0, $this->idcompra, $this->fecha_pago, $this->fecha_vencimiento, $this->interes,
             $this->monto_cuota, $this->monto_pagado, $this->nro_cuota);
-        $r = $this->get_consulta("pa_inserta_actualiza_cuota_pago", $datos);
+        $r = $this->get_consulta("pa_inserta_act_cuota_pago", $datos);
         $error = $r[1];
         $r = null;
         return $error;

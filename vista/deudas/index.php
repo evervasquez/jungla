@@ -19,11 +19,11 @@
             <th>Accion</th>
         </tr>
     <?php for ($i = 0; $i < count($this->datos_compras); $i++) { ?>
-        <?php if($this->datos_compras[$i]['IDTIPO_TRANSACCION']==1 && $this->datos_compras[$i]['ESTADO_PAGO']==0) {?>
+        <?php if($this->datos_compras[$i]['IDTIPO_TRANSACCION']==1 && $this->datos_compras[$i]['ESTADO_PAGO']==0 && $this->datos_compras[$i]['CONFIRMACION']==1) {?>
         <tr>
             <td><?php echo $this->datos_compras[$i]['NRO_COMPROBANTE'] ?></td>
             <td><?php echo $this->datos_compras[$i]['PROVEEDOR'] ?></td>
-            <td><?php echo $this->datos_compras[$i]['FECHA_COMPRA'] ?></td>
+            <td><?php echo $this->datos_compras[$i]['C_FECHA_COMPRA'] ?></td>
             <td><?php echo ($this->datos_compras[$i]['IGV']+1)*$this->datos_compras[$i]['IMPORTE'] ?></td>
             <td><?php echo 0 ?></td>
             <td><?php echo ($this->datos_compras[$i]['IGV']+1)*$this->datos_compras[$i]['IMPORTE'] ?></td>
@@ -34,6 +34,7 @@
         <?php } ?>
     <?php } ?>
     <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+        <?php if($this->datos[$i]['CONFIRMACION']==1){ ?>
         <tr>
             <td><?php echo $this->datos[$i]['NRO_COMPROBANTE'] ?></td>
             <td><?php echo $this->datos[$i]['PROVEEDOR'] ?></td>
@@ -43,11 +44,12 @@
             <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'] ?></td>
             <td class="tabtr" align="center">
 
-                <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>">[Cronograma]</a>
-                <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>">[Amortizar]</a>
+                <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgcronog"></a>
+                <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgamort"></a>
 
             </td>
         </tr>
+        <?php } ?>
     <?php } ?>
 </table>
 </div>

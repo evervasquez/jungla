@@ -83,7 +83,7 @@ $(document).ready(function(){
         },'json');        
     }
     function buscar_producto2(){
-        $.post('/sisjungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
+        $.post('/jungla/productos/buscador','cadena='+$("#txt_buscar_productos").val()+'&filtro='+$("#filtro_productos").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla" id="tbl_busca_productos">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -98,7 +98,7 @@ $(document).ready(function(){
                 HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
                 HTML = HTML + '<td>'+datos[i].UM+'</td>';
                 HTML = HTML + '<td>'+datos[i].PRECIO_UNITARIO+'</td>';
-                id=datos[i].idproducto;
+                id=datos[i].IDPRODUCTO;
                 producto=datos[i].DESCRIPCION;
                 um=datos[i].UM;
                 pu=datos[i].PRECIO_UNITARIO;
@@ -113,7 +113,7 @@ $(document).ready(function(){
                     },
                     pageable: true
                 });
-        },'json');        
+        },'json');      
     }
     
     //asignacion de productos o paquetes al detalle
@@ -218,4 +218,28 @@ function seleccionar_productos2(id,producto,um,pu){
     $("#vtna_busca_productos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
     $("#chk_todo2").attr("checked", false);
+}
+function todo(Form)
+{
+    if(Form.chk_todo.checked){
+        
+        Form.idproducto.value = '*';
+        Form.producto.value = '(TODOS)';
+    } else{
+        Form.idproducto.value = '';
+        Form.producto.value = '';
+        Form.producto.placeholder = 'Busque Producto';
+    }
+}
+function todo2(Form)
+{
+    if(Form.chk_todo2.checked){
+        
+        Form.idproducto2.value = '*';
+        Form.producto2.value = '(TODOS)';
+    } else{
+        Form.idproducto2.value = '';
+        Form.producto2.value = '';
+        Form.producto2.placeholder = 'Busque Producto';
+    }
 }

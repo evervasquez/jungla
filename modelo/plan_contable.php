@@ -12,7 +12,7 @@ class plan_contable extends Main{
     public function inserta() {
         $datos = array(0, $this->descripcion, $this->nro_cuenta,
             $this->idcuenta_padre, $this->idcategoria);
-        $r = $this->get_consulta("pa_inserta_actualiza_plan_contable", $datos);
+        $r = $this->get_consulta("pa_inserta_act_plan_contable", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -21,7 +21,7 @@ class plan_contable extends Main{
     public function actualiza() {
         $datos = array($this->idcuenta, $this->descripcion, $this->nro_cuenta,
             $this->idcuenta_padre, $this->idcategoria);
-        $r = $this->get_consulta("pa_inserta_actualiza_plan_contable", $datos);
+        $r = $this->get_consulta("pa_inserta_act_plan_contable", $datos);
         $error = $r[1];
         $r = null;
         return $error;

@@ -140,7 +140,7 @@ class proveedores_controlador extends controller {
     
     public function valida_ruc() {
         $ruc = $this->_proveedores->selecciona_ruc($_POST['ruc']);
-        if ($ruc['ruc'] == '') {
+        if ($ruc[0]['RUC'] == '') {
             echo '<a class="imgselect" title="Valido"></a><input type="hidden" id="val_ruc" value="1" />';
         } else {
             echo '<a class="imgdelete" title="En uso"></a><input type="hidden" id="val_ruc" value="0" />';

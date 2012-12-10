@@ -11,6 +11,9 @@ class deudas_controlador extends controller {
     private $_asientos;
 
     public function __construct() {
+        if (!$this->acceso(19)) {
+            $this->redireccionar('error/access/5050');
+        }
         parent::__construct();
         $this->_deudas = $this->cargar_modelo('deudas');
         $this->_cuota_pago = $this->cargar_modelo('cuota_pago');
@@ -47,6 +50,7 @@ class deudas_controlador extends controller {
         $this->_vista->datos = $this->_cuota_pago->selecciona();
         $this->_vista->titulo = 'Cronograma de Pagos';
         $this->_vista->btn_action = BASE_URL . 'deudas/amortizar/' . $idcompra . '/' . $monto_restante;
+        $this->_vista->setJs(array('funciones_cronograma'));
         $this->_vista->renderizar('cronograma');
     }
 

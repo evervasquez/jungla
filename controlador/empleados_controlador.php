@@ -69,7 +69,7 @@ class empleados_controlador extends controller {
             $this->_empleados->idtipo_empleado = $_POST['tipo_empleado'];
             $this->_empleados->inserta();
             $this->redireccionar('empleados');
-        }        
+        }
         $this->_provincias->codigo_region = 1901;
         $this->_vista->datos_provincias = $this->_provincias->selecciona();
         

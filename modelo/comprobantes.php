@@ -42,7 +42,7 @@ class comprobantes extends Main{
 
     public function inserta() {
         $datos = array(0, $this->serie, $this->correlativo, $this->idtipo_comprobante);
-        $r = $this->get_consulta("pa_inserta_actualiza_comprobantes", $datos);
+        $r = $this->get_consulta("pa_inserta_act_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
@@ -50,7 +50,7 @@ class comprobantes extends Main{
 
     public function actualiza() {
         $datos = array($this->idcomprobante, $this->serie, $this->correlativo, $this->idtipo_comprobante);
-        $r = $this->get_consulta("pa_inserta_actualiza_comprobantes", $datos);
+        $r = $this->get_consulta("pa_inserta_act_comprobantes", $datos);
         $error = $r[1];
         $r = null;
         return $error;
