@@ -90,7 +90,7 @@ class Main {
                             setTimeout("$('#linea5').fadeIn(500)",delay_linea+(intervalo*6));
                             setTimeout("$('#linea6').fadeIn(500)",delay_linea+(intervalo*7));
                             setTimeout("$('#linea7').fadeIn(500)",delay_linea+(intervalo*8));
-                                        
+                            
                         });
                     </script>
                 </head>
