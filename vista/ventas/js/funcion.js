@@ -89,8 +89,9 @@ $(function(){
     
     
     function ver(id){
+        html='';
            $.post('/jungla/ventas/ver','idventa='+id,function(datos){
-                html= '<h3>Datos de la Venta N°: '+datos[0]['NRO_DOCUMENTO']+'</h3>';
+                html+= '<h3>Datos de la Venta N°: '+datos[0]['NRO_DOCUMENTO']+'</h3>';
                 html+='<table>';
                 html+= '<tr>';
                 html+= '<td>Nro.Documento:</td>';

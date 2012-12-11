@@ -37,7 +37,7 @@ class habitacion_especifica extends Main{
 
     public function elimina() {
         $datos = array($this->idhabitacion, $this->idtipo_habitacion);
-        $r = $this->get_consulta("pa_elimina_habitacion_especifica", $datos);
+        $r = $this->get_consulta("pa_elimina_habitacion_e", $datos);
         $error = $r[1];
         $r = null;
         return $error;

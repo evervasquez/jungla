@@ -13,7 +13,7 @@ class concepto_movimiento extends Main{
             $this->descripcion='';
         }
         $datos = array($this->idconcepto_movimiento, $this->descripcion);
-        $r = $this->get_consulta("pa_selecciona_concepto_m", $datos);
+        $r = $this->get_consulta("pa_selecciona_concep_m", $datos);
         if ($r[1] == '') {
             $stmt = $r[0];
         } else {
