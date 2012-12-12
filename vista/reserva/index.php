@@ -94,9 +94,7 @@
     <p>
         <select class="list" id="filtro_pasajeros">
             <option value="0">Nombre/Apellido</option>
-            <option value="1">Razon Social</option>
             <option value="2">DNI</option>
-            <option value="3">RUC</option>
         </select>
         <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_pasajeros">
         <button type="button" class="k-button" id="btn_buscar_pasajeros"><span class="k-icon k-i-search"></span></button>

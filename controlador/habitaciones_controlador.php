@@ -57,7 +57,7 @@ class habitaciones_controlador extends controller {
             $dato_habitacion=$this->_habitaciones->inserta();
             //inserta habitacion especifica
             for($i=0;$i<count($_POST['tipo_habitacion']);$i++){
-                $this->_habitacion_especifica->idhabitacion=$dato_habitacion['idhabitacion'];
+                $this->_habitacion_especifica->idhabitacion=$dato_habitacion[0]['IDHABITACION'];
                 $this->_habitacion_especifica->idtipo_habitacion= $_POST['tipo_habitacion'][$i];
                 $this->_habitacion_especifica->costo= $_POST['costo'][$i];
                 $this->_habitacion_especifica->observaciones= $_POST['observacion'][$i];
