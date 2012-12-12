@@ -105,11 +105,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label>Precio de Venta:</label></td>
+                            <td><label id="lbl_precio">Precio de Venta:</label></td>
                             <td colspan="2">
                                 <input type="input" class="k-textbox" placeholder="Precio Venta" id="precio" readonly="readonly"/>
                             </td>
-                            <td><label>Cantidad:</label></td>
+                            <td><label id="lbl_cantidad">Cantidad:</label></td>
                             <td>
                                 <input type="text" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
                             </td>

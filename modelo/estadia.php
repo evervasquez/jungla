@@ -24,6 +24,14 @@ class estadia extends Main{
         return $stmt->fetchall();
     }
     
+    public function elimina(){
+        $datos = array($this->idventa);
+        $r = $this->get_consulta("pa_elimina_ventas", $datos);
+        $error = $r[1];
+        $r = null;
+        return $error;
+    }
+    
 }
 
 ?>

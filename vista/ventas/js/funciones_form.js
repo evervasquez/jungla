@@ -23,9 +23,13 @@ $(document).ready(function(){
         if($(this).val()==0){
             $(".celda_paquete").hide();
             $(".celda_producto").show();
+            $("#lbl_precio").html('Precio de Venta:');
+            $("#lbl_cantidad").html('Cantidad:');
         }else{
             $(".celda_paquete").show();
             $(".celda_producto").hide();
+            $("#lbl_precio").html('Precio Unitario:');
+            $("#lbl_cantidad").html('Nro. Personas:');
         }
     });
     
@@ -154,7 +158,7 @@ $(document).ready(function(){
                         '<tr>'+
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
-                            '<th>Costo</th>'+
+                            '<th>Costo Unitario</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -330,7 +334,11 @@ $(document).ready(function(){
                 html +='<td><input type="hidden" class="idpaquete" value="'+idpaq+'" name="idpaquete[]"/>'+paq+'</td>';
             }
             html +='<td><input type="hidden" value="'+um+'" name="um[]"/>'+um+'</td>';
-            html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
+            if($("#cambia_form").val()==0){
+                html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>'+c+'</td>';
+            }else{
+                html +='<td><input type="hidden" value="'+c+'" name="cantidad[]"/>1</td>';
+            }
             html +='<td><input type="hidden" value="'+pre+'" name="precio[]"/>'+pre+'</td>';
             st=pre*c;
             html +='<td>'+st+'</td>';
@@ -415,7 +423,7 @@ function seleccionar_productos(id,producto,um,pu){
 function seleccionar_paquetes(id,paquete,pu){
     $("#idpaquete").val(id);
     $("#paquete").val(paquete);
-    $("#unidad_medida").val('paquetes');
+    $("#unidad_medida").val('paquete');
     $("#precio").val(pu);
     $("#vtna_busca_paquetes").fadeOut(300);
     $("#fondooscuro").fadeOut(300);

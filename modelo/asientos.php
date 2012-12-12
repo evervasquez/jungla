@@ -35,11 +35,7 @@ class asientos extends Main{
 
     public function inserta($idcompra) {
         $datos = array($idcompra);
-        if($idventa == 0){
             $r = $this->get_consulta("pa_inserta_asientos_compra", $datos);
-        }else{
-            $r = $this->get_consulta("pa_inserta_asientos_venta", $datos);
-        }
         $error = $r[1];
         $r = null;
         return $error;

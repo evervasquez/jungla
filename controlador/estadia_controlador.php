@@ -32,7 +32,21 @@ class estadia_controlador extends controller{
 
     public function index() {
         $this->_vista->datos =  $this->_estadia->selecciona();
+        $this->_vista->setJs(array('funciones_index'));
+        $this->_vista->setCss(array('estilos_index'));
         $this->_vista->renderizar('index');
+    }
+    
+    public function ver(){
+        $this->_estadia->idventa=$_POST['idventa'];
+        echo json_encode($this->_estadia->selecciona());
+    }
+    
+    public function buscador(){
+        if($_POST['filtro']==0){
+            $this->_estadia->representante=$_POST['cadena'];
+        }
+        echo json_encode($this->_estadia->selecciona());
     }
     
     public function nuevo(){
@@ -193,6 +207,7 @@ class estadia_controlador extends controller{
         $this->_clientes->idubigeo = 0;
         echo json_encode($this->_clientes->inserta());
     }
+    
     public function imprimir($idventa, $idtipo_comprobante){
         switch ($idtipo_comprobante){
             case 55:
@@ -204,6 +219,14 @@ class estadia_controlador extends controller{
         
     }
     
+    public function eliminar($id){
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('estadia');
+        }
+        $this->_estadia->idventa = $this->filtrarInt($id);
+        $this->_estadia->elimina();
+        $this->redireccionar('estadia');
+    }
 }
 
 ?>

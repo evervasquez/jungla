@@ -13,6 +13,7 @@ class compras extends Main{
     public $idtipo_transaccion;
     public $confirmacion;
     public $proveedor;
+    public $estado_pago;
 
     public function inserta() {
         $datos = array(0, $this->fecha_compra, $this->estado, $this->observaciones, 
@@ -31,10 +32,15 @@ class compras extends Main{
     }
 
     public function actualiza() {
-        $datos = array($this->idcompra, $this->fecha_compra, $this->estado, $this->observaciones, 
-            $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
-            $this->idtipo_transaccion, $this->confirmacion);
-        $r = $this->get_consulta("pa_inserta_actualiza_compras", $datos);
+        if(is_null($this->estado_pago)){
+            $datos = array($this->idcompra, $this->fecha_compra, $this->estado, $this->observaciones, 
+                $this->nro_comprobante, $this->importe, $this->igv, $this->idproveedor,  
+                $this->idtipo_transaccion, $this->confirmacion);
+            $r = $this->get_consulta("pa_inserta_actualiza_compras", $datos);
+        }else{
+            $datos = array($this->idcompra, $this->estado_pago, 1);
+            $r = $this->get_consulta("pa_actualiza_estado_pago", $datos);
+        }
         $error = $r[1];
         $r = null;
         return $error;

@@ -7,6 +7,7 @@ class deudas_controlador extends controller{
     private $_caja;
     private $_amortizacion_pago;
     private $_movimiento_caja;
+    private $_compras;
     
     public function __construct() {
         parent::__construct();
@@ -15,10 +16,12 @@ class deudas_controlador extends controller{
         $this->_caja = $this->cargar_modelo('caja');
         $this->_amortizacion_pago= $this->cargar_modelo('amortizacion_pago');
         $this->_movimiento_caja = $this->cargar_modelo('movimiento_caja');
+        $this->_compras = $this->cargar_modelo('compras');
     }
     
     public function index(){
         $this->_vista->datos=$this->_deudas->selecciona();
+        $this->_vista->datos_compras=$this->_compras->selecciona();
         $this->_vista->renderizar('index');
     }    
     
@@ -42,7 +45,7 @@ class deudas_controlador extends controller{
         }
         
         if($_POST['guardar']==1){
-            if($datos_caja[0]['saldo']<$_POST['monto']){
+            if($datos_caja[0]['SALDO']<$_POST['monto']){
                 echo '<script>alert("No hay suficiente saldo para ejecutar el pago")</script>';
                 $this->redireccionar('caja');
             }
@@ -77,7 +80,7 @@ class deudas_controlador extends controller{
                             //inserta amortizacion_pago
                             $this->_amortizacion_pago->idcuota_pago=$datos_cuota_pago[$i]['IDCUOTA_PAGO'];
                             $this->_amortizacion_pago->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
-                            $this->_amortizacion_pago->fecha=$_POST['FECHA_PAGO'];
+                            $this->_amortizacion_pago->fecha=$_POST['fecha_pago'];
                             $this->_amortizacion_pago->monto=$monto_amortizado;
                             $this->_amortizacion_pago->inserta();
 
@@ -91,7 +94,7 @@ class deudas_controlador extends controller{
                             //inserta amortizacion_pago
                             $this->_amortizacion_pago->idcuota_pago=$datos_cuota_pago[$i]['IDCUOTA_PAGO'];
                             $this->_amortizacion_pago->idmovimiento_caja=$dato_movimiento_caja['IDMOVIMIENTO_CAJA'];
-                            $this->_amortizacion_pago->fecha=$_POST['FECHA_PAGO'];
+                            $this->_amortizacion_pago->fecha=$_POST['fecha_pago'];
                             $this->_amortizacion_pago->monto=$monto_restantexcuota;
                             $this->_amortizacion_pago->inserta();
 
@@ -112,6 +115,43 @@ class deudas_controlador extends controller{
         
         $this->_vista->action= BASE_URL.'deudas/amortizar/'.$idcompra.'/'.$monto_restante;
         $this->_vista->renderizar('amortizar');
+    }
+    
+    public function pagar($idcompra, $monto){
+        $datos_caja=$this->_caja->selecciona();
+        if($datos_caja[0]['ESTADO']==0){
+            echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
+            $this->redireccionar('caja');
+        }
+
+        if(new DateTime($datos_caja[0]['C_FECHA'])!=new DateTime(date('d-m-Y'))){
+            echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el día de hoy")</script>';
+            $this->redireccionar('caja');
+        }
+        
+        if($datos_caja[0]['SALDO']<$monto){
+            echo '<script>alert("No hay suficiente saldo para ejecutar el pago")</script>';
+            $this->redireccionar('caja');
+        }
+        //insertar movimiento caja
+        $this->_movimiento_caja->idconcepto_movimiento=1;
+        $this->_movimiento_caja->idcaja=$datos_caja[0]['IDCAJA'];
+        $this->_movimiento_caja->monto=$monto;
+        $this->_movimiento_caja->idcompra=$idcompra;
+        $this->_movimiento_caja->idventa=0;
+        $this->_movimiento_caja->inserta();
+        
+        //actualizar el estado de compra a pagado
+        $this->_compras->idcompra=$idcompra;
+        $this->_compras->estado_pago=1;
+        $this->_compras->actualiza();
+        
+        //actualiza saldo caja
+        $this->_caja->idcaja=$datos_caja[0]['IDCAJA'];
+        $this->_caja->saldo=$monto;
+        $this->_caja->aumenta=0;
+        $this->_caja->actualiza();
+        $this->redireccionar('deudas');
     }
 }   
     

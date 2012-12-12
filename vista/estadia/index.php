@@ -23,19 +23,19 @@
                 <td><?php echo $this->datos[$i]['FECHA_INGRESO'] ?></td>
                 <td><?php echo $this->datos[$i]['FECHA_SALIDA'] ?></td>
                 <td>
-                <?php if($this->datos[$i]['ESTADO_ESTADIA']==0)echo 'Reserva'?>
-                <?php if($this->datos[$i]['ESTADO_ESTADIA']==1)echo 'Estadia'?>
+                <?php if($this->datos[$i]['ESTADO_ESTADIA']==0)echo '<label class="reserva">Reserva</label>'?>
+                <?php if($this->datos[$i]['ESTADO_ESTADIA']==1)echo '<label class="estadia">Estadia</label>'?>
                 </td>
                 <td>
                     <?php if($this->datos[$i]['ESTADO_ESTADIA']==0){?>
-                    <a href="<?php echo BASE_URL?>estadia/confirmar/<?php echo $this->datos[$i]['IDVENTA']?>">[Chek-in]</a>
+                    <a href="<?php echo BASE_URL?>estadia/confirmar/<?php echo $this->datos[$i]['IDVENTA']?>" class="imgcheckin"></a>
                     <a href="javascript:void(0)" onclick="eliminar('<?php echo BASE_URL?>estadia/eliminar/<?php echo $this->datos[$i]['IDVENTA'] ?>')" class="imgdelete"></a>
                     <?php } ?>
                     <?php if($this->datos[$i]['ESTADO_ESTADIA']==1){?>
-                    <a href="<?php echo BASE_URL?>estadia/consumo/<?php echo $this->datos[$i]['IDVENTA']?>">[Consumo]</a>
-                    <a href="<?php echo BASE_URL?>estadia/check_out/<?php echo $this->datos[$i]['IDVENTA']?>">[Check-out]</a>
+                    <a href="<?php echo BASE_URL?>estadia/consumo/<?php echo $this->datos[$i]['IDVENTA']?>" class="imgconsumo"></a>
+                    <a href="<?php echo BASE_URL?>estadia/check_out/<?php echo $this->datos[$i]['IDVENTA']?>" class="imgcheckout"></a>
                     <?php } ?>
-                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDEMPLEADO'] ?>')"></a>
+                    <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>
                 </td>
             </tr>
         <?php } ?>
@@ -47,5 +47,5 @@
     <a href="<?php echo BASE_URL?>estadia/nuevo" class="k-button">Nuevo</a>
 <?php } ?>
             
-<div id="vtna_ver_empleado"></div>
+<div id="vtna_ver_estadia"></div>
 <div id="fondooscuro"></div>

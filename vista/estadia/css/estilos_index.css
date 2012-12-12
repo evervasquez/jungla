@@ -1,0 +1,46 @@
+
+.imgcheckin{
+	background-image:url(../../../lib/img/check.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
+.imgconsumo{
+	background-image:url(../../../lib/img/consumo.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
+.imgcheckout{
+	background-image:url(../../../lib/img/select.png);
+        width: 20px;
+	height: 20px;
+	display:inline-block;
+        border: none;
+}
+.reserva{
+    color: blue;
+    font-weight: bold;
+}
+.estadia{
+    color: green;
+    font-weight: bold;
+}
+#vtna_ver_estadia{
+        display:none;
+	padding:20px;
+	color: black;
+	position: fixed;
+	left: 40%;
+	top: 20%;
+	z-index: 1000;
+	text-align: left;
+	background-color: white;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border:10px solid grey;
+}
