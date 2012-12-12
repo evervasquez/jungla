@@ -17,7 +17,7 @@ class interfaz_contable extends Main{
         $datos = $fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_asientos_intervalo_fechas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -29,7 +29,7 @@ class interfaz_contable extends Main{
         $datos = array(1);
         $r = $this->get_consulta("pa_selecciona_datos_empresa", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {

@@ -31,7 +31,7 @@ class plantilla_movimiento extends Main{
             die($r[1]);
         }
         $r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {

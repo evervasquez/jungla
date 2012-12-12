@@ -18,7 +18,7 @@ class reportes extends Main{
         $datos = null;
         $r = $this->get_consulta("pa_promociones_todo", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -33,7 +33,7 @@ class reportes extends Main{
         $datos = array($this->id);
         $r = $this->get_consulta("pa_selecciona_datos_empresa", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -45,7 +45,7 @@ class reportes extends Main{
         $datos=$mesano;
         $r = $this->get_consulta("pa_selecciona_numero_arribos_huesped_dia_mes", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -57,7 +57,7 @@ class reportes extends Main{
         $dat=null;
         $r = $this->get_consulta("pa_selecciona_cantidad_empleados_x_tipo_x_actividad", $dat);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -69,7 +69,7 @@ class reportes extends Main{
         $datos=$mesano;
         $r = $this->get_consulta("pa_selecciona_numero_arribos_huesped_ubigeo_nacional", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -81,7 +81,7 @@ class reportes extends Main{
         $datos=$mesano;
         $r = $this->get_consulta("pa_selecciona_numero_arribos_huesped_ubigeo_internacional", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -93,7 +93,7 @@ class reportes extends Main{
         $datos=$mesano;
         $r = $this->get_consulta("pa_selecciona_numero_arribos_x_tipo_habitacion", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -105,7 +105,7 @@ class reportes extends Main{
         $datos = array($ubicacion);
         $r = $this->get_consulta("pa_selecciona_stock_total", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -117,7 +117,7 @@ class reportes extends Main{
         $datos = array(0,'','');
         $r = $this->get_consulta("pa_selecciona_ubicaciones", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -129,7 +129,7 @@ class reportes extends Main{
         $datos = array(0,"");
         $r = $this->get_consulta("pa_selecciona_tipo_habitacion", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -141,7 +141,7 @@ class reportes extends Main{
         $datos = null;
         $r = $this->get_consulta("pa_selecciona_hab_tip_hab", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -153,7 +153,7 @@ class reportes extends Main{
         $datos = $mesano;
         $r = $this->get_consulta("pa_selecciona_numero_pernoctaciones_x_tipo_habitacion", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -165,7 +165,7 @@ class reportes extends Main{
         $datos = $mesano;
         $r = $this->get_consulta("pa_selecciona_numero_pernoctaciones_huesped_ubigeo_internacional", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -177,7 +177,7 @@ class reportes extends Main{
         $datos = $mesano;
         $r = $this->get_consulta("pa_selecciona_numero_pernoctaciones_huesped_ubigeo_nacional", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -189,7 +189,7 @@ class reportes extends Main{
         $datos = $idventa;
         $r = $this->get_consulta("pa_selecciona_dat_comp_v", $idventa);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -201,7 +201,7 @@ class reportes extends Main{
         $datos = $idventa;
         $r = $this->get_consulta("pa_selecciona_dat_de_comp_v", $idventa);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -213,7 +213,7 @@ class reportes extends Main{
         $datos = $idprod_fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_vent_prod", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-         if (BaseDatos::$_archivo == 'OCI') {
+         if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -225,7 +225,7 @@ class reportes extends Main{
         $datos = $fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_productos_vendidos", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -237,7 +237,7 @@ class reportes extends Main{
         $datos = $idprod_fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_compras_x_producto", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -249,7 +249,7 @@ class reportes extends Main{
         $datos = $fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_productos_comprados", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -261,7 +261,7 @@ class reportes extends Main{
         $datos = $fecha_inicio_fecha_fin;
         $r = $this->get_consulta("pa_selecciona_compras_x_intervalo_fechas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -273,7 +273,7 @@ class reportes extends Main{
         $datos = array($idventa);
         $r = $this->get_consulta("pa_selecciona_habitaciones_detalle_estadia", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -285,7 +285,7 @@ class reportes extends Main{
         $datos = array($idventa, '', '', '');
         $r = $this->get_consulta("pa_selecciona_ventas", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {
@@ -297,7 +297,7 @@ class reportes extends Main{
         $datos = array($idventa);
         $r = $this->get_consulta("pa_selecciona_de_x_h", $datos);
         if ($r[1] == '') {$stmt = $r[0];} else {die($r[1]);}$r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {

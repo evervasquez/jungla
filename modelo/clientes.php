@@ -36,13 +36,7 @@ class clientes extends Main {
             die($r[1]);
         }
         $r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
-            oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-            return $data;
-        } else {
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            return $stmt->fetchall();
-        }
+        return $error;
     }
 
     public function actualiza() {
@@ -83,7 +77,7 @@ class clientes extends Main {
             die($r[1]);
         }
         $r = null;
-        if (BaseDatos::$_archivo == 'OCI') {
+        if (conexion::$_servidor == 'oci') {
             oci_fetch_all($stmt, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
             return $data;
         } else {

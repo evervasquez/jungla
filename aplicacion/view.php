@@ -82,7 +82,7 @@ class view {
 
         if (is_readable($ruta_vista)) {
             //incluimos los layout
-            require_once ROOT . 'lib\nusoap\nusoap.php';
+            require_once ROOT . 'lib'.DS.'nusoap'.DS.'nusoap.php';
             include_once $ruta_vista;
             //incluimos la vista
         } else {
