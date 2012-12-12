@@ -32,7 +32,9 @@
             <td>
                 <a href="javascript:void(0)" class="imgdelete" onclick="eliminar('<?php echo BASE_URL?>ventas/eliminar/<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
                 <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDVENTA'] ?>')"></a>  
-                <a href="javascript:void()" class="print" onclick="imprimir('<?php echo $this->datos[$i]['IDVENTA'] ?>', '<?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?>' )" target="_blank"></a>  
+                <?php if(!($this->datos[$i]['ESTADO_PAGO']==0 && $this->datos[$i]['IDTIPO_TRANSACCION']==1)){ ?>
+                    <a href="javascript:void()" class="print" onclick="imprimir('<?php echo $this->datos[$i]['IDVENTA'] ?>', '<?php echo $this->datos[$i]['NRO_DOCUMENTO'] ?>' )" target="_blank"></a>  
+                <?php } ?>
             </td>
         </tr>
     <?php } ?>

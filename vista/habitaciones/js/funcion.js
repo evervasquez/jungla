@@ -127,7 +127,7 @@
                 html+= '</tr>';
                 for(var i=0;i<datos.length;i++){
                     html+= '<tr>';
-                    html+= '<td>'+datos[i]['TIPO_HABITACION']+'</td>';
+                    html+= '<td>'+datos[i]['TIPO']+'</td>';
                     html+= '<td>'+datos[i]['COSTO']+'</td>';
                     html+= '<td>'+datos[i]['OBSERVACIONES']+'</td>';
                     html+= '</tr>';

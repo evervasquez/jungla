@@ -25,7 +25,7 @@ $(function(){
                             '<th>DNI / RUC</th>'+
                             '<th>Telefono</th>'+
                             '<th>Email</th>'+
-                            '<th>Ubigeo</th>'+
+                            '<th>Pais</th>'+
                             '<th>Acciones</th>'+
                         '</tr>';
 
@@ -43,7 +43,7 @@ $(function(){
                     HTML = HTML + '<td>'+datos[i].TELEFONO+'</td>';
                     HTML = HTML + '<td>'+datos[i].EMAIL+'</td>';
                     if(datos[i].UBIGEO != null){
-                    HTML = HTML + '<td>'+datos[i].UBIGEO+'</td>';
+                    HTML = HTML + '<td>'+datos[i].XPAIS+'</td>';
                     }
                     else{
                     HTML = HTML + '<td></td>';
