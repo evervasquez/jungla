@@ -42,14 +42,14 @@ $(document).ready(function(){
             },'json');
         }
     });
-    
+
     $("#btn_cancelar_cliente_juridico").click(function(){
         $("#ruc").val('');
         $("#razonsocial").val('');
         $("#direccionrs").val('');
         $("#agrega_cliente_juridico").hide();
     });
-    
+
     //ventana de busqueda de clientes
     $("#btn_vtna_clientes").click(function(){
         buscar_cliente();

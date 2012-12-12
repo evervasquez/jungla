@@ -140,7 +140,7 @@ class estadia_controlador extends controller{
                 $this->_ruta_huesped->idubigeo=$_POST['ciudad'][$i];
                 $this->_ruta_huesped->idcliente=$_POST['idpasajero'][$i];
                 $this->_ruta_huesped->idventa=$_POST['codigo'];
-                $this->_ruta_huesped->inserta();
+                /*$this->_ruta_huesped->inserta();*/
                 
                 //actualizamos detalle_estadia
                 $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
@@ -148,7 +148,7 @@ class estadia_controlador extends controller{
                 $this->_detalle_estadia->estado=2;
                 $this->_detalle_estadia->fecha_ingreso=$_POST['fecha_entrada'].' '.$_POST['hora_entrada'];
                 $this->_detalle_estadia->fecha_salida=$_POST['fecha_salida'];
-                $this->_detalle_estadia->actualiza();
+               /* $this->_detalle_estadia->actualiza();*/
                 
             }
             //actualizamos venta
@@ -160,9 +160,14 @@ class estadia_controlador extends controller{
             $this->_ventas->importe=$_POST['importe'];
             $this->_ventas->igv=$_POST['igv'];
             $this->_ventas->descuento=$_POST['descuento'];
-            $this->_ventas->actualiza();
+            /*$this->_ventas->actualiza();*/
+            echo "<script>
+                if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
+                </script>";
             
+            $this->imprimir($idventa, $this->_ventas->idtipo_comprobante);
             $this->redireccionar('estadia');
+            
         }
         $this->_estadia->idventa=$idventa;
         $this->_vista->datos = $this->_estadia->selecciona();
@@ -188,6 +193,17 @@ class estadia_controlador extends controller{
         $this->_clientes->idubigeo = 0;
         echo json_encode($this->_clientes->inserta());
     }
+    public function imprimir($idventa, $idtipo_comprobante){
+        switch ($idtipo_comprobante){
+            case 55:
+                $this->redireccionar('reportes/ticket_boleta_venta/'.$idventa);
+                break;
+            case 56:
+                $this->redireccionar('reportes/ticket_factura_venta/'.$idventa);
+        }
+        
+    }
+    
 }
 
 ?>
