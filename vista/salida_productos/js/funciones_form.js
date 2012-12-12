@@ -149,4 +149,5 @@ function seleccionar_productos(id,producto,um){
     $("#unidad_medida").val(um);
     $("#vtna_busca_productos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
+    $(".cantidad").focus();
 }

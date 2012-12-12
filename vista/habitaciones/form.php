@@ -90,7 +90,7 @@
                         <tr>
                             <td>
                                 <input type="hidden" class="tipo_habitacion" value="<?php echo $this->datos_habitacion_especifica[$i]['IDTIPO_HABITACION']?>" />
-                                <?php echo $this->datos_habitacion_especifica[$i]['TIPO_HABITACION']?>
+                                <?php echo $this->datos_habitacion_especifica[$i]['TIPO']?>
                             </td>
                             <td>
                                 <?php echo $this->datos_habitacion_especifica[$i]['COSTO'] ?>

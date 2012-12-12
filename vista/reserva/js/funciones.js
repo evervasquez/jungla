@@ -33,7 +33,7 @@ $(document).ready(function(){
             $.post('/jungla/reserva/busca_tipo_habitacionxhabitacion','idhabitacion='+$(this).val(),function(datos){
                 $("#tipo_habitacion").html('<option value="">Seleccione...</option>');
                 for(var i=0;i<datos.length;i++){
-                    $("#tipo_habitacion").append('<option value="'+ datos[i].IDTIPO_HABITACION + '">' + datos[i].TIPO_HABITACION+ '</option>');
+                    $("#tipo_habitacion").append('<option value="'+ datos[i].IDTIPO_HABITACION + '">' + datos[i].TIPO+ '</option>');
                 }
             },'json');
             $("#tipo_habitacion").focus();
@@ -272,7 +272,7 @@ $(document).ready(function(){
         $.post('/jungla/reserva/inserta_pasajero','nombres='+n+'&apellidos='+a+
             '&documento='+d+'&fecha_nacimiento='+f+'&sexo='+sexo+
             '&telefono='+t+'&email='+e+'&estado_civil='+ec+
-            '&profesion='+p+'&ubigeo='+$("#ubigeo").val()+'&membresia='+membresia+
+            '&profesion='+p+'&ubigeo='+$("#ubigeo option:selected").val()+'&membresia='+membresia+
             '&direccion='+dir+'&tipo_cliente=natural',
         function(datos){
             $("#idcliente").val(datos[0].IDCLIENTE);

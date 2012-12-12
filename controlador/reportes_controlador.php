@@ -127,7 +127,8 @@ class reportes_controlador extends controller {
     public function obtener_datos_comprobante_venta($idventa) {
         $datos =$this->_reportes->selecciona_datos_comprobante_venta($idventa);
         $cabeceras = array ('IDVENTA', 'FECHA_VENTA', 'ESTADO', 'OBSERVACIONES', 'NRO_DOCUMENTO', 'IDTIPO_COMPROBANTE','SERIE','ABREVIATURA',
-            'IDEMPLEADO', 'NOMBRES_EMPLEADO', 'APELLIDOS_EMPLEADO', 'IDTIPO_TRANSACCION', 'REGISTRO_VENTA', 'IDCLIENTE', 'NOMBRES_CLIENTE', 'APELLIDOS_CLIENTE', 'DOCUMENTO', 'DIRECCION_CLIENTE');
+            'IDEMPLEADO', 'NOMBRES_EMPLEADO', 'APELLIDOS_EMPLEADO', 'IDTIPO_TRANSACCION', 'REGISTRO_VENTA',
+            'IDCLIENTE', 'NOMBRES_CLIENTE', 'APELLIDOS_CLIENTE', 'DOCUMENTO', 'DIRECCION_CLIENTE', 'ESTADO_PAGO');
         $datos = controller::get_matriz($datos, $cabeceras);
         return $datos;
     }
@@ -2009,6 +2010,8 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetFillColor(255, 255, 255);
         // <editor-fold defaultstate="collapsed" desc="DATOS DE CABECERA DE EMPRESA Y CLIENTE ABAJO ->">
         $datos = $this->obtener_datos_empresa();
+
+        
         $rep_venta = array('', $datos[0]['REP_VENTA_1'], $datos[0]['REP_VENTA_2'],
             $datos[0]['REP_VENTA_3'], $datos[0]['REP_VENTA_4'],
             $datos[0]['REP_VENTA_5'], $datos[0]['REP_VENTA_6'],
@@ -2195,8 +2198,17 @@ class reportes_controlador extends controller {
         $espac = $espac + $ancho_celda_datos;
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
-        /*DETERMINAR EL TIPO DE TRANSACCION*/if($datos[0]['IDTIPO_TRANSACCION']==1){$datos[0]['IDTIPO_TRANSACCION']='CONTADO';}else{
-            $datos[0]['IDTIPO_TRANSACCION']='CREDITO';}
+        /*DETERMINAR EL TIPO DE TRANSACCION*/
+        if($datos[0]['IDTIPO_TRANSACCION']==1){
+            $datos[0]['IDTIPO_TRANSACCION']='CONTADO';
+        } else{
+            if($datos[0]['ESTADO_PAGO']==0){
+                $datos[0]['IDTIPO_TRANSACCION']='CREDITO, * SIN PAGAR *';
+            } else{
+                $datos[0]['IDTIPO_TRANSACCION']='CREDITO, * CANCELADO *';
+            }
+            
+        }
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['IDTIPO_TRANSACCION']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/
@@ -2442,8 +2454,16 @@ class reportes_controlador extends controller {
         $this->_fpdf->SetY($espac);
         $this->_fpdf->SetX(0);
         /*DETERMINAR EL TIPO DE TRANSACCION*/
-        if($datos[0]['IDTIPO_TRANSACCION']==1){$datos[0]['IDTIPO_TRANSACCION']='CONTADO';}
-        else{$datos[0]['IDTIPO_TRANSACCION']='CREDITO';}
+        if($datos[0]['IDTIPO_TRANSACCION']==1){
+            $datos[0]['IDTIPO_TRANSACCION']='CONTADO';
+        } else{
+            if($datos[0]['ESTADO_PAGO']==0){
+                $datos[0]['IDTIPO_TRANSACCION']='CREDITO, * SIN PAGAR *';
+            } else{
+                $datos[0]['IDTIPO_TRANSACCION']='CREDITO, * CANCELADO *';
+            }
+            
+        }
         $this->_fpdf->Cell($ancho,$ancho_celda_datos,substr(utf8_decode(' CONDICION: '.$datos[0]['IDTIPO_TRANSACCION']),0,36),0,0,'L',1);
         $espac = $espac + $ancho_celda_datos;
         /*DETERMINAR LA OBSERVACION O SI ESTUVIERA VENTA ANULADA*/

@@ -18,7 +18,7 @@
             <th>Descripcion</th>
             <th>Tipo de Producto</th>
             <th>Stock</th>
-            <th>Unidad de medida</th>
+            <th>Unidad de Medida</th>
             <th>Ubicacion</th>
             <th>Acciones</th>
         </tr>

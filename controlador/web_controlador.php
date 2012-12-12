@@ -15,31 +15,20 @@ class web_controlador extends controller {
         $this->_web->tipo = "Principal";
         $this->_vista->datos = $this->_web->selecciona();
         $this->_vista->datos_jungla = $this->_datos_jungla->selecciona();
-        $this->_vista->setJs(array('sexylightbox'));
-        $this->_vista->setJs(array('jquery.easing'));
-        $this->_vista->setCss(array('sexylightbox'));
-        $this->_vista->setJs(array('jflow.plus.min'));
-        $this->_vista->setJs(array('funciones_index'));
-        $this->_vista->setCss(array('estilos_index'));
-        $this->_vista->setCss(array('jflow.style'));
+        $this->_vista->setJs(array('sexylightbox','jquery.easing','jflow.plus.min','funciones_index'));
+        $this->_vista->setCss(array('sexylightbox','estilos_index','jflow.style'));
         $this->_vista->renderiza_web('index');
     }
     
     public function servicios(){
         $this->_web->tipo = "Servicios";
         $this->_vista->datos = $this->_web->selecciona();
-        $this->_vista->setJs(array('sexylightbox'));
-        $this->_vista->setJs(array('jquery.easing'));
-        $this->_vista->setCss(array('sexylightbox'));
-        $this->_vista->setJs(array('funciones_servicios'));
-        $this->_vista->setCss(array('estilos_servicios'));
+        $this->_vista->setJs(array('sexylightbox','jquery.easing','funciones_servicios'));
+        $this->_vista->setCss(array('sexylightbox','estilos_servicios'));
         $this->_vista->renderiza_web('servicios');
     }
     
     public function fotos(){
-        $this->_vista->setJs(array('sexylightbox'));
-        $this->_vista->setJs(array('jquery.easing'));
-        $this->_vista->setCss(array('sexylightbox'));
         $this->_vista->setJs(array('funciones_fotos'));
         $this->_vista->setCss(array('estilos_fotos'));
         $this->_vista->renderiza_web('fotos');

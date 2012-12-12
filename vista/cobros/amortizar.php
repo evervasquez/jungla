@@ -1,14 +1,8 @@
-<script>
-    $(document).ready(function(){
-        $(".precio").focus();
-    });
-</script>
-<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm" onsubmit="return validarEmpleado();">
+<form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" class="tabForm" id="frm">
     <h3>Amortizar Cobro:</h3>
     <input type="hidden" name="guardar" id="guardar" value="1"/>
-    <input type="hidden" name="codigo" id="codigo"
-            value="<?php if(isset ($this->datos[0]['IDCOMPRA']))echo $this->datos[0]['IDCOMPRA']?>"/>
-<div id="tabla">
+    <input type="hidden" name="codigo" id="codigo" value="<?php if(isset ($this->datos[0]['IDCOMPRA']))echo $this->datos[0]['IDCOMPRA']?>"/>
+    <input type="hidden" id="monto_restante" value="<?php echo $this->monto_restante?>" />
 <table align="center">
     <tr>
         <td><label>Fecha Pago:</label></td>
@@ -28,11 +22,11 @@
     <tr>
         <td colspan="2" align="center">
             <p>
-                <button type="submit" class="k-button" id="saveform">Guardar</button>
+                <button type="button" class="k-button" id="saveform">Guardar</button>
                 <a href="<?php echo BASE_URL ?>cobros" class="k-button cancel">Cancelar</a>
             </p>
         </td>
         <td><div class="msgerror"></div></td>
     </tr>
 </table>
-</div>
+</form>

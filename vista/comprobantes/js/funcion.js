@@ -7,7 +7,7 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
-            $.post('/sisjungla/comprobantes/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
+            $.post('/jungla/comprobantes/buscador','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 HTML = '<table border="1" class="tabgrilla">'+
                         '<tr>'+
                             '<th>Codigo</th>'+
@@ -19,12 +19,12 @@
 
                 for(var i=0;i<datos.length;i++){
                     HTML = HTML + '<tr>';
-                    HTML = HTML + '<td>'+datos[i].idcomprobante+'</td>';
-                    HTML = HTML + '<td>'+datos[i].descripcion+'</td>';
-                    HTML = HTML + '<td>'+datos[i].serie+'</td>';
-                    HTML = HTML + '<td>'+datos[i].correlativo+'</td>';
-                    var editar='/sisjungla/comprobantes/editar/'+datos[i].idcomprobante; 
-                    var eliminar='/sisjungla/comprobantes/eliminar/'+datos[i].idcomprobante;   
+                    HTML = HTML + '<td>'+datos[i].IDCOMPROBANTE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
+                    HTML = HTML + '<td>'+datos[i].SERIE+'</td>';
+                    HTML = HTML + '<td>'+datos[i].CORRELATIVO+'</td>';
+                    var editar='/jungla/comprobantes/editar/'+datos[i].IDCOMPROBANTE; 
+                    var eliminar='/jungla/comprobantes/eliminar/'+datos[i].IDCOMPROBANTE;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit" ></a>';
                     HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '</td>';

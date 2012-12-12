@@ -461,8 +461,13 @@ $(document).ready(function(){
         if($(this).val()!='' && $(this).val().length==8){
             $.post('/jungla/pasajeros/buscador','cadena='+$("#dni").val()+'&filtro=2',function(datos){
                 if(datos.length>0){
-                    alert('Ya esta registrado un cliente con este Nro de DNI...');
-                    $("#dni").val('');
+                    if(confirm('Ya esta registrado un cliente con este Nro de DNI.\nDesea seleccionarlo?...')){
+                        $("#idcliente").val(datos[0].IDCLIENTE);
+                        $("#cliente").val(datos[0].NOMBRES+' '+datos[0].APELLIDOS);
+                        salir();
+                    }else{
+                        $("#dni").val('');
+                    }
                 }   
             },'json');
         }
