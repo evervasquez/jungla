@@ -126,11 +126,26 @@ $(document).ready(function(){
     
     //valida existencia de pasajeros
     $("#nrodoc").blur(function(){
-        if($(this).val()!=''){
+        if($(this).val()!='' && $(this).val().length==8){
             $.post('/jungla/pasajeros/buscador','cadena='+$("#nrodoc").val()+'&filtro=2',function(datos){
                 if(datos.length>0){
-                    alert('Ya esta registrado un pasajero con este Nro de DNI...');
-                    $("#nrodoc").val('');
+                    if(confirm('Ya esta registrado un cliente con este Nro de DNI.\nDesea seleccionarlo?...')){
+                        $("#idcliente").val(datos[0].IDCLIENTE);
+                        $("#cliente").val(datos[0].NOMBRES+' '+datos[0].APELLIDOS);
+                        $("#vtna_inserta_pasajero").fadeOut(300);
+                        $("#fondooscuro").fadeOut(300);
+                        $("#nombres").val('');
+                        $("#apellidos").val('');
+                        $("#nrodoc").val('');
+                        $("#fecha_nacimiento").val('');
+                        $("#telefono").val('');
+                        $("#email").val('');
+                        $("#direccion").val('');
+                        $("#sexo_m").attr("checked",true);
+                        $(".combo").val('');
+                    }else{
+                        $("#nrodoc").val('');
+                    }
                 }   
             },'json');
         }

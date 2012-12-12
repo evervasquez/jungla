@@ -36,7 +36,8 @@ class clientes extends Main {
             die($r[1]);
         }
         $r = null;
-        return $error;
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchall();
     }
 
     public function actualiza() {

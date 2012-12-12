@@ -28,7 +28,7 @@
                         HTML = HTML + '<td>'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE))+'</td>';
                         HTML = HTML + '<td>0</td>';
                         HTML = HTML + '<td>'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE))+'</td>';
-                        HTML = HTML + '<td><a href="/jungla/deudas/pagar/'+datos[i].IDCOMPRA+'/'+((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_PAGADO))+'" class="imgcobrar"></a></td>';
+                        HTML = HTML + '<td><a href="/jungla/deudas/pagar/'+datos[i].IDCOMPRA+'/'+(parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE))+'" class="imgcobrar"></a></td>';
                         HTML = HTML + '</tr>';
                     }
                 }

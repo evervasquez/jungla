@@ -30,7 +30,7 @@
                         HTML = HTML + '<td>'+((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].DESCUENTO))+'</td>';
                         HTML = HTML + '<td>0</td>';
                         HTML = HTML + '<td>'+((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].DESCUENTO))+'</td>';
-                        HTML = HTML + '<td><a href="/jungla/cobros/cobrar/'+datos[i].IDVENTA+'/'+((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].DESCUENTO))+'/'+datos[i].TIPO_COMPROBANTE+'" class="imgcobrar"></a></td>';
+                        HTML = HTML + '<td><a href="/jungla/cobros/cobrar/'+datos[i].IDVENTA+'/'+((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].DESCUENTO))+'/'+datos[i].XTIPO_COMPROBANTE+'" class="imgcobrar"></a></td>';
                         HTML = HTML + '</tr>';
                     }
                 }
@@ -45,8 +45,8 @@
                         HTML = HTML + '<td>'+(((parseFloat(datos[i].IGV)+1)*parseFloat(datos[i].IMPORTE))-parseFloat(datos[i].DESCUENTO))+'</td>';
                         HTML = HTML + '<td>'+datos[i].MONTO_COBRADO+'</td>';
                         HTML = HTML + '<td>'+((parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_COBRADO)-parseFloat(datos[i].DESCUENTO)))+'</td>';
-                        HTML = HTML + '<td><a href="/jungla/cobros/cronograma/'+datos[i].IDVENTA+'" class="imgcronog"></a>';
-                        HTML = HTML + '<a href="/jungla/cobros/amortizar/'+datos[i].IDVENTA+'" class="imgamort"></a></td>';
+                        HTML = HTML + '<td><a href="/jungla/cobros/cronograma/'+datos[i].IDVENTA+'/'+((parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_COBRADO)-parseFloat(datos[i].DESCUENTO)))+'" class="imgcronog"></a>';
+                        HTML = HTML + '<a href="/jungla/cobros/amortizar/'+datos[i].IDVENTA+'/'+((parseFloat(datos[i].IGV)+1)*(parseFloat(datos[i].IMPORTE)-parseFloat(datos[i].MONTO_COBRADO)-parseFloat(datos[i].DESCUENTO)))+'" class="imgamort"></a></td>';
                         HTML = HTML + '</tr>';
                 }
                 HTML = HTML + '</table>'

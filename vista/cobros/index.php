@@ -28,7 +28,7 @@
             <td><?php echo 0 ?></td>
             <td><?php echo ($this->datos_ventas[$i]['IGV']+1)*$this->datos_ventas[$i]['IMPORTE']-$this->datos_ventas[$i]['DESCUENTO'] ?></td>
             <td class="tabtr" align="center">
-                <input type="hidden" id="bot<?php echo $i ?>" value="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['TIPO_COMPROBANTE']?>" />
+                <input type="hidden" id="bot<?php echo $i ?>" value="<?php echo BASE_URL ?>cobros/cobrar/<?php echo $this->datos_ventas[$i]['IDVENTA'].'/'.($this->datos_ventas[$i]['IMPORTE'] * ($this->datos_ventas[$i]['IGV'] + 1) - $this->datos_ventas[$i]['DESCUENTO']).'/'.$this->datos_ventas[$i]['XTIPO_COMPROBANTE']?>" />
                 <a href="javascript:void(0)" class="imgcobrar" onclick="botcobrar(<?php echo $i; ?>)" target="_blank"></a>
             </td>
         </tr>
@@ -43,7 +43,7 @@
             <td><?php echo $this->datos[$i]['MONTO_COBRADO'] ?></td>
             <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO']-$this->datos[$i]['DESCUENTO'] ?></td>
             <td class="tabtr" align="center">
-                <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA']?>" class="imgcronog"></a>
+                <a href="<?php echo BASE_URL ?>cobros/cronograma/<?php echo $this->datos[$i]['IDVENTA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO']-$this->datos[$i]['DESCUENTO'])?>" class="imgcronog"></a>
                 <a href="<?php echo BASE_URL ?>cobros/amortizar/<?php echo $this->datos[$i]['IDVENTA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_COBRADO']-$this->datos[$i]['DESCUENTO'])?>" class="imgamort"></a>
             </td>
         </tr>

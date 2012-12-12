@@ -1,7 +1,7 @@
     $(function(){
         $(".tabgrilla").kendoGrid({
             dataSource: {
-                pageSize: 15
+                pageSize: 16
             },
             pageable: true,
             columns: [
