@@ -145,7 +145,7 @@
                html+= '</tr>';
                html+= '<tr>';
                html+= '<td>Tipo de Empleado:</td>';
-               html+= '<td>'+datos[0]['TIPO_EMPLEADO']+'</td>';
+               html+= '<td>'+datos[0]['XTIPO_EMPLEADO']+'</td>';
                html+= '</tr>';
                html+= '</table>';
                html+= '<p align="center"><input type="button" class="k-button" value="Aceptar" id="aceptar"/></p>';

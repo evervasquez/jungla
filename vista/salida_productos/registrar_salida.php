@@ -64,7 +64,7 @@
 <div id="vtna_busca_productos">
     <h3>Lista de Productos</h3>
     <p>
-        <select class="combo" id="filtro_productos">
+        <select class="list" id="filtro_productos">
             <option value="0">Descripcion</option>
         </select>
         <input type="text" class="k-textbox" style="width: 40%" id="txt_buscar_productos">
