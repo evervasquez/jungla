@@ -70,12 +70,7 @@ class deudas_controlador extends controller {
                 echo '<script>alert("No hay suficiente saldo para ejecutar el pago")</script>';
                 $this->redireccionar('caja');
             }
-            if ($monto_restante < $_POST['monto']) {
-                echo '<script>alert("El monto ingresado es mayor a la de su deuda")</script>';
-                $this->redireccionar('deudas/amortizar/' . $idcompra . '/' . $monto_restante);
-            }
-//            echo '<pre>';
-//            print_r($_POST);exit;
+//            echo '<pre>';print_r($_POST);exit;
             //insertar movimiento caja
             $this->_movimiento_caja->idconcepto_movimiento = 1;
             $this->_movimiento_caja->idcaja = $datos_caja[0]['IDCAJA'];
@@ -125,11 +120,9 @@ class deudas_controlador extends controller {
                 }
             }
 
-            //
             //actualiza saldo caja
             $this->_caja->idcaja = $datos_caja[0]['IDCAJA'];
             $this->_caja->saldo = $_POST['monto'];
-
             $this->_caja->aumenta = 0;
             $this->_caja->actualiza();
 
@@ -141,6 +134,8 @@ class deudas_controlador extends controller {
             $this->redireccionar('deudas');
         }
 
+        $this->_vista->monto_restante=$monto_restante;
+        $this->_vista->setJs(array('funciones_amortizar'));
         $this->_vista->action = BASE_URL . 'deudas/amortizar/' . $idcompra . '/' . $monto_restante;
         $this->_vista->renderizar('amortizar');
     }
@@ -153,7 +148,7 @@ class deudas_controlador extends controller {
         }
 
         if (new DateTime($datos_caja[0]['C_FECHA']) != new DateTime(date('d-m-Y'))) {
-            echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el día de hoy")</script>';
+            echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el dia de hoy")</script>';
             $this->redireccionar('caja');
         }
 

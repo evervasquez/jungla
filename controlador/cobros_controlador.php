@@ -56,7 +56,7 @@ class cobros_controlador extends controller{
         $this->_vista->renderizar('cronograma');
     }
     
-    public function amortizar($idventa){
+    public function amortizar($idventa, $monto_restante){
         $datos_caja=$this->_caja->selecciona();
         if($datos_caja[0]['ESTADO']==0){
             echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
@@ -132,7 +132,9 @@ class cobros_controlador extends controller{
             
             $this->redireccionar('cobros');
         }
-        $this->_vista->action= BASE_URL.'cobros/amortizar/'.$idventa;
+        $this->_vista->setJs(array('funciones_amortizar'));
+        $this->_vista->monto_restante=$monto_restante;
+        $this->_vista->action= BASE_URL.'cobros/amortizar/'.$idventa.'/'.$monto_restante;
         $this->_vista->renderizar('amortizar');
     }
     
@@ -144,7 +146,7 @@ class cobros_controlador extends controller{
         }
 
         if(new DateTime($datos_caja[0]['C_FECHA'])!=new DateTime(date('d-m-Y'))){
-            echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el día de hoy")</script>';
+            echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el dia de hoy")</script>';
             $this->redireccionar('caja');
         }
         //insertar movimiento caja

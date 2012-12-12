@@ -166,7 +166,7 @@ class estadia_controlador extends controller{
                 $this->_ruta_huesped->idubigeo=$_POST['ciudad'][$i];
                 $this->_ruta_huesped->idcliente=$_POST['idpasajero'][$i];
                 $this->_ruta_huesped->idventa=$_POST['codigo'];
-                /*$this->_ruta_huesped->inserta();*/
+                $this->_ruta_huesped->inserta();
                 
                 //actualizamos detalle_estadia
                 $this->_detalle_estadia->idcliente=$_POST['idpasajero'][$i];
@@ -188,7 +188,7 @@ class estadia_controlador extends controller{
             $this->_ventas->descuento=$_POST['descuento'];
             $this->_ventas->actualiza();
             echo "<script>
-                if(confirm('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
+                if(confirm ('¿Imprimir el comprobante de Venta?')){ }else { window.close(); }
                 </script>";
             //aqui hacer
             $this->_asiento->idventa_servicio=$idventa;

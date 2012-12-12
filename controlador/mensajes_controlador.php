@@ -61,7 +61,7 @@ class mensajes_controlador extends controller {
         }
         $this->_mensajes->idmensaje = $this->filtrarInt($id);
         $this->_mensajes->elimina();
-        $this->_alertas->desactiva_alerta();
+        @$this->_alertas->desactiva_alerta();
         $this->redireccionar('mensajes');
     }
 }

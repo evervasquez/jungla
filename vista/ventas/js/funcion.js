@@ -37,7 +37,9 @@ $(function(){
                 var eliminar='/jungla/ventas/eliminar/'+datos[i].IDVENTA;  
                 HTML = HTML + '<td><a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                 HTML = HTML + '<a href="javascript:void(0)" onclick="ver(\''+datos[i].IDVENTA+'\')" class="imgview"></a>';
-                HTML = HTML + '<a href="javascript:void(0)" onclick="imprimir(\''+datos[i].IDVENTA+'\',\''+datos[i].NRO_DOCUMENTO+'\')" class="print" target="_blank"></a>';
+                if(!(datos[i].ESTADO_PAGO==0 && datos[i].IDTIPO_TRANSACCION==1)){
+                    HTML = HTML + '<a href="javascript:void(0)" onclick="imprimir(\''+datos[i].IDVENTA+'\',\''+datos[i].NRO_DOCUMENTO+'\')" class="print" target="_blank"></a>';
+                }
                 HTML = HTML + '</td>';
                 HTML = HTML + '</tr>';
             }

@@ -33,7 +33,7 @@ $(document).ready(function(){
             $.post('/jungla/reserva/busca_tipo_habitacionxhabitacion','idhabitacion='+$(this).val(),function(datos){
                 $("#tipo_habitacion").html('<option value="">Seleccione...</option>');
                 for(var i=0;i<datos.length;i++){
-                    $("#tipo_habitacion").append('<option value="'+ datos[i].IDTIPO_HABITACION + '">' + datos[i].TIPO_HABITACION+ '</option>');
+                    $("#tipo_habitacion").append('<option value="'+ datos[i].IDTIPO_HABITACION + '">' + datos[i].TIPO+ '</option>');
                 }
             },'json');
             $("#tipo_habitacion").focus();

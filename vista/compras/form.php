@@ -53,7 +53,6 @@
                 <td><label>Intervalo de dias:</label></td>
                 <td>
                     <select class="list" placeholder="Seleccione..." name="intervalo_dias" id="intervalo_dias">
-                        <option></option>
                         <option value="7">7</option>
                         <option value="14">14</option>
                     </select>

@@ -128,12 +128,6 @@
                 html+= '<td>Total:</td>';
                 html+= '<td>'+(parseFloat(datos[0]['IGV'])+1)*(datos[0]['IMPORTE'])+'</td>';
                 html+= '</tr>';
-               if(datos[0]['OBSERVACIONES'] != null && datos[0]['OBSERVACIONES'] != ' '){
-                html+= '<tr>';
-                html+= '<td>Observaciones:</td>';
-                html+= '<td>'+datos[0]['OBSERVACIONES']+'</td>';
-                html+= '</tr>';
-               }
                 html+= '<tr>';
                 html+= '<td>Estado:</td>';
                 if(datos[0]['ESTADO']==0){

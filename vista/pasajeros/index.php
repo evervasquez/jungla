@@ -20,7 +20,7 @@
             <th>DNI / RUC</th>
             <th>Telefono</th>
             <th>Email</th>
-            <th>Ubigeo</th>
+            <th>Pais</th>
             <th>Acciones</th>
         </tr>
 <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
@@ -31,7 +31,7 @@
                 <td><?php echo $this->datos[$i]['DOCUMENTO'] ?></td>
                 <td><?php echo $this->datos[$i]['TELEFONO'] ?></td>
                 <td><?php echo $this->datos[$i]['EMAIL'] ?></td>
-                <td><?php echo $this->datos[$i]['UBIGEO'] ?></td>
+                <td><?php echo $this->datos[$i]['XPAIS'] ?></td>
                 <td>
                     <a href="javascript:void(0)" onclick="editar('<?php echo BASE_URL?>pasajeros/editar/<?php echo $this->datos[$i]['IDCLIENTE'] ?>')" class="imgedit"></a>
                     <a href="javascript:void(0)" class="imgview" onclick="ver('<?php echo $this->datos[$i]['IDCLIENTE'] ?>')"></a>  
