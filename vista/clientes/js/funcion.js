@@ -147,12 +147,6 @@
                     html+= '<td>'+datos[0]['ESTADO_CIVIL']+'</td>';
                     html+= '</tr>';
                     }
-                    if(datos[0]['XPAIS'] != null && datos[0]['XPAIS'] != ' '){
-                    html+= '<tr>';
-                    html+= '<td>Pais:</td>';
-                    html+= '<td>'+datos[0]['XPAIS']+'</td>';
-                    html+= '</tr>';
-                    }
                     if(datos[0]['XMEMBRESIA'] != "Desconocido"){
                     html+= '<tr>';
                     html+= '<td>Membresia:</td>';

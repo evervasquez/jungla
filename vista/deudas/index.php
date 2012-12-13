@@ -28,7 +28,7 @@
             <td><?php echo 0 ?></td>
             <td><?php echo ($this->datos_compras[$i]['IGV']+1)*$this->datos_compras[$i]['IMPORTE'] ?></td>
             <td class="tabtr" align="center">
-                <a href="<?php echo BASE_URL ?>deudas/pagar/<?php echo $this->datos_compras[$i]['IDCOMPRA'].'/'.(($this->datos_compras[$i]['IGV']+1)*$this->datos_compras[$i]['IMPORTE'] - $this->datos_compras[$i]['MONTO_PAGADO'])?>"  class="imgcobrar"></a>
+                <a href="<?php echo BASE_URL ?>deudas/pagar/<?php echo $this->datos_compras[$i]['XIDCOMPRA'].'/'.(($this->datos_compras[$i]['IGV']+1)*$this->datos_compras[$i]['IMPORTE'] - $this->datos_compras[$i]['MONTO_PAGADO'])?>"  class="imgcobrar"></a>
             </td>
         </tr>
         <?php } ?>
@@ -44,8 +44,8 @@
             <td><?php echo ($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'] ?></td>
             <td class="tabtr" align="center">
 
-                <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgcronog"></a>
-                <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['IDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgamort"></a>
+                <a href="<?php echo BASE_URL ?>deudas/cronograma/<?php echo $this->datos[$i]['XIDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgcronog"></a>
+                <a href="<?php echo BASE_URL ?>deudas/amortizar/<?php echo $this->datos[$i]['XIDCOMPRA'].'/'.(($this->datos[$i]['IGV']+1)*$this->datos[$i]['IMPORTE'] - $this->datos[$i]['MONTO_PAGADO'])?>" class="imgamort"></a>
 
             </td>
         </tr>

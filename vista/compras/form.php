@@ -16,7 +16,7 @@
                 <td>
                     <input type="hidden" name="idproveedor" id="idproveedor" value="<?php if(isset ($this->datos[0]['IDPROVEEDOR']))echo $this->datos[0]['IDPROVEEDOR']?>"/>
                     <input type="text" class="k-textbox" placeholder="Busque proveedor" required  readonly="readonly" name="proveedor"
-                       id="proveedor" value="<?php if(isset ($this->datos[0]['IDPROVEEDOR']))echo $this->datos[0]['IDPROVEEDOR']?>"/>
+                       id="proveedor" value="<?php if(isset ($this->datos[0]['PROVEEDOR']))echo $this->datos[0]['PROVEEDOR']?>"/>
                     <br><div class="k-invalid-msg msgerror" data-for="proveedor"></div>
                 </td>
                 <td><button type="button" class="k-button" id="btn_vtna_proveedores"><span class="k-icon k-i-search"></span></button>
