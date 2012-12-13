@@ -253,7 +253,7 @@ class compras_controlador extends controller{
         }
         $this->_compras->idcompra=$this->filtrarInt($id);
         $this->_compras->elimina();
-        $this->_alertas->desactiva_alerta();
+        @$this->_alertas->desactiva_alerta();
         $this->redireccionar('compras');
     }
 }

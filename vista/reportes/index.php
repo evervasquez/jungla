@@ -184,6 +184,4 @@
     </table>
     </div>
 </div>
-
-</div>
 <div id="fondooscuro"></div>

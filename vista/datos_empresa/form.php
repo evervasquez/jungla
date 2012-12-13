@@ -35,7 +35,7 @@
             <td><label>Email:</label></td>
 
             <td><input type="text" class="k-textbox" placeholder="Ingrese email" required name="e_mail"
-                       id="e_mail" value="<?php if(isset ($this->datos[0]['E_EMAIL']))echo $this->datos[0]['E_EMAIL']?>"/>
+                       id="e_mail" value="<?php if(isset ($this->datos[0]['E_MAIL']))echo $this->datos[0]['E_MAIL']?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="e_mail"></div>
             </td>
         </tr>

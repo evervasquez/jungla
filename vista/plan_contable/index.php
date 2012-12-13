@@ -1,5 +1,5 @@
 <?php if (isset($this->datos) && count($this->datos)) { ?>
-<h3>Lista de Planes Contables</h3>
+<h3>Lista de Cuentas Contables</h3>
     <p>
         <select class="list" id="filtro">
             <option value="0">Nro.de Cuenta</option>

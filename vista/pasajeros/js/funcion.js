@@ -51,7 +51,6 @@ $(function(){
                     var editar='/jungla/pasajeros/editar/'+datos[i].IDCLIENTE; 
                     var eliminar='/jungla/pasajeros/eliminar/'+datos[i].IDCLIENTE;   
                     HTML = HTML + '<td> <a href="javascript:void(0)" onclick="editar(\''+editar+'\')" class="imgedit"></a>';
-                    HTML = HTML + '<a href="javascript:void(0)" onclick="eliminar(\''+eliminar+'\')" class="imgdelete"></a>';
                     HTML = HTML + '<a href="javascript:void(0)" class="imgview" onclick="ver(\''+datos[i].IDCLIENTE+'\')"></a>';
                     HTML = HTML + '</td>';
                     HTML = HTML + '</tr>';
@@ -89,17 +88,15 @@ $(function(){
         function salir(){
             $("#vtna_ver_pasajero").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
+            $("#buscar").focus();
         }
-       $("#vtna_ver_pasajero").hide();
        $("#aceptar").live('click',function(){
            salir();
-            $("#buscar").focus();
        });
         document.onkeydown = function(evt) {
             evt = evt || window.event;
             if (evt.keyCode == 27) {
                 salir();
-                $("#buscar").focus();
             }
         };
        

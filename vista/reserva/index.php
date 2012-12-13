@@ -115,7 +115,7 @@
                 <td><label>Doc. de Identidad:</label></td>
                 <td>
                     <input type="text" class="k-textbox" placeholder="Ingrese nro.de documento" required name="documento" onKeyPress="return soloNumeros(event);"
-                       id="nrodoc" value=""/>
+                       id="nrodoc" value="" maxlength="8"/>
                     <br><div class="k-invalid-msg msgerror" data-for="documento"></div>
                 </td>
                 <td><label>Nombre:</label></td>

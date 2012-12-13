@@ -44,8 +44,7 @@ class habitacion_especifica extends Main{
     }
 
     public function inserta() {
-        $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones
-                , 0);
+        $datos = array($this->idhabitacion, $this->idtipo_habitacion, $this->costo, $this->observaciones, 0);
         $r = $this->get_consulta("pa_inserta_act_habitacion_e", $datos);
         $error = $r[1];
         $r = null;
