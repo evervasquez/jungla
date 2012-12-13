@@ -1,9 +1,9 @@
 <form method="post" action="<?php if(isset ($this->action))echo $this->action ?>" id="frm" target="_blank">
     <input type="hidden" name="guardar" id="guardar" value="1"/>
     <input type="hidden" name="codigo" id="codigo" value="<?php echo $this->datos[0]['IDVENTA']?>"/>
-    <table>
+    <table align="center" width="70%" class="tabForm">
         <tr>
-            <td>Fecha entrada:</td>
+            <td><label>Fecha entrada:</label></td>
             <td>
                 <input type="hidden" name="hora_entrada" value="<?php echo $this->datos[0]['DE_HORA_INGRESO'] ?>" />
                 <input type="text" class="k-textbox" readonly="readonly" name="fecha_entrada"
@@ -11,14 +11,14 @@
             </td>
         </tr>
         <tr>
-            <td>Fecha salida:</td>
+            <td><label>Fecha salida:</label></td>
             <td>
                 <input type="hidden" name="fecha_salida" value="<?php echo date('d-m-Y H:i:s') ?>" />
                 <input type="text" class="k-textbox" readonly="readonly" id="fecha_salida" value="<?php echo date('d-m-Y')?>"/>
             </td>
         </tr>
         <tr id="celda_detalle_estadia">
-            <td colspan="2">
+            <td colspan="2"><br>
                 <table border="1" align="center" id="detalle_estadia">
                     <tr>
                         <th>Habitacion</th>
@@ -41,25 +41,21 @@
                         </td>
                     </tr>
                     <?php }?>
-                </table>
+                </table><br>
             </td>
         </tr>
     </table>
-    <table>
+    <table align="center" width="80%">
         <tr>
-            <td>Cliente:</td>
-            <td>
+            <td align="right" width="79%">Cliente:
                 <input type="hidden" name="idcliente" id="idcliente"
                        value="<?php if(isset ($this->datos[0]['IDCLIENTE']))echo $this->datos[0]['IDCLIENTE']?>"/>
                 <input type="text" class="k-textbox" placeholder="Busque cliente" required  readonly="readonly" name="cliente"
                        id="cliente" value="<?php if(isset ($this->datos[0]['CLIENTE']))echo $this->datos[0]['CLIENTE']?>"/>
-            </td>
-            <td>
                 <button type="button" class="k-button" id="btn_vtna_clientes"><span class="k-icon k-i-search"></span></button>
                 <button type="button" class="k-button" id="btn_vtna_agrega_pasajeros"><span class="k-icon k-i-plus"></span></button>
-            </td>
-            <td>Tipo de Comprobante:</td>
-            <td>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Tipo de Comprobante:
                 <select class="list" placeholder="Seleccione..." name="tipo_comprobante" id="tipo_comprobante" required>
                     <?php for($i=0;$i<count($this->datos_tipo_comprobante);$i++){ ?>
                         <?php if( $this->datos[0]['IDTIPO_COMPROBANTE'] == $this->datos_tipo_comprobante[$i]['idtipo_comprobante'] ){ ?>
@@ -72,7 +68,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="5">
+            <td colspan="5"><br>
                 <table border="1" id="tbl_detalle_venta">
                     <tr>
                         <th>Item</th><th>Descripcion</th><th>Unidad de Medida</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th>
@@ -131,36 +127,32 @@
                         </td>
                     </tr>
                         <?php } ?>
-                </table>
+                </table><br>
             </td>
         </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-            <td><label>Importe:</label></td>
+        <tr align="right">
+            <td colspan="4"><label>Importe:</label></td>
             <td>
                 <input type="text" class="k-textbox" required name="importe" id="importe" readonly="readonly"
                    value="<?php echo $total ?>"/>
             </td>
         </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-            <td><label>IGV:</label></td>
+        <tr align="right">
+            <td colspan="4"><label>IGV:</label></td>
             <td>
                 <input type="text" class="descuento" placeholder="0" name="igv" id="igv" 
                    value="<?php if(isset ($this->datos[0]['IGV'])){echo $this->datos[0]['IGV'];}else{echo '0';}?>" />
             </td>
         </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-            <td><label>Descuento:</label></td>
+        <tr align="right">
+            <td colspan="4"><label>Descuento:</label></td>
             <td>
                 <input type="text" class="k-textbox" placeholder="0" id="descuento" 
                        value='0' name="descuento"/>
             </td>
         </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-            <td><label>Total:</label></td>
+        <tr align="right">
+            <td colspan="4"><label>Total:</label></td>
             <td>
                 <input type="text" class="k-textbox" readonly="readonly" id="total" 
                        value='<?php echo $total ?>' name="total"/>
@@ -301,3 +293,5 @@
         </tr>
     </table>
 </div>
+
+<div id="fondooscuro"></div>

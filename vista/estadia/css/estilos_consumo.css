@@ -1,0 +1,30 @@
+
+#vtna_busca_productos{
+        display: none;
+	padding:20px;
+	color: black;
+	position: fixed;
+	left: 15%;
+	top: 20%;
+        width: 70%;
+	z-index: 1000;
+	text-align: center;
+	background-color: white;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        border:10px solid grey;
+}
+
+.block{
+        display: block;
+        width: 70px;
+}
+.tabForm label{
+        width: 70px;
+}
+#tbl_detalle{
+        width: 50%;
+        margin-right: 20%;
+}

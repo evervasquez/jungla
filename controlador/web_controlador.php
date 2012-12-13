@@ -45,6 +45,12 @@ class web_controlador extends controller {
         $this->_vista->setCss(array('estilos_contactenos'));
         $this->_vista->renderiza_web('contacto');
     }
+    
+    public function faceJungla($id){
+        $this->_vista->idfb= $id;
+        $this->_vista->renderizar_reporte('faceJungla');
+    }
+    
 }
 
 ?>

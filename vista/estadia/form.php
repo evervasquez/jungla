@@ -90,7 +90,7 @@
 <div id="vtna_busca_pasajero">
     <h3>Lista de Pasajeros</h3>
     <p>
-        <select class="combo" id="filtro_pasajeros">
+        <select class="list" id="filtro_pasajeros">
             <option value="0">Nombre/Apellido</option>
             <option value="1">Razon Social</option>
             <option value="2">DNI</option>

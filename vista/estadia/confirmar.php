@@ -3,41 +3,42 @@
     <input type="hidden" name="codigo" id="codigo" value="<?php echo $this->datos[0]['IDVENTA']?>"/>
     <fieldset>
         <legend><?php echo $this->titulo ?></legend>
-        <table>
+        <table class="tabForm" align="center" width="80%">
             <tr>
-                <td>Representante:</td>
+                <td><label>Representante:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" value="<?php echo $this->datos[0]['CLIENTE'] ?>"/>
                 </td>
             </tr>
             <tr>
-                <td>Fecha reserva:</td>
+                <td><label>Fecha reserva:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" 
                    value="<?php if(isset ($this->datos)){echo $this->datos[0]['FECHA_RESERVA'];} else {echo date("d-m-Y");} ?>"/>
                 </td>
             </tr>
             <tr>
-                <td>Fecha entrada:</td>
+                <td><label>Fecha entrada:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" 
                    id="fecha_entrada" value="<?php echo date('d-m-Y') ?>"/>
                 </td>
             </tr>
             <tr>
-                <td>Fecha salida:</td>
+                <td><label>Fecha salida:</label></td>
                 <td>
                     <input type="text" class="k-textbox" readonly="readonly" name="fecha_salida" 
                    id="fecha_salida" value="<?php echo $this->datos[0]['FECHA_SALIDA'] ?>"/>
                 </td>
             </tr>
             <tr id="celda_detalle_estadia">
-                <td colspan="2">
+                <td colspan="2" align="center">
+                    <br>
                     <fieldset>
-                        <legend>Pasajeros x habitacion:</legend>
-                        <table>
+                        <legend>Pasajeros x habitacion:</legend><br>
+                        <table align="center" width="100%">
                             <tr class="celda_asignar_pasajero">
-                                <td colspan="5">
+                                <td colspan="6">
                                     <table border="1" align="center" id="detalle_estadia">
                                         <tr>
                                             <th>Habitacion</th>
@@ -127,3 +128,5 @@
         </tr>
     </table>
 </div>
+
+<div id="fondooscuro"></div>
