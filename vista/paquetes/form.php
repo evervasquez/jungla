@@ -108,22 +108,6 @@
         <a class="k-button cancela_prod cancel">Cancelar</a>
     </p>
     <div id="grilla_productos">
-    <table border="1" class="tabgrilla" id="tbl_busca_productos">
-        <tr>
-            <th>Codigo</th>
-            <th>Descripcion</th>
-            <th>Unidad Medida</th>
-            <th>Seleccionar</th>
-        </tr>
-        <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
-            <tr>
-                <td><?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?></td>
-                <td><?php echo utf8_encode($this->datos_productos[$i]['DESSCRIPCION']) ?></td>
-                <td><?php echo $this->datos_productos[$i]['UM'] ?></td>
-                <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['DESCRIPCION']) ?>','<?php echo $this->datos_productos[0]['UM']?>')" class="imgselect"></a></td>
-            </tr>
-        <?php } ?>
-    </table>
     </div>
 </div>
 <div id="fondooscuro"></div>
