@@ -28,6 +28,7 @@
             </td>
             <td><label>Cantidad:</label></td>
             <td colspan="2">
+                <input type="hidden" id="stock_actual" />
                 <input type="numeric" min="1" class="cantidad" placeholder="Ingrese cantidad" id="cantidad" />
             </td>
         </tr
@@ -77,6 +78,7 @@
             <th>Codigo</th>
             <th>Descripcion</th>
             <th>Unidad Medida</th>
+            <th>Stock</th>
             <th>Selecciona</th>
         </tr>
         <?php for ($i = 0; $i < count($this->datos_productos); $i++) { ?>
@@ -84,6 +86,7 @@
                 <td><?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?></td>
                 <td><?php echo $this->datos_productos[$i]['DESCRIPCION'] ?></td>
                 <td><?php echo $this->datos_productos[$i]['UM'] ?></td>
+                <td><?php echo $this->datos_productos[$i]['STOCK'] ?></td>
                 <td><a href="javascript:void(0)" onclick="seleccionar_productos('<?php echo $this->datos_productos[$i]['IDPRODUCTO'] ?>','<?php echo utf8_encode($this->datos_productos[$i]['DESCRIPCION']) ?>','<?php echo $this->datos_productos[0]['UM']?>')" class="imgselect"></a></td>
             </tr>
         <?php } ?>

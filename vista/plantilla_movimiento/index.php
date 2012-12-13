@@ -25,7 +25,7 @@
             <tr>
                 <td><?php echo $this->datos[$i]['IDPLANTILLA_MOVIMIENTO'] ?></td>
                 <td><?php echo $this->datos[$i]['DESCRIPCION'] ?></td>
-                <td><?php echo $this->datos[$i]['XNRO_CUENTA'].':'.$this->datos[$i]['IDCUENTA'] ?></td>
+                <td><?php echo $this->datos[$i]['XNRO_CUENTA'].':'.$this->datos[$i]['CUENTA'] ?></td>
                 <td><?php echo $this->datos[$i]['CONCEPTO'] ?></td>
                 <td><?php echo $this->datos[$i]['DEBE_HABER'] ?></td>
                 <td>

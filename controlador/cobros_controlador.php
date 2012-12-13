@@ -125,6 +125,13 @@ class cobros_controlador extends controller{
             $this->_caja->aumenta=1;
             $this->_caja->actualiza();
             
+            if($monto_restante==$_POST['monto']){
+                //actualizar el estado de venta a pagado
+                $this->_ventas->idventa=$idventa;
+                $this->_ventas->estado_pago=1;
+                $this->_ventas->actualiza();
+            }
+            
             //inserta asiento
             $this->_asiento->idventa_cobro=$idventa;
             $this->_asiento->monto_amortizado=$_POST['monto'];

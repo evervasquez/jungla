@@ -7,9 +7,10 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
+            HTML ='';
             $.post('/jungla/entrada_productos/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
-                HTML = '<table border="1" class="tabgrilla">'+
-                        '<tr>'+
+                HTML += '<table border="1" class="tabgrilla">'+
+                            '<tr>'+
                             '<th>Nro.Comprobante</th>'+
                             '<th>Proveedor</th>'+
                             '<th>Fecha</th>'+
