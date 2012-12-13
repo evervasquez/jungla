@@ -20,6 +20,7 @@
         -moz-border-radius: 10px;
         -o-border-radius: 10px;
         border:10px solid grey;
+        display: none;
 }
 .pendiente{
         font-weight: bold;

@@ -10,8 +10,8 @@
 	display:none;
 	color: black;
 	position: fixed;
-        width: 35%;
-	left: 30%;
+        width: 50%;
+	left: 25%;
 	top: 20%;
 	z-index: 1000;
 	text-align: center;
@@ -26,8 +26,8 @@
 	display:none;
 	color: black;
 	position: fixed;
-        width: 35%;
-	left: 30%;
+        width: 50%;
+	left: 25%;
 	top: 20%;
 	z-index: 1000;
 	text-align: center;
