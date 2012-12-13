@@ -42,7 +42,7 @@ class paquetes_controlador extends controller{
             $dato_paquete=$this->_paquetes->inserta();
             //inserta productos x paquete
             for($i=0;$i<count($_POST['idproducto']);$i++){
-                $this->_producto_paquete->idpaquete=$dato_paquete[0]['IDPAQUETE'];
+                $this->_producto_paquete->idpaquete=$dato_paquete[0]['X_IDPAQUETE'];
                 $this->_producto_paquete->idproducto= $_POST['idproducto'][$i];
                 $this->_producto_paquete->cantidad= $_POST['cantidad'][$i];
                 $this->_producto_paquete->inserta();
