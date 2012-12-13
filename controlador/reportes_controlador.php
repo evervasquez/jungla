@@ -2559,19 +2559,13 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY(51.6);
             $this->_fpdf->SetX(134);
             $this->_fpdf->MultiCell(17,$ancho_celda_datos/2, "FechaNacim.\nDateOfBirth",'0',0,'L',0);
-            $this->_fpdf->SetY(58.2);
+            $this->_fpdf->SetY(60.2);
             $this->_fpdf->SetX(2);
             $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, "Domicilio\nAddress",'0',0,'L',0);
-            $this->_fpdf->SetY(58.2);
+            $this->_fpdf->SetY(60.2);
             $this->_fpdf->SetX(109.4);
             $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, utf8_decode("Teléfonos")."\n".("Phones"),'0',0,'L',0);
-            $this->_fpdf->SetY(64.8);
-            $this->_fpdf->SetX(2);
-            $this->_fpdf->MultiCell(14,$ancho_celda_datos/2, "Empresa\nCompany",'0',0,'L',0);
-            $this->_fpdf->SetY(64.8);
-            $this->_fpdf->SetX(132.1);
-            $this->_fpdf->MultiCell(14,$ancho_celda_datos, "R.U.C.",'0',0,'L',0);
-            $this->_fpdf->SetY(72.4);
+            $this->_fpdf->SetY(70.4);
             $this->_fpdf->SetX(1.9);
             $this->_fpdf->MultiCell(23,$ancho_celda_datos/2, utf8_decode("Correo Electrónico")."\n".utf8_decode("e-mail"),'0',0,'L',0);
             $this->_fpdf->SetY(80.5);
@@ -2624,7 +2618,7 @@ class reportes_controlador extends controller {
             $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode($horafecha[0] . '/' . $horafecha[1] . '/' . $horafecha[2]),'1',0,'C',0);
             $this->_fpdf->SetY(18.2);
             $this->_fpdf->SetX(110.1);
-            $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode('NuevaProcedencia'),0,12),'1',0,'C',0);
+            $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode($datos[$i]['PROCEDENCIA']),0,12),'1',0,'C',0);
             $this->_fpdf->SetY(18.2);
             $this->_fpdf->SetX(159.6);
             $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode($horafecha[3] . ':' . $horafecha[4]),'1',0,'C',0);
@@ -2642,54 +2636,57 @@ class reportes_controlador extends controller {
             $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode($horafecha[0] . '/' . $horafecha[1] . '/' . $horafecha[2]),'1',0,'C',0);
             $this->_fpdf->SetY(29.5);
             $this->_fpdf->SetX(110.1);
-            $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode('NuevoDestino'),0,12),'1',0,'C',0);
+            $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode($datos[$i]['DESTINO']),0,12),'1',0,'C',0);
             $this->_fpdf->SetY(29.5);
             $this->_fpdf->SetX(159.6);
             $this->_fpdf->Cell(18,$ancho_celda_datos,utf8_decode($horafecha[3] . ':' . $horafecha[4]),'1',0,'C',0);
             //HOSPEDAJE LODGING
             $this->_fpdf->SetY(40.8);
             $this->_fpdf->SetX(54.8);
-            $this->_fpdf->Cell(41,$ancho_celda_datos,utf8_decode('101, 102, 103, 104'),'1',0,'C',0);
+            $this->_fpdf->Cell(41,$ancho_celda_datos,utf8_decode($datos[$i]['NRO_HABITACION']),'1',0,'C',0);
             $this->_fpdf->SetY(40.8);
             $this->_fpdf->SetX(106.8);
-            $this->_fpdf->Cell(41,$ancho_celda_datos, substr(utf8_decode('Esta es una tarifa'),0,27),'1',0,'C',0);
+            $this->_fpdf->Cell(41,$ancho_celda_datos, substr(utf8_decode(number_format($datos[$i]['COSTO'], 2)),0,27),'1',0,'C',0);
             //DATOS
             $this->_fpdf->SetY(51.6);
             $this->_fpdf->SetX(16.1);
-            $this->_fpdf->Cell(90,$ancho_celda_datos,substr(utf8_decode('Delfin Cucho Quispe'),0,60),'1',0,'L',0);
+            $this->_fpdf->Cell(90,$ancho_celda_datos,substr(utf8_decode($datos[$i]['NOMBRES_APELLIDOS']),0,60),'1',0,'L',0);
+            $horafecha = array(
+                substr($datos[$i]['FECHA_NACIMIENTO'], 8, 2),
+                substr($datos[$i]['FECHA_NACIMIENTO'], 5, 2),
+                substr($datos[$i]['FECHA_NACIMIENTO'], 0, 4),
+                substr($datos[$i]['FECHA_NACIMIENTO'], 11, 2),
+                substr($datos[$i]['FECHA_NACIMIENTO'], 14, 2),
+                substr($datos[$i]['FECHA_NACIMIENTO'], 17, 2)
+            );
+            $datetime2 = date('Y');
             $this->_fpdf->SetY(51.6);
             $this->_fpdf->SetX(118);
-            $this->_fpdf->Cell(14.4,$ancho_celda_datos,substr(utf8_decode('20'),0,60),'1',0,'C',0);
+            $this->_fpdf->Cell(14.4,$ancho_celda_datos,substr(utf8_decode($datetime2 - $horafecha[2]),0,60),'1',0,'C',0);
             $this->_fpdf->SetY(51.6);
             $this->_fpdf->SetX(151);
-            $this->_fpdf->Cell(24.3,$ancho_celda_datos,substr(utf8_decode('12/12/1980'),0,60),'1',0,'C',0);
-            $this->_fpdf->SetY(58.2);
+            $this->_fpdf->Cell(24.3,$ancho_celda_datos,substr(utf8_decode($horafecha[0] . '/' . $horafecha[1] . '/' . $horafecha[2]),0,60),'1',0,'C',0);
+            $this->_fpdf->SetY(60.2);
             $this->_fpdf->SetX(16.1);
-            $this->_fpdf->Cell(90,$ancho_celda_datos, substr(utf8_decode('Este es un domicilio'),0,60),'1',0,'L',0);
-            $this->_fpdf->SetY(58.2);
+            $this->_fpdf->Cell(90,$ancho_celda_datos, substr(utf8_decode($datos[$i]['DIRECCION']),0,60),'1',0,'L',0);
+            $this->_fpdf->SetY(60.2);
             $this->_fpdf->SetX(123.4);
-            $this->_fpdf->Cell(51.9,$ancho_celda_datos, substr(utf8_decode('Este es un teléfono'),0,60),'1',0,'L',0);
-            $this->_fpdf->SetY(64.8);
-            $this->_fpdf->SetX(16.1);
-            $this->_fpdf->Cell(117,$ancho_celda_datos, substr(utf8_decode('Consorcio Chazuta'),0,75),'1',0,'L',0);
-            $this->_fpdf->SetY(64.8);
-            $this->_fpdf->SetX(146.1);
-            $this->_fpdf->Cell(29.2,$ancho_celda_datos, substr(utf8_decode('20123456780'),0,11),'1',0,'C',0);
-            $this->_fpdf->SetY(72.4);
+            $this->_fpdf->Cell(51.9,$ancho_celda_datos, substr(utf8_decode($datos[$i]['TELEFONO']),0,60),'1',0,'L',0);
+            $this->_fpdf->SetY(70.4);
             $this->_fpdf->SetX(24.9);
-            $this->_fpdf->Cell(150.4,$ancho_celda_datos, substr(utf8_decode('esteesunemail@esteesundominio.com'),0,75),'1',0,'L',0);
+            $this->_fpdf->Cell(150.4,$ancho_celda_datos, substr(utf8_decode($datos[$i]['EMAIL']),0,75),'1',0,'L',0);
             $this->_fpdf->SetY(80.5);
             $this->_fpdf->SetX(16.1);
-            $this->_fpdf->Cell(43,$ancho_celda_datos, substr(utf8_decode('Esta es una profesion'),0,25),'1',0,'L',0);
+            $this->_fpdf->Cell(43,$ancho_celda_datos, substr(utf8_decode($datos[$i]['XPROFESION']),0,25),'1',0,'L',0);
             $this->_fpdf->SetY(80.5);
             $this->_fpdf->SetX(76);
-            $this->_fpdf->Cell(21,$ancho_celda_datos, substr(utf8_decode('Estado Civil: Soltero'),0,14),'1',0,'L',0);
+            $this->_fpdf->Cell(21,$ancho_celda_datos, substr(utf8_decode($datos[$i]['ESTADO_CIVIL']),0,14),'1',0,'L',0);
             $this->_fpdf->SetY(80.5);
             $this->_fpdf->SetX(111.4);
-            $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode('Es una nacionalidad'),0,10),'1',0,'L',0);
+            $this->_fpdf->Cell(22,$ancho_celda_datos, substr(utf8_decode($datos[$i]['XPAIS']),0,10),'1',0,'L',0);
             $this->_fpdf->SetY(80.5);
             $this->_fpdf->SetX(150.3);
-            $this->_fpdf->Cell(25,$ancho_celda_datos, substr(utf8_decode('10009427207'),0,11),'1',0,'C',0);
+            $this->_fpdf->Cell(25,$ancho_celda_datos, substr(utf8_decode($datos[$i]['DOCUMENTO']),0,11),'1',0,'C',0);
 
             $this->_fpdf->SetFont('Arial', '', 7);        
             $this->_fpdf->SetY(95);
