@@ -28,7 +28,7 @@
                     HTML = HTML + '<tr>';
                     HTML = HTML + '<td>'+datos[i].IDPLANTILLA_MOVIMIENTO+'</td>';
                     HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
-                    HTML = HTML + '<td>'+datos[i].IDCUENTA+'</td>';
+                    HTML = HTML + '<td>'+datos[i].XNRO_CUENTA+':'+datos[i].CUENTA+'</td>';
                     HTML = HTML + '<td>'+datos[i].CONCEPTO+'</td>';
                     HTML = HTML + '<td>'+datos[i].DEBE_HABER+'</td>';
                     var editar='/jungla/plantilla_movimiento/editar/'+datos[i].IDPLANTILLA_MOVIMIENTO; 

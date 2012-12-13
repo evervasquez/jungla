@@ -50,6 +50,7 @@ $(document).ready(function(){
                             '<th>Codigo</th>'+
                             '<th>Descripcion</th>'+
                             '<th>Unidad Medida</th>'+
+                            '<th>Stock</th>'+
                             '<th>Seleccionar</th>'+
                         '</tr>';
             for(var i=0;i<datos.length;i++){
@@ -58,10 +59,12 @@ $(document).ready(function(){
                 HTML = HTML + '<td>'+datos[i].IDPRODUCTO+'</td>';
                 HTML = HTML + '<td>'+datos[i].DESCRIPCION+'</td>';
                 HTML = HTML + '<td>'+datos[i].UM+'</td>';
+                HTML = HTML + '<td>'+datos[i].STOCK+'</td>';
                 id=datos[i].IDPRODUCTO;
                 producto=datos[i].DESCRIPCION;
                 um=datos[i].UM;
-                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos(\''+id+'\',\''+producto+'\',\''+um+'\')" class="imgselect"></a></td>';
+                stock=datos[i].STOCK;
+                HTML = HTML + '<td><a href="javascript:void(0)" onclick="seleccionar_productos(\''+id+'\',\''+producto+'\',\''+um+'\',\''+stock+'\')" class="imgselect"></a></td>';
                 HTML = HTML + '</tr>';
             }            
             HTML = HTML + '</table>'
@@ -84,6 +87,7 @@ $(document).ready(function(){
         pro=$("#producto").val();
         um=$("#unidad_medida").val();
         c=$("#cantidad").val();
+        stock=$("#stock_actual").val();
         error=false;
         msg='';
         x=0;
@@ -94,6 +98,10 @@ $(document).ready(function(){
             if(c == "" || c == 0){
                 alert("Ingrese cantidad");
                 $(".cantidad").focus();
+            }
+            if(c > stock){
+                alert('No hay stock suficiente para realizar esta salida');
+                return 0;
             }
             else{
                 $("#tbl_detalle_salida_producto tr").each(function(){
@@ -143,10 +151,11 @@ $(document).ready(function(){
    });
 });
 
-function seleccionar_productos(id,producto,um){
+function seleccionar_productos(id,producto,um,stock){
     $("#idproducto").val(id);
     $("#producto").val(producto);
     $("#unidad_medida").val(um);
+    $("#stock_actual").val(stock);
     $("#vtna_busca_productos").fadeOut(300);
     $("#fondooscuro").fadeOut(300);
     $(".cantidad").focus();
