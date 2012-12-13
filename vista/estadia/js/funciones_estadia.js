@@ -360,7 +360,7 @@ $(document).ready(function(){
             '&profesion='+p+'&ubigeo='+$("#ubigeo option:selected").val()+'&membresia='+membresia+
             '&direccion='+dir+'&tipo_cliente=natural',
         function(datos){
-            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#idcliente").val(datos[0].X_IDCLIENTE);
             $("#cliente").val($("#nombres").val()+' '+$("#apellidos").val());
             $("#document").val($("#nrodoc").val());
             $("#nombres").val('');

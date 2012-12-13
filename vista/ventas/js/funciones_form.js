@@ -438,7 +438,7 @@ $(document).ready(function(){
         $.post('/jungla/ventas/insertar_cliente_natural','nombres='+n+'&apellidos='+a
             +'&documento='+d+'&direccion='+dir+'&sexo='+sexo,
         function(datos){
-            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#idcliente").val(datos[0].X_IDCLIENTE);
             $("#cliente").val($("#nombre").val()+' '+$("#apellidos").val());
             $("#nombre").val('');
             $("#apellidos").val('');
@@ -483,7 +483,7 @@ $(document).ready(function(){
         $.post('/jungla/estadia/inserta_cliente_juridico','nombres='+rs+'&documento='+r+
             '&direccion='+d,
         function(datos){
-            $("#idcliente").val(datos[0].IDCLIENTE);
+            $("#idcliente").val(datos[0].X_IDCLIENTE);
             $("#cliente").val($("#razonsocial").val());
             $("#ruc").val('');
             $("#razonsocial").val('');
