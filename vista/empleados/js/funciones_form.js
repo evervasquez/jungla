@@ -7,7 +7,6 @@ $(document).ready(function(){
         format: "dd-MM-yyyy"
     });
     $("#fechacon").kendoDatePicker({
-        value: new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate()),
         start: "year",
         depth: "month",
         format: "dd-MM-yyyy"

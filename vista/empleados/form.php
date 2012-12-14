@@ -104,7 +104,7 @@
             <td><label for="fecha_contratacion">Fecha de Contratacion:</label></td>
             <td>
                 <input readonly="readonly" placeholder="Seleccione fecha" name="fecha_contratacion" required
-                   id="fechacon" value="<?php echo $this->datos[0]['E_FECHA_CONTRATACION'] ?>"/>
+                   id="fechacon" value="<?php if(isset ($this->datos)){echo $this->datos[0]['E_FECHA_CONTRATACION'];} else {echo date("d-m-Y");} ?>"/>
                 <br><div class="k-invalid-msg msgerror" data-for="fecha_contratacion"></div>
             </td>
             <td><label>Actividad:</label></td>
