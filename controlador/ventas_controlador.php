@@ -129,7 +129,7 @@ class ventas_controlador extends controller {
                 $fecha_temp = date("d-m-Y", strtotime("$fecha_venta +$intervalo_dias day"));
 
                 for($i=1;$i<=$c;$i++){
-                    $this->_cuota_cobro->idventa=$dato_venta[0]['IDVENTA'];
+                    $this->_cuota_cobro->idventa=$dato_venta[0]['X_IDVENTA'];
                     $this->_cuota_cobro->fecha_cobro=$fecha_temp;
                     $this->_cuota_cobro->nro_cobro=$i;
                     $this->_cuota_cobro->monto_cuota=$cuota[$i];
@@ -137,7 +137,7 @@ class ventas_controlador extends controller {
                     $fecha_temp = date("d-m-Y", strtotime("$fecha_temp +$intervalo_dias day"));
                 }
             }
-            $this->_asientos->idventa=$dato_venta[0]['IDVENTA'];
+            $this->_asientos->idventa=$dato_venta[0]['X_IDVENTA'];
             $this->_asientos->inserta();
             $this->redireccionar('ventas');
         }
