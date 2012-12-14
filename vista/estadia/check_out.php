@@ -108,8 +108,8 @@
                             <?php echo 'dias' ?>
                         </td>
                         <td>
-                            <?php   $datetime1 = new DateTime($this->datos[0]['FECHA_INGRESO']);
-                                    $datetime2 = new DateTime(date('d-m-Y'));
+                            <?php   $datetime1 = new DateTime($this->datos[0]['FECHA_INGRESO'],new DateTimeZone('America/Lima'));
+                                    $datetime2 = new DateTime(date('d-m-Y'),new DateTimeZone('America/Lima'));
                                     $intervalo = $datetime1->diff($datetime2);
                                     $cantidad = $intervalo->format('%d%');
                                     echo $cantidad ?>

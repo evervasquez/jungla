@@ -60,7 +60,7 @@ class deudas_controlador extends controller {
             echo '<script>alert("Aperture la caja antes de cualquier movimiento")</script>';
             $this->redireccionar('caja');
         }
-        if (new DateTime($datos_caja[0]['C_FECHA']) != new DateTime(date('d-m-Y'))) {
+        if (new DateTime($datos_caja[0]['C_FECHA'],new DateTimeZone('America/Lima')) != new DateTime(date('d-m-Y'),new DateTimeZone('America/Lima'))) {
             echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el dia de hoy")</script>';
             $this->redireccionar('caja');
         }
@@ -147,7 +147,7 @@ class deudas_controlador extends controller {
             $this->redireccionar('caja');
         }
 
-        if (new DateTime($datos_caja[0]['C_FECHA']) != new DateTime(date('d-m-Y'))) {
+        if (new DateTime($datos_caja[0]['C_FECHA'],new DateTimeZone('America/Lima')) != new DateTime(date('d-m-Y'),new DateTimeZone('America/Lima'))) {
             echo '<script>alert("Cierre la caja de fecha pasada y aperture la caja para el dia de hoy")</script>';
             $this->redireccionar('caja');
         }
