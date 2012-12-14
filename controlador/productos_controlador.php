@@ -121,7 +121,11 @@ class productos_controlador extends controller {
                 $this->_productos->precio_unitario= $_POST['precio_unitario'];
             }
             $this->_productos->observaciones = $_POST['observaciones'];
-            $this->_productos->idservicio = $_POST['servicio'];
+            if($_POST['servicio']==''){
+                $this->_productos->idservicio=0;
+            }else{
+                $this->_productos->idservicio = $_POST['servicio'];
+            }
             if($_POST['tipo_producto']==''){
                 $this->_productos->idtipo_producto=0;
             }else{

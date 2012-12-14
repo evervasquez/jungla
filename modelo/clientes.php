@@ -22,6 +22,9 @@ class clientes extends Main {
     public $ruc;
 
     public function inserta() {
+        if(is_null($this->apellidos)){
+            $this->apellidos=' ';
+        }
         $datos = array(0, $this->nombres, $this->apellidos, $this->documento, $this->fecha_nacimiento,
             $this->sexo, $this->telefono, $this->email, $this->estado_civil, $this->idprofesion, $this->idubigeo,
             $this->idmembresia, $this->direccion, $this->tipo);
