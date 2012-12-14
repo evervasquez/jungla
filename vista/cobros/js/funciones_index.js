@@ -10,8 +10,9 @@
         
         
         function buscar(){
+            HTML = '';
             $.post('/jungla/cobros/buscador_v','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
-                HTML = '<table border="1" class="tabgrilla">'+
+                HTML += '<table border="1" class="tabgrilla">'+
                     '<tr>'+
                         '<th>Nro Documento</th>'+
                         '<th>Cliente</th>'+

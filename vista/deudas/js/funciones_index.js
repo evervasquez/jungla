@@ -8,8 +8,9 @@
         });
         $( "#buscar" ).focus();
         function buscar(){
+            HTML ='';
             $.post('/jungla/deudas/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
-                HTML = '<table border="1" class="tabgrilla">'+
+                HTML += '<table border="1" class="tabgrilla">'+
                     '<tr>'+
                         '<th>Nro Comprobante</th>'+
                         '<th>Proveedor</th>'+
@@ -32,7 +33,7 @@
                         HTML = HTML + '</tr>';
                     }
                 }
-            },'json'),
+            },'json');
                 
             $.post('/jungla/deudas/buscador_d','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
@@ -49,7 +50,7 @@
                         HTML = HTML + '</tr>';
                     }
                 }
-                HTML = HTML + '</table>'
+                HTML = HTML + '</table>';
                 $("#grilla").html(HTML);
                 $(".tabgrilla").kendoGrid({
                     dataSource: {
