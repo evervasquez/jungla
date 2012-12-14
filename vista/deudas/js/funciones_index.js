@@ -9,8 +9,7 @@
         $( "#buscar" ).focus();
         function buscar(){
             HTML ='';
-            $.post('/jungla/deudas/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
-                HTML += '<table border="1" class="tabgrilla">'+
+            HTML += '<table border="1" class="tabgrilla">'+
                     '<tr>'+
                         '<th>Nro Comprobante</th>'+
                         '<th>Proveedor</th>'+
@@ -20,6 +19,7 @@
                         '<th>Monto Restante</th>'+
                         '<th>Accion</th>'+
                     '</tr>';
+            $.post('/jungla/deudas/buscador_c','cadena='+$("#buscar").val()+'&filtro='+$("#filtro").val(),function(datos){
                 for(var i=0;i<datos.length;i++){
                     if(datos[i].IDTIPO_TRANSACCION==1 && datos[i].ESTADO_PAGO==0 && datos[i].CONFIRMACION==1){
                         HTML = HTML + '<tr>';
