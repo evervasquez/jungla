@@ -109,11 +109,11 @@ class ventas_controlador extends controller {
                 while($mayor){
                     $c++;
                     $fecha_temp =  date("Y-m-d", strtotime("$fecha_temp +$intervalo_dias day"));
-                    if(new DateTime($fecha_temp) >= new DateTime($fecha_vencimiento)){
+                    if(new DateTime($fecha_temp,new DateTimeZone('America/Lima')) >= new DateTime($fecha_vencimiento,new DateTimeZone('America/Lima'))){
                         $mayor = false;
                     }
                 }
-                if(new DateTime($fecha_temp) > new DateTime($fecha_vencimiento)){
+                if(new DateTime($fecha_temp,new DateTimeZone('America/Lima')) > new DateTime($fecha_vencimiento,new DateTimeZone('America/Lima'))){
                     $c=$c-1;
                 }
                 $monto_pagado = 0;

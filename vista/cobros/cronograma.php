@@ -19,7 +19,7 @@
             if($this->datos[$i]['MONTO_CUOTA'] ==$this->datos[$i]['MONTO_COBRADO']){
                 echo 'cancelado';
             }else{
-                if(new DateTime($this->datos[$i]['FECHA_PAGO'])>new DateTime(date("M d Y")) && $this->datos[$i]['MONTO_CUOTA'] > $this->datos[$i]['MONTO_COBRADO']){
+                if(new DateTime($this->datos[$i]['FECHA_PAGO'],new DateTimeZone('America/Lima'))>new DateTime(date("M d Y"),new DateTimeZone('America/Lima')) && $this->datos[$i]['MONTO_CUOTA'] > $this->datos[$i]['MONTO_COBRADO']){
                     echo 'normal';
                 }else{
                     echo 'vencido';

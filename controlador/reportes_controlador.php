@@ -2087,8 +2087,8 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(0);
             /*RESTAR DIAS*/
-                    $datetime1 = new DateTime($estadias[$i]['FECHA_INGRESO']);
-                    $datetime2 = new DateTime(date('d-m-Y'));
+                    $datetime1 = new DateTime($estadias[$i]['FECHA_INGRESO'],new DateTimeZone('America/Lima'));
+                    $datetime2 = new DateTime(date('d-m-Y'),new DateTimeZone('America/Lima'));
                     $intervalo = $datetime1->diff($datetime2);
                     $diasocupados = $intervalo->format('%d%');
             
@@ -2325,8 +2325,8 @@ class reportes_controlador extends controller {
             $this->_fpdf->SetY($espac);
             $this->_fpdf->SetX(0);
             /*RESTAR DIAS*/
-                    $datetime1 = new DateTime($estadias[$i]['FECHA_INGRESO']);
-                    $datetime2 = new DateTime(date('d-m-Y'));
+                    $datetime1 = new DateTime($estadias[$i]['FECHA_INGRESO'],new DateTimeZone('America/Lima'));
+                    $datetime2 = new DateTime(date('d-m-Y'),new DateTimeZone('America/Lima'));
                     $intervalo = $datetime1->diff($datetime2);
                     $diasocupados = $intervalo->format('%d%');
             

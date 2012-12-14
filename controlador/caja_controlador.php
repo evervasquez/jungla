@@ -20,7 +20,7 @@ class caja_controlador extends controller{
             $this->_vista->lbl_boton = 'Cerrar';
             $this->_vista->action = 'cerrar/'.$datos[0]['IDCAJA'];
         }else{
-            if(new DateTime($datos[0]['C_FECHA'])==new DateTime(date("d-m-Y"))){
+            if(new DateTime($datos[0]['C_FECHA'],new DateTimeZone('America/Lima'))==new DateTime(date("d-m-Y"),new DateTimeZone('America/Lima'))){
                 $this->_vista->lbl_boton = 'Reaperturar';
                 $this->_vista->action = 'reaperturar/'.$datos[0]['IDCAJA'];
             }else{
