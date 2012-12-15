@@ -9,7 +9,7 @@ class conexion extends PDO{
             return self::$instancia;
         }
         $file = 'config.ini';
-        $settings = parse_ini_file($file, TRUE);
+        @$settings = parse_ini_file($file, TRUE);
         $dsn = $settings['database']['driver'] . ':dbname=' . $settings['database']['basedatos'] . '; host=' . $settings['database']['host'] . '; port=' . $settings['database']['puerto'];
         self::$_servidor=$settings['database']['driver'];
         $user = $settings['database']['usuario'];
